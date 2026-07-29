@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>庆典西瓜和字最小金币计算器</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #17202a;
+      --muted: #637083;
+      --line: #dfe4ea;
+      --accent: #167c80;
+      --accent-dark: #0f6367;
+      --warn: #b45f06;
+      --bad: #b42318;
+      --good: #157347;
+      --chip: #eef7f7;
+      --shadow: 0 10px 26px rgba(18, 32, 46, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 750;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .controls {
+      padding: 18px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 11px;
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(22, 124, 128, 0.14);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+
+    button {
+      height: 42px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 15px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .primary {
+      flex: 1;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .secondary {
+      background: #eef1f5;
+      color: #233142;
+    }
+
+    .rules {
+      display: grid;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .result {
+      padding: 18px;
+      min-height: 260px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfd;
+      min-height: 78px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .status {
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--chip);
+      border: 1px solid #c8e7e6;
+      color: #145f63;
+    }
+
+    .status.bad {
+      background: #fff2f0;
+      border-color: #ffd0cc;
+      color: var(--bad);
+    }
+
+    .status.warn {
+      background: #fff8eb;
+      border-color: #ffe0ad;
+      color: var(--warn);
+    }
+
+    .tables {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: right;
+      vertical-align: middle;
+      word-break: keep-all;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      background: #fafbfc;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 2px 9px;
+      background: #edf4ff;
+      color: #285c9d;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .good {
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        display: block;
+      }
+
+      .layout,
+      .tables {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        position: static;
+      }
+
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+
+      .field-grid,
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        padding: 9px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <h1>庆典西瓜和字最小金币计算器</h1>
+        <p class="subtitle">输入目标数量，计算 96 次购买内满足西瓜和字要求的最低金币方案。</p>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="panel controls">
+        <h2 class="section-title">目标和已拥有</h2>
+        <div class="field-grid">
+          <label>
+            目标西瓜
+            <input id="targetMelon" type="number" min="0" step="1" value="100">
+          </label>
+          <label>
+            目标字
+            <input id="targetWord" type="number" min="0" step="1" value="300">
+          </label>
+          <label>
+            已有西瓜
+            <input id="ownedMelon" type="number" min="0" step="1" value="0">
+          </label>
+          <label>
+            已有字
+            <input id="ownedWord" type="number" min="0" step="1" value="0">
+          </label>
+        </div>
+
+        <h2 class="section-title">限制</h2>
+        <div class="field-grid">
+          <label>
+            最多购买次数
+            <input id="maxBuys" type="number" min="0" step="1" value="96">
+          </label>
+          <label>
+            当前已攒星数
+            <input id="baseStars" type="number" min="0" step="1" value="0">
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button class="primary" id="calculate" type="button">计算</button>
+          <button class="secondary" id="reset" type="button">重置</button>
+        </div>
+
+        <div class="rules">
+          <div>50 星西瓜：450 金币，4 个西瓜。</div>
+          <div>30 星西瓜：225 金币，2 个西瓜。</div>
+          <div>30 星字：225 金币，10 个字。</div>
+          <div>奖励档位按累计星数解锁，例如同时拿 100 星和 150 星奖励需要 250 星。</div>
+          <div>当前已攒星数之前的宝箱视为已领取，后续计算不会重复计入。</div>
+          <div>同样金币下优先选择更多 30 星西瓜，再比较购买次数和富余数量。</div>
+        </div>
+      </section>
+
+      <section class="panel result">
+        <div id="status" class="status">等待计算。</div>
+
+        <div id="answer" class="hidden">
+          <div class="summary">
+            <div class="metric">
+              <span>最少金币</span>
+              <strong id="cost">0</strong>
+            </div>
+            <div class="metric">
+              <span>购买次数</span>
+              <strong id="buys">0</strong>
+            </div>
+            <div class="metric">
+              <span>最终星数</span>
+              <strong id="stars">0</strong>
+            </div>
+            <div class="metric">
+              <span>已解锁奖励</span>
+              <strong id="rewardTier">0 档</strong>
+            </div>
+          </div>
+
+          <div class="tables">
+            <div>
+              <h2 class="section-title">购买方案</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>类型</th>
+                    <th>次数</th>
+                    <th>金币</th>
+                    <th>星数</th>
+                    <th>产出</th>
+                  </tr>
+                </thead>
+                <tbody id="purchaseRows"></tbody>
+              </table>
+            </div>
+
+            <div>
+              <h2 class="section-title">最终数量</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>项目</th>
+                    <th>数量</th>
+                    <th>差额</th>
+                  </tr>
+                </thead>
+                <tbody id="totalRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <h2 class="section-title" style="margin-top:18px;">奖励明细</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>奖励档位</th>
+                <th>领取所需累计星数</th>
+                <th>奖励西瓜</th>
+                <th>奖励字</th>
+              </tr>
+            </thead>
+            <tbody id="rewardRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const rewardMilestones = [100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
+    const rewardTiers = rewardMilestones.map((stars, index) => {
+      const need = rewardMilestones.slice(0, index + 1).reduce((sum, value) => sum + value, 0);
+      return {
+        label: `${stars} 星`,
+        need,
+        melon: stars / 50,
+        word: stars / 10
+      };
+    });
+
+    const items = [
+      { key: "melon50", name: "50 星西瓜", cost: 450, stars: 50, melon: 4, word: 0 },
+      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0 },
+      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10 }
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
+    const format = (value) => Number(value).toLocaleString("zh-CN");
+
+    function rewardsForStars(totalStars, baseStars = 0) {
+      const unlocked = rewardTiers.filter((tier) => baseStars < tier.need && totalStars >= tier.need);
+      return {
+        count: unlocked.length,
+        tiers: unlocked,
+        melon: unlocked.reduce((sum, tier) => sum + tier.melon, 0),
+        word: unlocked.reduce((sum, tier) => sum + tier.word, 0)
+      };
+    }
+
+    function betterPlan(plan, best) {
+      if (!best) return true;
+      if (plan.cost !== best.cost) return plan.cost < best.cost;
+      if (plan.melon30 !== best.melon30) return plan.melon30 > best.melon30;
+      if (plan.melon50 !== best.melon50) return plan.melon50 < best.melon50;
+      if (plan.buys !== best.buys) return plan.buys < best.buys;
+      if (plan.melonSurplus + plan.wordSurplus !== best.melonSurplus + best.wordSurplus) {
+        return plan.melonSurplus + plan.wordSurplus < best.melonSurplus + best.wordSurplus;
+      }
+      return plan.stars < best.stars;
+    }
+
+    function calculate() {
+      const targetMelon = numberValue("targetMelon");
+      const targetWord = numberValue("targetWord");
+      const ownedMelon = numberValue("ownedMelon");
+      const ownedWord = numberValue("ownedWord");
+      const maxBuys = numberValue("maxBuys");
+      const baseStars = numberValue("baseStars");
+      const needMelon = Math.max(0, targetMelon - ownedMelon);
+      const needWord = Math.max(0, targetWord - ownedWord);
+
+      let best = null;
+
+      for (let melon50 = 0; melon50 <= maxBuys; melon50 += 1) {
+        for (let melon30 = 0; melon30 <= maxBuys - melon50; melon30 += 1) {
+          for (let word30 = 0; word30 <= maxBuys - melon50 - melon30; word30 += 1) {
+            const buys = melon50 + melon30 + word30;
+            const cost = melon50 * 450 + (melon30 + word30) * 225;
+            const stars = baseStars + melon50 * 50 + (melon30 + word30) * 30;
+            const reward = rewardsForStars(stars, baseStars);
+            const melon = melon50 * 4 + melon30 * 2 + reward.melon;
+            const word = word30 * 10 + reward.word;
+
+            if (melon < needMelon || word < needWord) continue;
+
+            const plan = {
+              melon50,
+              melon30,
+              word30,
+              buys,
+              cost,
+              stars,
+              reward,
+              melon,
+              word,
+              melonSurplus: melon - needMelon,
+              wordSurplus: word - needWord
+            };
+
+            if (betterPlan(plan, best)) best = plan;
+          }
+        }
+      }
+
+      render(best, { targetMelon, targetWord, ownedMelon, ownedWord, needMelon, needWord, maxBuys, baseStars });
+    }
+
+    function render(best, input) {
+      const status = $("status");
+      const answer = $("answer");
+
+      if (!best) {
+        const maxStars = input.baseStars + input.maxBuys * 50;
+        const maxReward = rewardsForStars(maxStars, input.baseStars);
+        status.className = "status bad";
+        status.textContent = `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+        answer.classList.add("hidden");
+        return;
+      }
+
+      status.className = best.buys === input.maxBuys ? "status warn" : "status";
+      status.textContent = `找到最低金币方案：还需西瓜 ${format(input.needMelon)}、字 ${format(input.needWord)}，购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`;
+      answer.classList.remove("hidden");
+
+      $("cost").textContent = format(best.cost);
+      $("buys").textContent = `${format(best.buys)} / ${format(input.maxBuys)}`;
+      $("stars").textContent = format(best.stars);
+      $("rewardTier").textContent = `${format(best.reward.count)} 档`;
+
+      $("purchaseRows").innerHTML = [
+        row("50 星西瓜", best.melon50, best.melon50 * 450, best.melon50 * 50, `${format(best.melon50 * 4)} 西瓜`),
+        row("30 星西瓜", best.melon30, best.melon30 * 225, best.melon30 * 30, `${format(best.melon30 * 2)} 西瓜`),
+        row("30 星字", best.word30, best.word30 * 225, best.word30 * 30, `${format(best.word30 * 10)} 字`)
+      ].join("");
+
+      $("totalRows").innerHTML = [
+        totalRow("西瓜", input.ownedMelon + best.melon, input.targetMelon),
+        totalRow("字", input.ownedWord + best.word, input.targetWord),
+        totalRow("奖励西瓜", best.reward.melon, 0),
+        totalRow("奖励字", best.reward.word, 0)
+      ].join("");
+
+      $("rewardRows").innerHTML = rewardTiers.map((tier) => {
+        const unlocked = best.stars >= tier.need;
+        return `
+          <tr>
+            <td>${tier.need <= input.baseStars ? '<span class="muted">已领取</span> ' : unlocked ? '<span class="tag">新解锁</span> ' : '<span class="muted">未解锁</span> '}${tier.label}</td>
+            <td>${format(tier.need)}</td>
+            <td>${format(tier.melon)}</td>
+            <td>${format(tier.word)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function row(name, count, cost, stars, output) {
+      return `
+        <tr>
+          <td>${name}</td>
+          <td>${format(count)}</td>
+          <td>${format(cost)}</td>
+          <td>${format(stars)}</td>
+          <td>${output}</td>
+        </tr>
+      `;
+    }
+
+    function totalRow(name, value, target) {
+      const diff = value - target;
+      const diffText = target > 0
+        ? `<span class="${diff >= 0 ? 'good' : ''}">${diff >= 0 ? '+' : ''}${format(diff)}</span>`
+        : '<span class="muted">-</span>';
+      return `
+        <tr>
+          <td>${name}</td>
+          <td>${format(value)}</td>
+          <td>${diffText}</td>
+        </tr>
+      `;
+    }
+
+    $("calculate").addEventListener("click", calculate);
+    $("reset").addEventListener("click", () => {
+      $("targetMelon").value = 100;
+      $("targetWord").value = 300;
+      $("ownedMelon").value = 0;
+      $("ownedWord").value = 0;
+      $("maxBuys").value = 96;
+      $("baseStars").value = 0;
+      calculate();
+    });
+
+    document.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("input", calculate);
+    });
+
+    calculate();
+  </script>
+</body>
+</html>
