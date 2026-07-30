@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>庆典西瓜和字最小金币计算器</title>
+  <title>庆典西瓜和字期望金币计算器</title>
   <style>
     :root {
       color-scheme: light;
@@ -1069,7 +1069,7 @@
       }
 
       status.className = result.buys >= input.maxBuys - 0.01 ? "status warn" : "status";
-      status.textContent = `精确期望结果：预计共花 ${formatExpected(result.cost)} 金币，其中购买约 ${formatExpected(result.purchaseCost)}，额外刷新约 ${formatExpected(result.refreshCost)}。每条随机路径都会动态改选物品，并在最多 ${format(input.maxBuys)} 次购买内达到目标。`;
+      status.textContent = `精确期望结果：预计共花 ${formatExpected(result.cost)} 金币，其中购买约 ${formatExpected(result.purchaseCost)}，额外刷新约 ${formatExpected(result.refreshCost)}。模型会沿随机结果动态改选物品，并确保买下的路径仍可在最多 ${format(input.maxBuys)} 次购买内达到目标。`;
       answer.classList.remove("hidden");
 
       $("cost").textContent = formatExpected(result.cost);
