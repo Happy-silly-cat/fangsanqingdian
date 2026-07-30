@@ -101,7 +101,8 @@
       font-size: 13px;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       min-width: 0;
       height: 42px;
@@ -114,7 +115,8 @@
       background: #fff;
     }
 
-    input:focus {
+    input:focus,
+    select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(22, 124, 128, 0.14);
     }
@@ -298,6 +300,20 @@
       line-height: 1.55;
     }
 
+    .strategy {
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent);
+      background: #f8fbfb;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .strategy strong {
+      color: var(--accent-dark);
+    }
+
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -410,8 +426,8 @@
   <main class="shell">
     <header>
       <div>
-        <h1>庆典西瓜和字最小金币计算器</h1>
-        <p class="subtitle">输入目标数量，计算 96 次购买内满足西瓜和字要求的最低金币方案。</p>
+        <h1>庆典西瓜和字金币计算器</h1>
+        <p class="subtitle">结合物品出现率、刷新费用和宝箱奖励，计算满足目标的最低期望金币。</p>
       </div>
     </header>
 
@@ -449,6 +465,21 @@
           </label>
         </div>
 
+        <h2 class="section-title">计算方式</h2>
+        <div class="field-grid">
+          <label>
+            成本模型
+            <select id="calculationMode">
+              <option value="expected">概率期望（含刷新）</option>
+              <option value="direct">只算购买价</option>
+            </select>
+          </label>
+          <label>
+            当前已手动刷新次数
+            <input id="usedRefreshes" type="number" min="0" step="1" value="0">
+          </label>
+        </div>
+
         <div id="taskEstimate" class="estimate-note">还未设置活动进度，默认按 96 次购买机会计算。</div>
 
         <div class="button-row">
@@ -463,7 +494,9 @@
           <div>30 星字：225 金币，10 个字。</div>
           <div>奖励档位按累计星数解锁，例如同时拿 100 星和 150 星奖励需要 250 星。</div>
           <div>当前已攒星数之前的宝箱视为已领取，后续计算不会重复计入。</div>
-          <div>同样金币下优先选择更多 30 星西瓜，再比较购买次数和富余数量。</div>
+          <div>出现率：50 星西瓜 1.29%，30 星西瓜 1.93%，字 5.47%，其余 91.31% 需要刷新。</div>
+          <div>刷新第 1 次免费，第 2～5 次每次 20 金币，第 6 次起每次 50 金币；刷新次数按本次计算累计，购买后不重置。</div>
+          <div>概率期望模式会根据当时还缺的数量和剩余机会，动态决定买下还是继续刷新。</div>
         </div>
       </section>
 
@@ -473,22 +506,24 @@
         <div id="answer" class="hidden">
           <div class="summary">
             <div class="metric">
-              <span>最少金币</span>
+              <span id="costLabel">期望总金币</span>
               <strong id="cost">0</strong>
             </div>
             <div class="metric">
-              <span>购买次数</span>
+              <span id="buysLabel">期望购买次数</span>
               <strong id="buys">0</strong>
             </div>
             <div class="metric">
-              <span>最终星数</span>
+              <span id="starsLabel">期望最终星数</span>
               <strong id="stars">0</strong>
             </div>
             <div class="metric">
-              <span>已解锁奖励</span>
+              <span id="rewardLabel">期望新增奖励</span>
               <strong id="rewardTier">0 档</strong>
             </div>
           </div>
+
+          <div id="strategy" class="strategy hidden"></div>
 
           <div class="tables">
             <div>
@@ -582,10 +617,11 @@
     });
 
     const items = [
-      { key: "melon50", name: "50 星西瓜", cost: 450, stars: 50, melon: 4, word: 0 },
-      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0 },
-      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10 }
+      { key: "melon50", name: "50 星西瓜", cost: 450, stars: 50, melon: 4, word: 0, probability: 0.0129 },
+      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0193 },
+      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0547 }
     ];
+    const otherProbability = 1 - items.reduce((sum, item) => sum + item.probability, 0);
 
     const $ = (id) => document.getElementById(id);
     const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
@@ -682,29 +718,51 @@
       return plan.stars < best.stars;
     }
 
-    function calculate() {
-      const targetMelon = numberValue("targetMelon");
-      const targetWord = numberValue("targetWord");
-      const ownedMelon = numberValue("ownedMelon");
-      const ownedWord = numberValue("ownedWord");
-      const maxBuys = numberValue("maxBuys");
-      const baseStars = numberValue("baseStars");
-      const needMelon = Math.max(0, targetMelon - ownedMelon);
-      const needWord = Math.max(0, targetWord - ownedWord);
+    function readInput() {
+      const input = {
+        targetMelon: numberValue("targetMelon"),
+        targetWord: numberValue("targetWord"),
+        ownedMelon: numberValue("ownedMelon"),
+        ownedWord: numberValue("ownedWord"),
+        maxBuys: numberValue("maxBuys"),
+        baseStars: numberValue("baseStars"),
+        usedRefreshes: numberValue("usedRefreshes"),
+        mode: $("calculationMode").value
+      };
+      input.needMelon = Math.max(0, input.targetMelon - input.ownedMelon);
+      input.needWord = Math.max(0, input.targetWord - input.ownedWord);
+      return input;
+    }
 
+    function calculate() {
+      const input = readInput();
+      if (input.mode === "expected") {
+        if (input.maxBuys > 130) {
+          $("status").className = "status bad";
+          $("status").textContent = "概率期望模式最多支持 130 次购买机会，请缩小“最多购买次数”后再计算。";
+          $("answer").classList.add("hidden");
+          return;
+        }
+        renderExpected(calculateExpected(input), input);
+        return;
+      }
+      renderDirect(calculateDirect(input), input);
+    }
+
+    function calculateDirect(input) {
       let best = null;
 
-      for (let melon50 = 0; melon50 <= maxBuys; melon50 += 1) {
-        for (let melon30 = 0; melon30 <= maxBuys - melon50; melon30 += 1) {
-          for (let word30 = 0; word30 <= maxBuys - melon50 - melon30; word30 += 1) {
+      for (let melon50 = 0; melon50 <= input.maxBuys; melon50 += 1) {
+        for (let melon30 = 0; melon30 <= input.maxBuys - melon50; melon30 += 1) {
+          for (let word30 = 0; word30 <= input.maxBuys - melon50 - melon30; word30 += 1) {
             const buys = melon50 + melon30 + word30;
             const cost = melon50 * 450 + (melon30 + word30) * 225;
-            const stars = baseStars + melon50 * 50 + (melon30 + word30) * 30;
-            const reward = rewardsForStars(stars, baseStars);
+            const stars = input.baseStars + melon50 * 50 + (melon30 + word30) * 30;
+            const reward = rewardsForStars(stars, input.baseStars);
             const melon = melon50 * 4 + melon30 * 2 + reward.melon;
             const word = word30 * 10 + reward.word;
 
-            if (melon < needMelon || word < needWord) continue;
+            if (melon < input.needMelon || word < input.needWord) continue;
 
             const plan = {
               melon50,
@@ -716,8 +774,8 @@
               reward,
               melon,
               word,
-              melonSurplus: melon - needMelon,
-              wordSurplus: word - needWord
+              melonSurplus: melon - input.needMelon,
+              wordSurplus: word - input.needWord
             };
 
             if (betterPlan(plan, best)) best = plan;
@@ -725,12 +783,232 @@
         }
       }
 
-      render(best, { targetMelon, targetWord, ownedMelon, ownedWord, needMelon, needWord, maxBuys, baseStars });
+      return best;
     }
 
-    function render(best, input) {
+    function stateIndex(melon50, melon30, word30) {
+      const total = melon50 + melon30 + word30;
+      const levelOffset = total * (total + 1) * (total + 2) / 6;
+      const itemOffset = melon50 * (total + 1) - melon50 * (melon50 - 1) / 2;
+      return levelOffset + itemOffset + melon30;
+    }
+
+    function makeLayers(ArrayType, length) {
+      return Array.from({ length: 6 }, () => new ArrayType(length));
+    }
+
+    function calculateExpected(input) {
+      const maxBuys = input.maxBuys;
+      const stateCount = (maxBuys + 1) * (maxBuys + 2) * (maxBuys + 3) / 6;
+      const values = makeLayers(Float64Array, stateCount);
+      const metricLayers = Array.from({ length: 9 }, () => makeLayers(Float32Array, stateCount));
+      const [
+        purchaseCosts,
+        refreshCosts,
+        refreshCounts,
+        melon50Counts,
+        melon30Counts,
+        word30Counts,
+        rewardMelons,
+        rewardWords,
+        rewardCounts
+      ] = metricLayers;
+      const probabilitySum = 1 - otherProbability;
+
+      function setUnreachable(index) {
+        for (let refreshTier = 0; refreshTier < 6; refreshTier += 1) {
+          values[refreshTier][index] = Infinity;
+        }
+      }
+
+      function itemIncrement(itemIndex, rewardDelta) {
+        return [
+          items[itemIndex].cost,
+          0,
+          0,
+          itemIndex === 0 ? 1 : 0,
+          itemIndex === 1 ? 1 : 0,
+          itemIndex === 2 ? 1 : 0,
+          rewardDelta.melon,
+          rewardDelta.word,
+          rewardDelta.count
+        ];
+      }
+
+      for (let buys = maxBuys; buys >= 0; buys -= 1) {
+        for (let melon50 = 0; melon50 <= buys; melon50 += 1) {
+          for (let melon30 = 0; melon30 <= buys - melon50; melon30 += 1) {
+            const word30 = buys - melon50 - melon30;
+            const index = stateIndex(melon50, melon30, word30);
+            const stars = input.baseStars + melon50 * 50 + (melon30 + word30) * 30;
+            const reward = rewardsForStars(stars, input.baseStars);
+            const totalMelon = input.ownedMelon + melon50 * 4 + melon30 * 2 + reward.melon;
+            const totalWord = input.ownedWord + word30 * 10 + reward.word;
+            const reachedTarget = totalMelon >= input.targetMelon && totalWord >= input.targetWord;
+
+            if (reachedTarget) continue;
+            if (buys === maxBuys) {
+              setUnreachable(index);
+              continue;
+            }
+
+            const childIndexes = [
+              stateIndex(melon50 + 1, melon30, word30),
+              stateIndex(melon50, melon30 + 1, word30),
+              stateIndex(melon50, melon30, word30 + 1)
+            ];
+            const increments = items.map((item, itemIndex) => {
+              const rewardDelta = rewardsForStars(stars + item.stars, stars);
+              return itemIncrement(itemIndex, rewardDelta);
+            });
+
+            const tailOffers = items.map((item, itemIndex) => ({
+              itemIndex,
+              value: item.cost + values[5][childIndexes[itemIndex]]
+            })).filter((offer) => Number.isFinite(offer.value))
+              .sort((left, right) => left.value - right.value);
+
+            if (!tailOffers.length) {
+              setUnreachable(index);
+              continue;
+            }
+
+            let acceptedProbability = 0;
+            let weightedValue = 0;
+            let acceptedCount = 0;
+            let tailThreshold = Infinity;
+
+            for (let offerIndex = 0; offerIndex < tailOffers.length; offerIndex += 1) {
+              const offer = tailOffers[offerIndex];
+              const probability = items[offer.itemIndex].probability;
+              acceptedProbability += probability;
+              weightedValue += probability * offer.value;
+              acceptedCount = offerIndex + 1;
+              tailThreshold = (50 + weightedValue) / acceptedProbability;
+              const nextValue = tailOffers[offerIndex + 1]?.value ?? Infinity;
+              if (tailThreshold <= nextValue) break;
+            }
+
+            const acceptedOffers = tailOffers.slice(0, acceptedCount);
+            values[5][index] = tailThreshold - 50;
+            const failedDraws = (1 - acceptedProbability) / acceptedProbability;
+
+            for (let metricIndex = 0; metricIndex < metricLayers.length; metricIndex += 1) {
+              let metricValue = 0;
+              for (const offer of acceptedOffers) {
+                const itemIndex = offer.itemIndex;
+                const weight = items[itemIndex].probability / acceptedProbability;
+                metricValue += weight * (
+                  metricLayers[metricIndex][5][childIndexes[itemIndex]] +
+                  increments[itemIndex][metricIndex]
+                );
+              }
+              if (metricIndex === 1) metricValue += failedDraws * 50;
+              if (metricIndex === 2) metricValue += failedDraws;
+              metricLayers[metricIndex][5][index] = metricValue;
+            }
+
+            for (let refreshTier = 4; refreshTier >= 0; refreshTier -= 1) {
+              const refreshPrice = refreshTier === 0 ? 0 : 20;
+              const refreshValue = refreshPrice + values[refreshTier + 1][index];
+              let expectedValue = otherProbability * refreshValue;
+              const buyChoices = [];
+
+              for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
+                const buyValue = items[itemIndex].cost + values[refreshTier][childIndexes[itemIndex]];
+                const shouldBuy = buyValue <= refreshValue;
+                buyChoices.push(shouldBuy);
+                expectedValue += items[itemIndex].probability * (shouldBuy ? buyValue : refreshValue);
+              }
+              values[refreshTier][index] = expectedValue;
+
+              for (let metricIndex = 0; metricIndex < metricLayers.length; metricIndex += 1) {
+                const refreshedMetric = metricLayers[metricIndex][refreshTier + 1][index]
+                  + (metricIndex === 1 ? refreshPrice : 0)
+                  + (metricIndex === 2 ? 1 : 0);
+                let metricValue = otherProbability * refreshedMetric;
+
+                for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
+                  const actionMetric = buyChoices[itemIndex]
+                    ? metricLayers[metricIndex][refreshTier][childIndexes[itemIndex]] + increments[itemIndex][metricIndex]
+                    : refreshedMetric;
+                  metricValue += items[itemIndex].probability * actionMetric;
+                }
+                metricLayers[metricIndex][refreshTier][index] = metricValue;
+              }
+            }
+          }
+        }
+      }
+
+      const startTier = Math.min(5, input.usedRefreshes);
+      const rootIndex = stateIndex(0, 0, 0);
+      if (!Number.isFinite(values[startTier][rootIndex])) return null;
+
+      const expectedCounts = [
+        melon50Counts[startTier][rootIndex],
+        melon30Counts[startTier][rootIndex],
+        word30Counts[startTier][rootIndex]
+      ];
+      const expectedStars = input.baseStars
+        + expectedCounts[0] * 50
+        + (expectedCounts[1] + expectedCounts[2]) * 30;
+      const expectedRewardMelon = rewardMelons[startTier][rootIndex];
+      const expectedRewardWord = rewardWords[startTier][rootIndex];
+      const expectedMelon = input.ownedMelon
+        + expectedCounts[0] * 4
+        + expectedCounts[1] * 2
+        + expectedRewardMelon;
+      const expectedWord = input.ownedWord + expectedCounts[2] * 10 + expectedRewardWord;
+      const actions = [];
+
+      if (expectedCounts.reduce((sum, value) => sum + value, 0) > 0 && maxBuys > 0) {
+        const refreshPrice = startTier === 0 ? 0 : startTier < 5 ? 20 : 50;
+        const refreshValue = startTier < 5
+          ? refreshPrice + values[startTier + 1][rootIndex]
+          : 50 + values[5][rootIndex];
+
+        items.forEach((item, itemIndex) => {
+          const childIndex = stateIndex(
+            itemIndex === 0 ? 1 : 0,
+            itemIndex === 1 ? 1 : 0,
+            itemIndex === 2 ? 1 : 0
+          );
+          const buyValue = item.cost + values[startTier][childIndex];
+          actions.push({ name: item.name, buy: buyValue <= refreshValue });
+        });
+      }
+
+      return {
+        cost: values[startTier][rootIndex],
+        purchaseCost: purchaseCosts[startTier][rootIndex],
+        refreshCost: refreshCosts[startTier][rootIndex],
+        refreshCount: refreshCounts[startTier][rootIndex],
+        counts: expectedCounts,
+        buys: expectedCounts.reduce((sum, value) => sum + value, 0),
+        stars: expectedStars,
+        rewardMelon: expectedRewardMelon,
+        rewardWord: expectedRewardWord,
+        rewardCount: rewardCounts[startTier][rootIndex],
+        melon: expectedMelon,
+        word: expectedWord,
+        actions,
+        probabilitySum
+      };
+    }
+
+    function setSummaryLabels(expectedMode) {
+      $("costLabel").textContent = expectedMode ? "期望总金币" : "最少金币";
+      $("buysLabel").textContent = expectedMode ? "期望购买次数" : "购买次数";
+      $("starsLabel").textContent = expectedMode ? "期望最终星数" : "最终星数";
+      $("rewardLabel").textContent = expectedMode ? "期望新增奖励" : "已解锁奖励";
+    }
+
+    function renderDirect(best, input) {
       const status = $("status");
       const answer = $("answer");
+      setSummaryLabels(false);
+      $("strategy").classList.add("hidden");
 
       if (!best) {
         const maxStars = input.baseStars + input.maxBuys * 50;
@@ -776,6 +1054,95 @@
       }).join("");
     }
 
+    function renderExpected(result, input) {
+      const status = $("status");
+      const answer = $("answer");
+      setSummaryLabels(true);
+
+      if (!result) {
+        const maxStars = input.baseStars + input.maxBuys * 50;
+        const maxReward = rewardsForStars(maxStars, input.baseStars);
+        status.className = "status bad";
+        status.textContent = `在最多 ${format(input.maxBuys)} 次购买内不存在必定达标的路径。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+        answer.classList.add("hidden");
+        return;
+      }
+
+      status.className = result.buys >= input.maxBuys - 0.01 ? "status warn" : "status";
+      status.textContent = `精确期望结果：预计共花 ${formatExpected(result.cost)} 金币，其中购买约 ${formatExpected(result.purchaseCost)}，额外刷新约 ${formatExpected(result.refreshCost)}。每条随机路径都会动态改选物品，并在最多 ${format(input.maxBuys)} 次购买内达到目标。`;
+      answer.classList.remove("hidden");
+
+      $("cost").textContent = formatExpected(result.cost);
+      $("buys").textContent = `${formatExpected(result.buys)} / ${format(input.maxBuys)}`;
+      $("stars").textContent = formatExpected(result.stars);
+      $("rewardTier").textContent = `${formatExpected(result.rewardCount)} 档`;
+
+      const strategy = $("strategy");
+      if (result.actions.length) {
+        strategy.innerHTML = `<strong>按当前状态第一次刷到时：</strong>${result.actions.map((action) => `${action.name}建议${action.buy ? "买下" : "刷新"}`).join("；")}。后续会随着已买数量、星数和剩余机会自动改变选择。`;
+        strategy.classList.remove("hidden");
+      } else {
+        strategy.textContent = "当前拥有数量已经达到目标，不需要继续购买或刷新。";
+        strategy.classList.remove("hidden");
+      }
+
+      $("purchaseRows").innerHTML = [
+        expectedRow("50 星西瓜", result.counts[0], result.counts[0] * 450, result.counts[0] * 50, `${formatExpected(result.counts[0] * 4)} 西瓜`),
+        expectedRow("30 星西瓜", result.counts[1], result.counts[1] * 225, result.counts[1] * 30, `${formatExpected(result.counts[1] * 2)} 西瓜`),
+        expectedRow("30 星字", result.counts[2], result.counts[2] * 225, result.counts[2] * 30, `${formatExpected(result.counts[2] * 10)} 字`),
+        expectedRow("额外刷新", result.refreshCount, result.refreshCost, 0, "筛选任务")
+      ].join("");
+
+      $("totalRows").innerHTML = [
+        expectedTotalRow("西瓜", result.melon, input.targetMelon),
+        expectedTotalRow("字", result.word, input.targetWord),
+        expectedTotalRow("奖励西瓜", result.rewardMelon, 0),
+        expectedTotalRow("奖励字", result.rewardWord, 0)
+      ].join("");
+
+      $("rewardRows").innerHTML = rewardTiers.map((tier) => `
+        <tr>
+          <td>${tier.need <= input.baseStars ? '<span class="muted">已领取</span> ' : '<span class="muted">依随机路径</span> '}${tier.label}</td>
+          <td>${format(tier.need)}</td>
+          <td>${format(tier.melon)}</td>
+          <td>${format(tier.word)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function formatExpected(value) {
+      return Number(value).toLocaleString("zh-CN", {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
+      });
+    }
+
+    function expectedRow(name, count, cost, stars, output) {
+      return `
+        <tr>
+          <td>${name}</td>
+          <td>${formatExpected(count)}</td>
+          <td>${formatExpected(cost)}</td>
+          <td>${formatExpected(stars)}</td>
+          <td>${output}</td>
+        </tr>
+      `;
+    }
+
+    function expectedTotalRow(name, value, target) {
+      const diff = value - target;
+      const diffText = target > 0
+        ? `<span class="${diff >= -0.05 ? 'good' : ''}">${diff >= 0 ? '+' : ''}${formatExpected(diff)}</span>`
+        : '<span class="muted">-</span>';
+      return `
+        <tr>
+          <td>${name}</td>
+          <td>${formatExpected(value)}</td>
+          <td>${diffText}</td>
+        </tr>
+      `;
+    }
+
     function row(name, count, cost, stars, output) {
       return `
         <tr>
@@ -802,7 +1169,19 @@
       `;
     }
 
-    $("calculate").addEventListener("click", calculate);
+    let calculateTimer = null;
+
+    function scheduleCalculate() {
+      window.clearTimeout(calculateTimer);
+      $("status").className = "status";
+      $("status").textContent = "参数已更新，正在重新计算期望成本…";
+      calculateTimer = window.setTimeout(calculate, 180);
+    }
+
+    $("calculate").addEventListener("click", () => {
+      window.clearTimeout(calculateTimer);
+      calculate();
+    });
     $("openSetup").addEventListener("click", openSetupModal);
     $("closeSetup").addEventListener("click", closeSetupModal);
     $("saveSetup").addEventListener("click", () => {
@@ -816,14 +1195,16 @@
       $("ownedWord").value = 0;
       $("maxBuys").value = 96;
       $("baseStars").value = 0;
+      $("calculationMode").value = "expected";
+      $("usedRefreshes").value = 0;
       activitySetup.day = 1;
       activitySetup.tasks = 0;
       $("taskEstimate").textContent = "还未设置活动进度，默认按 96 次购买机会计算。";
       calculate();
     });
 
-    document.querySelectorAll("input").forEach((input) => {
-      input.addEventListener("input", calculate);
+    document.querySelectorAll("input, select").forEach((control) => {
+      control.addEventListener("input", scheduleCalculate);
     });
 
     calculate();
