@@ -273,7 +273,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     .visit-counter {
@@ -285,6 +285,80 @@
     .visit-counter img {
       max-width: 100%;
       height: 24px;
+    }
+
+    .estimate-note {
+      margin: -6px 0 14px;
+      border: 1px solid #c8e7e6;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: var(--chip);
+      color: #145f63;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(23, 32, 42, 0.48);
+    }
+
+    .modal {
+      width: min(560px, 100%);
+      max-height: min(760px, calc(100vh - 36px));
+      overflow: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 22px 58px rgba(18, 32, 46, 0.26);
+      padding: 20px;
+    }
+
+    .modal h2 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .modal p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .choice-section {
+      margin-top: 16px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .choice-button {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #233142;
+    }
+
+    .choice-button.selected {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
     }
 
     @media (max-width: 900px) {
@@ -375,9 +449,12 @@
           </label>
         </div>
 
+        <div id="taskEstimate" class="estimate-note">还未设置活动进度，默认按 96 次购买机会计算。</div>
+
         <div class="button-row">
           <button class="primary" id="calculate" type="button">计算</button>
           <button class="secondary" id="reset" type="button">重置</button>
+          <button class="secondary" id="openSetup" type="button">进度</button>
         </div>
 
         <div class="rules">
@@ -468,6 +545,30 @@
     </div>
   </main>
 
+  <div id="setupModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <div class="modal">
+      <h2 id="setupTitle">请选择今天是活动的第几天</h2>
+      <p>这是为了方便推测剩余购买次数，活动按第六天 23:00 结束计算。保存后会自动填入“最多购买次数”，后面也可以点“进度”重新更改。</p>
+
+      <div class="choice-section">
+        <h3 class="section-title">活动天数</h3>
+        <div id="dayChoices" class="choice-grid"></div>
+      </div>
+
+      <div class="choice-section">
+        <h3 class="section-title">任务栏里还有几个任务</h3>
+        <div id="taskChoices" class="choice-grid"></div>
+      </div>
+
+      <div id="modalEstimate" class="estimate-note" style="margin:16px 0 0;"></div>
+
+      <div class="modal-actions">
+        <button class="secondary" id="closeSetup" type="button">稍后再改</button>
+        <button class="primary" id="saveSetup" type="button">保存并计算</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const rewardMilestones = [100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
     const rewardTiers = rewardMilestones.map((stars, index) => {
@@ -489,6 +590,75 @@
     const $ = (id) => document.getElementById(id);
     const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
     const format = (value) => Number(value).toLocaleString("zh-CN");
+    const activitySetup = { day: 1, tasks: 0 };
+    const activityDays = 6;
+    const activityEndMinute = 23 * 60;
+    const refreshIntervalMinutes = 90;
+
+    function estimateTaskOpportunities(day, currentTasks, now = new Date()) {
+      const safeDay = Math.min(6, Math.max(1, Number(day) || 1));
+      const safeTasks = Math.min(8, Math.max(0, Number(currentTasks) || 0));
+      const currentMinute = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+      let futureRefreshes = 0;
+
+      for (let activityDay = safeDay; activityDay <= activityDays; activityDay += 1) {
+        for (let refreshMinute = 0; refreshMinute <= activityEndMinute; refreshMinute += refreshIntervalMinutes) {
+          if (activityDay === safeDay && refreshMinute <= currentMinute) continue;
+          futureRefreshes += 1;
+        }
+      }
+
+      return {
+        day: safeDay,
+        tasks: safeTasks,
+        futureRefreshes,
+        total: futureRefreshes + safeTasks,
+        time: now.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })
+      };
+    }
+
+    function setupText(estimate) {
+      return `按当前时间 ${estimate.time} 估算：从第 ${estimate.day} 天现在起，到第六天 23:00 结束前还会刷新 ${format(estimate.futureRefreshes)} 次任务，加上任务栏现有 ${format(estimate.tasks)} 个任务，共 ${format(estimate.total)} 次任务机会。`;
+    }
+
+    function renderChoiceButtons(containerId, values, selected, formatter, onSelect) {
+      $(containerId).innerHTML = values.map((value) => (
+        `<button class="choice-button${value === selected ? " selected" : ""}" type="button" data-value="${value}">${formatter(value)}</button>`
+      )).join("");
+
+      $(containerId).querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          onSelect(Number(button.dataset.value));
+          updateSetupModal();
+        });
+      });
+    }
+
+    function updateSetupModal() {
+      renderChoiceButtons("dayChoices", [1, 2, 3, 4, 5, 6], activitySetup.day, (value) => `第 ${value} 天`, (value) => {
+        activitySetup.day = value;
+      });
+      renderChoiceButtons("taskChoices", [0, 1, 2, 3, 4, 5, 6, 7, 8], activitySetup.tasks, (value) => `${value} 个`, (value) => {
+        activitySetup.tasks = value;
+      });
+      $("modalEstimate").textContent = setupText(estimateTaskOpportunities(activitySetup.day, activitySetup.tasks));
+    }
+
+    function applyActivitySetup() {
+      const estimate = estimateTaskOpportunities(activitySetup.day, activitySetup.tasks);
+      $("maxBuys").value = estimate.total;
+      $("taskEstimate").textContent = setupText(estimate);
+      calculate();
+    }
+
+    function openSetupModal() {
+      updateSetupModal();
+      $("setupModal").classList.remove("hidden");
+    }
+
+    function closeSetupModal() {
+      $("setupModal").classList.add("hidden");
+    }
 
     function rewardsForStars(totalStars, baseStars = 0) {
       const unlocked = rewardTiers.filter((tier) => baseStars < tier.need && totalStars >= tier.need);
@@ -633,6 +803,12 @@
     }
 
     $("calculate").addEventListener("click", calculate);
+    $("openSetup").addEventListener("click", openSetupModal);
+    $("closeSetup").addEventListener("click", closeSetupModal);
+    $("saveSetup").addEventListener("click", () => {
+      applyActivitySetup();
+      closeSetupModal();
+    });
     $("reset").addEventListener("click", () => {
       $("targetMelon").value = 100;
       $("targetWord").value = 300;
@@ -640,6 +816,9 @@
       $("ownedWord").value = 0;
       $("maxBuys").value = 96;
       $("baseStars").value = 0;
+      activitySetup.day = 1;
+      activitySetup.tasks = 0;
+      $("taskEstimate").textContent = "还未设置活动进度，默认按 96 次购买机会计算。";
       calculate();
     });
 
@@ -648,6 +827,7 @@
     });
 
     calculate();
+    openSetupModal();
   </script>
 </body>
 </html>
