@@ -474,10 +474,6 @@
               <option value="melon30only">仅 30 星西瓜（倒霉情况）</option>
             </select>
           </label>
-          <label>
-            当前已手动刷新次数
-            <input id="usedRefreshes" type="number" min="0" step="1" value="0">
-          </label>
         </div>
 
         <div id="taskEstimate" class="estimate-note">还未设置活动进度，默认按 96 次购买机会计算。</div>
@@ -495,7 +491,7 @@
           <div>奖励档位按累计星数解锁，例如同时拿 100 星和 150 星奖励需要 250 星。</div>
           <div>当前已攒星数之前的宝箱视为已领取，后续计算不会重复计入。</div>
           <div>出现率：50 星西瓜 1.29%，30 星西瓜 1.93%，字 5.47%，其余 91.31% 需要刷新。</div>
-          <div>刷新第 1 次免费，第 2～5 次每次 20 金币，第 6 次起每次 50 金币；刷新次数按本次计算累计，购买后不重置。</div>
+          <div>计算从第 1 次免费刷新开始；第 2～5 次每次 20 金币，第 6 次起每次 50 金币，购买后不重置。</div>
           <div>概率期望模式会根据当时还缺的数量和剩余机会，动态决定买下还是继续刷新。</div>
         </div>
       </section>
@@ -599,7 +595,18 @@
 
       <div class="modal-actions">
         <button class="secondary" id="closeSetup" type="button">稍后再改</button>
-        <button class="primary" id="saveSetup" type="button">保存并计算</button>
+        <button class="primary" id="saveSetup" type="button">保存并继续</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="inputGuideModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="inputGuideTitle">
+    <div class="modal">
+      <h2 id="inputGuideTitle">接下来请填写目标和当前进度</h2>
+      <p>请填写“目标和已拥有”部分中的目标西瓜、目标字、已有西瓜、已有字，并填写“当前已攒星数”。全部填好后，页面会自动重新计算。</p>
+      <div class="estimate-note" style="margin:0;">“最多购买次数”已经根据刚才选择的活动天数和任务栏数量自动填写，通常不需要手动修改。</div>
+      <div class="modal-actions">
+        <button class="primary" id="startInput" type="button">知道了，开始填写</button>
       </div>
     </div>
   </div>
@@ -627,6 +634,7 @@
     const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
     const format = (value) => Number(value).toLocaleString("zh-CN");
     const activitySetup = { day: 1, tasks: 0 };
+    let hasShownInputGuide = false;
     const activityDays = 6;
     const activityEndMinute = 23 * 60;
     const refreshIntervalMinutes = 90;
@@ -696,6 +704,16 @@
       $("setupModal").classList.add("hidden");
     }
 
+    function openInputGuideModal() {
+      $("inputGuideModal").classList.remove("hidden");
+    }
+
+    function closeInputGuideModal() {
+      $("inputGuideModal").classList.add("hidden");
+      $("targetMelon").focus();
+      $("targetMelon").select();
+    }
+
     function rewardsForStars(totalStars, baseStars = 0) {
       const unlocked = rewardTiers.filter((tier) => baseStars < tier.need && totalStars >= tier.need);
       return {
@@ -726,7 +744,6 @@
         ownedWord: numberValue("ownedWord"),
         maxBuys: numberValue("maxBuys"),
         baseStars: numberValue("baseStars"),
-        usedRefreshes: numberValue("usedRefreshes"),
         mode: $("calculationMode").value
       };
       input.needMelon = Math.max(0, input.targetMelon - input.ownedMelon);
@@ -942,7 +959,7 @@
         }
       }
 
-      const startTier = Math.min(5, input.usedRefreshes);
+      const startTier = 0;
       const rootIndex = stateIndex(0, 0, 0);
       if (!Number.isFinite(values[startTier][rootIndex])) return null;
 
@@ -1195,8 +1212,20 @@
     $("openSetup").addEventListener("click", openSetupModal);
     $("closeSetup").addEventListener("click", closeSetupModal);
     $("saveSetup").addEventListener("click", () => {
+      const shouldShowInputGuide = !hasShownInputGuide;
       applyActivitySetup();
       closeSetupModal();
+      if (shouldShowInputGuide) {
+        hasShownInputGuide = true;
+        openInputGuideModal();
+      }
+    });
+    $("startInput").addEventListener("click", closeInputGuideModal);
+    $("maxBuys").addEventListener("focus", () => {
+      const confirmed = window.confirm("你确定修改吗？如果一开始你的选择时间正确，你没有必要修改这个框。");
+      if (!confirmed) {
+        window.setTimeout(() => $("maxBuys").blur(), 0);
+      }
     });
     $("reset").addEventListener("click", () => {
       $("targetMelon").value = 100;
@@ -1206,7 +1235,6 @@
       $("maxBuys").value = 96;
       $("baseStars").value = 0;
       $("calculationMode").value = "expected";
-      $("usedRefreshes").value = 0;
       activitySetup.day = 1;
       activitySetup.tasks = 0;
       $("taskEstimate").textContent = "还未设置活动进度，默认按 96 次购买机会计算。";
