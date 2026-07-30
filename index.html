@@ -457,7 +457,7 @@
         <div class="field-grid">
           <label>
             最多购买次数
-            <input id="maxBuys" type="number" min="0" step="1" value="96">
+            <input id="maxBuys" type="number" min="0" step="1" value="96" readonly>
           </label>
           <label>
             当前已攒星数
@@ -607,6 +607,17 @@
       <div class="estimate-note" style="margin:0;">“最多购买次数”已经根据刚才选择的活动天数和任务栏数量自动填写，通常不需要手动修改。</div>
       <div class="modal-actions">
         <button class="primary" id="startInput" type="button">知道了，开始填写</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="maxBuysConfirmModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="maxBuysConfirmTitle">
+    <div class="modal">
+      <h2 id="maxBuysConfirmTitle">确认修改购买次数</h2>
+      <p>你确定修改吗？如果一开始你的选择时间正确，你没有必要修改这个框。</p>
+      <div class="modal-actions">
+        <button class="secondary" id="keepAutoBuys" type="button">保持自动计算</button>
+        <button class="primary" id="confirmEditBuys" type="button">仍要修改</button>
       </div>
     </div>
   </div>
@@ -1222,10 +1233,24 @@
     });
     $("startInput").addEventListener("click", closeInputGuideModal);
     $("maxBuys").addEventListener("focus", () => {
-      const confirmed = window.confirm("你确定修改吗？如果一开始你的选择时间正确，你没有必要修改这个框。");
-      if (!confirmed) {
-        window.setTimeout(() => $("maxBuys").blur(), 0);
-      }
+      if ($("maxBuys").dataset.editing === "true") return;
+      $("maxBuysConfirmModal").classList.remove("hidden");
+    });
+    $("keepAutoBuys").addEventListener("click", () => {
+      $("maxBuysConfirmModal").classList.add("hidden");
+      $("maxBuys").blur();
+    });
+    $("confirmEditBuys").addEventListener("click", () => {
+      $("maxBuysConfirmModal").classList.add("hidden");
+      $("maxBuys").dataset.editing = "true";
+      $("maxBuys").readOnly = false;
+      $("maxBuys").focus();
+      $("maxBuys").select();
+    });
+    $("maxBuys").addEventListener("blur", () => {
+      if ($("maxBuys").dataset.editing !== "true") return;
+      $("maxBuys").dataset.editing = "false";
+      $("maxBuys").readOnly = true;
     });
     $("reset").addEventListener("click", () => {
       $("targetMelon").value = 100;
