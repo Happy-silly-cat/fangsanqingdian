@@ -602,11 +602,33 @@
 
   <div id="inputGuideModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="inputGuideTitle">
     <div class="modal">
-      <h2 id="inputGuideTitle">接下来请填写目标和当前进度</h2>
-      <p>请填写“目标和已拥有”部分中的目标西瓜、目标字、已有西瓜、已有字，并填写“当前已攒星数”。全部填好后，页面会自动重新计算。</p>
+      <h2 id="inputGuideTitle">填写目标和当前进度</h2>
+      <p>请直接在这里填写目标、已经拥有的数量和当前星数，保存后会同步到主页面并自动计算。</p>
+      <div class="field-grid">
+        <label>
+          目标西瓜
+          <input id="guideTargetMelon" type="number" min="0" step="1" value="100">
+        </label>
+        <label>
+          目标字
+          <input id="guideTargetWord" type="number" min="0" step="1" value="300">
+        </label>
+        <label>
+          已有西瓜
+          <input id="guideOwnedMelon" type="number" min="0" step="1" value="0">
+        </label>
+        <label>
+          已有字
+          <input id="guideOwnedWord" type="number" min="0" step="1" value="0">
+        </label>
+        <label>
+          当前已攒星数
+          <input id="guideBaseStars" type="number" min="0" step="1" value="0">
+        </label>
+      </div>
       <div class="estimate-note" style="margin:0;">“最多购买次数”已经根据刚才选择的活动天数和任务栏数量自动填写，通常不需要手动修改。</div>
       <div class="modal-actions">
-        <button class="primary" id="startInput" type="button">知道了，开始填写</button>
+        <button class="primary" id="saveInputGuide" type="button">保存并计算</button>
       </div>
     </div>
   </div>
@@ -716,13 +738,30 @@
     }
 
     function openInputGuideModal() {
+      $("guideTargetMelon").value = $("targetMelon").value;
+      $("guideTargetWord").value = $("targetWord").value;
+      $("guideOwnedMelon").value = $("ownedMelon").value;
+      $("guideOwnedWord").value = $("ownedWord").value;
+      $("guideBaseStars").value = $("baseStars").value;
       $("inputGuideModal").classList.remove("hidden");
+      window.setTimeout(() => {
+        $("guideTargetMelon").focus();
+        $("guideTargetMelon").select();
+      }, 0);
     }
 
     function closeInputGuideModal() {
       $("inputGuideModal").classList.add("hidden");
-      $("targetMelon").focus();
-      $("targetMelon").select();
+    }
+
+    function saveInputGuide() {
+      $("targetMelon").value = numberValue("guideTargetMelon");
+      $("targetWord").value = numberValue("guideTargetWord");
+      $("ownedMelon").value = numberValue("guideOwnedMelon");
+      $("ownedWord").value = numberValue("guideOwnedWord");
+      $("baseStars").value = numberValue("guideBaseStars");
+      closeInputGuideModal();
+      calculate();
     }
 
     function rewardsForStars(totalStars, baseStars = 0) {
@@ -1231,7 +1270,7 @@
         openInputGuideModal();
       }
     });
-    $("startInput").addEventListener("click", closeInputGuideModal);
+    $("saveInputGuide").addEventListener("click", saveInputGuide);
     $("maxBuys").addEventListener("focus", () => {
       if ($("maxBuys").dataset.editing === "true") return;
       $("maxBuysConfirmModal").classList.remove("hidden");
@@ -1266,7 +1305,7 @@
       calculate();
     });
 
-    document.querySelectorAll("input, select").forEach((control) => {
+    document.querySelectorAll(".controls input, .controls select").forEach((control) => {
       control.addEventListener("input", scheduleCalculate);
     });
 
