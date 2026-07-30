@@ -471,6 +471,7 @@
             成本模型
             <select id="calculationMode">
               <option value="expected">概率期望（含刷新）</option>
+              <option value="melon30only">仅 30 星西瓜（倒霉情况）</option>
               <option value="direct">只算购买价</option>
             </select>
           </label>
@@ -751,8 +752,9 @@
 
     function calculateDirect(input) {
       let best = null;
+      const maxMelon50 = input.mode === "melon30only" ? 0 : input.maxBuys;
 
-      for (let melon50 = 0; melon50 <= input.maxBuys; melon50 += 1) {
+      for (let melon50 = 0; melon50 <= maxMelon50; melon50 += 1) {
         for (let melon30 = 0; melon30 <= input.maxBuys - melon50; melon30 += 1) {
           for (let word30 = 0; word30 <= input.maxBuys - melon50 - melon30; word30 += 1) {
             const buys = melon50 + melon30 + word30;
@@ -1007,20 +1009,29 @@
     function renderDirect(best, input) {
       const status = $("status");
       const answer = $("answer");
+      const onlyMelon30 = input.mode === "melon30only";
       setSummaryLabels(false);
-      $("strategy").classList.add("hidden");
+      const strategy = $("strategy");
+      strategy.classList.toggle("hidden", !onlyMelon30);
+      if (onlyMelon30) {
+        strategy.innerHTML = "<strong>倒霉情况检验：</strong>完全不计算 50 星西瓜，只允许购买 30 星西瓜和 30 星字；宝箱奖励仍正常计入。";
+      }
 
       if (!best) {
-        const maxStars = input.baseStars + input.maxBuys * 50;
+        const maxStars = input.baseStars + input.maxBuys * (onlyMelon30 ? 30 : 50);
         const maxReward = rewardsForStars(maxStars, input.baseStars);
         status.className = "status bad";
-        status.textContent = `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+        status.textContent = onlyMelon30
+          ? `无法凑够：完全没有 50 星西瓜时，在最多 ${format(input.maxBuys)} 次购买内，30 星西瓜、30 星字和后续宝箱奖励无法同时满足目标。`
+          : `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
         answer.classList.add("hidden");
         return;
       }
 
       status.className = best.buys === input.maxBuys ? "status warn" : "status";
-      status.textContent = `找到最低金币方案：还需西瓜 ${format(input.needMelon)}、字 ${format(input.needWord)}，购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`;
+      status.textContent = onlyMelon30
+        ? `可以凑够：即使完全没有 50 星西瓜，也能在 ${format(best.buys)} 次购买内达标；购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`
+        : `找到最低金币方案：还需西瓜 ${format(input.needMelon)}、字 ${format(input.needWord)}，购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`;
       answer.classList.remove("hidden");
 
       $("cost").textContent = format(best.cost);
