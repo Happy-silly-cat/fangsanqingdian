@@ -490,7 +490,7 @@
           <div>30 星字：225 金币，10 个字。</div>
           <div>奖励档位按累计星数解锁，例如同时拿 100 星和 150 星奖励需要 250 星。</div>
           <div>当前已攒星数之前的宝箱视为已领取，后续计算不会重复计入。</div>
-          <div>出现率：50 星西瓜 1.29%，30 星西瓜 1.93%，字 5.47%，其余 91.31% 需要刷新。</div>
+          <div>出现率：50 星西瓜 1.29%，30 星西瓜 1.68%，字 5.44%，其余 91.59% 需要刷新。</div>
           <div>计算从第 1 次免费刷新开始；第 2～5 次每次 20 金币，第 6 次起每次 50 金币，购买后不重置。</div>
           <div>概率期望模式会根据当时还缺的数量和剩余机会，动态决定买下还是继续刷新。</div>
         </div>
@@ -658,8 +658,8 @@
 
     const items = [
       { key: "melon50", name: "50 星西瓜", cost: 450, stars: 50, melon: 4, word: 0, probability: 0.0129 },
-      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0193 },
-      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0547 }
+      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0168 },
+      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0544 }
     ];
     const otherProbability = 1 - items.reduce((sum, item) => sum + item.probability, 0);
 
