@@ -617,10 +617,44 @@
           已有西瓜
           <input id="guideOwnedMelon" type="number" min="0" step="1" value="0">
         </label>
-        <label>
-          已有字
-          <input id="guideOwnedWord" type="number" min="0" step="1" value="0">
-        </label>
+        <div style="grid-column:1 / -1;">
+          <div class="section-title" style="margin-bottom:8px;">已有字填写方式</div>
+          <div class="choice-grid" style="grid-template-columns:repeat(2, minmax(0, 1fr)); margin-bottom:12px;">
+            <button class="choice-button selected" id="ownedWordDirectMode" type="button" aria-pressed="true">直接填写</button>
+            <button class="choice-button" id="ownedWordPartsMode" type="button" aria-pressed="false">分项填写</button>
+          </div>
+          <div id="ownedWordDirectFields">
+            <label>
+              已有字总数
+              <input id="guideOwnedWord" type="number" min="0" step="1" value="0">
+            </label>
+          </div>
+          <div id="ownedWordPartsFields" class="hidden">
+            <div class="field-grid" style="margin-bottom:10px;">
+              <label>
+                “节”的数量
+                <input id="guideWordJie" type="number" min="0" step="1" value="0">
+              </label>
+              <label>
+                “日”的数量
+                <input id="guideWordRi" type="number" min="0" step="1" value="0">
+              </label>
+              <label>
+                “快”的数量
+                <input id="guideWordKuai" type="number" min="0" step="1" value="0">
+              </label>
+              <label>
+                “乐”的数量
+                <input id="guideWordLe" type="number" min="0" step="1" value="0">
+              </label>
+              <label>
+                材料包数量
+                <input id="guideWordPack" type="number" min="0" step="1" value="0">
+              </label>
+            </div>
+            <div id="ownedWordPartsTotal" class="estimate-note" style="margin:0;">合计已有字：0</div>
+          </div>
+        </div>
         <label>
           当前已攒星数
           <input id="guideBaseStars" type="number" min="0" step="1" value="0">
@@ -668,6 +702,7 @@
     const format = (value) => Number(value).toLocaleString("zh-CN");
     const activitySetup = { day: 1, tasks: 0 };
     let hasShownInputGuide = false;
+    let ownedWordInputMode = "direct";
     const activityDays = 6;
     const activityEndMinute = 23 * 60;
     const refreshIntervalMinutes = 90;
@@ -743,6 +778,7 @@
       $("guideOwnedMelon").value = $("ownedMelon").value;
       $("guideOwnedWord").value = $("ownedWord").value;
       $("guideBaseStars").value = $("baseStars").value;
+      setOwnedWordInputMode("direct");
       $("inputGuideModal").classList.remove("hidden");
       window.setTimeout(() => {
         $("guideTargetMelon").focus();
@@ -754,11 +790,37 @@
       $("inputGuideModal").classList.add("hidden");
     }
 
+    function ownedWordPartsTotal() {
+      return ["guideWordJie", "guideWordRi", "guideWordKuai", "guideWordLe", "guideWordPack"]
+        .reduce((sum, id) => sum + numberValue(id), 0);
+    }
+
+    function updateOwnedWordPartsTotal() {
+      $("ownedWordPartsTotal").textContent = `合计已有字：${format(ownedWordPartsTotal())}`;
+    }
+
+    function setOwnedWordInputMode(mode) {
+      if (ownedWordInputMode === "parts" && mode === "direct") {
+        $("guideOwnedWord").value = ownedWordPartsTotal();
+      }
+      ownedWordInputMode = mode;
+      const direct = mode === "direct";
+      $("ownedWordDirectFields").classList.toggle("hidden", !direct);
+      $("ownedWordPartsFields").classList.toggle("hidden", direct);
+      $("ownedWordDirectMode").classList.toggle("selected", direct);
+      $("ownedWordPartsMode").classList.toggle("selected", !direct);
+      $("ownedWordDirectMode").setAttribute("aria-pressed", String(direct));
+      $("ownedWordPartsMode").setAttribute("aria-pressed", String(!direct));
+      updateOwnedWordPartsTotal();
+    }
+
     function saveInputGuide() {
       $("targetMelon").value = numberValue("guideTargetMelon");
       $("targetWord").value = numberValue("guideTargetWord");
       $("ownedMelon").value = numberValue("guideOwnedMelon");
-      $("ownedWord").value = numberValue("guideOwnedWord");
+      $("ownedWord").value = ownedWordInputMode === "parts"
+        ? ownedWordPartsTotal()
+        : numberValue("guideOwnedWord");
       $("baseStars").value = numberValue("guideBaseStars");
       closeInputGuideModal();
       calculate();
@@ -1271,6 +1333,11 @@
       }
     });
     $("saveInputGuide").addEventListener("click", saveInputGuide);
+    $("ownedWordDirectMode").addEventListener("click", () => setOwnedWordInputMode("direct"));
+    $("ownedWordPartsMode").addEventListener("click", () => setOwnedWordInputMode("parts"));
+    $("ownedWordPartsFields").querySelectorAll("input").forEach((input) => {
+      input.addEventListener("input", updateOwnedWordPartsTotal);
+    });
     $("maxBuys").addEventListener("focus", () => {
       if ($("maxBuys").dataset.editing === "true") return;
       $("maxBuysConfirmModal").classList.remove("hidden");
