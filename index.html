@@ -96,11 +96,20 @@
       isolation: isolate;
     }
 
-    .tool-card.primary img,
-    .tool-card.data-card > img {
+    .card-picture,
+    .card-picture img {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card-picture {
       z-index: -1;
+      overflow: hidden;
+    }
+
+    .card-picture img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -122,8 +131,8 @@
       border-color: #65756f;
     }
 
-    .tool-card.primary:hover img,
-    .tool-card.data-card:hover > img {
+    .tool-card.primary:hover .card-picture img,
+    .tool-card.data-card:hover .card-picture img {
       transform: scale(1.015);
     }
 
@@ -282,8 +291,12 @@
         min-height: 300px;
       }
 
-      .tool-card.primary img {
+      .card-picture img {
         object-position: 54% center;
+      }
+
+      .tool-card.data-card .card-picture img {
+        object-position: 44% center;
       }
 
       .tool-card.primary::after {
@@ -316,8 +329,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .tool-card.primary img,
-      .tool-card.data-card > img {
+      .card-picture img {
         transition: none;
       }
     }
@@ -334,7 +346,10 @@
 
     <nav class="tool-grid" aria-label="功能入口">
         <a class="tool-card primary" href="celebration.html">
-          <img src="assets/celebration-summer-banner.png" alt="节日庆典背景">
+          <picture class="card-picture">
+            <source media="(max-width: 560px)" srcset="assets/celebration-summer-mobile.jpg">
+            <img src="assets/celebration-summer-banner.png" alt="节日庆典背景">
+          </picture>
           <div class="card-copy">
             <h2 class="card-title">节日庆典计算</h2>
             <p class="card-description">计算节日庆典活动中大材料和小材料的购买方案并估算消耗的金币数</p>
@@ -342,7 +357,10 @@
           </div>
         </a>
         <a class="tool-card data-card" href="feature-unlock.html">
-          <img src="assets/main-interface-night-banner.jpg" alt="游戏主界面夜景背景">
+          <picture class="card-picture">
+            <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile.jpg">
+            <img src="assets/main-interface-night-banner.jpg" alt="游戏主界面夜景背景">
+          </picture>
           <div class="data-copy">
             <h2 class="card-title">等级解锁表</h2>
             <p class="card-description">查看不同等级会开启的玩法、功能和对应提示文案</p>
