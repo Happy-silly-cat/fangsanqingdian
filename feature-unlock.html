@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三等级功能解锁表。">
+  <title>等级解锁表 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 36px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 22px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 160px;
+      gap: 10px;
+      margin: 24px 0 14px;
+    }
+
+    .field {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--text);
+      padding: 11px 12px;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .field:focus {
+      outline: 2px solid rgba(60, 157, 133, 0.28);
+      border-color: var(--jade);
+    }
+
+    .summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 26px 0 10px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .section-source {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .level-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+    }
+
+    .level-card:hover {
+      border-color: #83aa9d;
+      background: var(--panel-hover);
+    }
+
+    .level-head {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.75);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .level-number {
+      color: var(--gold);
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 850;
+    }
+
+    .level-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      max-width: 100%;
+      border: 1px solid rgba(60, 157, 133, 0.25);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.74);
+      padding: 5px 8px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .stage-card .level-number {
+      color: var(--jade);
+    }
+
+    .stage-card .feature-list li {
+      border-color: rgba(184, 132, 47, 0.28);
+      background: rgba(255, 242, 217, 0.62);
+      color: #5d4827;
+    }
+
+    .empty {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--panel);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .toolbar { grid-template-columns: 1fr; }
+      .summary { align-items: flex-start; flex-direction: column; }
+      .level-grid { grid-template-columns: 1fr; }
+      .stage-grid { grid-template-columns: 1fr; }
+      .section-title { align-items: flex-start; flex-direction: column; gap: 4px; }
+      footer { align-items: flex-start; flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">等级解锁表</p>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </header>
+
+    <section class="toolbar" aria-label="筛选等级解锁表">
+      <input class="field" id="keywordInput" type="search" placeholder="搜索功能名">
+      <input class="field" id="levelInput" type="number" min="0" placeholder="当前等级">
+    </section>
+
+    <div class="summary">
+      <span id="resultText">共 78 个等级，101 个功能</span>
+      <span>数据来源：DB_Switch</span>
+    </div>
+
+    <section class="level-grid" id="levelGrid" aria-label="等级解锁列表">
+      <article class="level-card" data-level="1" data-search="1 活动 铁匠铺 进击的魔神 主角时装 时装强化 月签到 至尊令">
+        <div class="level-head">
+          <span class="level-number">1</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>活动</li>
+          <li>铁匠铺</li>
+          <li>进击的魔神</li>
+          <li>主角时装</li>
+          <li>时装强化</li>
+          <li>月签到</li>
+          <li>至尊令</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="5" data-search="5 商店 等级礼包">
+        <div class="level-head">
+          <span class="level-number">5</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>商店</li>
+          <li>等级礼包</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="8" data-search="8 每日任务">
+        <div class="level-head">
+          <span class="level-number">8</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>每日任务</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="9" data-search="9 装备强化">
+        <div class="level-head">
+          <span class="level-number">9</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>装备强化</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="10" data-search="10 宝物强化 夺宝">
+        <div class="level-head">
+          <span class="level-number">10</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>宝物强化</li>
+          <li>夺宝</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="13" data-search="13 签到">
+        <div class="level-head">
+          <span class="level-number">13</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>签到</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="14" data-search="14 竞技场 称号">
+        <div class="level-head">
+          <span class="level-number">14</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>竞技场</li>
+          <li>称号</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="16" data-search="16 武将炼化">
+        <div class="level-head">
+          <span class="level-number">16</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将炼化</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="17" data-search="17 武将幻化 珍宝阁">
+        <div class="level-head">
+          <span class="level-number">17</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将幻化</li>
+          <li>珍宝阁</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="18" data-search="18 将士">
+        <div class="level-head">
+          <span class="level-number">18</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>将士</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="20" data-search="20 军团 资源追回">
+        <div class="level-head">
+          <span class="level-number">20</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>军团</li>
+          <li>资源追回</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="22" data-search="22 天命系统">
+        <div class="level-head">
+          <span class="level-number">22</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>天命系统</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="25" data-search="25 活动副本">
+        <div class="level-head">
+          <span class="level-number">25</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>活动副本</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="26" data-search="26 装备洗炼">
+        <div class="level-head">
+          <span class="level-number">26</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>装备洗炼</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="28" data-search="28 试练塔">
+        <div class="level-head">
+          <span class="level-number">28</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>试练塔</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="30" data-search="30 比武">
+        <div class="level-head">
+          <span class="level-number">30</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>比武</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="33" data-search="33 占星">
+        <div class="level-head">
+          <span class="level-number">33</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>占星</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="34" data-search="34 宝物精炼">
+        <div class="level-head">
+          <span class="level-number">34</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>宝物精炼</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="35" data-search="35 战魂">
+        <div class="level-head">
+          <span class="level-number">35</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>战魂</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="38" data-search="38 战车">
+        <div class="level-head">
+          <span class="level-number">38</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>战车</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="40" data-search="40 宠物">
+        <div class="level-head">
+          <span class="level-number">40</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>宠物</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="41" data-search="41 经验副本">
+        <div class="level-head">
+          <span class="level-number">41</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>经验副本</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="43" data-search="43 武将称号">
+        <div class="level-head">
+          <span class="level-number">43</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将称号</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="45" data-search="45 资源矿">
+        <div class="level-head">
+          <span class="level-number">45</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>资源矿</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="50" data-search="50 武将列传">
+        <div class="level-head">
+          <span class="level-number">50</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将列传</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="51" data-search="51 特惠礼包">
+        <div class="level-head">
+          <span class="level-number">51</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>特惠礼包</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="55" data-search="55 擂台争霸">
+        <div class="level-head">
+          <span class="level-number">55</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>擂台争霸</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="58" data-search="58 炼狱挑战">
+        <div class="level-head">
+          <span class="level-number">58</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>炼狱挑战</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="59" data-search="59 丹药">
+        <div class="level-head">
+          <span class="level-number">59</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>丹药</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="60" data-search="60 武将商人 木牛流马">
+        <div class="level-head">
+          <span class="level-number">60</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将商人</li>
+          <li>木牛流马</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="61" data-search="61 聚义厅">
+        <div class="level-head">
+          <span class="level-number">61</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>聚义厅</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="64" data-search="64 学习技能">
+        <div class="level-head">
+          <span class="level-number">64</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>学习技能</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="65" data-search="65 过关斩将">
+        <div class="level-head">
+          <span class="level-number">65</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>过关斩将</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="66" data-search="66 水月之境">
+        <div class="level-head">
+          <span class="level-number">66</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>水月之境</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="68" data-search="68 星魂">
+        <div class="level-head">
+          <span class="level-number">68</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>星魂</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="69" data-search="69 寻龙探宝">
+        <div class="level-head">
+          <span class="level-number">69</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>寻龙探宝</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="70" data-search="70 成长之路">
+        <div class="level-head">
+          <span class="level-number">70</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>成长之路</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="72" data-search="72 阵法">
+        <div class="level-head">
+          <span class="level-number">72</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>阵法</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="73" data-search="73 助战军">
+        <div class="level-head">
+          <span class="level-number">73</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>助战军</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="74" data-search="74 武将变身">
+        <div class="level-head">
+          <span class="level-number">74</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将变身</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="75" data-search="75 武将进化">
+        <div class="level-head">
+          <span class="level-number">75</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将进化</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="76" data-search="76 宠物进阶">
+        <div class="level-head">
+          <span class="level-number">76</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>宠物进阶</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="78" data-search="78 领地 后军">
+        <div class="level-head">
+          <span class="level-number">78</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>领地</li>
+          <li>后军</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="80" data-search="80 锦囊">
+        <div class="level-head">
+          <span class="level-number">80</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>锦囊</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="82" data-search="82 兵符">
+        <div class="level-head">
+          <span class="level-number">82</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>兵符</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="84" data-search="84 宠物升星">
+        <div class="level-head">
+          <span class="level-number">84</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>宠物升星</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="85" data-search="85 武将培养">
+        <div class="level-head">
+          <span class="level-number">85</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将培养</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="88" data-search="88 红卡武将 七星台">
+        <div class="level-head">
+          <span class="level-number">88</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>红卡武将</li>
+          <li>七星台</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="89" data-search="89 跨服比武 红装">
+        <div class="level-head">
+          <span class="level-number">89</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>跨服比武</li>
+          <li>红装</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="96" data-search="96 化身 幻化修炼">
+        <div class="level-head">
+          <span class="level-number">96</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>化身</li>
+          <li>幻化修炼</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="99" data-search="99 神器">
+        <div class="level-head">
+          <span class="level-number">99</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>神器</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="101" data-search="101 跨服军团">
+        <div class="level-head">
+          <span class="level-number">101</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>跨服军团</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="102" data-search="102 玄兵台">
+        <div class="level-head">
+          <span class="level-number">102</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>玄兵台</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="105" data-search="105 武将列传">
+        <div class="level-head">
+          <span class="level-number">105</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将列传</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="110" data-search="110 金卡武将 悬赏任务 魔王来袭 跨服资源矿">
+        <div class="level-head">
+          <span class="level-number">110</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>金卡武将</li>
+          <li>悬赏任务</li>
+          <li>魔王来袭</li>
+          <li>跨服资源矿</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="115" data-search="115 跨服排行">
+        <div class="level-head">
+          <span class="level-number">115</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>跨服排行</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="116" data-search="116 战意">
+        <div class="level-head">
+          <span class="level-number">116</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>战意</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="117" data-search="117 军师功能（军师台和军师系统">
+        <div class="level-head">
+          <span class="level-number">117</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>军师功能（军师台和军师系统</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="118" data-search="118 回归有礼">
+        <div class="level-head">
+          <span class="level-number">118</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>回归有礼</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="120" data-search="120 星魂副本 武将星魂">
+        <div class="level-head">
+          <span class="level-number">120</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>星魂副本</li>
+          <li>武将星魂</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="122" data-search="122 世界">
+        <div class="level-head">
+          <span class="level-number">122</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>世界</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="123" data-search="123 统帅功能（统帅台和统帅系统）">
+        <div class="level-head">
+          <span class="level-number">123</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>统帅功能（统帅台和统帅系统）</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="127" data-search="127 化身突破">
+        <div class="level-head">
+          <span class="level-number">127</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>化身突破</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="129" data-search="129 铜雀台 红颜">
+        <div class="level-head">
+          <span class="level-number">129</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>铜雀台</li>
+          <li>红颜</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="131" data-search="131 神兽">
+        <div class="level-head">
+          <span class="level-number">131</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>神兽</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="133" data-search="133 红颜配饰升品">
+        <div class="level-head">
+          <span class="level-number">133</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>红颜配饰升品</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="134" data-search="134 名将 名将升星">
+        <div class="level-head">
+          <span class="level-number">134</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>名将</li>
+          <li>名将升星</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="138" data-search="138 红颜升品">
+        <div class="level-head">
+          <span class="level-number">138</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>红颜升品</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="146" data-search="146 古宝">
+        <div class="level-head">
+          <span class="level-number">146</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>古宝</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="150" data-search="150 战车-进阶">
+        <div class="level-head">
+          <span class="level-number">150</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>战车-进阶</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="155" data-search="155 武将突破">
+        <div class="level-head">
+          <span class="level-number">155</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>武将突破</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="158" data-search="158 秘宝">
+        <div class="level-head">
+          <span class="level-number">158</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>秘宝</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="160" data-search="160 符印升金">
+        <div class="level-head">
+          <span class="level-number">160</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>符印升金</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="165" data-search="165 名将突围 暗金卡">
+        <div class="level-head">
+          <span class="level-number">165</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>名将突围</li>
+          <li>暗金卡</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="186" data-search="186 跨服木牛流马">
+        <div class="level-head">
+          <span class="level-number">186</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>跨服木牛流马</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="190" data-search="190 符印升暗金">
+        <div class="level-head">
+          <span class="level-number">190</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>符印升暗金</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="220" data-search="220 符印升白金">
+        <div class="level-head">
+          <span class="level-number">220</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>符印升白金</li>
+        </ul>
+      </article>
+      <article class="level-card" data-level="239" data-search="239 符印升琉金">
+        <div class="level-head">
+          <span class="level-number">239</span>
+          <span class="level-label">级开启</span>
+        </div>
+        <ul class="feature-list">
+          <li>符印升琉金</li>
+        </ul>
+      </article>
+    </section>
+    <div class="empty" id="emptyState">没有找到符合条件的项目</div>
+
+    <div class="section-title">
+      <span>补充解锁 / 阶段解锁</span>
+      <span class="section-source">数据来源：DB_Normal_config</span>
+    </div>
+    <div class="summary">
+      <span id="stageResultText">共 32 个等级，49 个项目</span>
+    </div>
+    <section class="stage-grid" id="stageGrid" aria-label="补充解锁列表">
+      <article class="level-card stage-card" data-level="30" data-search="30 战魂 第1孔 孔位">
+        <div class="level-head"><span class="level-number">30</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第1孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="40" data-search="40 战魂 第2孔 孔位 等级边框特效 第1档">
+        <div class="level-head"><span class="level-number">40</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第2孔</li><li>等级边框特效第1档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="45" data-search="45 战魂 第3孔 孔位">
+        <div class="level-head"><span class="level-number">45</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第3孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="50" data-search="50 战魂 第4孔 孔位 将魂 魂 需求等级">
+        <div class="level-head"><span class="level-number">50</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第4孔</li><li>将魂/魂相关需求</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="60" data-search="60 战魂 第5孔 孔位 boss 魔神">
+        <div class="level-head"><span class="level-number">60</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第5孔</li><li>BOSS/魔神相关需求</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="70" data-search="70 战魂 第6孔 孔位">
+        <div class="level-head"><span class="level-number">70</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第6孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="74" data-search="74 宝物更换">
+        <div class="level-head"><span class="level-number">74</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>宝物更换</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="75" data-search="75 战魂 第7孔 孔位">
+        <div class="level-head"><span class="level-number">75</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第7孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="80" data-search="80 战魂 第8孔 锦囊 第1孔 等级边框特效 第2档">
+        <div class="level-head"><span class="level-number">80</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第8孔</li><li>锦囊第1孔</li><li>等级边框特效第2档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="82" data-search="82 战魂扩展等级 兵符 第1孔">
+        <div class="level-head"><span class="level-number">82</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂扩展等级</li><li>兵符第1孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="85" data-search="85 战魂 第9孔 神兵更换 兵符更换 战旗更换">
+        <div class="level-head"><span class="level-number">85</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第9孔</li><li>神兵更换</li><li>兵符更换</li><li>战旗更换</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="90" data-search="90 战魂 第10孔 锦囊 第2孔 秘宝需求">
+        <div class="level-head"><span class="level-number">90</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>战魂第10孔</li><li>锦囊第2孔</li><li>秘宝相关需求</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="95" data-search="95 锦囊 第3孔 兵符 第2孔 等级边框特效 第3档">
+        <div class="level-head"><span class="level-number">95</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>锦囊第3孔</li><li>兵符第2孔</li><li>等级边框特效第3档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="96" data-search="96 化身 幻化 第1档">
+        <div class="level-head"><span class="level-number">96</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>化身/幻化第1档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="98" data-search="98 兵符 第3孔">
+        <div class="level-head"><span class="level-number">98</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>兵符第3孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="100" data-search="100 红色战魂">
+        <div class="level-head"><span class="level-number">100</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>红色战魂</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="104" data-search="104 化身 幻化 第2档">
+        <div class="level-head"><span class="level-number">104</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>化身/幻化第2档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="109" data-search="109 化身 幻化 第3档">
+        <div class="level-head"><span class="level-number">109</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>化身/幻化第3档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="114" data-search="114 化身 幻化 第4档">
+        <div class="level-head"><span class="level-number">114</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>化身/幻化第4档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="119" data-search="119 化身 幻化 第5档">
+        <div class="level-head"><span class="level-number">119</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>化身/幻化第5档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="130" data-search="130 锦囊 第4孔 宝石 镶嵌 等级边框特效 第4档">
+        <div class="level-head"><span class="level-number">130</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>锦囊第4孔</li><li>宝石/镶嵌相关</li><li>等级边框特效第4档</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="131" data-search="131 神兽 第1阶段 第2阶段 第3阶段">
+        <div class="level-head"><span class="level-number">131</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>神兽第1-3阶段</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="135" data-search="135 金色战魂">
+        <div class="level-head"><span class="level-number">135</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>金色战魂</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="150" data-search="150 神兽 第4阶段">
+        <div class="level-head"><span class="level-number">150</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>神兽第4阶段</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="158" data-search="158 秘宝更换 跨服悬赏 推定 秘宝材料来源">
+        <div class="level-head"><span class="level-number">158</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>秘宝更换</li><li>跨服悬赏（推定，秘宝材料来源）</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="169" data-search="169 锦囊 第5孔">
+        <div class="level-head"><span class="level-number">169</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>锦囊第5孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="170" data-search="170 替换武将 神兽 第5阶段">
+        <div class="level-head"><span class="level-number">170</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>替换武将</li><li>神兽第5阶段</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="178" data-search="178 暗金战魂">
+        <div class="level-head"><span class="level-number">178</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>暗金战魂</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="180" data-search="180 锦囊 第6孔">
+        <div class="level-head"><span class="level-number">180</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>锦囊第6孔</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="190" data-search="190 神兽 第6阶段">
+        <div class="level-head"><span class="level-number">190</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>神兽第6阶段</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="213" data-search="213 白金战魂 琉金战魂 10星">
+        <div class="level-head"><span class="level-number">213</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>白金/琉金战魂（10星）</li></ul>
+      </article>
+      <article class="level-card stage-card" data-level="241" data-search="241 白金战魂 琉金战魂 11星">
+        <div class="level-head"><span class="level-number">241</span><span class="level-label">级开启</span></div>
+        <ul class="feature-list"><li>白金/琉金战魂（11星）</li></ul>
+      </article>
+    </section>
+    <div class="empty" id="stageEmptyState">没有找到符合条件的补充项目</div>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const keywordInput = document.getElementById("keywordInput");
+    const levelInput = document.getElementById("levelInput");
+    const resultText = document.getElementById("resultText");
+    const stageResultText = document.getElementById("stageResultText");
+    const levelGrid = document.getElementById("levelGrid");
+    const stageGrid = document.getElementById("stageGrid");
+    const emptyState = document.getElementById("emptyState");
+    const stageEmptyState = document.getElementById("stageEmptyState");
+    const cards = Array.from(document.querySelectorAll("#levelGrid .level-card"));
+    const stageCards = Array.from(document.querySelectorAll("#stageGrid .stage-card"));
+    const totalFeatures = 101;
+    const totalStageFeatures = Array.from(document.querySelectorAll("#stageGrid li")).length;
+
+    function filterCards(cardList, keyword, hasLevel, currentLevel) {
+      let levelCount = 0;
+      let featureCount = 0;
+
+      cardList.forEach((card) => {
+        const cardLevel = Number(card.dataset.level);
+        const matchKeyword = !keyword || card.dataset.search.includes(keyword);
+        const matchLevel = !hasLevel || cardLevel <= currentLevel;
+        const visible = matchKeyword && matchLevel;
+        card.hidden = !visible;
+        if (visible) {
+          levelCount += 1;
+          featureCount += card.querySelectorAll("li").length;
+        }
+      });
+
+      return { levelCount, featureCount };
+    }
+
+    function updateCards() {
+      const keyword = keywordInput.value.trim().toLowerCase();
+      const currentLevel = Number(levelInput.value);
+      const hasLevel = levelInput.value !== "" && Number.isFinite(currentLevel);
+      const entryResult = filterCards(cards, keyword, hasLevel, currentLevel);
+      const stageResult = filterCards(stageCards, keyword, hasLevel, currentLevel);
+
+      resultText.textContent = `显示 ${entryResult.levelCount} / ${cards.length} 个等级，${entryResult.featureCount} / ${totalFeatures} 个功能`;
+      levelGrid.style.display = entryResult.levelCount ? "grid" : "none";
+      emptyState.style.display = entryResult.levelCount ? "none" : "block";
+
+      stageResultText.textContent = `显示 ${stageResult.levelCount} / ${stageCards.length} 个等级，${stageResult.featureCount} / ${totalStageFeatures} 个项目`;
+      stageGrid.style.display = stageResult.levelCount ? "grid" : "none";
+      stageEmptyState.style.display = stageResult.levelCount ? "none" : "block";
+    }
+
+    keywordInput.addEventListener("input", updateCards);
+    levelInput.addEventListener("input", updateCards);
+    updateCards();
+  </script>
+</body>
+</html>

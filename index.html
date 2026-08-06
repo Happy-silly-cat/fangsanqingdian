@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="三国活动计算与实用工具合集。">
-  <title>三国活动工具箱</title>
+  <meta name="description" content="放三数据合集。">
+  <title>放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0d1110;
-      --panel: #151b19;
-      --panel-hover: #1b2421;
-      --text: #f3f0e8;
-      --muted: #a9b2ad;
-      --line: #303a36;
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
       --jade: #5bc0a2;
       --jade-dark: #173f35;
       --gold: #e7bb61;
@@ -52,22 +53,17 @@
     }
 
     .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
-      border: 1px solid #557067;
-      border-radius: 6px;
-      background: #17342d;
-      color: #f2d38e;
-      font-family: STKaiti, KaiTi, serif;
-      font-size: 25px;
-      font-weight: 700;
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.34));
     }
 
     .brand-copy {
       min-width: 0;
+      flex: 1 1 auto;
     }
 
     .brand-name {
@@ -77,63 +73,11 @@
       font-weight: 750;
     }
 
-    .brand-note {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .intro {
-      padding: 52px 0 30px;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--jade);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 760px;
-      font-size: 58px;
-      line-height: 1.08;
-      letter-spacing: 0;
-      font-weight: 800;
-    }
-
-    .intro p:last-child {
-      max-width: 620px;
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin: 0 0 14px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: 19px;
-      line-height: 1.3;
-    }
-
-    .section-heading span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
     .tool-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      margin-top: 28px;
     }
 
     .tool-card {
@@ -147,12 +91,13 @@
 
     .tool-card.primary {
       display: block;
-      min-height: 356px;
+      min-height: 260px;
       text-decoration: none;
       isolation: isolate;
     }
 
-    .tool-card.primary img {
+    .tool-card.primary img,
+    .tool-card.data-card > img {
       position: absolute;
       inset: 0;
       z-index: -1;
@@ -160,6 +105,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      filter: brightness(1.06) saturate(1.06);
       transition: transform 240ms ease;
     }
 
@@ -168,7 +114,7 @@
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: rgba(6, 11, 10, 0.18);
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.02), rgba(6, 11, 10, 0.2));
       pointer-events: none;
     }
 
@@ -176,35 +122,73 @@
       border-color: #65756f;
     }
 
-    .tool-card.primary:hover img {
+    .tool-card.primary:hover img,
+    .tool-card.data-card:hover > img {
       transform: scale(1.015);
+    }
+
+    .tool-card.data-card {
+      display: flex;
+      min-height: 260px;
+      padding: 0;
+      text-decoration: none;
+      isolation: isolate;
+    }
+
+    .tool-card.data-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.08), rgba(6, 11, 10, 0.48));
+      pointer-events: none;
+    }
+
+    .tool-card.data-card::after {
+      content: "";
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      z-index: -1;
+      width: 142px;
+      height: 90px;
+      display: none;
+      pointer-events: none;
+    }
+
+    .tool-card.data-card:hover {
+      border-color: #65756f;
     }
 
     .card-copy {
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
       justify-content: flex-end;
-      width: min(52%, 440px);
-      min-height: 356px;
-      padding: 30px;
+      width: min(46%, 360px);
+      min-height: 260px;
+      margin-left: auto;
+      padding: 26px;
+      text-align: right;
       text-shadow: 0 2px 14px #050807;
     }
 
-    .status {
-      align-self: flex-start;
-      margin-bottom: auto;
-      border: 1px solid rgba(103, 206, 175, 0.65);
-      border-radius: 999px;
-      padding: 5px 10px;
-      background: rgba(16, 56, 46, 0.84);
-      color: #b9f1df;
-      font-size: 12px;
-      font-weight: 700;
-      text-shadow: none;
+    .data-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: min(46%, 360px);
+      min-height: 260px;
+      margin-left: auto;
+      padding: 26px;
+      text-align: right;
+      text-shadow: 0 2px 14px #050807;
     }
 
     .card-title {
       margin: 0;
+      color: #ffffff;
       font-size: 30px;
       line-height: 1.2;
       font-weight: 800;
@@ -212,7 +196,7 @@
 
     .card-description {
       margin: 9px 0 19px;
-      color: #d5ddd9;
+      color: #ffffff;
       font-size: 14px;
       line-height: 1.65;
     }
@@ -221,64 +205,28 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #fff1c7;
+      color: #ffffff;
       font-size: 14px;
       font-weight: 700;
     }
 
-    .coming-list {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 14px;
+    .data-card .card-title {
+      color: #ffffff;
     }
 
-    .coming-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 0;
-      padding: 22px;
-      background: var(--panel);
+    .data-card .card-description {
+      color: #ffffff;
     }
 
-    .coming-card:hover {
-      background: var(--panel-hover);
-    }
-
-    .coming-index {
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .coming-card h3 {
-      margin: 12px 0 6px;
-      font-size: 18px;
-      line-height: 1.35;
-    }
-
-    .coming-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .coming-label {
-      align-self: flex-start;
-      margin-top: 18px;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      padding: 5px 8px;
-      color: #aeb8b3;
-      font-size: 11px;
+    .data-card .card-action {
+      color: #ffffff;
     }
 
     footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 22px;
       margin-top: 26px;
       border-top: 1px solid var(--line);
       padding-top: 20px;
@@ -286,10 +234,18 @@
       font-size: 12px;
     }
 
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
     .visit-counter {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       min-height: 24px;
+      flex: 0 0 auto;
     }
 
     .visit-counter img {
@@ -299,21 +255,8 @@
     }
 
     @media (max-width: 820px) {
-      .intro {
-        padding-top: 40px;
-      }
-
       .tool-grid {
         grid-template-columns: 1fr;
-      }
-
-      .coming-list {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-
-      .coming-card {
-        min-height: 178px;
       }
     }
 
@@ -327,54 +270,54 @@
         padding-bottom: 16px;
       }
 
-      .intro {
-        padding: 32px 0 24px;
-      }
-
-      h1 {
-        font-size: 38px;
-      }
-
-      .section-heading {
-        align-items: start;
-        flex-direction: column;
-        gap: 4px;
+      .brand-mark {
+        width: 96px;
+        flex-basis: 96px;
       }
 
       .tool-card.primary,
-      .card-copy {
-        min-height: 330px;
+      .tool-card.data-card,
+      .card-copy,
+      .data-copy {
+        min-height: 300px;
       }
 
       .tool-card.primary img {
-        object-position: 58% center;
+        object-position: 54% center;
       }
 
       .tool-card.primary::after {
-        background: rgba(6, 11, 10, 0.45);
+        background: linear-gradient(90deg, rgba(6, 11, 10, 0.08), rgba(6, 11, 10, 0.34));
       }
 
-      .card-copy {
-        width: 78%;
-        padding: 22px;
+      .card-copy,
+      .data-copy {
+        width: 72%;
+        padding: 20px;
+      }
+
+      .tool-card.data-card {
+        padding: 0;
       }
 
       .card-title {
         font-size: 26px;
       }
 
-      .coming-list {
-        grid-template-columns: 1fr;
-      }
-
       footer {
         align-items: flex-start;
         flex-direction: column;
+        gap: 12px;
+      }
+
+      .visit-counter {
+        justify-content: flex-start;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .tool-card.primary img {
+      .tool-card.primary img,
+      .tool-card.data-card > img {
         transition: none;
       }
     }
@@ -383,60 +326,35 @@
 <body>
   <main class="shell">
     <header class="site-header">
-      <div class="brand-mark" aria-hidden="true">策</div>
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
       <div class="brand-copy">
-        <p class="brand-name">三国活动工具箱</p>
-        <p class="brand-note">活动计算与实用查询</p>
+        <p class="brand-name">放三数据合集</p>
       </div>
     </header>
 
-    <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow">数据与工具</p>
-      <h1 id="page-title">把活动账算明白</h1>
-      <p>按活动选择工具，填写当前进度，即可计算资源需求与更合适的参与方案。</p>
-    </section>
-
-    <section aria-labelledby="tools-title">
-      <div class="section-heading">
-        <h2 id="tools-title">活动工具</h2>
-        <span>现有 1 个可用工具</span>
-      </div>
-
-      <div class="tool-grid">
+    <nav class="tool-grid" aria-label="功能入口">
         <a class="tool-card primary" href="celebration.html">
-          <img src="assets/celebration-banner.png" alt="灯火庆典中的星币、西瓜和奖励道具">
+          <img src="assets/celebration-summer-banner.png" alt="节日庆典背景">
           <div class="card-copy">
-            <span class="status">可用</span>
-            <h2 class="card-title">庆典活动</h2>
-            <p class="card-description">计算西瓜、字、星数奖励和刷新期望，找到满足目标所需的最低期望金币。</p>
+            <h2 class="card-title">节日庆典计算</h2>
+            <p class="card-description">计算节日庆典活动中大材料和小材料的购买方案并估算消耗的金币数</p>
             <span class="card-action">打开计算器 <span aria-hidden="true">&#8594;</span></span>
           </div>
         </a>
-
-        <div class="coming-list" aria-label="后续功能入口">
-          <article class="tool-card coming-card">
-            <div>
-              <span class="coming-index">入口 02</span>
-              <h3>更多活动工具</h3>
-              <p>新的活动计算功能会从这里继续加入。</p>
-            </div>
-            <span class="coming-label">待添加</span>
-          </article>
-
-          <article class="tool-card coming-card">
-            <div>
-              <span class="coming-index">入口 03</span>
-              <h3>实用查询</h3>
-              <p>为数据表、攻略和查询功能预留的入口。</p>
-            </div>
-            <span class="coming-label">待添加</span>
-          </article>
-        </div>
-      </div>
-    </section>
+        <a class="tool-card data-card" href="feature-unlock.html">
+          <img src="assets/main-interface-night-banner.jpg" alt="游戏主界面夜景背景">
+          <div class="data-copy">
+            <h2 class="card-title">等级解锁表</h2>
+            <p class="card-description">查看不同等级会开启的玩法、功能和对应提示文案</p>
+            <span class="card-action">打开表格 <span aria-hidden="true">&#8594;</span></span>
+          </div>
+        </a>
+    </nav>
 
     <footer>
-      <span>三国活动工具箱</span>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
       <span class="visit-counter" id="visitCounter" aria-label="网页访问量"></span>
     </footer>
   </main>
@@ -449,8 +367,6 @@
       counterImage.src = "https://hitscounter.dev/api/hit?url=https%3A%2F%2Fhappy-silly-cat.github.io%2Ffangsanqingdian%2F&label=%E8%AE%BF%E9%97%AE%E9%87%8F&icon=github&color=%235bc0a2";
       counterImage.alt = "网页访问量";
       visitCounter.appendChild(counterImage);
-    } else {
-      visitCounter.textContent = "本地预览不计入访问量";
     }
   </script>
 </body>
