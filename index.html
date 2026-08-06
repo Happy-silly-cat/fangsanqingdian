@@ -212,6 +212,10 @@
       line-height: 1.65;
     }
 
+    .card-description .line {
+      display: block;
+    }
+
     .card-action {
       display: inline-flex;
       align-items: center;
@@ -293,11 +297,12 @@
       }
 
       .card-picture img {
-        object-position: 54% center;
+        object-fit: fill;
+        object-position: center;
       }
 
       .tool-card.data-card .card-picture img {
-        object-position: 44% center;
+        object-position: center;
       }
 
       .tool-card.primary::after {
@@ -321,8 +326,12 @@
       }
 
       .card-description {
-        font-size: 13px;
+        font-size: 13.5px;
         line-height: 1.55;
+      }
+
+      .card-description .line {
+        white-space: nowrap;
       }
 
       footer {
@@ -355,23 +364,23 @@
     <nav class="tool-grid" aria-label="功能入口">
         <a class="tool-card primary" href="celebration.html">
           <picture class="card-picture">
-            <source media="(max-width: 560px)" srcset="assets/celebration-summer-mobile.jpg">
+            <source media="(max-width: 560px)" srcset="assets/celebration-summer-mobile-v2.jpg">
             <img src="assets/celebration-summer-banner.png" alt="节日庆典背景">
           </picture>
           <div class="card-copy">
             <h2 class="card-title">节日庆典计算</h2>
-            <p class="card-description">计算节日庆典活动中大材料和小材料的购买方案<br>并估算消耗的金币数</p>
+            <p class="card-description"><span class="line">计算大/小材料购买方案</span><span class="line">并估算消耗金币数</span></p>
             <span class="card-action">打开计算器 <span aria-hidden="true">&#8594;</span></span>
           </div>
         </a>
         <a class="tool-card data-card" href="feature-unlock.html">
           <picture class="card-picture">
-            <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile.jpg">
+            <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile-v2.jpg">
             <img src="assets/main-interface-night-banner.jpg" alt="游戏主界面夜景背景">
           </picture>
           <div class="data-copy">
             <h2 class="card-title">等级解锁表</h2>
-            <p class="card-description">查看不同等级会开启的玩法、功能<br>和对应提示文案</p>
+            <p class="card-description"><span class="line">查看等级开启玩法功能</span><span class="line">和对应提示文案</span></p>
             <span class="card-action">打开表格 <span aria-hidden="true">&#8594;</span></span>
           </div>
         </a>
