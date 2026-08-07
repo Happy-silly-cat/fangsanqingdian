@@ -124,12 +124,6 @@
       font-weight: 800;
     }
 
-    .section-source {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 500;
-    }
-
     .level-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -265,8 +259,7 @@
     </section>
 
     <div class="summary">
-      <span id="resultText">共 78 个等级，101 个功能</span>
-      <span>数据来源：DB_Switch</span>
+      <span id="resultText">共 110 条等级记录，152 个项目</span>
     </div>
 
     <section class="level-grid" id="levelGrid" aria-label="等级解锁列表">
@@ -995,17 +988,6 @@
           <li>符印升琉金</li>
         </ul>
       </article>
-    </section>
-    <div class="empty" id="emptyState">没有找到符合条件的项目</div>
-
-    <div class="section-title">
-      <span>补充解锁 / 阶段解锁</span>
-      <span class="section-source">数据来源：DB_Normal_config / DB_Overcomeshop / DB_Sign / DB_Kuafu_contest / DB_Item_gift</span>
-    </div>
-    <div class="summary">
-      <span id="stageResultText">共 32 个等级，51 个项目</span>
-    </div>
-    <section class="stage-grid" id="stageGrid" aria-label="补充解锁列表">
       <article class="level-card stage-card" data-level="30" data-search="30 战魂 第1孔 孔位">
         <div class="level-head"><span class="level-number">30</span><span class="level-label">级开启</span></div>
         <ul class="feature-list"><li>战魂第1孔</li></ul>
@@ -1135,7 +1117,7 @@
         <ul class="feature-list"><li>白金/琉金战魂（11星）</li></ul>
       </article>
     </section>
-    <div class="empty" id="stageEmptyState">没有找到符合条件的补充项目</div>
+    <div class="empty" id="emptyState">没有找到符合条件的项目</div>
 
     <footer>
       <p class="copyright-note">
@@ -1148,15 +1130,10 @@
     const keywordInput = document.getElementById("keywordInput");
     const levelInput = document.getElementById("levelInput");
     const resultText = document.getElementById("resultText");
-    const stageResultText = document.getElementById("stageResultText");
     const levelGrid = document.getElementById("levelGrid");
-    const stageGrid = document.getElementById("stageGrid");
     const emptyState = document.getElementById("emptyState");
-    const stageEmptyState = document.getElementById("stageEmptyState");
     const cards = Array.from(document.querySelectorAll("#levelGrid .level-card"));
-    const stageCards = Array.from(document.querySelectorAll("#stageGrid .stage-card"));
-    const totalFeatures = 101;
-    const totalStageFeatures = Array.from(document.querySelectorAll("#stageGrid li")).length;
+    const totalFeatures = Array.from(document.querySelectorAll("#levelGrid li")).length;
 
     function filterCards(cardList, keyword, hasLevel, currentLevel) {
       let levelCount = 0;
@@ -1182,15 +1159,10 @@
       const currentLevel = Number(levelInput.value);
       const hasLevel = levelInput.value !== "" && Number.isFinite(currentLevel);
       const entryResult = filterCards(cards, keyword, hasLevel, currentLevel);
-      const stageResult = filterCards(stageCards, keyword, hasLevel, currentLevel);
 
-      resultText.textContent = `显示 ${entryResult.levelCount} / ${cards.length} 个等级，${entryResult.featureCount} / ${totalFeatures} 个功能`;
+      resultText.textContent = `显示 ${entryResult.levelCount} / ${cards.length} 条记录，${entryResult.featureCount} / ${totalFeatures} 个项目`;
       levelGrid.style.display = entryResult.levelCount ? "grid" : "none";
       emptyState.style.display = entryResult.levelCount ? "none" : "block";
-
-      stageResultText.textContent = `显示 ${stageResult.levelCount} / ${stageCards.length} 个等级，${stageResult.featureCount} / ${totalStageFeatures} 个项目`;
-      stageGrid.style.display = stageResult.levelCount ? "grid" : "none";
-      stageEmptyState.style.display = stageResult.levelCount ? "none" : "block";
     }
 
     keywordInput.addEventListener("input", updateCards);
