@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三数据合集时装素材浏览页。">
+  <title>时装素材挑选 · 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fffaf0;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #5bc0a2;
+      --jade-dark: #173f35;
+      --gold: #e7bb61;
+      --red: #d66a55;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button,
+    select {
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.25));
+    }
+
+    .brand-copy {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .summary {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--jade-dark);
+      background: rgba(255, 253, 248, 0.72);
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .back-link:hover {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      transform: translateY(-1px);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
+      align-items: end;
+      gap: 12px;
+      margin: 20px 0 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.84);
+    }
+
+    .control-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .search-input,
+    .role-select {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      outline: none;
+      color: var(--text);
+      background: var(--panel-strong);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0 12px;
+    }
+
+    .search-input:focus,
+    .role-select:focus {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 3px rgba(91, 192, 162, 0.16);
+    }
+
+    .role-select {
+      min-width: 108px;
+      padding: 0 30px 0 10px;
+    }
+
+    .kind-filter {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+    }
+
+    .kind-button {
+      min-height: 40px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--jade-dark);
+      background: var(--panel-strong);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .kind-button:hover {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+    }
+
+    .kind-button.active {
+      border-color: var(--jade-dark);
+      color: #fffdf8;
+      background: var(--jade-dark);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 14px;
+    }
+
+    .asset-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 4px 12px rgba(63, 47, 26, 0.06);
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .asset-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 20px rgba(63, 47, 26, 0.13);
+      transform: translateY(-2px);
+    }
+
+    .asset-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+      min-height: 190px;
+      padding: 10px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(232, 223, 204, 0.5)),
+        repeating-conic-gradient(#eee8dc 0 25%, #f8f4eb 0 50%) 50% / 16px 16px;
+    }
+
+    .asset-frame img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      filter: drop-shadow(0 5px 8px rgba(36, 27, 18, 0.16));
+    }
+
+    .asset-info {
+      display: grid;
+      gap: 3px;
+      min-height: 71px;
+      padding: 9px 10px 10px;
+      border-top: 1px solid rgba(217, 203, 182, 0.78);
+    }
+
+    .asset-title {
+      overflow: hidden;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .asset-meta {
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 50px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      background: rgba(255, 250, 240, 0.7);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .controls {
+        grid-template-columns: 1fr auto;
+      }
+
+      .control-search {
+        grid-column: 1 / -1;
+      }
+
+      .kind-filter {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .control-role {
+        grid-column: 2;
+        grid-row: 3;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .asset-frame {
+        aspect-ratio: 1.25 / 1;
+        min-height: 310px;
+      }
+
+      .shell {
+        width: min(100% - 20px, 480px);
+        padding-top: 18px;
+      }
+
+      .site-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 16px;
+      }
+
+      .brand-mark {
+        width: 82px;
+        flex-basis: 82px;
+      }
+
+      .brand-copy {
+        flex: 1 1 calc(100% - 100px);
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+
+      .back-link {
+        width: 100%;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        margin-top: 14px;
+        padding: 10px;
+      }
+
+      .kind-filter {
+        gap: 5px;
+      }
+
+      .kind-button {
+        flex: 1 1 calc(50% - 5px);
+        padding: 0 6px;
+        font-size: 12px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .asset-info {
+        min-height: 65px;
+        padding: 8px;
+      }
+
+      .asset-title {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <a href="index.html" aria-label="返回首页">
+        <img class="brand-mark" src="assets/fangsan-logo.png" alt="放三数据合集">
+      </a>
+      <div class="brand-copy">
+        <h1>时装素材挑选</h1>
+        <p class="summary" id="summary">正在整理素材…</p>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </header>
+
+    <section class="controls" aria-label="筛选时装素材">
+      <label class="control-label control-search">
+        搜索编号或名称
+        <input class="search-input" id="searchInput" type="search" placeholder="例如：80、浪涌星河" autocomplete="off">
+      </label>
+
+      <div class="kind-filter" role="group" aria-label="素材类型">
+        <button class="kind-button active" type="button" data-kind="hero">主角时装图</button>
+        <button class="kind-button" type="button" data-kind="phantom">幻化图</button>
+        <button class="kind-button" type="button" data-kind="big">时装大图</button>
+        <button class="kind-button" type="button" data-kind="small">时装小图</button>
+        <button class="kind-button" type="button" data-kind="all">全部</button>
+      </div>
+
+      <label class="control-label control-role">
+        角色
+        <select class="role-select" id="roleFilter">
+          <option value="all">全部</option>
+          <option value="male">主角男</option>
+          <option value="female">主角女</option>
+          <option value="phantom">武将幻化</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="gallery" id="gallery" aria-live="polite"></section>
+  </main>
+
+  <script src="assets/fashion-gallery/catalog.js"></script>
+  <script src="assets/fashion-gallery/phantom-catalog.js"></script>
+  <script>
+    const catalog = Array.isArray(window.FASHION_CATALOG) ? window.FASHION_CATALOG : [];
+    const phantomCatalog = Array.isArray(window.FASHION_PHANTOM_CATALOG) ? window.FASHION_PHANTOM_CATALOG : [];
+    const kindLabels = {
+      hero: "主角时装图",
+      phantom: "幻化图",
+      big: "时装大图",
+      small: "时装小图"
+    };
+    const roleLabels = {
+      male: "主角男",
+      female: "主角女",
+      phantom: "武将"
+    };
+    const gallery = document.getElementById("gallery");
+    const summary = document.getElementById("summary");
+    const searchInput = document.getElementById("searchInput");
+    const roleFilter = document.getElementById("roleFilter");
+    let selectedKind = "hero";
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function getEntries() {
+      const query = searchInput.value.trim().toLowerCase();
+      const selectedRole = roleFilter.value;
+      const entries = [];
+
+      const mainKinds = selectedKind === "all"
+        ? ["hero", "big", "small"]
+        : [selectedKind];
+      const includeMain = selectedKind !== "phantom" && selectedRole !== "phantom";
+      const includePhantom = (selectedKind === "all" || selectedKind === "phantom") && selectedRole !== "male" && selectedRole !== "female";
+
+      if (includeMain) {
+        const roles = selectedRole === "all" ? ["male", "female"] : [selectedRole];
+        catalog.forEach((item) => {
+          const itemText = [
+            item.id,
+            item.names && item.names.male,
+            item.names && item.names.female
+          ].join(" ").toLowerCase();
+
+          if (query && !itemText.includes(query)) {
+            return;
+          }
+
+          roles.forEach((role) => {
+            mainKinds.forEach((kind) => {
+              const asset = item.assets && item.assets[role] && item.assets[role][kind];
+              if (asset && asset.path) {
+                entries.push({ item, role, kind, asset });
+              }
+            });
+          });
+        });
+      }
+
+      if (includePhantom) {
+        phantomCatalog.forEach((item) => {
+          const itemText = [item.id, item.hero, item.name].join(" ").toLowerCase();
+          if (!query || itemText.includes(query)) {
+            entries.push({ item, role: "phantom", kind: "phantom", asset: item });
+          }
+        });
+      }
+
+      return entries;
+    }
+
+    function render() {
+      const entries = getEntries();
+      const total = catalog.reduce((count, item) => {
+        Object.values(item.assets || {}).forEach((roleAssets) => {
+          count += Object.values(roleAssets || {}).filter((asset) => asset && asset.path).length;
+        });
+        return count;
+      }, 0) + phantomCatalog.length;
+
+      summary.textContent = `显示 ${entries.length} 张 · 主角时装 ${catalog.length} 套 · 幻化 ${phantomCatalog.length} 张 · 已整理 ${total} 张图片`;
+
+      if (!entries.length) {
+        gallery.innerHTML = '<div class="empty-state">没有找到匹配的素材</div>';
+        return;
+      }
+
+      gallery.innerHTML = entries.map(({ item, role, kind, asset }) => {
+        const name = kind === "phantom"
+          ? `${item.hero} · ${item.name}`
+          : ((item.names && item.names[role]) || "未命名时装");
+        const number = String(item.id).padStart(2, "0");
+        const label = `${roleLabels[role]} · ${name}`;
+        const meta = `#${number} · ${kindLabels[kind]} · ${asset.w}×${asset.h}`;
+        return `
+          <article class="asset-card">
+            <div class="asset-frame">
+              <img src="${escapeHtml(asset.path)}" alt="${escapeHtml(label)}" loading="lazy">
+            </div>
+            <div class="asset-info">
+              <div class="asset-title" title="${escapeHtml(label)}">${escapeHtml(label)}</div>
+              <div class="asset-meta">${escapeHtml(meta)}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelectorAll("[data-kind]").forEach((button) => {
+      button.addEventListener("click", () => {
+        selectedKind = button.dataset.kind;
+        document.querySelectorAll("[data-kind]").forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+        render();
+      });
+    });
+
+    searchInput.addEventListener("input", render);
+    roleFilter.addEventListener("change", render);
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三升级材料消耗表。">
+  <title>升级材料消耗表 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 36px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 22px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .page-title {
+      margin: 26px 0 14px;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .material-card {
+      position: relative;
+      display: block;
+      min-height: 300px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      isolation: isolate;
+      text-decoration: none;
+    }
+
+    .material-picture,
+    .material-picture img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .material-picture {
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .material-picture img {
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.92) saturate(1.08);
+      transition: transform 240ms ease;
+    }
+
+    .material-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.12), rgba(6, 11, 10, 0.62));
+      pointer-events: none;
+    }
+
+    .material-card:hover {
+      border-color: #65756f;
+    }
+
+    .material-card:hover .material-picture img {
+      transform: scale(1.015);
+    }
+
+    .material-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: min(58%, 430px);
+      min-height: 300px;
+      margin-left: auto;
+      padding: 28px;
+      text-align: right;
+      text-shadow: 0 2px 14px #050807;
+    }
+
+    .material-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .material-description {
+      margin: 10px 0 20px;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .material-description .line {
+      display: block;
+    }
+
+    .material-action {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .page-title { font-size: 26px; }
+      .material-grid { grid-template-columns: 1fr; }
+      .material-card { min-height: 260px; }
+      .material-copy {
+        width: 72%;
+        min-height: 260px;
+        padding: 22px;
+      }
+      .material-title { font-size: 26px; }
+      .material-description { font-size: 13.5px; line-height: 1.55; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .material-picture img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="index.html">返回首页</a>
+    </header>
+
+    <h1 class="page-title">升级材料消耗表</h1>
+
+    <nav class="material-grid" aria-label="升级材料消耗表入口">
+      <a class="material-card" href="houjun-upgrade.html">
+        <picture class="material-picture">
+          <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile-v2.jpg">
+          <img src="assets/main-interface-banner.jpg" alt="游戏主界面背景">
+        </picture>
+        <div class="material-copy">
+          <h2 class="material-title">后军升级材料</h2>
+          <p class="material-description"><span class="line">查看后军合成与升级消耗</span><span class="line">按阶段核对碎片需求</span></p>
+          <span class="material-action">打开表格 <span aria-hidden="true">&#8594;</span></span>
+        </div>
+      </a>
+    </nav>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三后军升级材料表。">
+  <title>后军升级材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    button,
+    input,
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 4px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus,
+    .overview-card:focus-visible,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 14px 0 10px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .overview-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 92px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: var(--panel);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      gap: 8px;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .overview-card:hover {
+      border-color: #83aa9d;
+      background: var(--panel-hover);
+      transform: translateY(-1px);
+    }
+
+    .overview-icon {
+      display: block;
+      width: 56px;
+      height: 56px;
+      border: 2px solid rgba(231, 187, 97, 0.62);
+      border-radius: 50%;
+      background: #173f35;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(39, 35, 30, 0.16);
+    }
+
+    .overview-name {
+      font-size: 16px;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .total-calculator {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .total-calculator-head,
+    .total-result-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .total-calculator-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .total-reset {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: #fffdf8;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .total-reset:hover {
+      border-color: #83aa9d;
+      color: var(--jade-dark);
+    }
+
+    .total-reset:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .total-level-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .total-level-item {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr) 62px;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      border: 1px solid rgba(217, 203, 182, 0.78);
+      border-radius: 8px;
+      padding: 7px;
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .total-level-icon {
+      display: block;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(231, 187, 97, 0.62);
+      border-radius: 50%;
+      background: #173f35;
+      object-fit: cover;
+    }
+
+    .total-level-name {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .total-level-input {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 4px;
+      background: #fffdf8;
+      color: var(--text);
+      font-size: 13px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-level-input:focus {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 1px;
+      border-color: var(--jade);
+    }
+
+    .total-result {
+      margin-top: 14px;
+      border-top: 1px solid rgba(217, 203, 182, 0.78);
+      padding-top: 12px;
+    }
+
+    .total-result-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .total-morale {
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .total-morale-value {
+      margin-left: 5px;
+      color: var(--gold);
+      font-size: 25px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 5px 16px;
+      margin-top: 8px;
+      color: var(--jade-dark);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .total-attribute-list:empty::before {
+      content: "暂无已解锁后军属性";
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .total-attribute-item {
+      white-space: nowrap;
+    }
+
+    .detail-panel {
+      margin-top: 8px;
+    }
+
+    .detail-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .detail-level-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .detail-level-control .field {
+      width: 76px;
+      padding: 7px 9px;
+    }
+
+    .upgrade-calculator {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .calculator-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .calculator-field {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .number-control {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .number-control .field {
+      min-width: 0;
+    }
+
+    .calculator-arrow {
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .calculator-result {
+      display: grid;
+      justify-items: end;
+      gap: 4px;
+      margin: 0;
+      color: var(--jade-dark);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .calculator-fragment-result {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .calculator-result-label,
+    .calculator-result-unit {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .calculator-result-number {
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .calculator-result-note {
+      width: 100%;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .calculator-attribute-result {
+      display: flex;
+      grid-column: 1 / -1;
+      flex-wrap: nowrap;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 3px 12px;
+      width: 100%;
+      margin-top: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .calculator-attribute-title {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .calculator-attribute-line {
+      font-weight: 800;
+    }
+
+    .calculator-unlock-total,
+    .calculator-unlock-label {
+      color: var(--gold);
+    }
+
+    .calculator-unlock-total {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .calculator-unlock-label {
+      font-size: 12px;
+    }
+
+    .calculator-result.invalid {
+      color: #bd5945;
+    }
+
+    .calculator-result.invalid .calculator-result-note {
+      color: inherit;
+      font-size: 14px;
+    }
+
+    .detail-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .summary-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+      background: var(--panel);
+    }
+
+    .summary-box-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .summary-box-value {
+      display: block;
+      margin-top: 4px;
+      color: var(--gold);
+      font-size: 21px;
+      line-height: 1.15;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .cost-table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 14px;
+    }
+
+    .cost-table th,
+    .cost-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.68);
+      text-align: left;
+    }
+
+    .cost-table th {
+      background: rgba(255, 253, 248, 0.72);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .cost-table th:nth-child(1),
+    .cost-table td:nth-child(1) {
+      width: 14%;
+      white-space: nowrap;
+    }
+
+    .cost-table td:nth-child(1) {
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .cost-table th:nth-child(2),
+    .cost-table td:nth-child(2) {
+      width: 24%;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .cost-table th:nth-child(4),
+    .cost-table td:nth-child(4) {
+      width: 14%;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .cost-table th:nth-child(3),
+    .cost-table td:nth-child(3) {
+      width: 48%;
+    }
+
+    .cost-table tbody tr:last-child td { border-bottom: 0; }
+
+    .attribute-gain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      min-width: 340px;
+      gap: 3px 14px;
+    }
+
+    .attribute-gain-line {
+      line-height: 1.45;
+    }
+
+    .attribute-gain-label {
+      margin-right: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .attribute-gain-values {
+      color: var(--jade-dark);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .attribute-gain-line.bonus .attribute-gain-values {
+      color: var(--gold);
+    }
+
+    .empty {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--panel);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .page-title { font-size: 26px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 3px; margin-top: 12px; }
+      .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .total-level-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .total-level-item { grid-template-columns: 34px minmax(0, 1fr) 56px; padding: 6px; }
+      .total-level-icon { width: 34px; height: 34px; }
+      .detail-summary { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .detail-actions { width: 100%; justify-content: space-between; }
+      .calculator-body { grid-template-columns: 1fr; gap: 14px; }
+      .calculator-fields { grid-template-columns: 1fr; gap: 8px; }
+      .calculator-fields { max-width: none; }
+      .calculator-arrow { justify-self: center; transform: rotate(90deg); }
+      .calculator-result { justify-items: center; text-align: center; }
+      .calculator-attribute-result { justify-content: flex-start; }
+      .calculator-result-number { font-size: 32px; }
+      footer { align-items: flex-start; flex-direction: column; gap: 12px; }
+    }
+
+    @media (min-width: 721px) and (max-width: 980px) {
+      .overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .overview-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料表</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">后军升级材料</h1>
+      <p class="page-note">后军最高等级为70级，可查看合成消耗、各升级区间的碎片需求和属性变化。</p>
+    </section>
+
+    <section id="overviewPanel" aria-labelledby="overviewTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="overviewTitle">后军总览</h2>
+        <span class="section-meta">点击后军可查看升级消耗和属性</span>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+      <section class="total-calculator" aria-labelledby="totalCalculatorTitle">
+        <div class="total-calculator-head">
+          <h3 class="total-calculator-title" id="totalCalculatorTitle">后军总属性计算器</h3>
+          <button class="total-reset" id="resetTotalLevels" type="button">全部清零</button>
+        </div>
+        <div class="total-level-grid" id="totalLevelGrid"></div>
+        <div class="total-result">
+          <div class="total-result-head">
+            <span class="total-result-label">总属性</span>
+            <span class="total-morale">总气势<strong class="total-morale-value" id="totalMorale">0</strong></span>
+          </div>
+          <div class="total-attribute-list" id="totalAttributeList"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="detail-panel" id="detailPanel" aria-labelledby="detailTitle" hidden>
+      <div class="section-head">
+        <h2 class="section-title" id="detailTitle">升级明细</h2>
+        <div class="detail-actions">
+          <label class="detail-level-control" for="levelInput">
+            <span>查看至</span>
+            <input class="field" id="levelInput" type="number" min="0" max="70" step="1" value="70">
+            <span id="detailLevelUnit">级</span>
+          </label>
+          <button class="back-link" id="backToOverview" type="button">返回总览</button>
+        </div>
+      </div>
+      <section class="upgrade-calculator" aria-labelledby="calculatorTitle">
+        <div class="calculator-head">
+          <h3 class="calculator-title" id="calculatorTitle">升级计算器</h3>
+          <span class="section-meta">同时计算碎片和属性</span>
+        </div>
+        <div class="calculator-body">
+          <div class="calculator-fields">
+            <label class="calculator-field" for="fromLevelInput">
+              从
+              <span class="number-control">
+                <input class="field" id="fromLevelInput" type="number" min="0" max="70" step="1" value="0">
+                <span id="fromLevelUnit">级（未解锁）</span>
+              </span>
+            </label>
+            <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+            <label class="calculator-field" for="toLevelInput">
+              到
+              <span class="number-control">
+                <input class="field" id="toLevelInput" type="number" min="0" max="70" step="1" value="70">
+                <span id="toLevelUnit">级</span>
+              </span>
+            </label>
+          </div>
+          <div class="calculator-result" id="calculatorResult" aria-live="polite">
+            <div class="calculator-fragment-result">
+              <span class="calculator-result-label">需要</span>
+              <strong class="calculator-result-number" id="calculatorTotal">0</strong>
+              <strong class="calculator-unlock-total" id="calculatorUnlockTotal" hidden></strong>
+              <span class="calculator-unlock-label" id="calculatorUnlockLabel" hidden>（基础解锁）</span>
+              <span class="calculator-result-unit">个碎片</span>
+            </div>
+            <span class="calculator-result-note" id="calculatorResultNote">合成需要 0 个</span>
+          </div>
+          <div class="calculator-attribute-result" id="calculatorAttributeResult"></div>
+        </div>
+      </section>
+      <div class="detail-summary" id="detailSummary"></div>
+      <div class="table-wrap">
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>升级区间</th>
+              <th>消耗材料</th>
+              <th>获得属性</th>
+              <th>累计消耗</th>
+            </tr>
+          </thead>
+          <tbody id="detailBody"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="detailEmpty" hidden>没有找到对应的升级数据</div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <!--
+    后军数据维护：数据来自解包后的 DB_Lingdi_houjun.lua，整理后写入
+    assets/houjun-upgrade-data.js 和 assets/houjun-attributes.js。新增后军时，请同步更新
+    summary、detail 和属性映射。
+    人物头像来自 images/base/props/houjun_角色名_1.png，还原后的网页资源在 assets/houjun-icons/。
+  -->
+  <script src="assets/houjun-upgrade-data.js"></script>
+  <script src="assets/houjun-attributes.js"></script>
+  <script>
+    // 维护提示：新增后军时，需要同时增加消耗数据、属性映射、头像文件和这里的头像映射。
+    const summary = window.HOUJUN_DATA.summary;
+    const detail = window.HOUJUN_DATA.detail;
+    const summaryByName = new Map(summary.map((item) => [item.name, item]));
+    const attributesByName = new Map(Object.entries(window.HOUJUN_ATTRIBUTES));
+    const detailByName = new Map();
+
+    detail.forEach((item) => {
+      if (!detailByName.has(item.name)) detailByName.set(item.name, []);
+      detailByName.get(item.name).push(item);
+    });
+
+    const levelInput = document.getElementById("levelInput");
+    const overviewPanel = document.getElementById("overviewPanel");
+    const overviewGrid = document.getElementById("overviewGrid");
+    const totalLevelGrid = document.getElementById("totalLevelGrid");
+    const totalAttributeList = document.getElementById("totalAttributeList");
+    const totalMorale = document.getElementById("totalMorale");
+    const resetTotalLevels = document.getElementById("resetTotalLevels");
+    const detailPanel = document.getElementById("detailPanel");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailLevelUnit = document.getElementById("detailLevelUnit");
+    const detailSummary = document.getElementById("detailSummary");
+    const detailBody = document.getElementById("detailBody");
+    const detailEmpty = document.getElementById("detailEmpty");
+    const backToOverview = document.getElementById("backToOverview");
+    const fromLevelInput = document.getElementById("fromLevelInput");
+    const toLevelInput = document.getElementById("toLevelInput");
+    const fromLevelUnit = document.getElementById("fromLevelUnit");
+    const toLevelUnit = document.getElementById("toLevelUnit");
+    const calculatorResult = document.getElementById("calculatorResult");
+    const calculatorTotal = document.getElementById("calculatorTotal");
+    const calculatorUnlockTotal = document.getElementById("calculatorUnlockTotal");
+    const calculatorUnlockLabel = document.getElementById("calculatorUnlockLabel");
+    const calculatorAttributeResult = document.getElementById("calculatorAttributeResult");
+    const calculatorResultNote = document.getElementById("calculatorResultNote");
+    let currentHeroName = "";
+    const iconByName = {
+      "曹植": "caozhi.png",
+      "糜夫人": "mifuren.png",
+      "丁奉": "dingfeng.png",
+      "张宝": "zhangbao.png",
+      "颜良": "yanliang.png",
+      "文丑": "wenchou.png",
+      "黄盖": "huanggai.png",
+      "徐晃": "xuhuang.png",
+      "陈宫": "chengong.png"
+    };
+
+    function formatNumber(value) {
+      return Number(value).toLocaleString("zh-CN");
+    }
+
+    function formatAttributeValue(attribute) {
+      const value = attribute.percent ? attribute.value / 100 : attribute.value;
+      return `${attribute.name} +${formatNumber(value)}${attribute.percent ? "%" : ""}`;
+    }
+
+    function readLevel(input, fallback) {
+      const rawValue = input.value.trim();
+      if (!rawValue) return fallback;
+      const value = Number(rawValue);
+      if (!Number.isFinite(value)) return fallback;
+      const maxLevel = Number(input.max);
+      const upperLimit = Number.isFinite(maxLevel) ? maxLevel : 70;
+      return Math.min(upperLimit, Math.max(0, Math.trunc(value)));
+    }
+
+    function normalizeLevelInput(input, fallback) {
+      const level = readLevel(input, fallback);
+      input.value = String(level);
+      return level;
+    }
+
+    function getTransportSpeedAtLevel(attributeConfig, level) {
+      if (!attributeConfig || level <= 0) return 0;
+      const milestoneSpeed = Object.entries(attributeConfig.speedMilestones || {}).reduce(
+        (total, [milestoneLevel, value]) =>
+          Number(milestoneLevel) <= level ? total + value : total,
+        0
+      );
+      return attributeConfig.baseSpeed + attributeConfig.speed + milestoneSpeed;
+    }
+
+    function appendAttributeLine(container, labelText, attributes, extraClass = "") {
+      if (!attributes.length) return;
+      const line = document.createElement("div");
+      line.className = `attribute-gain-line ${extraClass}`.trim();
+      const label = document.createElement("span");
+      label.className = "attribute-gain-label";
+      label.textContent = labelText;
+      const values = document.createElement("span");
+      values.className = "attribute-gain-values";
+      values.textContent = attributes.map(formatAttributeValue).join("；");
+      line.append(label, values);
+      container.appendChild(line);
+    }
+
+    function appendValueLine(container, labelText, valueText, extraClass = "") {
+      const line = document.createElement("div");
+      line.className = `attribute-gain-line ${extraClass}`.trim();
+      const label = document.createElement("span");
+      label.className = "attribute-gain-label";
+      label.textContent = labelText;
+      const value = document.createElement("span");
+      value.className = "attribute-gain-values";
+      value.textContent = valueText;
+      line.append(label, value);
+      container.appendChild(line);
+    }
+
+    function addAttributeTotal(attributeTotals, attribute) {
+      const key = `${attribute.name}:${attribute.percent ? "percent" : "flat"}`;
+      const current = attributeTotals.get(key) || {
+        name: attribute.name,
+        value: 0,
+        percent: Boolean(attribute.percent)
+      };
+      current.value += attribute.value;
+      attributeTotals.set(key, current);
+    }
+
+    function getHeroTotalsAtLevel(attributeConfig, level) {
+      const attributes = new Map();
+      if (!attributeConfig || level <= 0) {
+        return { attributes, morale: 0 };
+      }
+
+      attributeConfig.base.forEach((attribute) => addAttributeTotal(attributes, attribute));
+      let morale = 0;
+      for (let upgradeLevel = 1; upgradeLevel < level; upgradeLevel += 1) {
+        attributeConfig.upgrade.forEach((attribute) => addAttributeTotal(attributes, attribute));
+        (attributeConfig.milestones[upgradeLevel + 1] || []).forEach((attribute) => {
+          addAttributeTotal(attributes, attribute);
+        });
+        morale += attributeConfig.morale[upgradeLevel] || 0;
+      }
+
+      return {
+        attributes,
+        morale
+      };
+    }
+
+    function renderCalculatorAttributes(attributeConfig, rows, fromLevel, toLevel) {
+      calculatorAttributeResult.replaceChildren();
+      if (!attributeConfig) return;
+
+      const title = document.createElement("span");
+      title.className = "calculator-attribute-title";
+      title.textContent = "本区间获得属性：";
+      calculatorAttributeResult.appendChild(title);
+
+      const attributeTotals = new Map();
+      if (fromLevel === 0 && toLevel > 0) {
+        attributeConfig.base.forEach((attribute) => addAttributeTotal(attributeTotals, attribute));
+      }
+      rows.forEach((entry) => {
+        attributeConfig.upgrade.forEach((attribute) => addAttributeTotal(attributeTotals, attribute));
+        const targetLevel = entry.level + 1;
+        (attributeConfig.milestones[targetLevel] || []).forEach((attribute) => {
+          addAttributeTotal(attributeTotals, attribute);
+        });
+      });
+
+      if (attributeTotals.size === 0) {
+        const emptyLine = document.createElement("span");
+        emptyLine.className = "calculator-attribute-line";
+        emptyLine.textContent = "无升级属性";
+        calculatorAttributeResult.appendChild(emptyLine);
+      } else {
+        attributeTotals.forEach((attribute) => {
+          const line = document.createElement("span");
+          line.className = "calculator-attribute-line";
+          line.textContent = formatAttributeValue(attribute);
+          calculatorAttributeResult.appendChild(line);
+        });
+      }
+
+      // 普通等级不增加速度；区间内只计算实际跨过的阶段速度奖励。
+      const speedTotal =
+        getTransportSpeedAtLevel(attributeConfig, toLevel) -
+        getTransportSpeedAtLevel(attributeConfig, fromLevel);
+      if (speedTotal > 0) {
+        const speedLine = document.createElement("span");
+        speedLine.className = "calculator-attribute-line";
+        speedLine.textContent = `运输速度 +${formatNumber(speedTotal)}`;
+        calculatorAttributeResult.appendChild(speedLine);
+      }
+
+      const moraleTotal = rows.reduce(
+        (total, entry) => total + (attributeConfig.morale[entry.level] || 0),
+        0
+      );
+      if (moraleTotal > 0) {
+        const moraleLine = document.createElement("span");
+        moraleLine.className = "calculator-attribute-line";
+        moraleLine.textContent = `气势 +${formatNumber(moraleTotal)}`;
+        calculatorAttributeResult.appendChild(moraleLine);
+      }
+    }
+
+    function renderOverview() {
+      // 每张卡片都是一个入口，点击后进入对应后军的逐级消耗明细。
+      overviewGrid.replaceChildren();
+      summary.forEach((item) => {
+        const card = document.createElement("button");
+        card.className = "overview-card";
+        card.type = "button";
+        card.dataset.hero = item.name;
+
+        const icon = document.createElement("img");
+        icon.className = "overview-icon";
+        icon.src = `assets/houjun-icons/${iconByName[item.name]}`;
+        icon.alt = `${item.name}人物头像`;
+        const name = document.createElement("span");
+        name.className = "overview-name";
+        name.textContent = item.name;
+        card.append(icon, name);
+        card.addEventListener("click", () => {
+          renderDetail(item.name);
+        });
+        overviewGrid.appendChild(card);
+      });
+    }
+
+    function renderTotalCalculator() {
+      // 总览计算器的输入与后军名单绑定；新增后军时，summary 会自动生成对应输入框。
+      totalLevelGrid.replaceChildren();
+      summary.forEach((item) => {
+        const field = document.createElement("label");
+        field.className = "total-level-item";
+        field.dataset.hero = item.name;
+
+        const icon = document.createElement("img");
+        icon.className = "total-level-icon";
+        icon.src = `assets/houjun-icons/${iconByName[item.name]}`;
+        icon.alt = `${item.name}人物头像`;
+
+        const name = document.createElement("span");
+        name.className = "total-level-name";
+        name.textContent = item.name;
+
+        const input = document.createElement("input");
+        input.className = "total-level-input";
+        input.type = "number";
+        input.min = "0";
+        input.max = String(item.maxLevel || 70);
+        input.step = "1";
+        input.value = "0";
+        input.dataset.hero = item.name;
+        input.setAttribute("aria-label", `${item.name}等级`);
+        input.addEventListener("input", () => {
+          if (input.value.trim()) normalizeLevelInput(input, 0);
+          updateTotalCalculator();
+        });
+        input.addEventListener("change", () => {
+          normalizeLevelInput(input, 0);
+          updateTotalCalculator();
+        });
+        input.addEventListener("blur", () => normalizeLevelInput(input, 0));
+
+        field.append(icon, name, input);
+        totalLevelGrid.appendChild(field);
+      });
+      updateTotalCalculator();
+    }
+
+    function updateTotalCalculator() {
+      const attributeTotals = new Map();
+      let moraleTotal = 0;
+
+      totalLevelGrid.querySelectorAll(".total-level-input").forEach((input) => {
+        const attributeConfig = attributesByName.get(input.dataset.hero);
+        const level = readLevel(input, 0);
+        const heroTotals = getHeroTotalsAtLevel(attributeConfig, level);
+        heroTotals.attributes.forEach((attribute) => addAttributeTotal(attributeTotals, attribute));
+        moraleTotal += heroTotals.morale;
+      });
+
+      totalAttributeList.replaceChildren();
+      attributeTotals.forEach((attribute) => {
+        const line = document.createElement("span");
+        line.className = "total-attribute-item";
+        line.textContent = formatAttributeValue(attribute);
+        totalAttributeList.appendChild(line);
+      });
+      totalMorale.textContent = formatNumber(moraleTotal);
+    }
+
+    function renderDetail(heroName) {
+      currentHeroName = heroName;
+      // detail 中的 level、count 分别对应升级阶段和该阶段的碎片消耗；属性配置在 attributesByName。
+      const item = summaryByName.get(heroName);
+      const attributeConfig = attributesByName.get(heroName);
+      const targetLevel = readLevel(levelInput, 70);
+      const rows = (detailByName.get(heroName) || []).filter((entry) => entry.level < targetLevel);
+      const upgradeTotal = rows.reduce((total, entry) => total + entry.count, 0);
+
+      overviewPanel.hidden = true;
+      detailPanel.hidden = false;
+      detailTitle.textContent = `${heroName}升级明细`;
+      detailLevelUnit.textContent = targetLevel === 0 ? "级（未解锁）" : "级";
+      detailSummary.replaceChildren();
+      [
+        ["合成消耗", item.compose],
+        ["当前范围升级", upgradeTotal],
+        ["合计消耗", item.compose + upgradeTotal]
+      ].forEach(([label, value]) => {
+        const box = document.createElement("div");
+        box.className = "summary-box";
+        const boxLabel = document.createElement("span");
+        boxLabel.className = "summary-box-label";
+        boxLabel.textContent = label;
+        const boxValue = document.createElement("span");
+        boxValue.className = "summary-box-value";
+        boxValue.textContent = `${formatNumber(value)} 个`;
+        box.append(boxLabel, boxValue);
+        detailSummary.appendChild(box);
+      });
+
+      detailBody.replaceChildren();
+      let cumulative = item ? item.compose : 0;
+      if (item) {
+        const unlockRow = document.createElement("tr");
+        const unlockLevelCell = document.createElement("td");
+        unlockLevelCell.textContent = targetLevel === 0 ? "解锁（未解锁）" : "解锁";
+        const unlockCostCell = document.createElement("td");
+        unlockCostCell.textContent = `${formatNumber(item.compose)} 个${heroName}碎片`;
+        const unlockAttributeCell = document.createElement("td");
+        const unlockAttributeGain = document.createElement("div");
+        unlockAttributeGain.className = "attribute-gain";
+        appendAttributeLine(
+          unlockAttributeGain,
+          "基础",
+          attributeConfig ? attributeConfig.base : []
+        );
+        if (attributeConfig) {
+          appendValueLine(
+            unlockAttributeGain,
+            "运输速度",
+            `+${formatNumber(getTransportSpeedAtLevel(attributeConfig, 1))}`
+          );
+        }
+        unlockAttributeCell.appendChild(unlockAttributeGain);
+        const unlockTotalCell = document.createElement("td");
+        unlockTotalCell.textContent = `${formatNumber(cumulative)} 个`;
+        unlockRow.append(unlockLevelCell, unlockCostCell, unlockAttributeCell, unlockTotalCell);
+        detailBody.appendChild(unlockRow);
+      }
+      rows.forEach((entry) => {
+        cumulative += entry.count;
+        const row = document.createElement("tr");
+        const levelCell = document.createElement("td");
+        levelCell.textContent = `${entry.level}级 → ${entry.level + 1}级`;
+        const countCell = document.createElement("td");
+        countCell.textContent = `${formatNumber(entry.count)} 个${heroName}碎片`;
+        const attributeCell = document.createElement("td");
+        const attributeGain = document.createElement("div");
+        attributeGain.className = "attribute-gain";
+        const upgradeAttributes = attributeConfig ? [...attributeConfig.upgrade] : [];
+        const morale = attributeConfig ? attributeConfig.morale[entry.level] || 0 : 0;
+        if (morale > 0) {
+          upgradeAttributes.push({ name: "气势", value: morale });
+        }
+        appendAttributeLine(
+          attributeGain,
+          "每级",
+          upgradeAttributes
+        );
+        const targetUpgradeLevel = entry.level + 1;
+        appendAttributeLine(
+          attributeGain,
+          `达到${targetUpgradeLevel}级`,
+          attributeConfig ? (attributeConfig.milestones[targetUpgradeLevel] || []) : [],
+          "bonus"
+        );
+        if (attributeConfig && attributeConfig.speedMilestones[targetUpgradeLevel] !== undefined) {
+          appendValueLine(
+            attributeGain,
+            "阶段运输速度",
+            `+${formatNumber(attributeConfig.speedMilestones[targetUpgradeLevel])}`,
+            "bonus"
+          );
+        }
+        attributeCell.appendChild(attributeGain);
+        const totalCell = document.createElement("td");
+        totalCell.textContent = `${formatNumber(cumulative)} 个`;
+        row.append(levelCell, countCell, attributeCell, totalCell);
+        detailBody.appendChild(row);
+      });
+      detailEmpty.hidden = true;
+      document.querySelector(".detail-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      const fromLevel = readLevel(fromLevelInput, 0);
+      const toLevel = readLevel(toLevelInput, 70);
+      const item = summaryByName.get(currentHeroName);
+      const attributeConfig = attributesByName.get(currentHeroName);
+      fromLevelUnit.textContent = fromLevel === 0 ? "级（未解锁）" : "级";
+      toLevelUnit.textContent = toLevel === 0 ? "级（未解锁）" : "级";
+
+      if (fromLevel > toLevel) {
+        calculatorTotal.textContent = "!";
+        calculatorUnlockTotal.hidden = true;
+        calculatorUnlockLabel.hidden = true;
+        calculatorAttributeResult.replaceChildren();
+        calculatorResultNote.textContent = "起始等级不能高于目标等级";
+        calculatorResult.classList.add("invalid");
+        return;
+      }
+
+      const rows = (detailByName.get(currentHeroName) || []).filter(
+        (entry) => entry.level >= fromLevel && entry.level < toLevel
+      );
+      const total = rows.reduce((sum, entry) => sum + entry.count, 0);
+      const unlockTotal = fromLevel === 0 && toLevel > 0 && item ? item.compose : 0;
+      calculatorResult.classList.remove("invalid");
+      calculatorTotal.textContent = formatNumber(total);
+      calculatorUnlockTotal.textContent = `+${formatNumber(unlockTotal)}`;
+      calculatorUnlockTotal.hidden = unlockTotal === 0;
+      calculatorUnlockLabel.hidden = unlockTotal === 0;
+      renderCalculatorAttributes(attributeConfig, rows, fromLevel, toLevel);
+      calculatorResultNote.textContent = unlockTotal > 0
+        ? "已计入基础解锁材料"
+        : "不含基础解锁材料";
+    }
+
+    backToOverview.addEventListener("click", () => {
+      overviewPanel.hidden = false;
+      detailPanel.hidden = true;
+      overviewPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    levelInput.addEventListener("input", () => {
+      if (levelInput.value.trim()) normalizeLevelInput(levelInput, 70);
+      if (!detailPanel.hidden) {
+        renderDetail(currentHeroName);
+      }
+    });
+    fromLevelInput.addEventListener("input", () => {
+      if (fromLevelInput.value.trim()) normalizeLevelInput(fromLevelInput, 0);
+      updateCalculator();
+    });
+    toLevelInput.addEventListener("input", () => {
+      if (toLevelInput.value.trim()) normalizeLevelInput(toLevelInput, 70);
+      updateCalculator();
+    });
+    [levelInput, fromLevelInput, toLevelInput].forEach((input) => {
+      input.addEventListener("change", () => {
+        const fallback = input === toLevelInput || input === levelInput ? 70 : 0;
+        normalizeLevelInput(input, fallback);
+        if (input === levelInput) {
+          if (!detailPanel.hidden) renderDetail(currentHeroName);
+        } else {
+          updateCalculator();
+        }
+      });
+      input.addEventListener("blur", () => {
+        const fallback = input === toLevelInput || input === levelInput ? 70 : 0;
+        normalizeLevelInput(input, fallback);
+      });
+    });
+    resetTotalLevels.addEventListener("click", () => {
+      totalLevelGrid.querySelectorAll(".total-level-input").forEach((input) => {
+        input.value = "0";
+      });
+      updateTotalCalculator();
+    });
+    renderOverview();
+    renderTotalCalculator();
+  </script>
+</body>
+</html>
