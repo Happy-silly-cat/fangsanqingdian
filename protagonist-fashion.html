@@ -858,17 +858,37 @@
       .toolbar { grid-template-columns: 1fr; }
       .quality-filter-list,
       .search-input { grid-column: auto; grid-row: auto; }
+      .quality-filter-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
       .fashion-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .detail-overview { grid-template-columns: 1fr; }
       .detail-preview { width: 100%; height: auto; min-height: 0; padding: 10px; }
       .detail-preview-frame { flex: 0 0 auto; height: auto; min-height: 0; }
       .detail-preview-frame.empty { min-height: 165px; }
+      .detail-preview-frame img { max-height: 300px; }
+      .section-title { align-items: flex-start; flex-wrap: wrap; }
+      .section-note { margin-left: auto; }
+      .calculator-state,
+      .calculator-cost-group { padding: 8px; }
+      .calculator-field { min-width: 0; }
+      .calculator-field span { line-height: 1.35; }
     }
 
     @media (max-width: 440px) {
       .back-link { padding: 0 9px; }
       .brand-name { font-size: 16px; }
       .fashion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fashion-card {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 6px;
+        min-height: 58px;
+        padding: 6px;
+      }
+      .fashion-thumb { width: 38px; height: 38px; }
+      .fashion-card-title { font-size: 12px; }
       .attribute-columns { grid-template-columns: 1fr; }
       .section-panel { padding: 11px; }
     }
