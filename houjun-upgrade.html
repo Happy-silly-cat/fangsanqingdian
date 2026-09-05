@@ -172,6 +172,8 @@
       text-align: left;
       cursor: pointer;
       gap: 8px;
+      color: inherit;
+      text-decoration: none;
       transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
     }
 
@@ -190,6 +192,13 @@
       background: #173f35;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(39, 35, 30, 0.16);
+    }
+
+    .overview-icon.territory-overview-icon,
+    .total-level-icon.territory-total-icon {
+      border-radius: 8px;
+      background: transparent;
+      object-fit: contain;
     }
 
     .overview-name {
@@ -348,6 +357,37 @@
     }
 
     .total-attribute-item {
+      white-space: nowrap;
+    }
+
+    .total-morale-effects {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 5px 16px;
+      margin-top: 8px;
+      border-top: 1px dashed rgba(217, 203, 182, 0.78);
+      padding-top: 8px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+
+    .total-morale-effects:empty::before {
+      content: "暂无已达到领地气势效果";
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .total-morale-effects-label {
+      flex-basis: 100%;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .total-morale-effect {
       white-space: nowrap;
     }
 
@@ -744,6 +784,7 @@
             <span class="total-morale">总气势<strong class="total-morale-value" id="totalMorale">0</strong></span>
           </div>
           <div class="total-attribute-list" id="totalAttributeList"></div>
+          <div class="total-morale-effects" id="totalMoraleEffects"></div>
         </div>
       </section>
     </section>
@@ -822,16 +863,28 @@
 
   <!--
     后军数据维护：数据来自解包后的 DB_Lingdi_houjun.lua，整理后写入
-    assets/houjun-upgrade-data.js 和 assets/houjun-attributes.js。新增后军时，请同步更新
-    summary、detail 和属性映射。
+    assets/houjun-upgrade-data.js 和 assets/houjun-attributes.js。领地气势数据来自
+    assets/lingdi-data.js。新增后军时，请同步更新 summary、detail 和属性映射。
     人物头像来自 images/base/props/houjun_角色名_1.png，还原后的网页资源在 assets/houjun-icons/。
   -->
   <script src="assets/houjun-upgrade-data.js"></script>
   <script src="assets/houjun-attributes.js"></script>
+  <script src="assets/lingdi-data.js"></script>
   <script>
-    // 维护提示：新增后军时，需要同时增加消耗数据、属性映射、头像文件和这里的头像映射。
+    // 维护提示：新增后军时，需要同时增加消耗数据、属性映射、头像文件和这里的头像映射；
+    // 领地等级和气势门槛统一维护在 assets/lingdi-data.js。
     const summary = window.HOUJUN_DATA.summary;
     const detail = window.HOUJUN_DATA.detail;
+    const territoryData = window.LINGDI_DATA || { maxLevel: 21, levelUp: [], morale: [] };
+    const territoryMoraleRequirements = [];
+    let cumulativeMoraleRequirement = 0;
+    (territoryData.morale || []).forEach((entry) => {
+      cumulativeMoraleRequirement += Number(entry.exp) || 0;
+      territoryMoraleRequirements.push({
+        ...entry,
+        cumulativeExp: cumulativeMoraleRequirement
+      });
+    });
     const summaryByName = new Map(summary.map((item) => [item.name, item]));
     const attributesByName = new Map(Object.entries(window.HOUJUN_ATTRIBUTES));
     const detailByName = new Map();
@@ -846,6 +899,7 @@
     const overviewGrid = document.getElementById("overviewGrid");
     const totalLevelGrid = document.getElementById("totalLevelGrid");
     const totalAttributeList = document.getElementById("totalAttributeList");
+    const totalMoraleEffects = document.getElementById("totalMoraleEffects");
     const totalMorale = document.getElementById("totalMorale");
     const resetTotalLevels = document.getElementById("resetTotalLevels");
     const detailPanel = document.getElementById("detailPanel");
@@ -1032,7 +1086,7 @@
     }
 
     function renderOverview() {
-      // 每张卡片都是一个入口，点击后进入对应后军的逐级消耗明细。
+      // 每张卡片都是一个入口；新增后军时会自动生成卡片，领地入口固定放在后军总览中。
       overviewGrid.replaceChildren();
       summary.forEach((item) => {
         const card = document.createElement("button");
@@ -1053,10 +1107,38 @@
         });
         overviewGrid.appendChild(card);
       });
+
+      const territoryCard = document.createElement("a");
+      territoryCard.className = "overview-card";
+      territoryCard.href = "lingdi-upgrade.html";
+
+      const territoryIcon = document.createElement("img");
+      territoryIcon.className = "overview-icon territory-overview-icon";
+      territoryIcon.src = "assets/lingdi-icons/lingdi_n.png";
+      territoryIcon.alt = "领地图标";
+
+      const territoryName = document.createElement("span");
+      territoryName.className = "overview-name";
+      territoryName.textContent = "领地";
+
+      territoryCard.append(territoryIcon, territoryName);
+      overviewGrid.appendChild(territoryCard);
+    }
+
+    function bindTotalLevelInput(input) {
+      input.addEventListener("input", () => {
+        if (input.value.trim()) normalizeLevelInput(input, 0);
+        updateTotalCalculator();
+      });
+      input.addEventListener("change", () => {
+        normalizeLevelInput(input, 0);
+        updateTotalCalculator();
+      });
+      input.addEventListener("blur", () => normalizeLevelInput(input, 0));
     }
 
     function renderTotalCalculator() {
-      // 总览计算器的输入与后军名单绑定；新增后军时，summary 会自动生成对应输入框。
+      // 后军和领地共用一个计算器；后军输入最高 70 级，领地输入最高 21 级。
       totalLevelGrid.replaceChildren();
       summary.forEach((item) => {
         const field = document.createElement("label");
@@ -1081,33 +1163,111 @@
         input.value = "0";
         input.dataset.hero = item.name;
         input.setAttribute("aria-label", `${item.name}等级`);
-        input.addEventListener("input", () => {
-          if (input.value.trim()) normalizeLevelInput(input, 0);
-          updateTotalCalculator();
-        });
-        input.addEventListener("change", () => {
-          normalizeLevelInput(input, 0);
-          updateTotalCalculator();
-        });
-        input.addEventListener("blur", () => normalizeLevelInput(input, 0));
+        bindTotalLevelInput(input);
 
         field.append(icon, name, input);
         totalLevelGrid.appendChild(field);
       });
+
+      const territoryField = document.createElement("label");
+      territoryField.className = "total-level-item total-level-territory";
+
+      const territoryIcon = document.createElement("img");
+      territoryIcon.className = "total-level-icon territory-total-icon";
+      territoryIcon.src = "assets/lingdi-icons/lingdi_n.png";
+      territoryIcon.alt = "领地图标";
+
+      const territoryName = document.createElement("span");
+      territoryName.className = "total-level-name";
+      territoryName.textContent = "领地";
+
+      const territoryInput = document.createElement("input");
+      territoryInput.className = "total-level-input";
+      territoryInput.type = "number";
+      territoryInput.min = "0";
+      territoryInput.max = String(territoryData.maxLevel || 21);
+      territoryInput.step = "1";
+      territoryInput.value = "0";
+      territoryInput.dataset.territory = "true";
+      territoryInput.setAttribute("aria-label", "领地等级");
+      bindTotalLevelInput(territoryInput);
+
+      territoryField.append(territoryIcon, territoryName, territoryInput);
+      totalLevelGrid.appendChild(territoryField);
       updateTotalCalculator();
+    }
+
+    function renderTotalMoraleEffects(moraleValue) {
+      totalMoraleEffects.replaceChildren();
+      // morale.exp 是每级新增经验，先累加成累计门槛，再判断已经达到的效果。
+      const unlockedEffects = territoryMoraleRequirements.filter(
+        (entry) => entry.cumulativeExp <= moraleValue
+      );
+      if (!unlockedEffects.length) return;
+
+      const mergedEffects = new Map();
+      unlockedEffects.forEach((entry) => {
+        const match = entry.effect.match(/^(.*?)\s*\+([\d,]+)(%)?$/);
+        if (!match) {
+          mergedEffects.set(`text:${entry.effect}`, {
+            name: entry.effect,
+            value: null,
+            percent: false
+          });
+          return;
+        }
+
+        const name = match[1].trim();
+        const percent = Boolean(match[3]);
+        const key = `${name}:${percent ? "percent" : "flat"}`;
+        const current = mergedEffects.get(key) || {
+          name,
+          value: 0,
+          percent
+        };
+        current.value += Number(match[2].replace(/,/g, ""));
+        mergedEffects.set(key, current);
+      });
+
+      const label = document.createElement("span");
+      label.className = "total-morale-effects-label";
+      label.textContent = `领地气势最终效果（已达到${unlockedEffects.length}级）`;
+      totalMoraleEffects.appendChild(label);
+
+      mergedEffects.forEach((entry) => {
+        const effect = document.createElement("span");
+        effect.className = "total-morale-effect";
+        effect.textContent = entry.value === null
+          ? entry.name
+          : `${entry.name} +${formatNumber(entry.value)}${entry.percent ? "%" : ""}`;
+        totalMoraleEffects.appendChild(effect);
+      });
     }
 
     function updateTotalCalculator() {
       const attributeTotals = new Map();
       let moraleTotal = 0;
+      let territoryMorale = 0;
 
       totalLevelGrid.querySelectorAll(".total-level-input").forEach((input) => {
-        const attributeConfig = attributesByName.get(input.dataset.hero);
         const level = readLevel(input, 0);
+        if (input.dataset.territory === "true") {
+          territoryMorale = (territoryData.levelUp || [])
+            .filter((entry) => entry.level < level)
+            .reduce(
+              (total, entry) => total + (Number(entry.morale) || 0),
+              0
+            );
+          return;
+        }
+
+        const attributeConfig = attributesByName.get(input.dataset.hero);
         const heroTotals = getHeroTotalsAtLevel(attributeConfig, level);
         heroTotals.attributes.forEach((attribute) => addAttributeTotal(attributeTotals, attribute));
         moraleTotal += heroTotals.morale;
       });
+
+      moraleTotal += territoryMorale;
 
       totalAttributeList.replaceChildren();
       attributeTotals.forEach((attribute) => {
@@ -1117,6 +1277,7 @@
         totalAttributeList.appendChild(line);
       });
       totalMorale.textContent = formatNumber(moraleTotal);
+      renderTotalMoraleEffects(moraleTotal);
     }
 
     function renderDetail(heroName) {

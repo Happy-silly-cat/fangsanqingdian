@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三武将天命点亮材料查询表。">
+  <title>武将天命点亮材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .destiny-calculator {
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .calculator-group {
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 12px;
+    }
+
+    .calculator-group h3 {
+      margin: 0 0 10px;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .calculator-inputs {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(110px, 0.8fr);
+      gap: 10px;
+    }
+
+    .calculator-results {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .calculator-result {
+      min-width: 0;
+      border-top: 2px solid var(--jade);
+      background: var(--panel-strong);
+      padding: 11px 12px 12px;
+    }
+
+    .calculator-result h3 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .calculator-result .material-list,
+    .calculator-result .attribute-list {
+      margin-top: 9px;
+    }
+
+    .calculator-empty {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .calculator-warning {
+      margin: 10px 0 0;
+      color: #b13b4c;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .hero-picker {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .faction-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .faction-tab {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 850;
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .faction-tab:hover,
+    .faction-tab:focus-visible,
+    .faction-tab.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      color: var(--jade-dark);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .faction-section {
+      border-top: 1px solid var(--line);
+      padding: 16px 0 2px;
+    }
+
+    .faction-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 11px;
+    }
+
+    .faction-heading h2 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .faction-mark {
+      width: 8px;
+      height: 22px;
+      border-radius: 4px;
+      background: var(--gold);
+    }
+
+    .faction-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+      padding: 7px 8px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .hero-card:hover,
+    .hero-card:focus-visible {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .hero-card img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    .hero-card span {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .destiny-detail[hidden] { display: none; }
+
+    .destiny-detail {
+      margin-top: 18px;
+    }
+
+    .detail-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .detail-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .detail-content {
+      min-width: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .hero-summary {
+      display: block;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px;
+    }
+
+    .hero-summary h3 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-weight: 850;
+    }
+
+    .hero-summary h3 { font-size: 15px; }
+
+    .ability-box {
+      border-left: 2px solid var(--jade);
+      padding-left: 14px;
+    }
+
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .attribute-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(184, 132, 47, 0.22);
+      border-radius: 6px;
+      background: rgba(231, 187, 97, 0.1);
+      padding: 5px 7px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .attribute-item strong {
+      color: var(--gold);
+      font-weight: 850;
+    }
+
+    .attribute-added {
+      color: #239b63;
+      font-style: normal;
+    }
+
+    .stage-cell {
+      min-width: 120px;
+      color: var(--jade-dark);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .stage-cell:empty::after {
+      content: "—";
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .stage-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stage-icon {
+      display: block;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      border: 1px solid rgba(184, 132, 47, 0.34);
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    /* 与主角时装页的红、金、暗金、白金、琉金、澜金颜色保持一致。 */
+    .stage-icon.quality-18 { border-color: #b84e5b; }
+    .stage-icon.quality-20 { border-color: #b7902d; }
+    .stage-icon.quality-25 { border-color: #8d672f; }
+    .stage-icon.quality-30 { border-color: #71899f; }
+    .stage-icon.quality-35 { border-color: #299b99; }
+    .stage-icon.quality-40 { border-color: #5575c7; }
+
+    .stage-copy {
+      display: grid;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .stage-copy strong,
+    .stage-copy span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .stage-copy span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .stage-copy .quality-label { font-weight: 800; }
+    .stage-copy .quality-18 { color: #b84e5b; }
+    .stage-copy .quality-20 { color: #b7902d; }
+    .stage-copy .quality-25 { color: #8d672f; }
+    .stage-copy .quality-30 { color: #71899f; }
+    .stage-copy .quality-35 { color: #299b99; }
+    .stage-copy .quality-40 { color: #5575c7; }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .summary-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px;
+    }
+
+    .summary-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding-bottom: 11px;
+    }
+
+    .summary-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 19px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .summary-count {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .material-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 8px 4px 5px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .material-item img {
+      display: block;
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .material-item strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .table-section { margin-top: 16px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 10px 13px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .destiny-stage {
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .destiny-tier {
+      color: var(--jade-dark);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .page-title { font-size: 25px; }
+      .faction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .hero-card img { width: 44px; height: 44px; flex-basis: 44px; }
+      .detail-topline { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .detail-content { padding-top: 12px; }
+      .hero-summary { padding: 14px; }
+      .calculator-fields,
+      .calculator-results { grid-template-columns: 1fr; }
+      .destiny-calculator { padding: 14px; }
+      .ability-box { border-left: 0; border-top: 2px solid var(--jade); padding: 12px 0 0; }
+      .summary-panel { padding: 14px; }
+      .summary-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .material-item { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">武将天命点亮材料</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回上一级</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">武将天命点亮材料</h1>
+      <p class="page-note">按天命档位查看每个节点的点亮消耗</p>
+    </section>
+
+    <section class="hero-picker" aria-label="按阵营选择武将">
+      <div class="faction-tabs" role="tablist" aria-label="选择天命阵营">
+        <button class="faction-tab is-active" type="button" role="tab" aria-selected="true" data-faction="魏">魏</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="蜀">蜀</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="吴">吴</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="群">群</button>
+      </div>
+      <div class="faction-grid" id="hero-grid" role="tabpanel" aria-label="魏阵营武将"></div>
+    </section>
+
+    <section class="destiny-detail" id="destinyDetail" hidden>
+      <div class="detail-topline">
+        <h2 class="detail-title" id="detailTitle">武将天命情况</h2>
+        <a class="back-link" href="hero-destiny.html">返回武将列表</a>
+      </div>
+      <div class="detail-content">
+        <section class="hero-summary" id="heroSummary" aria-live="polite"></section>
+
+        <section class="destiny-calculator" aria-labelledby="calculatorTitle">
+          <h2 class="calculator-title" id="calculatorTitle">天命阶段计算</h2>
+          <div class="calculator-fields">
+            <div class="calculator-group">
+              <h3>当前进度</h3>
+              <div class="calculator-inputs">
+                <label class="field-label">
+                  人物阶段
+                  <select class="field" id="currentStageSelect"></select>
+                </label>
+                <label class="field-label">
+                  天命阶段
+                  <select class="field" id="currentDestinyStageSelect"></select>
+                </label>
+              </div>
+            </div>
+            <div class="calculator-group">
+              <h3>目标进度</h3>
+              <div class="calculator-inputs">
+                <label class="field-label">
+                  人物阶段
+                  <select class="field" id="targetStageSelect"></select>
+                </label>
+                <label class="field-label">
+                  天命阶段
+                  <select class="field" id="targetDestinyStageSelect"></select>
+                </label>
+              </div>
+            </div>
+          </div>
+          <p class="calculator-warning" id="calculatorWarning" hidden></p>
+          <div class="calculator-results">
+            <div class="calculator-result">
+              <h3>预计消耗材料</h3>
+              <div class="material-list" id="calculatorMaterials"></div>
+            </div>
+            <div class="calculator-result">
+              <h3>目前属性汇总</h3>
+              <div class="attribute-list" id="currentAttributes"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="toolbar" aria-label="按人物阶段筛选">
+          <label class="field-label">
+            人物阶段筛选
+            <select class="field" id="stageFilterSelect">
+              <option value="all">全部人物阶段</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="summary-panel" aria-live="polite">
+          <div class="summary-heading">
+            <h2 class="summary-title">当前筛选材料合计</h2>
+            <span class="summary-count" id="summaryCount"></span>
+          </div>
+          <div class="material-list" id="totalMaterials"></div>
+        </section>
+
+        <section class="table-section">
+          <div class="section-head">
+            <h2 class="section-title">天命点亮消耗</h2>
+            <span class="section-meta">每行对应 1 个天命节点</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">人物阶段</th>
+                  <th scope="col">天命阶段</th>
+                  <th scope="col">新增属性</th>
+                  <th scope="col">点亮材料</th>
+                </tr>
+              </thead>
+              <tbody id="destinyTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <!-- 复用武将进阶数据中的材料名称和图标；天命专属消耗单独来自 destinyCost。 -->
+  <script src="assets/hero-evolve-data.js"></script>
+  <script src="assets/hero-destiny-data.js"></script>
+  <script src="assets/hero-destiny-costs.js"></script>
+  <script src="assets/hero-destiny-details.js"></script>
+  <script src="assets/hero-destiny-stage-icons.js"></script>
+  <script>
+    const data = window.heroDestinyData;
+    const evolveData = window.heroEvolveData;
+    const destinyCosts = window.heroDestinyCosts;
+    const details = window.heroDestinyDetails;
+    const stageIcons = window.heroDestinyStageIcons;
+    const heroPicker = document.querySelector(".hero-picker");
+    const destinyDetail = document.querySelector("#destinyDetail");
+    const pageTitle = document.querySelector(".page-title");
+    const pageNote = document.querySelector(".page-note");
+    const stageFilterSelect = document.querySelector("#stageFilterSelect");
+    const currentStageSelect = document.querySelector("#currentStageSelect");
+    const currentDestinyStageSelect = document.querySelector("#currentDestinyStageSelect");
+    const targetStageSelect = document.querySelector("#targetStageSelect");
+    const targetDestinyStageSelect = document.querySelector("#targetDestinyStageSelect");
+    const calculatorWarning = document.querySelector("#calculatorWarning");
+    const calculatorMaterials = document.querySelector("#calculatorMaterials");
+    const currentAttributesNode = document.querySelector("#currentAttributes");
+    const summaryCount = document.querySelector("#summaryCount");
+    const totalMaterialsNode = document.querySelector("#totalMaterials");
+    const destinyTable = document.querySelector("#destinyTable");
+    const heroSummary = document.querySelector("#heroSummary");
+    const detailTitle = document.querySelector("#detailTitle");
+    let selectedHeroId = "";
+    let stageGroups = [];
+
+    const formatNumber = (value) => Number(value).toLocaleString("zh-CN");
+    const flatAttributeNames = new Set(["生命", "物攻", "法攻", "物防", "法防", "攻击", "必防", "怒气", "初始怒气", "士气"]);
+    const hundredthAttributeNames = new Set(["统帅", "统率", "武力", "智力"]);
+    function formatAttributeValue(attribute) {
+      const raw = Number(attribute.value) || 0;
+      if (flatAttributeNames.has(attribute.name)) return formatNumber(raw);
+      const value = raw / 100;
+      return `${value.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}${hundredthAttributeNames.has(attribute.name) ? "" : "%"}`;
+    }
+    // 普通节点按品质区间显示，真、圣等阶段节点在 qualityBandAt 中沿用前一档品质。
+    const stageBands = [
+      { start: 1, end: 20, quality: 18, name: "红色", heroStar: 7 },
+      { start: 20, end: 30, quality: 20, name: "金色", heroStar: 8 },
+      { start: 30, end: 50, quality: 25, name: "暗金色", heroStar: 9 },
+      { start: 50, end: 60, quality: 30, name: "白金色", heroStar: 10 },
+      { start: 60, end: 70, quality: 35, name: "琉金色", heroStar: 11 },
+      { start: 70, end: Infinity, quality: 40, name: "澜金色", heroStar: 12 }
+    ];
+    const points = data.lightCosts.map((point, index) => ({
+      ...point,
+      ...details.points[index]
+    }));
+
+    function selectedHero() {
+      return details.heroes.find((hero) => String(hero.id) === String(selectedHeroId));
+    }
+
+    function materialInfo(id, hero) {
+      const knownMaterial = data.materials[id] || evolveData?.items?.[id];
+      if (knownMaterial) return knownMaterial;
+      const rawId = String(id);
+      if (rawId.startsWith("410")) {
+        const heroSuffix = rawId.slice(3);
+        const soulHero = details.heroes.find((entry) => String(entry.id).endsWith(heroSuffix));
+        if (soulHero) return { name: `${soulHero.name}武魂`, icon: soulHero.icon };
+      }
+      return hero ? { name: `材料（${rawId}）`, icon: hero.icon } : null;
+    }
+
+    function materialMarkup(id, quantity, hero) {
+      const item = materialInfo(id, hero);
+      if (!item) return "";
+      return `<span class="material-item"><img src="${item.icon}" alt="${item.name}"><span>${item.name}</span><strong>×${formatNumber(quantity)}</strong></span>`;
+    }
+
+    function pointMaterials(hero, pointNumber) {
+      const point = points[pointNumber - 1];
+      const materials = { ...(point?.materials || {}) };
+      const extraMaterials = destinyCosts?.[String(hero.id)]?.[String(pointNumber)] || {};
+      Object.entries(extraMaterials).forEach(([id, quantity]) => {
+        materials[id] = (materials[id] || 0) + quantity;
+      });
+      return materials;
+    }
+
+    function sumMaterials(rows, hero) {
+      return rows.reduce((result, point) => {
+        Object.entries(pointMaterials(hero, point.number)).forEach(([id, quantity]) => {
+          result[id] = (result[id] || 0) + quantity;
+        });
+        return result;
+      }, {});
+    }
+
+    function sumAttributes(rows) {
+      const result = new Map();
+      rows.forEach((point) => {
+        point.attributes.forEach((attribute) => {
+          const key = String(attribute.id ?? attribute.name);
+          const value = Number(attribute.value) || 0;
+          if (result.has(key)) {
+            result.get(key).value += value;
+          } else {
+            result.set(key, { ...attribute, value });
+          }
+        });
+      });
+      return [...result.values()];
+    }
+
+    function attributeMarkup(attributes) {
+      return attributes.map((attribute) => (
+        `<span class="attribute-item"><span>${attribute.name}</span><strong>+${formatAttributeValue(attribute)}</strong></span>`
+      )).join("");
+    }
+
+    function combinedAttributeMarkup(currentAttributes, newAttributes) {
+      const merged = new Map();
+      currentAttributes.forEach((attribute) => {
+        merged.set(String(attribute.id ?? attribute.name), { current: attribute, added: null });
+      });
+      newAttributes.forEach((attribute) => {
+        const key = String(attribute.id ?? attribute.name);
+        const entry = merged.get(key) || { current: null, added: null };
+        entry.added = attribute;
+        merged.set(key, entry);
+      });
+      return [...merged.values()].map(({ current, added }) => {
+        const base = current ? Number(current.value) || 0 : 0;
+        const increment = added ? Number(added.value) || 0 : 0;
+        const template = current || added;
+        const baseMarkup = base ? formatAttributeValue({ ...template, value: base }) : "";
+        const addedMarkup = increment
+          ? `<em class="attribute-added">+${formatAttributeValue({ ...template, value: increment })}</em>`
+          : "";
+        return `<span class="attribute-item"><span>${template.name}</span><strong>${baseMarkup}${addedMarkup}</strong></span>`;
+      }).join("");
+    }
+
+    function stageAt(hero, pointNumber) {
+      return hero.stages.find((stage) => stage.point === pointNumber);
+    }
+
+    function stageBandAt(pointNumber) {
+      return stageBands.find((band) => pointNumber >= band.start && pointNumber < band.end);
+    }
+
+    function qualityBandAt(hero, pointNumber) {
+      const band = stageBandAt(pointNumber);
+      if (!band) return null;
+      const stage = stageAt(hero, pointNumber);
+      // 真、圣等阶段节点沿用切换前的品质，避免阶段名称和人物卡品质错位。
+      return stage ? stageBandAt(pointNumber - 1) || band : band;
+    }
+
+    function stageMarkup(hero, pointNumber) {
+      const band = stageBandAt(pointNumber);
+      const qualityBand = qualityBandAt(hero, pointNumber);
+      if (!band || !qualityBand) return "";
+      const stage = stageAt(hero, pointNumber);
+      const iconMap = stageIcons[String(hero.id)] || {};
+      const icon = iconMap[String(qualityBand.quality)] || hero.icon;
+      const title = stage ? stage.name : `${band.name}品质`;
+      return `<img class="stage-icon quality-${qualityBand.quality}" src="${icon}" alt="${qualityBand.name}品质武将"><span class="stage-copy"><strong class="quality-label quality-${qualityBand.quality}">${title}</strong></span>`;
+    }
+
+    function destinyStageNumber(hero, pointNumber, band = qualityBandAt(hero, pointNumber)) {
+      if (pointNumber <= 0 || !band) return 0;
+      return points.filter((candidate) => (
+        candidate.number <= pointNumber
+        && qualityBandAt(hero, candidate.number)?.quality === band.quality
+      )).length;
+    }
+
+    function destinyStageName(hero, point) {
+      return `${destinyStageNumber(hero, point.number)}阶`;
+    }
+
+    function destinyStageTransition(hero, point) {
+      const currentBand = qualityBandAt(hero, point.number);
+      const previousStage = destinyStageNumber(hero, point.number - 1, currentBand);
+      const currentStage = destinyStageNumber(hero, point.number, currentBand);
+      return `${previousStage ? `${previousStage}阶` : "未点亮"}→${currentStage}阶`;
+    }
+
+    function buildStageGroups(hero) {
+      const groups = [];
+      for (let pointNumber = 1; pointNumber <= hero.destinyTotal; pointNumber += 1) {
+        const band = qualityBandAt(hero, pointNumber);
+        if (!band) continue;
+        const key = `quality-${band.quality}`;
+        let group = groups.find((item) => item.key === key);
+        if (!group) {
+          group = {
+            key,
+            band,
+            points: [],
+            basePoint: 0
+          };
+          groups.push(group);
+        }
+        group.points.push(pointNumber);
+        group.basePoint = group.points[0] - 1;
+        group.label = `${group.band.name}品质`;
+      }
+      return groups;
+    }
+
+    function stageGroupOptions() {
+      const options = stageGroups
+        .map((group) => `<option value="${group.key}">${group.label}</option>`)
+        .join("");
+      return options;
+    }
+
+    function groupForSelect(select) {
+      return stageGroups.find((group) => group.key === select.value);
+    }
+
+    function updateDestinyStageOptions(hero, stageSelect, destinySelect, preferredPoint) {
+      const group = groupForSelect(stageSelect);
+      if (!group) {
+        destinySelect.innerHTML = "<option value=\"0\">0阶</option>";
+        destinySelect.disabled = true;
+        return;
+      }
+      destinySelect.disabled = false;
+      const unlitPoint = group.basePoint;
+      const unlitOption = `<option value="${unlitPoint}">未点亮</option>`;
+      destinySelect.innerHTML = unlitOption + group.points.map((pointNumber) => (
+        `<option value="${pointNumber}">${destinyStageName(hero, points[pointNumber - 1])}${stageAt(hero, pointNumber) ? `（${stageAt(hero, pointNumber).name}）` : ""}</option>`
+      )).join("");
+      const point = group.points.includes(Number(preferredPoint)) || Number(preferredPoint) === unlitPoint
+        ? Number(preferredPoint)
+        : unlitPoint;
+      destinySelect.value = String(point);
+    }
+
+    function pointFromSelects(stageSelect, destinySelect) {
+      const group = groupForSelect(stageSelect);
+      if (!group) return 0;
+      const selectedPoint = Number(destinySelect.value);
+      return group.points.includes(selectedPoint) || selectedPoint === group.basePoint
+        ? selectedPoint
+        : group.basePoint;
+    }
+
+    function setSelectsToPoint(stageSelect, destinySelect, pointNumber) {
+      const group = stageGroups.find((item) => item.basePoint === pointNumber)
+        || stageGroups.find((item) => item.points.includes(pointNumber));
+      if (!group) return;
+      stageSelect.value = group.key;
+      updateDestinyStageOptions(selectedHero(), stageSelect, destinySelect, pointNumber);
+    }
+
+    function rebuildStageControls(hero) {
+      stageGroups = buildStageGroups(hero);
+      stageFilterSelect.innerHTML = `<option value="all">全部人物阶段</option>${stageGroupOptions()}`;
+      currentStageSelect.innerHTML = stageGroupOptions();
+      targetStageSelect.innerHTML = stageGroupOptions();
+      currentStageSelect.value = stageGroups[0]?.key || "";
+      targetStageSelect.value = stageGroups.length ? stageGroups[stageGroups.length - 1].key : "none";
+      updateDestinyStageOptions(hero, currentStageSelect, currentDestinyStageSelect, stageGroups[0]?.basePoint || 0);
+      updateDestinyStageOptions(hero, targetStageSelect, targetDestinyStageSelect, hero.destinyTotal);
+    }
+
+    function renderCalculator(hero, currentPoint, targetPoint, currentGroup, targetGroup) {
+      const heroPoints = points.filter((point) => point.number <= hero.destinyTotal);
+      const currentRows = heroPoints.filter((point) => point.number <= currentPoint);
+      const newRows = heroPoints.filter((point) => point.number > currentPoint && point.number <= targetPoint);
+      const currentAttributes = sumAttributes(currentRows);
+      const newAttributes = sumAttributes(newRows);
+      currentAttributesNode.innerHTML = currentAttributes.length || newAttributes.length
+        ? combinedAttributeMarkup(currentAttributes, newAttributes)
+        : `<p class="calculator-empty">暂无属性</p>`;
+
+      const targetStageIsLower = (targetGroup?.band.heroStar || 7) < (currentGroup?.band.heroStar || 7);
+      if (targetPoint < currentPoint || targetStageIsLower) {
+        calculatorWarning.hidden = false;
+        calculatorWarning.textContent = "目标人物阶段或天命阶段不能低于当前进度";
+        calculatorMaterials.innerHTML = `<p class="calculator-empty">请先调整目标进度</p>`;
+        return;
+      }
+
+      calculatorWarning.hidden = true;
+      const materials = sumMaterials(newRows, hero);
+      calculatorMaterials.innerHTML = Object.entries(materials)
+        .map(([id, quantity]) => materialMarkup(id, quantity, hero))
+        .join("") || `<p class="calculator-empty">无需消耗材料</p>`;
+    }
+
+    function renderHeroSummary(hero) {
+      const abilityStage = hero.ability && stageAt(hero, hero.ability.point);
+      const ability = hero.ability
+        ? `<div class="ability-box"><h3>${abilityStage ? abilityStage.name : "人物专属效果"}：${hero.ability.name}</h3><p>${hero.ability.description}</p></div>`
+        : `<div class="ability-box"><h3>人物专属效果</h3><p>源文件未配置专属效果。</p></div>`;
+      heroSummary.innerHTML = ability;
+    }
+
+    function render() {
+      const hero = selectedHero();
+      const maxPoint = Number(hero.destinyTotal);
+      const selectedGroup = stageGroups.find((group) => group.key === stageFilterSelect.value);
+      const currentPoint = pointFromSelects(currentStageSelect, currentDestinyStageSelect);
+      const targetPoint = pointFromSelects(targetStageSelect, targetDestinyStageSelect);
+      const currentGroup = groupForSelect(currentStageSelect);
+      const targetGroup = groupForSelect(targetStageSelect);
+      const heroPoints = points.filter((point) => point.number <= maxPoint);
+      const visiblePoints = !selectedGroup
+        ? heroPoints
+        : heroPoints.filter((point) => selectedGroup.points.includes(point.number));
+      const totals = sumMaterials(visiblePoints, hero);
+
+      renderHeroSummary(hero);
+      renderCalculator(hero, currentPoint, targetPoint, currentGroup, targetGroup);
+      summaryCount.textContent = `${hero.name} · ${visiblePoints.length} 个天命点`;
+      totalMaterialsNode.innerHTML = Object.entries(totals)
+        .map(([id, quantity]) => materialMarkup(id, quantity, hero))
+        .join("");
+      destinyTable.innerHTML = visiblePoints.map((point) => {
+        const materials = Object.entries(pointMaterials(hero, point.number))
+          .map(([id, quantity]) => materialMarkup(id, quantity, hero))
+          .join("");
+        const ability = hero.ability?.point === point.number
+          ? `<span class="attribute-item ability-item"><span>${hero.ability.name}</span></span>`
+          : "";
+        return `<tr><td class="stage-cell"><div class="stage-content">${stageMarkup(hero, point.number)}</div></td><td class="destiny-stage">${destinyStageTransition(hero, point)}</td><td><div class="attribute-list">${attributeMarkup(point.attributes)}${ability}</div></td><td><div class="material-list">${materials}</div></td></tr>`;
+      }).join("");
+    }
+
+    const factionTabs = [...document.querySelectorAll(".faction-tab")];
+    const heroGrid = document.querySelector("#hero-grid");
+    let selectedFaction = "魏";
+
+    function renderSelector() {
+      const heroes = details.heroes.filter((hero) => hero.country === selectedFaction);
+      heroGrid.innerHTML = heroes.map((hero) => `
+        <a class="hero-card" href="hero-destiny.html?hero=${encodeURIComponent(hero.id)}" aria-label="查看${hero.name}天命">
+          <img src="${hero.icon}" alt="${hero.name}"><span>${hero.name}</span>
+        </a>
+      `).join("");
+      heroGrid.setAttribute("aria-label", `${selectedFaction}阵营武将`);
+      factionTabs.forEach((tab) => {
+        const active = tab.dataset.faction === selectedFaction;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+      });
+    }
+
+    function showHeroDetail(hero) {
+      selectedHeroId = String(hero.id);
+      heroPicker.hidden = true;
+      destinyDetail.hidden = false;
+      pageTitle.textContent = `${hero.name} · 天命情况`;
+      pageNote.textContent = "按人物阶段查看天命属性与点亮材料";
+      detailTitle.textContent = `${hero.name} · 天命情况`;
+      document.title = `${hero.name}天命点亮材料 - 放三数据合集`;
+      rebuildStageControls(hero);
+      render();
+    }
+
+    stageFilterSelect.addEventListener("change", render);
+    currentStageSelect.addEventListener("change", () => {
+      updateDestinyStageOptions(selectedHero(), currentStageSelect, currentDestinyStageSelect, 0);
+      const currentPoint = pointFromSelects(currentStageSelect, currentDestinyStageSelect);
+      if (pointFromSelects(targetStageSelect, targetDestinyStageSelect) < currentPoint) {
+        setSelectsToPoint(targetStageSelect, targetDestinyStageSelect, currentPoint);
+      }
+      render();
+    });
+    currentDestinyStageSelect.addEventListener("change", () => {
+      const currentPoint = pointFromSelects(currentStageSelect, currentDestinyStageSelect);
+      if (pointFromSelects(targetStageSelect, targetDestinyStageSelect) < currentPoint) {
+        setSelectsToPoint(targetStageSelect, targetDestinyStageSelect, currentPoint);
+      }
+      render();
+    });
+    targetStageSelect.addEventListener("change", () => {
+      updateDestinyStageOptions(selectedHero(), targetStageSelect, targetDestinyStageSelect, 0);
+      render();
+    });
+    targetDestinyStageSelect.addEventListener("change", render);
+    heroPicker.addEventListener("click", (event) => {
+      const factionTab = event.target.closest(".faction-tab");
+      if (!factionTab) return;
+      selectedFaction = factionTab.dataset.faction;
+      renderSelector();
+    });
+    renderSelector();
+    const heroId = new URLSearchParams(window.location.search).get("hero");
+    const heroFromUrl = details.heroes.find((hero) => String(hero.id) === String(heroId));
+    if (heroFromUrl) showHeroDetail(heroFromUrl);
+  </script>
+</body>
+</html>

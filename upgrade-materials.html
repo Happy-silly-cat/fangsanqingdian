@@ -87,97 +87,74 @@
 
     .material-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .material-card {
-      position: relative;
-      display: block;
-      min-height: 300px;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 78px;
+      padding: 11px 13px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      isolation: isolate;
+      background: var(--panel);
+      color: var(--text);
       text-decoration: none;
-    }
-
-    .material-picture,
-    .material-picture img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .material-picture {
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .material-picture img {
-      object-fit: cover;
-      object-position: center;
-      filter: brightness(0.92) saturate(1.08);
-      transition: transform 240ms ease;
-    }
-
-    .material-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(90deg, rgba(6, 11, 10, 0.12), rgba(6, 11, 10, 0.62));
-      pointer-events: none;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
 
     .material-card:hover {
+      transform: translateY(-2px);
       border-color: #65756f;
+      background: var(--panel-hover);
+      box-shadow: 0 8px 18px rgba(69, 56, 39, 0.1);
     }
 
-    .material-card:hover .material-picture img {
-      transform: scale(1.015);
+    .material-card:focus-visible {
+      outline: 3px solid rgba(60, 157, 133, 0.4);
+      outline-offset: 2px;
+    }
+
+    .material-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 52px;
+      width: 52px;
+      height: 52px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 8px;
+      background: #f3e8d5;
+    }
+
+    .material-icon img {
+      display: block;
+      max-width: 44px;
+      max-height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 3px rgba(50, 36, 20, 0.16));
     }
 
     .material-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-end;
-      width: min(58%, 430px);
-      min-height: 300px;
-      margin-left: auto;
-      padding: 28px;
-      text-align: right;
-      text-shadow: 0 2px 14px #050807;
+      min-width: 0;
     }
 
     .material-title {
       margin: 0;
-      color: #ffffff;
-      font-size: 30px;
-      line-height: 1.2;
-      font-weight: 850;
-    }
-
-    .material-description {
-      margin: 10px 0 20px;
-      color: #ffffff;
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .material-description .line {
-      display: block;
-    }
-
-    .material-action {
-      color: #ffffff;
-      font-size: 14px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.35;
       font-weight: 800;
+      overflow-wrap: anywhere;
     }
 
     footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
       margin-top: 26px;
       border-top: 1px solid var(--line);
       padding-top: 20px;
@@ -191,25 +168,27 @@
       line-height: 1.7;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 980px) {
+      .material-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
       .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
       .site-header { padding-bottom: 16px; }
       .brand-mark { width: 96px; flex-basis: 96px; }
-      .page-title { font-size: 26px; }
-      .material-grid { grid-template-columns: 1fr; }
-      .material-card { min-height: 260px; }
-      .material-copy {
-        width: 72%;
-        min-height: 260px;
-        padding: 22px;
+      .page-title { margin-top: 22px; font-size: 26px; }
+      .material-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .material-card { min-height: 68px; gap: 9px; padding: 9px 10px; }
+      .material-icon { flex-basis: 44px; width: 44px; height: 44px; }
+      .material-icon img { max-width: 37px; max-height: 37px; }
+      .material-title { font-size: 14px; }
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
       }
-      .material-title { font-size: 26px; }
-      .material-description { font-size: 13.5px; line-height: 1.55; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .material-picture img { transition: none; }
-    }
   </style>
 </head>
 <body>
@@ -226,15 +205,16 @@
 
     <nav class="material-grid" aria-label="升级材料消耗表入口">
       <a class="material-card" href="houjun-upgrade.html">
-        <picture class="material-picture">
-          <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile-v2.jpg">
-          <img src="assets/main-interface-banner.jpg" alt="游戏主界面背景">
-        </picture>
-        <div class="material-copy">
-          <h2 class="material-title">后军升级材料</h2>
-          <p class="material-description"><span class="line">查看后军合成与升级消耗</span><span class="line">按阶段核对碎片需求</span></p>
-          <span class="material-action">打开表格 <span aria-hidden="true">&#8594;</span></span>
-        </div>
+        <span class="material-icon"><img src="assets/lingdi-icons/lingdi_n.png" alt="后军与领地图标"></span>
+        <span class="material-copy"><h2 class="material-title">后军</h2></span>
+      </a>
+      <a class="material-card" href="protagonist-fashion.html">
+        <span class="material-icon"><img src="assets/fashion-gallery/male-small-01.png" alt="主角时装图标"></span>
+        <span class="material-copy"><h2 class="material-title">主角时装</h2></span>
+      </a>
+      <a class="material-card" href="hero-destiny.html">
+        <span class="material-icon"><img src="assets/hero-destiny-items/tianmingshi.png" alt="天命石图标"></span>
+        <span class="material-copy"><h2 class="material-title">天命</h2></span>
       </a>
     </nav>
 

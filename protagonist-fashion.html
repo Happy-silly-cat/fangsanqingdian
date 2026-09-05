@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="主角时装属性、强化、升星和进阶消耗查询。">
+  <title>主角时装 · 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fffaf0;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #d49b3f;
+      --soft-gold: #fff0c9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 38px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 21px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .back-link,
+    .gender-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--text);
+      background: var(--panel);
+      text-decoration: none;
+      font-weight: 750;
+      transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .back-link {
+      min-height: 38px;
+      padding: 0 13px;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .back-link:hover,
+    .gender-tab:hover {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      transform: translateY(-1px);
+    }
+
+    .page-title {
+      margin: 25px 0 7px;
+      font-size: clamp(25px, 3vw, 32px);
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-summary {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: auto minmax(220px, 1fr);
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.86);
+    }
+
+    .quality-filter-list {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 7px;
+      width: 100%;
+      border-top: 1px solid rgba(217, 203, 182, 0.85);
+      padding-top: 12px;
+    }
+
+    .quality-filter {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 31px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 6px;
+      color: var(--quality-color, var(--muted));
+      background: var(--quality-soft, var(--panel));
+      font-size: 12px;
+      font-weight: 800;
+      transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease, transform 160ms ease;
+    }
+
+    .quality-filter:hover {
+      border-color: var(--quality-color, var(--jade));
+      transform: translateY(-1px);
+    }
+
+    .quality-filter.active {
+      border-color: var(--quality-color, var(--jade-dark));
+      color: var(--quality-color, var(--jade-dark));
+      background: var(--quality-soft, var(--panel));
+      box-shadow: inset 0 0 0 1px var(--quality-color, var(--jade-dark));
+    }
+
+    .gender-tabs {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .gender-tab {
+      min-height: 38px;
+      min-width: 86px;
+      padding: 0 14px;
+      font-size: 13px;
+    }
+
+    .gender-tab.active {
+      border-color: var(--jade-dark);
+      color: #fffdf8;
+      background: var(--jade-dark);
+    }
+
+    .search-input {
+      grid-column: 2;
+      grid-row: 1;
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      outline: none;
+      padding: 0 12px;
+      color: var(--text);
+      background: var(--panel-strong);
+    }
+
+    .search-input:focus {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 3px rgba(60, 157, 133, 0.15);
+    }
+
+    .fashion-grid {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .fashion-groups {
+      display: grid;
+      gap: 18px;
+    }
+
+    .quality-group {
+      --quality-color: var(--jade);
+      --quality-soft: #e8f3eb;
+    }
+
+    .quality-group-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 7px;
+    }
+
+    .quality-group-title {
+      margin: 0;
+      color: var(--quality-color);
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 850;
+    }
+
+    .quality-group-count {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .quality-mark {
+      display: inline-grid;
+      place-items: center;
+      min-width: 34px;
+      min-height: 25px;
+      border: 1px solid color-mix(in srgb, var(--quality-color) 55%, #ffffff);
+      border-radius: 5px;
+      padding: 0 6px;
+      color: #fff;
+      background: var(--quality-color);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .quality-5 { --quality-color: #8164b5; --quality-soft: #f0eaff; }
+    .quality-6 { --quality-color: #d97d2d; --quality-soft: #fff0df; }
+    .quality-7 { --quality-color: #b84e5b; --quality-soft: #fae8eb; }
+    .quality-8 { --quality-color: #b7902d; --quality-soft: #fff8dc; }
+    .quality-9 { --quality-color: #8d672f; --quality-soft: #f5eadb; }
+    .quality-10 { --quality-color: #71899f; --quality-soft: #edf4f8; }
+    .quality-11 { --quality-color: #299b99; --quality-soft: #e3f5f2; }
+    .quality-12 { --quality-color: #5575c7; --quality-soft: #e9edff; }
+
+    .fashion-card {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 66px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--quality-color, var(--line));
+      border-radius: 7px;
+      padding: 7px 8px;
+      color: var(--text);
+      background: var(--panel);
+      text-align: left;
+      transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .fashion-card:hover {
+      border-color: var(--quality-color, var(--gold));
+      border-left-color: var(--quality-color, var(--gold));
+      background: var(--panel-hover);
+      box-shadow: 0 5px 12px rgba(69, 56, 39, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .fashion-card.active {
+      border-color: var(--quality-color, var(--jade-dark));
+      border-left-color: var(--quality-color, var(--jade-dark));
+      background: var(--quality-soft, #e8f3eb);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--quality-color, var(--jade-dark)) 18%, transparent);
+    }
+
+    .fashion-thumb {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 203, 182, 0.95);
+      border-radius: 7px;
+      background: #f1e6d3;
+    }
+
+    .fashion-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .fashion-thumb.empty {
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .fashion-card-copy { min-width: 0; }
+
+    .fashion-card-title {
+      overflow: hidden;
+      margin: 0;
+      color: var(--quality-color, var(--text));
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 28px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .detail {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .detail-overview {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .detail-summary {
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .detail-preview,
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .detail-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      padding: 12px;
+      background: linear-gradient(135deg, #fffaf0, #f1e7d7);
+    }
+
+    .detail-preview-frame {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 0;
+      border: 1px solid rgba(145, 112, 65, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    .detail-preview-frame img {
+      display: block;
+      width: min(100%, 420px);
+      height: auto;
+      max-width: 100%;
+      max-height: 360px;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .detail-preview-trigger {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .detail-preview-trigger:focus-visible {
+      outline: 2px solid var(--jade);
+      outline-offset: 3px;
+    }
+
+    .detail-preview-frame.empty {
+      min-height: 194px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .image-lightbox[hidden] { display: none; }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(26, 22, 17, 0.84);
+    }
+
+    .image-lightbox img {
+      display: block;
+      max-width: min(92vw, 1280px);
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 8px;
+      background: #fffaf0;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.38);
+    }
+
+    .image-lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.28);
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .image-lightbox-close:hover,
+    .image-lightbox-close:focus-visible { background: rgba(0, 0, 0, 0.5); }
+
+    body.lightbox-open { overflow: hidden; }
+
+    .section-panel { padding: 14px; }
+
+    .fashion-calculator-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .calculator-states {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .calculator-state,
+    .calculator-cost-group {
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 10px;
+      background: var(--panel-strong);
+    }
+
+    .calculator-state-title,
+    .calculator-cost-group-title {
+      margin: 0 0 8px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .calculator-inputs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .calculator-field {
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .calculator-field input {
+      width: 100%;
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 5px 7px;
+      color: var(--text);
+      background: #fffdf8;
+    }
+
+    .calculator-field input:focus {
+      outline: 0;
+      border-color: var(--jade);
+      box-shadow: 0 0 0 3px rgba(60, 157, 133, 0.15);
+    }
+
+    .calculator-submit {
+      justify-self: start;
+      min-height: 36px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 16px;
+      color: #fffdf8;
+      background: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .calculator-submit:hover,
+    .calculator-submit:focus-visible { background: var(--jade); }
+
+    .calculator-result {
+      border-top: 1px solid rgba(217, 203, 182, 0.78);
+      padding-top: 12px;
+    }
+
+    .calculator-result-summary {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .calculator-cost-groups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .calculator-cost-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+    }
+
+    .calculator-cost-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      color: var(--text);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .calculator-cost-item img,
+    .calculator-cost-item .material-placeholder {
+      flex: 0 0 26px;
+      width: 26px;
+      height: 26px;
+    }
+
+    .calculator-attribute-results {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .calculator-attribute-result {
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 10px;
+      background: var(--panel-strong);
+    }
+
+    .calculator-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 14px;
+    }
+
+    .calculator-attribute-item {
+      color: var(--text);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .calculator-attribute-item strong { color: var(--gold); }
+
+    .calculator-attribute-added {
+      margin-left: 3px;
+      color: #239b63;
+      font-style: normal;
+    }
+
+    @media (max-width: 760px) {
+      .calculator-states,
+      .calculator-cost-groups { grid-template-columns: 1fr; }
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 10px;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .attribute-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .attribute-box {
+      min-width: 0;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 10px;
+      background: var(--panel-strong);
+    }
+
+    .attribute-box-title {
+      margin: 0 0 8px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .attribute-item {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .attribute-item strong { color: var(--gold); }
+
+    .table-attribute-list { flex-wrap: nowrap; }
+
+    .advance-stage-note {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .advance-costs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+    }
+
+    .advance-cost {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .advance-cost .table-material-name {
+      color: var(--text);
+    }
+
+    .advance-table td:nth-child(2) {
+      white-space: normal;
+    }
+
+    .talent-box {
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 11px;
+      background: var(--panel-strong);
+    }
+
+    .talent-name {
+      margin: 0 0 6px;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .talent-description {
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .material-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .material-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 46px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 5px 10px 5px 6px;
+      background: var(--panel-strong);
+    }
+
+    .material-chip img,
+    .table-material img {
+      display: block;
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .material-chip-copy { display: grid; gap: 1px; }
+    .material-chip-name { font-size: 12px; font-weight: 800; }
+    .material-chip-count { color: var(--muted); font-size: 11px; }
+
+    .material-placeholder {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      color: var(--gold);
+      background: var(--soft-gold);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .data-table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      background: var(--panel-strong);
+    }
+
+    .data-table {
+      width: 100%;
+      min-width: 510px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .data-table th,
+    .data-table td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.78);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .data-table th {
+      color: var(--jade-dark);
+      background: #f8f0df;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .strengthen-details .data-table { min-width: 980px; }
+
+    .data-table tr:last-child td { border-bottom: 0; }
+    .data-table td strong { color: var(--gold); }
+
+    .table-material {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .combined-materials {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px 14px;
+    }
+
+    .table-material-name { display: inline-block; }
+
+    .strengthen-details {
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      background: var(--panel-strong);
+    }
+
+    .strengthen-details summary {
+      cursor: pointer;
+      padding: 10px 12px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .strengthen-details .data-table-wrap {
+      border: 0;
+      border-top: 1px solid rgba(217, 203, 182, 0.78);
+      border-radius: 0;
+    }
+
+    .muted-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 25px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1020px) {
+      .fashion-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .toolbar { grid-template-columns: 1fr; }
+      .quality-filter-list,
+      .search-input { grid-column: auto; grid-row: auto; }
+      .fashion-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .detail-overview { grid-template-columns: 1fr; }
+      .detail-preview { width: 100%; height: auto; min-height: 0; padding: 10px; }
+      .detail-preview-frame { flex: 0 0 auto; height: auto; min-height: 0; }
+      .detail-preview-frame.empty { min-height: 165px; }
+    }
+
+    @media (max-width: 440px) {
+      .back-link { padding: 0 9px; }
+      .brand-name { font-size: 16px; }
+      .fashion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .attribute-columns { grid-template-columns: 1fr; }
+      .section-panel { padding: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <a href="index.html" aria-label="返回首页">
+        <img class="brand-mark" src="assets/fangsan-logo.png" alt="放三数据合集">
+      </a>
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回升级表</a>
+    </header>
+
+    <h1 class="page-title">主角时装</h1>
+    <p class="page-summary" id="pageSummary">选择时装查看属性、强化、升星与进阶消耗。</p>
+
+    <section class="toolbar" aria-label="主角时装筛选">
+      <div class="gender-tabs" role="group" aria-label="主角性别">
+        <button class="gender-tab active" type="button" data-gender="male">主角男</button>
+        <button class="gender-tab" type="button" data-gender="female">主角女</button>
+      </div>
+      <div class="quality-filter-list" id="qualityFilters" role="group" aria-label="选择品质"></div>
+      <input class="search-input" id="searchInput" type="search" placeholder="搜索编号或时装名称" autocomplete="off">
+    </section>
+
+    <section class="fashion-groups" id="fashionGrid" aria-label="按品质分类的主角时装列表"></section>
+    <section class="detail" id="detail" aria-live="polite"></section>
+
+    <footer>
+      本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+    </footer>
+  </main>
+
+  <div class="image-lightbox" id="imageLightbox" hidden role="dialog" aria-modal="true" aria-label="时装大图预览">
+    <button class="image-lightbox-close" id="imageLightboxClose" type="button" aria-label="关闭大图预览">×</button>
+    <img id="imageLightboxImage" alt="">
+  </div>
+
+  <script src="assets/protagonist-fashion-data.js"></script>
+  <script>
+    const data = window.PROTAGONIST_FASHION_DATA || { items: [], plans: [], materials: {}, attributeNames: {} };
+    const items = Array.isArray(data.items) ? data.items : [];
+    const plans = new Map((data.plans || []).map((plan) => [plan.id, plan]));
+    const attributeNames = data.attributeNames || {};
+    const materials = data.materials || {};
+    const SILVER_ICON = "assets/lingdi-items/yinbi.png";
+    const grid = document.getElementById("fashionGrid");
+    const detail = document.getElementById("detail");
+    const imageLightbox = document.getElementById("imageLightbox");
+    const imageLightboxImage = document.getElementById("imageLightboxImage");
+    const imageLightboxClose = document.getElementById("imageLightboxClose");
+    const searchInput = document.getElementById("searchInput");
+    const pageSummary = document.getElementById("pageSummary");
+    const qualityFilters = document.getElementById("qualityFilters");
+    const tabButtons = [...document.querySelectorAll("[data-gender]")];
+    const QUALITY_ORDER = [5, 6, 7, 8, 9, 10, 11, 12];
+    // 这些属性在源配置中按整数记录，其余战斗类属性按百分比的百分之一记录。
+    const FLAT_ATTRIBUTE_IDS = new Set([1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 19, 20, 49, 51, 54, 55, 100]);
+    const HUNDREDTH_ATTRIBUTE_IDS = new Set([6, 7, 8, 16, 17, 18]);
+    const HUNDREDTH_ATTRIBUTE_NAMES = new Set(["统帅", "统率", "武力", "智力"]);
+    const QUALITY_META = {
+      5: { label: "紫", className: "quality-5" },
+      6: { label: "橙", className: "quality-6" },
+      7: { label: "红", className: "quality-7" },
+      8: { label: "金", className: "quality-8" },
+      9: { label: "暗金", className: "quality-9" },
+      10: { label: "白金", className: "quality-10" },
+      11: { label: "琉金", className: "quality-11" },
+      12: { label: "澜金", className: "quality-12" }
+    };
+    let selectedGender = "male";
+    let selectedQuality = String(QUALITY_ORDER[0]);
+    let selectedId = Number(new URLSearchParams(location.search).get("id")) || items[0]?.id || 1;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString("zh-CN");
+    }
+
+    function formatSilverAmount(value) {
+      const amount = Number(value);
+      if (!Number.isFinite(amount)) return formatNumber(value);
+      if (Math.abs(amount) >= 10000) {
+        const wan = amount / 10000;
+        return `${Number(wan.toFixed(2))}w`;
+      }
+      return formatNumber(amount);
+    }
+
+    function formatAttributeAmount(attribute) {
+      const amount = Number(attribute.amount || 0);
+      const name = attributeName(attribute.id);
+      if (FLAT_ATTRIBUTE_IDS.has(Number(attribute.id))) return `+${formatNumber(amount)}`;
+      if (HUNDREDTH_ATTRIBUTE_IDS.has(Number(attribute.id)) || HUNDREDTH_ATTRIBUTE_NAMES.has(name)) {
+        return `+${(amount / 100).toLocaleString("zh-CN", { maximumFractionDigits: 2 })}`;
+      }
+      const percent = amount / 100;
+      return `+${percent.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}%`;
+    }
+
+    function qualityInfo(value) {
+      const quality = Number(value);
+      return QUALITY_META[quality] || { label: `品质${quality}`, className: "quality-unknown" };
+    }
+
+    function renderQualityFilters() {
+      const buttons = QUALITY_ORDER.map((qualityValue) => {
+        const quality = qualityInfo(qualityValue);
+        return `<button class="quality-filter ${quality.className}${selectedQuality === String(qualityValue) ? " active" : ""}" type="button" data-quality-filter="${qualityValue}">${escapeHtml(quality.label)}</button>`;
+      });
+      qualityFilters.innerHTML = buttons.join("");
+      qualityFilters.querySelectorAll("[data-quality-filter]").forEach((button) => button.addEventListener("click", () => {
+        selectedQuality = button.dataset.qualityFilter;
+        renderQualityFilters();
+        render();
+      }));
+    }
+
+    function attributeName(id) {
+      return attributeNames[id] || `属性${id}`;
+    }
+
+    function renderAttributes(attributes, emptyText = "暂无配置") {
+      if (!attributes || !attributes.length) return `<p class="muted-text">${emptyText}</p>`;
+      return `<ul class="attribute-list">${attributes.map((attribute) => `
+        <li class="attribute-item">${escapeHtml(attributeName(attribute.id))} <strong>${formatAttributeAmount(attribute)}</strong></li>
+      `).join("")}</ul>`;
+    }
+
+    function renderTableAttributes(attributes, emptyText = "—") {
+      if (!attributes || !attributes.length) return `<span class="muted-text">${emptyText}</span>`;
+      return `<ul class="attribute-list table-attribute-list">${attributes.map((attribute) => `
+        <li class="attribute-item">${escapeHtml(attributeName(attribute.id))} <strong>${formatAttributeAmount(attribute)}</strong></li>
+      `).join("")}</ul>`;
+    }
+
+    function renderAdvanceCost(cost) {
+      if (cost.type === 1 && cost.materialId === 0) {
+        return `<span class="advance-cost">${renderSilverMaterial(cost.amount)}</span>`;
+      }
+      const material = materialInfo(cost.materialId);
+      return `<span class="advance-cost"><span class="table-material">
+        ${renderMaterialVisual(cost.materialId)}
+        <span class="table-material-name">${escapeHtml(material.name)} ×${formatNumber(cost.amount)}</span>
+      </span></span>`;
+    }
+
+    function renderAdvanceAttributeText(attributes) {
+      return attributes.map((attribute) => `${escapeHtml(attributeName(attribute.id))} ${formatAttributeAmount(attribute)}`).join("、");
+    }
+
+    function renderAdvanceDetails(item) {
+      const rows = item.advanceRows || [];
+      const legacyStages = item.advanceStages || [];
+      if (!rows.length && !legacyStages.length) return `<p class="muted-text">暂无时装进阶属性。</p>`;
+
+      const displayRows = rows.length
+        ? rows
+        : legacyStages.map((stage) => ({ stage, attributes: [], costs: [] }));
+      const stageRange = displayRows.length
+        ? `${formatNumber(Math.max(0, Number(displayRows[0].stage) - 1))}阶→${formatNumber(displayRows[displayRows.length - 1].stage)}阶`
+        : "";
+      return `<div class="data-table-wrap">
+        <table class="data-table advance-table">
+          <thead><tr><th>进阶档位</th><th>本档属性</th><th>本档消耗</th></tr></thead>
+          <tbody>${displayRows.map((row) => `
+            <tr>
+              <td>${Number(row.stage) > 0 ? `${formatNumber(Number(row.stage) - 1)}阶→${formatNumber(row.stage)}阶` : "0阶→1阶"}</td>
+              <td>${renderAdvanceAttributeText(row.attributes || [])}</td>
+              <td><div class="advance-costs">${(row.costs || []).map(renderAdvanceCost).join("") || "暂无"}</div></td>
+            </tr>
+          `).join("")}</tbody>
+        </table>
+      </div>${stageRange ? `<p class="advance-stage-note">${stageRange}为原始进阶档位。</p>` : ""}`;
+    }
+
+    function materialInfo(materialId) {
+      return materials[materialId] || { name: `材料${materialId}`, icon: null };
+    }
+
+    function renderMaterialVisual(materialId) {
+      const material = materialInfo(materialId);
+      return material.icon
+        ? `<img src="${escapeHtml(material.icon)}" alt="${escapeHtml(material.name)}">`
+        : `<span class="material-placeholder">材</span>`;
+    }
+
+    function renderSilverMaterial(amount) {
+      return `<span class="table-material"><img src="${SILVER_ICON}" alt="银币"><span class="table-material-name">银币 ×${formatSilverAmount(amount)}</span></span>`;
+    }
+
+    function renderMaterialChip(materialId, amount) {
+      const material = materialInfo(materialId);
+      return `<div class="material-chip">
+        ${renderMaterialVisual(materialId)}
+        <span class="material-chip-copy">
+          <span class="material-chip-name">${escapeHtml(material.name)}</span>
+          <span class="material-chip-count">×${formatNumber(amount)}</span>
+        </span>
+      </div>`;
+    }
+
+    function renderSynthesisChip(item) {
+      const synthesis = item.synthesis;
+      if (!synthesis) {
+        const quality = Number(item.quality);
+        if (quality === 5) return `<p class="muted-text">积分商城直接兑换</p>`;
+        if (quality === 6) return `<p class="muted-text">缤纷回馈充值兑换</p>`;
+        return `<p class="muted-text">暂无时装碎片配置。</p>`;
+      }
+      const icon = item.assets?.[selectedGender]?.small;
+      const name = synthesis.names?.[selectedGender] || synthesis.name || "时装碎片";
+      return `<div class="material-chip">
+        ${icon ? `<img src="${escapeHtml(icon)}" alt="${escapeHtml(name)}">` : `<span class="material-placeholder">碎</span>`}
+        <span class="material-chip-copy">
+          <span class="material-chip-name">${escapeHtml(name)}</span>
+          <span class="material-chip-count">×${formatNumber(synthesis.amount)}</span>
+        </span>
+      </div>`;
+    }
+
+    function renderFashionCard(item, displayGender = selectedGender) {
+      const name = item.names?.[displayGender] || "未命名时装";
+      const small = item.assets?.[displayGender]?.small;
+      const quality = qualityInfo(item.quality);
+      return `<button class="fashion-card ${quality.className}${item.id === selectedId ? " active" : ""}" type="button" data-fashion-id="${item.id}" data-fashion-gender="${displayGender}">
+        <span class="fashion-thumb${small ? "" : " empty"}">${small ? `<img src="${escapeHtml(small)}" alt="${escapeHtml(name)}">` : "暂无图标"}</span>
+        <span class="fashion-card-copy">
+          <span class="fashion-card-title" title="${escapeHtml(name)}">${escapeHtml(name)}</span>
+        </span>
+      </button>`;
+    }
+
+    function renderQualityGroup(qualityValue, groupItems, searchGenderById = new Map()) {
+      const quality = qualityInfo(qualityValue);
+      return `<section class="quality-group ${quality.className}">
+        <div class="quality-group-heading">
+          <span class="quality-mark">${escapeHtml(quality.label)}</span>
+          <h2 class="quality-group-title">${escapeHtml(quality.label)}品质</h2>
+          <span class="quality-group-count">${groupItems.length}套</span>
+        </div>
+        <div class="fashion-grid">${groupItems.map((item) => renderFashionCard(item, searchGenderById.get(item.id) || selectedGender)).join("")}</div>
+      </section>`;
+    }
+
+    function renderStrengthenDetails(item) {
+      const baseAttributes = item.baseAttributes || [];
+      const growthAttributes = item.growthAttributes || [];
+      const attributeRows = [...(item.strengthenAttributes || [])].sort((a, b) => Number(a.level) - Number(b.level));
+      const plan = plans.get(item.strengthenPlan);
+      const costRows = [...(plan?.rows || [])].sort((a, b) => Number(a.level) - Number(b.level));
+      const extraAttributesByLevel = new Map();
+      attributeRows.forEach((row) => {
+        const level = Number(row.level);
+        const rows = extraAttributesByLevel.get(level) || [];
+        rows.push({ id: row.attributeId, amount: row.amount });
+        extraAttributesByLevel.set(level, rows);
+      });
+      // 消耗表的第1、2、3档人物等级依次对应时装等级1、2、3，按顺序建立强化区间。
+      const rowCount = Math.max(costRows.length, ...attributeRows.map((row) => Number(row.level)), 0);
+
+      if (!baseAttributes.length && !growthAttributes.length && !rowCount) return `<p class="muted-text">暂无时装强化属性与消耗配置。</p>`;
+
+      return `<details class="strengthen-details">
+        <summary>展开查看基础属性与 ${rowCount} 个强化区间</summary>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th>时装等级</th><th>人物等级需求</th><th>强化属性</th><th>额外属性</th><th>消耗材料</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>0级</td>
+                <td><span class="muted-text">—</span></td>
+                <td>${renderTableAttributes(baseAttributes)}</td>
+                <td><span class="muted-text">—</span></td>
+                <td><span class="muted-text">—</span></td>
+              </tr>
+              ${Array.from({ length: rowCount }, (_, index) => {
+                const fashionLevel = index + 1;
+                const cost = costRows[index];
+                const extraAttributes = extraAttributesByLevel.get(fashionLevel) || [];
+                const characterLevelMarkup = cost
+                  ? `${formatNumber(cost.level)}级`
+                  : `<span class="muted-text">—</span>`;
+                const materialMarkup = cost
+                  ? `<div class="combined-materials">${renderSilverMaterial(cost.silver)}<span class="table-material">${renderMaterialVisual(cost.materialId)}<span class="table-material-name">${escapeHtml(materialInfo(cost.materialId).name)} ×${formatNumber(cost.materialAmount)}</span></span></div>`
+                  : `<span class="muted-text">—</span>`;
+                return `<tr>
+                  <td>${formatNumber(fashionLevel - 1)}级 → ${formatNumber(fashionLevel)}级</td>
+                  <td>${characterLevelMarkup}</td>
+                  <td>${renderTableAttributes(growthAttributes)}</td>
+                  <td>${renderTableAttributes(extraAttributes)}</td>
+                  <td>${materialMarkup}</td>
+                </tr>`;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      </details>`;
+    }
+
+    function renderFashionCalculator(item) {
+      const plan = plans.get(item.strengthenPlan);
+      const strengthenRows = plan?.rows || [];
+      const maxStrengthenLevel = Math.max(strengthenRows.length, ...(item.strengthenAttributes || []).map((row) => Number(row.level)), 0);
+      const advanceRows = item.advanceRows || [];
+      const maxAdvanceStage = Math.max(...advanceRows.map((row) => Number(row.stage)), ...(item.advanceStages || []).map(Number), 0);
+      const maxStar = Math.max(...(item.starCosts || []).map((row) => Number(row.star)), ...(item.starAttributes || []).map((row) => Number(row.star)), 0);
+      const input = (label, key, max, value) => `<label class="calculator-field"><span>${label}（0～${max}）</span><input type="number" min="0" max="${max}" step="1" value="${value}" data-calc-${key}></label>`;
+
+      return `<section class="section-panel">
+        <h3 class="section-title">时装强化计算器 <span class="section-note">计算消耗与属性</span></h3>
+        <form class="fashion-calculator-form" data-fashion-calculator data-item-id="${item.id}">
+          <div class="calculator-states">
+            <fieldset class="calculator-state">
+              <legend class="calculator-state-title">初始状态</legend>
+              <div class="calculator-inputs">
+                ${input("时装等级", "start-level", maxStrengthenLevel, 0)}
+                ${input("进阶数", "start-advance", maxAdvanceStage, 0)}
+                ${input("升星数", "start-star", maxStar, 0)}
+              </div>
+            </fieldset>
+            <fieldset class="calculator-state">
+              <legend class="calculator-state-title">最终状态</legend>
+              <div class="calculator-inputs">
+                ${input("时装等级", "end-level", maxStrengthenLevel, maxStrengthenLevel)}
+                ${input("进阶数", "end-advance", maxAdvanceStage, maxAdvanceStage)}
+                ${input("升星数", "end-star", maxStar, maxStar)}
+              </div>
+            </fieldset>
+          </div>
+          <button class="calculator-submit" type="submit">计算消耗与属性</button>
+          <div class="calculator-result" data-calc-result aria-live="polite"><p class="muted-text">填写状态后点击计算消耗与属性。</p></div>
+        </form>
+      </section>`;
+    }
+
+    function addCalculatorCost(costs, key, name, icon, amount) {
+      const numericAmount = Number(amount) || 0;
+      if (numericAmount <= 0) return;
+      const existing = costs.get(key);
+      if (existing) {
+        existing.amount += numericAmount;
+        return;
+      }
+      costs.set(key, { key, name, icon, amount: numericAmount });
+    }
+
+    function addCalculatorMaterial(costs, materialId, amount) {
+      const material = materialInfo(materialId);
+      addCalculatorCost(costs, `material-${materialId}`, material.name, material.icon, amount);
+    }
+
+    function addAttributeTotal(totals, attributeId, amount) {
+      const numericAmount = Number(amount) || 0;
+      if (!numericAmount) return;
+      const id = Number(attributeId);
+      if (!Number.isFinite(id)) return;
+      totals.set(id, (totals.get(id) || 0) + numericAmount);
+    }
+
+    function addAttributeTotals(totals, attributes) {
+      (attributes || []).forEach((attribute) => {
+        const attributeId = attribute.id ?? attribute.attributeId;
+        addAttributeTotal(totals, attributeId, attribute.amount);
+      });
+    }
+
+    function calculateFashionAttributes(item, level, advance, star) {
+      const totals = new Map();
+      addAttributeTotals(totals, item.baseAttributes);
+      addAttributeTotals(totals, item.advanceAttribute);
+
+      for (let currentLevel = 1; currentLevel <= level; currentLevel += 1) {
+        addAttributeTotals(totals, item.growthAttributes);
+      }
+
+      (item.strengthenAttributes || []).forEach((attribute) => {
+        if (Number(attribute.level) <= level) addAttributeTotal(totals, attribute.attributeId, attribute.amount);
+      });
+
+      (item.advanceRows || []).forEach((row) => {
+        if (Number(row.stage) <= advance) addAttributeTotals(totals, row.attributes);
+      });
+
+      const availableStars = [...new Set((item.starAttributes || [])
+        .map((attribute) => Number(attribute.star))
+        .filter((starLevel) => starLevel > 0 && starLevel <= star))];
+      const currentStar = Math.max(...availableStars, 0);
+      addAttributeTotals(totals, (item.starAttributes || []).filter((attribute) => Number(attribute.star) === currentStar));
+      return totals;
+    }
+
+    function formatAttributeDelta(attribute) {
+      const amount = Number(attribute.amount || 0);
+      const formatted = formatAttributeAmount({ id: attribute.id, amount: Math.abs(amount) });
+      return amount < 0 ? formatted.replace(/^\+/, "-") : formatted;
+    }
+
+    function renderCalculatorAttributeList(originalAttributes, addedAttributes, emptyText = "无属性") {
+      const merged = new Map();
+      originalAttributes.forEach((attribute) => {
+        merged.set(attribute.id, { original: attribute, added: null });
+      });
+      addedAttributes.forEach((attribute) => {
+        const entry = merged.get(attribute.id) || { original: null, added: null };
+        entry.added = attribute;
+        merged.set(attribute.id, entry);
+      });
+      if (!merged.size) return `<p class="muted-text">${emptyText}</p>`;
+
+      return `<div class="calculator-attribute-list">${[...merged.values()].sort((a, b) => (a.original || a.added).id - (b.original || b.added).id).map(({ original, added }) => {
+        const template = original || added;
+        const originalMarkup = original && original.amount
+          ? formatAttributeDelta(original).replace(/^\+/, "")
+          : "";
+        const addedMarkup = added && added.amount
+          ? `<em class="calculator-attribute-added">${formatAttributeDelta(added).startsWith("+") ? `+${formatAttributeDelta(added).slice(1)}` : formatAttributeDelta(added)}</em>`
+          : "";
+        return `<span class="calculator-attribute-item">${escapeHtml(attributeName(template.id))} <strong>${originalMarkup}${addedMarkup}</strong></span>`;
+      }).join("")}</div>`;
+    }
+
+    function renderCalculatorCostList(costs) {
+      if (!costs.size) return `<p class="muted-text">无新增消耗</p>`;
+      return `<div class="calculator-cost-list">${[...costs.values()].map((cost) => {
+        const icon = cost.icon
+          ? `<img src="${escapeHtml(cost.icon)}" alt="${escapeHtml(cost.name)}">`
+          : `<span class="material-placeholder">${escapeHtml(cost.name.slice(0, 1))}</span>`;
+        const amount = cost.key === "silver" ? formatSilverAmount(cost.amount) : formatNumber(cost.amount);
+        return `<div class="calculator-cost-item">${icon}<span>${escapeHtml(cost.name)} ×${amount}</span></div>`;
+      }).join("")}</div>`;
+    }
+
+    function readCalculatorValue(form, selector, max) {
+      const field = form.querySelector(selector);
+      const value = Number.parseInt(field.value, 10);
+      const normalized = Number.isFinite(value) ? Math.min(max, Math.max(0, value)) : 0;
+      field.value = normalized;
+      return normalized;
+    }
+
+    function calculateFashionCosts(item, form) {
+      const plan = plans.get(item.strengthenPlan);
+      const strengthenRows = plan?.rows || [];
+      const advanceRows = item.advanceRows || [];
+      const advanceByStage = new Map(advanceRows.map((row) => [Number(row.stage), row]));
+      const starByLevel = new Map((item.starCosts || []).map((row) => [Number(row.star), row]));
+      const maxStrengthenLevel = Math.max(strengthenRows.length, ...(item.strengthenAttributes || []).map((row) => Number(row.level)), 0);
+      const maxAdvanceStage = Math.max(...advanceRows.map((row) => Number(row.stage)), ...(item.advanceStages || []).map(Number), 0);
+      const maxStar = Math.max(...(item.starCosts || []).map((row) => Number(row.star)), ...(item.starAttributes || []).map((row) => Number(row.star)), 0);
+      const startLevel = readCalculatorValue(form, "[data-calc-start-level]", maxStrengthenLevel);
+      const endLevel = readCalculatorValue(form, "[data-calc-end-level]", maxStrengthenLevel);
+      const startAdvance = readCalculatorValue(form, "[data-calc-start-advance]", maxAdvanceStage);
+      const endAdvance = readCalculatorValue(form, "[data-calc-end-advance]", maxAdvanceStage);
+      const startStar = readCalculatorValue(form, "[data-calc-start-star]", maxStar);
+      const endStar = readCalculatorValue(form, "[data-calc-end-star]", maxStar);
+      const result = form.querySelector("[data-calc-result]");
+
+      if (endLevel < startLevel || endAdvance < startAdvance || endStar < startStar) {
+        result.innerHTML = `<p class="muted-text">最终状态不能低于初始状态，请重新填写。</p>`;
+        return;
+      }
+
+      const costs = {
+        strengthen: new Map(),
+        advance: new Map(),
+        star: new Map()
+      };
+      for (let level = startLevel + 1; level <= endLevel; level += 1) {
+        const cost = strengthenRows[level - 1];
+        if (!cost) continue;
+        addCalculatorCost(costs.strengthen, "silver", "银币", SILVER_ICON, cost.silver);
+        addCalculatorMaterial(costs.strengthen, cost.materialId, cost.materialAmount);
+      }
+      for (let stage = startAdvance + 1; stage <= endAdvance; stage += 1) {
+        const row = advanceByStage.get(stage);
+        (row?.costs || []).forEach((cost) => {
+          if (cost.type === 1 && cost.materialId === 0) {
+            addCalculatorCost(costs.advance, "silver", "银币", SILVER_ICON, cost.amount);
+          } else {
+            addCalculatorMaterial(costs.advance, cost.materialId, cost.amount);
+          }
+        });
+      }
+      for (let star = startStar + 1; star <= endStar; star += 1) {
+        const cost = starByLevel.get(star);
+        if (!cost) continue;
+        if (cost.type === 1 && cost.materialId === 0) {
+          addCalculatorCost(costs.star, "gold", "金币", null, cost.amount);
+        } else {
+          addCalculatorMaterial(costs.star, cost.materialId, cost.amount);
+        }
+      }
+
+      const startAttributes = calculateFashionAttributes(item, startLevel, startAdvance, startStar);
+      const finalAttributes = calculateFashionAttributes(item, endLevel, endAdvance, endStar);
+      const attributeIds = new Set([...startAttributes.keys(), ...finalAttributes.keys()]);
+      const addedAttributes = [...attributeIds]
+        .map((id) => ({ id, amount: (finalAttributes.get(id) || 0) - (startAttributes.get(id) || 0) }))
+        .filter((attribute) => attribute.amount)
+        .sort((a, b) => a.id - b.id);
+      const originalAttributeList = [...startAttributes.entries()]
+        .map(([id, amount]) => ({ id, amount }))
+        .filter((attribute) => attribute.amount)
+        .sort((a, b) => a.id - b.id);
+
+      const rangeText = `${startLevel}级→${endLevel}级，${startAdvance}阶→${endAdvance}阶，${startStar}星→${endStar}星`;
+      result.innerHTML = `<p class="calculator-result-summary">预计消耗：${rangeText}</p>
+        <div class="calculator-attribute-results">
+          <section class="calculator-attribute-result"><h4 class="calculator-cost-group-title">属性</h4>${renderCalculatorAttributeList(originalAttributeList, addedAttributes)}</section>
+        </div>
+        <div class="calculator-cost-groups">
+          <section class="calculator-cost-group"><h4 class="calculator-cost-group-title">强化消耗</h4>${renderCalculatorCostList(costs.strengthen)}</section>
+          <section class="calculator-cost-group"><h4 class="calculator-cost-group-title">进阶消耗</h4>${renderCalculatorCostList(costs.advance)}</section>
+          <section class="calculator-cost-group"><h4 class="calculator-cost-group-title">升星消耗</h4>${renderCalculatorCostList(costs.star)}</section>
+        </div>`;
+    }
+
+    function renderDetail(item) {
+      if (!item) {
+        detail.innerHTML = "";
+        return;
+      }
+
+      const name = item.names?.[selectedGender] || "未命名时装";
+      const hero = item.assets?.[selectedGender]?.hero;
+      const synthesis = item.synthesis;
+      const starRows = item.starAttributes || [];
+      const starCosts = new Map((item.starCosts || []).map((cost) => [cost.star, cost]));
+      const hasAdvance = item.advanceRows?.length || item.advanceStages?.length;
+
+      detail.innerHTML = `
+        <div class="detail-overview">
+          <section class="detail-preview" aria-label="时装人物效果图">
+            <div class="detail-preview-frame${hero ? "" : " empty"}">${hero ? `<button class="detail-preview-trigger" type="button" data-hero-preview aria-label="查看${escapeHtml(name)}大图"><img src="${escapeHtml(hero)}" alt="${escapeHtml(name)}人物效果图"></button>` : "暂无人物效果图"}</div>
+          </section>
+
+          <div class="detail-summary">
+            <section class="section-panel">
+              <h3 class="section-title">解锁条件</h3>
+              <div class="material-summary">${renderSynthesisChip(item)}</div>
+            </section>
+
+            <section class="section-panel">
+              <h3 class="section-title">时装天赋${item.talent ? ` <span class="section-note">${escapeHtml(item.talent.name)}</span>` : ""}</h3>
+              ${item.talent
+                ? `<div class="talent-box"><p class="talent-name">${escapeHtml(item.talent.name)}</p><p class="talent-description">${escapeHtml(item.talent.description)}</p></div>`
+                : `<p class="muted-text">时装不存在天赋。</p>`}
+            </section>
+
+            <section class="section-panel">
+              <h3 class="section-title">时装默认属性 <span class="section-note">进阶属性0阶效果</span></h3>
+              ${item.advanceAttribute?.length ? renderAttributes(item.advanceAttribute) : `<p class="muted-text">时装不存在默认属性。</p>`}
+            </section>
+          </div>
+        </div>
+
+        ${renderFashionCalculator(item)}
+
+        <section class="section-panel">
+          <h3 class="section-title">升星效果与消耗 <span class="section-note">1～3星</span></h3>
+          ${starRows.length ? `<div class="data-table-wrap"><table class="data-table">
+            <thead><tr><th>星级</th><th>升星效果</th><th>消耗材料</th></tr></thead>
+            <tbody>${starRows.map((row) => {
+              const cost = starCosts.get(row.star);
+              return `<tr><td>${row.star}星</td><td>${escapeHtml(attributeName(row.attributeId))} ${formatAttributeAmount({ id: row.attributeId, amount: row.amount })}</td><td>${cost ? `<span class="table-material">${renderMaterialVisual(cost.materialId)}<span class="table-material-name">${escapeHtml(materialInfo(cost.materialId).name)} ×${formatNumber(cost.amount)}</span></span>` : "暂无"}</td></tr>`;
+            }).join("")}</tbody>
+          </table></div>` : `<p class="muted-text">暂无升星配置。</p>`}
+        </section>
+
+        ${hasAdvance ? `<section class="section-panel">
+          <h3 class="section-title">时装进阶属性 <span class="section-note">高品质时装配置</span></h3>
+          ${renderAdvanceDetails(item)}
+        </section>` : ""}
+
+        <section class="section-panel">
+          <h3 class="section-title">时装强化属性与消耗 <span class="section-note">基础属性、每级强化与人物等级需求</span></h3>
+          ${renderStrengthenDetails(item)}
+        </section>
+
+      `;
+    }
+
+    function closeImageLightbox() {
+      imageLightbox.hidden = true;
+      imageLightboxImage.removeAttribute("src");
+      imageLightboxImage.alt = "";
+      document.body.classList.remove("lightbox-open");
+    }
+
+    function openImageLightbox(image) {
+      imageLightboxImage.src = image.src;
+      imageLightboxImage.alt = image.alt;
+      imageLightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      imageLightboxClose.focus();
+    }
+
+    detail.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-hero-preview]");
+      if (!trigger) return;
+      const image = trigger.querySelector("img");
+      if (image) openImageLightbox(image);
+    });
+    detail.addEventListener("submit", (event) => {
+      const form = event.target.closest("[data-fashion-calculator]");
+      if (!form) return;
+      event.preventDefault();
+      const item = items.find((entry) => entry.id === Number(form.dataset.itemId));
+      if (item) calculateFashionCosts(item, form);
+    });
+    imageLightboxClose.addEventListener("click", closeImageLightbox);
+    imageLightbox.addEventListener("click", (event) => {
+      if (event.target === imageLightbox) closeImageLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !imageLightbox.hidden) closeImageLightbox();
+    });
+
+    function render() {
+      const query = searchInput.value.trim().toLowerCase();
+      const searchGenderById = new Map();
+      const visibleItems = items.filter((item) => {
+        if (query) {
+          const matchedGenders = ["male", "female"].filter((gender) => {
+            const name = item.names?.[gender] || "";
+            return `${item.id} ${name}`.toLowerCase().includes(query);
+          });
+          if (!matchedGenders.length) return false;
+          searchGenderById.set(item.id, matchedGenders.includes(selectedGender) ? selectedGender : matchedGenders[0]);
+          return true;
+        }
+        const name = item.names?.[selectedGender] || "";
+        const matchesQuality = Number(item.quality) === Number(selectedQuality);
+        return `${item.id} ${name}`.toLowerCase().includes(query) && matchesQuality;
+      });
+      if (!visibleItems.some((item) => item.id === selectedId)) selectedId = visibleItems[0]?.id || null;
+      const groupOrder = [...new Set([...QUALITY_ORDER, ...visibleItems.map((item) => Number(item.quality))])];
+      const groups = groupOrder.map((quality) => ({
+        quality,
+        items: visibleItems.filter((item) => Number(item.quality) === quality)
+      })).filter((group) => group.items.length);
+      grid.innerHTML = groups.length
+        ? groups.map((group) => renderQualityGroup(group.quality, group.items, searchGenderById)).join("")
+        : `<div class="empty-state">没有找到匹配的时装</div>`;
+      grid.querySelectorAll("[data-fashion-id]").forEach((button) => button.addEventListener("click", () => {
+        selectedId = Number(button.dataset.fashionId);
+        const item = items.find((entry) => entry.id === selectedId);
+        selectedGender = button.dataset.fashionGender || selectedGender;
+        selectedQuality = String(item.quality);
+        tabButtons.forEach((tab) => tab.classList.toggle("active", tab.dataset.gender === selectedGender));
+        renderQualityFilters();
+        history.replaceState(null, "", `?id=${selectedId}`);
+        render();
+      }));
+      const selected = items.find((item) => item.id === selectedId);
+      renderDetail(selected);
+      pageSummary.textContent = `共 ${items.length} 套，当前显示 ${visibleItems.length} 套。`;
+    }
+
+    tabButtons.forEach((button) => button.addEventListener("click", () => {
+      selectedGender = button.dataset.gender;
+      tabButtons.forEach((tab) => tab.classList.toggle("active", tab === button));
+      render();
+    }));
+    searchInput.addEventListener("input", render);
+    renderQualityFilters();
+    render();
+  </script>
+</body>
+</html>
