@@ -1,0 +1,1867 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三武将星魂六层节点属性、星魂天赋与升级耗材查询。">
+  <title>武将星魂升级材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --rose: #b84d62;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    button, select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      outline: none;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .notice,
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+    }
+
+    .notice {
+      margin: 0;
+      border-left: 4px solid var(--jade);
+      padding: 12px 16px;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .panel { padding: 18px; }
+
+    .panel-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px;
+      color: var(--jade-dark);
+      font-size: 21px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .panel-title small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .picker-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .faction-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .faction-tab {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 850;
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .faction-tab:hover,
+    .faction-tab:focus-visible,
+    .faction-tab.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      color: var(--jade-dark);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--jade-dark);
+      padding: 7px 9px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .hero-card:hover,
+    .hero-card:focus-visible,
+    .hero-card.is-selected {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .hero-card img,
+    .hero-avatar {
+      display: block;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    .hero-card span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .hero-overview {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+      gap: 16px;
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .hero-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hero-heading h2 {
+      margin: 0 0 4px;
+      color: var(--jade-dark);
+      font-size: 23px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+
+    .hero-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .guide-list,
+    .attribute-list,
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .guide-list { align-content: center; }
+
+    .guide-item,
+    .material-chip,
+    .attribute-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 32px;
+      border: 1px solid #e8dcc7;
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+
+    .guide-item { color: var(--muted); font-size: 12px; font-weight: 700; }
+
+    .guide-item img,
+    .material-chip img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .layer-card {
+      min-width: 0;
+      border: 1px solid #d6e7df;
+      border-top: 3px solid var(--jade);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 12px;
+    }
+
+    .layer-card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .layer-card-title {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 8px;
+    }
+
+    .layer-card-icon {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      object-fit: contain;
+    }
+
+    .layer-card-copy {
+      display: grid;
+      min-width: 0;
+      gap: 2px;
+    }
+
+    .layer-card-banner {
+      display: block;
+      width: min(160px, 100%);
+      max-height: 24px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .layer-card h3 { margin: 0; color: var(--jade-dark); font-size: 16px; }
+    .layer-card small { color: var(--muted); font-size: 11px; }
+    .layer-card p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    .attribute-item {
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .attribute-item strong { color: var(--gold); font-weight: 850; }
+    .attribute-delta { font-style: normal; font-weight: 850; }
+    .attribute-delta.is-positive { color: #16865c; }
+    .attribute-delta.is-negative { color: #c14b4b; }
+    .material-delta { font-style: normal; font-weight: 850; }
+    .material-delta.is-positive { color: #16865c; }
+    .material-delta.is-negative { color: #c14b4b; }
+
+    .detail-panel { margin-top: 14px; }
+
+    .simulation-summary {
+      margin: 0 0 14px;
+      border: 1px solid #d8c39c;
+      border-radius: 10px;
+      background: #fff6e5;
+      padding: 12px;
+    }
+
+    .simulation-summary-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .simulation-summary-head h3 { margin: 0; color: var(--jade-dark); font-size: 16px; }
+    .simulation-summary-head p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .layer-action,
+    .simulation-action {
+      border: 1px solid #b88a36;
+      border-radius: 6px;
+      background: #fffaf0;
+      color: var(--jade-dark);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .layer-action:hover,
+    .simulation-action:hover:not(:disabled) {
+      border-color: var(--jade);
+      background: #fff1ce;
+      transform: translateY(-1px);
+    }
+
+    .layer-action:focus-visible,
+    .simulation-action:focus-visible { outline: 2px solid #62c9ac; outline-offset: 2px; }
+
+    .simulation-action:disabled { cursor: not-allowed; opacity: .45; }
+
+    .simulation-toast {
+      position: fixed;
+      z-index: 20;
+      top: 50%;
+      left: 50%;
+      max-width: min(420px, calc(100vw - 32px));
+      pointer-events: none;
+      transform: translate(-50%, calc(-50% + 8px));
+      border: 1px solid rgba(255, 230, 173, 0.65);
+      border-radius: 8px;
+      background: rgba(23, 63, 53, 0.96);
+      box-shadow: 0 10px 26px rgba(45, 31, 15, 0.24);
+      color: #fffaf0;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.5;
+      opacity: 0;
+      padding: 10px 14px;
+      text-align: center;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .simulation-toast.is-visible {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    .simulation-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .simulation-stack { display: grid; gap: 10px; margin-top: 10px; }
+
+    .simulation-box {
+      min-width: 0;
+      border: 1px solid #e8dcc7;
+      border-radius: 8px;
+      background: #fffdf8;
+      padding: 9px;
+    }
+
+    .simulation-box .box-label { margin-bottom: 7px; }
+    .simulation-section-label {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 0 8px;
+      border: 1px solid #b88a36;
+      border-radius: 5px;
+      background: #fff3cf;
+      color: var(--jade-dark);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.4;
+      padding: 4px 8px;
+    }
+    .simulation-empty { color: var(--muted); font-size: 12px; }
+    .simulation-talents { margin-top: 10px; padding-top: 9px; border-top: 1px solid #eadcc7; }
+    .simulation-talent-list { display: grid; gap: 6px; }
+    .simulation-talent { border-radius: 5px; background: #f8e3bd; color: var(--rose); font-size: 12px; font-weight: 750; line-height: 1.55; padding: 6px 8px; }
+    .simulation-talent strong { display: block; }
+    .simulation-talent p { margin: 3px 0 0; color: var(--text); font-weight: 600; }
+    .simulation-talent.is-positive p { color: #16865c; }
+    .simulation-talent.is-negative p { color: #c14b4b; }
+
+    .layer-tabs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .layer-tab {
+      display: grid;
+      min-width: 0;
+      min-height: 58px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px;
+      background: var(--panel-strong);
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .layer-tab:hover,
+    .layer-tab:focus-visible,
+    .layer-tab.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      box-shadow: 0 4px 10px rgba(65, 45, 20, 0.1);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .layer-tab img {
+      display: block;
+      width: 100%;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .layer-view {
+      overflow: hidden;
+      border: 1px solid #d8c39c;
+      border-radius: 10px;
+      background: var(--panel-strong);
+      box-shadow: 0 8px 20px rgba(65, 45, 20, 0.06);
+    }
+
+    .layer-view-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 16px;
+      background: #fff6e5;
+    }
+
+    .layer-view-tools { display: flex; align-items: center; justify-content: flex-end; gap: 12px; min-width: 0; }
+
+    .layer-actions { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; }
+
+    .layer-action { white-space: nowrap; }
+
+    .layer-view-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 17px;
+      font-weight: 850;
+    }
+
+    .layer-view-requirement,
+    .layer-view-effect {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .layer-view-effect {
+      margin: 0;
+      text-align: right;
+    }
+
+    .layer-view .layer-content {
+      border-top: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .layer-details {
+      overflow: hidden;
+      border: 1px solid #d8c39c;
+      border-radius: 10px;
+      background: var(--panel-strong);
+      box-shadow: 0 8px 20px rgba(65, 45, 20, 0.06);
+    }
+
+    .layer-details + .layer-details { margin-top: 14px; }
+
+    .layer-details > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 66px;
+      cursor: pointer;
+      list-style: none;
+      padding: 10px 16px;
+      background: #fff6e5;
+    }
+
+    .layer-details > summary::-webkit-details-marker { display: none; }
+    .layer-details > summary::before { content: "▶"; color: var(--jade); font-size: 12px; }
+    .layer-details[open] > summary::before { content: "▼"; }
+    .layer-details > summary:hover { background: #ffefcf; }
+
+    .layer-summary-art {
+      display: block;
+      width: min(220px, 32vw);
+      max-height: 42px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .layer-summary-copy { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
+    .layer-summary-title { color: var(--jade-dark); font-size: 17px; font-weight: 850; }
+    .layer-summary-subtitle { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .layer-summary-meta { color: var(--muted); font-size: 12px; text-align: right; white-space: nowrap; }
+    .layer-content { border-top: 1px solid var(--line); padding: 14px; }
+
+    .layer-board-layout {
+      display: grid;
+      grid-template-columns: 630px minmax(0, 1fr);
+      align-items: start;
+      gap: 14px;
+    }
+
+    .layer-summary-slot,
+    .layer-summary-slot #simulationSummary { min-width: 0; }
+
+    .soul-board-scroll { overflow-x: auto; padding: 2px 0 8px; }
+
+    .soul-board-canvas {
+      position: relative;
+      width: 630px;
+      height: 560px;
+      margin: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid #816426;
+      border-radius: 10px;
+      background: #17152e;
+      box-shadow: inset 0 0 0 2px rgba(255, 207, 64, 0.13), 0 8px 18px rgba(30, 18, 50, 0.18);
+    }
+
+    .soul-board-canvas::before,
+    .soul-board-canvas::after {
+      position: absolute;
+      z-index: 0;
+      border: 1px solid rgba(249, 190, 42, 0.18);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .soul-board-canvas::before { width: 630px; height: 420px; left: 0; top: 54px; }
+    .soul-board-canvas::after { width: 450px; height: 300px; left: 90px; top: 114px; border-color: rgba(77, 191, 172, 0.16); }
+
+    .board-layer-title {
+      position: absolute;
+      z-index: 4;
+      top: 8px;
+      left: 50%;
+      width: 250px;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .board-corner-label {
+      position: absolute;
+      z-index: 4;
+      top: 18px;
+      left: 18px;
+      color: #e8bb4a;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .board-corner-label strong { color: #f6dd92; font-size: 14px; }
+
+    .soul-connector {
+      position: absolute;
+      z-index: 1;
+      height: 8px;
+      transform-origin: 0 50%;
+      transform: rotate(var(--connector-angle));
+      background: url("assets/hero-star-soul-ui/line1.png") center / 100% 100% no-repeat;
+      filter: drop-shadow(0 0 4px rgba(255, 190, 41, 0.48));
+      pointer-events: none;
+    }
+
+    .soul-node {
+      position: absolute;
+      z-index: 3;
+      top: var(--node-y);
+      left: var(--node-x);
+      display: grid;
+      width: 96px;
+      min-height: 84px;
+      transform: translate(-50%, -50%);
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      text-align: center;
+    }
+
+    .node-core {
+      display: grid;
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      padding: 0;
+    }
+
+    .node-core:focus-visible { outline: 2px solid #8cf5d3; outline-offset: 4px; }
+
+    .node-stage { position: relative; display: block; width: 100%; min-height: 82px; }
+    .soul-node.is-talent .node-stage { min-height: 96px; }
+
+    .node-frame {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto;
+      border: 2px solid #ffc83e;
+      border-radius: 11px;
+      background: #101126;
+      box-shadow: 0 0 0 3px #5b2109, 0 0 13px rgba(255, 182, 29, 0.62);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .node-frame::after {
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(255, 242, 153, 0.7);
+      border-radius: 6px;
+      content: "";
+      pointer-events: none;
+    }
+
+    .node-icon { display: block; width: 66px; height: 66px; border-radius: 5px; object-fit: contain; }
+    .node-level { position: absolute; z-index: 2; top: -2px; left: -2px; min-width: 23px; border-radius: 4px 0 5px 0; background: #a81619; color: #fff4dc; font-size: 13px; font-weight: 900; line-height: 22px; padding: 0 4px; }
+
+    .soul-node.is-talent { width: 104px; }
+    .soul-node.is-talent .node-frame {
+      width: 92px;
+      height: 92px;
+      border-width: 3px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #6c260b, 0 0 18px rgba(255, 198, 38, 0.82);
+    }
+    .soul-node.is-talent .node-frame::after { inset: 5px; border-radius: 50%; }
+    .soul-node.is-talent .node-icon { width: 80px; height: 80px; border-radius: 50%; }
+    .soul-node.is-talent .node-level { display: block; }
+
+    .soul-node.is-unlit .node-icon { filter: grayscale(1) saturate(.2) brightness(.62); opacity: .72; }
+    .soul-node.is-unlit .node-frame { border-color: #817b73; box-shadow: 0 0 0 3px #34333d, 0 0 8px rgba(32, 29, 43, .5); }
+    .soul-node.is-unlit .node-frame::after { border-color: rgba(222, 216, 192, .34); }
+    .soul-node.is-unlit .node-level { background: #57565b; color: #e5e0d3; }
+    .soul-node.is-lit .node-icon { filter: none; opacity: 1; }
+    .soul-node.is-available .node-icon { filter: none; opacity: 1; }
+    .soul-node.is-available .node-frame { border-color: #ffc83e; box-shadow: 0 0 0 3px #5b2109, 0 0 13px rgba(255, 182, 29, 0.62); }
+
+    .node-corner-actions {
+      position: absolute;
+      z-index: 4;
+      right: 9px;
+      bottom: 4px;
+      display: flex;
+      gap: 2px;
+    }
+
+    .soul-node.is-talent .node-corner-actions { right: 6px; }
+
+    .node-corner-actions .simulation-action {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border-radius: 4px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .node-inline-actions { display: flex; justify-content: center; gap: 4px; margin-top: 4px; }
+    .node-inline-actions .simulation-action { min-width: 25px; min-height: 22px; border-radius: 4px; padding: 2px 6px; font-size: 11px; line-height: 1.2; }
+    .node-inline-actions .simulation-action[data-sim-action="max"] { min-width: 38px; }
+    .node-inline-actions .simulation-action:disabled { border-color: #65636a; background: #393844; color: #aaa7a0; opacity: .9; }
+
+    .soul-node:hover .node-frame,
+    .soul-node.is-selected .node-frame { border-color: #fff5ad; box-shadow: 0 0 0 3px #862708, 0 0 19px rgba(255, 224, 84, 0.95); transform: translateY(-3px); }
+    .node-detail-slot { margin-top: 12px; }
+    .node-detail-slot[hidden] { display: none; }
+
+    .node-detail-card {
+      border: 1px solid #d9c18f;
+      border-radius: 9px;
+      background: #fffaf1;
+      box-shadow: 0 5px 14px rgba(91, 57, 19, 0.06);
+      padding: 13px;
+    }
+
+    .node-detail-head { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    .node-detail-icon { display: block; width: 48px; height: 48px; border: 2px solid #d39b36; border-radius: 7px; background: #14132b; object-fit: contain; }
+    .node-detail-icon.is-unlit { filter: grayscale(1) saturate(.2) brightness(.62); opacity: .72; }
+    .node-detail-copy { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; min-width: 0; }
+    .node-detail-head h3 { margin: 0; color: var(--jade-dark); font-size: 16px; line-height: 1.35; }
+    .node-detail-head p { margin: 2px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .node-detail-head .node-requirement { margin-top: 0; color: var(--jade-dark); font-weight: 750; }
+    .node-simulation-state { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: 0; }
+    .node-simulation-level { color: var(--rose); font-size: 12px; font-weight: 850; }
+    .node-detail-grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding-top: 12px; }
+    .node-detail-card .node-attributes,
+    .node-detail-card .talent-box,
+    .node-detail-card .level-table-wrap { border: 1px solid #e8dcc7; border-radius: 8px; background: #fffdf8; padding: 10px; }
+
+    .node-detail-card .talent-box { margin-top: 8px; }
+    .node-detail-card .level-table-wrap { min-width: 0; }
+    .node-detail-card .level-table { font-size: 12px; }
+
+    .layer-details > summary .layer-summary-art + .layer-summary-copy { margin-left: 0; }
+
+    .detail-note {
+      margin: -4px 0 13px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .layer-details,
+    .node-details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    .layer-details + .layer-details { margin-top: 10px; }
+
+    .layer-details > summary,
+    .node-details > summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .layer-details > summary::-webkit-details-marker,
+    .node-details > summary::-webkit-details-marker { display: none; }
+
+    .layer-details > summary {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+    }
+
+    .layer-details > summary::before,
+    .node-details > summary::before {
+      color: var(--jade);
+      content: "▶";
+      font-size: 12px;
+    }
+
+    .layer-details[open] > summary::before,
+    .node-details[open] > summary::before { content: "▼"; }
+
+    .layer-details > summary:hover,
+    .node-details > summary:hover { background: var(--panel-hover); }
+
+    .layer-summary-title { color: var(--jade-dark); font-size: 16px; font-weight: 850; }
+    .layer-summary-meta { color: var(--muted); font-size: 12px; text-align: right; }
+
+    .node-list {
+      display: grid;
+      gap: 8px;
+      border-top: 1px solid var(--line);
+      padding: 10px;
+    }
+
+    .node-details > summary {
+      display: grid;
+      grid-template-columns: auto minmax(120px, 0.65fr) minmax(0, 1.45fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+    }
+
+    .node-position {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .node-name { color: var(--jade-dark); font-size: 14px; font-weight: 850; }
+
+    .node-kind {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .node-kind.is-talent { color: var(--rose); font-weight: 800; }
+
+    .node-max {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .node-body {
+      display: grid;
+      grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.25fr);
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding: 12px;
+    }
+
+    .node-attributes,
+    .talent-box,
+    .level-table-wrap {
+      border: 1px solid #e8dcc7;
+      border-radius: 8px;
+      background: #fffaf1;
+      padding: 10px;
+    }
+
+    .box-label {
+      margin: 0 0 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .talent-box { margin-top: 8px; }
+    .talent-box strong { display: block; margin-bottom: 5px; color: var(--rose); font-size: 13px; }
+    .talent-box p { margin: 0; color: var(--text); font-size: 12px; line-height: 1.65; }
+
+    .level-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .level-table th,
+    .level-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 7px 6px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .level-table tr:last-child td { border-bottom: 0; }
+    .level-table th { color: var(--muted); font-weight: 800; }
+    .level-table td:first-child { width: 66px; color: var(--jade-dark); font-weight: 800; white-space: nowrap; }
+    .material-chip { min-height: 28px; padding: 2px 6px; font-size: 11px; font-weight: 700; }
+    .material-chip img { width: 23px; height: 23px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 16px;
+    }
+
+    .copyright-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .node-body,
+      .node-detail-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 560px); padding-top: 12px; }
+      .site-header { align-items: flex-start; }
+      .brand-mark { width: 86px; flex-basis: 86px; }
+      .brand-name { font-size: 16px; }
+      .back-link { padding: 7px 9px; font-size: 12px; }
+      .intro, .picker-row, .hero-overview { display: block; }
+      .page-title { font-size: 23px; }
+      .page-note { margin-top: 5px; }
+      .picker-row > * + * { margin-top: 10px; }
+      .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .faction-tab { min-height: 38px; font-size: 14px; }
+      .layer-grid { grid-template-columns: 1fr; }
+      .guide-list { margin-top: 14px; }
+      .layer-tabs { gap: 4px; }
+      .layer-tab { min-height: 48px; padding: 4px 2px; }
+      .layer-tab img { height: 34px; }
+      .layer-view-head { align-items: flex-start; flex-direction: column; gap: 4px; padding: 10px 12px; }
+      .layer-view-tools { width: 100%; align-items: flex-start; justify-content: space-between; gap: 8px; }
+      .layer-view-effect { text-align: left; }
+      .node-details > summary { grid-template-columns: auto minmax(0, 1fr) auto; }
+      .node-kind { grid-column: 2 / -1; }
+      .node-max { grid-column: 3; grid-row: 1; }
+      .layer-summary-meta { display: none; }
+      .layer-details > summary {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        column-gap: 8px;
+        row-gap: 2px;
+        min-height: 58px;
+        padding: 8px 10px;
+      }
+      .layer-details > summary::before {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: center;
+      }
+      .layer-summary-art {
+        grid-column: 2;
+        grid-row: 1;
+        width: min(150px, 100%);
+        max-height: 28px;
+      }
+      .layer-summary-copy { grid-column: 2; grid-row: 2; }
+      .layer-summary-title { font-size: 15px; }
+      .layer-summary-subtitle { font-size: 11px; }
+      .layer-content { padding: 8px; }
+      .soul-board-scroll { margin: 0 -2px; }
+      .simulation-grid { grid-template-columns: 1fr; }
+      .simulation-summary-head { align-items: flex-start; }
+      .simulation-summary-head h3 { font-size: 15px; }
+    }
+
+    @media (max-width: 980px) {
+      .layer-board-layout { grid-template-columns: 1fr; }
+      .layer-summary-slot #simulationSummary { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">武将星魂升级材料</h1>
+      <p class="page-note">查看武将星魂的节点属性、天赋与逐级耗材</p>
+    </div>
+
+    <section class="panel">
+      <div class="faction-tabs" role="tablist" aria-label="选择星魂阵营">
+        <button class="faction-tab is-active" type="button" role="tab" aria-selected="true" data-faction="魏">魏</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="蜀">蜀</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="吴">吴</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="群">群</button>
+      </div>
+      <div class="hero-grid" id="heroGrid" role="tabpanel" aria-label="魏阵营武将"></div>
+    </section>
+
+    <section class="panel detail-panel" aria-labelledby="detail-title">
+      <h2 class="panel-title" id="detail-title"><span>星魂点亮模拟</span><small>点击节点开始点亮</small></h2>
+      <div id="simulationSummary"></div>
+      <div id="layerDetails"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="overview-title" id="heroOverview"></section>
+
+    <footer>
+      <p class="copyright-note">本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <div class="simulation-toast" id="simulationToast" role="status" aria-live="polite"></div>
+
+  <script src="assets/hero-star-soul-data.js"></script>
+  <script src="assets/hero-destiny-details.js"></script>
+  <script>
+    (() => {
+      const data = window.heroStarSoulData;
+      const nodeMap = new Map(data.nodes.map((node) => [node.id, node]));
+      const destinyHeroMap = new Map((window.heroDestinyDetails?.heroes || []).map((hero) => [hero.name, hero]));
+      const state = { heroId: data.heroes[0]?.id, faction: "魏", layerNumber: 1, selectedNodeId: null };
+      const simulation = { levels: new Map(), savedLevels: null, notice: "" };
+      const factionTabs = [...document.querySelectorAll(".faction-tab")];
+      const heroGrid = document.querySelector("#heroGrid");
+      const heroOverview = document.querySelector("#heroOverview");
+      const simulationSummary = document.querySelector("#simulationSummary");
+      const layerDetails = document.querySelector("#layerDetails");
+      const simulationToast = document.querySelector("#simulationToast");
+      let simulationToastTimer = null;
+
+      const formatNumber = (value) => Number(value || 0).toLocaleString("zh-CN");
+      const scaledAttributeNames = new Set(["武力", "智力", "统帅"]);
+      // 星魂配置中的这些属性使用百分之一的整数保存，例如 3000 表示 30%。
+      const percentageAttributeIds = new Set([11, 14, 15, 19, 90, 91, 92, 93, 94, 95, 103]);
+      const getHero = () => data.heroes.find((hero) => hero.id === state.heroId) || data.heroes[0];
+      const getHeroMeta = (hero) => destinyHeroMap.get(hero.name) || {};
+      const getHeroFaction = (hero) => getHeroMeta(hero).country || "群";
+      const getHeroAvatar = (hero) => getHeroMeta(hero).icon || hero.icon;
+      const getMaterial = (id) => data.materials[String(id)] || data.materials[id] || { name: `材料${id}`, icon: null };
+
+      function attributeDisplayAmount(attribute) {
+        const amount = Number(attribute?.amount || 0);
+        if (percentageAttributeIds.has(Number(attribute?.id))) return amount / 100;
+        return scaledAttributeNames.has(attribute?.name) ? amount / 100 : amount;
+      }
+
+      function attributeDisplayUnit(attribute) {
+        return attribute?.unit || (percentageAttributeIds.has(Number(attribute?.id)) ? "%" : "");
+      }
+
+      function attributeMarkup(attributes) {
+        return attributes.map((attribute) => `<span class="attribute-item"><span>${attribute.name}</span><strong>+${formatNumber(attributeDisplayAmount(attribute))}${attributeDisplayUnit(attribute)}</strong></span>`).join("");
+      }
+
+      function parseTalentAttributes(description) {
+        const attributes = [];
+        const pattern = /(?:^|[，,；;。！!、\s])([^，,；;。！!、\s+]+?)\s*\+\s*([\d,]+(?:\.\d+)?)\s*(%|％)?/g;
+        let match;
+        while ((match = pattern.exec(String(description || "")))) {
+          const name = match[1].replace(/^(?:己方|已方|我方|全体|上阵武将)+/g, "");
+          if (!name) continue;
+          attributes.push({ name, amount: Number(match[2].replace(/,/g, "")), unit: match[3] ? "%" : "" });
+        }
+        return attributes;
+      }
+
+      function layerAttributeMarkup(layer) {
+        return attributeMarkup(layer.stateEffects || []);
+      }
+
+      function materialMarkup(costs) {
+        return costs.map((cost) => {
+          const material = getMaterial(cost.id);
+          const icon = material.icon ? `<img src="${material.icon}" alt="">` : "";
+          return `<span class="material-chip">${icon}<span>${material.name} ×${formatNumber(cost.quantity)}</span></span>`;
+        }).join("");
+      }
+
+      function materialDiffMarkup(savedMaterials, currentMaterials) {
+        const savedMap = new Map(savedMaterials.map((material) => [String(material.id), material]));
+        const currentMap = new Map(currentMaterials.map((material) => [String(material.id), material]));
+        const ids = [...savedMap.keys(), ...currentMap.keys()].filter((id, index, list) => list.indexOf(id) === index);
+
+        return ids.map((id) => {
+          const saved = savedMap.get(id);
+          const current = currentMap.get(id);
+          const baseQuantity = Number(saved?.quantity || 0);
+          const currentQuantity = Number(current?.quantity || 0);
+          const delta = currentQuantity - baseQuantity;
+          if (baseQuantity === 0 && delta === 0) return "";
+          const source = current || saved;
+          const material = getMaterial(source.id);
+          const icon = material.icon ? `<img src="${material.icon}" alt="">` : "";
+          const baseText = baseQuantity ? `×${formatNumber(baseQuantity)}` : "";
+          const deltaText = delta
+            ? `<em class="material-delta ${delta > 0 ? "is-positive" : "is-negative"}">${delta > 0 ? "+" : ""}${formatNumber(delta)}</em>`
+            : "";
+          return `<span class="material-chip">${icon}<span>${material.name} ${baseText}${deltaText}</span></span>`;
+        }).join("");
+      }
+
+      function currentNodeLevel(node) {
+        return simulation.levels.get(node.id) || 0;
+      }
+
+      function showSimulationErrorIfNeeded() {
+        const message = simulation.notice;
+        if (!message || !/(请先|只能二选一|仍有|后续不满足前置条件)/.test(message)) return;
+        simulationToast.textContent = message;
+        simulationToast.classList.add("is-visible");
+        window.clearTimeout(simulationToastTimer);
+        simulationToastTimer = window.setTimeout(() => {
+          simulationToast.classList.remove("is-visible");
+          simulationToastTimer = window.setTimeout(() => {
+            simulationToast.textContent = "";
+          }, 220);
+        }, 2200);
+      }
+
+      function renderPicker() {
+        const heroes = data.heroes.filter((hero) => getHeroFaction(hero) === state.faction);
+        heroGrid.innerHTML = heroes.map((hero) => `<button class="hero-card${hero.id === state.heroId ? " is-selected" : ""}" type="button" data-hero-id="${hero.id}" aria-label="查看${hero.name}星魂"><img src="${getHeroAvatar(hero)}" alt="${hero.name}"><span>${hero.name}</span></button>`).join("");
+        heroGrid.setAttribute("aria-label", `${state.faction}阵营武将`);
+        factionTabs.forEach((tab) => {
+          const active = tab.dataset.faction === state.faction;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+        heroGrid.querySelectorAll("[data-hero-id]").forEach((button) => button.addEventListener("click", () => selectHero(Number(button.dataset.heroId))));
+      }
+
+      function renderOverview(hero) {
+        const layers = hero.layers.map((layer, index) => {
+          const effects = layerAttributeMarkup(layer);
+          return `<article class="layer-card"><div class="layer-card-head"><div class="layer-card-title"><img class="layer-card-icon" src="assets/hero-star-soul-ui/spIcon__state${layer.number}_n.png" alt="星魂境界${layer.number}图标"><div class="layer-card-copy"><img class="layer-card-banner" src="assets/hero-star-soul-ui/ceng${layer.number}.png" alt="第${layer.number}层星魂标题"></div></div></div><div class="attribute-list">${effects || `<span class="attribute-item">暂无层级属性</span>`}</div></article>`;
+        }).join("");
+        heroOverview.innerHTML = `<h2 class="panel-title">各层附加属性</h2><div class="layer-grid" style="margin-top: 16px">${layers}</div>`;
+      }
+
+      const layout10 = [
+        { x: 12, y: 19 }, { x: 50, y: 19 }, { x: 88, y: 19 },
+        { x: 70, y: 43 }, { x: 34, y: 43 }, { x: 12, y: 68 },
+        { x: 50, y: 68 }, { x: 88, y: 68 }, { x: 70, y: 89 }, { x: 34, y: 89 }
+      ];
+      const layout11 = [
+        { x: 50, y: 22 }, { x: 36, y: 42 }, { x: 64, y: 42 }, { x: 12, y: 42 }, { x: 88, y: 42 },
+        { x: 12, y: 62 }, { x: 88, y: 62 }, { x: 36, y: 62 }, { x: 64, y: 62 }, { x: 36, y: 87 }, { x: 64, y: 87 }
+      ];
+      const edges10 = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9]];
+      // 11 节点层的两条分支由 DB_Hero_star_soul.lua 的 lighting_requitement 决定：
+      // 1→2→4→6→8→10 与 1→3→5→7→9→11。
+      const edges11 = [[0, 1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 8], [7, 9], [8, 10]];
+      const soulBoardWidth = 630;
+      const soulBoardHeight = 560;
+
+      const fallbackNodeIcon = "assets/hero-star-soul-ui/nodes/gongji.png";
+
+      function nodeIcon(node) {
+        return node.icon ? `assets/hero-star-soul-ui/nodes/${node.icon}` : fallbackNodeIcon;
+      }
+
+      function connectorMarkup(points, edges) {
+        return edges.map(([from, to]) => {
+          const point = points[from];
+          const next = points[to];
+          const x1 = point.x / 100 * soulBoardWidth;
+          const y1 = point.y / 100 * soulBoardHeight;
+          const x2 = next.x / 100 * soulBoardWidth;
+          const y2 = next.y / 100 * soulBoardHeight;
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          return `<span class="soul-connector" aria-hidden="true" style="left:${x1}px;top:${y1}px;width:${length}px;--connector-angle:${angle}deg"></span>`;
+        }).join("");
+      }
+
+      function renderBoardNode(node, point, requirement, hero, layerIndex, nodeIndex) {
+        const level = currentNodeLevel(node);
+        const available = level > 0 || nodeIsAvailable(hero, layerIndex, nodeIndex);
+        const statusClass = level > 0 ? "is-lit" : available ? "is-available" : "is-unlit";
+        const detailId = `node-detail-${node.id}`;
+        const isSelected = state.selectedNodeId === node.id;
+        const nextDisabled = level >= node.maxLevel || !available;
+        const exactLevel = nextUnlockLevel(hero, node.id);
+        const exactDisabled = exactLevel === null || exactLevel === level || (level === 0 && !available);
+        return `<div class="soul-node${node.special ? " is-talent" : ""} ${statusClass}${isSelected ? " is-selected" : ""}" style="--node-x:${point.x}%;--node-y:${point.y}%"><span class="node-stage"><button class="node-core" type="button" data-node-id="${node.id}" aria-label="${node.name}，当前${level}级，${requirement}" title="${node.name} · 当前${level}/${node.maxLevel}级 · ${requirement}" aria-expanded="${isSelected}" aria-controls="${detailId}"><span class="node-frame"><span class="node-level">${level}</span><img class="node-icon" src="${nodeIcon(node)}" alt="${node.name}图标"></span></button><span class="node-corner-actions" aria-label="${node.name}等级调整"><button class="node-corner-action simulation-action" type="button" data-sim-action="minus" data-node-id="${node.id}" title="降低一级" ${level <= 0 ? "disabled" : ""}>-</button><button class="node-corner-action simulation-action" type="button" data-sim-action="plus" data-node-id="${node.id}" title="点亮下一级" ${nextDisabled ? "disabled" : ""}>+</button></span></span><div class="node-inline-actions" aria-label="${node.name}点亮操作"><button class="node-inline-action simulation-action" type="button" data-sim-action="exact" data-node-id="${node.id}" title="点亮到刚好开启下一个星魂的等级" ${exactDisabled ? "disabled" : ""}>恰好</button><button class="node-inline-action simulation-action" type="button" data-sim-action="max" data-node-id="${node.id}" title="直接点到满级" ${nextDisabled ? "disabled" : ""}>满级</button></div></div>`;
+      }
+
+      function formatUnlockRequirement(requirement) {
+        return String(requirement || "完成前置星魂").replace(/「([^」]+)」Lv\.(\d+)/g, "「$1」达到$2级");
+      }
+
+      // APK 中 DB_Hero_star_soul.lua 的 lighting_requitement 格式为“层|前置节点序号|等级”。
+      // 第一层普通节点要求前置 6 级；第二至四层分别要求 7/8/9 级；第五、六层要求 10 级。
+      // 11 节点层的前置序号按两条分支排列，不能简单按页面数组的上一个元素推断。
+      const starSoulLightingRules = {
+        1: { parentLevel: 6, parentLayer: 1 },
+        2: { parentLevel: 7, parentLayer: 2, first: [{ layer: 1, position: 10, level: 1 }] },
+        3: { parentLevel: 8, parentLayer: 3, first: [{ layer: 2, position: 10, level: 1 }] },
+        4: { parentLevel: 9, parentLayer: 4, first: [{ layer: 3, position: 10, level: 1 }] },
+        5: { parentLevel: 10, parentLayer: 5, first: [{ layer: 4, position: 10, level: 1 }, { layer: 4, position: 11, level: 1 }] },
+        6: { parentLevel: 10, parentLayer: 6, first: [{ layer: 5, position: 10, level: 1 }, { layer: 5, position: 11, level: 1 }] }
+      };
+      const branchParentPosition = { 2: 1, 3: 1, 4: 2, 5: 3, 6: 4, 7: 5, 8: 6, 9: 7, 10: 8, 11: 9 };
+
+      // 将源配置中的 lighting_requitement 转成可校验的节点关系，模拟器与页面文案共用这一份规则。
+      function getNodePrerequisites(hero, layerIndex, nodeIndex) {
+        const layer = hero.layers[layerIndex];
+        const rule = starSoulLightingRules[layer.number] || starSoulLightingRules[1];
+        const node = nodeMap.get(layer.nodeIds[nodeIndex]);
+        if (!node) return [];
+        if (node.position === 1) {
+          if (layerIndex === 0) return [];
+          return (rule.first || []).map((entry) => {
+            const sourceLayer = hero.layers.find((candidate) => candidate.number === entry.layer);
+            const parent = sourceLayer?.nodeIds.map((id) => nodeMap.get(id)).find((candidate) => candidate?.position === entry.position);
+            return parent ? { node: parent, level: entry.level } : null;
+          }).filter(Boolean);
+        }
+        const parentPosition = layer.number >= 4 ? branchParentPosition[node.position] : Number(node.position) - 1;
+        const parent = layer.nodeIds.map((id) => nodeMap.get(id)).find((candidate) => candidate?.position === parentPosition);
+        return parent ? [{ node: parent, level: rule.parentLevel }] : [];
+      }
+
+      const exclusiveTalentLayers = new Set([4, 5, 6]);
+
+      function getExclusiveTalentPair(hero, layerIndex) {
+        const layer = hero.layers[layerIndex];
+        if (!layer || !exclusiveTalentLayers.has(layer.number)) return null;
+        const pair = layer.nodeIds
+          .map((nodeId) => nodeMap.get(nodeId))
+          .filter((node) => node && (Number(node.position) === 10 || Number(node.position) === 11))
+          .sort((left, right) => Number(left.position) - Number(right.position));
+        return pair.length === 2 ? pair : null;
+      }
+
+      function exclusiveTalentBlocker(hero, layerIndex, nodeIndex) {
+        const layer = hero.layers[layerIndex];
+        const node = layer ? nodeMap.get(layer.nodeIds[nodeIndex]) : null;
+        const pair = getExclusiveTalentPair(hero, layerIndex);
+        if (!node || !pair || !pair.some((candidate) => candidate.id === node.id)) return null;
+        const other = pair.find((candidate) => candidate.id !== node.id);
+        return other && currentNodeLevel(other) > 0 ? other : null;
+      }
+
+      function nodePrerequisitesAreAny(hero, layerIndex, nodeIndex) {
+        const layer = hero.layers[layerIndex];
+        const node = layer ? nodeMap.get(layer.nodeIds[nodeIndex]) : null;
+        return Boolean(node && node.position === 1 && (layer.number === 5 || layer.number === 6));
+      }
+
+      function nodePrerequisitesMet(hero, layerIndex, nodeIndex) {
+        const prerequisites = getNodePrerequisites(hero, layerIndex, nodeIndex);
+        const isMet = prerequisites.map(({ node, level }) => currentNodeLevel(node) >= level);
+        return nodePrerequisitesAreAny(hero, layerIndex, nodeIndex) ? isMet.some(Boolean) : isMet.every(Boolean);
+      }
+
+      function plannedNodePrerequisites(hero, layerIndex, nodeIndex) {
+        const prerequisites = getNodePrerequisites(hero, layerIndex, nodeIndex);
+        return nodePrerequisitesAreAny(hero, layerIndex, nodeIndex) ? prerequisites.slice(0, 1) : prerequisites;
+      }
+
+      function layerIsComplete(hero, layerIndex) {
+        const layer = hero.layers[layerIndex];
+        const pair = getExclusiveTalentPair(hero, layerIndex);
+        const pairIds = new Set(pair?.map((node) => node.id) || []);
+        return layer.nodeIds.every((nodeId) => {
+          const node = nodeMap.get(nodeId);
+          if (!node) return true;
+          if (pairIds.has(node.id)) return pair.some((candidate) => currentNodeLevel(candidate) >= candidate.maxLevel);
+          return currentNodeLevel(node) >= node.maxLevel;
+        });
+      }
+
+      function layerIsActivated(hero, layerIndex) {
+        const layer = hero.layers[layerIndex];
+        const pair = getExclusiveTalentPair(hero, layerIndex);
+        // 第4至第6层的两枚末端天赋二选一，任意一枚点亮即视为该层已激活。
+        if (pair) return pair.some((candidate) => currentNodeLevel(candidate) > 0);
+        return layer.nodeIds.every((nodeId) => {
+          const node = nodeMap.get(nodeId);
+          if (!node) return true;
+          return currentNodeLevel(node) > 0;
+        });
+      }
+
+      function nodeUnlockRequirement(hero, layerIndex, nodeIndex) {
+        const layer = hero.layers[layerIndex];
+        const node = nodeMap.get(layer.nodeIds[nodeIndex]);
+        const baseRequirement = layerIndex === 0 && node?.position === 1
+          ? `人物等级 ${data.unlockLevel} 级开启`
+          : getNodePrerequisites(hero, layerIndex, nodeIndex).map(({ node: parent, level }) => `「${parent.name}」达到${level}级`).join(nodePrerequisitesAreAny(hero, layerIndex, nodeIndex) ? "或" : "、") || "完成前置星魂";
+        const pair = getExclusiveTalentPair(hero, layerIndex);
+        if (pair?.some((candidate) => candidate.id === node?.id)) {
+          const other = pair.find((candidate) => candidate.id !== node.id);
+          return `${baseRequirement}；与“${other.name}”二选一`;
+        }
+        return baseRequirement;
+      }
+
+      function findNodeLocation(hero, nodeId) {
+        for (let layerIndex = 0; layerIndex < hero.layers.length; layerIndex += 1) {
+          const nodeIndex = hero.layers[layerIndex].nodeIds.indexOf(nodeId);
+          if (nodeIndex >= 0) return { layerIndex, nodeIndex };
+        }
+        return null;
+      }
+
+      function getLayerSideNodeIds(hero, layerIndex, side) {
+        const layer = hero.layers[layerIndex];
+        if (!layer || layer.number < 4 || !side) return layer?.nodeIds || [];
+        return layer.nodeIds.filter((nodeId) => {
+          const node = nodeMap.get(nodeId);
+          const position = Number(node?.position || 0);
+          return position === 1 || (side === "left" ? position > 1 && position % 2 === 0 : position % 2 === 1);
+        });
+      }
+
+      function nodeIsAvailable(hero, layerIndex, nodeIndex) {
+        return nodePrerequisitesMet(hero, layerIndex, nodeIndex)
+          && !exclusiveTalentBlocker(hero, layerIndex, nodeIndex);
+      }
+
+      function missingNodePrerequisite(hero, layerIndex, nodeIndex) {
+        if (nodePrerequisitesAreAny(hero, layerIndex, nodeIndex) && nodePrerequisitesMet(hero, layerIndex, nodeIndex)) return null;
+        return getNodePrerequisites(hero, layerIndex, nodeIndex)
+          .find(({ node: parent, level }) => currentNodeLevel(parent) < level) || null;
+      }
+
+      function nextUnlockLevel(hero, nodeId) {
+        const requiredLevels = [];
+        hero.layers.forEach((layer, layerIndex) => {
+          layer.nodeIds.forEach((candidateId, nodeIndex) => {
+            getNodePrerequisites(hero, layerIndex, nodeIndex).forEach(({ node: parent, level }) => {
+              if (parent.id === nodeId) requiredLevels.push(level);
+            });
+          });
+        });
+        return requiredLevels.length ? Math.min(...requiredLevels) : null;
+      }
+
+      function normalizeSimulation(hero) {
+        const cleared = [];
+        let changed = true;
+        while (changed) {
+          changed = false;
+          hero.layers.forEach((layer, layerIndex) => {
+            layer.nodeIds.forEach((nodeId, nodeIndex) => {
+              const node = nodeMap.get(nodeId);
+              if (!node || currentNodeLevel(node) <= 0 || nodeIsAvailable(hero, layerIndex, nodeIndex)) return;
+              simulation.levels.delete(node.id);
+              if (!cleared.includes(node.name)) cleared.push(node.name);
+              changed = true;
+            });
+          });
+        }
+        return cleared;
+      }
+
+      function clearSimulation() {
+        simulation.levels.clear();
+        simulation.savedLevels = null;
+        simulation.notice = "";
+        state.selectedNodeId = null;
+        window.clearTimeout(simulationToastTimer);
+        simulationToast.classList.remove("is-visible");
+        simulationToast.textContent = "";
+      }
+
+      // 清除某层时，同时清除依赖它的后续层，避免留下不满足前置条件的点亮状态。
+      function clearLayerAndLater(hero, layerIndex) {
+        hero.layers.slice(layerIndex).forEach((layer) => {
+          layer.nodeIds.forEach((nodeId) => simulation.levels.delete(nodeId));
+        });
+        state.selectedNodeId = null;
+        simulation.notice = `已清除第${hero.layers[layerIndex].number}层及后续星魂。`;
+      }
+
+      function aggregateAttribute(totals, attribute) {
+        const id = attribute.id == null ? "" : String(attribute.id);
+        const unit = attribute.unit || "";
+        const key = `${id}|${attribute.name}|${unit}`;
+        const current = totals.get(key);
+        totals.set(key, {
+          id: attribute.id,
+          name: attribute.name,
+          amount: (current?.amount || 0) + Number(attribute.amount || 0),
+          unit
+        });
+      }
+
+      function collectSimulationTotals(hero) {
+        const attributes = new Map();
+        const materials = new Map();
+        const talents = new Map();
+        let litNodes = 0;
+        let levelSum = 0;
+        let activatedLayers = 0;
+
+        hero.layers.forEach((layer) => {
+          const layerNodes = layer.nodeIds.map((id) => nodeMap.get(id)).filter(Boolean);
+          const isActivatedLayer = layerNodes.length > 0 && layerIsActivated(hero, hero.layers.indexOf(layer));
+          if (isActivatedLayer) {
+            activatedLayers += 1;
+            layer.stateEffects.forEach((effect) => aggregateAttribute(attributes, effect));
+          }
+          layerNodes.forEach((node) => {
+            const level = currentNodeLevel(node);
+            if (level <= 0) return;
+            litNodes += 1;
+            levelSum += level;
+            node.costs.slice(0, Math.min(level, node.costs.length)).flat().forEach((cost) => {
+              materials.set(cost.id, (materials.get(cost.id) || 0) + Number(cost.quantity || 0));
+            });
+            node.attributes.forEach((attribute) => aggregateAttribute(attributes, {
+              ...attribute,
+              amount: Number(attribute.amount || 0) * (node.special ? 1 : level)
+            }));
+            if (node.talentId) {
+              const talent = data.talents[String(node.talentId)] || data.talents[node.talentId];
+              if (talent) {
+                if (layer.number >= 4) {
+                  parseTalentAttributes(talent.description).forEach((attribute) => aggregateAttribute(attributes, attribute));
+                } else {
+                  talents.set(talent.name, talent);
+                }
+              }
+            }
+          });
+        });
+
+        return {
+          attributes: [...attributes.values()],
+          materials: [...materials.entries()].map(([id, quantity]) => ({ id, quantity })),
+          talents: [...talents.values()],
+          litNodes,
+          levelSum,
+          activatedLayers
+        };
+      }
+
+      function collectSimulationTotalsForLevels(hero, levels) {
+        const currentLevels = simulation.levels;
+        simulation.levels = levels;
+        try {
+          return collectSimulationTotals(hero);
+        } finally {
+          simulation.levels = currentLevels;
+        }
+      }
+
+      function attributeKey(attribute) {
+        const id = attribute.id == null ? "" : String(attribute.id);
+        return `${id}|${attribute.name}|${attribute.unit || ""}`;
+      }
+
+      function attributeDiffMarkup(savedAttributes, currentAttributes) {
+        const savedMap = new Map(savedAttributes.map((attribute) => [attributeKey(attribute), attribute]));
+        const currentMap = new Map(currentAttributes.map((attribute) => [attributeKey(attribute), attribute]));
+        const keys = [...savedMap.keys(), ...currentMap.keys()].filter((key, index, list) => list.indexOf(key) === index);
+
+        return keys.map((key) => {
+          const saved = savedMap.get(key);
+          const current = currentMap.get(key);
+          const baseAmount = Number(saved?.amount || 0);
+          const currentAmount = Number(current?.amount || 0);
+          const delta = currentAmount - baseAmount;
+          if (baseAmount === 0 && delta === 0) return "";
+          const source = current || saved;
+          const unit = attributeDisplayUnit(source);
+          const baseText = baseAmount
+            ? `<strong>+${formatNumber(attributeDisplayAmount({ ...source, amount: baseAmount }))}${unit}</strong>`
+            : "";
+          const deltaText = delta
+            ? `<em class="attribute-delta ${delta > 0 ? "is-positive" : "is-negative"}">${delta > 0 ? "+" : ""}${formatNumber(attributeDisplayAmount({ ...source, amount: delta }))}${unit}</em>`
+            : "";
+          return `<span class="attribute-item"><span>${source.name}</span>${baseText}${deltaText}</span>`;
+        }).join("");
+      }
+
+      function talentDiffMarkup(savedTalents, currentTalents) {
+        const savedMap = new Map(savedTalents.map((talent) => [talent.name, talent]));
+        const currentMap = new Map(currentTalents.map((talent) => [talent.name, talent]));
+        const names = [...savedMap.keys(), ...currentMap.keys()].filter((name, index, list) => list.indexOf(name) === index);
+
+        return names.map((name) => {
+          const saved = savedMap.get(name);
+          const current = currentMap.get(name);
+          const status = saved && !current ? "is-negative" : !saved && current ? "is-positive" : "";
+          const talent = current || saved;
+          return `<article class="simulation-talent${status ? ` ${status}` : ""}"><p>${talent.description || "暂无天赋描述"}</p></article>`;
+        }).join("");
+      }
+
+      function renderSimulationSummary(hero) {
+        const totals = collectSimulationTotals(hero);
+        const savedTotals = simulation.savedLevels
+          ? collectSimulationTotalsForLevels(hero, simulation.savedLevels)
+          : null;
+        const attributeText = savedTotals
+          ? attributeDiffMarkup(savedTotals.attributes, totals.attributes) || `<span class="simulation-empty">状态没有变化</span>`
+          : attributeMarkup(totals.attributes) || `<span class="simulation-empty">暂未点亮属性</span>`;
+        const materialText = savedTotals
+          ? materialDiffMarkup(savedTotals.materials, totals.materials) || `<span class="simulation-empty">状态没有变化</span>`
+          : materialMarkup(totals.materials) || `<span class="simulation-empty">暂未消耗材料</span>`;
+        const talentItems = savedTotals
+          ? talentDiffMarkup(savedTotals.talents, totals.talents)
+          : totals.talents.map((talent) => `<article class="simulation-talent"><p>${talent.description || "暂无天赋描述"}</p></article>`).join("");
+        const talentText = talentItems
+          ? `<div class="simulation-talents"><p class="simulation-section-label">特殊天赋</p><div class="simulation-talent-list">${talentItems}</div></div>`
+          : "";
+        simulationSummary.innerHTML = `<div class="simulation-summary"><div class="simulation-summary-head"><div><h3>点亮模拟结果</h3><p>已点亮 ${totals.litNodes} 个节点 · 累计节点等级 ${totals.levelSum} · 已激活 ${totals.activatedLayers} 层</p></div></div><div class="simulation-stack"><section class="simulation-box"><p class="simulation-section-label">武将属性</p><div class="attribute-list">${attributeText}</div>${talentText}</section><section class="simulation-box"><p class="box-label">消耗材料</p><div class="material-list">${materialText}</div></section></div></div>`;
+      }
+
+      function renderNodeDetails(node, requirement, hero, layerIndex, nodeIndex) {
+        const talent = node.talentId ? data.talents[String(node.talentId)] || data.talents[node.talentId] : null;
+        const level = currentNodeLevel(node);
+        const rows = node.costs.map((costs, index) => {
+          const cumulativeAttributes = node.attributes.map((attribute) => ({
+            ...attribute,
+            amount: Number(attribute.amount || 0) * (node.special ? 1 : index + 1)
+          }));
+          const attributeText = attributeMarkup(cumulativeAttributes) || `<span class="attribute-item">一次性解锁</span>`;
+          return `<tr><td>Lv.${index + 1}</td><td><div class="material-list">${materialMarkup(costs)}</div></td><td><div class="attribute-list">${attributeText}</div></td></tr>`;
+        }).join("");
+        const talentBox = talent ? `<div class="talent-box"><p class="box-label">天赋效果</p><strong>${talent.name}</strong><p>${talent.description || "暂无天赋描述"}</p></div>` : "";
+        return `<div class="node-detail-card" id="node-detail-${node.id}"><div class="node-detail-head"><img class="node-detail-icon${level > 0 ? "" : " is-unlit"}" src="${nodeIcon(node)}" alt="${node.name}图标"><div class="node-detail-copy"><h3>${node.name}</h3><p class="node-requirement"><strong>点亮条件：</strong>${requirement}</p><div class="node-simulation-state"><span class="node-simulation-level">当前 ${level} / ${node.maxLevel} 级</span></div></div></div>${talentBox}<div class="node-detail-grid"><div class="level-table-wrap"><p class="box-label">升至各级的耗材</p><table class="level-table"><thead><tr><th>目标等级</th><th>消耗材料</th><th>累积属性</th></tr></thead><tbody>${rows}</tbody></table></div></div></div>`;
+      }
+
+      // 原始 requirement 记录的是上一层末端关键星魂达到 1 级后的解锁条件，展示时归到当前层。
+      function layerUnlockRequirement(hero, layerIndex) {
+        if (layerIndex === 0) return `人物等级 ${data.unlockLevel} 级开启`;
+        const previousPair = getExclusiveTalentPair(hero, layerIndex - 1);
+        if (previousPair) return `「${previousPair[0].name}」或「${previousPair[1].name}」达到1级`;
+        return formatUnlockRequirement(hero.layers[layerIndex - 1].requirement);
+      }
+
+      function setNodeLevel(hero, nodeId, targetLevel) {
+        const location = findNodeLocation(hero, nodeId);
+        const node = nodeMap.get(nodeId);
+        if (!location || !node) return false;
+        const current = currentNodeLevel(node);
+        const blocker = exclusiveTalentBlocker(hero, location.layerIndex, location.nodeIndex);
+        if (targetLevel > current && blocker) {
+          simulation.notice = `“${node.name}”与“${blocker.name}”只能二选一，请先清除已选择的天赋。`;
+          return false;
+        }
+        if (targetLevel > current && !nodeIsAvailable(hero, location.layerIndex, location.nodeIndex)) {
+          const missing = missingNodePrerequisite(hero, location.layerIndex, location.nodeIndex);
+          simulation.notice = missing
+            ? `请先将“${missing.node.name}”点亮至 ${missing.level} 级。`
+            : "请先满足这个节点的点亮条件。";
+          return false;
+        }
+        const nextLevel = Math.max(0, Math.min(node.maxLevel, targetLevel));
+        simulation.levels.set(nodeId, nextLevel);
+        const cleared = nextLevel < current ? normalizeSimulation(hero) : [];
+        simulation.notice = cleared.length
+          ? `“${node.name}”降至 ${nextLevel} 级，后续不满足前置条件的节点已归零：${cleared.join("、")}。`
+          : nextLevel > 0 ? `已模拟点亮“${node.name}”至 ${nextLevel} 级。` : "";
+        return true;
+      }
+
+      function lightLayer(hero, layerIndex, nodeIds = null, side = null) {
+        const layer = hero.layers[layerIndex];
+        const exclusivePair = getExclusiveTalentPair(hero, layerIndex);
+        const targetNodeIds = nodeIds || layer.nodeIds;
+        const excludedTalent = exclusivePair
+          ? side === "left" ? exclusivePair[1] : side === "right" ? exclusivePair[0] : exclusivePair[1]
+          : null;
+        if (excludedTalent) simulation.levels.delete(excludedTalent.id);
+        let changed = true;
+        while (changed) {
+          changed = false;
+          targetNodeIds.forEach((nodeId) => {
+            const nodeIndex = layer.nodeIds.indexOf(nodeId);
+            const node = nodeMap.get(nodeId);
+            if (excludedTalent?.id === node?.id) return;
+            if (!node || currentNodeLevel(node) >= node.maxLevel || !nodeIsAvailable(hero, layerIndex, nodeIndex)) return;
+            simulation.levels.set(node.id, node.maxLevel);
+            changed = true;
+          });
+        }
+        const incomplete = targetNodeIds.some((nodeId) => {
+          const node = nodeMap.get(nodeId);
+          return node && currentNodeLevel(node) < node.maxLevel;
+        });
+        const scopeLabel = side ? `第${layer.number}层${side === "left" ? "左半部分" : "右半部分"}` : `第${layer.number}层`;
+        simulation.notice = incomplete
+          ? `${scopeLabel}仍有节点未满足前置条件，请先点亮前置星魂。`
+          : `已模拟点亮${scopeLabel}全部星魂。`;
+      }
+
+      // 按当前层的前置链计算最低可用等级：中间节点升到刚好开启后续节点，末端节点升到 1 级。
+      function lightLayerExactly(hero, layerIndex, nodeIds = null, side = null) {
+        const layer = hero.layers[layerIndex];
+        const targetNodeIds = nodeIds || layer.nodeIds;
+        const targets = new Map(targetNodeIds.map((nodeId) => [nodeId, 1]));
+        const exclusivePair = getExclusiveTalentPair(hero, layerIndex);
+        const excludedTalent = exclusivePair
+          ? side === "left" ? exclusivePair[1] : side === "right" ? exclusivePair[0] : exclusivePair[1]
+          : null;
+        if (excludedTalent) {
+          simulation.levels.delete(excludedTalent.id);
+          targets.set(excludedTalent.id, 0);
+        }
+        const layerNodeIds = new Set(targetNodeIds);
+        const addRequiredLevel = (parentId, level) => {
+          if (!layerNodeIds.has(parentId)) return;
+          targets.set(parentId, Math.max(targets.get(parentId) || 0, level));
+        };
+
+        hero.layers.forEach((candidateLayer, candidateLayerIndex) => {
+          candidateLayer.nodeIds.forEach((candidateId, candidateNodeIndex) => {
+            plannedNodePrerequisites(hero, candidateLayerIndex, candidateNodeIndex).forEach(({ node: parent, level }) => {
+              if (candidateLayerIndex === layerIndex) addRequiredLevel(parent.id, level);
+              if (candidateLayerIndex === layerIndex + 1) addRequiredLevel(parent.id, level);
+            });
+          });
+        });
+
+        let changed = true;
+        while (changed) {
+          changed = false;
+          targetNodeIds.forEach((nodeId) => {
+            const nodeIndex = layer.nodeIds.indexOf(nodeId);
+            const node = nodeMap.get(nodeId);
+            if (excludedTalent?.id === node?.id) return;
+            if (!node || !nodeIsAvailable(hero, layerIndex, nodeIndex)) return;
+            const target = Math.min(node.maxLevel, targets.has(nodeId) ? targets.get(nodeId) : 1);
+            if (currentNodeLevel(node) !== target) {
+              simulation.levels.set(node.id, target);
+              changed = true;
+            }
+          });
+        }
+        normalizeSimulation(hero);
+        const incomplete = targetNodeIds.filter((nodeId) => {
+          const node = nodeMap.get(nodeId);
+          if (!node) return false;
+          const target = Math.min(node.maxLevel, targets.get(nodeId) || 0);
+          return currentNodeLevel(node) < target;
+        });
+        const scopeLabel = side ? `第${layer.number}层${side === "left" ? "左半部分" : "右半部分"}` : `第${layer.number}层`;
+        simulation.notice = incomplete.length
+          ? `${scopeLabel}仍有节点未达到目标等级，请先点亮前置星魂。`
+          : `已将${scopeLabel}点亮到刚好开启后续星魂所需等级。`;
+      }
+
+      function renderLayers(hero) {
+        renderSimulationSummary(hero);
+        const selectedIndex = Math.max(0, hero.layers.findIndex((layer) => layer.number === state.layerNumber));
+        const selectedLayer = hero.layers[selectedIndex];
+        state.layerNumber = selectedLayer.number;
+        const tabs = hero.layers.map((layer) => `<button class="layer-tab${layer.number === selectedLayer.number ? " is-active" : ""}" type="button" role="tab" aria-selected="${layer.number === selectedLayer.number}" aria-label="第${layer.number}层星魂" data-layer-number="${layer.number}"><img src="assets/hero-star-soul-ui/ceng${layer.number}.png" alt=""></button>`).join("");
+        const usesElevenLayout = selectedLayer.nodeIds.length === 11;
+        const nodeIndexByPosition = new Map(selectedLayer.nodeIds.map((id, index) => [Number(nodeMap.get(id)?.position), index]));
+        const points = usesElevenLayout
+          ? selectedLayer.nodeIds.map((id) => layout11[Number(nodeMap.get(id)?.position) - 1])
+          : layout10.slice(0, selectedLayer.nodeIds.length);
+        const edges = usesElevenLayout
+          ? edges11.map(([from, to]) => [nodeIndexByPosition.get(from + 1), nodeIndexByPosition.get(to + 1)])
+          : edges10;
+        const nodes = selectedLayer.nodeIds.map((id, nodeIndex) => {
+          const node = nodeMap.get(id);
+          const requirement = node ? nodeUnlockRequirement(hero, selectedIndex, nodeIndex) : "完成前置星魂";
+          return node ? renderBoardNode(node, points[nodeIndex], requirement, hero, selectedIndex, nodeIndex) : "";
+        }).join("");
+        const layerActionMarkup = selectedLayer.number >= 4
+          ? `<button class="layer-action" type="button" data-sim-action="layer-exact" data-layer-side="left">恰好点亮左半部分</button><button class="layer-action" type="button" data-sim-action="layer-exact" data-layer-side="right">恰好点亮右半部分</button><button class="layer-action" type="button" data-sim-action="layer-max" data-layer-side="left">完全点亮左半部分</button><button class="layer-action" type="button" data-sim-action="layer-max" data-layer-side="right">完全点亮右半部分</button>`
+          : `<button class="layer-action" type="button" data-sim-action="layer-exact">恰好点亮本层</button><button class="layer-action" type="button" data-sim-action="layer-max">点亮本层</button>`;
+        layerDetails.innerHTML = `<div class="layer-tabs" role="tablist" aria-label="选择星魂层数">${tabs}</div><section class="layer-view" role="tabpanel"><div class="layer-view-head"><div><h3 class="layer-view-title">第${selectedLayer.number}层星魂</h3></div><div class="layer-view-tools"><div class="layer-actions"><button class="layer-action" type="button" data-sim-action="reset">清空模拟</button><button class="layer-action" type="button" data-sim-action="layer-clear">清除本层</button><button class="layer-action" type="button" data-sim-action="save-state">${simulation.savedLevels ? "取消状态保存" : "保存该状态"}</button>${layerActionMarkup}</div></div></div><div class="layer-content"><div class="layer-board-layout"><div class="soul-board-scroll"><div class="soul-board-canvas"><img class="board-layer-title" src="assets/hero-star-soul-ui/ceng${selectedLayer.number}.png" alt="天命星魂第${selectedLayer.number}层"><span class="board-corner-label">${hero.name} · <strong>第${selectedLayer.number}层</strong></span>${connectorMarkup(points, edges)}${nodes}</div></div><div class="layer-summary-slot"></div></div><div class="node-detail-slot" hidden></div></div></section>`;
+        layerDetails.querySelector(".layer-summary-slot")?.appendChild(simulationSummary);
+
+        layerDetails.querySelectorAll(".layer-tab").forEach((tab) => tab.addEventListener("click", () => {
+          state.layerNumber = Number(tab.dataset.layerNumber);
+          renderLayers(hero);
+        }));
+
+        const showNodeDetails = (button) => {
+          const article = button.closest(".layer-view");
+          const slot = article.querySelector(".node-detail-slot");
+          const node = nodeMap.get(Number(button.dataset.nodeId));
+          const nodeIndex = selectedLayer.nodeIds.indexOf(node.id);
+          const requirement = nodeUnlockRequirement(hero, selectedIndex, nodeIndex);
+          article.querySelectorAll(".soul-node").forEach((item) => {
+            item.classList.remove("is-selected");
+            item.querySelector(".node-core")?.setAttribute("aria-expanded", "false");
+          });
+          state.selectedNodeId = node.id;
+          button.closest(".soul-node").classList.add("is-selected");
+          button.setAttribute("aria-expanded", "true");
+          slot.innerHTML = renderNodeDetails(node, requirement, hero, selectedIndex, nodeIndex);
+          slot.hidden = false;
+        };
+
+        layerDetails.querySelectorAll(".node-core").forEach((button) => button.addEventListener("click", () => {
+          if (state.selectedNodeId === Number(button.dataset.nodeId)) {
+            state.selectedNodeId = null;
+            renderLayers(hero);
+            return;
+          }
+          showNodeDetails(button);
+        }));
+
+        layerDetails.querySelectorAll(".node-inline-action, .node-corner-action").forEach((action) => action.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const node = nodeMap.get(Number(action.dataset.nodeId));
+          if (!node) return;
+          if (action.dataset.simAction === "plus") setNodeLevel(hero, node.id, currentNodeLevel(node) + 1);
+          if (action.dataset.simAction === "minus") setNodeLevel(hero, node.id, currentNodeLevel(node) - 1);
+          if (action.dataset.simAction === "exact") setNodeLevel(hero, node.id, nextUnlockLevel(hero, node.id));
+          if (action.dataset.simAction === "max") setNodeLevel(hero, node.id, node.maxLevel);
+          showSimulationErrorIfNeeded();
+          renderLayers(hero);
+        }));
+
+        layerDetails.querySelector('[data-sim-action="reset"]').addEventListener("click", () => {
+          clearSimulation();
+          renderLayers(hero);
+        });
+
+        layerDetails.querySelector('[data-sim-action="save-state"]').addEventListener("click", () => {
+          simulation.savedLevels = simulation.savedLevels ? null : new Map(simulation.levels);
+          simulation.notice = "";
+          renderLayers(hero);
+        });
+
+        layerDetails.querySelectorAll('[data-sim-action^="layer-exact"]').forEach((action) => action.addEventListener("click", () => {
+          const side = action.dataset.layerSide || null;
+          const nodeIds = side ? getLayerSideNodeIds(hero, selectedIndex, side) : null;
+          lightLayerExactly(hero, selectedIndex, nodeIds, side);
+          showSimulationErrorIfNeeded();
+          renderLayers(hero);
+        }));
+
+        layerDetails.querySelector('[data-sim-action="layer-clear"]').addEventListener("click", () => {
+          clearLayerAndLater(hero, selectedIndex);
+          renderLayers(hero);
+        });
+
+        layerDetails.querySelectorAll('[data-sim-action^="layer-max"]').forEach((action) => action.addEventListener("click", () => {
+          const side = action.dataset.layerSide || null;
+          const nodeIds = side ? getLayerSideNodeIds(hero, selectedIndex, side) : null;
+          lightLayer(hero, selectedIndex, nodeIds, side);
+          showSimulationErrorIfNeeded();
+          renderLayers(hero);
+        }));
+
+        if (state.selectedNodeId) {
+          const selectedButton = layerDetails.querySelector(`[data-node-id="${state.selectedNodeId}"]`);
+          if (selectedButton) showNodeDetails(selectedButton);
+        }
+      }
+
+      function selectHero(heroId) {
+        state.heroId = heroId;
+        state.faction = getHeroFaction(getHero());
+        state.layerNumber = 1;
+        clearSimulation();
+        const hero = getHero();
+        renderPicker();
+        renderOverview(hero);
+        renderLayers(hero);
+      }
+
+      factionTabs.forEach((tab) => tab.addEventListener("click", () => {
+        state.faction = tab.dataset.faction;
+        renderPicker();
+      }));
+      selectHero(state.heroId);
+    })();
+  </script>
+</body>
+</html>

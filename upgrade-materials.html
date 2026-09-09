@@ -91,6 +91,42 @@
       gap: 12px;
     }
 
+    .material-groups {
+      display: grid;
+      gap: 26px;
+    }
+
+    .material-group {
+      display: grid;
+      gap: 11px;
+    }
+
+    .material-group-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0;
+      color: var(--jade);
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+
+    .material-group-title::after {
+      content: "";
+      flex: 1 1 auto;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .material-group.is-todo .material-group-title {
+      color: #a8782f;
+    }
+
+    .material-group.is-incomplete .material-group-title {
+      color: var(--muted);
+    }
+
     .material-card {
       display: flex;
       align-items: center;
@@ -203,20 +239,30 @@
 
     <h1 class="page-title">升级材料消耗表</h1>
 
-    <nav class="material-grid" aria-label="升级材料消耗表入口">
-      <a class="material-card" href="houjun-upgrade.html">
-        <span class="material-icon"><img src="assets/lingdi-icons/lingdi_n.png" alt="后军与领地图标"></span>
-        <span class="material-copy"><h2 class="material-title">后军</h2></span>
-      </a>
-      <a class="material-card" href="protagonist-fashion.html">
-        <span class="material-icon"><img src="assets/fashion-gallery/male-small-01.png" alt="主角时装图标"></span>
-        <span class="material-copy"><h2 class="material-title">主角时装</h2></span>
-      </a>
-      <a class="material-card" href="hero-destiny.html">
-        <span class="material-icon"><img src="assets/hero-destiny-items/tianmingshi.png" alt="天命石图标"></span>
-        <span class="material-copy"><h2 class="material-title">天命</h2></span>
-      </a>
-    </nav>
+    <div class="material-groups">
+      <section class="material-group is-complete" aria-labelledby="completed-title">
+        <h2 class="material-group-title" id="completed-title">已完成</h2>
+        <nav class="material-grid" aria-label="已完成的升级材料消耗表入口">
+          <a class="material-card" href="protagonist-fashion.html">
+            <span class="material-icon"><img src="assets/fashion-gallery/male-small-01.png" alt="主角时装图标"></span>
+            <span class="material-copy"><h3 class="material-title">主角时装</h3></span>
+          </a>
+          <a class="material-card" href="hero-destiny.html">
+            <span class="material-icon"><img src="assets/hero-destiny-items/tianmingshi.png" alt="天命石图标"></span>
+            <span class="material-copy"><h3 class="material-title">天命</h3></span>
+          </a>
+          <a class="material-card" href="houjun-upgrade.html">
+            <span class="material-icon"><img src="assets/houjun-icons/caozhi.png" alt="后军武将头像图标"></span>
+            <span class="material-copy"><h3 class="material-title">后军</h3></span>
+          </a>
+          <a class="material-card" href="hero-star-soul.html">
+            <span class="material-icon"><img src="assets/hero-star-soul-items/xinghunzhu.png" alt="星魂珠图标"></span>
+            <span class="material-copy"><h3 class="material-title">武将星魂</h3></span>
+          </a>
+        </nav>
+      </section>
+
+    </div>
 
     <footer>
       <p class="copyright-note">
