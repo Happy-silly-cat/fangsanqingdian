@@ -153,8 +153,8 @@
 
     .overview-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .overview-card {
@@ -163,10 +163,10 @@
       align-items: center;
       justify-content: flex-start;
       width: 100%;
-      min-height: 92px;
+      min-height: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 10px;
+      padding: 7px 8px;
       background: var(--panel);
       color: var(--text);
       text-align: left;
@@ -185,8 +185,9 @@
 
     .overview-icon {
       display: block;
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
       border: 2px solid rgba(231, 187, 97, 0.62);
       border-radius: 50%;
       background: #173f35;
@@ -202,9 +203,13 @@
     }
 
     .overview-name {
-      font-size: 16px;
+      min-width: 0;
+      overflow: hidden;
+      font-size: 13px;
       font-weight: 800;
       text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .total-calculator {
@@ -338,13 +343,20 @@
       font-variant-numeric: tabular-nums;
     }
 
+    .total-attribute-box {
+      margin-top: 8px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 10px;
+      background: #fffdf8;
+    }
+
     .total-attribute-list {
       display: flex;
       flex-wrap: wrap;
-      align-items: baseline;
-      gap: 5px 16px;
-      margin-top: 8px;
-      color: var(--jade-dark);
+      gap: 7px 14px;
+      margin: 0;
+      color: var(--text);
       font-size: 14px;
       line-height: 1.45;
       font-weight: 800;
@@ -360,35 +372,15 @@
       white-space: nowrap;
     }
 
-    .total-morale-effects {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 5px 16px;
-      margin-top: 8px;
-      border-top: 1px dashed rgba(217, 203, 182, 0.78);
-      padding-top: 8px;
-      color: var(--jade-dark);
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 750;
+    .total-attribute-item strong {
+      color: var(--gold);
+      font-weight: 850;
     }
 
-    .total-morale-effects:empty::before {
-      content: "暂无已达到领地气势效果";
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .total-morale-effects-label {
-      flex-basis: 100%;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .total-morale-effect {
-      white-space: nowrap;
+    .total-attribute-added {
+      margin-left: 3px;
+      color: #239b63;
+      font-style: normal;
     }
 
     .detail-panel {
@@ -472,8 +464,26 @@
       white-space: nowrap;
     }
 
-    .number-control .field {
+    .number-input-shell {
+      position: relative;
+      flex: 1 1 auto;
       min-width: 0;
+    }
+
+    .number-input-shell .field {
+      width: 100%;
+    }
+
+    .number-input-inside-label {
+      position: absolute;
+      top: 50%;
+      left: 24px;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      pointer-events: none;
+      white-space: nowrap;
     }
 
     .calculator-arrow {
@@ -530,8 +540,12 @@
       gap: 3px 12px;
       width: 100%;
       margin-top: 6px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      box-sizing: border-box;
       overflow-x: auto;
-      padding-bottom: 2px;
+      padding: 10px;
+      background: var(--panel-strong);
       color: var(--jade-dark);
       font-size: 13px;
       line-height: 1.45;
@@ -539,10 +553,18 @@
     }
 
     .calculator-attribute-title {
+      display: inline-flex;
+      align-items: center;
       flex: 0 0 auto;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      color: #9b6f1f;
+      background: #fff2cf;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
     }
 
     .calculator-attribute-line {
@@ -572,36 +594,6 @@
       font-size: 14px;
     }
 
-    .detail-summary {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .summary-box {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 13px 14px;
-      background: var(--panel);
-    }
-
-    .summary-box-label {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .summary-box-value {
-      display: block;
-      margin-top: 4px;
-      color: var(--gold);
-      font-size: 21px;
-      line-height: 1.15;
-      font-weight: 850;
-      font-variant-numeric: tabular-nums;
-    }
-
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
@@ -611,7 +603,7 @@
 
     .cost-table {
       width: 100%;
-      min-width: 860px;
+      min-width: 720px;
       border-collapse: collapse;
       table-layout: fixed;
       font-size: 14px;
@@ -633,7 +625,7 @@
 
     .cost-table th:nth-child(1),
     .cost-table td:nth-child(1) {
-      width: 14%;
+      width: 18%;
       white-space: nowrap;
     }
 
@@ -642,26 +634,88 @@
       font-weight: 800;
     }
 
-    .cost-table th:nth-child(2),
-    .cost-table td:nth-child(2) {
-      width: 24%;
-      font-variant-numeric: tabular-nums;
+    .fragment-material {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      color: var(--text);
+      font-weight: 700;
       white-space: nowrap;
     }
 
-    .cost-table th:nth-child(4),
-    .cost-table td:nth-child(4) {
-      width: 14%;
+    .fragment-material img {
+      display: block;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(231, 187, 97, 0.62);
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    .fragment-material-amount {
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cost-table th:nth-child(2),
+    .cost-table td:nth-child(2) {
+      width: 28%;
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
 
     .cost-table th:nth-child(3),
     .cost-table td:nth-child(3) {
-      width: 48%;
+      width: 54%;
     }
 
     .cost-table tbody tr:last-child td { border-bottom: 0; }
+
+    .upgrade-table-details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .upgrade-table-summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      color: var(--jade-dark);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 850;
+      list-style: none;
+    }
+
+    .upgrade-table-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .upgrade-table-summary::before {
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--jade);
+      content: "";
+      transition: transform 160ms ease;
+    }
+
+    .upgrade-table-details[open] > .upgrade-table-summary::before {
+      transform: rotate(90deg);
+    }
+
+    .upgrade-table-details > .table-wrap {
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+    }
 
     .attribute-gain {
       display: flex;
@@ -725,11 +779,12 @@
       .brand-mark { width: 96px; flex-basis: 96px; }
       .page-title { font-size: 26px; }
       .intro { align-items: flex-start; flex-direction: column; gap: 3px; margin-top: 12px; }
-      .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .overview-card { padding: 7px 8px; }
+      .overview-icon { width: 44px; height: 44px; flex-basis: 44px; }
       .total-level-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .total-level-item { grid-template-columns: 34px minmax(0, 1fr) 56px; padding: 6px; }
       .total-level-icon { width: 34px; height: 34px; }
-      .detail-summary { grid-template-columns: 1fr; }
       .section-head { align-items: flex-start; flex-direction: column; gap: 4px; }
       .detail-actions { width: 100%; justify-content: space-between; }
       .calculator-body { grid-template-columns: 1fr; gap: 14px; }
@@ -743,7 +798,7 @@
     }
 
     @media (min-width: 721px) and (max-width: 980px) {
-      .overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .overview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -780,11 +835,12 @@
         <div class="total-level-grid" id="totalLevelGrid"></div>
         <div class="total-result">
           <div class="total-result-head">
-            <span class="total-result-label">总属性</span>
+            <span class="calculator-attribute-title total-attribute-title">全体属性</span>
             <span class="total-morale">总气势<strong class="total-morale-value" id="totalMorale">0</strong></span>
           </div>
-          <div class="total-attribute-list" id="totalAttributeList"></div>
-          <div class="total-morale-effects" id="totalMoraleEffects"></div>
+          <div class="total-attribute-box">
+            <div class="total-attribute-list" id="totalAttributeList"></div>
+          </div>
         </div>
       </section>
     </section>
@@ -811,15 +867,21 @@
             <label class="calculator-field" for="fromLevelInput">
               从
               <span class="number-control">
-                <input class="field" id="fromLevelInput" type="number" min="0" max="70" step="1" value="0">
-                <span id="fromLevelUnit">级（未解锁）</span>
+                <span class="number-input-shell">
+                  <input class="field" id="fromLevelInput" type="number" min="0" max="70" step="1" value="0">
+                  <span class="number-input-inside-label" id="fromLevelUnlockLabel">（未解锁）</span>
+                </span>
+                <span id="fromLevelUnit">级</span>
               </span>
             </label>
             <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
             <label class="calculator-field" for="toLevelInput">
               到
               <span class="number-control">
-                <input class="field" id="toLevelInput" type="number" min="0" max="70" step="1" value="70">
+                <span class="number-input-shell">
+                  <input class="field" id="toLevelInput" type="number" min="0" max="70" step="1" value="70">
+                  <span class="number-input-inside-label" id="toLevelUnlockLabel" hidden>（未解锁）</span>
+                </span>
                 <span id="toLevelUnit">级</span>
               </span>
             </label>
@@ -832,25 +894,26 @@
               <span class="calculator-unlock-label" id="calculatorUnlockLabel" hidden>（基础解锁）</span>
               <span class="calculator-result-unit">个碎片</span>
             </div>
-            <span class="calculator-result-note" id="calculatorResultNote">合成需要 0 个</span>
+            <span class="calculator-result-note" id="calculatorResultNote" hidden></span>
           </div>
           <div class="calculator-attribute-result" id="calculatorAttributeResult"></div>
         </div>
       </section>
-      <div class="detail-summary" id="detailSummary"></div>
-      <div class="table-wrap">
-        <table class="cost-table">
-          <thead>
-            <tr>
-              <th>升级区间</th>
-              <th>消耗材料</th>
-              <th>获得属性</th>
-              <th>累计消耗</th>
-            </tr>
-          </thead>
-          <tbody id="detailBody"></tbody>
-        </table>
-      </div>
+      <details class="upgrade-table-details">
+        <summary class="upgrade-table-summary">升级材料明细</summary>
+        <div class="table-wrap">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>升级区间</th>
+                <th>消耗材料</th>
+                <th>获得属性</th>
+              </tr>
+            </thead>
+            <tbody id="detailBody"></tbody>
+          </table>
+        </div>
+      </details>
       <div class="empty" id="detailEmpty" hidden>没有找到对应的升级数据</div>
     </section>
 
@@ -899,13 +962,11 @@
     const overviewGrid = document.getElementById("overviewGrid");
     const totalLevelGrid = document.getElementById("totalLevelGrid");
     const totalAttributeList = document.getElementById("totalAttributeList");
-    const totalMoraleEffects = document.getElementById("totalMoraleEffects");
     const totalMorale = document.getElementById("totalMorale");
     const resetTotalLevels = document.getElementById("resetTotalLevels");
     const detailPanel = document.getElementById("detailPanel");
     const detailTitle = document.getElementById("detailTitle");
     const detailLevelUnit = document.getElementById("detailLevelUnit");
-    const detailSummary = document.getElementById("detailSummary");
     const detailBody = document.getElementById("detailBody");
     const detailEmpty = document.getElementById("detailEmpty");
     const backToOverview = document.getElementById("backToOverview");
@@ -913,6 +974,8 @@
     const toLevelInput = document.getElementById("toLevelInput");
     const fromLevelUnit = document.getElementById("fromLevelUnit");
     const toLevelUnit = document.getElementById("toLevelUnit");
+    const fromLevelUnlockLabel = document.getElementById("fromLevelUnlockLabel");
+    const toLevelUnlockLabel = document.getElementById("toLevelUnlockLabel");
     const calculatorResult = document.getElementById("calculatorResult");
     const calculatorTotal = document.getElementById("calculatorTotal");
     const calculatorUnlockTotal = document.getElementById("calculatorUnlockTotal");
@@ -936,9 +999,13 @@
       return Number(value).toLocaleString("zh-CN");
     }
 
-    function formatAttributeValue(attribute) {
+    function formatAttributeAmount(attribute) {
       const value = attribute.percent ? attribute.value / 100 : attribute.value;
-      return `${attribute.name} +${formatNumber(value)}${attribute.percent ? "%" : ""}`;
+      return `+${formatNumber(value)}${attribute.percent ? "%" : ""}`;
+    }
+
+    function formatAttributeValue(attribute) {
+      return `${attribute.name} ${formatAttributeAmount(attribute)}`;
     }
 
     function readLevel(input, fallback) {
@@ -971,27 +1038,40 @@
       if (!attributes.length) return;
       const line = document.createElement("div");
       line.className = `attribute-gain-line ${extraClass}`.trim();
-      const label = document.createElement("span");
-      label.className = "attribute-gain-label";
-      label.textContent = labelText;
       const values = document.createElement("span");
       values.className = "attribute-gain-values";
       values.textContent = attributes.map(formatAttributeValue).join("；");
-      line.append(label, values);
+      if (labelText) {
+        const label = document.createElement("span");
+        label.className = "attribute-gain-label";
+        label.textContent = labelText;
+        line.append(label);
+      }
+      line.append(values);
       container.appendChild(line);
     }
 
     function appendValueLine(container, labelText, valueText, extraClass = "") {
       const line = document.createElement("div");
       line.className = `attribute-gain-line ${extraClass}`.trim();
-      const label = document.createElement("span");
-      label.className = "attribute-gain-label";
-      label.textContent = labelText;
       const value = document.createElement("span");
       value.className = "attribute-gain-values";
-      value.textContent = valueText;
-      line.append(label, value);
+      value.textContent = `${labelText} ${valueText}`;
+      line.append(value);
       container.appendChild(line);
+    }
+
+    function renderFragmentMaterial(heroName, quantity) {
+      const material = document.createElement("span");
+      material.className = "fragment-material";
+      const icon = document.createElement("img");
+      icon.src = `assets/houjun-icons/${iconByName[heroName]}`;
+      icon.alt = `${heroName}碎片图标`;
+      const amount = document.createElement("span");
+      amount.className = "fragment-material-amount";
+      amount.textContent = `×${formatNumber(quantity)}`;
+      material.append(icon, amount);
+      return material;
     }
 
     function addAttributeTotal(attributeTotals, attribute) {
@@ -1033,7 +1113,7 @@
 
       const title = document.createElement("span");
       title.className = "calculator-attribute-title";
-      title.textContent = "本区间获得属性：";
+      title.textContent = "全体属性";
       calculatorAttributeResult.appendChild(title);
 
       const attributeTotals = new Map();
@@ -1197,13 +1277,11 @@
       updateTotalCalculator();
     }
 
-    function renderTotalMoraleEffects(moraleValue) {
-      totalMoraleEffects.replaceChildren();
+    function getTerritoryMoraleEffects(moraleValue) {
       // morale.exp 是每级新增经验，先累加成累计门槛，再判断已经达到的效果。
       const unlockedEffects = territoryMoraleRequirements.filter(
         (entry) => entry.cumulativeExp <= moraleValue
       );
-      if (!unlockedEffects.length) return;
 
       const mergedEffects = new Map();
       unlockedEffects.forEach((entry) => {
@@ -1229,18 +1307,45 @@
         mergedEffects.set(key, current);
       });
 
-      const label = document.createElement("span");
-      label.className = "total-morale-effects-label";
-      label.textContent = `领地气势最终效果（已达到${unlockedEffects.length}级）`;
-      totalMoraleEffects.appendChild(label);
+      return mergedEffects;
+    }
 
-      mergedEffects.forEach((entry) => {
-        const effect = document.createElement("span");
-        effect.className = "total-morale-effect";
-        effect.textContent = entry.value === null
-          ? entry.name
-          : `${entry.name} +${formatNumber(entry.value)}${entry.percent ? "%" : ""}`;
-        totalMoraleEffects.appendChild(effect);
+    function renderTotalAttributes(houjunAttributes, territoryAttributes) {
+      const combined = new Map();
+      const appendAttribute = (attribute, source) => {
+        const name = attribute.name.replace(/^全体/, "");
+        const key = `${name}:${attribute.percent ? "percent" : "flat"}`;
+        const entry = combined.get(key) || { houjun: null, territory: null };
+        if (!entry[source]) {
+          entry[source] = { ...attribute, name };
+        } else {
+          entry[source].value += attribute.value;
+        }
+        combined.set(key, entry);
+      };
+
+      houjunAttributes.forEach((attribute) => appendAttribute(attribute, "houjun"));
+      territoryAttributes.forEach((attribute) => appendAttribute(attribute, "territory"));
+
+      totalAttributeList.replaceChildren();
+      combined.forEach(({ houjun, territory }) => {
+        const template = houjun || territory;
+        const line = document.createElement("span");
+        line.className = "total-attribute-item";
+        const name = document.createElement("span");
+        name.textContent = template.name.replace(/^全体/, "");
+        const value = document.createElement("strong");
+        if (houjun) {
+          value.append(document.createTextNode(formatAttributeAmount(houjun).replace(/^\+/, "")));
+        }
+        if (territory) {
+          const added = document.createElement("em");
+          added.className = "total-attribute-added";
+          added.textContent = formatAttributeAmount(territory);
+          value.appendChild(added);
+        }
+        line.append(name, " ", value);
+        totalAttributeList.appendChild(line);
       });
     }
 
@@ -1269,15 +1374,8 @@
 
       moraleTotal += territoryMorale;
 
-      totalAttributeList.replaceChildren();
-      attributeTotals.forEach((attribute) => {
-        const line = document.createElement("span");
-        line.className = "total-attribute-item";
-        line.textContent = formatAttributeValue(attribute);
-        totalAttributeList.appendChild(line);
-      });
+      renderTotalAttributes(attributeTotals, getTerritoryMoraleEffects(moraleTotal));
       totalMorale.textContent = formatNumber(moraleTotal);
-      renderTotalMoraleEffects(moraleTotal);
     }
 
     function renderDetail(heroName) {
@@ -1287,44 +1385,24 @@
       const attributeConfig = attributesByName.get(heroName);
       const targetLevel = readLevel(levelInput, 70);
       const rows = (detailByName.get(heroName) || []).filter((entry) => entry.level < targetLevel);
-      const upgradeTotal = rows.reduce((total, entry) => total + entry.count, 0);
 
       overviewPanel.hidden = true;
       detailPanel.hidden = false;
       detailTitle.textContent = `${heroName}升级明细`;
       detailLevelUnit.textContent = targetLevel === 0 ? "级（未解锁）" : "级";
-      detailSummary.replaceChildren();
-      [
-        ["合成消耗", item.compose],
-        ["当前范围升级", upgradeTotal],
-        ["合计消耗", item.compose + upgradeTotal]
-      ].forEach(([label, value]) => {
-        const box = document.createElement("div");
-        box.className = "summary-box";
-        const boxLabel = document.createElement("span");
-        boxLabel.className = "summary-box-label";
-        boxLabel.textContent = label;
-        const boxValue = document.createElement("span");
-        boxValue.className = "summary-box-value";
-        boxValue.textContent = `${formatNumber(value)} 个`;
-        box.append(boxLabel, boxValue);
-        detailSummary.appendChild(box);
-      });
-
       detailBody.replaceChildren();
-      let cumulative = item ? item.compose : 0;
       if (item) {
         const unlockRow = document.createElement("tr");
         const unlockLevelCell = document.createElement("td");
         unlockLevelCell.textContent = targetLevel === 0 ? "解锁（未解锁）" : "解锁";
         const unlockCostCell = document.createElement("td");
-        unlockCostCell.textContent = `${formatNumber(item.compose)} 个${heroName}碎片`;
+        unlockCostCell.appendChild(renderFragmentMaterial(heroName, item.compose));
         const unlockAttributeCell = document.createElement("td");
         const unlockAttributeGain = document.createElement("div");
         unlockAttributeGain.className = "attribute-gain";
         appendAttributeLine(
           unlockAttributeGain,
-          "基础",
+          "",
           attributeConfig ? attributeConfig.base : []
         );
         if (attributeConfig) {
@@ -1335,18 +1413,15 @@
           );
         }
         unlockAttributeCell.appendChild(unlockAttributeGain);
-        const unlockTotalCell = document.createElement("td");
-        unlockTotalCell.textContent = `${formatNumber(cumulative)} 个`;
-        unlockRow.append(unlockLevelCell, unlockCostCell, unlockAttributeCell, unlockTotalCell);
+        unlockRow.append(unlockLevelCell, unlockCostCell, unlockAttributeCell);
         detailBody.appendChild(unlockRow);
       }
       rows.forEach((entry) => {
-        cumulative += entry.count;
         const row = document.createElement("tr");
         const levelCell = document.createElement("td");
         levelCell.textContent = `${entry.level}级 → ${entry.level + 1}级`;
         const countCell = document.createElement("td");
-        countCell.textContent = `${formatNumber(entry.count)} 个${heroName}碎片`;
+        countCell.appendChild(renderFragmentMaterial(heroName, entry.count));
         const attributeCell = document.createElement("td");
         const attributeGain = document.createElement("div");
         attributeGain.className = "attribute-gain";
@@ -1357,7 +1432,7 @@
         }
         appendAttributeLine(
           attributeGain,
-          "每级",
+          "",
           upgradeAttributes
         );
         const targetUpgradeLevel = entry.level + 1;
@@ -1376,9 +1451,7 @@
           );
         }
         attributeCell.appendChild(attributeGain);
-        const totalCell = document.createElement("td");
-        totalCell.textContent = `${formatNumber(cumulative)} 个`;
-        row.append(levelCell, countCell, attributeCell, totalCell);
+        row.append(levelCell, countCell, attributeCell);
         detailBody.appendChild(row);
       });
       detailEmpty.hidden = true;
@@ -1391,8 +1464,10 @@
       const toLevel = readLevel(toLevelInput, 70);
       const item = summaryByName.get(currentHeroName);
       const attributeConfig = attributesByName.get(currentHeroName);
-      fromLevelUnit.textContent = fromLevel === 0 ? "级（未解锁）" : "级";
-      toLevelUnit.textContent = toLevel === 0 ? "级（未解锁）" : "级";
+      fromLevelUnit.textContent = "级";
+      toLevelUnit.textContent = "级";
+      fromLevelUnlockLabel.hidden = fromLevel !== 0;
+      toLevelUnlockLabel.hidden = toLevel !== 0;
 
       if (fromLevel > toLevel) {
         calculatorTotal.textContent = "!";
@@ -1400,6 +1475,7 @@
         calculatorUnlockLabel.hidden = true;
         calculatorAttributeResult.replaceChildren();
         calculatorResultNote.textContent = "起始等级不能高于目标等级";
+        calculatorResultNote.hidden = false;
         calculatorResult.classList.add("invalid");
         return;
       }
@@ -1415,9 +1491,8 @@
       calculatorUnlockTotal.hidden = unlockTotal === 0;
       calculatorUnlockLabel.hidden = unlockTotal === 0;
       renderCalculatorAttributes(attributeConfig, rows, fromLevel, toLevel);
-      calculatorResultNote.textContent = unlockTotal > 0
-        ? "已计入基础解锁材料"
-        : "不含基础解锁材料";
+      calculatorResultNote.textContent = "";
+      calculatorResultNote.hidden = true;
     }
 
     backToOverview.addEventListener("click", () => {
