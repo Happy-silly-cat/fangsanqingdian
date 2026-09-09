@@ -89,6 +89,10 @@
       margin: 14px 0 12px;
     }
 
+    .intro .back-link {
+      margin-left: auto;
+    }
+
     .page-title {
       margin: 0;
       font-size: 27px;
@@ -383,6 +387,37 @@
       font-style: normal;
     }
 
+    .ability-item {
+      color: var(--jade-dark);
+      border-color: rgba(60, 157, 133, 0.3);
+      background: rgba(60, 157, 133, 0.1);
+    }
+
+    .ability-item.ability-added {
+      color: #239b63;
+      border-color: rgba(35, 155, 99, 0.3);
+      background: rgba(35, 155, 99, 0.1);
+    }
+
+    .calculator-note {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .calculator-note-quality {
+      font-weight: 850;
+    }
+
+    .calculator-note-quality.quality-18 { color: #b84e5b; }
+    .calculator-note-quality.quality-20 { color: #b7902d; }
+    .calculator-note-quality.quality-25 { color: #8d672f; }
+    .calculator-note-quality.quality-30 { color: #71899f; }
+    .calculator-note-quality.quality-35 { color: #299b99; }
+    .calculator-note-quality.quality-40 { color: #5575c7; }
+
     .stage-cell {
       min-width: 120px;
       color: var(--jade-dark);
@@ -537,14 +572,46 @@
       font-weight: 800;
     }
 
-    .table-section { margin-top: 16px; }
+    .table-section {
+      overflow: hidden;
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
 
     .section-head {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 9px;
+      margin: 0;
+      padding: 14px 16px 14px 32px;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+    }
+
+    .table-section > .section-head::-webkit-details-marker {
+      display: none;
+    }
+
+    .table-section > .section-head::before {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--jade);
+      transform: translateY(-50%);
+      content: "";
+      transition: transform 160ms ease;
+    }
+
+    .table-section[open] > .section-head::before {
+      transform: translateY(-50%) rotate(90deg);
     }
 
     .section-title {
@@ -564,6 +631,13 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
+    }
+
+    .table-section > .table-wrap {
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
     }
 
     table {
@@ -624,6 +698,7 @@
       .brand-mark { width: 96px; flex-basis: 96px; }
       .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
       .page-title { font-size: 25px; }
+      .intro .back-link { margin-left: 0; }
       .faction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .hero-card img { width: 44px; height: 44px; flex-basis: 44px; }
       .detail-topline { align-items: flex-start; flex-direction: column; gap: 8px; }
@@ -665,10 +740,6 @@
     </section>
 
     <section class="destiny-detail" id="destinyDetail" hidden>
-      <div class="detail-topline">
-        <h2 class="detail-title" id="detailTitle">武将天命情况</h2>
-        <a class="back-link" href="hero-destiny.html">返回武将列表</a>
-      </div>
       <div class="detail-content">
         <section class="hero-summary" id="heroSummary" aria-live="polite"></section>
 
@@ -711,6 +782,7 @@
             <div class="calculator-result">
               <h3>目前属性汇总</h3>
               <div class="attribute-list" id="currentAttributes"></div>
+              <p class="calculator-note" id="qualityNotice"></p>
             </div>
           </div>
         </section>
@@ -732,11 +804,11 @@
           <div class="material-list" id="totalMaterials"></div>
         </section>
 
-        <section class="table-section">
-          <div class="section-head">
+        <details class="table-section">
+          <summary class="section-head">
             <h2 class="section-title">天命点亮消耗</h2>
             <span class="section-meta">每行对应 1 个天命节点</span>
-          </div>
+          </summary>
           <div class="table-wrap">
             <table>
               <thead>
@@ -750,7 +822,7 @@
               <tbody id="destinyTable"></tbody>
             </table>
           </div>
-        </section>
+        </details>
       </div>
     </section>
 
@@ -763,6 +835,7 @@
 
   <!-- 复用武将进阶数据中的材料名称和图标；天命专属消耗单独来自 destinyCost。 -->
   <script src="assets/hero-evolve-data.js"></script>
+  <script src="assets/hero-evolve-heroes.js"></script>
   <script src="assets/hero-destiny-data.js"></script>
   <script src="assets/hero-destiny-costs.js"></script>
   <script src="assets/hero-destiny-details.js"></script>
@@ -770,6 +843,7 @@
   <script>
     const data = window.heroDestinyData;
     const evolveData = window.heroEvolveData;
+    const purpleHeroProfiles = new Map((window.heroEvolveHeroes?.heroes || []).map((hero) => [hero.name, hero]));
     const destinyCosts = window.heroDestinyCosts;
     const details = window.heroDestinyDetails;
     const stageIcons = window.heroDestinyStageIcons;
@@ -789,7 +863,7 @@
     const totalMaterialsNode = document.querySelector("#totalMaterials");
     const destinyTable = document.querySelector("#destinyTable");
     const heroSummary = document.querySelector("#heroSummary");
-    const detailTitle = document.querySelector("#detailTitle");
+    const qualityNotice = document.querySelector("#qualityNotice");
     let selectedHeroId = "";
     let stageGroups = [];
 
@@ -805,8 +879,8 @@
     // 普通节点按品质区间显示，真、圣等阶段节点在 qualityBandAt 中沿用前一档品质。
     const stageBands = [
       { start: 1, end: 20, quality: 18, name: "红色", heroStar: 7 },
-      { start: 20, end: 30, quality: 20, name: "金色", heroStar: 8 },
-      { start: 30, end: 50, quality: 25, name: "暗金色", heroStar: 9 },
+      { start: 20, end: 40, quality: 20, name: "金色", heroStar: 8 },
+      { start: 40, end: 50, quality: 25, name: "暗金色", heroStar: 9 },
       { start: 50, end: 60, quality: 30, name: "白金色", heroStar: 10 },
       { start: 60, end: 70, quality: 35, name: "琉金色", heroStar: 11 },
       { start: 70, end: Infinity, quality: 40, name: "澜金色", heroStar: 12 }
@@ -827,7 +901,10 @@
       if (rawId.startsWith("410")) {
         const heroSuffix = rawId.slice(3);
         const soulHero = details.heroes.find((entry) => String(entry.id).endsWith(heroSuffix));
-        if (soulHero) return { name: `${soulHero.name}武魂`, icon: soulHero.icon };
+        if (soulHero) {
+          const purpleHero = purpleHeroProfiles.get(soulHero.name);
+          return { name: `${soulHero.name}武魂`, icon: purpleHero?.icon || soulHero.icon };
+        }
       }
       return hero ? { name: `材料（${rawId}）`, icon: hero.icon } : null;
     }
@@ -900,6 +977,21 @@
           : "";
         return `<span class="attribute-item"><span>${template.name}</span><strong>${baseMarkup}${addedMarkup}</strong></span>`;
       }).join("");
+    }
+
+    function abilitySummaryMarkup(ability, currentPoint, targetPoint) {
+      if (!ability || Math.max(currentPoint, targetPoint) < Number(ability.point)) return "";
+      const newlyUnlocked = currentPoint < Number(ability.point);
+      return `<span class="attribute-item ability-item${newlyUnlocked ? " ability-added" : ""}"><span>${ability.name}</span></span>`;
+    }
+
+    function renderQualityNotice(targetGroup) {
+      qualityNotice.replaceChildren("注意：要到达目标天命阶段，前提要求人物品质为");
+      const qualityLabel = document.createElement("span");
+      qualityLabel.className = "calculator-note-quality";
+      if (targetGroup?.band?.quality) qualityLabel.classList.add(`quality-${targetGroup.band.quality}`);
+      qualityLabel.textContent = targetGroup?.label || "对应品质";
+      qualityNotice.append(qualityLabel, "。");
     }
 
     function stageAt(hero, pointNumber) {
@@ -1023,6 +1115,8 @@
       stageFilterSelect.innerHTML = `<option value="all">全部人物阶段</option>${stageGroupOptions()}`;
       currentStageSelect.innerHTML = stageGroupOptions();
       targetStageSelect.innerHTML = stageGroupOptions();
+      const defaultFilterGroup = stageGroups.find((group) => group.band.quality === 18) || stageGroups[0];
+      stageFilterSelect.value = defaultFilterGroup?.key || "all";
       currentStageSelect.value = stageGroups[0]?.key || "";
       targetStageSelect.value = stageGroups.length ? stageGroups[stageGroups.length - 1].key : "none";
       updateDestinyStageOptions(hero, currentStageSelect, currentDestinyStageSelect, stageGroups[0]?.basePoint || 0);
@@ -1035,9 +1129,12 @@
       const newRows = heroPoints.filter((point) => point.number > currentPoint && point.number <= targetPoint);
       const currentAttributes = sumAttributes(currentRows);
       const newAttributes = sumAttributes(newRows);
-      currentAttributesNode.innerHTML = currentAttributes.length || newAttributes.length
-        ? combinedAttributeMarkup(currentAttributes, newAttributes)
+      const attributeSummaryMarkup = combinedAttributeMarkup(currentAttributes, newAttributes);
+      const abilityMarkup = abilitySummaryMarkup(hero.ability, currentPoint, targetPoint);
+      currentAttributesNode.innerHTML = attributeSummaryMarkup || abilityMarkup
+        ? `${attributeSummaryMarkup}${abilityMarkup}`
         : `<p class="calculator-empty">暂无属性</p>`;
+      renderQualityNotice(targetGroup);
 
       const targetStageIsLower = (targetGroup?.band.heroStar || 7) < (currentGroup?.band.heroStar || 7);
       if (targetPoint < currentPoint || targetStageIsLower) {
@@ -1116,9 +1213,13 @@
       selectedHeroId = String(hero.id);
       heroPicker.hidden = true;
       destinyDetail.hidden = false;
+      const detailBackLink = document.createElement("a");
+      detailBackLink.className = "back-link";
+      detailBackLink.href = "hero-destiny.html";
+      detailBackLink.textContent = "返回武将列表";
+      document.querySelector(".intro").append(detailBackLink);
       pageTitle.textContent = `${hero.name} · 天命情况`;
       pageNote.textContent = "按人物阶段查看天命属性与点亮材料";
-      detailTitle.textContent = `${hero.name} · 天命情况`;
       document.title = `${hero.name}天命点亮材料 - 放三数据合集`;
       rebuildStageControls(hero);
       render();

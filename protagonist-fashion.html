@@ -207,6 +207,11 @@
       gap: 18px;
     }
 
+    .fashion-groups > *,
+    .detail > * {
+      min-width: 0;
+    }
+
     .quality-group {
       --quality-color: var(--jade);
       --quality-soft: #e8f3eb;
@@ -629,6 +634,47 @@
       font-weight: 500;
     }
 
+    .section-meta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .attribute-scope {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .scope-main {
+      color: #267e68;
+      background: #e6f4ed;
+    }
+
+    .scope-all {
+      color: #9b6f1f;
+      background: #fff2cf;
+    }
+
+    .scope-aura {
+      color: #6e5b9d;
+      background: #eee9fb;
+    }
+
+    .scope-special {
+      color: #3f6f89;
+      background: #e8f3f8;
+    }
+
     .attribute-columns {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -670,13 +716,6 @@
 
     .table-attribute-list { flex-wrap: nowrap; }
 
-    .advance-stage-note {
-      margin: 9px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
     .advance-costs {
       display: flex;
       flex-wrap: wrap;
@@ -706,6 +745,47 @@
       background: var(--panel-strong);
     }
 
+    .talent-attribute-groups {
+      display: grid;
+      gap: 8px;
+    }
+
+    .talent-scope-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 6px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .talent-effect-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .talent-effect-row > .attribute-list,
+    .talent-effect-row > .muted-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .calculator-text-result {
+      margin-top: 8px;
+      border-top: 1px solid rgba(217, 203, 182, 0.78);
+      padding-top: 8px;
+    }
+
+    .calculator-text-result p {
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
     .talent-name {
       margin: 0 0 6px;
       color: var(--jade-dark);
@@ -718,6 +798,15 @@
       color: var(--text);
       font-size: 13px;
       line-height: 1.7;
+    }
+
+    .talent-special-effect {
+      margin-top: 0;
+    }
+
+    .talent-special-effect .talent-description {
+      flex: 1;
+      min-width: 0;
     }
 
     .material-summary {
@@ -811,13 +900,15 @@
 
     .table-material-name { display: inline-block; }
 
-    .strengthen-details {
+    .strengthen-details,
+    .collapsible-details {
       border: 1px solid rgba(217, 203, 182, 0.9);
       border-radius: 7px;
       background: var(--panel-strong);
     }
 
-    .strengthen-details summary {
+    .strengthen-details summary,
+    .collapsible-details summary {
       cursor: pointer;
       padding: 10px 12px;
       color: var(--jade-dark);
@@ -825,7 +916,8 @@
       font-weight: 800;
     }
 
-    .strengthen-details .data-table-wrap {
+    .strengthen-details .data-table-wrap,
+    .collapsible-details .data-table-wrap {
       border: 0;
       border-top: 1px solid rgba(217, 203, 182, 0.78);
       border-radius: 0;
@@ -871,6 +963,9 @@
       .detail-preview-frame img { max-height: 300px; }
       .section-title { align-items: flex-start; flex-wrap: wrap; }
       .section-note { margin-left: auto; }
+      .section-meta { margin-left: auto; }
+      .section-meta .section-note { margin-left: 0; }
+      .talent-attribute-groups { grid-template-columns: 1fr; }
       .calculator-state,
       .calculator-cost-group { padding: 8px; }
       .calculator-field { min-width: 0; }
@@ -953,6 +1048,19 @@
     const FLAT_ATTRIBUTE_IDS = new Set([1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 19, 20, 49, 51, 54, 55, 100]);
     const HUNDREDTH_ATTRIBUTE_IDS = new Set([6, 7, 8, 16, 17, 18]);
     const HUNDREDTH_ATTRIBUTE_NAMES = new Set(["统帅", "统率", "武力", "智力"]);
+    // 基础属性与强化节点沿用不同编号，计算器需要先归并为同一属性。
+    const ATTRIBUTE_CANONICAL_IDS = new Map([[51, 1], [54, 4], [55, 5], [100, 9]]);
+    const TALENT_ATTRIBUTE_NAME_TO_ID = new Map();
+    Object.entries(attributeNames).forEach(([id, name]) => {
+      const rawId = Number(id);
+      const canonicalId = ATTRIBUTE_CANONICAL_IDS.get(rawId) || rawId;
+      if (!TALENT_ATTRIBUTE_NAME_TO_ID.has(name)) TALENT_ATTRIBUTE_NAME_TO_ID.set(name, canonicalId);
+    });
+    // 天赋文本中的简称与数据表属性名对应关系。
+    [["怒伤", "怒气加伤"], ["怒免", "怒气减伤"]].forEach(([alias, name]) => {
+      TALENT_ATTRIBUTE_NAME_TO_ID.set(alias, TALENT_ATTRIBUTE_NAME_TO_ID.get(name));
+    });
+    const TALENT_ATTRIBUTE_NAMES = [...TALENT_ATTRIBUTE_NAME_TO_ID.keys()].sort((a, b) => b.length - a.length);
     const QUALITY_META = {
       5: { label: "紫", className: "quality-5" },
       6: { label: "橙", className: "quality-6" },
@@ -974,6 +1082,10 @@
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+    }
+
+    function escapeRegExp(value) {
+      return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
 
     function formatNumber(value) {
@@ -1030,6 +1142,98 @@
       `).join("")}</ul>`;
     }
 
+    function renderAttributeScope(label, className) {
+      return `<span class="attribute-scope ${className}">${escapeHtml(label)}</span>`;
+    }
+
+    function splitTalentDescription(description) {
+      const parts = String(description || "")
+        .split(/[；;]/)
+        .map((part) => part.trim())
+        .filter(Boolean);
+      return {
+        all: parts.filter((part) => !part.includes("【光环效果】")),
+        aura: parts
+          .filter((part) => part.includes("【光环效果】"))
+          .map((part) => part.replace("【光环效果】", "").trim())
+          .filter(Boolean)
+      };
+    }
+
+    function parseTalentDetails(item) {
+      const groups = splitTalentDescription(item.talent?.description);
+      const allTotals = new Map();
+      const auraTotals = new Map();
+      const remainingAll = [];
+      const staticPrefix = /^全体(?:上阵)?(?:武将)?/;
+      const attributeNamesPattern = TALENT_ATTRIBUTE_NAMES.map(escapeRegExp).join("|");
+      const attributePattern = new RegExp(`(${attributeNamesPattern})\\s*(?:\\+|增加|提升)\\s*(\\d+(?:\\.\\d+)?)\\s*(%|％)?`, "g");
+      const sharedAttributePattern = new RegExp(`((?:${attributeNamesPattern})(?:和(?:${attributeNamesPattern}))+)各(?:增加|提升)\\s*(\\d+(?:\\.\\d+)?)\\s*(%|％)?`, "g");
+
+      const extractAttributes = (text, totals) => {
+        let remaining = text;
+        let count = 0;
+        [...text.matchAll(sharedAttributePattern)].forEach((match) => {
+          match[1].split("和").forEach((name) => {
+            const id = TALENT_ATTRIBUTE_NAME_TO_ID.get(name);
+            const amount = Number(match[2]) * (match[3] ? 100 : 1);
+            addAttributeTotal(totals, id, amount);
+            count += 1;
+          });
+          remaining = remaining.replace(match[0], "");
+        });
+        [...remaining.matchAll(attributePattern)].forEach((match) => {
+          const id = TALENT_ATTRIBUTE_NAME_TO_ID.get(match[1]);
+          const amount = Number(match[2]) * (match[3] ? 100 : 1);
+          addAttributeTotal(totals, id, amount);
+          count += 1;
+          remaining = remaining.replace(match[0], "");
+        });
+        return { remaining, count };
+      };
+
+      groups.all.forEach((part) => {
+        if (!staticPrefix.test(part)) {
+          remainingAll.push(part);
+          return;
+        }
+        const extracted = extractAttributes(part, allTotals);
+        if (!extracted.count) {
+          remainingAll.push(part);
+          return;
+        }
+        const remainder = extracted.remaining
+          .replace(staticPrefix, "")
+          .replace(/[，,、\s]/g, "")
+          .trim();
+        if (remainder) remainingAll.push(remainder);
+      });
+
+      groups.aura.forEach((part) => {
+        extractAttributes(part, auraTotals);
+      });
+
+      return {
+        attributes: [...allTotals.entries()].map(([id, amount]) => ({ id, amount })),
+        auraAttributes: [...auraTotals.entries()].map(([id, amount]) => ({ id, amount })),
+        allText: remainingAll
+      };
+    }
+
+    function renderTalentAttributeGroups(item) {
+      if (!item.talent) return `<p class="muted-text">时装不存在天赋。</p>`;
+      const talentDetails = parseTalentDetails(item);
+      const allText = talentDetails.allText.join("；");
+      return `<div class="talent-box talent-attribute-groups">
+        <div class="talent-effect-row">
+          ${renderAttributeScope("全体属性", "scope-all")}
+          ${talentDetails.attributes.length ? renderAttributes(talentDetails.attributes) : `<p class="muted-text">该时装天赋没有可提取的固定属性。</p>`}
+        </div>
+        ${allText ? `<div class="talent-effect-row talent-special-effect">${renderAttributeScope("特殊效果", "scope-special")}<p class="talent-description">${escapeHtml(allText)}</p></div>` : ""}
+        ${talentDetails.auraAttributes.length ? `<div class="talent-effect-row">${renderAttributeScope("光环属性", "scope-aura")}${renderAttributes(talentDetails.auraAttributes)}</div>` : ""}
+      </div>`;
+    }
+
     function renderTableAttributes(attributes, emptyText = "—") {
       if (!attributes || !attributes.length) return `<span class="muted-text">${emptyText}</span>`;
       return `<ul class="attribute-list table-attribute-list">${attributes.map((attribute) => `
@@ -1060,12 +1264,9 @@
       const displayRows = rows.length
         ? rows
         : legacyStages.map((stage) => ({ stage, attributes: [], costs: [] }));
-      const stageRange = displayRows.length
-        ? `${formatNumber(Math.max(0, Number(displayRows[0].stage) - 1))}阶→${formatNumber(displayRows[displayRows.length - 1].stage)}阶`
-        : "";
       return `<div class="data-table-wrap">
         <table class="data-table advance-table">
-          <thead><tr><th>进阶档位</th><th>本档属性</th><th>本档消耗</th></tr></thead>
+          <thead><tr><th>进阶</th><th>全体属性</th><th>本档消耗</th></tr></thead>
           <tbody>${displayRows.map((row) => `
             <tr>
               <td>${Number(row.stage) > 0 ? `${formatNumber(Number(row.stage) - 1)}阶→${formatNumber(row.stage)}阶` : "0阶→1阶"}</td>
@@ -1074,7 +1275,7 @@
             </tr>
           `).join("")}</tbody>
         </table>
-      </div>${stageRange ? `<p class="advance-stage-note">${stageRange}为原始进阶档位。</p>` : ""}`;
+      </div>`;
     }
 
     function materialInfo(materialId) {
@@ -1165,10 +1366,10 @@
       if (!baseAttributes.length && !growthAttributes.length && !rowCount) return `<p class="muted-text">暂无时装强化属性与消耗配置。</p>`;
 
       return `<details class="strengthen-details">
-        <summary>展开查看基础属性与 ${rowCount} 个强化区间</summary>
+        <summary>时装强化属性与消耗</summary>
         <div class="data-table-wrap">
           <table class="data-table">
-            <thead><tr><th>时装等级</th><th>人物等级需求</th><th>强化属性</th><th>额外属性</th><th>消耗材料</th></tr></thead>
+            <thead><tr><th>时装等级</th><th>人物等级需求</th><th>主角强化属性</th><th>额外属性</th><th>消耗材料</th></tr></thead>
             <tbody>
               <tr>
                 <td>0级</td>
@@ -1255,9 +1456,9 @@
 
     function addAttributeTotal(totals, attributeId, amount) {
       const numericAmount = Number(amount) || 0;
-      if (!numericAmount) return;
-      const id = Number(attributeId);
-      if (!Number.isFinite(id)) return;
+      const rawId = Number(attributeId);
+      if (!numericAmount || !Number.isFinite(rawId)) return;
+      const id = ATTRIBUTE_CANONICAL_IDS.get(rawId) || rawId;
       totals.set(id, (totals.get(id) || 0) + numericAmount);
     }
 
@@ -1268,29 +1469,34 @@
       });
     }
 
-    function calculateFashionAttributes(item, level, advance, star) {
-      const totals = new Map();
-      addAttributeTotals(totals, item.baseAttributes);
-      addAttributeTotals(totals, item.advanceAttribute);
+    function calculateFashionAttributeGroups(item, level, advance, star) {
+      const groups = {
+        main: new Map(),
+        all: new Map()
+      };
+      addAttributeTotals(groups.main, item.baseAttributes);
 
       for (let currentLevel = 1; currentLevel <= level; currentLevel += 1) {
-        addAttributeTotals(totals, item.growthAttributes);
+        addAttributeTotals(groups.main, item.growthAttributes);
       }
 
       (item.strengthenAttributes || []).forEach((attribute) => {
-        if (Number(attribute.level) <= level) addAttributeTotal(totals, attribute.attributeId, attribute.amount);
+        if (Number(attribute.level) <= level) addAttributeTotal(groups.main, attribute.attributeId, attribute.amount);
       });
 
+      // 进阶、升星和天赋中的固定数值属性作用于全体；光环属性单独展示。
+      addAttributeTotals(groups.all, item.advanceAttribute);
       (item.advanceRows || []).forEach((row) => {
-        if (Number(row.stage) <= advance) addAttributeTotals(totals, row.attributes);
+        if (Number(row.stage) <= advance) addAttributeTotals(groups.all, row.attributes);
       });
 
       const availableStars = [...new Set((item.starAttributes || [])
         .map((attribute) => Number(attribute.star))
         .filter((starLevel) => starLevel > 0 && starLevel <= star))];
       const currentStar = Math.max(...availableStars, 0);
-      addAttributeTotals(totals, (item.starAttributes || []).filter((attribute) => Number(attribute.star) === currentStar));
-      return totals;
+      addAttributeTotals(groups.all, (item.starAttributes || []).filter((attribute) => Number(attribute.star) === currentStar));
+      addAttributeTotals(groups.all, parseTalentDetails(item).attributes);
+      return groups;
     }
 
     function formatAttributeDelta(attribute) {
@@ -1321,6 +1527,40 @@
           : "";
         return `<span class="calculator-attribute-item">${escapeHtml(attributeName(template.id))} <strong>${originalMarkup}${addedMarkup}</strong></span>`;
       }).join("")}</div>`;
+    }
+
+    function calculatorScopeClass(title) {
+      return {
+        "主角属性": "scope-main",
+        "全体属性": "scope-all",
+        "光环属性": "scope-aura",
+        "特殊效果": "scope-special"
+      }[title] || "scope-all";
+    }
+
+    function renderCalculatorAttributeGroup(title, originalTotals, finalTotals) {
+      const attributeIds = new Set([...originalTotals.keys(), ...finalTotals.keys()]);
+      const addedAttributes = [...attributeIds]
+        .map((id) => ({ id, amount: (finalTotals.get(id) || 0) - (originalTotals.get(id) || 0) }))
+        .filter((attribute) => attribute.amount)
+        .sort((a, b) => a.id - b.id);
+      const originalAttributes = [...originalTotals.entries()]
+        .map(([id, amount]) => ({ id, amount }))
+        .filter((attribute) => attribute.amount)
+        .sort((a, b) => a.id - b.id);
+      return `<section class="calculator-attribute-result"><h4 class="calculator-cost-group-title">${renderAttributeScope(title, calculatorScopeClass(title))}</h4>${renderCalculatorAttributeList(originalAttributes, addedAttributes)}</section>`;
+    }
+
+    function renderCalculatorSpecialEffectGroup(text) {
+      if (!text) return "";
+      return `<section class="calculator-attribute-result"><h4 class="calculator-cost-group-title">${renderAttributeScope("特殊效果", calculatorScopeClass("特殊效果"))}</h4><p class="talent-description">${escapeHtml(text)}</p></section>`;
+    }
+
+    function renderCalculatorTalentGroup(item) {
+      if (!item.talent) return "";
+      const { auraAttributes } = parseTalentDetails(item);
+      if (!auraAttributes.length) return "";
+      return `<section class="calculator-attribute-result"><h4 class="calculator-cost-group-title">${renderAttributeScope("光环属性", calculatorScopeClass("光环属性"))}</h4>${renderAttributes(auraAttributes)}</section>`;
     }
 
     function renderCalculatorCostList(costs) {
@@ -1395,22 +1635,16 @@
         }
       }
 
-      const startAttributes = calculateFashionAttributes(item, startLevel, startAdvance, startStar);
-      const finalAttributes = calculateFashionAttributes(item, endLevel, endAdvance, endStar);
-      const attributeIds = new Set([...startAttributes.keys(), ...finalAttributes.keys()]);
-      const addedAttributes = [...attributeIds]
-        .map((id) => ({ id, amount: (finalAttributes.get(id) || 0) - (startAttributes.get(id) || 0) }))
-        .filter((attribute) => attribute.amount)
-        .sort((a, b) => a.id - b.id);
-      const originalAttributeList = [...startAttributes.entries()]
-        .map(([id, amount]) => ({ id, amount }))
-        .filter((attribute) => attribute.amount)
-        .sort((a, b) => a.id - b.id);
+      const startAttributeGroups = calculateFashionAttributeGroups(item, startLevel, startAdvance, startStar);
+      const finalAttributeGroups = calculateFashionAttributeGroups(item, endLevel, endAdvance, endStar);
+      const talentDetails = parseTalentDetails(item);
 
-      const rangeText = `${startLevel}级→${endLevel}级，${startAdvance}阶→${endAdvance}阶，${startStar}星→${endStar}星`;
-      result.innerHTML = `<p class="calculator-result-summary">预计消耗：${rangeText}</p>
-        <div class="calculator-attribute-results">
-          <section class="calculator-attribute-result"><h4 class="calculator-cost-group-title">属性</h4>${renderCalculatorAttributeList(originalAttributeList, addedAttributes)}</section>
+      const talentText = talentDetails.allText.join("；");
+      result.innerHTML = `<div class="calculator-attribute-results">
+          ${renderCalculatorAttributeGroup("主角属性", startAttributeGroups.main, finalAttributeGroups.main)}
+          ${renderCalculatorAttributeGroup("全体属性", startAttributeGroups.all, finalAttributeGroups.all)}
+          ${renderCalculatorTalentGroup(item)}
+          ${renderCalculatorSpecialEffectGroup(talentText)}
         </div>
         <div class="calculator-cost-groups">
           <section class="calculator-cost-group"><h4 class="calculator-cost-group-title">强化消耗</h4>${renderCalculatorCostList(costs.strengthen)}</section>
@@ -1445,15 +1679,15 @@
             </section>
 
             <section class="section-panel">
-              <h3 class="section-title">时装天赋${item.talent ? ` <span class="section-note">${escapeHtml(item.talent.name)}</span>` : ""}</h3>
-              ${item.talent
-                ? `<div class="talent-box"><p class="talent-name">${escapeHtml(item.talent.name)}</p><p class="talent-description">${escapeHtml(item.talent.description)}</p></div>`
-                : `<p class="muted-text">时装不存在天赋。</p>`}
+              <h3 class="section-title">时装天赋</h3>
+              ${renderTalentAttributeGroups(item)}
             </section>
 
             <section class="section-panel">
-              <h3 class="section-title">时装默认属性 <span class="section-note">进阶属性0阶效果</span></h3>
-              ${item.advanceAttribute?.length ? renderAttributes(item.advanceAttribute) : `<p class="muted-text">时装不存在默认属性。</p>`}
+              <h3 class="section-title">时装默认属性</h3>
+              ${item.advanceAttribute?.length
+                ? `<div class="talent-box"><div class="talent-effect-row">${renderAttributeScope("全体属性", "scope-all")}${renderAttributes(item.advanceAttribute)}</div></div>`
+                : `<p class="muted-text">时装不存在默认属性。</p>`}
             </section>
           </div>
         </div>
@@ -1461,23 +1695,26 @@
         ${renderFashionCalculator(item)}
 
         <section class="section-panel">
-          <h3 class="section-title">升星效果与消耗 <span class="section-note">1～3星</span></h3>
-          ${starRows.length ? `<div class="data-table-wrap"><table class="data-table">
-            <thead><tr><th>星级</th><th>升星效果</th><th>消耗材料</th></tr></thead>
-            <tbody>${starRows.map((row) => {
-              const cost = starCosts.get(row.star);
-              return `<tr><td>${row.star}星</td><td>${escapeHtml(attributeName(row.attributeId))} ${formatAttributeAmount({ id: row.attributeId, amount: row.amount })}</td><td>${cost ? `<span class="table-material">${renderMaterialVisual(cost.materialId)}<span class="table-material-name">${escapeHtml(materialInfo(cost.materialId).name)} ×${formatNumber(cost.amount)}</span></span>` : "暂无"}</td></tr>`;
-            }).join("")}</tbody>
-          </table></div>` : `<p class="muted-text">暂无升星配置。</p>`}
+          <details class="collapsible-details">
+            <summary>升星效果与消耗</summary>
+            ${starRows.length ? `<div class="data-table-wrap"><table class="data-table">
+              <thead><tr><th>星级</th><th>全体属性</th><th>消耗材料</th></tr></thead>
+              <tbody>${starRows.map((row) => {
+                const cost = starCosts.get(row.star);
+                return `<tr><td>${row.star - 1}星→${row.star}星</td><td>${escapeHtml(attributeName(row.attributeId))} ${formatAttributeAmount({ id: row.attributeId, amount: row.amount })}</td><td>${cost ? `<span class="table-material">${renderMaterialVisual(cost.materialId)}<span class="table-material-name">${escapeHtml(materialInfo(cost.materialId).name)} ×${formatNumber(cost.amount)}</span></span>` : "暂无"}</td></tr>`;
+              }).join("")}</tbody>
+            </table></div>` : `<p class="muted-text">暂无升星配置。</p>`}
+          </details>
         </section>
 
         ${hasAdvance ? `<section class="section-panel">
-          <h3 class="section-title">时装进阶属性 <span class="section-note">高品质时装配置</span></h3>
-          ${renderAdvanceDetails(item)}
+          <details class="collapsible-details">
+            <summary>时装进阶属性</summary>
+            ${renderAdvanceDetails(item)}
+          </details>
         </section>` : ""}
 
         <section class="section-panel">
-          <h3 class="section-title">时装强化属性与消耗 <span class="section-note">基础属性、每级强化与人物等级需求</span></h3>
           ${renderStrengthenDetails(item)}
         </section>
 
