@@ -187,7 +187,7 @@
           <label class="calculator-field" for="startStageInput">
             <span>起始阶段</span>
             <span class="calculator-stage-control">
-              <input id="startStageInput" type="number" min="0" max="6" step="1" value="0">
+              <input id="startStageInput" type="number" min="0" max="5" step="1" value="0">
               <span>阶</span>
             </span>
           </label>
@@ -225,7 +225,7 @@
     <section class="section" aria-labelledby="detailTitle">
       <div class="section-head">
         <h2 class="section-title" id="detailTitle">官职升级明细</h2>
-        <p class="section-meta">共 9 个官职、53 个阶段</p>
+        <p class="section-meta">共 9 个官职、45 个阶段</p>
       </div>
       <div id="gradeList"></div>
     </section>
@@ -305,7 +305,7 @@
       </details>
     `).join("");
 
-    function readStage(input, fallback, maxStage = 6) {
+    function readStage(input, fallback, maxStage = 5) {
       const value = Number.parseInt(input.value, 10);
       if (!Number.isFinite(value)) return fallback;
       return Math.min(maxStage, Math.max(0, value));
@@ -327,10 +327,11 @@
       }
 
       addSegments(startItem, startStage, startItem.sixCosts.length);
-      for (let index = startIndex + 1; index < targetIndex; index += 1) {
-        addSegments(data.ranks[index], 0, data.ranks[index].sixCosts.length);
+      for (let index = startIndex + 1; index <= targetIndex; index += 1) {
+        const item = data.ranks[index];
+        segments.push({ item, stage: -1, cost: null });
+        addSegments(item, 0, index === targetIndex ? targetStage : item.sixCosts.length);
       }
-      addSegments(targetItem, 0, targetStage);
       return segments;
     }
 
@@ -340,10 +341,8 @@
         totals[index] += (Number(value) || 0) * count;
       });
 
-      // 9品0阶是官职初始状态，先计入县丞的基础属性。
-      addAttributes(data.ranks[0].attributes, 1);
-      data.ranks.slice(0, rankIndex).forEach((item) => addAttributes(item.attributes, item.sixCosts.length));
-      addAttributes(data.ranks[rankIndex].attributes, stage);
+      data.ranks.slice(0, rankIndex).forEach((item) => addAttributes(item.attributes, item.sixCosts.length + 1));
+      addAttributes(data.ranks[rankIndex].attributes, stage + 1);
       return totals;
     }
 
