@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三官职升级属性、阶段消耗与区间计算器。">
+  <title>官职升级属性与消耗 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #64518f;
+      --danger: #bd5945;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    button,
+    input,
+    select { font: inherit; }
+
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 20px 0 34px; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark { display: block; width: 118px; height: auto; flex: 0 0 118px; filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22)); }
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+    .back-link { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--panel); color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700; white-space: nowrap; }
+
+    .intro { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 18px 0 14px; }
+    .page-title { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 850; }
+    .page-note { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    .section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px 10px;
+    }
+
+    .section-title { margin: 0; color: var(--jade-dark); font-size: 18px; line-height: 1.3; font-weight: 850; }
+    .section-meta { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .calculator { margin-bottom: 16px; padding-bottom: 16px; }
+    .calculator-form { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: end; padding: 0 16px; }
+    .calculator-endpoint { display: grid; grid-template-columns: minmax(0, 1fr) 132px; gap: 10px; align-items: end; }
+    .calculator-field { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .calculator-stage-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px; }
+    .calculator-field select,
+    .calculator-field input { width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; background: var(--panel-strong); color: var(--text); font-size: 14px; }
+    .calculator-field select:focus,
+    .calculator-field input:focus { outline: 2px solid rgba(60, 157, 133, 0.35); outline-offset: 1px; border-color: var(--jade); }
+    .calculator-arrow { align-self: center; padding-top: 20px; color: var(--gold); font-size: 20px; line-height: 1; font-weight: 800; }
+    .calculator-result { margin: 14px 16px 0; border-top: 1px solid rgba(217, 203, 182, 0.78); padding-top: 12px; }
+    .calculator-result-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 10px; margin-top: 10px; }
+    .result-box { min-width: 0; border: 1px solid rgba(217, 203, 182, 0.9); border-radius: 7px; padding: 10px; background: var(--panel-strong); }
+    .result-box h3 { margin: 0 0 8px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    .attribute-result-box { border-color: #d6a14c; background: #fffaf0; }
+    .attribute-result-box h3 { display: inline-block; margin: -2px 0 10px; border: 1px solid #d6a14c; border-radius: 6px; background: #fff1c8; padding: 5px 9px; color: var(--jade-dark); }
+    .result-list { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; min-height: 28px; }
+    .result-empty { color: var(--muted); font-size: 12px; }
+    .calculator-result-note { margin-top: 8px; color: var(--danger); font-size: 12px; font-weight: 700; }
+
+    .resource-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 28px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .resource-icon { display: block; width: 27px; height: 27px; object-fit: contain; }
+    .resource-chip strong { color: #9a6623; font-weight: 850; font-variant-numeric: tabular-nums; }
+    .resource-chip.is-silver strong { color: #66727a; }
+    .resource-chip.is-silver .resource-icon { width: 30px; height: 30px; }
+
+    .rank-details { border-top: 1px solid var(--line); }
+    .rank-details:first-child { border-top: 0; }
+    .rank-summary { display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: rgba(60, 157, 133, 0.06); cursor: pointer; list-style: none; }
+    .rank-summary::-webkit-details-marker { display: none; }
+    .rank-summary::before { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid var(--jade); content: ""; transition: transform 160ms ease; }
+    .rank-details[open] > .rank-summary::before { transform: rotate(90deg); }
+    .rank-summary-icon { display: block; width: 42px; height: 42px; object-fit: contain; flex: 0 0 42px; }
+    .rank-summary-copy { min-width: 0; flex: 1 1 auto; }
+    .rank-summary h3 { margin: 0; color: var(--gold); font-size: 16px; line-height: 1.3; }
+    .rank-summary span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+    .rank-summary-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .rank-details-body { border-top: 1px solid rgba(217, 203, 182, 0.72); }
+
+    .grade-row { display: grid; grid-template-columns: 180px minmax(230px, 1fr) minmax(280px, 1.15fr); gap: 14px; align-items: center; padding: 10px 16px; border-top: 1px solid rgba(217, 203, 182, 0.72); }
+    .grade-row:first-child { border-top: 0; }
+    .grade-label { color: var(--jade-dark); font-size: 13px; font-weight: 800; }
+    .grade-label small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 500; }
+    .attribute-list, .cost-list { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; min-width: 0; }
+    .attribute { display: inline-flex; align-items: baseline; gap: 4px; min-height: 25px; color: var(--text); font-size: 13px; white-space: nowrap; }
+    .attribute strong { color: var(--purple); font-weight: 850; }
+    .attribute-compare { display: inline-flex; align-items: baseline; gap: 1px; min-height: 25px; color: var(--text); font-size: 13px; white-space: nowrap; }
+    .attribute-compare .attribute-base { color: #b8842f; font-weight: 850; }
+    .attribute-compare .attribute-joiner { color: var(--text); }
+    .attribute-compare .attribute-delta { color: var(--jade); font-weight: 850; }
+    .empty-cost { color: var(--muted); font-size: 12px; }
+
+    footer { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    footer p { max-width: 780px; margin: 0; }
+
+    @media (max-width: 980px) {
+      .calculator-form { grid-template-columns: 1fr; gap: 12px; }
+      .calculator-arrow { justify-self: center; padding-top: 0; transform: rotate(90deg); }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { display: block; }
+      .page-title { font-size: 26px; }
+      .page-note { margin-top: 6px; }
+      .calculator-endpoint { grid-template-columns: 1fr; gap: 8px; }
+      .calculator-arrow { display: block; transform: none; }
+      .calculator-result-grid { grid-template-columns: 1fr; }
+      .grade-row { grid-template-columns: 1fr; gap: 5px; padding: 10px 12px; }
+      .attribute-list, .cost-list { gap: 4px 10px; }
+      .section-head, .rank-summary { padding-left: 12px; padding-right: 12px; }
+      .rank-summary-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">官职升级</h1>
+      <p class="page-note">查看官职阶段对应的属性与功绩、银币消耗</p>
+    </div>
+
+    <section class="section calculator" aria-labelledby="calculatorTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="calculatorTitle">官职升级计算器</h2>
+        <p class="section-meta">计算阶段区间的消耗与属性</p>
+      </div>
+      <div class="calculator-form">
+        <div class="calculator-endpoint">
+          <label class="calculator-field" for="startRankSelect">
+            <span>起始官职</span>
+            <select id="startRankSelect"></select>
+          </label>
+          <label class="calculator-field" for="startStageInput">
+            <span>起始阶段</span>
+            <span class="calculator-stage-control">
+              <input id="startStageInput" type="number" min="0" max="6" step="1" value="0">
+              <span>阶</span>
+            </span>
+          </label>
+        </div>
+        <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+        <div class="calculator-endpoint">
+          <label class="calculator-field" for="targetRankSelect">
+            <span>目标官职</span>
+            <select id="targetRankSelect"></select>
+          </label>
+          <label class="calculator-field" for="targetStageInput">
+            <span>目标阶段</span>
+            <span class="calculator-stage-control">
+              <input id="targetStageInput" type="number" min="0" max="5" step="1" value="5">
+              <span>阶</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="calculator-result" id="calculatorResult" aria-live="polite">
+        <div class="calculator-result-grid">
+          <section class="result-box" aria-labelledby="calculatorCostTitle">
+            <h3 id="calculatorCostTitle">消耗</h3>
+            <div class="result-list" id="calculatorCostList"></div>
+          </section>
+          <section class="result-box attribute-result-box" aria-labelledby="calculatorAttributeTitle">
+            <h3 id="calculatorAttributeTitle">武将属性</h3>
+            <div class="result-list" id="calculatorAttributeList"></div>
+          </section>
+        </div>
+        <div class="calculator-result-note" id="calculatorResultNote" hidden></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="detailTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="detailTitle">官职升级明细</h2>
+        <p class="section-meta">共 9 个官职、53 个阶段</p>
+      </div>
+      <div id="gradeList"></div>
+    </section>
+
+    <footer>
+      <p>本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <script src="assets/officer-data.js"></script>
+  <script>
+    const data = window.officerData;
+    const fmt = (value) => Number(value).toLocaleString("zh-CN");
+    const startRankSelect = document.querySelector("#startRankSelect");
+    const startStageInput = document.querySelector("#startStageInput");
+    const targetRankSelect = document.querySelector("#targetRankSelect");
+    const targetStageInput = document.querySelector("#targetStageInput");
+    const calculatorResult = document.querySelector("#calculatorResult");
+    const calculatorCostList = document.querySelector("#calculatorCostList");
+    const calculatorAttributeList = document.querySelector("#calculatorAttributeList");
+    const calculatorResultNote = document.querySelector("#calculatorResultNote");
+    const gradeList = document.querySelector("#gradeList");
+
+    const renderRankIcon = (item, className = "rank-summary-icon") =>
+      `<img class="${className}" src="assets/officer-items/${item.picture}" alt="${item.name}图标">`;
+
+    const renderResource = (type, amount) => `
+      <span class="resource-chip ${type === "silver" ? "is-silver" : ""}">
+        <img class="resource-icon" src="${data.resourceIcons[type]}" alt="${data.resourceNames[type]}图标">
+        <span>${data.resourceNames[type]}</span>
+        <strong>×${fmt(amount)}</strong>
+      </span>
+    `;
+
+    const renderAttributes = (attributes) => data.attributeNames.map((name, index) => `
+      <span class="attribute"><span>${name}</span><strong>+${fmt(attributes[index])}</strong></span>
+    `).join("");
+
+    const renderAttributeComparison = (baseAttributes, deltaAttributes) => data.attributeNames.map((name, index) => `
+      <span class="attribute-compare">
+        <span>${name}</span>
+        <strong class="attribute-base">${fmt(baseAttributes[index])}</strong><span class="attribute-joiner">+</span><strong class="attribute-delta">${fmt(deltaAttributes[index])}</strong>
+      </span>
+    `).join("");
+
+    const renderCosts = (cost) => {
+      if (!cost) return '<span class="empty-cost">该阶段未配置升级消耗</span>';
+      return [renderResource("merit", cost[0]), renderResource("silver", cost[1])].join("");
+    };
+
+    const rankOptions = data.ranks.map((item) =>
+      `<option value="${item.rank}">${item.rank}品 · ${item.name}</option>`
+    ).join("");
+    startRankSelect.innerHTML = rankOptions;
+    targetRankSelect.innerHTML = rankOptions;
+    targetRankSelect.value = String(data.ranks[data.ranks.length - 1].rank);
+
+    gradeList.innerHTML = data.ranks.map((item) => `
+      <details class="rank-details">
+        <summary class="rank-summary">
+          ${renderRankIcon(item, "rank-summary-icon")}
+          <div class="rank-summary-copy">
+            <h3>${item.name}</h3>
+            <span>${item.rank}品 · 每阶段属性</span>
+          </div>
+          <span class="rank-summary-meta">${item.sixCosts.length} 个阶段</span>
+        </summary>
+        <div class="rank-details-body">
+          ${item.sixCosts.map((cost, stage) => `
+            <div class="grade-row">
+              <div class="grade-label">${stage}阶 → ${stage + 1}阶</div>
+              <div class="attribute-list">${renderAttributes(item.attributes)}</div>
+              <div class="cost-list">${renderCosts(cost)}</div>
+            </div>
+          `).join("")}
+        </div>
+      </details>
+    `).join("");
+
+    function readStage(input, fallback, maxStage = 6) {
+      const value = Number.parseInt(input.value, 10);
+      if (!Number.isFinite(value)) return fallback;
+      return Math.min(maxStage, Math.max(0, value));
+    }
+
+    function getRangeSegments(startItem, startStage, targetItem, targetStage) {
+      const startIndex = data.ranks.indexOf(startItem);
+      const targetIndex = data.ranks.indexOf(targetItem);
+      const segments = [];
+      const addSegments = (item, fromStage, toStage) => {
+        for (let stage = fromStage; stage < toStage; stage += 1) {
+          segments.push({ item, stage, cost: item.sixCosts[stage] });
+        }
+      };
+
+      if (startIndex === targetIndex) {
+        addSegments(startItem, startStage, targetStage);
+        return segments;
+      }
+
+      addSegments(startItem, startStage, startItem.sixCosts.length);
+      for (let index = startIndex + 1; index < targetIndex; index += 1) {
+        addSegments(data.ranks[index], 0, data.ranks[index].sixCosts.length);
+      }
+      addSegments(targetItem, 0, targetStage);
+      return segments;
+    }
+
+    function getAccumulatedAttributes(rankIndex, stage) {
+      const totals = data.attributeNames.map(() => 0);
+      const addAttributes = (attributes, count) => attributes.forEach((value, index) => {
+        totals[index] += (Number(value) || 0) * count;
+      });
+
+      data.ranks.slice(0, rankIndex).forEach((item) => addAttributes(item.attributes, item.sixCosts.length));
+      addAttributes(data.ranks[rankIndex].attributes, stage);
+      return totals;
+    }
+
+    function updateCalculator() {
+      const startItem = data.ranks.find((entry) => entry.rank === Number(startRankSelect.value)) || data.ranks[0];
+      const targetItem = data.ranks.find((entry) => entry.rank === Number(targetRankSelect.value)) || data.ranks[data.ranks.length - 1];
+      const startMaxStage = startItem.sixCosts.length;
+      const targetMaxStage = targetItem.sixCosts.length;
+      startStageInput.max = String(startMaxStage);
+      targetStageInput.max = String(targetMaxStage);
+      const startStage = readStage(startStageInput, 0, startMaxStage);
+      const targetStage = readStage(targetStageInput, targetMaxStage, targetMaxStage);
+      const startIndex = data.ranks.indexOf(startItem);
+      const targetIndex = data.ranks.indexOf(targetItem);
+      const invalidDirection = startIndex > targetIndex || (startIndex === targetIndex && startStage > targetStage);
+      const segments = invalidDirection ? [] : getRangeSegments(startItem, startStage, targetItem, targetStage);
+      const stepCount = segments.length;
+      const baseAttributes = getAccumulatedAttributes(startIndex, startStage);
+
+      startStageInput.value = String(startStage);
+      targetStageInput.value = String(targetStage);
+      calculatorCostList.replaceChildren();
+      calculatorAttributeList.replaceChildren();
+      calculatorResultNote.hidden = true;
+      calculatorResult.classList.remove("invalid");
+
+      if (invalidDirection) {
+        calculatorResult.classList.add("invalid");
+        calculatorResultNote.textContent = startIndex > targetIndex ? "目标官职不能低于起始官职" : "同一官职内，起始阶段不能高于目标阶段";
+        calculatorResultNote.hidden = false;
+        calculatorCostList.innerHTML = '<span class="result-empty">请调整起止官职</span>';
+        calculatorAttributeList.innerHTML = '<span class="result-empty">请调整起止官职</span>';
+        return;
+      }
+
+      if (stepCount === 0) {
+        calculatorCostList.innerHTML = '<span class="result-empty">未选择升级阶段</span>';
+        calculatorAttributeList.innerHTML = renderAttributeComparison(baseAttributes, data.attributeNames.map(() => 0));
+        return;
+      }
+
+      const totals = [0, 0];
+      const attributeTotals = data.attributeNames.map(() => 0);
+      segments.forEach(({ item, cost }) => {
+        item.attributes.forEach((value, index) => {
+          attributeTotals[index] += Number(value) || 0;
+        });
+        if (!cost) {
+          return;
+        }
+        totals[0] += Number(cost[0]) || 0;
+        totals[1] += Number(cost[1]) || 0;
+      });
+      calculatorCostList.innerHTML = [
+        renderResource("merit", totals[0]),
+        renderResource("silver", totals[1])
+      ].join("");
+      calculatorAttributeList.innerHTML = renderAttributeComparison(baseAttributes, attributeTotals);
+    }
+
+    [startRankSelect, startStageInput, targetRankSelect, targetStageInput].forEach((control) => {
+      control.addEventListener("input", updateCalculator);
+      control.addEventListener("change", updateCalculator);
+    });
+    updateCalculator();
+  </script>
+</body>
+</html>
