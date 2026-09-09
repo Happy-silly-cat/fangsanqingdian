@@ -340,6 +340,8 @@
         totals[index] += (Number(value) || 0) * count;
       });
 
+      // 9品0阶是官职初始状态，先计入县丞的基础属性。
+      addAttributes(data.ranks[0].attributes, 1);
       data.ranks.slice(0, rankIndex).forEach((item) => addAttributes(item.attributes, item.sixCosts.length));
       addAttributes(data.ranks[rankIndex].attributes, stage);
       return totals;
