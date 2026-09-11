@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三神兽升星与进阶材料和属性查询表。">
+  <title>神兽进阶与升星 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --red: #a74e42;
+      --purple: #64518f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    select { font: inherit; }
+
+    .shell {
+      width: min(1200px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .back-link:focus-visible,
+    .field:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-meta,
+    .summary-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .picker-panel,
+    .profile-panel,
+    .summary-panel,
+    .section-panel,
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .picker-panel {
+      display: grid;
+      gap: 12px;
+      padding: 14px 16px;
+    }
+
+    .picker-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .picker-title {
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .picker-heading .page-note { margin: 0; }
+
+    .quality-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+      gap: 7px;
+    }
+
+    .quality-tab {
+      min-height: 34px;
+      border: 1px solid color-mix(in srgb, var(--quality-color, var(--line)) 55%, #ffffff);
+      border-radius: 6px;
+      padding: 0 8px;
+      color: var(--quality-color, var(--muted));
+      background: var(--quality-soft, var(--panel));
+      font-size: 12px;
+      font-weight: 850;
+      transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease, transform 160ms ease;
+    }
+
+    .quality-tab:hover {
+      border-color: var(--quality-color, var(--jade));
+      transform: translateY(-1px);
+    }
+
+    .quality-tab.active {
+      border-color: var(--quality-color, var(--jade-dark));
+      color: #ffffff;
+      background: var(--quality-color, var(--jade-dark));
+      box-shadow: inset 0 0 0 1px var(--quality-color, var(--jade-dark));
+    }
+
+    .quality-tab:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.38);
+      outline-offset: 2px;
+    }
+
+    .beast-picker {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quality-picker-group { min-width: 0; }
+
+    .beast-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 8px;
+    }
+
+    .beast-card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--quality-color, var(--line));
+      border-radius: 7px;
+      padding: 6px 8px;
+      color: var(--text);
+      background: var(--panel-strong);
+      text-align: left;
+      transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .beast-card:hover {
+      border-color: var(--quality-color, var(--gold));
+      border-left-color: var(--quality-color, var(--gold));
+      background: var(--panel-hover);
+      box-shadow: 0 4px 10px rgba(69, 56, 39, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .beast-card.active {
+      border-color: var(--quality-color, var(--jade-dark));
+      border-left-color: var(--quality-color, var(--jade-dark));
+      background: var(--quality-soft, #e8f3eb);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--quality-color, var(--jade-dark)) 18%, transparent);
+    }
+
+    .beast-card:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.38);
+      outline-offset: 2px;
+    }
+
+    .beast-card-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid rgba(217, 203, 182, 0.95);
+      border-radius: 7px;
+      background: #f1e6d3;
+    }
+
+    .beast-card-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .beast-card-name {
+      overflow: hidden;
+      color: var(--quality-color, var(--text));
+      font-size: 13px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .profile-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      border-left: 4px solid var(--quality-color, var(--line));
+      padding: 14px 16px;
+    }
+
+    .beast-icon {
+      display: grid;
+      place-items: center;
+      width: 86px;
+      height: 86px;
+      flex: 0 0 86px;
+      overflow: hidden;
+      border: 1px solid rgba(184, 132, 47, 0.38);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #fff2c8, #d3a04c 48%, #6d4820 100%);
+      box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.24), 0 5px 15px rgba(109, 72, 32, 0.18);
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 900;
+      text-shadow: 0 2px 4px rgba(39, 28, 20, 0.65);
+    }
+
+    .beast-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .profile-main { min-width: 0; flex: 1 1 auto; }
+
+    .profile-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .profile-name {
+      margin: 0;
+      color: var(--gold);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .quality-display,
+    .quality-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quality-mark {
+      display: inline-grid;
+      place-items: center;
+      min-width: 34px;
+      min-height: 25px;
+      border: 1px solid color-mix(in srgb, var(--quality-color) 55%, #ffffff);
+      border-radius: 5px;
+      padding: 0 6px;
+      color: #fff;
+      background: var(--quality-color);
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .quality-5 { --quality-color: #8164b5; --quality-soft: #f0eaff; }
+    .quality-6 { --quality-color: #d97d2d; --quality-soft: #fff0df; }
+    .quality-7 { --quality-color: #b84e5b; --quality-soft: #fae8eb; }
+    .quality-8 { --quality-color: #b7902d; --quality-soft: #fff8dc; }
+    .quality-9 { --quality-color: #8d672f; --quality-soft: #f5eadb; }
+    .quality-10 { --quality-color: #71899f; --quality-soft: #edf4f8; }
+    .quality-11 { --quality-color: #299b99; --quality-soft: #e3f5f2; }
+
+    .calculator-section {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .calculator-panel {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 17px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .calculator-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+    }
+
+    .calculator-main-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .calculator-field {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .calculator-control {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      flex: 1 1 auto;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .calculator-control .field {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .calculator-arrow {
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .calculator-material-result {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 0;
+    }
+
+    .calculator-material-result .material-list {
+      justify-content: flex-end;
+    }
+
+    .calculator-attribute-result {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      padding: 9px 10px;
+      background: var(--panel-strong);
+    }
+
+    .calculator-material-result {
+      min-height: 0;
+    }
+
+    .calculator-condition-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-basis: 100%;
+      width: 100%;
+      gap: 6px 10px;
+      margin-top: 8px;
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .calculator-condition-list:empty {
+      display: none;
+    }
+
+    .calculator-condition-title {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      color: var(--purple);
+      background: #f0eaff;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .calculator-condition-item {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .calculator-attribute-result {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 7px 12px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .calculator-attribute-title {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      color: #9b6f1f;
+      background: #fff2cf;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .calculator-attribute-line {
+      display: inline-flex;
+      align-items: baseline;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .attribute-base-value {
+      color: var(--gold);
+      font-weight: 850;
+    }
+
+    .attribute-gain-value {
+      color: var(--jade);
+      font-weight: 850;
+    }
+
+    .calculator-panel.invalid .calculator-attribute-result {
+      color: var(--red);
+    }
+
+    .profile-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 18px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .profile-stats strong { color: var(--text); }
+
+    .summary-panel,
+    .section-panel { margin-top: 12px; padding: 14px 16px; }
+
+    .summary-heading,
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .summary-title,
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .summary-title { color: var(--jade-dark); }
+
+    .material-list,
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px 10px;
+    }
+
+    .material-item,
+    .attribute-item {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      border: 1px solid rgba(60, 157, 133, 0.22);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 4px 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .material-item img,
+    .material-symbol {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      flex: 0 0 27px;
+      margin-right: 5px;
+      object-fit: contain;
+    }
+
+    .material-symbol {
+      border-radius: 6px;
+      background: linear-gradient(145deg, #d8b568, #7b5725);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .material-item strong,
+    .attribute-item strong { color: var(--text); font-weight: 800; }
+
+    .attribute-item {
+      border-color: rgba(184, 132, 47, 0.27);
+      color: var(--gold);
+    }
+
+    .attribute-item.compact {
+      min-height: 29px;
+      padding: 3px 8px;
+    }
+
+    .effect-text {
+      max-width: 560px;
+      color: var(--text);
+      line-height: 1.6;
+      white-space: normal;
+    }
+
+    .section-gap { margin-top: 16px; }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 9px 12px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .range-label {
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .condition-label {
+      display: block;
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .empty-cell { color: var(--muted); }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1200px); padding-top: 16px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { display: block; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .profile-panel { align-items: flex-start; }
+      .beast-icon { width: 72px; height: 72px; flex-basis: 72px; }
+      .profile-stats { gap: 6px 14px; }
+      .picker-heading { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .beast-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .calculator-main-row { grid-template-columns: 1fr; gap: 8px; }
+      .calculator-material-result,
+      .calculator-material-result .material-list { justify-content: flex-start; }
+      .calculator-controls { grid-template-columns: 1fr; gap: 8px; }
+      .calculator-arrow { justify-self: center; transform: rotate(90deg); }
+      .summary-heading,
+      .section-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .section-title { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">神兽进阶与升星</h1>
+      <p class="page-note">查看神兽升星与进阶属性和消耗材料</p>
+    </section>
+
+    <section class="picker-panel" aria-label="选择神兽">
+      <div class="picker-heading">
+        <span class="picker-title">按品质选择神兽</span>
+        <span class="page-note">点击神兽图标查看详情</span>
+      </div>
+      <div class="quality-tabs" id="quality-tabs" role="tablist" aria-label="选择神兽品质"></div>
+      <div class="beast-picker" id="beast-picker"></div>
+    </section>
+
+    <section class="calculator-section" aria-labelledby="calculatorSectionTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="calculatorSectionTitle">神兽培养计算器</h2>
+        <span class="section-meta">汇总进阶、升星材料与全体属性</span>
+      </div>
+
+      <section class="calculator-panel" id="advanceCalculatorPanel" aria-labelledby="advanceCalculatorTitle">
+        <div class="calculator-head">
+          <h3 class="calculator-title" id="advanceCalculatorTitle">进阶计算器</h3>
+          <span class="section-meta">按进阶阶数汇总</span>
+        </div>
+        <div class="calculator-main-row">
+          <div class="calculator-controls">
+            <label class="calculator-field" for="advanceCalculatorFrom">
+              <span>从</span>
+              <span class="calculator-control">
+                <select class="field" id="advanceCalculatorFrom" aria-label="起始进阶阶数"></select>
+                <span>阶</span>
+              </span>
+            </label>
+            <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+            <label class="calculator-field" for="advanceCalculatorTo">
+              <span>到</span>
+              <span class="calculator-control">
+                <select class="field" id="advanceCalculatorTo" aria-label="目标进阶阶数"></select>
+                <span>阶</span>
+              </span>
+            </label>
+          </div>
+          <div class="calculator-material-result" id="advanceCalculatorMaterials" aria-live="polite"></div>
+        </div>
+        <div class="calculator-attribute-result" id="advanceCalculatorAttributes" aria-live="polite"></div>
+      </section>
+
+      <section class="calculator-panel" id="starCalculatorPanel" aria-labelledby="starCalculatorTitle">
+        <div class="calculator-head">
+          <h3 class="calculator-title" id="starCalculatorTitle">升星计算器</h3>
+          <span class="section-meta">按星级汇总</span>
+        </div>
+        <div class="calculator-main-row">
+          <div class="calculator-controls">
+            <label class="calculator-field" for="starCalculatorFrom">
+              <span>从</span>
+              <span class="calculator-control">
+                <select class="field" id="starCalculatorFrom" aria-label="起始星级"></select>
+                <span>星</span>
+              </span>
+            </label>
+            <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+            <label class="calculator-field" for="starCalculatorTo">
+              <span>到</span>
+              <span class="calculator-control">
+                <select class="field" id="starCalculatorTo" aria-label="目标星级"></select>
+                <span>星</span>
+              </span>
+            </label>
+          </div>
+          <div class="calculator-material-result" id="starCalculatorMaterials" aria-live="polite"></div>
+        </div>
+        <div class="calculator-attribute-result" id="starCalculatorAttributes" aria-live="polite">
+          <div class="calculator-condition-list" id="starCalculatorConditions"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="section-gap">
+      <div class="section-head">
+        <h2 class="section-title">神兽升星材料与属性</h2>
+        <span class="section-meta">升星上限会随指定进阶解锁</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">升星区间</th>
+              <th scope="col">消耗材料</th>
+              <th scope="col">升星效果</th>
+            </tr>
+          </thead>
+          <tbody id="star-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-gap">
+      <div class="section-head">
+        <h2 class="section-title">神兽进阶材料与属性</h2>
+        <span class="section-meta">进阶后获得新增属性和新的培养上限</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">进阶区间</th>
+              <th scope="col">消耗材料</th>
+              <th scope="col">新增属性</th>
+              <th scope="col">进阶结果</th>
+            </tr>
+          </thead>
+          <tbody id="advance-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/shenshou-data.js"></script>
+  <script>
+    (() => {
+      const data = window.shenshouData;
+      const qualityTabs = document.getElementById("quality-tabs");
+      const beastPicker = document.getElementById("beast-picker");
+      const starTable = document.getElementById("star-table");
+      const advanceTable = document.getElementById("advance-table");
+      const advanceCalculatorPanel = document.getElementById("advanceCalculatorPanel");
+      const advanceCalculatorFrom = document.getElementById("advanceCalculatorFrom");
+      const advanceCalculatorTo = document.getElementById("advanceCalculatorTo");
+      const advanceCalculatorMaterials = document.getElementById("advanceCalculatorMaterials");
+      const advanceCalculatorAttributes = document.getElementById("advanceCalculatorAttributes");
+      const starCalculatorPanel = document.getElementById("starCalculatorPanel");
+      const starCalculatorFrom = document.getElementById("starCalculatorFrom");
+      const starCalculatorTo = document.getElementById("starCalculatorTo");
+      const starCalculatorMaterials = document.getElementById("starCalculatorMaterials");
+      const starCalculatorConditions = document.getElementById("starCalculatorConditions");
+      const starCalculatorAttributes = document.getElementById("starCalculatorAttributes");
+      const silverIcon = "assets/lingdi-items/yinbi.png";
+      let selectedIndex = 0;
+      let selectedQuality = String(data.creatures[0]?.quality ?? "");
+
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+      const text = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+
+      function formatAttribute(attribute) {
+        const value = attribute.percent ? attribute.amount / 100 : attribute.amount;
+        const display = Number.isInteger(value) ? number(value) : value.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+        return `${text(attribute.name)} +${display}${attribute.percent ? "%" : ""}`;
+      }
+
+      function formatSilverAmount(value) {
+        const amount = Number(value) / 10000;
+        return Number.isInteger(amount)
+          ? number(amount)
+          : amount.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+      }
+
+      function attributeMarkup(attributes, emptyText = "—") {
+        if (!attributes || !attributes.length) return `<span class="empty-cell">${text(emptyText)}</span>`;
+        return attributes.map((attribute) => `<span class="attribute-item compact">${formatAttribute(attribute)}</span>`).join("");
+      }
+
+      function materialMarkup(material) {
+        const item = material.item || { name: `材料${material.id}` };
+        const image = item.icon
+          ? `<img src="${text(item.icon)}" alt="">`
+          : `<span class="material-symbol" aria-hidden="true">${text(String(item.name || "物").slice(0, 1))}</span>`;
+        return `<span class="material-item">${image}<span>${text(item.name)} <strong>×${number(material.quantity)}</strong></span></span>`;
+      }
+
+      function costsMarkup(costs) {
+        if (!costs || !costs.length) return '<span class="empty-cell">—</span>';
+        return `<div class="material-list">${costs.map((cost) => {
+          if (cost.type === 1 && cost.id === 0) {
+            return `<span class="material-item"><img src="${silverIcon}" alt="银币图标"><span>银币 <strong>×${formatSilverAmount(cost.quantity)}w</strong></span></span>`;
+          }
+          return materialMarkup(cost);
+        }).join("")}</div>`;
+      }
+
+      function summarizeCosts(rows) {
+        const totals = new Map();
+        rows.flatMap((row) => row.costs || []).forEach((cost) => {
+          const key = `${cost.type}:${cost.id}`;
+          const current = totals.get(key);
+          if (current) {
+            current.quantity += Number(cost.quantity) || 0;
+          } else {
+            totals.set(key, { ...cost, quantity: Number(cost.quantity) || 0 });
+          }
+        });
+        return [...totals.values()];
+      }
+
+      function formatAttributeValue(attribute, amount) {
+        const value = attribute.percent ? amount / 100 : amount;
+        const display = Number.isInteger(value)
+          ? number(value)
+          : value.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+        return `${display}${attribute.percent ? "%" : ""}`;
+      }
+
+      function summarizeAttributes(rows, getAttributes) {
+        const totals = new Map();
+        rows.flatMap((row) => getAttributes(row) || []).forEach((attribute) => {
+          const key = `${attribute.id}:${attribute.percent ? "percent" : "flat"}`;
+          const current = totals.get(key) || {
+            id: attribute.id,
+            name: attribute.name,
+            amount: 0,
+            percent: Boolean(attribute.percent)
+          };
+          current.amount += Number(attribute.amount) || 0;
+          totals.set(key, current);
+        });
+        return [...totals.values()];
+      }
+
+      function mergeAttributeValues(currentAttributes, addedAttributes) {
+        const currentMap = new Map(currentAttributes.map((attribute) => [
+          `${attribute.id}:${attribute.percent ? "percent" : "flat"}`,
+          attribute
+        ]));
+        const addedMap = new Map(addedAttributes.map((attribute) => [
+          `${attribute.id}:${attribute.percent ? "percent" : "flat"}`,
+          attribute
+        ]));
+        const keys = [...new Set([...currentMap.keys(), ...addedMap.keys()])];
+        return keys.map((key) => ({
+          attribute: currentMap.get(key) || addedMap.get(key),
+          current: currentMap.get(key)?.amount ?? 0,
+          added: addedMap.get(key)?.amount ?? 0
+        }));
+      }
+
+      function renderCalculatorAttributes(result, currentRows, selectedRows, getAttributes) {
+        const currentAttributes = summarizeAttributes(currentRows, getAttributes);
+        const addedAttributes = summarizeAttributes(selectedRows, getAttributes);
+        const entries = mergeAttributeValues(currentAttributes, addedAttributes);
+        const lines = entries.map((entry) => `
+          <span class="calculator-attribute-line">
+            <span>${text(entry.attribute.name)} </span>
+            <span class="attribute-base-value">${formatAttributeValue(entry.attribute, entry.current)}</span>
+            <span class="attribute-gain-value">+${formatAttributeValue(entry.attribute, entry.added)}</span>
+          </span>
+        `).join("");
+        result.innerHTML = `<span class="calculator-attribute-title">全体属性</span>${lines || '<span class="empty-cell">无新增属性</span>'}`;
+        if (result === starCalculatorAttributes) result.appendChild(starCalculatorConditions);
+      }
+
+      function setCalculatorOptions(select, maxValue, selectedValue) {
+        select.replaceChildren();
+        for (let value = 0; value <= maxValue; value += 1) {
+          const option = document.createElement("option");
+          option.value = String(value);
+          option.textContent = String(value);
+          select.appendChild(option);
+        }
+        const nextValue = Math.max(0, Math.min(maxValue, Number(selectedValue) || 0));
+        select.value = String(nextValue);
+      }
+
+      function updateAdvanceCalculator(creature) {
+        const from = Number(advanceCalculatorFrom.value);
+        const to = Number(advanceCalculatorTo.value);
+        if (from > to) {
+          advanceCalculatorPanel.classList.add("invalid");
+          advanceCalculatorMaterials.innerHTML = '<span class="empty-cell">起始阶数不能高于目标阶数</span>';
+          advanceCalculatorAttributes.innerHTML = '<span class="calculator-attribute-title">全体属性</span><span class="empty-cell">—</span>';
+          return;
+        }
+
+        const currentRows = creature.advances.filter((row) => row.stage <= from);
+        const selectedRows = creature.advances.filter((row) => row.stage > from && row.stage <= to);
+        advanceCalculatorPanel.classList.remove("invalid");
+        advanceCalculatorMaterials.innerHTML = costsMarkup(summarizeCosts(selectedRows));
+        renderCalculatorAttributes(
+          advanceCalculatorAttributes,
+          currentRows,
+          selectedRows,
+          (row) => row.attributes
+        );
+      }
+
+      function updateStarCalculator(creature) {
+        const from = Number(starCalculatorFrom.value);
+        const to = Number(starCalculatorTo.value);
+        if (from > to) {
+          starCalculatorPanel.classList.add("invalid");
+          starCalculatorMaterials.innerHTML = '<span class="empty-cell">起始星级不能高于目标星级</span>';
+          starCalculatorConditions.replaceChildren();
+          starCalculatorAttributes.innerHTML = '<span class="calculator-attribute-title">全体属性</span><span class="empty-cell">—</span>';
+          starCalculatorAttributes.appendChild(starCalculatorConditions);
+          return;
+        }
+
+        const currentRows = creature.starCosts.filter((row) => row.toStar <= from);
+        const selectedRows = creature.starCosts.filter((row) => row.toStar > from && row.toStar <= to);
+        starCalculatorPanel.classList.remove("invalid");
+        starCalculatorMaterials.innerHTML = costsMarkup(summarizeCosts(selectedRows));
+        const conditions = selectedRows.flatMap((row) => {
+          const isCurrentLimit = row.fromStar === creature.baseMaxStar
+            || creature.advances.some((advance) => advance.changeLimitStar === row.fromStar);
+          if (!isCurrentLimit) return [];
+          const unlock = creature.advances
+            .filter((advance) => advance.changeLimitStar > row.fromStar)
+            .sort((left, right) => left.changeLimitStar - right.changeLimitStar)[0];
+          return unlock?.stage
+            ? [`${row.fromStar}星→${row.toStar}星：需进阶至${unlock.stage}阶`]
+            : [];
+        });
+        starCalculatorConditions.innerHTML = conditions.length
+          ? `<span class="calculator-condition-title">升星限制</span>${conditions.map((condition) => `<span class="calculator-condition-item">${text(condition)}</span>`).join("")}`
+          : "";
+        renderCalculatorAttributes(
+          starCalculatorAttributes,
+          currentRows,
+          selectedRows,
+          (row) => row.effect?.attributes
+        );
+      }
+
+      function updateCalculators(creature) {
+        updateAdvanceCalculator(creature);
+        updateStarCalculator(creature);
+      }
+
+      function setupCalculators(creature) {
+        const maxAdvance = Math.max(...creature.advances.map((row) => row.stage), 0);
+        const maxStar = Math.max(...creature.starCosts.map((row) => row.toStar), 0);
+        setCalculatorOptions(advanceCalculatorFrom, maxAdvance, 0);
+        setCalculatorOptions(advanceCalculatorTo, maxAdvance, maxAdvance);
+        setCalculatorOptions(starCalculatorFrom, maxStar, 0);
+        setCalculatorOptions(starCalculatorTo, maxStar, maxStar);
+        updateCalculators(creature);
+      }
+
+      function effectMarkup(effect) {
+        if (!effect) return '<span class="empty-cell">—</span>';
+        const description = effect.description && effect.description !== "特殊属性" ? effect.description : "";
+        const attributes = effect.attributes && effect.attributes.length
+          ? `<div class="attribute-list" style="margin-top: 5px">${attributeMarkup(effect.attributes)}</div>`
+          : "";
+        return `<div class="effect-text">${attributes || text(description || effect.title || "升星效果")}</div>`;
+      }
+
+      function qualityInfo(value) {
+        const name = data.qualityNames[String(value)] || `品质${value}`;
+        return {
+          label: name.replace(/色$/, "").replace(/^品质/, ""),
+          className: `quality-${value}`
+        };
+      }
+
+      function qualityMarkup(value) {
+        const info = qualityInfo(value);
+        return `<span class="quality-result ${info.className}"><span class="quality-mark">${text(info.label)}</span></span>`;
+      }
+
+      function renderQualityTabs() {
+        const qualities = [...new Set(data.creatures.map((creature) => String(creature.quality)))];
+        qualityTabs.innerHTML = qualities.map((value) => {
+          const info = qualityInfo(value);
+          const active = selectedQuality === value;
+          return `<button class="quality-tab ${info.className}${active ? " active" : ""}" type="button" role="tab" aria-selected="${active}" data-quality-value="${text(value)}">${text(info.label)}品质</button>`;
+        }).join("");
+
+        qualityTabs.querySelectorAll("[data-quality-value]").forEach((button) => {
+          button.addEventListener("click", () => {
+            selectedQuality = button.dataset.qualityValue;
+            renderQualityTabs();
+            renderBeastPicker();
+          });
+        });
+      }
+
+      function renderBeastPicker() {
+        const qualityMeta = qualityInfo(selectedQuality);
+        const items = data.creatures
+          .map((creature, index) => ({ creature, index }))
+          .filter(({ creature }) => String(creature.quality) === selectedQuality);
+
+        beastPicker.innerHTML = `
+          <section class="quality-picker-group ${qualityMeta.className}">
+            <div class="beast-card-grid">
+              ${items.map(({ creature, index }) => `
+                <button class="beast-card ${qualityMeta.className}${index === selectedIndex ? " active" : ""}" type="button" data-creature-index="${index}" aria-pressed="${index === selectedIndex}">
+                  <span class="beast-card-icon"><img src="${text(creature.icon)}" alt=""></span>
+                  <span class="beast-card-name">${text(creature.name)}</span>
+                </button>
+              `).join("")}
+            </div>
+          </section>
+        `;
+
+        beastPicker.querySelectorAll("[data-creature-index]").forEach((button) => {
+          button.addEventListener("click", () => {
+            selectedIndex = Number(button.dataset.creatureIndex);
+            renderBeastPicker();
+            render(data.creatures[selectedIndex]);
+          });
+        });
+      }
+
+      function advanceResult(advance) {
+        const result = [];
+        if (advance.changeQuality) result.push(qualityMarkup(advance.changeQuality));
+        if (advance.changeLimitStar) result.push(`升星上限${advance.changeLimitStar}星`);
+        return result.length ? result.join("；") : '<span class="empty-cell">—</span>';
+      }
+
+      function starPrerequisite(creature, row) {
+        const isCurrentLimit = row.fromStar === creature.baseMaxStar
+          || creature.advances.some((advance) => advance.changeLimitStar === row.fromStar);
+        if (!isCurrentLimit) return "";
+        const unlock = creature.advances
+          .filter((advance) => advance.changeLimitStar > row.fromStar)
+          .sort((left, right) => left.changeLimitStar - right.changeLimitStar)[0];
+        return unlock?.stage ? `<span class="condition-label">需进阶至${unlock.stage}阶</span>` : "";
+      }
+
+      function render(creature) {
+        setupCalculators(creature);
+        starTable.innerHTML = creature.starCosts.map((row) => `
+          <tr>
+            <td>
+              <span class="range-label">${row.fromStar}星 → ${row.toStar}星</span>
+              ${starPrerequisite(creature, row)}
+            </td>
+            <td>${costsMarkup(row.costs)}</td>
+            <td>${effectMarkup(row.effect)}</td>
+          </tr>
+        `).join("");
+
+        advanceTable.innerHTML = creature.advances.map((row) => `
+          <tr>
+            <td><span class="range-label">${row.stage}阶</span></td>
+            <td>${costsMarkup(row.costs)}</td>
+            <td><div class="attribute-list">${attributeMarkup(row.attributes)}</div></td>
+            <td>${advanceResult(row)}</td>
+          </tr>
+        `).join("");
+
+      }
+
+      [advanceCalculatorFrom, advanceCalculatorTo].forEach((select) => {
+        select.addEventListener("change", () => updateAdvanceCalculator(data.creatures[selectedIndex]));
+      });
+      [starCalculatorFrom, starCalculatorTo].forEach((select) => {
+        select.addEventListener("change", () => updateStarCalculator(data.creatures[selectedIndex]));
+      });
+
+      renderQualityTabs();
+      renderBeastPicker();
+      render(data.creatures[selectedIndex]);
+    })();
+  </script>
+</body>
+</html>
