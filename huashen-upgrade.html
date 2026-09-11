@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三化身突破与进阶材料查询表。">
+  <title>化身突破与进阶材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --red: #ae5748;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .avatar-picker {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .avatar-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 6px 8px;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .avatar-option:hover,
+    .avatar-option.is-selected {
+      border-color: var(--jade);
+      background: rgba(60, 157, 133, 0.1);
+      box-shadow: 0 4px 10px rgba(23, 63, 53, 0.08);
+    }
+
+    .avatar-option:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.4);
+      outline-offset: 2px;
+    }
+
+    .avatar-option img {
+      display: block;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      object-fit: contain;
+    }
+
+    .avatar-option span {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .avatar-summary {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.9fr) repeat(3, minmax(150px, 1fr));
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+    }
+
+    .summary-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 10px 12px;
+    }
+
+    .avatar-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar-icon {
+      display: block;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      object-fit: contain;
+    }
+
+    .summary-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .summary-value {
+      display: block;
+      margin-top: 4px;
+      color: var(--jade-dark);
+      font-size: 19px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .summary-silver { color: var(--gold); }
+    .summary-break { color: var(--red); }
+
+    .table-section { margin-top: 16px; }
+
+    .collapsible-section {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .collapsible-section > summary {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 12px 14px;
+      color: var(--jade-dark);
+      font-size: 16px;
+      font-weight: 850;
+      list-style: none;
+    }
+
+    .collapsible-section > summary::-webkit-details-marker { display: none; }
+
+    .collapsible-section > summary > span:first-of-type { grid-column: 2; }
+    .collapsible-section > summary::before {
+      content: "▸";
+      color: var(--jade);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .collapsible-section[open] > summary::before { content: "▾"; }
+
+    .collapsible-section > summary:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: -2px;
+    }
+
+    .collapsible-section > .table-wrap {
+      border-width: 1px 0 0;
+      border-radius: 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 10px 13px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+    tbody tr.milestone td { border-top: 2px solid rgba(184, 132, 47, 0.34); }
+
+    .stage,
+    .level {
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .level { color: var(--jade-dark); }
+
+    .star-range {
+      color: #c28716;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .star-mark {
+      display: inline-block;
+      margin-right: 5px;
+      color: #e4ad32;
+      font-size: 15px;
+      line-height: 1;
+      text-shadow: 0 1px 1px rgba(125, 76, 8, 0.32);
+      vertical-align: -1px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .overview-card {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 92px;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: var(--panel);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .overview-card:hover {
+      border-color: #83aa9d;
+      background: var(--panel-hover);
+      transform: translateY(-1px);
+    }
+
+    .overview-card:focus-visible,
+    .back-link:focus-visible,
+    .field:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .overview-icon {
+      display: block;
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      border: 2px solid rgba(231, 187, 97, 0.62);
+      border-radius: 50%;
+      background: #173f35;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(39, 35, 30, 0.16);
+    }
+
+    .overview-name {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--jade-dark);
+      font-size: 16px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .detail-panel { margin-top: 14px; }
+
+    .detail-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .upgrade-calculator {
+      margin-bottom: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .calculator-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+    }
+
+    .calculator-field {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .number-control {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .number-control .field {
+      min-width: 0;
+    }
+
+    .calculator-arrow {
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .calculator-result {
+      display: grid;
+      justify-items: end;
+      gap: 4px;
+      margin: 0;
+      color: var(--jade-dark);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .calculator-fragment-result {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      white-space: normal;
+    }
+
+    .advance-result {
+      justify-items: end;
+      text-align: right;
+    }
+
+    .advance-result .calculator-fragment-result {
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+    }
+
+    .calculator-attribute-result {
+      display: flex;
+      grid-column: 1 / -1;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 7px 12px;
+      width: 100%;
+      margin-top: 6px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: var(--panel-strong);
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .calculator-attribute-title {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      color: #9b6f1f;
+      background: #fff2cf;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .calculator-attribute-title.scope-main,
+    .breakthrough-attribute-title.scope-main {
+      color: #267e68;
+      background: #e6f4ed;
+    }
+
+    .calculator-attribute-title.scope-all,
+    .breakthrough-attribute-title.scope-all {
+      color: #9b6f1f;
+      background: #fff2cf;
+    }
+
+    .calculator-attribute-line {
+      display: inline-flex;
+      align-items: baseline;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .attribute-base-value {
+      color: var(--gold);
+      font-weight: 850;
+    }
+
+    .attribute-gain-value {
+      color: var(--jade);
+      font-weight: 850;
+    }
+
+    .calculator-result.invalid { color: #bd5945; }
+
+    .breakthrough-result .material-list {
+      justify-content: flex-end;
+      margin-top: 2px;
+    }
+
+    .breakthrough-attribute-result {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      grid-column: 1 / -1;
+      width: 100%;
+      margin-top: 8px;
+      border: 1px solid rgba(217, 203, 182, 0.9);
+      border-radius: 7px;
+      box-sizing: border-box;
+      padding: 10px;
+      background: var(--panel-strong);
+      color: var(--jade-dark);
+      text-align: left;
+    }
+
+    .breakthrough-attribute-result:empty {
+      display: none;
+    }
+
+    .breakthrough-attribute-group {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
+      gap: 8px;
+    }
+
+    .breakthrough-attribute-title {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      color: #9b6f1f;
+      background: #fff2cf;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .breakthrough-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 7px 12px;
+      min-width: 0;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .breakthrough-attribute-line {
+      display: inline-flex;
+      align-items: baseline;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .breakthrough-field .number-control {
+      gap: 4px;
+    }
+
+    .breakthrough-field .number-control > span {
+      flex: 0 0 auto;
+    }
+
+    .breakthrough-level-select {
+      flex: 1 1 74px;
+    }
+
+    .breakthrough-star-select {
+      flex: 1 1 64px;
+    }
+
+    .cost-table,
+    .break-table,
+    .skill-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .cost-table th,
+    .cost-table td,
+    .break-table th,
+    .break-table td,
+    .skill-table th,
+    .skill-table td {
+      padding: 10px 13px;
+    }
+
+    .cost-table th:nth-child(1),
+    .cost-table td:nth-child(1) {
+      width: 14%;
+      white-space: nowrap;
+    }
+
+    .cost-table th:nth-child(2),
+    .cost-table td:nth-child(2) {
+      width: 48%;
+    }
+
+    .cost-table th:nth-child(3),
+    .cost-table td:nth-child(3) { width: 38%; }
+
+    .cost-table td:first-child {
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .break-table th:nth-child(1),
+    .break-table td:nth-child(1) {
+      width: 12%;
+      white-space: nowrap;
+    }
+
+    .break-table th:nth-child(2),
+    .break-table td:nth-child(2) { width: 17%; }
+
+    .break-table th:nth-child(3),
+    .break-table td:nth-child(3) { width: 38%; }
+
+    .break-table th:nth-child(4),
+    .break-table td:nth-child(4) { width: 33%; }
+
+    .skill-table th:nth-child(1),
+    .skill-table td:nth-child(1) {
+      width: 15%;
+      white-space: nowrap;
+    }
+
+    .skill-table th:nth-child(2),
+    .skill-table td:nth-child(2) {
+      width: 14%;
+      white-space: nowrap;
+    }
+
+    .skill-table th:nth-child(3),
+    .skill-table td:nth-child(3) {
+      width: 23%;
+    }
+
+    .skill-table th:nth-child(4),
+    .skill-table td:nth-child(4) {
+      width: 48%;
+    }
+
+    .skill-table td:first-child {
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .skill-name {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .conditions,
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .material-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .material-item img {
+      display: block;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .material-item strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .attribute-item {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      min-height: 34px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 8px;
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .attribute-item strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .skill-attribute-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 10px;
+      color: var(--gold);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .silver {
+      color: var(--text);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .silver-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .silver-item img {
+      display: block;
+      width: 27px;
+      height: 27px;
+      object-fit: contain;
+    }
+
+    .effect {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .empty { color: var(--muted); }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 860px) {
+      .avatar-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .avatar-block { grid-column: span 2; }
+      .overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .page-title { font-size: 25px; }
+      .toolbar { grid-template-columns: 1fr; }
+      .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .overview-card { min-height: 76px; padding: 8px; }
+      .overview-icon { width: 48px; height: 48px; flex-basis: 48px; }
+      .overview-name { font-size: 14px; }
+      .detail-actions { flex-wrap: wrap; justify-content: flex-end; }
+      .calculator-body { grid-template-columns: 1fr; gap: 12px; }
+      .calculator-result { justify-items: start; text-align: left; }
+      .calculator-attribute-result { grid-column: auto; }
+      .advance-result .calculator-fragment-result { justify-content: flex-start; flex-wrap: wrap; }
+      .breakthrough-attribute-result { grid-column: auto; }
+      .breakthrough-result .material-list { justify-content: flex-start; }
+      .avatar-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .avatar-summary { grid-template-columns: 1fr 1fr; padding: 12px; }
+      .avatar-block { grid-column: span 2; }
+      .avatar-option { justify-content: flex-start; min-height: 52px; padding: 5px 7px; }
+      .avatar-option img { width: 34px; height: 34px; flex-basis: 34px; }
+      .avatar-option span { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">化身突破与进阶材料</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回上一级</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">化身突破与进阶材料</h1>
+      <p class="page-note">选择化身，查看激活、进阶和突破消耗</p>
+    </section>
+
+    <section id="overviewPanel" aria-labelledby="overviewTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="overviewTitle">化身总览</h2>
+        <span class="section-meta">点击化身查看升级材料</span>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </section>
+
+    <section class="detail-panel" id="detailPanel" aria-labelledby="detailTitle" hidden>
+      <div class="section-head">
+        <h2 class="section-title" id="detailTitle">升级明细</h2>
+        <div class="detail-actions">
+          <button class="back-link" id="backToOverview" type="button">返回总览</button>
+        </div>
+      </div>
+
+      <section class="upgrade-calculator" aria-labelledby="calculatorTitle">
+        <div class="calculator-head">
+          <h3 class="calculator-title" id="calculatorTitle">进阶计算器</h3>
+          <span class="section-meta">汇总碎片、银币和属性</span>
+        </div>
+        <div class="calculator-body">
+          <div class="calculator-fields">
+            <label class="calculator-field" for="fromLevelInput">
+              从
+              <span class="number-control">
+                <select class="field" id="fromLevelInput" aria-label="起始进阶阶段"></select>
+                <span id="fromLevelUnit">阶</span>
+              </span>
+            </label>
+            <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+            <label class="calculator-field" for="toLevelInput">
+              到
+              <span class="number-control">
+                <select class="field" id="toLevelInput" aria-label="目标进阶阶段"></select>
+                <span>阶</span>
+              </span>
+            </label>
+          </div>
+          <div class="calculator-result advance-result" id="calculatorResult" aria-live="polite">
+            <div class="calculator-fragment-result material-list" id="calculatorFragmentResult"></div>
+          </div>
+          <div class="calculator-attribute-result" id="calculatorAttributeResult"></div>
+        </div>
+      </section>
+
+      <section class="upgrade-calculator" aria-labelledby="breakthroughCalculatorTitle">
+        <div class="calculator-head">
+          <h3 class="calculator-title" id="breakthroughCalculatorTitle">突破计算器</h3>
+          <span class="section-meta">按等级和星数汇总突破材料与属性</span>
+        </div>
+        <div class="calculator-body">
+          <div class="calculator-fields">
+            <label class="calculator-field breakthrough-field" for="breakthroughFromLevelInput">
+              <span>从</span>
+              <span class="number-control">
+                <select class="field breakthrough-level-select" id="breakthroughFromLevelInput" aria-label="起始突破等级"></select>
+                <span>级</span>
+                <select class="field breakthrough-star-select" id="breakthroughFromStarInput" aria-label="起始星数"></select>
+                <span>星</span>
+              </span>
+            </label>
+            <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+            <label class="calculator-field breakthrough-field" for="breakthroughToLevelInput">
+              <span>到</span>
+              <span class="number-control">
+                <select class="field breakthrough-level-select" id="breakthroughToLevelInput" aria-label="目标突破等级"></select>
+                <span>级</span>
+                <select class="field breakthrough-star-select" id="breakthroughToStarInput" aria-label="目标星数"></select>
+                <span>星</span>
+              </span>
+            </label>
+          </div>
+          <div class="calculator-result breakthrough-result" id="breakthroughCalculatorResult" aria-live="polite">
+            <div class="material-list" id="breakthroughMaterials"></div>
+          </div>
+          <div class="breakthrough-attribute-result" id="breakthroughAttributeResult"></div>
+        </div>
+      </section>
+
+      <details class="collapsible-section">
+        <summary>
+          <span>进阶消耗</span>
+        </summary>
+        <div class="table-wrap">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th scope="col">进阶区间</th>
+                <th scope="col">材料消耗</th>
+                <th scope="col">获得属性</th>
+              </tr>
+            </thead>
+            <tbody id="advanceTable"></tbody>
+          </table>
+        </div>
+      </details>
+
+      <details class="collapsible-section">
+        <summary>
+          <span>技能提升</span>
+        </summary>
+        <div class="table-wrap">
+          <table class="skill-table">
+            <thead>
+              <tr>
+                <th scope="col">进阶阶数</th>
+                <th scope="col">技能类型</th>
+                <th scope="col">技能提升</th>
+                <th scope="col">技能说明</th>
+              </tr>
+            </thead>
+            <tbody id="skillTable"></tbody>
+          </table>
+        </div>
+      </details>
+
+      <details class="collapsible-section">
+        <summary>
+          <span>突破消耗</span>
+        </summary>
+        <div class="table-wrap">
+          <table class="break-table">
+            <thead>
+              <tr>
+                <th scope="col">突破等级</th>
+                <th scope="col">星级</th>
+                <th scope="col">消耗材料</th>
+                <th scope="col">本级效果</th>
+              </tr>
+            </thead>
+            <tbody id="breakTable"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/huashen-data.js"></script>
+  <script>
+    const data = window.huashenData;
+    const overviewPanel = document.querySelector("#overviewPanel");
+    const overviewGrid = document.querySelector("#overviewGrid");
+    const detailPanel = document.querySelector("#detailPanel");
+    const detailTitle = document.querySelector("#detailTitle");
+    const fromLevelInput = document.querySelector("#fromLevelInput");
+    const fromLevelUnit = document.querySelector("#fromLevelUnit");
+    const toLevelInput = document.querySelector("#toLevelInput");
+    const breakthroughFromLevelInput = document.querySelector("#breakthroughFromLevelInput");
+    const breakthroughFromStarInput = document.querySelector("#breakthroughFromStarInput");
+    const breakthroughToLevelInput = document.querySelector("#breakthroughToLevelInput");
+    const breakthroughToStarInput = document.querySelector("#breakthroughToStarInput");
+    const calculatorResult = document.querySelector("#calculatorResult");
+    const calculatorFragmentResult = document.querySelector("#calculatorFragmentResult");
+    const calculatorAttributeResult = document.querySelector("#calculatorAttributeResult");
+    const breakthroughCalculatorResult = document.querySelector("#breakthroughCalculatorResult");
+    const breakthroughMaterials = document.querySelector("#breakthroughMaterials");
+    const breakthroughAttributeResult = document.querySelector("#breakthroughAttributeResult");
+    const advanceTable = document.querySelector("#advanceTable");
+    const skillTable = document.querySelector("#skillTable");
+    const breakTable = document.querySelector("#breakTable");
+    const backToOverview = document.querySelector("#backToOverview");
+    let currentAvatarName = "";
+
+    const SILVER_ICON = "assets/lingdi-items/yinbi.png";
+    const formatNumber = (value) => Number(value).toLocaleString("zh-CN");
+    const formatSilverAmount = (value) => {
+      const amount = Number(value) / 10000;
+      return Number.isInteger(amount)
+        ? formatNumber(amount)
+        : amount.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+    };
+
+    function silverMarkup(amount) {
+      return `<span class="silver-item"><img src="${SILVER_ICON}" alt="银币"><span>银币 ×${formatSilverAmount(amount)}w</span></span>`;
+    }
+
+    function materialMarkup(material) {
+      const item = data.items[material.id];
+      if (!item) return "";
+      return `<span class="material-item"><img src="${item.icon}" alt="${item.name}"><span>${item.name}</span><strong>×${formatNumber(material.quantity)}</strong></span>`;
+    }
+
+    function summarizeMaterials(rows) {
+      const totals = new Map();
+      rows.flatMap((row) => row.materials || []).forEach((material) => {
+        totals.set(material.id, (totals.get(material.id) || 0) + material.quantity);
+      });
+      return [...totals.entries()].map(([id, quantity]) => ({ id: Number(id), quantity }));
+    }
+
+    function addAttributeTotal(attributeTotals, attribute) {
+      const key = `${attribute.id}:${attribute.percent ? "percent" : "flat"}`;
+      const current = attributeTotals.get(key) || {
+        id: attribute.id,
+        name: attribute.name,
+        value: 0,
+        percent: Boolean(attribute.percent)
+      };
+      current.value += Number(attribute.value) || 0;
+      attributeTotals.set(key, current);
+    }
+
+    function summarizeAttributes(rows) {
+      const totals = new Map();
+      rows.flatMap((row) => row.attributes || []).forEach((attribute) => {
+        addAttributeTotal(totals, attribute);
+      });
+      return [...totals.values()];
+    }
+
+    function formatAttributeAmount(attribute) {
+      const value = attribute.percent ? attribute.value / 100 : attribute.value;
+      return `+${formatNumber(value)}${attribute.percent ? "%" : ""}`;
+    }
+
+    function formatAdvanceAttributeNumber(attribute, value) {
+      const displayValue = attribute.percent ? value / 100 : value;
+      return `${formatNumber(displayValue)}${attribute.percent ? "%" : ""}`;
+    }
+
+    function formatBreakthroughAttributeNumber(attribute, value) {
+      return `${formatNumber(value)}${attribute.percent ? "%" : ""}`;
+    }
+
+    function attributeKey(attribute) {
+      return `${attribute.id ?? attribute.name}:${attribute.percent ? "percent" : "flat"}`;
+    }
+
+    function mergeAttributeValues(currentAttributes, addedAttributes) {
+      const currentMap = new Map(currentAttributes.map((attribute) => [attributeKey(attribute), attribute]));
+      const addedMap = new Map(addedAttributes.map((attribute) => [attributeKey(attribute), attribute]));
+      const keys = [...new Set([...currentMap.keys(), ...addedMap.keys()])];
+      return keys.map((key) => ({
+        attribute: currentMap.get(key) || addedMap.get(key),
+        current: currentMap.get(key)?.value ?? 0,
+        added: addedMap.get(key)?.value ?? 0
+      }));
+    }
+
+    function appendSplitAttributeLine(list, entry, formatter, className) {
+      const line = document.createElement("span");
+      line.className = className;
+
+      const name = document.createElement("span");
+      name.textContent = `${entry.attribute.name} `;
+
+      const current = document.createElement("span");
+      current.className = "attribute-base-value";
+      current.textContent = formatter(entry.attribute, entry.current);
+
+      const added = document.createElement("span");
+      added.className = "attribute-gain-value";
+      added.textContent = `+${formatter(entry.attribute, entry.added)}`;
+
+      line.append(name, current, added);
+      list.appendChild(line);
+    }
+
+    function attributeMarkup(attributes, skill) {
+      if (!attributes.length && skill) {
+        const label = skill.type === "怒攻" ? "怒攻提升" : "普攻提升";
+        return `<span class="skill-attribute-tag">${label}</span>`;
+      }
+      if (!attributes.length) return `<span class="empty">—</span>`;
+      return `<div class="attribute-list">${attributes.map((attribute) => `<span class="attribute-item">${attribute.name} <strong>${formatAttributeAmount(attribute)}</strong></span>`).join("")}</div>`;
+    }
+
+    function parseBreakthroughAttribute(description, group) {
+      if (!description) return null;
+      const text = group === "all"
+        ? description.replace(/^全体上阵武将/, "")
+        : description;
+      const match = text.match(/^(.+?)([+]\d+(?:\.\d+)?)(%)?$/);
+      if (!match) return null;
+      return {
+        name: match[1].replace(/^PVPj减伤$/, "PVP减伤"),
+        value: Number(match[2].slice(1)),
+        percent: Boolean(match[3])
+      };
+    }
+
+    function summarizeBreakthroughAttributes(rows, group) {
+      const totals = new Map();
+      rows.forEach((row) => {
+        const attribute = parseBreakthroughAttribute(
+          group === "all" ? row.awakeDescribe : row.mainDescribe,
+          group
+        );
+        if (!attribute) return;
+        const key = `${attribute.name}:${attribute.percent ? "percent" : "flat"}`;
+        const current = totals.get(key) || { ...attribute, value: 0 };
+        current.value += attribute.value;
+        totals.set(key, current);
+      });
+      return [...totals.values()];
+    }
+
+    function renderBreakthroughAttributeGroup(titleText, currentRows, addedRows, attributeGroup) {
+      const group = document.createElement("section");
+      group.className = "breakthrough-attribute-group";
+
+      const title = document.createElement("span");
+      title.className = `breakthrough-attribute-title ${attributeGroup === "main" ? "scope-main" : "scope-all"}`;
+      title.textContent = titleText;
+
+      const list = document.createElement("div");
+      list.className = "breakthrough-attribute-list";
+      const currentAttributes = summarizeBreakthroughAttributes(currentRows, attributeGroup);
+      const addedAttributes = summarizeBreakthroughAttributes(addedRows, attributeGroup);
+      const entries = mergeAttributeValues(currentAttributes, addedAttributes);
+      if (!entries.length) {
+        const empty = document.createElement("span");
+        empty.className = "empty";
+        empty.textContent = "—";
+        list.appendChild(empty);
+      } else {
+        entries.forEach((entry) => appendSplitAttributeLine(
+          list,
+          entry,
+          formatBreakthroughAttributeNumber,
+          "breakthrough-attribute-line"
+        ));
+      }
+
+      group.append(title, list);
+      return group;
+    }
+
+    function renderBreakthroughAttributes(currentRows, addedRows) {
+      breakthroughAttributeResult.replaceChildren(
+        renderBreakthroughAttributeGroup("主角属性", currentRows, addedRows, "main"),
+        renderBreakthroughAttributeGroup("全体属性", currentRows, addedRows, "all")
+      );
+    }
+
+    function renderCalculatorAttributes(currentRows, addedRows) {
+      calculatorAttributeResult.replaceChildren();
+      const title = document.createElement("span");
+      title.className = "calculator-attribute-title scope-all";
+      title.textContent = "全体属性";
+      calculatorAttributeResult.appendChild(title);
+
+      const currentAttributes = summarizeAttributes(currentRows);
+      const addedAttributes = summarizeAttributes(addedRows);
+      const entries = mergeAttributeValues(currentAttributes, addedAttributes);
+      if (!entries.length) {
+        const emptyLine = document.createElement("span");
+        emptyLine.className = "calculator-attribute-line";
+        emptyLine.textContent = "无进阶属性";
+        calculatorAttributeResult.appendChild(emptyLine);
+        return;
+      }
+
+      entries.forEach((entry) => appendSplitAttributeLine(
+        calculatorAttributeResult,
+        entry,
+        formatAdvanceAttributeNumber,
+        "calculator-attribute-line"
+      ));
+    }
+
+    // 解包数据会把同一级的银币和化身碎片拆成两条记录，页面按等级合并后再展示。
+    function combineLevelRows(rows) {
+      const levels = new Map();
+      rows.forEach((row) => {
+        const current = levels.get(row.level) || { level: row.level, silver: 0, materials: [], attributes: [] };
+        current.silver += Number(row.silver) || 0;
+        current.materials.push(...(row.materials || []));
+        current.attributes.push(...(row.attributes || []));
+        if (!current.skill && row.skill) current.skill = row.skill;
+        levels.set(row.level, current);
+      });
+      return [...levels.values()].sort((a, b) => a.level - b.level);
+    }
+
+    function costSummary(materials) {
+      return materials.map(materialMarkup).join("") || `<span class="empty">无</span>`;
+    }
+
+    function readAdvanceStartLevel(input, maxLevel, fallback) {
+      const value = Number.parseInt(input.value, 10);
+      if (!Number.isFinite(value)) return fallback;
+      return Math.max(-1, Math.min(maxLevel, value));
+    }
+
+    function setAdvanceStartLevelOptions(input, unit, value, maxLevel) {
+      input.replaceChildren();
+      const unlockOption = document.createElement("option");
+      unlockOption.value = "-1";
+      unlockOption.textContent = "未解锁";
+      input.appendChild(unlockOption);
+      for (let level = 0; level <= maxLevel; level += 1) {
+        const option = document.createElement("option");
+        option.value = String(level);
+        option.textContent = String(level);
+        input.appendChild(option);
+      }
+      const selectedValue = Math.max(-1, Math.min(maxLevel, value));
+      input.value = String(selectedValue);
+      unit.textContent = selectedValue < 0 ? "" : "阶";
+    }
+
+    function setAdvanceTargetLevelOptions(input, value, maxLevel) {
+      const levels = Array.from({ length: maxLevel + 1 }, (_, index) => index);
+      setSelectOptions(input, levels, value);
+    }
+
+    function getAvatar() {
+      return data.avatars.find((avatar) => avatar.name === currentAvatarName) || data.avatars[0];
+    }
+
+    function getMaxLevel(avatar) {
+      return Math.max(...combineLevelRows(avatar.levels).map((row) => row.level), 0);
+    }
+
+    function getMaxBreakthroughLevel(avatar) {
+      return Math.max(...avatar.breakthroughs.map((row) => row.stage), 0);
+    }
+
+    function getBreakthroughLevels(avatar) {
+      const levels = new Set([0]);
+      avatar.breakthroughs.forEach((row) => levels.add(row.stage));
+      return [...levels].sort((a, b) => a - b);
+    }
+
+    function getBreakthroughStars(avatar, level) {
+      const stars = new Set([0]);
+      avatar.breakthroughs
+        .filter((row) => row.stage === level)
+        .forEach((row) => stars.add(row.layer));
+      return [...stars].sort((a, b) => a - b);
+    }
+
+    function readSelectNumber(select, fallback) {
+      const value = Number.parseInt(select.value, 10);
+      return Number.isFinite(value) ? value : fallback;
+    }
+
+    function setSelectOptions(select, values, selectedValue) {
+      select.replaceChildren();
+      values.forEach((value) => {
+        const option = document.createElement("option");
+        option.value = String(value);
+        option.textContent = String(value);
+        select.appendChild(option);
+      });
+      const selected = String(selectedValue);
+      select.value = values.some((value) => String(value) === selected)
+        ? selected
+        : String(values[0] ?? 0);
+    }
+
+    function syncBreakthroughControls(avatar, reset = false) {
+      const levels = getBreakthroughLevels(avatar);
+      const maxLevel = getMaxBreakthroughLevel(avatar);
+      const fromLevel = reset ? 0 : readSelectNumber(breakthroughFromLevelInput, 0);
+      const toLevel = reset ? maxLevel : readSelectNumber(breakthroughToLevelInput, maxLevel);
+      setSelectOptions(breakthroughFromLevelInput, levels, fromLevel);
+      setSelectOptions(breakthroughToLevelInput, levels, toLevel);
+
+      const fromStar = reset ? 0 : readSelectNumber(breakthroughFromStarInput, 0);
+      const toStar = reset ? 0 : readSelectNumber(breakthroughToStarInput, 0);
+      setSelectOptions(
+        breakthroughFromStarInput,
+        getBreakthroughStars(avatar, readSelectNumber(breakthroughFromLevelInput, 0)),
+        fromStar
+      );
+      setSelectOptions(
+        breakthroughToStarInput,
+        getBreakthroughStars(avatar, readSelectNumber(breakthroughToLevelInput, maxLevel)),
+        toStar
+      );
+    }
+
+    function getBreakthroughPosition(avatar, level, star) {
+      const rowIndex = avatar.breakthroughs.findIndex(
+        (row) => row.stage === level && row.layer === star
+      );
+      if (rowIndex >= 0) return rowIndex;
+      if (star === 0) {
+        const firstRowIndex = avatar.breakthroughs.findIndex((row) => row.stage === level);
+        return firstRowIndex >= 0 ? firstRowIndex - 1 : -1;
+      }
+      return -1;
+    }
+
+    function getFragmentTotal(rows, fragmentId) {
+      return rows.reduce(
+        (total, row) => total + (row.materials || [])
+          .filter((material) => material.id === fragmentId)
+          .reduce((sum, material) => sum + material.quantity, 0),
+        0
+      );
+    }
+
+    function updateCalculator() {
+      const avatar = getAvatar();
+      const maxLevel = getMaxLevel(avatar);
+      const rows = combineLevelRows(avatar.levels);
+      const fragmentId = avatar.activation.materials[0]?.id;
+      const activationTotal = avatar.activation.materials.reduce((sum, material) => sum + material.quantity, 0);
+      const fromLevel = readAdvanceStartLevel(fromLevelInput, maxLevel, -1);
+      const toLevel = readSelectNumber(toLevelInput, maxLevel);
+
+      if (fromLevel > toLevel) {
+        calculatorFragmentResult.innerHTML = '<span class="empty">—</span>';
+        calculatorAttributeResult.replaceChildren();
+        calculatorResult.classList.add("invalid");
+        return;
+      }
+
+      const currentRows = rows.filter((row) => row.level <= fromLevel);
+      const selectedRows = rows.filter((row) => row.level > fromLevel && row.level <= toLevel);
+      const upgradeFragments = getFragmentTotal(selectedRows, fragmentId);
+      const activation = fromLevel < 0 && toLevel >= 0 ? activationTotal : 0;
+      const totalFragments = upgradeFragments + activation;
+      const totalSilver = selectedRows.reduce((sum, row) => sum + row.silver, 0);
+
+      calculatorResult.classList.remove("invalid");
+      calculatorFragmentResult.innerHTML = [
+        totalFragments > 0 && fragmentId
+          ? materialMarkup({ id: fragmentId, quantity: totalFragments })
+          : '<span class="empty">无需化身消耗</span>',
+        silverMarkup(totalSilver)
+      ].join("");
+      renderCalculatorAttributes(currentRows, selectedRows);
+    }
+
+    function updateBreakthroughCalculator() {
+      const avatar = getAvatar();
+      const fromLevel = readSelectNumber(breakthroughFromLevelInput, 0);
+      const fromStar = readSelectNumber(breakthroughFromStarInput, 0);
+      const toLevel = readSelectNumber(breakthroughToLevelInput, getMaxBreakthroughLevel(avatar));
+      const toStar = readSelectNumber(breakthroughToStarInput, 0);
+      const fromPosition = getBreakthroughPosition(avatar, fromLevel, fromStar);
+      const toPosition = getBreakthroughPosition(avatar, toLevel, toStar);
+
+      if (fromPosition > toPosition) {
+        breakthroughCalculatorResult.classList.add("invalid");
+        breakthroughMaterials.innerHTML = '<span class="empty">—</span>';
+        breakthroughAttributeResult.replaceChildren();
+        return;
+      }
+
+      const currentRows = avatar.breakthroughs.filter((row, index) => index <= fromPosition);
+      const selectedRows = avatar.breakthroughs.filter((row, index) => index > fromPosition && index <= toPosition);
+      const materials = summarizeMaterials(selectedRows);
+
+      breakthroughCalculatorResult.classList.remove("invalid");
+      breakthroughMaterials.innerHTML = materials.map(materialMarkup).join("") || '<span class="empty">无需突破材料</span>';
+      renderBreakthroughAttributes(currentRows, selectedRows);
+    }
+
+    function renderDetail() {
+      const avatar = getAvatar();
+      const maxLevel = getMaxLevel(avatar);
+      const advanceRows = combineLevelRows(avatar.levels);
+      const visibleRows = advanceRows;
+      const fragmentId = avatar.activation.materials[0]?.id;
+      const activationMaterials = avatar.activation.materials;
+
+      setAdvanceStartLevelOptions(
+        fromLevelInput,
+        fromLevelUnit,
+        readAdvanceStartLevel(fromLevelInput, maxLevel, -1),
+        maxLevel
+      );
+      setAdvanceTargetLevelOptions(toLevelInput, readSelectNumber(toLevelInput, maxLevel), maxLevel);
+      syncBreakthroughControls(avatar);
+      detailTitle.textContent = `${avatar.name}升级明细`;
+
+      advanceTable.replaceChildren();
+      const unlockRow = document.createElement("tr");
+      unlockRow.innerHTML = `<td class="level">解锁</td><td><div class="material-list">${costSummary(activationMaterials)}</div></td><td class="attributes"><span class="empty">—</span></td>`;
+      advanceTable.appendChild(unlockRow);
+      visibleRows.forEach((row) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td class="level">${row.level - 1}阶→${row.level}阶</td><td><div class="material-list">${silverMarkup(row.silver)}${costSummary(row.materials)}</div></td><td class="attributes">${attributeMarkup(row.attributes, row.skill)}</td>`;
+        advanceTable.appendChild(tr);
+      });
+
+      skillTable.replaceChildren();
+      advanceRows.filter((row) => row.skill).forEach((row) => {
+        const tr = document.createElement("tr");
+        const stageCell = document.createElement("td");
+        stageCell.textContent = `${row.level - 1}阶→${row.level}阶`;
+        const typeCell = document.createElement("td");
+        typeCell.textContent = row.skill.type;
+        const nameCell = document.createElement("td");
+        nameCell.className = "skill-name";
+        nameCell.textContent = row.skill.name || "技能升级";
+        const descriptionCell = document.createElement("td");
+        descriptionCell.className = "skill-description";
+        descriptionCell.textContent = row.skill.description || "暂无技能说明";
+        tr.append(stageCell, typeCell, nameCell, descriptionCell);
+        skillTable.appendChild(tr);
+      });
+
+      breakTable.innerHTML = avatar.breakthroughs.map((row) => {
+        const milestone = row.layer === 0;
+        const stageText = `${row.stage}级`;
+        const layerText = row.layer === 0 ? "突破" : `${row.layer - 1}星→${row.layer}星`;
+        const effect = [row.mainDescribe, row.awakeDescribe].filter(Boolean).join("；") || "暂无说明";
+        const layerMarkup = row.layer === 0 ? layerText : `<span class="star-mark" aria-hidden="true">★</span>${layerText}`;
+        return `<tr class="${milestone ? "milestone" : ""}"><td class="stage">${stageText}</td><td class="star-range">${layerMarkup}</td><td><div class="material-list">${costSummary(row.materials)}</div></td><td class="effect">${effect}</td></tr>`;
+      }).join("");
+      updateCalculator();
+      updateBreakthroughCalculator();
+    }
+
+    function renderOverview() {
+      overviewGrid.replaceChildren();
+      data.avatars.forEach((avatar) => {
+        const card = document.createElement("button");
+        card.className = "overview-card";
+        card.type = "button";
+        card.setAttribute("aria-label", `查看${avatar.name}升级材料`);
+
+        const icon = document.createElement("img");
+        icon.className = "overview-icon";
+        icon.src = avatar.icon;
+        icon.alt = `${avatar.name}化身图标`;
+
+        const name = document.createElement("span");
+        name.className = "overview-name";
+        name.textContent = avatar.name;
+
+        card.append(icon, name);
+        card.addEventListener("click", () => {
+          currentAvatarName = avatar.name;
+          const maxLevel = getMaxLevel(avatar);
+          setAdvanceStartLevelOptions(fromLevelInput, fromLevelUnit, -1, maxLevel);
+          setAdvanceTargetLevelOptions(toLevelInput, maxLevel, maxLevel);
+          syncBreakthroughControls(avatar, true);
+          overviewPanel.hidden = true;
+          detailPanel.hidden = false;
+          renderDetail();
+          detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        overviewGrid.appendChild(card);
+      });
+    }
+
+    backToOverview.addEventListener("click", () => {
+      detailPanel.hidden = true;
+      overviewPanel.hidden = false;
+      overviewPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    fromLevelInput.addEventListener("change", () => {
+      const avatar = getAvatar();
+      const value = readAdvanceStartLevel(fromLevelInput, getMaxLevel(avatar), -1);
+      fromLevelUnit.textContent = value < 0 ? "" : "阶";
+      updateCalculator();
+    });
+    toLevelInput.addEventListener("change", updateCalculator);
+    [[breakthroughFromLevelInput, breakthroughFromStarInput], [breakthroughToLevelInput, breakthroughToStarInput]].forEach(([levelSelect, starSelect]) => {
+      levelSelect.addEventListener("change", () => {
+        const avatar = getAvatar();
+        const currentStar = readSelectNumber(starSelect, 0);
+        setSelectOptions(starSelect, getBreakthroughStars(avatar, readSelectNumber(levelSelect, 0)), currentStar);
+        updateBreakthroughCalculator();
+      });
+      starSelect.addEventListener("change", updateBreakthroughCalculator);
+    });
+    renderOverview();
+  </script>
+</body>
+</html>
