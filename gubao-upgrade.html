@@ -209,6 +209,14 @@
       margin-top: 12px;
     }
 
+    .simulator-scroll {
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .simulator-columns {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1522,8 +1530,10 @@
       .simulator-panel { padding: 12px 11px 13px; }
       .simulator-column-heading { display: flex; align-items: center; }
       .simulator-column-heading span { display: block; margin-top: 3px; }
+      .simulator-scroll { padding-bottom: 8px; }
+      .simulator-columns { min-width: 560px; }
       .comparison-grid { grid-template-columns: 1fr; }
-      .radial-stage { width: calc(100% - 24px); min-height: 600px; }
+      .radial-stage { width: 560px; max-width: none; min-height: 600px; }
       .radial-stage::before { width: 96%; }
       .radial-ring { width: 86%; }
       .big-treasure-button { top: calc(50% - 15px); width: 150px; height: 150px; padding: 8px; }
@@ -1570,7 +1580,8 @@
       <div class="section-heading">
         <h2 class="section-title" id="simulator-title">古宝升级模拟</h2>
       </div>
-      <div class="simulator-columns">
+      <div class="simulator-scroll" aria-label="古宝模拟器横向滚动区域">
+        <div class="simulator-columns">
         <section class="simulator-column" aria-labelledby="current-simulator-title">
           <div class="simulator-column-heading">
             <div class="simulator-heading-copy">
@@ -1613,6 +1624,7 @@
             </div>
           </div>
         </section>
+        </div>
       </div>
       <div id="simulation-summary" aria-live="polite"></div>
     </section>
