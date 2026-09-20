@@ -184,10 +184,10 @@
             <span>起始官职</span>
             <select id="startRankSelect"></select>
           </label>
-          <label class="calculator-field" for="startStageInput">
+          <label class="calculator-field" for="startStageSelect">
             <span>起始阶段</span>
             <span class="calculator-stage-control">
-              <input id="startStageInput" type="number" min="0" max="5" step="1" value="0">
+              <select id="startStageSelect"></select>
               <span>阶</span>
             </span>
           </label>
@@ -198,10 +198,10 @@
             <span>目标官职</span>
             <select id="targetRankSelect"></select>
           </label>
-          <label class="calculator-field" for="targetStageInput">
+          <label class="calculator-field" for="targetStageSelect">
             <span>目标阶段</span>
             <span class="calculator-stage-control">
-              <input id="targetStageInput" type="number" min="0" max="5" step="1" value="5">
+              <select id="targetStageSelect"></select>
               <span>阶</span>
             </span>
           </label>
@@ -240,9 +240,9 @@
     const data = window.officerData;
     const fmt = (value) => Number(value).toLocaleString("zh-CN");
     const startRankSelect = document.querySelector("#startRankSelect");
-    const startStageInput = document.querySelector("#startStageInput");
+    const startStageSelect = document.querySelector("#startStageSelect");
     const targetRankSelect = document.querySelector("#targetRankSelect");
-    const targetStageInput = document.querySelector("#targetStageInput");
+    const targetStageSelect = document.querySelector("#targetStageSelect");
     const calculatorResult = document.querySelector("#calculatorResult");
     const calculatorCostList = document.querySelector("#calculatorCostList");
     const calculatorAttributeList = document.querySelector("#calculatorAttributeList");
@@ -311,6 +311,13 @@
       return Math.min(maxStage, Math.max(0, value));
     }
 
+    function setStageOptions(select, maxStage, selectedStage) {
+      select.replaceChildren(...Array.from({ length: maxStage + 1 }, (_, stage) =>
+        new Option(String(stage), String(stage))
+      ));
+      select.value = String(selectedStage);
+    }
+
     function getRangeSegments(startItem, startStage, targetItem, targetStage) {
       const startIndex = data.ranks.indexOf(startItem);
       const targetIndex = data.ranks.indexOf(targetItem);
@@ -351,10 +358,10 @@
       const targetItem = data.ranks.find((entry) => entry.rank === Number(targetRankSelect.value)) || data.ranks[data.ranks.length - 1];
       const startMaxStage = startItem.sixCosts.length;
       const targetMaxStage = targetItem.sixCosts.length;
-      startStageInput.max = String(startMaxStage);
-      targetStageInput.max = String(targetMaxStage);
-      const startStage = readStage(startStageInput, 0, startMaxStage);
-      const targetStage = readStage(targetStageInput, targetMaxStage, targetMaxStage);
+      const startStage = readStage(startStageSelect, 0, startMaxStage);
+      const targetStage = readStage(targetStageSelect, targetMaxStage, targetMaxStage);
+      setStageOptions(startStageSelect, startMaxStage, startStage);
+      setStageOptions(targetStageSelect, targetMaxStage, targetStage);
       const startIndex = data.ranks.indexOf(startItem);
       const targetIndex = data.ranks.indexOf(targetItem);
       const invalidDirection = startIndex > targetIndex || (startIndex === targetIndex && startStage > targetStage);
@@ -362,8 +369,6 @@
       const stepCount = segments.length;
       const baseAttributes = getAccumulatedAttributes(startIndex, startStage);
 
-      startStageInput.value = String(startStage);
-      targetStageInput.value = String(targetStage);
       calculatorCostList.replaceChildren();
       calculatorAttributeList.replaceChildren();
       calculatorResultNote.hidden = true;
@@ -403,7 +408,7 @@
       calculatorAttributeList.innerHTML = renderAttributeComparison(baseAttributes, attributeTotals);
     }
 
-    [startRankSelect, startStageInput, targetRankSelect, targetStageInput].forEach((control) => {
+    [startRankSelect, startStageSelect, targetRankSelect, targetStageSelect].forEach((control) => {
       control.addEventListener("input", updateCalculator);
       control.addEventListener("change", updateCalculator);
     });

@@ -383,6 +383,9 @@
       <div class="kind-filter" role="group" aria-label="素材类型">
         <button class="kind-button active" type="button" data-kind="hero">主角时装图</button>
         <button class="kind-button" type="button" data-kind="phantom">幻化图</button>
+        <button class="kind-button" type="button" data-kind="mingjiang">名将幻化大图</button>
+        <button class="kind-button" type="button" data-kind="redbeauty">红颜幻化大图</button>
+        <button class="kind-button" type="button" data-kind="houjun">后军幻化大图</button>
         <button class="kind-button" type="button" data-kind="big">时装大图</button>
         <button class="kind-button" type="button" data-kind="small">时装小图</button>
         <button class="kind-button" type="button" data-kind="all">全部</button>
@@ -395,6 +398,9 @@
           <option value="male">主角男</option>
           <option value="female">主角女</option>
           <option value="phantom">武将幻化</option>
+          <option value="mingjiang">名将幻化大图</option>
+          <option value="redbeauty">红颜幻化大图</option>
+          <option value="houjun">后军幻化大图</option>
         </select>
       </label>
     </section>
@@ -404,19 +410,27 @@
 
   <script src="assets/fashion-gallery/catalog.js"></script>
   <script src="assets/fashion-gallery/phantom-catalog.js"></script>
+  <script src="assets/fashion-gallery/extra-catalog.js"></script>
   <script>
     const catalog = Array.isArray(window.FASHION_CATALOG) ? window.FASHION_CATALOG : [];
     const phantomCatalog = Array.isArray(window.FASHION_PHANTOM_CATALOG) ? window.FASHION_PHANTOM_CATALOG : [];
+    const extraCatalog = Array.isArray(window.FASHION_EXTRA_CATALOG) ? window.FASHION_EXTRA_CATALOG : [];
     const kindLabels = {
       hero: "主角时装图",
       phantom: "幻化图",
+      mingjiang: "名将幻化大图",
+      redbeauty: "红颜幻化大图",
+      houjun: "后军幻化大图",
       big: "时装大图",
       small: "时装小图"
     };
     const roleLabels = {
       male: "主角男",
       female: "主角女",
-      phantom: "武将"
+      phantom: "武将幻化",
+      mingjiang: "名将幻化大图",
+      redbeauty: "红颜幻化大图",
+      houjun: "后军幻化大图"
     };
     const gallery = document.getElementById("gallery");
     const summary = document.getElementById("summary");
@@ -441,8 +455,8 @@
       const mainKinds = selectedKind === "all"
         ? ["hero", "big", "small"]
         : [selectedKind];
-      const includeMain = selectedKind !== "phantom" && selectedRole !== "phantom";
-      const includePhantom = (selectedKind === "all" || selectedKind === "phantom") && selectedRole !== "male" && selectedRole !== "female";
+      const includeMain = (selectedKind === "all" || ["hero", "big", "small"].includes(selectedKind)) && ["all", "male", "female"].includes(selectedRole);
+      const includePhantom = (selectedKind === "all" || selectedKind === "phantom") && ["all", "phantom"].includes(selectedRole);
 
       if (includeMain) {
         const roles = selectedRole === "all" ? ["male", "female"] : [selectedRole];
@@ -477,6 +491,16 @@
         });
       }
 
+      extraCatalog.forEach((item) => {
+        const category = item.category;
+        const itemText = [item.id, item.hero, item.name].join(" ").toLowerCase();
+        const kindMatches = selectedKind === "all" || selectedKind === category;
+        const roleMatches = selectedRole === "all" || selectedRole === category;
+        if (kindMatches && roleMatches && (!query || itemText.includes(query))) {
+          entries.push({ item, role: category, kind: category, asset: item });
+        }
+      });
+
       return entries;
     }
 
@@ -487,9 +511,9 @@
           count += Object.values(roleAssets || {}).filter((asset) => asset && asset.path).length;
         });
         return count;
-      }, 0) + phantomCatalog.length;
+      }, 0) + phantomCatalog.length + extraCatalog.length;
 
-      summary.textContent = `显示 ${entries.length} 张 · 主角时装 ${catalog.length} 套 · 幻化 ${phantomCatalog.length} 张 · 已整理 ${total} 张图片`;
+      summary.textContent = `显示 ${entries.length} 张 · 主角时装 ${catalog.length} 套 · 武将幻化 ${phantomCatalog.length} 张 · 新增专属图 ${extraCatalog.length} 张 · 已整理 ${total} 张图片`;
 
       if (!entries.length) {
         gallery.innerHTML = '<div class="empty-state">没有找到匹配的素材</div>';
@@ -497,12 +521,15 @@
       }
 
       gallery.innerHTML = entries.map(({ item, role, kind, asset }) => {
-        const name = kind === "phantom"
+        const name = ["mingjiang", "redbeauty", "houjun"].includes(kind)
+          ? item.name
+          : kind === "phantom"
           ? `${item.hero} · ${item.name}`
           : ((item.names && item.names[role]) || "未命名时装");
         const number = String(item.id).padStart(2, "0");
         const label = `${roleLabels[role]} · ${name}`;
-        const meta = `#${number} · ${kindLabels[kind]} · ${asset.w}×${asset.h}`;
+        const size = asset.w && asset.h ? `${asset.w}×${asset.h}` : "完整大图";
+        const meta = `#${number} · ${kindLabels[kind]} · ${size}`;
         return `
           <article class="asset-card">
             <div class="asset-frame">

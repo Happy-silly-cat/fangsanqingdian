@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="dianweilh7_22" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="102.4,-272.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.165512084961" scaleY="0.165512084961"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="103.45,-271.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.500747680664" scaleY="0.500747680664"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="104.5,-269.8" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.836013793945" scaleY="0.836013793945"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="105.4,-268.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.952667236328" scaleY="0.952667236328"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="106.25,-268.1" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.850723266602" scaleY="0.850723266602"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="107.0,-267.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.748809814453" scaleY="0.748809814453"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="107.8,-266.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.646850585938" scaleY="0.646850585938"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="108.6,-266.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.544906616211" scaleY="0.544906616211"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="109.35,-265.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.442962646484" scaleY="0.442962646484"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="110.15,-264.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.341018676758" scaleY="0.341018676758"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="110.95,-264.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.23908996582" scaleY="0.23908996582"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="111.75,-263.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.137145996094" scaleY="0.137145996094"/>
+			</frameInfo>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="102.4,-272.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.165512084961" scaleY="0.165512084961"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="103.45,-271.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.500747680664" scaleY="0.500747680664"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="104.5,-269.8" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.836013793945" scaleY="0.836013793945"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="105.4,-268.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.952667236328" scaleY="0.952667236328"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="106.25,-268.1" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.850723266602" scaleY="0.850723266602"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="107.0,-267.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.748809814453" scaleY="0.748809814453"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="107.8,-266.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.646850585938" scaleY="0.646850585938"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="108.6,-266.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.544906616211" scaleY="0.544906616211"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="109.35,-265.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.442962646484" scaleY="0.442962646484"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="110.15,-264.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.341018676758" scaleY="0.341018676758"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="110.95,-264.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.23908996582" scaleY="0.23908996582"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="dianweilh7_huoxing_1" position="111.75,-263.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.137145996094" scaleY="0.137145996094"/>
+			</frameInfo>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

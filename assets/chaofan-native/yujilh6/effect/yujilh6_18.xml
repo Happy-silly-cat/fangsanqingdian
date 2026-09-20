@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="yujilh6_18" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-78.9951459435" rotationX="-78.9951459435" rotationY="-78.9951459435" scaleX="-0.181530296623" scaleY="-0.181530296623"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-76.1899229081" rotationX="-76.1899229081" rotationY="-76.1899229081" scaleX="-0.174383051872" scaleY="-0.174383051872"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-73.1941735196" rotationX="-73.1941735196" rotationY="-73.1941735196" scaleX="-0.167349506979" scaleY="-0.167349506979"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-70.1990711809" rotationX="-70.1990711809" rotationY="-70.1990711809" scaleX="-0.160311503" scaleY="-0.160311503"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="-67.2094975165" rotationX="-67.2094975165" rotationY="-67.2094975165" scaleX="-0.153311602382" scaleY="-0.153311602382"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="-64.4025283908" rotationX="-64.4025283908" rotationY="-64.4025283908" scaleX="-0.146285144106" scaleY="-0.146285144106"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.9" rotation="-61.4105804627" rotationX="-61.4105804627" rotationY="-61.4105804627" scaleX="-0.139281612231" scaleY="-0.139281612231"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.9" rotation="-58.4115531828" rotationX="-58.4115531828" rotationY="-58.4115531828" scaleX="-0.132250917726" scaleY="-0.132250917726"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.8" rotation="-55.4174203793" rotationX="-55.4174203793" rotationY="-55.4174203793" scaleX="-0.125249328097" scaleY="-0.125249328097"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-52.4142751449" rotationX="-52.4142751449" rotationY="-52.4142751449" scaleX="-0.118228221058" scaleY="-0.118228221058"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="-49.6067179246" rotationX="-49.6067179246" rotationY="-49.6067179246" scaleX="-0.111233202304" scaleY="-0.111233202304"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="-46.6135389329" rotationX="-46.6135389329" rotationY="-46.6135389329" scaleX="-0.104225638704" scaleY="-0.104225638704"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="-43.6139796425" rotationX="-43.6139796425" rotationY="-43.6139796425" scaleX="-0.0972426860447" scaleY="-0.0972426860447"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.8" rotation="-40.6181083281" rotationX="-40.6181083281" rotationY="-40.6181083281" scaleX="-0.0902381886361" scaleY="-0.0902381886361"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="-37.6281397147" rotationX="-37.6281397147" rotationY="-37.6281397147" scaleX="-0.0832500877059" scaleY="-0.0832500877059"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="-34.8097536413" rotationX="-34.8097536413" rotationY="-34.8097536413" scaleX="-0.0762333560684" scaleY="-0.0762333560684"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.8" rotation="-31.8167216702" rotationX="-31.8167216702" rotationY="-31.8167216702" scaleX="-0.0692602772336" scaleY="-0.0692602772336"/>
+			</frameInfo>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="40.3750766354" rotationX="40.3750766354" rotationY="40.3750766354" scaleX="0.123240803418" scaleY="0.123240803418"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="43.0949758906" rotationX="43.0949758906" rotationY="43.0949758906" scaleX="0.134696200533" scaleY="0.134696200533"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="45.6216984601" rotationX="45.6216984601" rotationY="45.6216984601" scaleX="0.146175224394" scaleY="0.146175224394"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="48.1504649614" rotationX="48.1504649614" rotationY="48.1504649614" scaleX="0.157647635988" scaleY="0.157647635988"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="50.8702801607" rotationX="50.8702801607" rotationY="50.8702801607" scaleX="0.169107346339" scaleY="0.169107346339"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.8" rotation="53.4041408196" rotationX="53.4041408196" rotationY="53.4041408196" scaleX="0.18057152337" scaleY="0.18057152337"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.85" rotation="55.9324521354" rotationX="55.9324521354" rotationY="55.9324521354" scaleX="0.192066233502" scaleY="0.192066233502"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.8" rotation="58.6502504843" rotationX="58.6502504843" rotationY="58.6502504843" scaleX="0.203544046903" scaleY="0.203544046903"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="61.1831494701" rotationX="61.1831494701" rotationY="61.1831494701" scaleX="0.215010892269" scaleY="0.215010892269"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="63.7128636264" rotationX="63.7128636264" rotationY="63.7128636264" scaleX="0.226502811959" scaleY="0.226502811959"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="66.4261507936" rotationX="66.4261507936" rotationY="66.4261507936" scaleX="0.238002021356" scaleY="0.238002021356"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.85" rotation="68.9579606185" rotationX="68.9579606185" rotationY="68.9579606185" scaleX="0.249501854277" scaleY="0.249501854277"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="71.7000349508" rotationX="71.7000349508" rotationY="71.7000349508" scaleX="0.251922321377" scaleY="0.251922321377"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.8" rotation="74.4644402658" rotationX="74.4644402658" rotationY="74.4644402658" scaleX="0.245258262679" scaleY="0.245258262679"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.9" rotation="77.2275662735" rotationX="77.2275662735" rotationY="77.2275662735" scaleX="0.238600503834" scaleY="0.238600503834"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="79.99420376" rotationX="79.99420376" rotationY="79.99420376" scaleX="0.231936526028" scaleY="0.231936526028"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="82.9423734304" rotationX="82.9423734304" rotationY="82.9423734304" scaleX="0.225278696749" scaleY="0.225278696749"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.85" rotation="85.7009767175" rotationX="85.7009767175" rotationY="85.7009767175" scaleX="0.218617418783" scaleY="0.218617418783"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.8" rotation="88.469560818" rotationX="88.469560818" rotationY="88.469560818" scaleX="0.211959155622" scaleY="0.211959155622"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.5,-425.9" rotation="-88.9606961447" rotationX="-88.9606961447" rotationY="-88.9606961447" scaleX="-0.205264481387" scaleY="-0.205264481387"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.6,-425.9" rotation="-86.1967637122" rotationX="-86.1967637122" rotationY="-86.1967637122" scaleX="-0.198526810582" scaleY="-0.198526810582"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="yujilh6_longhuruyi" position="-116.55,-425.9" rotation="-83.4358188314" rotationX="-83.4358188314" rotationY="-83.4358188314" scaleX="-0.191809177222" scaleY="-0.191809177222"/>
+			</frameInfo>
+		</action>
+	</animation>

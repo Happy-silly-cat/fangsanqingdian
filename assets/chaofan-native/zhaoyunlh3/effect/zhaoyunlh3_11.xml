@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zhaoyunlh3_11" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="zhaoyunlh3_yan_1" position="-159.55,-51.95" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.30560302734" scaleY="-1.33685302734"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData alpha="0.98046875" bitmapName="zhaoyunlh3_yan_1" position="-161.4,-55.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.45300292969" scaleY="-1.48782348633"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData alpha="0.9609375" bitmapName="zhaoyunlh3_yan_1" position="-163.25,-59.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.60046386719" scaleY="-1.63879394531"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData alpha="0.94921875" bitmapName="zhaoyunlh3_yan_1" position="-165.1,-63.4" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.74789428711" scaleY="-1.78973388672"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData alpha="0.9296875" bitmapName="zhaoyunlh3_yan_1" position="-166.95,-67.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.89532470703" scaleY="-1.9407043457"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData alpha="0.91015625" bitmapName="zhaoyunlh3_yan_1" position="-168.8,-71.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.04275512695" scaleY="-2.09167480469"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData alpha="0.890625" bitmapName="zhaoyunlh3_yan_1" position="-170.65,-74.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.19018554688" scaleY="-2.24264526367"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData alpha="0.87109375" bitmapName="zhaoyunlh3_yan_1" position="-172.5,-78.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.3376159668" scaleY="-2.39358520508"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData alpha="0.8515625" bitmapName="zhaoyunlh3_yan_1" position="-174.3,-82.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.48504638672" scaleY="-2.54454040527"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData alpha="0.828125" bitmapName="zhaoyunlh3_yan_1" position="-176.15,-86.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.63247680664" scaleY="-2.69549560547"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData alpha="0.80859375" bitmapName="zhaoyunlh3_yan_1" position="-178.0,-90.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.77990722656" scaleY="-2.84648132324"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData alpha="0.7890625" bitmapName="zhaoyunlh3_yan_1" position="-179.85,-94.0" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.92735290527" scaleY="-2.99743652344"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData alpha="0.76953125" bitmapName="zhaoyunlh3_yan_1" position="-181.7,-97.8" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.07476806641" scaleY="-3.14837646484"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData alpha="0.75" bitmapName="zhaoyunlh3_yan_1" position="-183.55,-101.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.22219848633" scaleY="-3.29931640625"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData alpha="0.73828125" bitmapName="zhaoyunlh3_yan_1" position="-185.4,-105.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.36962890625" scaleY="-3.45030212402"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData alpha="0.71875" bitmapName="zhaoyunlh3_yan_1" position="-187.25,-109.3" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.51705932617" scaleY="-3.60125732422"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData alpha="0.69921875" bitmapName="zhaoyunlh3_yan_1" position="-189.1,-113.1" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.66448974609" scaleY="-3.75219726562"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData alpha="0.6484375" bitmapName="zhaoyunlh3_yan_1" position="-190.85,-116.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.57293701172" scaleY="-3.65850830078"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData alpha="0.6015625" bitmapName="zhaoyunlh3_yan_1" position="-192.75,-120.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.48147583008" scaleY="-3.56480407715"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData alpha="0.55078125" bitmapName="zhaoyunlh3_yan_1" position="-194.6,-124.55" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.38999938965" scaleY="-3.47113037109"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData alpha="0.5" bitmapName="zhaoyunlh3_yan_1" position="-196.4,-128.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.29852294922" scaleY="-3.37747192383"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData alpha="0.44921875" bitmapName="zhaoyunlh3_yan_1" position="-198.3,-132.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.20703125" scaleY="-3.28379821777"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData alpha="0.41015625" bitmapName="zhaoyunlh3_yan_1" position="-200.1,-136.1" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.1155090332" scaleY="-3.19006347656"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData alpha="0.359375" bitmapName="zhaoyunlh3_yan_1" position="-201.95,-139.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.02403259277" scaleY="-3.0964050293"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData alpha="0.30859375" bitmapName="zhaoyunlh3_yan_1" position="-203.8,-143.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.93255615234" scaleY="-3.00274658203"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData alpha="0.26171875" bitmapName="zhaoyunlh3_yan_1" position="-205.65,-147.5" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.84106445312" scaleY="-2.90905761719"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData alpha="0.2109375" bitmapName="zhaoyunlh3_yan_1" position="-207.5,-151.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.74954223633" scaleY="-2.81541442871"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData alpha="0.16015625" bitmapName="zhaoyunlh3_yan_1" position="-209.4,-155.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.65808105469" scaleY="-2.72171020508"/>
+			</frameInfo>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30">
+				<frameData bitmapName="zhaoyunlh3_yan_1" position="-159.55,-51.95" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.30560302734" scaleY="-1.33685302734"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData alpha="0.98046875" bitmapName="zhaoyunlh3_yan_1" position="-161.4,-55.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.45300292969" scaleY="-1.48782348633"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData alpha="0.9609375" bitmapName="zhaoyunlh3_yan_1" position="-163.25,-59.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.60046386719" scaleY="-1.63879394531"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData alpha="0.94921875" bitmapName="zhaoyunlh3_yan_1" position="-165.1,-63.4" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.74789428711" scaleY="-1.78973388672"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData alpha="0.9296875" bitmapName="zhaoyunlh3_yan_1" position="-166.95,-67.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.89532470703" scaleY="-1.9407043457"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData alpha="0.91015625" bitmapName="zhaoyunlh3_yan_1" position="-168.8,-71.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.04275512695" scaleY="-2.09167480469"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData alpha="0.890625" bitmapName="zhaoyunlh3_yan_1" position="-170.65,-74.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.19018554688" scaleY="-2.24264526367"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData alpha="0.87109375" bitmapName="zhaoyunlh3_yan_1" position="-172.5,-78.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.3376159668" scaleY="-2.39358520508"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData alpha="0.8515625" bitmapName="zhaoyunlh3_yan_1" position="-174.3,-82.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.48504638672" scaleY="-2.54454040527"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData alpha="0.828125" bitmapName="zhaoyunlh3_yan_1" position="-176.15,-86.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.63247680664" scaleY="-2.69549560547"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData alpha="0.80859375" bitmapName="zhaoyunlh3_yan_1" position="-178.0,-90.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.77990722656" scaleY="-2.84648132324"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData alpha="0.7890625" bitmapName="zhaoyunlh3_yan_1" position="-179.85,-94.0" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.92735290527" scaleY="-2.99743652344"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData alpha="0.76953125" bitmapName="zhaoyunlh3_yan_1" position="-181.7,-97.8" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.07476806641" scaleY="-3.14837646484"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData alpha="0.75" bitmapName="zhaoyunlh3_yan_1" position="-183.55,-101.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.22219848633" scaleY="-3.29931640625"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData alpha="0.73828125" bitmapName="zhaoyunlh3_yan_1" position="-185.4,-105.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.36962890625" scaleY="-3.45030212402"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData alpha="0.71875" bitmapName="zhaoyunlh3_yan_1" position="-187.25,-109.3" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.51705932617" scaleY="-3.60125732422"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData alpha="0.69921875" bitmapName="zhaoyunlh3_yan_1" position="-189.1,-113.1" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.66448974609" scaleY="-3.75219726562"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData alpha="0.6484375" bitmapName="zhaoyunlh3_yan_1" position="-190.85,-116.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.57293701172" scaleY="-3.65850830078"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData alpha="0.6015625" bitmapName="zhaoyunlh3_yan_1" position="-192.75,-120.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.48147583008" scaleY="-3.56480407715"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData alpha="0.55078125" bitmapName="zhaoyunlh3_yan_1" position="-194.6,-124.55" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.38999938965" scaleY="-3.47113037109"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData alpha="0.5" bitmapName="zhaoyunlh3_yan_1" position="-196.4,-128.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.29852294922" scaleY="-3.37747192383"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData alpha="0.44921875" bitmapName="zhaoyunlh3_yan_1" position="-198.3,-132.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.20703125" scaleY="-3.28379821777"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData alpha="0.41015625" bitmapName="zhaoyunlh3_yan_1" position="-200.1,-136.1" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.1155090332" scaleY="-3.19006347656"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData alpha="0.359375" bitmapName="zhaoyunlh3_yan_1" position="-201.95,-139.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-3.02403259277" scaleY="-3.0964050293"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData alpha="0.30859375" bitmapName="zhaoyunlh3_yan_1" position="-203.8,-143.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.93255615234" scaleY="-3.00274658203"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData alpha="0.26171875" bitmapName="zhaoyunlh3_yan_1" position="-205.65,-147.5" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.84106445312" scaleY="-2.90905761719"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData alpha="0.2109375" bitmapName="zhaoyunlh3_yan_1" position="-207.5,-151.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.74954223633" scaleY="-2.81541442871"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData alpha="0.16015625" bitmapName="zhaoyunlh3_yan_1" position="-209.4,-155.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-2.65808105469" scaleY="-2.72171020508"/>
+			</frameInfo>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

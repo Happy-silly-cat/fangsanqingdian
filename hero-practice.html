@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三武将培养属性与培养珠消耗查询表。">
+  <title>武将培养 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 34px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0 10px;
+    }
+
+    .page-icon {
+      display: block;
+      width: 50px;
+      height: 50px;
+      flex: 0 0 50px;
+      border: 2px solid rgba(184, 132, 47, 0.5);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      object-fit: contain;
+      padding: 3px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .summary-card,
+    .data-section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .summary-card {
+      padding: 13px 14px;
+    }
+
+    .summary-card h2 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .summary-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .data-section {
+      margin-top: 16px;
+      padding: 17px 18px 19px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: right;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.76);
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f4eadb;
+      color: var(--jade-dark);
+      font-weight: 850;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover td { background: #fff8ea; }
+
+    .level-cell {
+      width: 86px;
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .value-cell strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .value-cell small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .cost-cell {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .cost-cell::before {
+      content: "培养珠 × ";
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .chain-table { min-width: 610px; }
+
+    .chain-level {
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .tier {
+      display: inline-flex;
+      align-items: center;
+      min-width: 52px;
+      justify-content: center;
+      border: 1px solid rgba(184, 132, 47, 0.35);
+      border-radius: 999px;
+      padding: 3px 7px;
+      color: var(--gold);
+      background: #fff4dc;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      color: var(--text);
+      font-weight: 750;
+    }
+
+    .attribute-list span::before {
+      content: "＋";
+      color: var(--jade);
+      font-weight: 900;
+    }
+
+    footer {
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    footer p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .brand-name { font-size: 17px; }
+      .back-link { padding: 7px 9px; font-size: 12px; }
+      .page-title { font-size: 25px; }
+      .page-icon { width: 44px; height: 44px; flex-basis: 44px; }
+      .summary-grid { gap: 8px; }
+      .summary-card { padding: 11px 12px; }
+      .summary-card h2 { font-size: 15px; }
+      .data-section { padding: 14px 12px 15px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .section-heading p { text-align: left; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <img class="page-icon" src="assets/hero-evolve-icons/10001.png" alt="武将培养图标">
+      <h1 class="page-title" id="page-title">武将培养</h1>
+    </section>
+    <p class="page-note">查看四项培养属性的槽经验门槛、培养珠消耗，以及培养联动加成。单次培养值由服务器在对应范围内随机返回。</p>
+
+    <section class="summary-grid" id="summaryGrid" aria-label="培养属性概览"></section>
+
+    <section class="data-section">
+      <div class="section-heading">
+        <h2>培养槽经验与消耗</h2>
+        <p>每行表示从上一级升到当前等级；本级经验为该次升级门槛，累计经验为从0级累计。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>培养等级</th>
+              <th>攻击槽经验</th>
+              <th>生命槽经验</th>
+              <th>物防槽经验</th>
+              <th>法防槽经验</th>
+              <th>本级培养珠</th>
+            </tr>
+          </thead>
+          <tbody id="practiceTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="data-section">
+      <div class="section-heading">
+        <h2>培养联动加成</h2>
+        <p>四项培养属性均达到对应等级时激活。</p>
+      </div>
+      <div class="table-wrap">
+        <table class="chain-table">
+          <thead>
+            <tr>
+              <th>联动等级</th>
+              <th>联动档位</th>
+              <th>新增属性</th>
+            </tr>
+          </thead>
+          <tbody id="chainTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p>本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <script src="assets/hero-practice-data.js"></script>
+  <script>
+    const data = window.heroPracticeData;
+    const formatNumber = (value) => Number(value).toLocaleString('zh-CN');
+    const cumulative = data.stats.map(() => 0);
+    const summaryGrid = document.getElementById('summaryGrid');
+
+    data.stats.forEach((stat, index) => {
+      const card = document.createElement('article');
+      card.className = 'summary-card';
+      card.innerHTML = `<h2>${stat.name}</h2><p>最高 ${data.maxLevel} 级<br>单次培养随机值 ${stat.range}<br>每级额外：${stat.bonus}</p>`;
+      summaryGrid.appendChild(card);
+    });
+
+    const practiceTable = document.getElementById('practiceTable');
+    for (let level = 1; level <= data.maxLevel; level += 1) {
+      const row = document.createElement('tr');
+      const cells = data.stats.map((stat, index) => {
+        cumulative[index] += stat.increments[level - 1];
+        return `<td class="value-cell"><strong>本级 ${formatNumber(stat.increments[level - 1])}</strong><small>累计 ${formatNumber(cumulative[index])}</small></td>`;
+      }).join('');
+      row.innerHTML = `<td class="level-cell">${level}级</td>${cells}<td class="cost-cell">${data.levelCosts[level - 1]}</td>`;
+      practiceTable.appendChild(row);
+    }
+
+    const chainTable = document.getElementById('chainTable');
+    data.chainBonuses.forEach((entry) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td class="chain-level">四项达到 ${entry.level} 级</td><td><span class="tier">第 ${entry.tier} 档</span></td><td><div class="attribute-list">${entry.attributes.map((attribute) => `<span>${attribute}</span>`).join('')}</div></td>`;
+      chainTable.appendChild(row);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三武将紫品质属性、进阶与进化材料查询。">
+  <title>武将进阶材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .hero-picker {
+      margin-top: 12px;
+      margin-bottom: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .faction-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .faction-tab {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 850;
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .faction-tab:hover,
+    .faction-tab:focus-visible,
+    .faction-tab.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      color: var(--jade-dark);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .faction-section {
+      border-top: 1px solid var(--line);
+      padding: 16px 0 2px;
+    }
+
+    .faction-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 11px;
+    }
+
+    .faction-heading h2 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .faction-mark {
+      width: 8px;
+      height: 22px;
+      border-radius: 4px;
+      background: var(--gold);
+    }
+
+    .faction-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--jade-dark);
+      padding: 8px 10px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .hero-card img {
+      display: block;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    .hero-card:hover,
+    .hero-card:focus-visible,
+    .hero-card.is-selected {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .hero-card span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 43px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .summary-panel {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px;
+    }
+
+    .summary-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 12px 14px;
+    }
+
+    .summary-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .summary-value {
+      display: block;
+      margin-top: 4px;
+      color: var(--jade-dark);
+      font-size: 21px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .summary-silver {
+      color: var(--gold);
+    }
+
+    .table-section { margin-top: 16px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 11px 13px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .stage {
+      color: var(--gold);
+      font-weight: 850;
+      min-width: 190px;
+    }
+
+    .stage-main {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .stage-detail {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .type {
+      color: var(--jade-dark);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .conditions,
+    .material-list,
+    .hero-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .condition,
+    .hero-cost {
+      display: inline-flex;
+      align-items: center;
+      min-height: 29px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 253, 248, 0.9);
+      padding: 4px 7px;
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .material-list { min-width: 270px; }
+
+    .material-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 8px 4px 5px;
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .material-item img {
+      display: block;
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .material-item strong,
+    .hero-cost strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .silver {
+      color: var(--text);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .empty {
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .page-title { font-size: 25px; }
+      .toolbar,
+      .summary-panel { grid-template-columns: 1fr; }
+      .faction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .summary-panel { padding: 14px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">武将进阶材料</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回上一级</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">武将进阶材料</h1>
+      <p class="page-note">按阵营选择武将，进入详情查看属性与进阶材料</p>
+    </section>
+
+    <section class="hero-picker" id="heroPicker" aria-label="按阵营选择武将">
+      <div class="faction-tabs" role="tablist" aria-label="选择武将阵营">
+        <button class="faction-tab is-active" type="button" role="tab" aria-selected="true" data-faction="魏">魏</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="蜀">蜀</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="吴">吴</button>
+        <button class="faction-tab" type="button" role="tab" aria-selected="false" data-faction="群">群</button>
+      </div>
+      <div class="faction-grid" id="hero-grid" role="tabpanel" aria-label="魏阵营武将"></div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/hero-evolve-heroes.js"></script>
+  <script>
+    const data = window.heroEvolveHeroes;
+    const heroPicker = document.querySelector("#heroPicker");
+    const factionTabs = [...document.querySelectorAll(".faction-tab")];
+    const heroGrid = document.querySelector("#hero-grid");
+    let selectedFaction = "魏";
+
+    function renderSelector() {
+      const heroes = data.heroes.filter((hero) => hero.faction === selectedFaction);
+      heroGrid.innerHTML = heroes.map((hero) => {
+      const card = document.createElement("a");
+      card.className = "hero-card";
+      card.href = `hero-evolve-detail.html?hero=${encodeURIComponent(hero.id)}`;
+      card.setAttribute("aria-label", `查看${hero.name}属性与进阶材料`);
+      card.innerHTML = `<img src="${hero.icon}" alt="${hero.name}紫品质头像"><span>${hero.name}</span>`;
+      return card.outerHTML;
+      }).join("");
+      heroGrid.setAttribute("aria-label", `${selectedFaction}阵营武将`);
+      factionTabs.forEach((tab) => {
+        const active = tab.dataset.faction === selectedFaction;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+      });
+    }
+
+    heroPicker.addEventListener("click", (event) => {
+      const factionTab = event.target.closest(".faction-tab");
+      if (!factionTab) return;
+      selectedFaction = factionTab.dataset.faction;
+      renderSelector();
+    });
+    renderSelector();
+  </script>
+</body>
+</html>

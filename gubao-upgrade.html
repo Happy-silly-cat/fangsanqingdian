@@ -1,0 +1,2460 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三古宝合成、属性与升星材料查询表。">
+  <title>古宝合成与属性 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #76519d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-meta,
+    .summary-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .picker-panel,
+    .summary-panel,
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .picker-panel { padding: 0; border: 0; background: transparent; }
+
+    .panel-heading,
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .treasure-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .treasure-card {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      min-height: 64px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--quality-color, var(--line));
+      border-radius: 8px;
+      padding: 7px 8px;
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      text-align: center;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .treasure-card:hover,
+    .treasure-card:focus-visible,
+    .treasure-card.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      box-shadow: 0 7px 16px rgba(60, 157, 133, 0.14);
+      outline: none;
+    }
+
+    .treasure-card:hover { transform: translateY(-2px); }
+
+    .treasure-card-icon {
+      display: block;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 5px rgba(75, 32, 32, 0.2));
+    }
+
+    .treasure-card-copy { min-width: 0; }
+    .treasure-card-name { display: block; font-size: 14px; line-height: 1.35; font-weight: 850; overflow-wrap: anywhere; }
+
+    .summary-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      padding: 13px 16px;
+    }
+
+    .summary-icon {
+      display: block;
+      width: 82px;
+      height: 82px;
+      flex: 0 0 82px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 7px rgba(75, 32, 32, 0.2));
+    }
+
+    .summary-main { min-width: 0; flex: 1 1 auto; }
+    .summary-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .summary-title { margin: 0; color: var(--jade-dark); font-size: 20px; line-height: 1.3; font-weight: 850; }
+
+    .quality-name { color: var(--quality-color, var(--purple)); font-weight: 800; }
+
+    .simulator-panel {
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px 13px;
+      background: linear-gradient(180deg, #fff8ec 0%, #f8efdf 100%);
+    }
+
+    .simulator-layout {
+      display: block;
+      margin-top: 12px;
+    }
+
+    .simulator-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+      margin-top: 8px;
+    }
+
+    .simulator-column {
+      min-width: 0;
+    }
+
+    .simulator-column-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0 2px 5px;
+    }
+
+    .simulator-heading-copy {
+      min-width: 0;
+    }
+
+    .simulator-heading-action {
+      flex: 0 0 auto;
+    }
+
+    .simulator-column-heading h3 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 16px;
+      font-weight: 850;
+    }
+
+    .simulator-column-heading span {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .radial-stage {
+      position: relative;
+      width: min(100%, 700px);
+      min-height: 720px;
+      margin-inline: auto;
+      overflow: hidden;
+      border: 2px solid #9f783d;
+      border-radius: 14px;
+      background:
+        linear-gradient(90deg, rgba(40, 22, 25, 0.76), rgba(110, 67, 47, 0.32) 50%, rgba(40, 22, 25, 0.76)),
+        url("assets/main-interface-banner.jpg") center / cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(255, 226, 151, 0.22), inset 0 0 76px rgba(15, 9, 20, 0.62), 0 12px 26px rgba(47, 38, 67, 0.18);
+      isolation: isolate;
+    }
+
+    .radial-stage::before,
+    .radial-stage::after {
+      position: absolute;
+      content: "";
+      left: 50%;
+      top: 50%;
+      border: 2px solid rgba(238, 205, 126, 0.62);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      box-shadow: 0 0 0 9px rgba(27, 20, 37, 0.34), 0 0 24px rgba(240, 184, 57, 0.18);
+    }
+
+    .radial-stage::before { width: 88%; aspect-ratio: 1; background: rgba(36, 31, 57, 0.84); }
+    .radial-stage::after { width: 63%; aspect-ratio: 1; border-color: rgba(225, 181, 76, 0.5); box-shadow: inset 0 0 34px rgba(225, 181, 76, 0.12); }
+
+    .radial-ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      width: 80%;
+      aspect-ratio: 1;
+      border: 3px solid rgba(112, 95, 135, 0.76);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(63, 49, 78, 0.72) 0 39%, rgba(48, 42, 71, 0.9) 40% 68%, rgba(31, 28, 52, 0.96) 69% 100%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      box-shadow: 0 0 0 12px rgba(169, 126, 55, 0.2), 0 0 0 17px rgba(29, 24, 43, 0.72), inset 0 0 36px rgba(12, 9, 24, 0.38);
+    }
+
+    .big-treasure-button {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: calc(50% - 20px);
+      display: grid;
+      place-items: center;
+      width: 210px;
+      height: 210px;
+      border: 0;
+      border-radius: 38%;
+      padding: 12px;
+      background: radial-gradient(circle, rgba(255, 221, 115, 0.2), transparent 66%);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: transform 160ms ease, filter 160ms ease;
+      box-shadow: none;
+    }
+
+    .big-treasure-button:hover,
+    .big-treasure-button:focus-visible {
+      filter: drop-shadow(0 8px 15px rgba(118, 81, 157, 0.26));
+      outline: none;
+      transform: translate(-50%, -50%) scale(1.035);
+    }
+
+    .big-treasure-icon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 7px rgba(19, 13, 28, 0.48));
+      transform: scale(var(--big-art-scale, 1));
+      transform-origin: center;
+    }
+
+    .big-treasure-star,
+    .orbit-item-star {
+      display: inline-grid;
+      place-items: center;
+      border: 2px solid #f8edc4;
+      border-radius: 50%;
+      background: #63c9f1;
+      color: #fffdf8;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1;
+      text-shadow: 0 1px 2px rgba(20, 42, 62, 0.5);
+      box-shadow: 0 2px 5px rgba(4, 16, 32, 0.38);
+    }
+
+    .big-treasure-star {
+      position: static;
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      margin: 0;
+      font-size: 12px;
+    }
+
+    .big-treasure-control-panel > .big-treasure-star { justify-self: center; }
+
+    .big-treasure-star.is-locked,
+    .orbit-item-star.is-locked {
+      width: 42px;
+      border-radius: 12px;
+      font-size: 9px;
+    }
+
+    .big-treasure-control-panel {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      top: calc(50% + 92px);
+      display: grid;
+      grid-template-columns: 24px 42px 24px;
+      grid-template-rows: auto auto;
+      align-items: center;
+      justify-content: center;
+      column-gap: 4px;
+      row-gap: 3px;
+      width: 116px;
+      box-sizing: border-box;
+      padding: 6px 8px 7px;
+      border: 1px solid rgba(225, 181, 76, 0.6);
+      border-radius: 8px;
+      background: rgba(28, 28, 47, 0.9);
+      box-shadow: 0 4px 12px rgba(8, 10, 22, 0.3);
+      transform: translateX(-50%);
+    }
+
+    .big-treasure-label {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      justify-self: center;
+      position: static;
+      width: max-content;
+      max-width: 180px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #fff4d1;
+      font-size: 15px;
+      font-weight: 850;
+      text-align: center;
+    }
+
+    .big-treasure-name { display: block; }
+
+    .big-upgrade-button,
+    .big-downgrade-button {
+      position: static;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff8ec;
+      border-radius: 50%;
+      background: #42b99e;
+      color: #fffdf8;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 3px 7px rgba(23, 63, 53, 0.25);
+      transform: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .big-downgrade-button { grid-column: 1; grid-row: 2; background: #b55d67; }
+    .big-upgrade-button { grid-column: 3; grid-row: 2; }
+    .big-treasure-control-panel > .big-treasure-star { grid-column: 2; grid-row: 2; }
+
+    .big-upgrade-button:hover,
+    .big-upgrade-button:focus-visible,
+    .big-downgrade-button:hover,
+    .big-downgrade-button:focus-visible {
+      background: var(--jade-dark);
+      outline: none;
+      transform: scale(1.08);
+    }
+
+    .big-upgrade-button:disabled,
+    .big-downgrade-button:disabled,
+    .orbit-upgrade-button:disabled,
+    .orbit-downgrade-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.42;
+      filter: grayscale(0.3);
+    }
+
+    .big-upgrade-button:disabled:hover,
+    .big-downgrade-button:disabled:hover {
+      background: var(--jade);
+      transform: none;
+    }
+
+    .orbit-upgrade-button:disabled:hover,
+    .orbit-downgrade-button:disabled:hover {
+      background: var(--jade);
+      transform: scale(1);
+    }
+
+    .orbit-items { position: absolute; inset: 0; z-index: 4; }
+
+    .orbit-item {
+      position: absolute;
+      left: calc(50% + var(--x));
+      top: calc(50% + var(--y));
+      display: grid;
+      place-items: center;
+      width: 112px;
+      height: 168px;
+      box-sizing: border-box;
+      border: 3px solid var(--quality-color, #b8842f);
+      border-radius: 10px;
+      padding: 6px 5px;
+      background: radial-gradient(circle at 50% 38%, rgba(92, 76, 117, 0.98), rgba(31, 28, 49, 0.99) 72%);
+      color: #fff8ec;
+      transform: translate(-50%, -50%);
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .orbit-item:hover,
+    .orbit-item.is-active {
+      border-color: #f4d66f;
+      background: linear-gradient(145deg, rgba(83, 72, 105, 0.99), rgba(38, 37, 61, 0.99));
+      box-shadow: 0 9px 18px rgba(10, 12, 27, 0.4), 0 0 0 3px rgba(244, 214, 111, 0.15);
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    .orbit-select {
+      position: absolute;
+      inset: 5px 5px 58px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      place-items: center;
+      width: auto;
+      min-height: 0;
+      border: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .orbit-select:focus-visible {
+      border-radius: 7px;
+      outline: 2px solid rgba(60, 157, 133, 0.52);
+      outline-offset: -3px;
+    }
+
+    .orbit-upgrade-button,
+    .orbit-downgrade-button {
+      position: absolute;
+      bottom: 30px;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff8ec;
+      border-radius: 50%;
+      background: #42b99e;
+      color: #fffdf8;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 2px 5px rgba(7, 24, 27, 0.45);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .orbit-upgrade-button { right: 4px; }
+    .orbit-downgrade-button { left: 4px; background: #b55d67; }
+
+    .orbit-upgrade-button:hover,
+    .orbit-upgrade-button:focus-visible,
+    .orbit-downgrade-button:hover,
+    .orbit-downgrade-button:focus-visible {
+      background: var(--jade-dark);
+      outline: none;
+      transform: scale(1.1);
+    }
+
+    .orbit-item-icon {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 61px;
+      height: 61px;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 5px rgba(6, 8, 18, 0.55));
+    }
+
+    .orbit-item-name {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      overflow: hidden;
+      color: #fff8ec;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .orbit-item-star {
+      position: absolute;
+      z-index: 7;
+      left: 50%;
+      bottom: 30px;
+      width: 25px;
+      height: 25px;
+      color: #fffdf8;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.2;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .orbit-resource-fields {
+      position: absolute;
+      z-index: 8;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .orbit-resource-field {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 2px;
+      min-width: 0;
+      color: #fff1c9;
+      font-size: 8px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .orbit-resource-field input {
+      min-width: 0;
+      width: 100%;
+      height: 20px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 248, 236, 0.78);
+      border-radius: 5px;
+      padding: 1px 24px 1px 6px;
+      background: rgba(255, 253, 248, 0.88);
+      color: #29233b;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .orbit-resource-input-wrap {
+      position: relative;
+      min-width: 0;
+    }
+
+    .orbit-resource-limit {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      color: #756d7c;
+      font-size: 8px;
+      font-weight: 800;
+      line-height: 1;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .orbit-resource-field input[type="number"] {
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+
+    .orbit-resource-field input[type="number"]::-webkit-outer-spin-button,
+    .orbit-resource-field input[type="number"]::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+
+    .orbit-resource-field input:focus-visible {
+      border-color: #63c9f1;
+      outline: 2px solid rgba(99, 201, 241, 0.35);
+      outline-offset: 1px;
+    }
+
+    .attribute-chip.is-negative { border-color: #edc3c3; background: #fff2f2; color: #a63f4b; }
+
+    .simulation-summary {
+      min-width: 0;
+      margin-top: 16px;
+      border: 1px solid #d8c39c;
+      border-radius: 10px;
+      background: #fff6e5;
+      padding: 12px;
+    }
+
+    .simulation-image-actions {
+      position: absolute;
+      z-index: 8;
+      right: 12px;
+      bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+      padding: 5px;
+      border: 1px solid rgba(255, 240, 194, 0.3);
+      border-radius: 8px;
+      background: rgba(21, 17, 34, 0.62);
+      backdrop-filter: blur(5px);
+    }
+
+    .simulation-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .simulation-action {
+      min-height: 30px;
+      border: 1px solid #b88a36;
+      border-radius: 6px;
+      padding: 5px 8px;
+      background: #fffaf0;
+      color: var(--jade-dark);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .simulation-action:hover,
+    .simulation-action:focus-visible {
+      border-color: var(--jade);
+      background: #fff1ce;
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .simulation-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .comparison-grid > div {
+      min-width: 0;
+      border: 1px solid #e8dcc7;
+      border-radius: 7px;
+      padding: 8px;
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .comparison-label {
+      margin: 0 0 7px;
+      color: var(--jade-dark);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .simulation-box {
+      min-width: 0;
+      border: 1px solid #e8dcc7;
+      border-radius: 8px;
+      background: #fffdf8;
+      padding: 9px;
+    }
+
+    .simulation-section-label {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 0 8px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .simulation-attribute-group + .simulation-attribute-group { margin-top: 10px; }
+
+    .simulation-attribute-group .attribute-list {
+      gap: 7px 14px;
+      min-width: 0;
+    }
+
+    .simulation-attribute-group .attribute-item {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .simulation-attribute-group .attribute-item strong { color: var(--gold); }
+
+    .attribute-scope {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      border: 1px solid currentColor;
+      border-radius: 5px;
+      padding: 0 7px;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .scope-main {
+      color: #267e68;
+      background: #e6f4ed;
+    }
+
+    .scope-all {
+      color: #9b6f1f;
+      background: #fff2cf;
+    }
+
+    .scope-special {
+      color: #3f6f89;
+      background: #e8f3f8;
+    }
+
+    .simulation-attribute-group .attribute-scope { margin-bottom: 6px; }
+
+    .simulation-special-effect,
+    .big-effect-special {
+      margin-top: 10px;
+    }
+
+    .simulation-special-effect .attribute-scope,
+    .big-effect-special .attribute-scope {
+      margin-bottom: 6px;
+    }
+
+    .simulation-special-effect .simulation-effect,
+    .big-effect-special .effect-copy {
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .big-effect-content { display: grid; gap: 9px; }
+
+    .big-effect-attributes,
+    .big-effect-special {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+
+    .big-effect-attributes > .attribute-scope,
+    .big-effect-special > .attribute-scope {
+      flex: 0 0 auto;
+      margin: 0;
+    }
+
+    .big-effect-attributes .attribute-list {
+      flex: 1 1 auto;
+      min-width: 0;
+      justify-content: flex-start;
+      gap: 7px 14px;
+    }
+
+    .big-effect-attributes .attribute-item {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .big-effect-attributes .attribute-item strong { color: var(--gold); }
+
+    .big-effect-special .effect-copy {
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    .simulation-effect {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .simulation-effect strong { color: var(--jade-dark); }
+
+    .simulation-fragment-needs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .simulation-fragment-needs strong {
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .simulation-fragment-needs .cost-list {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .fragment-need-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      max-width: 100%;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 6px;
+      padding: 3px 7px;
+      background: var(--panel-strong);
+      color: var(--gold);
+      font-weight: 750;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .fragment-need-item .cost-chip,
+    .fragment-need-item .soul-jade-inline {
+      min-height: 27px;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .fragment-need-item .cost-chip { color: var(--gold); }
+
+    .soul-jade-equals {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      color: var(--muted);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .soul-jade-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 27px;
+      color: var(--jade-dark);
+      font-weight: 750;
+      min-width: 0;
+      max-width: 100%;
+      white-space: nowrap;
+    }
+
+    .soul-jade-inline strong { color: var(--gold); }
+
+    .soul-jade-icon {
+      position: relative;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      border: 2px solid rgba(246, 224, 255, 0.92);
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 28%, #f6e7ff 0 8%, #d28cff 23%, #9a4de0 57%, #5a2497 100%);
+      box-shadow: inset 0 0 0 1px rgba(98, 39, 145, 0.5), 0 1px 4px rgba(91, 30, 135, 0.32);
+    }
+
+    .soul-jade-icon::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(242, 199, 255, 0.72);
+      border-radius: 50%;
+    }
+
+    .soul-jade-icon::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 5px;
+      width: 6px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .soul-jade-total {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 27px;
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .simulation-empty { color: var(--muted); font-size: 12px; }
+    .simulation-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .simulation-metric {
+      min-width: 0;
+      border: 1px solid rgba(184, 132, 47, 0.22);
+      border-radius: 6px;
+      padding: 6px;
+      background: rgba(255, 250, 240, 0.72);
+    }
+
+    .simulation-metric-label {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .simulation-metric strong {
+      display: block;
+      margin-top: 2px;
+      overflow-wrap: anywhere;
+      color: var(--jade-dark);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .simulation-footnote {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .simulation-calculator {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px 14px;
+      background: var(--panel);
+    }
+
+    .calculator-note {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .calculator-table-wrap {
+      margin-top: 10px;
+      overflow-x: auto;
+    }
+
+    .calculator-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .calculator-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 7px 9px;
+      background: rgba(255, 253, 248, 0.76);
+    }
+
+    .calculator-item:focus-within {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 2px rgba(60, 157, 133, 0.12);
+    }
+
+    .calculator-item .calculator-small-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+    }
+
+    .calculator-needed {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .calculator-item .calculator-input {
+      width: auto;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .calculator-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .calculator-table th,
+    .calculator-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 7px;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .calculator-table th {
+      background: rgba(217, 203, 182, 0.24);
+      color: var(--muted);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .calculator-table tbody tr:last-child td { border-bottom: 0; }
+
+    .calculator-small-profile {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 145px;
+      text-align: left;
+    }
+
+    .calculator-small-icon {
+      display: block;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      object-fit: contain;
+    }
+
+    .calculator-small-name { font-weight: 850; white-space: nowrap; }
+
+    .calculator-input {
+      width: 72px;
+      min-height: 30px;
+      box-sizing: border-box;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 6px;
+      background: var(--panel-strong);
+      color: var(--text);
+      font: inherit;
+      font-weight: 750;
+      text-align: center;
+    }
+
+    .calculator-input:focus-visible {
+      border-color: var(--jade);
+      outline: 2px solid rgba(60, 157, 133, 0.18);
+      outline-offset: 1px;
+    }
+
+    .calculator-value {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 27px;
+      border: 1px solid #e8dcc7;
+      border-radius: 6px;
+      padding: 3px 6px;
+      background: rgba(255, 253, 248, 0.76);
+      color: var(--text);
+      font-weight: 750;
+    }
+
+    .calculator-current,
+    .calculator-target {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 27px;
+      border: 1px solid rgba(60, 157, 133, 0.22);
+      border-radius: 6px;
+      padding: 3px 6px;
+      font-weight: 850;
+    }
+
+    .calculator-current { background: rgba(235, 247, 241, 0.9); color: var(--jade-dark); }
+    .calculator-target { background: rgba(255, 244, 211, 0.88); color: var(--gold); }
+
+    .calculator-secondary {
+      margin-left: 2px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .calculator-summary {
+      display: grid;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .calculator-total {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .calculator-total strong {
+      color: var(--jade-dark);
+      font-size: 15px;
+    }
+
+    .calculator-time {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 112px;
+      min-height: 27px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 6px;
+      padding: 3px 6px;
+      background: rgba(255, 250, 240, 0.76);
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .calculator-time.is-ready {
+      border-color: rgba(60, 157, 133, 0.22);
+      background: rgba(235, 247, 241, 0.9);
+      color: var(--jade-dark);
+    }
+
+    .attribute-delta,
+    .material-delta { margin-left: 4px; font-style: normal; font-weight: 850; }
+    .attribute-delta.is-positive,
+    .material-delta.is-positive { color: #239b63; }
+    .attribute-delta.is-negative,
+    .material-delta.is-negative { color: #c14b4b; }
+
+    .upgrade-dialog[hidden] { display: none; }
+
+    .upgrade-dialog {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      display: grid;
+      place-items: start center;
+      padding: 16px;
+      padding-top: clamp(72px, 14vh, 150px);
+      pointer-events: none;
+    }
+
+    .upgrade-dialog-box {
+      width: min(300px, calc(100vw - 32px));
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 8px;
+      padding: 9px 11px 10px;
+      background: rgba(255, 250, 240, 0.7);
+      backdrop-filter: blur(8px) saturate(0.9);
+      box-shadow: 0 8px 22px rgba(39, 35, 30, 0.1);
+      animation: upgrade-notice-in 160ms ease-out;
+    }
+
+    .upgrade-dialog-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .upgrade-dialog-copy {
+      margin: 3px 0 0;
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .upgrade-dialog-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3px 10px;
+      margin: 5px 0 0;
+      padding-left: 15px;
+      color: rgba(162, 105, 25, 0.82);
+      font-size: 11px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    @keyframes upgrade-notice-in {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .summary-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 9px;
+    }
+
+    .summary-stat {
+      display: inline-flex;
+      align-items: center;
+      min-height: 29px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 7px;
+      padding: 4px 9px;
+      background: var(--panel-strong);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .section-panel { margin-top: 12px; padding: 14px 16px 16px; }
+    .table-wrap { margin-top: 10px; overflow-x: auto; }
+
+    .collapsible-table-details {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .collapsible-table-details > summary {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .collapsible-table-details > summary::-webkit-details-marker { display: none; }
+
+    .collapsible-table-details > summary::before {
+      color: var(--jade);
+      content: "▸";
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .collapsible-table-details[open] > summary::before { content: "▾"; }
+
+    .collapsible-table-details > summary:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: -2px;
+    }
+
+    .collapsible-table-details > .section-head {
+      margin: 0;
+    }
+
+    .collapsible-table-details > .table-wrap {
+      margin-top: 0;
+      border-top: 1px solid var(--line);
+      padding: 0 16px 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(217, 203, 182, 0.24);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    .number { color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .small-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 150px;
+    }
+
+    .small-icon {
+      display: block;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(75, 32, 32, 0.18));
+    }
+
+    .small-name { font-weight: 800; white-space: nowrap; }
+    .small-quality { margin-top: 3px; color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+    .attribute-list,
+    .cost-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      min-width: 160px;
+    }
+
+    .attribute-chip,
+    .cost-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 27px;
+      border: 1px solid rgba(60, 157, 133, 0.22);
+      border-radius: 6px;
+      padding: 3px 7px;
+      background: var(--panel-strong);
+      white-space: nowrap;
+    }
+
+    .attribute-chip { color: var(--jade-dark); font-weight: 750; line-height: 1.2; }
+    .cost-chip { border-color: rgba(184, 132, 47, 0.28); color: var(--gold); font-weight: 750; line-height: 1.2; }
+
+    .cost-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      object-fit: contain;
+    }
+
+    .silver-cost {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 27px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 6px;
+      padding: 3px 7px;
+      background: var(--panel-strong);
+      color: var(--gold);
+      font-weight: 750;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .empty { color: var(--muted); }
+
+    .star-table { min-width: 680px; }
+    .star-table tbody tr:last-child td { border-bottom: 1px solid var(--line); }
+    .star-table th:not(:first-child),
+    .star-table td:not(:first-child) { text-align: center; }
+    .small-treasure-cell { min-width: 170px; vertical-align: middle; }
+    .star-attribute-cell { min-width: 190px; vertical-align: middle; text-align: center; }
+    .star-cost-cell { min-width: 220px; vertical-align: middle; text-align: center; }
+    .star-table .attribute-list { min-width: 0; align-items: center; justify-content: center; }
+    .star-table .cost-list { min-width: 0; justify-content: center; }
+    .star-table .small-profile,
+    .star-table .attribute-list,
+    .star-table .cost-list,
+    .star-table .attribute-chip,
+    .star-table .cost-chip,
+    .star-table .silver-cost {
+      align-items: center !important;
+      justify-content: center !important;
+      vertical-align: middle;
+    }
+    .star-table .small-profile { margin-inline: auto; }
+    .star-table .cost-chip > span,
+    .star-table .silver-cost > span { line-height: 1.2; }
+    .star-table .empty {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      line-height: 1.2;
+    }
+    .star-table .cost-chip,
+    .star-table .silver-cost { font-size: 10px; }
+    .big-attribute-table th,
+    .big-attribute-table td { text-align: left !important; vertical-align: top !important; }
+    .big-attribute-table th:first-child,
+    .big-attribute-table td:first-child { text-align: center !important; vertical-align: middle !important; }
+    .big-attribute-table .effect-copy { max-width: none; margin: 0; text-align: left !important; }
+    .effect-copy { max-width: 900px; line-height: 1.7; white-space: normal; }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 1060px) {
+      .treasure-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 980px) {
+      .simulator-columns { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .brand-name { font-size: 17px; }
+      .back-link { padding: 7px 9px; }
+      .intro { display: block; margin-top: 16px; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .section-panel { padding: 12px 11px 13px; }
+      .treasure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .treasure-card { min-height: 60px; padding: 6px 7px; gap: 7px; }
+      .treasure-card-icon { width: 44px; height: 44px; flex-basis: 44px; }
+      .treasure-card-name { font-size: 13px; }
+      .summary-panel { align-items: flex-start; gap: 10px; padding: 11px; }
+      .summary-icon { width: 65px; height: 65px; flex-basis: 65px; }
+      .summary-heading { display: block; }
+      .summary-title { font-size: 18px; }
+      .summary-meta { margin-top: 4px; }
+      .section-heading { display: block; }
+      .section-meta { margin-top: 4px; }
+      .simulator-panel { padding: 12px 11px 13px; }
+      .simulator-column-heading { display: flex; align-items: center; }
+      .simulator-column-heading span { display: block; margin-top: 3px; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .radial-stage { width: calc(100% - 24px); min-height: 600px; }
+      .radial-stage::before { width: 96%; }
+      .radial-ring { width: 86%; }
+      .big-treasure-button { top: calc(50% - 15px); width: 150px; height: 150px; padding: 8px; }
+      .big-treasure-control-panel { top: calc(50% + 70px); grid-template-columns: 21px 42px 21px; width: 104px; column-gap: 3px; padding: 5px 6px 6px; }
+      .big-treasure-star { width: 23px; height: 23px; font-size: 10px; }
+      .big-treasure-label { max-width: 140px; font-size: 13px; }
+      .big-upgrade-button, .big-downgrade-button { width: 21px; height: 21px; font-size: 16px; }
+      .orbit-item { width: 94px; height: 156px; padding: 4px; }
+      .orbit-select { inset: 4px 4px 55px; min-height: 0; padding: 0; }
+      .orbit-item-icon { width: 47px; height: 47px; }
+      .orbit-item-name { font-size: 9px; }
+      .orbit-item-star { width: 23px; height: 23px; font-size: 10px; }
+      .orbit-upgrade-button, .orbit-downgrade-button { width: 21px; height: 21px; font-size: 16px; }
+      .orbit-resource-fields { left: 3px; right: 3px; gap: 2px; }
+      .orbit-resource-field { gap: 1px; font-size: 7px; }
+      .orbit-resource-field input { height: 19px; font-size: 9px; }
+      .simulation-metrics { grid-template-columns: 1fr; }
+      .simulation-toolbar { justify-content: flex-start; }
+      .simulation-image-actions { right: 8px; bottom: 8px; }
+      th, td { padding: 8px; }
+      table { min-width: 760px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260924">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">古宝合成与属性</h1>
+    </div>
+
+    <section class="picker-panel" aria-label="选择古宝">
+      <div class="treasure-grid" id="treasure-grid"></div>
+    </section>
+
+    <section class="simulator-panel" aria-labelledby="simulator-title">
+      <div class="section-heading">
+        <h2 class="section-title" id="simulator-title">古宝升级模拟</h2>
+      </div>
+      <div class="simulator-columns">
+        <section class="simulator-column" aria-labelledby="current-simulator-title">
+          <div class="simulator-column-heading">
+            <div class="simulator-heading-copy">
+              <h3 id="current-simulator-title">现有状态</h3>
+            </div>
+            <button class="simulation-action simulator-heading-action" type="button" data-simulation-action="reset-current">清空现有状态</button>
+          </div>
+          <div class="radial-stage" id="radial-stage-current" data-view="current" aria-label="现有状态古宝组合图">
+            <div class="radial-ring" aria-hidden="true"></div>
+            <div class="orbit-items" id="orbit-items-current"></div>
+            <button class="big-treasure-button" id="big-treasure-button-current" type="button" aria-label="调整现有大古宝星级">
+              <img class="big-treasure-icon" id="big-treasure-icon-current" src="" alt="">
+            </button>
+            <div class="big-treasure-control-panel" id="big-treasure-control-panel-current">
+              <div class="big-treasure-label" id="big-treasure-label-current"></div>
+              <button class="big-downgrade-button" id="big-downgrade-button-current" type="button" aria-label="降低现有大古宝星级">−</button>
+              <span class="big-treasure-star is-locked" id="big-treasure-star-current" aria-label="现有大古宝当前未解锁">未解锁</span>
+              <button class="big-upgrade-button" id="big-upgrade-button-current" type="button" aria-label="提升现有大古宝星级">+</button>
+            </div>
+          </div>
+        </section>
+        <section class="simulator-column" aria-labelledby="target-simulator-title">
+          <div class="simulator-column-heading">
+            <div class="simulator-heading-copy">
+              <h3 id="target-simulator-title">目标状态</h3>
+            </div>
+            <button class="simulation-action simulator-heading-action" type="button" data-simulation-action="reset-target">清空目标状态</button>
+          </div>
+          <div class="radial-stage" id="radial-stage-target" data-view="target" aria-label="目标状态古宝组合图">
+            <div class="radial-ring" aria-hidden="true"></div>
+            <div class="orbit-items" id="orbit-items-target"></div>
+            <button class="big-treasure-button" id="big-treasure-button-target" type="button" aria-label="调整目标大古宝星级">
+              <img class="big-treasure-icon" id="big-treasure-icon-target" src="" alt="">
+            </button>
+            <div class="big-treasure-control-panel" id="big-treasure-control-panel-target">
+              <div class="big-treasure-label" id="big-treasure-label-target"></div>
+              <button class="big-downgrade-button" id="big-downgrade-button-target" type="button" aria-label="降低目标大古宝星级">−</button>
+              <span class="big-treasure-star is-locked" id="big-treasure-star-target" aria-label="目标大古宝当前未解锁">未解锁</span>
+              <button class="big-upgrade-button" id="big-upgrade-button-target" type="button" aria-label="提升目标大古宝星级">+</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="simulation-summary" aria-live="polite"></div>
+    </section>
+
+    <div class="upgrade-dialog" id="upgrade-dialog" hidden>
+      <div class="upgrade-dialog-box" role="status" aria-live="polite" aria-labelledby="upgrade-dialog-title">
+        <h3 class="upgrade-dialog-title" id="upgrade-dialog-title">升级提示</h3>
+        <p class="upgrade-dialog-copy" id="upgrade-dialog-copy"></p>
+        <ul class="upgrade-dialog-list" id="upgrade-dialog-list"></ul>
+      </div>
+    </div>
+
+    <details class="section-panel collapsible-table-details" aria-labelledby="small-attribute-title">
+      <summary class="section-head">
+        <h2 class="section-title" id="small-attribute-title">小古宝星级属性</h2>
+        <span class="section-meta">展示每件小古宝未解锁及0～6星的全体属性与升星消耗</span>
+      </summary>
+      <div class="table-wrap">
+        <table class="star-table">
+          <thead>
+            <tr>
+              <th scope="col">小古宝</th>
+              <th scope="col">星数</th>
+              <th scope="col">全体属性</th>
+              <th scope="col">消耗材料</th>
+            </tr>
+          </thead>
+          <tbody id="small-attribute-table"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="section-panel collapsible-table-details" aria-labelledby="big-attribute-title">
+      <summary class="section-head">
+        <h2 class="section-title" id="big-attribute-title">大古宝星级属性与效果</h2>
+        <span class="section-meta">展示大古宝未解锁及0～6星对应的武将属性和效果</span>
+      </summary>
+      <div class="table-wrap">
+        <table class="big-attribute-table left-aligned-table">
+          <thead>
+            <tr>
+              <th scope="col">星级</th>
+              <th scope="col">武将属性与效果</th>
+            </tr>
+          </thead>
+          <tbody id="big-attribute-table"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/gubao-data.js"></script>
+  <script>
+    (() => {
+      const data = window.gubaoData;
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+      const silverInWan = (value) => `${(Number(value) / 10000).toLocaleString("zh-CN", { maximumFractionDigits: 2 })}w`;
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+      const qualityLabel = (quality) => `${data.qualityNames[String(quality)] || `品质${quality}`}品质`;
+      const soulJadeExchange = {
+        "5": { batchSize: 2, batchJade: 400 },
+        "6": { batchSize: 2, batchJade: 600 },
+        "7": { batchSize: 2, batchJade: 1000 },
+        "8": { batchSize: 1, batchJade: 800 }
+      };
+      const qualityColor = (quality) => ({
+        "3": "#6fbe83",
+        "4": "#6ba7d8",
+        "5": "#a77bda",
+        "6": "#e39b50",
+        "7": "#e26161",
+        "8": "#edc15d",
+        "9": "#c08a35",
+        "10": "#d9d2c7",
+        "11": "#299b99",
+        "12": "#63c4c7"
+      }[String(quality)] || "#b8842f");
+      const qualityStyle = (quality) => `--quality-color:${qualityColor(quality)}`;
+      const bigArtScale = (treasureId) => ({
+        5101: 1.1,
+        5102: 1.3,
+        5103: 1.2,
+        5104: 1.65,
+        5105: 1.1,
+        5106: 1.15
+      }[Number(treasureId)] || 1);
+      const attributeLabel = (id) => data.attributeNames[String(id)] || `属性${id}`;
+      // 同名属性既有整数型（如 id=55 法防），也有百分比型（如 id=15 法防），必须按 ID 区分。
+      const flatAttributeIds = new Set([1, 2, 3, 4, 5, 9, 10, 51, 54, 55, 84, 85, 100]);
+      const hundredthAttributeNames = new Set(["统帅", "统率", "武力", "智力"]);
+      const formatAttributeValue = (attribute) => {
+        const raw = Number(attribute.value) || 0;
+        const name = attributeLabel(attribute.id);
+        if (flatAttributeIds.has(Number(attribute.id))) return number(raw);
+        const value = raw / 100;
+        return `${value.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}${hundredthAttributeNames.has(name) ? "" : "%"}`;
+      };
+      const attributeMap = (component, star) => {
+        const record = component.starAttributes.find((entry) => entry.star === star);
+        return record ? record.attributes : [];
+      };
+      const attributeMarkup = (attributes) => attributes.length
+        ? `<div class="attribute-list">${attributes.map((attribute) => `<span class="attribute-chip">${escapeHtml(attributeLabel(attribute.id))} +${formatAttributeValue(attribute)}</span>`).join("")}</div>`
+        : '<span class="empty">—</span>';
+      const bigAttributeMarkup = (attributes) => attributes.length
+        ? `<div class="attribute-list">${attributes.map((attribute) => `<span class="attribute-item">${escapeHtml(attributeLabel(attribute.id))} <strong>+${formatAttributeValue(attribute)}</strong></span>`).join("")}</div>`
+        : '<span class="empty">—</span>';
+      const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const specialEffectText = (effect) => {
+        if (!effect?.description) return "";
+        let description = String(effect.description);
+        (effect.attributes || []).forEach((attribute) => {
+          const values = [
+            formatAttributeValue(attribute),
+            formatAttributeValue(attribute).replace(/,/g, ""),
+            String(Number(attribute.value) || 0),
+            number(Number(attribute.value) || 0)
+          ].filter(Boolean).sort((left, right) => right.length - left.length);
+          const valuePattern = [...new Set(values)].map(escapeRegExp).join("|");
+          if (!valuePattern) return;
+          const pattern = new RegExp(`${escapeRegExp(attributeLabel(attribute.id))}\\s*\\+\\s*(?:${valuePattern})`, "gi");
+          description = description.replace(pattern, "");
+        });
+        return description
+          .replace(/^[\s，,；;]+|[\s，,；;]+$/g, "")
+          .replace(/[，,；;]\s*(?=[，,；;])/g, "")
+          .trim();
+      };
+      const costMarkup = (costs) => {
+        if (!costs.length) return '<span class="empty">—</span>';
+        return `<div class="cost-list">${costs.map((cost) => {
+          if (cost.type === 1) return `<span class="silver-cost"><img class="cost-icon" src="assets/lingdi-items/yinbi.png" alt="银币"><span>${silverInWan(cost.amount)}</span></span>`;
+          const material = data.materials[String(cost.id)];
+          if (!material) return `<span class="cost-chip">材料${escapeHtml(cost.id)} ×${number(cost.amount)}</span>`;
+          return `<span class="cost-chip"><img class="cost-icon" src="${escapeHtml(material.icon)}" alt=""><span>${escapeHtml(material.name)}</span><span>×${number(cost.amount)}</span></span>`;
+        }).join("")}</div>`;
+      };
+      const soulJadeConversionFor = (row) => {
+        if (row.remainingFragments <= 0) return null;
+        const rule = soulJadeExchange[String(row.component.quality)];
+        if (!rule) return null;
+        return {
+          component: row.component,
+          fragments: row.remainingFragments,
+          soulJade: row.remainingFragments / rule.batchSize * rule.batchJade,
+          rule
+        };
+      };
+      const soulJadeInlineMarkup = (row) => {
+        const entry = soulJadeConversionFor(row);
+        if (!entry) return "";
+        return `<span class="soul-jade-equals">=</span><span class="soul-jade-inline" title="${escapeHtml(qualityLabel(entry.component.quality))}古宝换算魂玉">
+          <span class="soul-jade-icon" aria-label="魂玉图标"></span>
+          <strong>魂玉 ×${number(entry.soulJade)}</strong>
+        </span>`;
+      };
+      const soulJadeTotalFor = (rows) => rows
+        .map(soulJadeConversionFor)
+        .filter(Boolean)
+        .reduce((sum, entry) => sum + entry.soulJade, 0);
+      const fragmentNeedMarkup = (rows) => {
+        const remainingRows = rows.filter((row) => row.remainingFragments > 0);
+        if (!remainingRows.length) return '<span class="empty">无</span>';
+        const items = remainingRows.map((row) => {
+          const material = data.materials[String(row.component.fragment.id)];
+          const fragment = material
+            ? `<span class="cost-chip"><img class="cost-icon" src="${escapeHtml(material.icon)}" alt=""><span>${escapeHtml(material.name)}</span><span>×${number(row.remainingFragments)}</span></span>`
+            : `<span class="cost-chip">材料${escapeHtml(row.component.fragment.id)} ×${number(row.remainingFragments)}</span>`;
+          return `<span class="fragment-need-item">${fragment}${soulJadeInlineMarkup(row)}</span>`;
+        }).join("");
+        const totalSoulJade = soulJadeTotalFor(rows);
+        const total = totalSoulJade > 0
+          ? `<span class="soul-jade-total">合计 <span class="soul-jade-icon" aria-hidden="true"></span>魂玉 ×${number(totalSoulJade)}</span>`
+          : "";
+        return `<div class="cost-list">${items}${total}</div>`;
+      };
+      const starCostsFor = (component, star) => star === 0
+        ? [{ type: 7, id: component.fragment.id, amount: component.fragment.amount }]
+        : component.starCosts.find((stage) => stage.star === star)?.costs || [];
+
+      const simulatorSelection = {
+        current: { kind: "big", componentId: null },
+        target: { kind: "big", componentId: null }
+      };
+      const upgradeProgress = new Map();
+      const targetProgress = new Map();
+      const MIN_STAR = -1;
+      const starBadgeText = (star) => star < 0 ? "未解锁" : `★${star}`;
+      const starLevelText = (star) => star < 0 ? "未解锁" : `${star}星`;
+
+      const progressKey = (treasure, kind, componentId = "big") => `${treasure.id}:${kind}:${componentId}`;
+      const progressStore = (view) => view === "target" ? targetProgress : upgradeProgress;
+      const progressStar = (treasure, kind, componentId = "big", view = "current") =>
+        progressStore(view).get(progressKey(treasure, kind, componentId)) ?? MIN_STAR;
+      const nextStarFragmentLimit = (component, currentStar) => {
+        if (currentStar < 0) return Number(component.fragment.amount || 0);
+        const nextStage = component.starCosts.find((stage) => stage.star === currentStar + 1);
+        return nextStage?.costs
+          .filter((cost) => cost.type === 7 && Number(cost.id) === Number(component.fragment.id))
+          .reduce((sum, cost) => sum + Number(cost.amount || 0), 0) || 0;
+      };
+      const fragmentLimitFor = (treasure, component, view) => nextStarFragmentLimit(
+        component,
+        Math.max(MIN_STAR, Math.min(progressStar(treasure, "small", component.id, view), treasure.starMax || 6))
+      );
+      const syncTargetToCurrent = (treasure) => {
+        const changes = [];
+        const currentBigStar = progressStar(treasure, "big", "big", "current");
+        const targetBigStar = progressStar(treasure, "big", "big", "target");
+        if (targetBigStar < currentBigStar) {
+          targetProgress.set(progressKey(treasure, "big"), currentBigStar);
+          changes.push({ name: `${treasure.name}（大古宝）`, currentStar: targetBigStar, targetStar: currentBigStar });
+        }
+        treasure.components.forEach((component) => {
+          const currentStar = progressStar(treasure, "small", component.id, "current");
+          let targetStar = progressStar(treasure, "small", component.id, "target");
+          if (targetStar < currentStar) {
+            targetProgress.set(progressKey(treasure, "small", component.id), currentStar);
+            changes.push({ name: component.name, currentStar: targetStar, targetStar: currentStar });
+            targetStar = currentStar;
+          }
+          const stored = fragmentPlan.get(component.id) || {};
+          const currentFragments = Math.max(0, Number(stored.currentFragments || 0));
+          const targetFragments = Math.max(0, Number(stored.targetFragments || 0));
+          if (targetStar === currentStar && targetFragments < currentFragments) {
+            fragmentPlan.set(component.id, { ...stored, targetFragments: currentFragments });
+          }
+        });
+        return changes;
+      };
+      const mergeCosts = (costGroups) => {
+        const totals = new Map();
+        costGroups.flat().forEach((cost) => {
+          const key = `${cost.type}:${cost.id}`;
+          const previous = totals.get(key);
+          totals.set(key, previous
+            ? { ...previous, amount: previous.amount + Number(cost.amount || 0) }
+            : { ...cost, amount: Number(cost.amount || 0) });
+        });
+        return [...totals.values()];
+      };
+      let upgradeNoticeTimer = null;
+
+      const closeUpgradeDialog = () => {
+        document.getElementById("upgrade-dialog").hidden = true;
+        if (upgradeNoticeTimer) {
+          clearTimeout(upgradeNoticeTimer);
+          upgradeNoticeTimer = null;
+        }
+      };
+
+      const commitStarChange = (treasure, view, kind, componentId, currentStar, targetStar) => {
+        progressStore(view).set(progressKey(treasure, kind, componentId), targetStar);
+        if (view === "current") syncTargetToCurrent(treasure);
+        simulatorSelection[view] = {
+          kind,
+          componentId: kind === "small" ? componentId : null
+        };
+        renderRadial(treasure, "current");
+        renderRadial(treasure, "target");
+        renderSimulationSummary(treasure);
+      };
+
+      const showProgressNotice = (message, changes = []) => {
+        document.getElementById("upgrade-dialog-copy").textContent = message;
+        document.getElementById("upgrade-dialog-list").innerHTML = changes.map((change) =>
+          `<li>${escapeHtml(change.name)}：${starLevelText(change.currentStar)} → ${starLevelText(change.targetStar)}</li>`
+        ).join("");
+        document.getElementById("upgrade-dialog").hidden = false;
+        if (upgradeNoticeTimer) clearTimeout(upgradeNoticeTimer);
+        upgradeNoticeTimer = setTimeout(closeUpgradeDialog, 1800);
+      };
+
+      const simulateUpgrade = (treasure, view, kind, componentId = "big") => {
+        const progress = progressStore(view);
+        const maxStar = treasure.starMax || 6;
+        const currentStar = Math.max(MIN_STAR, Math.min(progressStar(treasure, kind, componentId, view), maxStar));
+        if (currentStar >= maxStar) return;
+        const targetStar = currentStar + 1;
+
+        if (kind === "big") {
+          const missingComponents = treasure.components
+            .map((component) => ({ ...component, currentStar: progressStar(treasure, "small", component.id, view) }))
+            .filter((component) => component.currentStar < targetStar);
+          missingComponents.forEach((component) => {
+            progress.set(progressKey(treasure, "small", component.id), targetStar);
+            const stored = fragmentPlan.get(component.id) || {};
+            const field = view === "target" ? "targetFragments" : "currentFragments";
+            fragmentPlan.set(component.id, { ...stored, [field]: 0 });
+          });
+          commitStarChange(treasure, view, kind, componentId, currentStar, targetStar);
+          if (missingComponents.length) {
+            showProgressNotice(`大古宝已调整为${starLevelText(targetStar)}，以下小古宝也已自动调整：`,
+              missingComponents.map((component) => ({ ...component, targetStar })));
+          }
+          return;
+        }
+
+        progress.set(progressKey(treasure, "small", componentId), targetStar);
+        const stored = fragmentPlan.get(componentId) || {};
+        const field = view === "target" ? "targetFragments" : "currentFragments";
+        fragmentPlan.set(componentId, { ...stored, [field]: 0 });
+        const sharedStar = Math.min(...treasure.components.map((component) =>
+          progressStar(treasure, "small", component.id, view)));
+        const bigCurrentStar = progressStar(treasure, "big", "big", view);
+        if (sharedStar > bigCurrentStar) {
+          progress.set(progressKey(treasure, "big"), sharedStar);
+        }
+        commitStarChange(treasure, view, kind, componentId, currentStar, targetStar);
+        if (sharedStar > bigCurrentStar) {
+          showProgressNotice(`全部小古宝均已达到${starLevelText(sharedStar)}，大古宝已自动调整为${starLevelText(sharedStar)}。`);
+        }
+      };
+
+      const simulateDowngrade = (treasure, view, kind, componentId = "big") => {
+        const progress = progressStore(view);
+        const currentStar = Math.max(MIN_STAR, progressStar(treasure, kind, componentId, view));
+        const minimumStar = view === "target"
+          ? Math.max(MIN_STAR, progressStar(treasure, kind, componentId, "current"))
+          : MIN_STAR;
+        if (currentStar <= minimumStar) return;
+        const targetStar = currentStar - 1;
+        const linkedChanges = [];
+
+        treasure.components.forEach((component) => {
+          if (kind === "small" && component.id === componentId) return;
+          const componentStar = progressStar(treasure, "small", component.id, view);
+          const componentMinimumStar = view === "target"
+            ? Math.max(MIN_STAR, progressStar(treasure, "small", component.id, "current"))
+            : MIN_STAR;
+          const linkedTargetStar = Math.max(componentMinimumStar, targetStar);
+          if (componentStar <= linkedTargetStar) return;
+          progress.set(progressKey(treasure, "small", component.id), linkedTargetStar);
+          linkedChanges.push({ name: component.name, currentStar: componentStar, targetStar: linkedTargetStar });
+        });
+
+        if (kind === "small") {
+          const bigCurrentStar = progressStar(treasure, "big", "big", view);
+          const bigMinimumStar = view === "target"
+            ? Math.max(MIN_STAR, progressStar(treasure, "big", "big", "current"))
+            : MIN_STAR;
+          const linkedBigStar = Math.max(bigMinimumStar, targetStar);
+          if (bigCurrentStar > linkedBigStar) {
+            progress.set(progressKey(treasure, "big"), linkedBigStar);
+            linkedChanges.unshift({ name: `${treasure.name}（大古宝）`, currentStar: bigCurrentStar, targetStar: linkedBigStar });
+          }
+        }
+
+        commitStarChange(treasure, view, kind, componentId, currentStar, targetStar);
+        if (linkedChanges.length) {
+          const subject = kind === "big" ? "大古宝" : "小古宝";
+          showProgressNotice(`${subject}已调整为${starLevelText(targetStar)}，以下古宝也已同步调整：`, linkedChanges);
+        }
+      };
+
+      const sumAttributes = (attributes) => {
+        const values = new Map();
+        attributes.forEach((attribute) => values.set(attribute.id, (values.get(attribute.id) || 0) + Number(attribute.value || 0)));
+        return [...values.entries()].map(([id, value]) => ({ id, value }));
+      };
+
+      const sumStarCosts = (component, currentStar, targetStar) => {
+        const totals = new Map();
+        const costs = [
+          ...(currentStar < 0 && targetStar >= 0
+            ? [{ type: 7, id: component.fragment.id, amount: component.fragment.amount }]
+            : []),
+          ...component.starCosts
+            .filter((stage) => stage.star > currentStar && stage.star <= targetStar)
+            .flatMap((stage) => stage.costs)
+        ];
+        costs.forEach((cost) => {
+            const key = `${cost.type}:${cost.id}`;
+            const previous = totals.get(key);
+            totals.set(key, previous ? { ...previous, amount: previous.amount + Number(cost.amount || 0) } : { ...cost });
+          });
+        return [...totals.values()];
+      };
+
+      const fragmentPlan = new Map();
+      const weeklyFragmentPlan = new Map();
+      const weeklyDefaultInitialized = new Set();
+      const weeklyDefaultsByQuality = {
+        "9": 15,
+        "10": 5,
+        "11": 5
+      };
+
+      const fragmentPlanFor = (component) => {
+        const stored = fragmentPlan.get(component.id) || {};
+        return {
+          currentFragments: Math.max(0, Number(stored.currentFragments || 0)),
+          targetFragments: Math.max(0, Number(stored.targetFragments || 0))
+        };
+      };
+
+      const weeklyFragmentsFor = (component) => weeklyFragmentPlan.has(component.id)
+        ? Math.max(0, Number(weeklyFragmentPlan.get(component.id) || 0))
+        : null;
+      const initializeWeeklyDefaults = (treasure) => {
+        const qualityCounts = treasure.components.reduce((counts, component) => {
+          const quality = String(component.quality);
+          counts.set(quality, (counts.get(quality) || 0) + 1);
+          return counts;
+        }, new Map());
+        treasure.components.forEach((component) => {
+          if (weeklyDefaultInitialized.has(component.id)) return;
+          weeklyDefaultInitialized.add(component.id);
+          const total = weeklyDefaultsByQuality[String(component.quality)];
+          const count = qualityCounts.get(String(component.quality)) || 0;
+          if (total !== undefined && count > 0) {
+            weeklyFragmentPlan.set(component.id, total / count);
+          }
+        });
+      };
+      const calculatorWeeks = (remainingFragments, weeklyFragments) => {
+        if (remainingFragments <= 0) return 0;
+        if (weeklyFragments <= 0) return null;
+        return Math.ceil(remainingFragments / weeklyFragments);
+      };
+
+      const durationMarkup = (weeks) => `<span class="calculator-time">${number(weeks)}周 / ${(weeks / 52).toLocaleString("zh-CN", { maximumFractionDigits: 2 })}年</span>`;
+
+      const calculatorTimeMarkup = (remainingFragments, weeklyFragments) => {
+        const weeks = calculatorWeeks(remainingFragments, weeklyFragments);
+        if (weeks === 0) return '<span class="calculator-time is-ready">已完成</span>';
+        if (weeks === null) return '<span class="calculator-time">待填写</span>';
+        return durationMarkup(weeks);
+      };
+
+      const updateWeeklyCalculator = (treasure) => {
+        const plan = collectMaterialPlan(treasure);
+        const includedRows = plan.rows.filter((row) => weeklyFragmentPlan.has(row.component.id));
+        const weeks = includedRows
+          .map((row) => calculatorWeeks(row.remainingFragments, weeklyFragmentsFor(row.component)))
+          .filter((value) => value !== null);
+        const totalWeeks = plan.totalRemainingFragments <= 0
+          ? 0
+          : includedRows.length === 0
+            ? 0
+            : weeks.length === includedRows.length
+            ? Math.max(...weeks)
+            : null;
+        const totalTime = document.getElementById("weekly-calculator-total-time");
+        if (totalTime) {
+          totalTime.innerHTML = totalWeeks === 0
+              ? '<span class="calculator-time is-ready">已完成</span>'
+              : totalWeeks === null
+                ? '<span class="calculator-time">待填写每周获取量</span>'
+                : durationMarkup(totalWeeks);
+        }
+      };
+
+      const weeklyCalculatorMarkup = (treasure) => {
+        initializeWeeklyDefaults(treasure);
+        const plan = collectMaterialPlan(treasure);
+        const includedRows = plan.rows.filter((row) => weeklyFragmentPlan.has(row.component.id));
+        const initialWeeks = includedRows
+          .map((row) => calculatorWeeks(row.remainingFragments, weeklyFragmentsFor(row.component)))
+          .filter((value) => value !== null);
+        const initialTotalWeeks = plan.totalRemainingFragments <= 0 || includedRows.length === 0
+          ? 0
+          : initialWeeks.length === includedRows.length
+            ? Math.max(...initialWeeks)
+            : null;
+        const initialTotalMarkup = initialTotalWeeks === 0
+            ? '<span class="calculator-time is-ready">已完成</span>'
+            : initialTotalWeeks === null
+              ? '<span class="calculator-time">待填写每周获取量</span>'
+            : durationMarkup(initialTotalWeeks);
+        const rows = plan.rows.map((row) => {
+          const weeklyFragments = weeklyFragmentsFor(row.component);
+          const weeklyValue = weeklyFragments === null ? "" : weeklyFragments;
+          return `<label class="calculator-item" title="${escapeHtml(row.component.name)}">
+            <img class="calculator-small-icon" src="${escapeHtml(row.component.icon)}" alt="">
+            <input class="calculator-input" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="${weeklyValue}" placeholder="每周获取" data-weekly-fragments-id="${row.component.id}" aria-label="${escapeHtml(row.component.name)}每周获取碎片数量">
+          </label>`;
+        }).join("");
+        return `<section class="simulation-calculator" aria-labelledby="weekly-calculator-title">
+          <div class="section-heading">
+            <h3 class="section-title" id="weekly-calculator-title">每周获取计算器</h3>
+          </div>
+          <div class="calculator-items">${rows}</div>
+          <div class="calculator-total">
+            <span>预计完成时间：</span>
+            <strong id="weekly-calculator-total-time">${initialTotalMarkup}</strong>
+          </div>
+        </section>`;
+      };
+
+      const collectMaterialPlan = (treasure) => {
+        const rows = treasure.components.map((component) => {
+          const currentStar = progressStar(treasure, "small", component.id, "current");
+          const targetStar = progressStar(treasure, "small", component.id, "target");
+          const costs = targetStar > currentStar ? sumStarCosts(component, currentStar, targetStar) : [];
+          const state = fragmentPlanFor(component);
+          const fragmentCost = costs
+            .filter((cost) => cost.type === 7 && Number(cost.id) === Number(component.fragment.id))
+            .reduce((sum, cost) => sum + Number(cost.amount || 0), 0);
+          const requiredFragments = fragmentCost + state.targetFragments;
+          const remainingFragments = Math.max(0, requiredFragments - state.currentFragments);
+          return { component, currentStar, targetStar, costs, state, fragmentCost, requiredFragments, remainingFragments };
+        });
+        const requiredCosts = mergeCosts(rows.map((row) => row.costs));
+        const remainingCosts = mergeCosts(rows.map((row) => [
+          ...row.costs.filter((cost) => cost.type !== 7 || Number(cost.id) !== Number(row.component.fragment.id)),
+          ...(row.remainingFragments > 0 ? [{ type: 7, id: row.component.fragment.id, amount: row.remainingFragments }] : [])
+        ])).filter((cost) => Number(cost.amount || 0) > 0);
+        const totalRequiredFragments = rows.reduce((sum, row) => sum + row.requiredFragments, 0);
+        const totalRemainingFragments = rows.reduce((sum, row) => sum + row.remainingFragments, 0);
+        const totalSilver = requiredCosts
+          .filter((cost) => cost.type === 1)
+          .reduce((sum, cost) => sum + Number(cost.amount || 0), 0);
+        return { rows, requiredCosts, remainingCosts, totalRequiredFragments, totalRemainingFragments, totalSilver };
+      };
+
+      function renderRadial(treasure, view) {
+        const suffix = view === "target" ? "target" : "current";
+        const stage = document.getElementById(`radial-stage-${suffix}`);
+        const orbitItems = document.getElementById(`orbit-items-${suffix}`);
+        const selection = simulatorSelection[view];
+        const count = treasure.components.length;
+        const orbitRadius = 35;
+        orbitItems.innerHTML = treasure.components.map((component, index) => {
+          const angle = -90 + (360 * index / count);
+          const x = (Math.cos(angle * Math.PI / 180) * orbitRadius).toFixed(2);
+          const baseY = Math.sin(angle * Math.PI / 180) * orbitRadius;
+          const lowerCenterShift = count === 7 && baseY > 25 ? 4 : 0;
+          const y = (baseY + lowerCenterShift).toFixed(2);
+          const active = selection.kind === "small" && selection.componentId === component.id ? " is-active" : "";
+           const currentStar = progressStar(treasure, "small", component.id, view);
+           const minimumStar = view === "target"
+             ? Math.max(MIN_STAR, progressStar(treasure, "small", component.id, "current"))
+             : MIN_STAR;
+           const plan = fragmentPlanFor(component);
+           const fragmentLimit = fragmentLimitFor(treasure, component, view);
+           const fragmentField = view === "target" ? "targetFragments" : "currentFragments";
+           const rawFragmentValue = view === "target" ? plan.targetFragments : plan.currentFragments;
+           const targetStar = progressStar(treasure, "small", component.id, "target");
+           const currentStateStar = progressStar(treasure, "small", component.id, "current");
+           const targetFragmentMinimum = view === "target" && targetStar === currentStateStar
+             ? plan.currentFragments
+             : 0;
+           const fragmentValue = Math.max(targetFragmentMinimum, Math.min(rawFragmentValue, fragmentLimit));
+           if (fragmentValue !== rawFragmentValue) {
+             fragmentPlan.set(component.id, { ...plan, [fragmentField]: fragmentValue });
+           }
+           const fragmentLabel = view === "target" ? "目标碎片" : "现有碎片";
+           const resourceFields = `
+             <div class="orbit-resource-fields" aria-label="${escapeHtml(component.name)}材料计划">
+              <label class="orbit-resource-field" title="${fragmentLabel}（上限${fragmentLimit}）"><span>碎片</span><span class="orbit-resource-input-wrap"><input type="number" min="${targetFragmentMinimum}" max="${fragmentLimit}" step="1" value="${fragmentValue}" data-fragments-id="${component.id}" data-fragments-view="${view}" aria-label="${escapeHtml(component.name)}${fragmentLabel}，上限${fragmentLimit}"><span class="orbit-resource-limit" aria-hidden="true">/${fragmentLimit}</span></span></label>
+             </div>`;
+          return `<div class="orbit-item${active}" data-component-id="${component.id}" style="--x:${x}%;--y:${y}%;${qualityStyle(component.quality)}">
+            <button class="orbit-select" type="button" data-component-id="${component.id}" aria-label="${view === "target" ? "目标" : "现有"}状态选择${escapeHtml(component.name)}">
+              <img class="orbit-item-icon" src="${escapeHtml(component.icon)}" alt="${escapeHtml(component.name)}图标">
+              <span class="orbit-item-name">${escapeHtml(component.name)}</span>
+            </button>
+            <span class="orbit-item-star${currentStar < 0 ? " is-locked" : ""}" aria-label="${view === "target" ? "目标" : "现有"}状态${starLevelText(currentStar)}">${starBadgeText(currentStar)}</span>
+            <button class="orbit-downgrade-button" type="button" data-downgrade-component-id="${component.id}" aria-label="${view === "target" ? "降低目标" : "降低现有"}${escapeHtml(component.name)}星级"${currentStar <= minimumStar ? " disabled" : ""}>−</button>
+            <button class="orbit-upgrade-button" type="button" data-upgrade-component-id="${component.id}" aria-label="${view === "target" ? "提升目标" : "提升现有"}${escapeHtml(component.name)}星级"${currentStar >= (treasure.starMax || 6) ? " disabled" : ""}>+</button>
+            ${resourceFields}
+          </div>`;
+        }).join("");
+
+        const bigButton = document.getElementById(`big-treasure-button-${suffix}`);
+        bigButton.style.setProperty("--quality-color", qualityColor(treasure.quality));
+        bigButton.style.setProperty("--big-art-scale", bigArtScale(treasure.id));
+        bigButton.innerHTML = `<img class="big-treasure-icon" id="big-treasure-icon-${suffix}" src="${escapeHtml(treasure.icon)}" alt="${escapeHtml(treasure.name)}图标">`;
+        const bigStar = progressStar(treasure, "big", "big", view);
+        document.getElementById(`big-treasure-label-${suffix}`).innerHTML = `<span class="big-treasure-name">${escapeHtml(treasure.name)}</span>`;
+        const bigStarBadge = document.getElementById(`big-treasure-star-${suffix}`);
+        bigStarBadge.textContent = starBadgeText(bigStar);
+        bigStarBadge.classList.toggle("is-locked", bigStar < 0);
+        bigStarBadge.setAttribute("aria-label", `${view === "target" ? "目标" : "现有"}大古宝当前${starLevelText(bigStar)}`);
+        bigButton.classList.toggle("is-active", selection.kind === "big");
+        const bigUpgradeButton = document.getElementById(`big-upgrade-button-${suffix}`);
+        bigUpgradeButton.disabled = bigStar >= (treasure.starMax || 6);
+        bigUpgradeButton.title = `${view === "target" ? "提升目标" : "提升现有"}大古宝`;
+        const bigDowngradeButton = document.getElementById(`big-downgrade-button-${suffix}`);
+        const bigMinimumStar = view === "target"
+          ? Math.max(MIN_STAR, progressStar(treasure, "big", "big", "current"))
+          : MIN_STAR;
+        bigDowngradeButton.disabled = bigStar <= bigMinimumStar;
+        bigDowngradeButton.title = `${view === "target" ? "降低目标" : "降低现有"}大古宝`;
+
+        stage.querySelectorAll(".orbit-select").forEach((button) => {
+          button.addEventListener("click", () => {
+            simulatorSelection[view] = { kind: "small", componentId: Number(button.dataset.componentId) };
+            renderRadial(treasure, view);
+          });
+        });
+        stage.querySelectorAll("[data-upgrade-component-id]").forEach((button) => {
+          button.addEventListener("click", () => simulateUpgrade(treasure, view, "small", Number(button.dataset.upgradeComponentId)));
+        });
+        stage.querySelectorAll("[data-downgrade-component-id]").forEach((button) => {
+          button.addEventListener("click", () => simulateDowngrade(treasure, view, "small", Number(button.dataset.downgradeComponentId)));
+        });
+         stage.querySelectorAll("[data-fragments-id]").forEach((control) => {
+           control.addEventListener("click", (event) => event.stopPropagation());
+           control.addEventListener("input", () => {
+             const componentId = Number(control.dataset.fragmentsId);
+             const field = control.dataset.fragmentsView === "target" ? "targetFragments" : "currentFragments";
+             const component = treasure.components.find((entry) => entry.id === componentId);
+             const fragmentLimit = component ? fragmentLimitFor(treasure, component, view) : 0;
+             const currentStar = component ? progressStar(treasure, "small", component.id, "current") : MIN_STAR;
+             const targetStar = component ? progressStar(treasure, "small", component.id, "target") : MIN_STAR;
+             const stored = fragmentPlan.get(componentId) || {};
+             const targetFragmentMinimum = view === "target" && targetStar === currentStar
+               ? Math.max(0, Number(stored.currentFragments || 0))
+               : 0;
+             const fragmentValue = Math.max(targetFragmentMinimum, Math.min(fragmentLimit, Math.max(0, Number(control.value) || 0)));
+             control.min = targetFragmentMinimum;
+             control.value = fragmentValue;
+             fragmentPlan.set(componentId, { ...stored, [field]: fragmentValue });
+             if (view === "current") {
+               syncTargetToCurrent(treasure);
+               renderRadial(treasure, "target");
+             }
+             renderSimulationSummary(treasure);
+           });
+        });
+        bigButton.onclick = () => simulateUpgrade(treasure, view, "big");
+        bigUpgradeButton.onclick = () => simulateUpgrade(treasure, view, "big");
+        bigDowngradeButton.onclick = () => simulateDowngrade(treasure, view, "big");
+      }
+
+      const snapshotProgress = (treasure, view = "current") => ({
+        bigStar: progressStar(treasure, "big", "big", view),
+        smallStars: new Map(treasure.components.map((component) => [
+          component.id,
+          progressStar(treasure, "small", component.id, view)
+        ]))
+      });
+
+      const collectSimulationTotals = (treasure, snapshot = snapshotProgress(treasure)) => {
+        const bigEffect = treasure.starEffects.find((entry) => entry.star === snapshot.bigStar);
+        const allAttributes = sumAttributes(treasure.components.flatMap((component) =>
+          attributeMap(component, snapshot.smallStars.get(component.id) ?? MIN_STAR)));
+        const heroAttributes = sumAttributes(bigEffect?.attributes || []);
+        const attributes = sumAttributes([...allAttributes, ...heroAttributes]);
+        const materials = mergeCosts(treasure.components.map((component) =>
+          sumStarCosts(component, MIN_STAR, snapshot.smallStars.get(component.id) ?? MIN_STAR)));
+        const smallLevelSum = [...snapshot.smallStars.values()].reduce((sum, star) => sum + star, 0);
+        return { attributes, allAttributes, heroAttributes, materials, bigEffect, bigStar: snapshot.bigStar, smallLevelSum };
+      };
+
+      const attributeDiffMarkup = (savedAttributes, currentAttributes) => {
+        if (!savedAttributes) return currentAttributes.map((attribute) =>
+          `<span class="attribute-item">${escapeHtml(attributeLabel(attribute.id))} <strong>+${formatAttributeValue(attribute)}</strong></span>`
+        ).join("") || '<span class="simulation-empty">暂无属性</span>';
+        const savedValues = new Map(savedAttributes.map((attribute) => [attribute.id, Number(attribute.value || 0)]));
+        const currentValues = new Map(currentAttributes.map((attribute) => [attribute.id, Number(attribute.value || 0)]));
+        const ids = [...new Set([...savedValues.keys(), ...currentValues.keys()])];
+        return ids.map((id) => {
+          const baseValue = savedValues.get(id) || 0;
+          const delta = (currentValues.get(id) || 0) - baseValue;
+          if (!baseValue && !delta) return "";
+          const baseText = baseValue ? formatAttributeValue({ id, value: baseValue }) : "";
+          const deltaText = delta
+            ? `<em class="attribute-delta ${delta > 0 ? "is-positive" : "is-negative"}">${delta > 0 ? "+" : ""}${formatAttributeValue({ id, value: delta })}</em>`
+            : "";
+          const valueMarkup = [
+            baseText ? `<strong>${baseText}</strong>` : "",
+            deltaText
+          ].filter(Boolean).join(" ");
+          return `<span class="attribute-item">${escapeHtml(attributeLabel(id))} ${valueMarkup}</span>`;
+        }).join("") || '<span class="simulation-empty">状态没有变化</span>';
+      };
+
+      const simulationAttributeGroupMarkup = (label, className, savedAttributes, currentAttributes) => `
+        <div class="simulation-attribute-group">
+          <span class="attribute-scope ${className}">${label}</span>
+          <div class="attribute-list">${attributeDiffMarkup(savedAttributes, currentAttributes)}</div>
+        </div>`;
+
+      const specialEffectMarkup = (effect) => {
+        const text = specialEffectText(effect);
+        return text
+          ? `<div class="simulation-special-effect"><span class="attribute-scope scope-special">特殊天赋</span><p class="simulation-effect">${escapeHtml(text)}</p></div>`
+          : "";
+      };
+
+      const bigEffectMarkup = (effect) => {
+        const attributes = effect?.attributes || [];
+        const text = specialEffectText(effect);
+        return `<div class="big-effect-content">
+          <div class="big-effect-attributes"><span class="attribute-scope scope-main">武将属性</span>${bigAttributeMarkup(attributes)}</div>
+          ${text ? `<div class="big-effect-special"><span class="attribute-scope scope-special">特殊天赋</span><div class="effect-copy">${escapeHtml(text)}</div></div>` : ""}
+        </div>`;
+      };
+
+      const costDiffMarkup = (savedCosts, currentCosts) => {
+        if (!savedCosts) return costMarkup(currentCosts) || '<span class="simulation-empty">暂未消耗材料</span>';
+        const keyFor = (cost) => `${cost.type}:${cost.id}`;
+        const savedValues = new Map(savedCosts.map((cost) => [keyFor(cost), cost]));
+        const currentValues = new Map(currentCosts.map((cost) => [keyFor(cost), cost]));
+        const keys = [...new Set([...savedValues.keys(), ...currentValues.keys()])];
+        const chips = keys.map((key) => {
+          const saved = savedValues.get(key);
+          const current = currentValues.get(key);
+          const source = current || saved;
+          const baseAmount = Number(saved?.amount || 0);
+          const delta = Number(current?.amount || 0) - baseAmount;
+          if (!baseAmount && !delta) return "";
+          const material = source.type === 1
+            ? { name: "银币", icon: "assets/lingdi-items/yinbi.png" }
+            : data.materials[String(source.id)] || { name: `材料${source.id}`, icon: "" };
+          const formatCost = (amount) => source.type === 1 ? silverInWan(amount) : number(amount);
+          const baseText = baseAmount ? `${source.type === 1 ? "" : "×"}${formatCost(baseAmount)}` : "";
+          const deltaText = delta
+            ? `<em class="material-delta ${delta > 0 ? "is-positive" : "is-negative"}">${delta > 0 ? "+" : ""}${source.type === 1 ? formatCost(delta) : number(delta)}</em>`
+            : "";
+          return `<span class="cost-chip">${material.icon ? `<img class="cost-icon" src="${escapeHtml(material.icon)}" alt="">` : ""}<span>${escapeHtml(material.name)} ${baseText}${deltaText}</span></span>`;
+        }).join("");
+        return chips ? `<div class="cost-list">${chips}</div>` : '<span class="simulation-empty">状态没有变化</span>';
+      };
+
+      function renderSimulationSummary(treasure) {
+        const summary = document.getElementById("simulation-summary");
+        const currentTotals = collectSimulationTotals(treasure, snapshotProgress(treasure, "current"));
+        const targetTotals = collectSimulationTotals(treasure, snapshotProgress(treasure, "target"));
+        const materialPlan = collectMaterialPlan(treasure);
+        const remainingFragmentMarkup = fragmentNeedMarkup(materialPlan.rows);
+
+        summary.innerHTML = `<div class="simulation-summary">
+          <section class="simulation-box">
+            <p class="simulation-section-label">获得属性</p>
+            ${simulationAttributeGroupMarkup("全体属性", "scope-all", currentTotals.allAttributes, targetTotals.allAttributes)}
+            ${simulationAttributeGroupMarkup("武将属性", "scope-main", currentTotals.heroAttributes, targetTotals.heroAttributes)}
+            ${specialEffectMarkup(targetTotals.bigEffect)}
+            <div class="simulation-fragment-needs"><strong>还需碎片：</strong>${remainingFragmentMarkup}</div>
+          </section>
+          ${weeklyCalculatorMarkup(treasure)}
+        </div>`;
+
+        summary.querySelectorAll("[data-weekly-fragments-id]").forEach((control) => {
+          control.addEventListener("input", () => {
+            const componentId = Number(control.dataset.weeklyFragmentsId);
+            const rawValue = control.value.trim();
+            const normalizedValue = rawValue.replace(",", ".");
+            if (!normalizedValue || normalizedValue === ".") {
+              weeklyFragmentPlan.delete(componentId);
+            } else if (/^\d*\.?\d*$/.test(normalizedValue)) {
+              const weeklyFragments = Number(normalizedValue);
+              if (Number.isFinite(weeklyFragments) && weeklyFragments >= 0) {
+                weeklyFragmentPlan.set(componentId, weeklyFragments);
+              }
+            } else {
+              weeklyFragmentPlan.delete(componentId);
+            }
+            updateWeeklyCalculator(treasure);
+          });
+        });
+
+        const resetProgress = (view) => {
+          const progress = progressStore(view);
+          const resetBigStar = view === "target"
+            ? Math.max(MIN_STAR, progressStar(treasure, "big", "big", "current"))
+            : MIN_STAR;
+          progress.set(progressKey(treasure, "big"), resetBigStar);
+          treasure.components.forEach((component) => {
+            const resetSmallStar = view === "target"
+              ? Math.max(MIN_STAR, progressStar(treasure, "small", component.id, "current"))
+              : MIN_STAR;
+            progress.set(progressKey(treasure, "small", component.id), resetSmallStar);
+            const stored = fragmentPlan.get(component.id) || {};
+            const field = view === "target" ? "targetFragments" : "currentFragments";
+            const resetFragments = view === "target"
+              ? Math.max(0, Number(stored.currentFragments || 0))
+              : 0;
+            fragmentPlan.set(component.id, { ...stored, [field]: resetFragments });
+          });
+          simulatorSelection[view] = { kind: "big", componentId: null };
+          renderRadial(treasure, "current");
+          renderRadial(treasure, "target");
+          renderSimulationSummary(treasure);
+        };
+        document.querySelector('[data-simulation-action="reset-current"]').onclick = () => resetProgress("current");
+        document.querySelector('[data-simulation-action="reset-target"]').onclick = () => resetProgress("target");
+      }
+
+      const renderPicker = (selectedId) => {
+        document.getElementById("treasure-grid").innerHTML = data.treasures.map((treasure) => `
+          <button class="treasure-card${treasure.id === selectedId ? " is-active" : ""}" style="${qualityStyle(treasure.quality)}" type="button" data-id="${treasure.id}" aria-label="查看${escapeHtml(treasure.name)}古宝">
+            <img class="treasure-card-icon" src="${escapeHtml(treasure.icon)}" alt="${escapeHtml(treasure.name)}图标">
+            <span class="treasure-card-copy"><span class="treasure-card-name">${escapeHtml(treasure.name)}</span></span>
+          </button>
+        `).join("");
+        document.querySelectorAll(".treasure-card").forEach((button) => {
+          button.addEventListener("click", () => renderTreasure(Number(button.dataset.id)));
+        });
+      };
+
+      const renderTreasure = (id) => {
+        const treasure = data.treasures.find((entry) => entry.id === id) || data.treasures[0];
+        ["current", "target"].forEach((view) => {
+          if (!treasure.components.some((component) => component.id === simulatorSelection[view].componentId)) {
+            simulatorSelection[view] = { kind: "big", componentId: null };
+          }
+        });
+        document.getElementById("small-attribute-table").innerHTML = treasure.components.map((component) => {
+          const rows = [
+            { label: "未解锁", attributes: '<span class="empty">—</span>', costs: '<span class="empty">—</span>' },
+            ...Array.from({ length: treasure.starMax + 1 }, (_, star) => ({
+              label: `${star}星`,
+              attributes: attributeMarkup(attributeMap(component, star)),
+              costs: costMarkup(starCostsFor(component, star))
+            }))
+          ];
+          return rows.map((row, index) => `
+            <tr>
+              ${index === 0 ? `<td class="small-treasure-cell" rowspan="${rows.length}"><div class="small-profile"><img class="small-icon" src="${escapeHtml(component.icon)}" alt=""><span class="small-name">${escapeHtml(component.name)}</span></div></td>` : ""}
+              <td class="number">${row.label}</td>
+              <td class="star-attribute-cell">${row.attributes}</td>
+              <td class="star-cost-cell">${row.costs}</td>
+            </tr>
+          `).join("");
+        }).join("");
+        document.getElementById("big-attribute-table").innerHTML = `
+          <tr><td class="number">未解锁</td><td><div class="effect-copy">暂无武将属性与特殊天赋</div></td></tr>
+        ` + treasure.starEffects.map((effect) => `
+          <tr>
+            <td class="number">${number(effect.star)}星</td>
+            <td>${bigEffectMarkup(effect)}</td>
+          </tr>
+        `).join("");
+        renderPicker(treasure.id);
+        renderRadial(treasure, "current");
+        renderRadial(treasure, "target");
+        renderSimulationSummary(treasure);
+      };
+
+      renderTreasure(data.treasures[0].id);
+    })();
+  </script>
+</body>
+</html>

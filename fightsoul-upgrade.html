@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三战魂升级、进阶、精炼材料与属性查询表。">
+  <title>战魂升级与进阶 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fffaf0;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff2d8;
+      --text: #29241e;
+      --muted: #756d61;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b27b28;
+      --purple: #67528d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-meta,
+    .summary-meta,
+    .detail-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .summary-panel,
+    .section-panel,
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .summary-panel,
+    .section-panel { margin-top: 12px; padding: 14px 16px; }
+
+    .summary-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .soul-icon {
+      display: block;
+      width: 80px;
+      height: 80px;
+      flex: 0 0 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 8px rgba(75, 32, 32, 0.2));
+    }
+
+    .summary-main { min-width: 0; flex: 1 1 auto; }
+
+    .summary-heading,
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .summary-title,
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .badge-list,
+    .attribute-list,
+    .cost-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .badge-list { margin-top: 9px; }
+
+    .badge,
+    .attribute-pill,
+    .cost-chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .badge { min-height: 28px; padding: 4px 9px; }
+
+    .section-head { margin-bottom: 9px; }
+
+    .browser-tools {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 170px;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .browser-tools input,
+    .browser-tools select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .soul-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 7px;
+      max-height: 420px;
+      overflow: auto;
+      padding: 2px;
+    }
+
+    .soul-choice {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 6px 7px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      box-shadow: 0 1px 0 rgba(47, 38, 27, 0.08);
+    }
+
+    .soul-choice:hover,
+    .soul-choice.is-selected { background: var(--panel-hover); border-color: var(--gold); }
+
+    .soul-choice-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      object-fit: contain;
+      box-sizing: border-box;
+      padding: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      background: #34404a;
+      box-shadow: inset 0 0 0 1px rgba(18, 25, 31, 0.2);
+    }
+
+    .soul-choice-copy { min-width: 0; }
+    .soul-choice-name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 800; }
+    .soul-choice-quality { display: block; margin-top: 2px; color: var(--purple); font-size: 11px; }
+
+    .detail-panel { padding-top: 16px; }
+
+    .selected-soul {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 13px;
+    }
+
+    .selected-soul-icon {
+      width: 86px;
+      height: 86px;
+      flex: 0 0 86px;
+      object-fit: contain;
+    }
+
+    .selected-soul-copy { min-width: 0; }
+
+    .selected-soul-name {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 22px;
+      font-weight: 850;
+    }
+
+    .selected-soul-sub { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+    .attribute-section { padding: 13px 0 2px; }
+    .attribute-heading { margin: 0 0 8px; color: var(--jade-dark); font-size: 14px; font-weight: 850; }
+
+    .attribute-pill { gap: 7px; padding: 6px 9px; color: var(--text); }
+    .attribute-pill strong { color: var(--gold); }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .detail-block {
+      min-width: 0;
+      border-top: 2px solid rgba(60, 157, 133, 0.35);
+      padding-top: 9px;
+    }
+
+    .detail-block h3 {
+      margin: 0 0 8px;
+      color: var(--jade-dark);
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .detail-line { margin: 6px 0; font-size: 13px; line-height: 1.55; }
+    .detail-line strong { color: var(--gold); }
+
+    .soul-calculator {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 12px;
+    }
+
+    .soul-calculator .section-head { margin-bottom: 10px; }
+
+    .calc-controls {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .calc-control {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .calc-control select,
+    .calc-control input {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel);
+      color: var(--text);
+      padding: 7px 9px;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .calc-result { margin-top: 12px; }
+
+    .calc-result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .calc-result-card {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel);
+      padding: 8px 10px;
+    }
+
+    .calc-result-card span,
+    .calc-result-card small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .calc-result-card strong {
+      display: block;
+      margin: 3px 0;
+      color: var(--gold);
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .calc-result-section { margin-top: 11px; }
+    .calc-result-section h4 { margin: 0 0 7px; color: var(--jade-dark); font-size: 13px; }
+    .calc-result-section + .calc-result-section { border-top: 1px solid var(--line); padding-top: 10px; }
+
+    .cost-chip { gap: 4px; min-height: 30px; padding: 3px 7px 3px 4px; color: var(--text); }
+    .cost-chip img { width: 25px; height: 25px; object-fit: contain; }
+    .cost-chip strong { color: var(--gold); }
+
+    .refine-wrap { margin-top: 13px; }
+    .refine-table { overflow-x: auto; }
+
+    .upgrade-exp-wrap { margin-top: 13px; border-top: 1px solid var(--line); padding-top: 11px; }
+    .upgrade-exp-wrap summary { color: var(--jade-dark); cursor: pointer; font-size: 13px; font-weight: 850; }
+    .upgrade-exp-table { margin-top: 9px; overflow-x: auto; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { border-bottom: 1px solid rgba(217, 203, 182, 0.8); padding: 9px 12px; text-align: left; vertical-align: middle; }
+    th { background: rgba(231, 187, 97, 0.12); color: var(--muted); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .material-cell { display: inline-flex; align-items: center; gap: 8px; min-width: 200px; }
+    .material-icon { width: 42px; height: 42px; flex: 0 0 42px; object-fit: contain; }
+    .material-name { font-weight: 800; }
+    .quality-name { color: var(--purple); font-weight: 850; white-space: nowrap; }
+    .number { color: var(--gold); font-weight: 850; white-space: nowrap; }
+    .empty { color: var(--muted); font-size: 13px; }
+    .notice { margin: 11px 0 0; border-left: 3px solid var(--gold); padding: 7px 0 7px 11px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+    .milestone-table table { min-width: 560px; }
+    .milestone-table th:first-child,
+    .milestone-table td:first-child { width: 150px; white-space: nowrap; }
+
+    footer { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 12px; }
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      .soul-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .detail-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { display: block; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .summary-panel { align-items: flex-start; }
+      .soul-icon { width: 64px; height: 64px; flex-basis: 64px; }
+      .summary-heading,
+      .section-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .section-title { font-size: 17px; }
+      .browser-tools { grid-template-columns: 1fr; }
+      .browser-tools input { grid-column: 1 / -1; }
+      .calc-controls { grid-template-columns: 1fr 1fr; }
+      .calc-result-grid { grid-template-columns: 1fr; }
+      .soul-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 500px; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .selected-soul-icon { width: 70px; height: 70px; flex-basis: 70px; }
+      .selected-soul-name { font-size: 20px; }
+      th, td { padding: 8px 9px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">战魂升级与进阶</h1>
+      <p class="page-note">查看战魂升级、进阶、精炼效果与消耗</p>
+    </section>
+
+    <section class="summary-panel">
+      <img class="soul-icon" src="assets/fightsoul-items/wuhunbao.png" alt="战魂图标">
+      <div class="summary-main">
+        <div class="summary-heading">
+          <h2 class="summary-title">战魂</h2>
+          <span class="summary-meta">从列表选择具体战魂查看完整配置</span>
+        </div>
+        <div class="badge-list">
+          <span class="badge" id="soul-record-count"></span>
+          <span class="badge">列表：紫色基础战魂</span>
+          <span class="badge">包含升级 / 进阶 / 精炼</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">战魂列表</h2>
+        <span class="section-meta" id="soul-count"></span>
+      </div>
+      <div class="browser-tools">
+        <input id="soul-search" type="search" placeholder="搜索战魂名称或说明" autocomplete="off">
+        <select id="type-filter" aria-label="筛选类型"></select>
+      </div>
+      <div class="soul-grid" id="soul-list"></div>
+    </section>
+
+    <section class="section-panel detail-panel" id="soul-detail">
+      <div class="selected-soul">
+        <img class="selected-soul-icon" id="selected-soul-icon" src="assets/fightsoul-items/wuhunbao.png" alt="">
+        <div class="selected-soul-copy">
+          <h2 class="selected-soul-name" id="selected-soul-name">战魂</h2>
+          <p class="selected-soul-sub" id="selected-soul-sub"></p>
+        </div>
+      </div>
+
+      <div class="attribute-section">
+        <h3 class="attribute-heading">属性</h3>
+        <div class="attribute-list" id="selected-attributes"></div>
+      </div>
+
+      <section class="soul-calculator" aria-labelledby="soul-calculator-title">
+        <div class="section-head">
+          <h3 class="section-title" id="soul-calculator-title">进阶与精炼计算器</h3>
+          <span class="section-meta">按当前战魂进阶链计算</span>
+        </div>
+        <div class="calc-controls">
+          <label class="calc-control">起始品质<select id="calc-from-quality"></select></label>
+          <label class="calc-control">目标品质<select id="calc-to-quality"></select></label>
+          <label class="calc-control">起始精炼<input id="calc-from-refine" type="number" min="0" step="1" inputmode="numeric"></label>
+          <label class="calc-control">目标精炼<input id="calc-to-refine" type="number" min="0" step="1" inputmode="numeric"></label>
+          <label class="calc-control">主角等级<input id="calc-hero-level" type="number" min="0" step="1" inputmode="numeric" placeholder="填写后计算上限"></label>
+        </div>
+        <div class="calc-result" id="calc-result"></div>
+      </section>
+
+      <div class="detail-grid">
+        <article class="detail-block">
+          <h3>升级</h3>
+          <div id="upgrade-detail"></div>
+        </article>
+        <article class="detail-block">
+          <h3>进阶</h3>
+          <div id="advance-detail"></div>
+        </article>
+        <article class="detail-block">
+          <h3>精炼</h3>
+          <div id="refine-summary"></div>
+        </article>
+      </div>
+
+      <details class="upgrade-exp-wrap" id="upgrade-exp-wrap">
+        <summary>展开升级经验表</summary>
+        <div class="table-wrap upgrade-exp-table">
+          <table>
+            <thead><tr><th scope="col">等级</th><th scope="col">对应经验</th></tr></thead>
+            <tbody id="upgrade-exp-table"></tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="refine-wrap" id="refine-wrap">
+        <div class="section-head">
+          <h3 class="section-title">精炼逐级消耗</h3>
+          <span class="section-meta">按照解包配置显示</span>
+        </div>
+        <div class="table-wrap refine-table">
+          <table>
+            <thead><tr><th scope="col">精炼等级</th><th scope="col">消耗材料</th><th scope="col">附加等级</th></tr></thead>
+            <tbody id="refine-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">战魂常用材料</h2>
+        <span class="section-meta">进阶与精炼配置中的材料</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">材料</th><th scope="col">对应阶段</th><th scope="col">用途</th></tr></thead>
+          <tbody id="advance-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">猎魂阶段</h2>
+        <span class="section-meta">各阶段可猎出的战魂范围</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">阶段</th><th scope="col">消耗</th><th scope="col">可获得数量</th><th scope="col">说明</th></tr></thead>
+          <tbody id="hunt-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel milestone-table">
+      <div class="section-head">
+        <h2 class="section-title">战魂品质节点</h2>
+        <span class="section-meta">品质相关功能开启等级</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">品质</th><th scope="col">开启等级</th></tr></thead>
+          <tbody id="milestone-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">战魂品质与战意门槛</h2>
+        <span class="section-meta">战魂计入战意的条件</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">战魂品质</th><th scope="col">对应战意目标</th><th scope="col">需要数量</th><th scope="col">统计上限</th></tr></thead>
+          <tbody id="quality-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/fightsoul-data.js"></script>
+  <script>
+    (() => {
+      const data = window.fightsoulData;
+      const itemMap = data.items || {};
+      // 列表只展示紫色基础战魂；完整映射仍保留，便于沿进阶链查找后续品质和材料。
+      const sourceSouls = [...data.souls];
+      const allSouls = sourceSouls.filter((soul) => Number(soul.quality) === 5).sort((a, b) => a.id - b.id);
+      const soulMap = Object.fromEntries(sourceSouls.map((soul) => [String(soul.id), soul]));
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+      const qualityLabel = (quality) => data.qualityLabels[String(quality)] || `品质${quality}`;
+      const attributeName = (id) => data.attributeNames[String(id)] || `属性${id}`;
+      const flatAttributeNames = new Set(["生命", "物攻", "法攻", "物防", "法防", "攻击", "必防", "怒气", "初始怒气", "士气"]);
+      const hundredthAttributeNames = new Set(["统帅", "统率", "武力", "智力"]);
+      function formatAttributeValue(attribute) {
+        const raw = Number(attribute.amount) || 0;
+        const name = attributeName(attribute.id);
+        if (flatAttributeNames.has(name)) return number(raw);
+        const value = raw / 100;
+        return `${value.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}${hundredthAttributeNames.has(name) ? "" : "%"}`;
+      }
+      // 战魂本体图标：对应 DB_Item_fightsoul.icon_small，后续补充战魂时只需填写 icon 字段。
+      const fightSoulIcon = "assets/fightsoul-items/wuhunbao.png";
+      const fightSoulIconDir = "assets/fightsoul-icons/souls";
+      const iconPath = (icon) => icon ? `${fightSoulIconDir}/${icon}.png` : fightSoulIcon;
+
+      function costInfo(entry) {
+        const id = String(entry.id);
+        if (entry.type === 1 && id === "0") return { name: "银币", icon: "assets/fightsoul-items/jingyanzhanhun.png" };
+        if (itemMap[id]) return itemMap[id];
+        if (soulMap[id]) return { name: soulMap[id].name, icon: iconPath(soulMap[id].icon) };
+        return { name: `物品${id}`, icon: "assets/fightsoul-items/zhanhunjinjie.png" };
+      }
+
+      function costMarkup(entries) {
+        if (!entries || !entries.length) return '<span class="empty">无</span>';
+        return `<div class="cost-list">${entries.map((entry) => {
+          const item = costInfo(entry);
+          return `<span class="cost-chip"><img src="${escapeHtml(item.icon)}" alt=""><span>${escapeHtml(item.name)}</span><strong>×${number(entry.amount)}</strong></span>`;
+        }).join("")}</div>`;
+      }
+
+      function attributesMarkup(attributes, label) {
+        if (!attributes || !attributes.length) return `<span class="empty">${label}未配置</span>`;
+        return attributes.map((attribute) => `<span class="attribute-pill"><span>${escapeHtml(attributeName(attribute.id))}</span><strong>+${formatAttributeValue(attribute)}</strong></span>`).join("");
+      }
+
+      function optionMarkup(value, label) {
+        return `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`;
+      }
+
+      function mergeCosts(target, entries) {
+        (entries || []).forEach((entry) => {
+          const key = `${entry.type}:${entry.id}`;
+          const current = target.get(key);
+          if (current) {
+            current.amount += Number(entry.amount) || 0;
+          } else {
+            target.set(key, { type: entry.type, id: String(entry.id), amount: Number(entry.amount) || 0 });
+          }
+        });
+      }
+
+      function mergeAttributes(attributes) {
+        const result = new Map();
+        (attributes || []).forEach((attribute) => {
+          result.set(String(attribute.id), (result.get(String(attribute.id)) || 0) + (Number(attribute.amount) || 0));
+        });
+        return [...result.entries()].map(([id, amount]) => ({ id, amount }));
+      }
+
+      function refinedAttributes(soul, level) {
+        const amount = (Number(soul.refineAffix) || 0) * Number(level || 0) / 100;
+        return amount ? (soul.baseAttributes || []).map((attribute) => ({ id: attribute.id, amount })) : [];
+      }
+
+      function signedAttributesMarkup(attributes) {
+        if (!attributes.length) return '<span class="empty">无属性变化</span>';
+        return attributes.map((attribute) => `<span class="attribute-pill"><span>${escapeHtml(attributeName(attribute.id))}</span><strong>${attribute.amount >= 0 ? "+" : "-"}${formatAttributeValue({ ...attribute, amount: Math.abs(attribute.amount) })}</strong></span>`).join("");
+      }
+
+      const typeFilter = document.getElementById("type-filter");
+      const types = [...new Set(allSouls.map((soul) => soul.info).filter(Boolean))];
+      typeFilter.innerHTML = optionMarkup("all", "全部类型") + types.map((type) => optionMarkup(type, type)).join("");
+
+      let selectedId = 70301;
+      const list = document.getElementById("soul-list");
+      const calcFromQuality = document.getElementById("calc-from-quality");
+      const calcToQuality = document.getElementById("calc-to-quality");
+      const calcFromRefine = document.getElementById("calc-from-refine");
+      const calcToRefine = document.getElementById("calc-to-refine");
+      const calcHeroLevel = document.getElementById("calc-hero-level");
+      const calcResult = document.getElementById("calc-result");
+      let calculatorChain = [];
+
+      function filteredSouls() {
+        const query = document.getElementById("soul-search").value.trim().toLowerCase();
+        const type = typeFilter.value;
+        return allSouls.filter((soul) => {
+          const matchesQuery = !query || `${soul.name} ${soul.info || ""}`.toLowerCase().includes(query);
+          const matchesType = type === "all" || soul.info === type;
+          return matchesQuery && matchesType;
+        });
+      }
+
+      function renderList() {
+        const rows = filteredSouls();
+        document.getElementById("soul-count").textContent = `显示 ${rows.length} / ${allSouls.length} 条`;
+        list.innerHTML = rows.length ? rows.map((soul) => `
+          <button class="soul-choice${soul.id === selectedId ? " is-selected" : ""}" type="button" data-soul-id="${soul.id}">
+            <img class="soul-choice-icon" src="${escapeHtml(iconPath(soul.icon))}" alt="">
+            <span class="soul-choice-copy"><span class="soul-choice-name">${escapeHtml(soul.name)}</span><span class="soul-choice-quality">${escapeHtml(qualityLabel(soul.quality))} · ${escapeHtml(soul.info || "战魂")}</span></span>
+          </button>`).join("") : '<p class="empty">没有符合条件的战魂</p>';
+        list.querySelectorAll("[data-soul-id]").forEach((button) => button.addEventListener("click", () => {
+          selectedId = Number(button.dataset.soulId);
+          renderList();
+          renderDetail();
+        }));
+      }
+
+      function chainForSoul(soul) {
+        const chain = [];
+        const seen = new Set();
+        let current = soul;
+        while (current && !seen.has(current.id)) {
+          chain.push(current);
+          seen.add(current.id);
+          current = current.afterRevolveId ? soulMap[String(current.afterRevolveId)] : null;
+        }
+        return chain;
+      }
+
+      function chainIndex(quality) {
+        const index = calculatorChain.findIndex((soul) => soul.quality === Number(quality));
+        return index < 0 ? 0 : index;
+      }
+
+      function syncCalculatorInputs() {
+        if (!calculatorChain.length) return;
+        const fromIndex = chainIndex(calcFromQuality.value);
+        const fromSoul = calculatorChain[fromIndex];
+        const targetIndex = Math.max(fromIndex, chainIndex(calcToQuality.value));
+        const targetSoul = calculatorChain[targetIndex];
+        calcFromQuality.value = String(fromSoul.quality);
+        calcToQuality.value = String(targetSoul.quality);
+
+        const fromMax = Number(fromSoul.refineMaxLevel) || 0;
+        const fromLevel = Math.min(fromMax, Math.max(0, Number(calcFromRefine.value) || 0));
+        calcFromRefine.min = "0";
+        calcFromRefine.max = String(fromMax);
+        calcFromRefine.value = String(fromLevel);
+
+        const targetMax = Number(targetSoul.refineMaxLevel) || 0;
+        const targetLevel = Math.min(targetMax, Math.max(fromLevel, Number(calcToRefine.value) || 0));
+        calcToRefine.min = String(fromLevel);
+        calcToRefine.max = String(targetMax);
+        calcToRefine.value = String(targetLevel);
+        renderSoulCalculator();
+      }
+
+      function refreshTargetQualityOptions(resetTarget) {
+        if (!calculatorChain.length) return;
+        const fromIndex = chainIndex(calcFromQuality.value);
+        const targetOptions = calculatorChain.slice(fromIndex);
+        const previousTarget = Number(calcToQuality.value);
+        calcToQuality.innerHTML = targetOptions.map((soul) => optionMarkup(soul.quality, `${qualityLabel(soul.quality)}品质`)).join("");
+        const validTarget = !resetTarget && targetOptions.some((soul) => soul.quality === previousTarget)
+          ? previousTarget
+          : targetOptions[targetOptions.length - 1].quality;
+        calcToQuality.value = String(validTarget);
+        syncCalculatorInputs();
+      }
+
+      function levelLimitInfo(soul, refineLevel) {
+        const heroText = calcHeroLevel.value.trim();
+        const heroLevel = Number(heroText);
+        const hasHeroLevel = heroText !== "" && Number.isFinite(heroLevel) && heroLevel >= 0;
+        const baseMaxLevelArg = Number(soul.baseMaxLevelArg) || 0;
+        const maxLevelArg = Number(soul.maxLevelArg) || 0;
+        const hardLimit = Number(soul.maxLevel) || Number.POSITIVE_INFINITY;
+        const baseLevelCap = hasHeroLevel
+          ? Math.floor(Math.min(baseMaxLevelArg + maxLevelArg * 0.01 * heroLevel, hardLimit) / 5) * 5
+          : null;
+        const advanceBonus = Number(soul.advanceAddLevel) || 0;
+        const refineBonus = Object.entries(soul.refineAddLevels || {}).reduce((total, [level, amount]) => (
+          Number(refineLevel) >= Number(level) ? total + (Number(amount) || 0) : total
+        ), 0);
+        return {
+          baseLevelCap,
+          advanceBonus,
+          refineBonus,
+          total: baseLevelCap == null ? null : baseLevelCap + advanceBonus + refineBonus
+        };
+      }
+
+      function renderUpgradeInfo(soul, refineLevel) {
+        const upgradeTable = soul.upgradeId ? data.upgradeExpTables?.[String(soul.upgradeId)] : null;
+        const upgradeValues = upgradeTable?.values || {};
+        const configuredLevels = Object.keys(upgradeValues).map(Number).sort((a, b) => a - b);
+        const levelInfo = levelLimitInfo(soul, refineLevel);
+        const visibleLimit = levelInfo.total == null
+          ? configuredLevels.at(-1)
+          : Math.min(levelInfo.total, configuredLevels.at(-1) || levelInfo.total);
+        document.getElementById("upgrade-detail").innerHTML = upgradeTable ? `
+          <p class="detail-line">同类战魂基础经验：<strong>${number(soul.baseExp || 0)}</strong></p>
+          <p class="detail-line">升级经验表：<strong>${escapeHtml(upgradeTable.name)}（ID ${soul.upgradeId}）</strong></p>
+          <p class="detail-line">经验配置范围：<strong>1～${number(configuredLevels.at(-1) || 0)}级</strong></p>
+          <p class="detail-line">主角等级基础上限：<strong>${levelInfo.baseLevelCap == null ? "待填写主角等级" : `${number(levelInfo.baseLevelCap)}级`}</strong></p>
+          <p class="detail-line">进阶 / 精炼等级加成：<strong>+${number(levelInfo.advanceBonus + levelInfo.refineBonus)}级</strong></p>
+          <p class="detail-line">当前估算上限：<strong>${levelInfo.total == null ? "填写主角等级后计算" : `${number(levelInfo.total)}级`}</strong></p>` : '<p class="empty">未配置升级经验表。</p>';
+        document.getElementById("upgrade-exp-wrap").style.display = upgradeTable ? "block" : "none";
+        document.getElementById("upgrade-exp-table").innerHTML = upgradeTable ? configuredLevels.filter((level) => level <= visibleLimit).map((level) => `
+          <tr><td class="number">${number(level)}级</td><td class="number">${number(upgradeValues[level])}</td></tr>`).join("") : "";
+      }
+
+      function renderSoulCalculator() {
+        if (!calculatorChain.length) return;
+        const fromIndex = chainIndex(calcFromQuality.value);
+        const targetIndex = Math.max(fromIndex, chainIndex(calcToQuality.value));
+        const fromSoul = calculatorChain[fromIndex];
+        const targetSoul = calculatorChain[targetIndex];
+        const fromLevel = Number(calcFromRefine.value) || 0;
+        const targetLevel = Number(calcToRefine.value) || 0;
+        const targetLevelInfo = levelLimitInfo(targetSoul, targetLevel);
+        const advanceCosts = new Map();
+        const refineCosts = new Map();
+
+        for (let index = fromIndex; index < targetIndex; index += 1) {
+          mergeCosts(advanceCosts, calculatorChain[index].advanceCosts);
+        }
+
+        // 精炼材料按进阶过程分段计算：达到当前品质的精炼上限后，再进入下一品质继续精炼。
+        let currentLevel = fromLevel;
+        for (let index = fromIndex; index <= targetIndex; index += 1) {
+          const stage = calculatorChain[index];
+          const stageMax = Number(stage.refineMaxLevel) || 0;
+          const stageTarget = Math.min(targetLevel, stageMax);
+          if (stageTarget <= currentLevel) continue;
+          const table = stage.refineCostKey ? data.refineCosts?.[String(stage.refineCostKey)] : null;
+          for (let level = currentLevel + 1; level <= stageTarget; level += 1) {
+            mergeCosts(refineCosts, table?.[String(level)]);
+          }
+          currentLevel = stageTarget;
+        }
+
+        const finalAttributes = mergeAttributes([...(targetSoul.baseAttributes || []), ...refinedAttributes(targetSoul, targetLevel)]);
+        const startAttributes = mergeAttributes([...(fromSoul.baseAttributes || []), ...refinedAttributes(fromSoul, fromLevel)]);
+        const deltaMap = new Map(startAttributes.map((attribute) => [String(attribute.id), -Number(attribute.amount)]));
+        finalAttributes.forEach((attribute) => deltaMap.set(String(attribute.id), (deltaMap.get(String(attribute.id)) || 0) + Number(attribute.amount)));
+        const attributeDelta = [...deltaMap.entries()].map(([id, amount]) => ({ id, amount })).filter((attribute) => attribute.amount !== 0);
+        const totalCosts = new Map();
+        mergeCosts(totalCosts, [...advanceCosts.values(), ...refineCosts.values()]);
+        const allCosts = [...totalCosts.values()];
+        const advanceCount = targetIndex - fromIndex;
+        const refineCount = targetLevel - fromLevel;
+        renderUpgradeInfo(targetSoul, targetLevel);
+
+        calcResult.innerHTML = `
+          <div class="calc-result-grid">
+            <div class="calc-result-card"><span>进阶次数</span><strong>${number(advanceCount)}次</strong><small>${escapeHtml(qualityLabel(fromSoul.quality))} → ${escapeHtml(qualityLabel(targetSoul.quality))}</small></div>
+            <div class="calc-result-card"><span>精炼等级</span><strong>+${number(refineCount)}级</strong><small>${number(fromLevel)}级 → ${number(targetLevel)}级</small></div>
+            <div class="calc-result-card"><span>目标状态</span><strong>${escapeHtml(qualityLabel(targetSoul.quality))}</strong><small>${escapeHtml(targetSoul.name)} · ${number(targetLevel)}级精炼</small></div>
+            <div class="calc-result-card"><span>当前估算等级上限</span><strong>${targetLevelInfo.total == null ? "待填写" : `${number(targetLevelInfo.total)}级`}</strong><small>进阶 +${number(targetLevelInfo.advanceBonus)} · 精炼 +${number(targetLevelInfo.refineBonus)}</small></div>
+          </div>
+          <div class="calc-result-section"><h4>总消耗材料</h4>${costMarkup(allCosts)}</div>
+          <div class="calc-result-section"><h4>目标属性（基础 + 目标精炼）</h4><div class="attribute-list">${attributesMarkup(finalAttributes, "目标属性")}</div><p class="detail-note">每级成长：${attributesMarkup(targetSoul.growthAttributes, "成长属性")}</p></div>
+          <div class="calc-result-section"><h4>相对起点属性变化</h4><div class="attribute-list">${signedAttributesMarkup(attributeDelta)}</div></div>`;
+      }
+
+      function renderDetail() {
+        const soul = soulMap[String(selectedId)] || data.souls[0];
+        selectedId = soul.id;
+        const nextSoul = soul.afterRevolveId ? soulMap[String(soul.afterRevolveId)] : null;
+        document.getElementById("selected-soul-icon").src = iconPath(soul.icon);
+        document.getElementById("selected-soul-icon").alt = soul.name;
+        document.getElementById("selected-soul-name").textContent = soul.name;
+        document.getElementById("selected-soul-sub").textContent = `${qualityLabel(soul.quality)}品质 · ${soul.info || "战魂"} · 编号 ${soul.id}`;
+        document.getElementById("selected-attributes").innerHTML = `<span class="attribute-pill"><span>基础属性</span></span>${attributesMarkup(soul.baseAttributes, "基础属性")}${soul.growthAttributes?.length ? `<span class="attribute-pill"><span>每级成长</span></span>${attributesMarkup(soul.growthAttributes, "成长属性")}` : ""}`;
+
+        calculatorChain = chainForSoul(soul);
+        calcFromQuality.innerHTML = calculatorChain.map((stage) => optionMarkup(stage.quality, `${qualityLabel(stage.quality)}品质`)).join("");
+        calcFromQuality.value = String(calculatorChain[0].quality);
+        calcFromRefine.value = "0";
+        calcToRefine.value = String(Number(calculatorChain[calculatorChain.length - 1].refineMaxLevel) || 0);
+        refreshTargetQualityOptions(true);
+
+        document.getElementById("advance-detail").innerHTML = soul.isEvolve || soul.advanceCosts.length ? `
+          <p class="detail-line">进阶后：<strong>${escapeHtml(nextSoul ? `${nextSoul.name}（${qualityLabel(nextSoul.quality)}）` : "未配置")}</strong></p>
+          <p class="detail-line">进阶消耗：</p>${costMarkup(soul.advanceCosts)}
+          ${soul.needScoreLevel != null ? `<p class="detail-line">战魂评分条件：<strong>${number(soul.needScoreLevel)}</strong></p>` : ""}` : '<p class="empty">该战魂没有配置进阶消耗。</p>';
+
+        const refineCosts = soul.refineCostKey ? data.refineCosts[soul.refineCostKey] : null;
+        const refineLevels = refineCosts ? Object.keys(refineCosts).map(Number).sort((a, b) => a - b) : [];
+        document.getElementById("refine-summary").innerHTML = soul.refineMaxLevel ? `
+          <p class="detail-line">精炼上限：<strong>${number(soul.refineMaxLevel)}级</strong></p>
+          <p class="detail-line">精炼属性配置：<strong>${number(soul.refineAffix)}</strong></p>
+          <p class="detail-line">计算方式：<strong>${number(soul.refineAffix)} ÷ 100 × 精炼等级</strong></p>
+          <p class="detail-line">已配置消耗：<strong>${refineLevels.length}档</strong></p>
+          ${soul.refineUnlockLevel ? `<p class="detail-line">精炼起始配置：<strong>${number(soul.refineUnlockLevel)}级</strong></p>` : ""}` : '<p class="empty">该战魂没有配置精炼效果。</p>';
+
+        const refineWrap = document.getElementById("refine-wrap");
+        refineWrap.style.display = refineLevels.length ? "block" : "none";
+        document.getElementById("refine-table").innerHTML = refineLevels.map((level) => `
+          <tr><td class="number">${number(level)}级</td><td>${costMarkup(refineCosts[level])}</td><td class="number">${soul.refineAddLevels[level] ? `+${number(soul.refineAddLevels[level])}` : "-"}</td></tr>`).join("");
+      }
+
+      document.getElementById("soul-search").addEventListener("input", renderList);
+      typeFilter.addEventListener("change", renderList);
+      calcFromQuality.addEventListener("change", () => refreshTargetQualityOptions(false));
+      calcToQuality.addEventListener("change", syncCalculatorInputs);
+      calcFromRefine.addEventListener("input", syncCalculatorInputs);
+      calcToRefine.addEventListener("input", syncCalculatorInputs);
+      calcHeroLevel.addEventListener("input", renderSoulCalculator);
+
+      document.getElementById("advance-table").innerHTML = data.advanceMaterials.map((row) => {
+        const item = itemMap[String(row.id)] || {};
+        return `<tr><td><span class="material-cell"><img class="material-icon" src="${escapeHtml(item.icon || "assets/fightsoul-items/zhanhunjinjie.png")}" alt=""><span class="material-name">${escapeHtml(item.name || row.id)}</span></span></td><td class="quality-name">${escapeHtml(row.stage)}</td><td>${escapeHtml(row.use)}</td></tr>`;
+      }).join("");
+
+      document.getElementById("hunt-table").innerHTML = data.huntStages.map((stage) => `
+        <tr><td class="quality-name">${escapeHtml(stage.name)}</td><td class="number">${number(stage.cost)}</td><td class="number">${number(stage.souls.length)}条</td><td>${escapeHtml(stage.description || "")}</td></tr>`).join("");
+
+      document.getElementById("milestone-table").innerHTML = data.qualityUnlocks.map((row) => `
+        <tr><td class="quality-name">${escapeHtml(row.quality)}品质</td><td class="number">${number(row.level)}级</td></tr>`).join("");
+
+      document.getElementById("quality-table").innerHTML = data.qualityStages.map((row) => `
+        <tr><td class="quality-name">${escapeHtml(row.quality)}品质以上</td><td class="number">${number(row.moraleTarget)}档</td><td class="number">${number(row.required)}个</td><td>${number(row.limit)}个</td></tr>`).join("");
+
+      document.getElementById("soul-record-count").textContent = `战魂记录：${allSouls.length}条`;
+      renderList();
+      renderDetail();
+    })();
+  </script>
+</body>
+</html>

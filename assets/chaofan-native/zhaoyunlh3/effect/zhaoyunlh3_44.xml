@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zhaoyunlh3_44" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1"/>
+			<frameInfo frame="1"/>
+			<frameInfo frame="2"/>
+			<frameInfo frame="3"/>
+			<frameInfo frame="4"/>
+			<frameInfo frame="5"/>
+			<frameInfo frame="6"/>
+			<frameInfo frame="7"/>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="213.35,-136.3" rotation="34.579163366" rotationX="34.579163366" rotationY="34.579163366" scaleX="0.450011716548" scaleY="0.450011716548"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="186.25,-155.75" rotation="34.5790876172" rotationX="34.5790876172" rotationY="34.5790876172" scaleX="0.594066074789" scaleY="0.594066074789"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="159.05,-175.35" rotation="34.5800166307" rotationX="34.5800166307" rotationY="34.5800166307" scaleX="0.738129093149" scaleY="0.738129093149"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="131.9,-194.85" rotation="34.5781881535" rotationX="34.5781881535" rotationY="34.5781881535" scaleX="0.883537471246" scaleY="0.883537471246"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="116.2,-205.95" rotation="34.5805328952" rotationX="34.5805328952" rotationY="34.5805328952" scaleX="0.673434856273" scaleY="0.673434856273"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="100.45,-217.0" rotation="34.5776033912" rotationX="34.5776033912" rotationY="34.5776033912" scaleX="0.464736513884" scaleY="0.464736513884"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="84.75,-228.1" rotation="34.5718357418" rotationX="34.5718357418" rotationY="34.5718357418" scaleX="0.256025610221" scaleY="0.256025610221"/>
+			</frameInfo>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="226.9,-126.55" rotation="34.5714419641" rotationX="34.5714419641" rotationY="34.5714419641" scaleX="0.378569949302" scaleY="0.378569949302"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="199.8,-146.05" rotation="34.5795955075" rotationX="34.5795955075" rotationY="34.5795955075" scaleX="0.522032614075" scaleY="0.522032614075"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="172.6,-165.55" rotation="34.5786895756" rotationX="34.5786895756" rotationY="34.5786895756" scaleX="0.666099535538" scaleY="0.666099535538"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="145.55,-185.1" rotation="34.5796067681" rotationX="34.5796067681" rotationY="34.5796067681" scaleX="0.810162553819" scaleY="0.810162553819"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="124.05,-200.4" rotation="34.5801321823" rotationX="34.5801321823" rotationY="34.5801321823" scaleX="0.777809153805" scaleY="0.777809153805"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="108.3,-211.45" rotation="34.5802086437" rotationX="34.5802086437" rotationY="34.5802086437" scaleX="0.569073121776" scaleY="0.569073121776"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="92.6,-222.6" rotation="34.5742454629" rotationX="34.5742454629" rotationY="34.5742454629" scaleX="0.3603661206" scaleY="0.3603661206"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="zhaoyunlh3_lizi_1" position="76.9,-233.65" rotation="34.5713732877" rotationX="34.5713732877" rotationY="34.5713732877" scaleX="0.151880010848" scaleY="0.151880010848"/>
+			</frameInfo>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

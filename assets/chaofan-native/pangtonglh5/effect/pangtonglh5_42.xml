@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="pangtonglh5_42" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1"/>
+			<frameInfo frame="1"/>
+			<frameInfo frame="2"/>
+			<frameInfo frame="3"/>
+			<frameInfo frame="4"/>
+			<frameInfo frame="5"/>
+			<frameInfo frame="6"/>
+			<frameInfo frame="7"/>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-32.55,-92.45" rotation="27.2956289028" rotationX="27.2956289028" rotationY="27.2956289028" scaleX="-0.152527411873" scaleY="0.152527411873"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-29.45,-98.45" rotation="27.2979240048" rotationX="27.2979240048" rotationY="27.2979240048" scaleX="-0.243279640276" scaleY="0.243279640276"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-26.35,-104.65" rotation="27.2989720065" rotationX="27.2989720065" rotationY="27.2989720065" scaleX="-0.334031868857" scaleY="0.334031868857"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-23.3,-110.65" rotation="27.2976844312" rotationX="27.2976844312" rotationY="27.2976844312" scaleX="-0.424811216282" scaleY="0.424811216282"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-20.15,-116.75" rotation="27.2984055991" rotationX="27.2984055991" rotationY="27.2984055991" scaleX="-0.515563444822" scaleY="0.515563444822"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-17.0,-122.8" rotation="27.2989108808" rotationX="27.2989108808" rotationY="27.2989108808" scaleX="-0.606315673419" scaleY="0.606315673419"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-14.05,-128.95" rotation="27.2987093816" rotationX="27.2987093816" rotationY="27.2987093816" scaleX="-0.697081461396" scaleY="0.697081461396"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-10.9,-134.95" rotation="27.2990632523" rotationX="27.2990632523" rotationY="27.2990632523" scaleX="-0.787833690011" scaleY="0.787833690011"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-7.8,-141.05" rotation="27.289459851" rotationX="27.289459851" rotationY="27.289459851" scaleX="-0.879778273767" scaleY="0.879778273767"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-4.8,-146.75" rotation="27.2993947073" rotationX="27.2993947073" rotationY="27.2993947073" scaleX="-0.847111341826" scaleY="0.847111341826"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="-1.75,-152.35" rotation="27.2989884099" rotationX="27.2989884099" rotationY="27.2989884099" scaleX="-0.815616207434" scaleY="0.815616207434"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="1.25,-158.0" rotation="27.301042396" rotationX="27.301042396" rotationY="27.301042396" scaleX="-0.784121510615" scaleY="0.784121510615"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="4.25,-163.65" rotation="27.2986065518" rotationX="27.2986065518" rotationY="27.2986065518" scaleX="-0.752612379362" scaleY="0.752612379362"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="7.2,-169.35" rotation="27.2970005906" rotationX="27.2970005906" rotationY="27.2970005906" scaleX="-0.721144364101" scaleY="0.721144364101"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="10.3,-174.95" rotation="27.2997902368" rotationX="27.2997902368" rotationY="27.2997902368" scaleX="-0.689670223955" scaleY="0.689670223955"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="13.3,-180.6" rotation="27.3004860354" rotationX="27.3004860354" rotationY="27.3004860354" scaleX="-0.658182087938" scaleY="0.658182087938"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="16.3,-186.3" rotation="27.2981326018" rotationX="27.2981326018" rotationY="27.2981326018" scaleX="-0.626693514561" scaleY="0.626693514561"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="19.35,-191.85" rotation="27.2988143268" rotationX="27.2988143268" rotationY="27.2988143268" scaleX="-0.59520537832" scaleY="0.59520537832"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="22.35,-197.5" rotation="27.2988609231" rotationX="27.2988609231" rotationY="27.2988609231" scaleX="-0.563730801492" scaleY="0.563730801492"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="25.35,-203.15" rotation="27.2982067122" rotationX="27.2982067122" rotationY="27.2982067122" scaleX="-0.532235667168" scaleY="0.532235667168"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="28.35,-208.8" rotation="27.2990216936" rotationX="27.2990216936" rotationY="27.2990216936" scaleX="-0.500747530945" scaleY="0.500747530945"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="31.35,-214.45" rotation="27.2982904648" rotationX="27.2982904648" rotationY="27.2982904648" scaleX="-0.469252396608" scaleY="0.469252396608"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="34.35,-220.1" rotation="27.2992287259" rotationX="27.2992287259" rotationY="27.2992287259" scaleX="-0.437764260404" scaleY="0.437764260404"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="37.35,-225.75" rotation="27.2984001855" rotationX="27.2984001855" rotationY="27.2984001855" scaleX="-0.40626912605" scaleY="0.40626912605"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="40.45,-231.35" rotation="27.3005752711" rotationX="27.3005752711" rotationY="27.3005752711" scaleX="-0.374767430652" scaleY="0.374767430652"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="43.45,-237.05" rotation="27.2985501675" rotationX="27.2985501675" rotationY="27.2985501675" scaleX="-0.343285855493" scaleY="0.343285855493"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="46.4,-242.65" rotation="27.3011797942" rotationX="27.3011797942" rotationY="27.3011797942" scaleX="-0.311784160191" scaleY="0.311784160191"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="49.45,-248.4" rotation="27.2973371507" rotationX="27.2973371507" rotationY="27.2973371507" scaleX="-0.280316144401" scaleY="0.280316144401"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="52.5,-254.05" rotation="27.2972558713" rotationX="27.2972558713" rotationY="27.2972558713" scaleX="-0.248841567571" scaleY="0.248841567571"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="55.5,-259.6" rotation="27.2972659847" rotationX="27.2972659847" rotationY="27.2972659847" scaleX="-0.217332873838" scaleY="0.217332873838"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="58.55,-265.3" rotation="27.3013250521" rotationX="27.3013250521" rotationY="27.3013250521" scaleX="-0.185865295264" scaleY="0.185865295264"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="61.55,-270.95" rotation="27.2995722113" rotationX="27.2995722113" rotationY="27.2995722113" scaleX="-0.154370160746" scaleY="0.154370160746"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="pangtonglh5_lizi_2" position="64.55,-276.55" rotation="27.3032431874" rotationX="27.3032431874" rotationY="27.3032431874" scaleX="-0.122882024903" scaleY="0.122882024903"/>
+			</frameInfo>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

@@ -1,0 +1,6 @@
+.tmp-*
+.tmp*/
+current-game.png
+emulator-*.png
+__pycache__/
+*.pyc

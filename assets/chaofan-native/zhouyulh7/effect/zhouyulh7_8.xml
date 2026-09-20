@@ -1,0 +1,158 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zhouyulh7_8" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.65" rotation="-18.4813898495" rotationX="-18.4813898495" rotationY="-18.4813898495" scaleX="1.22037920707" scaleY="1.22037920707"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData alpha="0.98046875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData alpha="0.94140625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData alpha="0.890625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData alpha="0.8515625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData alpha="0.80859375" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData alpha="0.76171875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData alpha="0.71875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData alpha="0.6796875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData alpha="0.62890625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData alpha="0.58984375" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData alpha="0.55078125" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData alpha="0.51171875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData alpha="0.4609375" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData alpha="0.421875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData alpha="0.37890625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData alpha="0.328125" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData alpha="0.2890625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData alpha="0.25" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData alpha="0.19921875" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData alpha="0.16015625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData alpha="0.12109375" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData alpha="0.0703125" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData alpha="0.0390625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3256482751" rotationX="-18.3256482751" rotationY="-18.3256482751" scaleX="1.21917953663" scaleY="1.21917953663"/>
+			</frameInfo>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45">
+				<frameData alpha="0.03125" bitmapName="zhouyulh7_xing1" position="173.4,-465.7" rotation="-18.3258694269" rotationX="-18.3258694269" rotationY="-18.3258694269" scaleX="1.21911679926" scaleY="1.21911679926"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData alpha="0.05859375" bitmapName="zhouyulh7_xing1" position="173.45,-465.65" rotation="-18.3235972623" rotationX="-18.3235972623" rotationY="-18.3235972623" scaleX="1.21906863964" scaleY="1.21906863964"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData alpha="0.08984375" bitmapName="zhouyulh7_xing1" position="173.45,-465.7" rotation="-18.3208650089" rotationX="-18.3208650089" rotationY="-18.3208650089" scaleX="1.21895294771" scaleY="1.21895294771"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData alpha="0.12890625" bitmapName="zhouyulh7_xing1" position="173.5,-465.7" rotation="-18.3183622954" rotationX="-18.3183622954" rotationY="-18.3183622954" scaleX="1.21887102542" scaleY="1.21887102542"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData alpha="0.16015625" bitmapName="zhouyulh7_xing1" position="173.4,-465.65" rotation="-18.3145020405" rotationX="-18.3145020405" rotationY="-18.3145020405" scaleX="1.21882776792" scaleY="1.21882776792"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData alpha="0.19140625" bitmapName="zhouyulh7_xing1" position="173.45,-465.65" rotation="-18.3113176188" rotationX="-18.3113176188" rotationY="-18.3113176188" scaleX="1.21874105746" scaleY="1.21874105746"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData alpha="0.23046875" bitmapName="zhouyulh7_xing1" position="173.4,-465.7" rotation="-18.3106316681" rotationX="-18.3106316681" rotationY="-18.3106316681" scaleX="1.21868801112" scaleY="1.21868801112"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData alpha="0.26171875" bitmapName="zhouyulh7_xing1" position="173.4,-465.65" rotation="-18.3074466058" rotationX="-18.3074466058" rotationY="-18.3074466058" scaleX="1.21860130523" scaleY="1.21860130523"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData alpha="0.2890625" bitmapName="zhouyulh7_xing1" position="173.45,-465.75" rotation="-18.304942268" rotationX="-18.304942268" rotationY="-18.304942268" scaleX="1.21851939542" scaleY="1.21851939542"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData alpha="0.3203125" bitmapName="zhouyulh7_xing1" position="173.4,-465.7" rotation="-18.3033493707" rotationX="-18.3033493707" rotationY="-18.3033493707" scaleX="1.21847604537" scaleY="1.21847604537"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData alpha="0.359375" bitmapName="zhouyulh7_xing1" position="173.4,-465.75" rotation="-18.2999325822" rotationX="-18.2999325822" rotationY="-18.2999325822" scaleX="1.21835558277" scaleY="1.21835558277"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData alpha="0.390625" bitmapName="zhouyulh7_xing1" position="173.4,-465.75" rotation="-18.2967458894" rotationX="-18.2967458894" rotationY="-18.2967458894" scaleX="1.21826888954" scaleY="1.21826888954"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData alpha="0.421875" bitmapName="zhouyulh7_xing1" position="173.4,-465.75" rotation="-18.2949215491" rotationX="-18.2949215491" rotationY="-18.2949215491" scaleX="1.21819177945" scaleY="1.21819177945"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData alpha="0.44921875" bitmapName="zhouyulh7_xing1" position="173.4,-465.75" rotation="-18.2919649997" rotationX="-18.2919649997" rotationY="-18.2919649997" scaleX="1.21813885675" scaleY="1.21813885675"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData alpha="0.48828125" bitmapName="zhouyulh7_xing1" position="173.35,-465.7" rotation="-18.2901401621" rotationX="-18.2901401621" rotationY="-18.2901401621" scaleX="1.2180617499" scaleY="1.2180617499"/>
+			</frameInfo>
+		</action>
+	</animation>

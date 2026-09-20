@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="xiahoudunlh8_14" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.355316162109" scaleY="0.355316162109"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.15,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.395935058594" scaleY="0.395935058594"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.436538696289" scaleY="0.436538696289"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.451187133789" scaleY="0.451187133789"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.439880371094" scaleY="0.439880371094"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.428573608398" scaleY="0.428573608398"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.417266845703" scaleY="0.417266845703"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.405960083008" scaleY="0.405960083008"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.394653320312" scaleY="0.394653320312"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.25,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.383346557617" scaleY="0.383346557617"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.372024536133" scaleY="0.372024536133"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.360717773438" scaleY="0.360717773438"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.349411010742" scaleY="0.349411010742"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.338104248047" scaleY="0.338104248047"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.326797485352" scaleY="0.326797485352"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.315490722656" scaleY="0.315490722656"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.304183959961" scaleY="0.304183959961"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.292861938477" scaleY="0.292861938477"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.281555175781" scaleY="0.281555175781"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.270248413086" scaleY="0.270248413086"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.258941650391" scaleY="0.258941650391"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.247634887695" scaleY="0.247634887695"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.236328125" scaleY="0.236328125"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.225021362305" scaleY="0.225021362305"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.213714599609" scaleY="0.213714599609"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.202392578125" scaleY="0.202392578125"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.19108581543" scaleY="0.19108581543"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.179779052734" scaleY="0.179779052734"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.168472290039" scaleY="0.168472290039"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.157165527344" scaleY="0.157165527344"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.145858764648" scaleY="0.145858764648"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.134552001953" scaleY="0.134552001953"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.123229980469" scaleY="0.123229980469"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.111923217773" scaleY="0.111923217773"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.100616455078" scaleY="0.100616455078"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0893096923828" scaleY="0.0893096923828"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0780029296875" scaleY="0.0780029296875"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0666961669922" scaleY="0.0666961669922"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0553894042969" scaleY="0.0553894042969"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0440673828125" scaleY="0.0440673828125"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0327606201172" scaleY="0.0327606201172"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0214538574219" scaleY="0.0214538574219"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0101470947266" scaleY="0.0101470947266"/>
+			</frameInfo>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0110778808594" scaleY="0.010986328125"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0455017089844" scaleY="0.0454254150391"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0799255371094" scaleY="0.0798492431641"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.114349365234" scaleY="0.114288330078"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.148773193359" scaleY="0.148712158203"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.183197021484" scaleY="0.183151245117"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.217620849609" scaleY="0.217590332031"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.252044677734" scaleY="0.252014160156"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.286468505859" scaleY="0.28645324707"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="xiahoudunlh8_xing2" position="-272.2,-452.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.320892333984" scaleY="0.320877075195"/>
+			</frameInfo>
+		</action>
+	</animation>

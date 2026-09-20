@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zhenjilh2_27" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="zhenjilh2_suipian" position="239.05,-379.25" rotation="78.7258775518" rotationX="78.7258775518" rotationY="78.7178185916" scaleX="0.741408613232" scaleY="0.636800012091"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="zhenjilh2_suipian" position="238.15,-382.35" rotation="80.7265163038" rotationX="80.7265163038" rotationY="80.724730514" scaleX="0.693082792062" scaleY="0.598999954179"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="zhenjilh2_suipian" position="237.2,-385.3" rotation="82.7131665075" rotationX="82.7131665075" rotationY="82.7121260449" scaleX="0.645211854757" scaleY="0.561572831509"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="zhenjilh2_suipian" position="236.15,-388.35" rotation="84.7018300366" rotationX="84.7018300366" rotationY="84.7002303059" scaleX="0.59735651404" scaleY="0.524166302826"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="zhenjilh2_suipian" position="235.2,-391.4" rotation="86.6859611383" rotationX="86.6859611383" rotationY="86.6886646558" scaleX="0.549470858591" scaleY="0.48673010519"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="zhenjilh2_suipian" position="234.25,-394.35" rotation="88.4879060769" rotationX="88.4879060769" rotationY="88.4869244686" scaleX="0.501593960604" scaleY="0.449298912128"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="zhenjilh2_suipian" position="233.3,-397.4" rotation="-89.7112838542" rotationX="-89.7112838542" rotationY="-89.7128586433" scaleX="-0.453664754651" scaleY="-0.41182468659"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="zhenjilh2_suipian" position="232.35,-400.45" rotation="-87.7243271678" rotationX="-87.7243271678" rotationY="-87.7279946079" scaleX="-0.405683904781" scaleY="-0.374288104273"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="zhenjilh2_suipian" position="231.35,-403.4" rotation="-85.7412640401" rotationX="-85.7412640401" rotationY="-85.7381458687" scaleX="-0.357678494543" scaleY="-0.336775827725"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="zhenjilh2_suipian" position="230.4,-406.4" rotation="-83.9411421179" rotationX="-83.9411421179" rotationY="-83.9394284163" scaleX="-0.309714443591" scaleY="-0.299248508761"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="zhenjilh2_suipian" position="229.45,-409.5" rotation="-81.8189026024" rotationX="-81.8189026024" rotationY="-81.8189026024" scaleX="-0.261850583622" scaleY="-0.261850583622"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="zhenjilh2_suipian" position="289.9,-215.55" rotation="-22.8054366084" rotationX="-22.8054366084" rotationY="-22.8042518538" scaleX="0.317314030457" scaleY="0.306590587943"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="zhenjilh2_suipian" position="288.75,-219.45" rotation="-20.556846141" rotationX="-20.556846141" rotationY="-20.5535822515" scaleX="0.415453568363" scaleY="0.383276896431"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="zhenjilh2_suipian" position="287.6,-223.3" rotation="-18.3057217397" rotationX="-18.3057217397" rotationY="-18.3063057584" scaleX="0.51363497704" scaleY="0.459968390931"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="zhenjilh2_suipian" position="286.5,-227.2" rotation="-16.0579475104" rotationX="-16.0579475104" rotationY="-16.0588430252" scaleX="0.611842157388" scaleY="0.536687303863"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="zhenjilh2_suipian" position="285.3,-231.15" rotation="-13.8098296676" rotationX="-13.8098296676" rotationY="-13.8089882933" scaleX="0.710052164623" scaleY="0.613419781554"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="zhenjilh2_suipian" position="284.15,-235.0" rotation="-11.5608359054" rotationX="-11.5608359054" rotationY="-11.5617202932" scaleX="0.808301581042" scaleY="0.690195604068"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="zhenjilh2_suipian" position="283.05,-238.9" rotation="-9.31445834926" rotationX="-9.31445834926" rotationY="-9.31535376908" scaleX="0.906562955902" scaleY="0.766932760056"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="zhenjilh2_suipian" position="281.9,-242.75" rotation="-7.25624097518" rotationX="-7.25624097518" rotationY="-7.25645865352" scaleX="1.00484373148" scaleY="0.843717001699"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="zhenjilh2_suipian" position="280.75,-246.7" rotation="-5.00947880791" rotationX="-5.00947880791" rotationY="-5.00952645382" scaleX="1.10315181518" scaleY="0.920554236435"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="zhenjilh2_suipian" position="279.55,-250.55" rotation="-2.76479326854" rotationX="-2.76479326854" rotationY="-2.76386238318" scaleX="1.20153196034" scaleY="0.997407354303"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="zhenjilh2_suipian" position="278.4,-254.4" rotation="-0.520042581148" rotationX="-0.520042581148" rotationY="-0.519896486748" scaleX="1.29990397779" scaleY="1.07426299969"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="zhenjilh2_suipian" position="277.3,-258.4" rotation="1.53767045801" rotationX="1.53767045801" rotationY="1.53732765554" scaleX="1.39800991524" scaleY="1.15091188189"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="zhenjilh2_suipian" position="276.2,-262.3" rotation="3.78256909237" rotationX="3.78256909237" rotationY="3.78309361864" scaleX="1.49605779077" scaleY="1.22749699664"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="zhenjilh2_suipian" position="274.95,-266.15" rotation="6.02813075151" rotationX="6.02813075151" rotationY="6.02821122675" scaleX="1.59405020361" scaleY="1.30405531534"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="zhenjilh2_suipian" position="273.85,-270.05" rotation="8.27437744189" rotationX="8.27437744189" rotationY="8.27456342672" scaleX="1.69205312392" scaleY="1.3805824614"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="zhenjilh2_suipian" position="272.7,-273.9" rotation="10.521171969" rotationX="10.521171969" rotationY="10.5213056752" scaleX="1.79001357774" scaleY="1.45711493132"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="zhenjilh2_suipian" position="271.55,-277.8" rotation="12.7682848453" rotationX="12.7682848453" rotationY="12.7694963236" scaleX="1.88797299853" scaleY="1.53362063878"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="zhenjilh2_suipian" position="270.45,-281.75" rotation="15.0166210216" rotationX="15.0166210216" rotationY="15.0170020671" scaleX="1.98589593065" scaleY="1.61009847481"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="zhenjilh2_suipian" position="269.3,-285.65" rotation="17.0765851695" rotationX="17.0765851695" rotationY="17.0773119977" scaleX="2.08382030081" scaleY="1.68660064773"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="zhenjilh2_suipian" position="268.2,-289.55" rotation="19.4720192017" rotationX="19.4720192017" rotationY="19.4725436731" scaleX="2.18393939376" scaleY="1.76488403897"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="zhenjilh2_suipian" position="267.25,-292.5" rotation="21.3151040148" rotationX="21.3151040148" rotationY="21.3164696008" scaleX="2.13422975992" scaleY="1.72595832259"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="zhenjilh2_suipian" position="266.3,-295.5" rotation="23.3046930584" rotationX="23.3046930584" rotationY="23.3061868555" scaleX="2.08689358685" scaleY="1.68890824634"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="zhenjilh2_suipian" position="265.4,-298.45" rotation="25.2958020442" rotationX="25.2958020442" rotationY="25.2962631158" scaleX="2.039533647" scaleY="1.65185968945"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="zhenjilh2_suipian" position="264.4,-301.3" rotation="27.0969871924" rotationX="27.0969871924" rotationY="27.0977057989" scaleX="1.99217781276" scaleY="1.61485896806"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="zhenjilh2_suipian" position="263.45,-304.3" rotation="29.0879716666" rotationX="29.0879716666" rotationY="29.0896647429" scaleX="1.94484705801" scaleY="1.57781810715"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="zhenjilh2_suipian" position="262.05,-308.75" rotation="32.0727096946" rotationX="32.0727096946" rotationY="32.0743224164" scaleX="1.87389082766" scaleY="1.52235863253"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="zhenjilh2_suipian" position="261.05,-311.65" rotation="34.0640610942" rotationX="34.0640610942" rotationY="34.0662700632" scaleX="1.82663709056" scaleY="1.4853714269"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="zhenjilh2_suipian" position="260.1,-314.6" rotation="35.8677466005" rotationX="35.8677466005" rotationY="35.8682798618" scaleX="1.77931240276" scaleY="1.4484118578"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="zhenjilh2_suipian" position="259.2,-317.6" rotation="37.8578715961" rotationX="37.8578715961" rotationY="37.860463328" scaleX="1.73208258101" scaleY="1.41149523851"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="zhenjilh2_suipian" position="258.1,-320.5" rotation="39.8519900768" rotationX="39.8519900768" rotationY="39.8508147684" scaleX="1.68487255709" scaleY="1.37453895334"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="zhenjilh2_suipian" position="257.15,-323.45" rotation="41.8417560426" rotationX="41.8417560426" rotationY="41.8426166741" scaleX="1.63767040191" scaleY="1.33758898384"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="zhenjilh2_suipian" position="256.25,-326.45" rotation="43.6448400978" rotationX="43.6448400978" rotationY="43.6452598057" scaleX="1.59043138662" scaleY="1.30069320407"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="zhenjilh2_suipian" position="255.35,-329.3" rotation="45.6373924928" rotationX="45.6373924928" rotationY="45.638137941" scaleX="1.54325570753" scaleY="1.26378772684"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="zhenjilh2_suipian" position="254.3,-332.3" rotation="47.6286221998" rotationX="47.6286221998" rotationY="47.6306319213" scaleX="1.49606472677" scaleY="1.22689163834"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="zhenjilh2_suipian" position="253.35,-335.2" rotation="49.6207132671" rotationX="49.6207132671" rotationY="49.6210274715" scaleX="1.44892934208" scaleY="1.19000006546"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="zhenjilh2_suipian" position="252.5,-338.2" rotation="51.4247334873" rotationX="51.4247334873" rotationY="51.4259083967" scaleX="1.40174305756" scaleY="1.15312915693"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="zhenjilh2_suipian" position="251.5,-341.15" rotation="53.4144093949" rotationX="53.4144093949" rotationY="53.4161509604" scaleX="1.35457925931" scaleY="1.11625519748"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="zhenjilh2_suipian" position="250.55,-344.05" rotation="55.4052511402" rotationX="55.4052511402" rotationY="55.4082048289" scaleX="1.30746034033" scaleY="1.0793817521"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="zhenjilh2_suipian" position="249.6,-347.0" rotation="57.3977934523" rotationX="57.3977934523" rotationY="57.3978180636" scaleX="1.26028770932" scaleY="1.04253607218"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="zhenjilh2_suipian" position="248.6,-349.95" rotation="59.3878072757" rotationX="59.3878072757" rotationY="59.2013633804" scaleX="1.21313980479" scaleY="1.00564710938"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="zhenjilh2_suipian" position="247.65,-352.9" rotation="61.1905504423" rotationX="61.1905504423" rotationY="61.192129791" scaleX="1.16601921465" scaleY="0.968821164971"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="zhenjilh2_suipian" position="246.7,-355.85" rotation="63.1819695192" rotationX="63.1819695192" rotationY="63.1829941104" scaleX="1.11885003127" scaleY="0.931947461919"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="zhenjilh2_suipian" position="245.8,-358.85" rotation="65.1723998415" rotationX="65.1723998415" rotationY="65.1735263389" scaleX="1.0717492643" scaleY="0.895091190008"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="zhenjilh2_suipian" position="244.8,-361.75" rotation="67.162689306" rotationX="67.162689306" rotationY="67.1610481149" scaleX="1.02463752384" scaleY="0.858247335311"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="zhenjilh2_suipian" position="243.85,-364.7" rotation="68.9627182252" rotationX="68.9627182252" rotationY="68.9654428684" scaleX="0.977473040713" scaleY="0.821395798055"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="zhenjilh2_suipian" position="242.9,-367.65" rotation="70.9529242574" rotationX="70.9529242574" rotationY="70.9534708748" scaleX="0.930342433797" scaleY="0.784529543948"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="zhenjilh2_suipian" position="241.95,-370.6" rotation="72.9422341063" rotationX="72.9422341063" rotationY="72.9428300985" scaleX="0.883194569207" scaleY="0.747657273841"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="zhenjilh2_suipian" position="241.05,-373.5" rotation="74.9327908111" rotationX="74.9327908111" rotationY="74.9319778758" scaleX="0.836057444906" scaleY="0.710838898567"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="zhenjilh2_suipian" position="240.05,-376.5" rotation="76.7340016279" rotationX="76.7340016279" rotationY="76.7316863471" scaleX="0.788896364513" scaleY="0.673928455301"/>
+			</frameInfo>
+		</action>
+	</animation>

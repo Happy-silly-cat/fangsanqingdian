@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="liubeilh5_9" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="liubeilh5_10_01" position="-96.65,3.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="liubeilh5_10_01" position="-97.7,-0.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="liubeilh5_10_01" position="-98.75,-3.3" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="liubeilh5_10_01" position="-99.75,-6.5" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="liubeilh5_10_01" position="-100.8,-9.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="liubeilh5_10_01" position="-101.85,-12.85" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="liubeilh5_10_01" position="-102.9,-16.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="liubeilh5_10_01" position="-103.95,-19.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="liubeilh5_10_01" position="-105.0,-22.4" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="liubeilh5_10_01" position="-106.0,-25.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="liubeilh5_10_01" position="-107.05,-28.8" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="liubeilh5_10_01" position="-108.1,-31.95" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="liubeilh5_10_01" position="-109.15,-35.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData alpha="0.9296875" bitmapName="liubeilh5_10_01" position="-110.2,-38.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData alpha="0.87109375" bitmapName="liubeilh5_10_01" position="-111.25,-41.5" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData alpha="0.80078125" bitmapName="liubeilh5_10_01" position="-112.25,-44.7" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData alpha="0.73828125" bitmapName="liubeilh5_10_01" position="-113.3,-47.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData alpha="0.671875" bitmapName="liubeilh5_10_01" position="-114.35,-51.1" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData alpha="0.609375" bitmapName="liubeilh5_10_01" position="-115.4,-54.25" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData alpha="0.5390625" bitmapName="liubeilh5_10_01" position="-116.45,-57.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData alpha="0.46875" bitmapName="liubeilh5_10_01" position="-117.45,-60.65" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData alpha="0.41015625" bitmapName="liubeilh5_10_01" position="-118.5,-63.85" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData alpha="0.33984375" bitmapName="liubeilh5_10_01" position="-119.55,-67.0" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData alpha="0.26953125" bitmapName="liubeilh5_10_01" position="-120.6,-70.2" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData alpha="0.2109375" bitmapName="liubeilh5_10_01" position="-121.65,-73.4" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData alpha="0.140625" bitmapName="liubeilh5_10_01" position="-122.65,-76.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData alpha="0.078125" bitmapName="liubeilh5_10_01" position="-123.7,-79.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData alpha="0.01171875" bitmapName="liubeilh5_10_01" position="-124.75,-82.95" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47">
+				<frameData alpha="0.01171875" bitmapName="liubeilh5_10_01" position="-87.65,48.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData alpha="0.08984375" bitmapName="liubeilh5_10_01" position="-88.35,44.6" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData alpha="0.16015625" bitmapName="liubeilh5_10_01" position="-89.05,41.15" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData alpha="0.23828125" bitmapName="liubeilh5_10_01" position="-89.75,37.65" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData alpha="0.3203125" bitmapName="liubeilh5_10_01" position="-90.4,34.2" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData alpha="0.390625" bitmapName="liubeilh5_10_01" position="-91.1,30.75" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData alpha="0.46875" bitmapName="liubeilh5_10_01" position="-91.8,27.3" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData alpha="0.5390625" bitmapName="liubeilh5_10_01" position="-92.5,23.8" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData alpha="0.62109375" bitmapName="liubeilh5_10_01" position="-93.2,20.35" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData alpha="0.69921875" bitmapName="liubeilh5_10_01" position="-93.9,16.9" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData alpha="0.76953125" bitmapName="liubeilh5_10_01" position="-94.55,13.45" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData alpha="0.9296875" bitmapName="liubeilh5_10_01" position="-95.95,6.5" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="liubeilh5_10_01" position="-96.65,3.05" rotation="0.0" rotationX="0.0" rotationY="-0.0" scaleX="-1.0" scaleY="-1.0"/>
+			</frameInfo>
+		</action>
+	</animation>

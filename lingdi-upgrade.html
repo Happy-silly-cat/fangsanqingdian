@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三领地功能、领地产物和气势升级表。">
+  <title>领地功能 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-soft: #fffdf8;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    button,
+    input,
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-name {
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 16px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .field-label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--text);
+      padding: 11px 12px;
+      font-size: 14px;
+    }
+
+    .field:focus,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .section-block {
+      margin-top: 16px;
+    }
+
+    .collapsible-table-details {
+      margin-top: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .collapsible-table-details > .section-head {
+      position: relative;
+      margin: 0;
+      padding: 14px 16px 14px 32px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .collapsible-table-details > .section-head::-webkit-details-marker {
+      display: none;
+    }
+
+    .collapsible-table-details > .section-head::before {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--jade);
+      transform: translateY(-50%);
+      content: "";
+      transition: transform 160ms ease;
+    }
+
+    .collapsible-table-details[open] > .section-head::before {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .section-note {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .collapsible-table-details > .table-wrap {
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 10px 13px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.7);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255, 253, 248, 0.78);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .level-table {
+      min-width: 590px;
+      table-layout: fixed;
+    }
+
+    .level-table th:nth-child(1),
+    .level-table td:nth-child(1) { width: 18%; }
+
+    .level-table th:nth-child(2),
+    .level-table td:nth-child(2),
+    .level-table th:nth-child(3),
+    .level-table td:nth-child(3),
+    .level-table th:nth-child(4),
+    .level-table td:nth-child(4) { width: 27%; }
+
+    .level-cell {
+      color: var(--jade-dark);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .upgrade-calculator {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+
+    .calculator-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(440px, auto);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .calculator-field {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .number-control {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .number-control .field {
+      min-width: 0;
+    }
+
+    .calculator-arrow {
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .calculator-result {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px 14px;
+      margin: 0;
+      color: var(--jade-dark);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .lingdi-result-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .lingdi-result-item img {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 2px rgba(41, 32, 19, 0.16));
+    }
+
+    .lingdi-result-item span {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .lingdi-result-item strong {
+      color: var(--jade-dark);
+      font-size: 24px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lingdi-morale-result .lingdi-morale-base {
+      color: var(--gold);
+    }
+
+    .lingdi-morale-result .lingdi-morale-added {
+      color: var(--jade);
+    }
+
+    .upgrade-calculator.invalid .lingdi-result-item strong {
+      color: #bd5945;
+    }
+
+    .number {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .product-table {
+      min-width: 700px;
+      table-layout: fixed;
+    }
+
+    .product-table th:nth-child(1),
+    .product-table td:nth-child(1) { width: 16%; }
+
+    .product-table th:nth-child(2),
+    .product-table td:nth-child(2) { width: 84%; }
+
+    .product-level {
+      color: var(--jade-dark);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .product-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+      align-items: center;
+      gap: 7px 8px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .product-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+      min-height: 32px;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .product-item-icon,
+    .product-item-fallback {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+    }
+
+    .product-item-icon {
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 2px rgba(41, 32, 19, 0.16));
+    }
+
+    .product-item-fallback {
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(184, 132, 47, 0.72);
+      border-radius: 50%;
+      background: rgba(184, 132, 47, 0.12);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .product-item-name {
+      min-width: 0;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-item-quantity {
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+    }
+
+    .morale-table {
+      min-width: 520px;
+      table-layout: fixed;
+    }
+
+    .morale-table th:nth-child(1),
+    .morale-table td:nth-child(1) { width: 20%; }
+
+    .morale-table th:nth-child(2),
+    .morale-table td:nth-child(2) { width: 24%; }
+
+    .morale-table th:nth-child(3),
+    .morale-table td:nth-child(3) { width: 56%; }
+
+    .morale-level {
+      color: var(--jade-dark);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .morale-effect {
+      color: var(--jade-dark);
+      font-weight: 750;
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 24px, 1180px);
+        padding-top: 18px;
+      }
+
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .page-title { font-size: 25px; }
+      .page-note { text-align: left; }
+      .table-wrap { overflow-x: hidden; }
+      .level-table,
+      .product-table,
+      .morale-table {
+        min-width: 0;
+        font-size: 12px;
+      }
+      th, td { padding: 8px 6px; }
+      .product-items {
+        grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+        gap: 6px;
+        line-height: 1.45;
+      }
+      .product-item { min-height: 28px; }
+      .product-item-icon,
+      .product-item-fallback {
+        width: 26px;
+        height: 26px;
+        flex-basis: 26px;
+      }
+      .calculator-body { grid-template-columns: 1fr; gap: 14px; }
+      .calculator-fields { grid-template-columns: 1fr; gap: 8px; max-width: none; }
+      .calculator-arrow { justify-self: center; transform: rotate(90deg); }
+      .calculator-result { justify-content: center; text-align: center; }
+      .lingdi-result-item strong { font-size: 21px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <p class="brand-name">放三数据合集</p>
+      <a class="back-link" href="upgrade-materials.html">返回目录</a>
+    </header>
+
+    <section class="intro">
+      <div>
+        <h1 class="page-title">领地功能</h1>
+        <p class="section-note">查看领地升级、领地产物和领地气势升级效果</p>
+      </div>
+      <p class="page-note">领地在 <strong id="unlockLevel">78</strong> 级开启</p>
+    </section>
+
+    <section class="upgrade-calculator" id="lingdiCalculator" aria-labelledby="lingdiCalculatorTitle">
+      <div class="calculator-head">
+        <h2 class="calculator-title" id="lingdiCalculatorTitle">领地升级计算器</h2>
+        <span class="section-meta">同时计算材料和气势</span>
+      </div>
+      <div class="calculator-body">
+        <div class="calculator-fields">
+          <label class="calculator-field" for="lingdiFromLevel">
+            从
+            <span class="number-control">
+              <input class="field" id="lingdiFromLevel" type="number" min="1" max="21" step="1" value="1">
+              <span>级</span>
+            </span>
+          </label>
+          <span class="calculator-arrow" aria-hidden="true">&#8594;</span>
+          <label class="calculator-field" for="lingdiToLevel">
+            到
+            <span class="number-control">
+              <input class="field" id="lingdiToLevel" type="number" min="1" max="21" step="1" value="21">
+              <span>级</span>
+            </span>
+          </label>
+        </div>
+        <div class="calculator-result" aria-live="polite">
+          <div class="lingdi-result-item">
+            <img src="assets/lingdi-items/hongkuangshi.png" alt="红矿石">
+            <strong id="lingdiOreTotal">0</strong><span>个</span>
+          </div>
+          <div class="lingdi-result-item">
+            <img src="assets/lingdi-items/mucai.png" alt="木材">
+            <strong id="lingdiWoodTotal">0</strong><span>个</span>
+          </div>
+          <div class="lingdi-result-item lingdi-morale-result">
+            <span>气势</span><strong class="lingdi-morale-base" id="lingdiMoraleBase">0</strong><span class="lingdi-morale-added">+</span><strong class="lingdi-morale-added" id="lingdiMoraleAdded">0</strong><span>点</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <details class="collapsible-table-details">
+      <summary class="section-head">
+        <div>
+          <h2 class="section-title">领地升级消耗</h2>
+          <p class="section-note">每行是从当前等级升到下一级时消耗的材料，并列出本次新增的领地气势</p>
+        </div>
+        <span class="section-meta" id="levelUpMaxMeta">最高 21 级</span>
+      </summary>
+      <div class="table-wrap">
+        <table class="level-table">
+          <thead>
+            <tr><th>升级</th><th>红矿石</th><th>木材</th><th>领地气势</th></tr>
+          </thead>
+          <tbody id="levelUpBody"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="collapsible-table-details">
+      <summary class="section-head">
+        <div>
+          <h2 class="section-title">领地产物</h2>
+          <p class="section-note">同级相同材料合并显示，不同配置的数量用斜杠区分</p>
+        </div>
+        <span class="section-meta" id="productLevelMeta">共 21 级</span>
+      </summary>
+      <div class="table-wrap">
+        <table class="product-table">
+          <thead>
+            <tr><th>产出等级</th><th>可出现产物</th></tr>
+          </thead>
+          <tbody id="productBody"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="collapsible-table-details">
+      <summary class="section-head">
+        <div>
+          <h2 class="section-title">领地气势升级</h2>
+          <p class="section-note">达到对应气势等级时获得的属性效果</p>
+        </div>
+        <span class="section-meta">共 49 级</span>
+      </summary>
+      <div class="table-wrap">
+        <table class="morale-table">
+          <thead>
+            <tr><th>气势等级</th><th>升级所需经验</th><th>升级效果</th></tr>
+          </thead>
+          <tbody id="moraleBody"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/lingdi-data.js"></script>
+  <script>
+    const data = window.LINGDI_DATA;
+    const formatNumber = (value) => Number(value).toLocaleString("zh-CN");
+
+    document.getElementById("unlockLevel").textContent = data.unlockLevel;
+    document.getElementById("levelUpMaxMeta").textContent = `最高 ${data.maxLevel} 级`;
+    document.getElementById("productLevelMeta").textContent = `共 ${data.productTiers} 级`;
+
+    const levelUpBody = document.getElementById("levelUpBody");
+    data.levelUp.forEach((entry) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td class="level-cell">${entry.level}级 → ${entry.level + 1}级</td>
+        <td class="number">${formatNumber(entry.ore)} 个</td>
+        <td class="number">${formatNumber(entry.wood)} 个</td>
+        <td class="number">${formatNumber(entry.morale)}</td>`;
+      levelUpBody.appendChild(row);
+    });
+
+    const lingdiCalculator = document.getElementById("lingdiCalculator");
+    const lingdiFromLevel = document.getElementById("lingdiFromLevel");
+    const lingdiToLevel = document.getElementById("lingdiToLevel");
+    const lingdiOreTotal = document.getElementById("lingdiOreTotal");
+    const lingdiWoodTotal = document.getElementById("lingdiWoodTotal");
+    const lingdiMoraleBase = document.getElementById("lingdiMoraleBase");
+    const lingdiMoraleAdded = document.getElementById("lingdiMoraleAdded");
+    const lingdiMaxLevel = Number(data.maxLevel) || 21;
+    lingdiFromLevel.max = String(lingdiMaxLevel);
+    lingdiToLevel.max = String(lingdiMaxLevel);
+    lingdiFromLevel.min = "1";
+    lingdiToLevel.min = "1";
+
+    function normalizeLingdiLevel(input, fallback) {
+      const value = Number(input.value);
+      input.value = Number.isFinite(value)
+        ? Math.min(lingdiMaxLevel, Math.max(1, Math.trunc(value)))
+        : fallback;
+    }
+
+    function readLingdiLevel(input, fallback) {
+      const rawValue = input.value.trim();
+      if (!rawValue) return fallback;
+      const value = Number(rawValue);
+      return Number.isFinite(value)
+        ? Math.min(lingdiMaxLevel, Math.max(1, Math.trunc(value)))
+        : fallback;
+    }
+
+    function updateLingdiCalculator() {
+      const fromLevel = readLingdiLevel(lingdiFromLevel, 1);
+      const toLevel = readLingdiLevel(lingdiToLevel, lingdiMaxLevel);
+      const invalid = fromLevel > toLevel;
+      lingdiCalculator.classList.toggle("invalid", invalid);
+
+      if (invalid) {
+        lingdiOreTotal.textContent = "!";
+        lingdiWoodTotal.textContent = "!";
+        lingdiMoraleBase.textContent = "!";
+        lingdiMoraleAdded.textContent = "!";
+        return;
+      }
+
+      const currentMorale = data.levelUp
+        .filter((entry) => entry.level < fromLevel)
+        .reduce((total, entry) => total + Number(entry.morale || 0), 0);
+      const rows = data.levelUp.filter(
+        (entry) => entry.level >= fromLevel && entry.level < toLevel
+      );
+      const totals = rows.reduce(
+        (result, entry) => ({
+          ore: result.ore + Number(entry.ore || 0),
+          wood: result.wood + Number(entry.wood || 0),
+          morale: result.morale + Number(entry.morale || 0)
+        }),
+        { ore: 0, wood: 0, morale: 0 }
+      );
+
+      lingdiOreTotal.textContent = formatNumber(totals.ore);
+      lingdiWoodTotal.textContent = formatNumber(totals.wood);
+      lingdiMoraleBase.textContent = formatNumber(currentMorale);
+      lingdiMoraleAdded.textContent = formatNumber(totals.morale);
+    }
+
+    [lingdiFromLevel, lingdiToLevel].forEach((input) => {
+      input.addEventListener("input", () => {
+        if (input.value.trim()) normalizeLingdiLevel(input, input === lingdiFromLevel ? 1 : lingdiMaxLevel);
+        updateLingdiCalculator();
+      });
+      input.addEventListener("change", () => {
+        normalizeLingdiLevel(input, input === lingdiFromLevel ? 1 : lingdiMaxLevel);
+        updateLingdiCalculator();
+      });
+      input.addEventListener("blur", () => {
+        normalizeLingdiLevel(input, input === lingdiFromLevel ? 1 : lingdiMaxLevel);
+        updateLingdiCalculator();
+      });
+    });
+    updateLingdiCalculator();
+
+    const productBody = document.getElementById("productBody");
+    const itemIcons = data.itemIcons || {};
+    const hiddenProductNames = new Set(["银币"]);
+    const itemFallbackLabels = {
+      "玄兵强化石": "玄",
+      "军师令": "军",
+      "兵鉴晶石": "鉴",
+      "符石升金石": "符"
+    };
+
+    function appendProductItem(container, itemText) {
+      const match = itemText.match(/^(.*) ×([0-9,]+(?:\/×?[0-9,]+)*)$/);
+      const itemName = match ? match[1] : itemText;
+      const quantity = match ? match[2] : "";
+      if (hiddenProductNames.has(itemName)) return;
+      const item = document.createElement("span");
+      item.className = "product-item";
+      item.title = itemText;
+
+      if (itemIcons[itemName]) {
+        const icon = document.createElement("img");
+        icon.className = "product-item-icon";
+        icon.src = itemIcons[itemName];
+        icon.alt = "";
+        icon.loading = "lazy";
+        item.appendChild(icon);
+      } else {
+        const fallback = document.createElement("span");
+        fallback.className = "product-item-fallback";
+        fallback.setAttribute("aria-hidden", "true");
+        fallback.textContent = itemFallbackLabels[itemName] || itemName.slice(0, 1);
+        item.appendChild(fallback);
+      }
+
+      const name = document.createElement("span");
+      name.className = "product-item-name";
+      name.textContent = itemName;
+      item.appendChild(name);
+
+      if (quantity) {
+        const amount = document.createElement("span");
+        amount.className = "product-item-quantity";
+        amount.textContent = `×${quantity}`;
+        item.appendChild(amount);
+      }
+
+      container.appendChild(item);
+    }
+
+    data.products.forEach((entry) => {
+      const mergedItems = new Map();
+      entry.groups.forEach((group) => {
+        group.items.forEach((itemText) => {
+          const match = itemText.match(/^(.*) ×([0-9,]+)$/);
+          const itemName = match ? match[1] : itemText;
+          const quantity = match ? match[2] : "";
+          if (hiddenProductNames.has(itemName)) return;
+          if (!mergedItems.has(itemName)) mergedItems.set(itemName, []);
+          if (quantity) mergedItems.get(itemName).push(quantity);
+        });
+      });
+
+      const row = document.createElement("tr");
+      const levelCell = document.createElement("td");
+      levelCell.className = "product-level";
+      levelCell.textContent = `${entry.level}级`;
+      const itemsCell = document.createElement("td");
+      const itemsGrid = document.createElement("div");
+      itemsGrid.className = "product-items";
+      mergedItems.forEach((quantities, itemName) => {
+        const sortedQuantities = [...new Set(quantities)].sort(
+          (a, b) => Number(a.replace(/,/g, "")) - Number(b.replace(/,/g, ""))
+        );
+        const quantity = sortedQuantities.length > 1
+          ? sortedQuantities.join("/×")
+          : sortedQuantities[0] || "";
+        appendProductItem(itemsGrid, quantity ? `${itemName} ×${quantity}` : itemName);
+      });
+      itemsCell.appendChild(itemsGrid);
+      row.append(levelCell, itemsCell);
+      productBody.appendChild(row);
+    });
+
+    const moraleBody = document.getElementById("moraleBody");
+    data.morale.forEach((entry) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td class="morale-level">${entry.level - 1}级 → ${entry.level}级</td>
+        <td class="number">${formatNumber(entry.exp)}</td>
+        <td class="morale-effect">${entry.effect}</td>`;
+      moraleBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

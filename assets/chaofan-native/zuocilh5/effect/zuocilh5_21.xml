@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zuocilh5_21" totalFrame="61">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-106.05,-170.75" rotation="-0.155916410858" rotationX="-0.155916410858" rotationY="-0.155916410858" scaleX="0.599977807422" scaleY="0.599977807422"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-105.55,-172.3" rotation="-0.0762073655645" rotationX="-0.0762073655645" rotationY="-0.0762073655645" scaleX="0.573608905819" scaleY="0.573608905819"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-105.05,-173.8" rotation="-0.0749839918609" rotationX="-0.0749839918609" rotationY="-0.0749839918609" scaleX="0.547989360884" scaleY="0.547989360884"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-104.4,-175.3" rotation="-0.0753120663995" rotationX="-0.0753120663995" rotationY="-0.0753120663995" scaleX="0.522385094833" scaleY="0.522385094833"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-103.9,-176.9" rotation="-0.0756716348232" rotationX="-0.0756716348232" rotationY="-0.0756716348232" scaleX="0.496796087577" scaleY="0.496796087577"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-103.35,-178.35" rotation="-0.0760751831202" rotationX="-0.0760751831202" rotationY="-0.0760751831202" scaleX="0.471176562792" scaleY="0.471176562792"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-102.8,-179.95" rotation="-0.0765225188314" rotationX="-0.0765225188314" rotationY="-0.0765225188314" scaleX="0.445572296808" scaleY="0.445572296808"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-102.2,-181.4" rotation="-0.0770271987799" rotationX="-0.0770271987799" rotationY="-0.0770271987799" scaleX="0.419952772079" scaleY="0.419952772079"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-101.65,-182.9" rotation="-0.0753774717369" rotationX="-0.0753774717369" rotationY="-0.0753774717369" scaleX="0.394348485793" scaleY="0.394348485793"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-101.15,-184.45" rotation="-0.0782404845102" rotationX="-0.0782404845102" rotationY="-0.0782404845102" scaleX="0.36874424029" scaleY="0.36874424029"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-100.55,-185.95" rotation="-0.0764282955045" rotationX="-0.0764282955045" rotationY="-0.0764282955045" scaleX="0.343170471327" scaleY="0.343170471327"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-100.0,-187.55" rotation="-0.0770918240386" rotationX="-0.0770918240386" rotationY="-0.0770918240386" scaleX="0.317535687822" scaleY="0.317535687822"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-99.45,-189.0" rotation="-0.0778596848571" rotationX="-0.0778596848571" rotationY="-0.0778596848571" scaleX="0.291946680692" scaleY="0.291946680692"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-98.9,-190.55" rotation="-0.0787886232489" rotationX="-0.0787886232489" rotationY="-0.0787886232489" scaleX="0.2663118973" scaleY="0.2663118973"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-98.3,-192.05" rotation="-0.0762732588919" rotationX="-0.0762732588919" rotationY="-0.0762732588919" scaleX="0.240707610745" scaleY="0.240707610745"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-97.85,-193.55" rotation="-0.0812878499978" rotationX="-0.0812878499978" rotationY="-0.0812878499978" scaleX="0.215103365897" scaleY="0.215103365897"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-97.25,-195.05" rotation="-0.073822834991" rotationX="-0.073822834991" rotationY="-0.073822834991" scaleX="0.18948379986" scaleY="0.18948379986"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-96.65,-196.6" rotation="-0.0800145362618" rotationX="-0.0800145362618" rotationY="-0.0800145362618" scaleX="0.163894813139" scaleY="0.163894813139"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-96.15,-198.15" rotation="-0.0821942863292" rotationX="-0.0821942863292" rotationY="-0.0821942863292" scaleX="0.138275288767" scaleY="0.138275288767"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-95.6,-199.6" rotation="-0.0775944535278" rotationX="-0.0775944535278" rotationY="-0.0775944535278" scaleX="0.112671001761" scaleY="0.112671001761"/>
+			</frameInfo>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-125.1,-113.45" rotation="-0.166099597363" rotationX="-0.166099597363" rotationY="-0.166099597363" scaleX="0.100006523748" scaleY="0.100006523748"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-124.65,-115.0" rotation="-0.0765985900779" rotationX="-0.0765985900779" rotationY="-0.0765985900779" scaleX="0.159790181859" scaleY="0.159790181859"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-124.15,-116.55" rotation="-0.075598554098" rotationX="-0.075598554098" rotationY="-0.075598554098" scaleX="0.219726753765" scaleY="0.219726753765"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-123.7,-118.15" rotation="-0.0750353553517" rotationX="-0.0750353553517" rotationY="-0.0750353553517" scaleX="0.279632808157" scaleY="0.279632808157"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-123.1,-119.7" rotation="-0.0772422749321" rotationX="-0.0772422749321" rotationY="-0.0772422749321" scaleX="0.339554141571" scaleY="0.339554141571"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-122.65,-121.2" rotation="-0.0765956643493" rotationX="-0.0765956643493" rotationY="-0.0765956643493" scaleX="0.399490713422" scaleY="0.399490713422"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-122.15,-122.85" rotation="-0.0761202946768" rotationX="-0.0761202946768" rotationY="-0.0761202946768" scaleX="0.459412026535" scaleY="0.459412026535"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-121.65,-124.25" rotation="-0.0774403318064" rotationX="-0.0774403318064" rotationY="-0.0774403318064" scaleX="0.519318101296" scaleY="0.519318101296"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-121.2,-125.85" rotation="-0.0754646045802" rotationX="-0.0754646045802" rotationY="-0.0754646045802" scaleX="0.579254652827" scaleY="0.579254652827"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-120.75,-127.4" rotation="-0.0752271678785" rotationX="-0.0752271678785" rotationY="-0.0752271678785" scaleX="0.639191224769" scaleY="0.639191224769"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-120.2,-129.0" rotation="-0.0762842780934" rotationX="-0.0762842780934" rotationY="-0.0762842780934" scaleX="0.699097299317" scaleY="0.699097299317"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-119.65,-130.5" rotation="-0.0760196049553" rotationX="-0.0760196049553" rotationY="-0.0760196049553" scaleX="0.759033871218" scaleY="0.759033871218"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-119.15,-132.05" rotation="-0.0757950843553" rotationX="-0.0757950843553" rotationY="-0.0757950843553" scaleX="0.818955184357" scaleY="0.818955184357"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-118.7,-133.65" rotation="-0.0765959303154" rotationX="-0.0765959303154" rotationY="-0.0765959303154" scaleX="0.878876517773" scaleY="0.878876517773"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-118.2,-135.25" rotation="-0.0754320269681" rotationX="-0.0754320269681" rotationY="-0.0754320269681" scaleX="0.938797810665" scaleY="0.938797810665"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-117.7,-136.7" rotation="-0.157369564024" rotationX="-0.157369564024" rotationY="-0.157369564024" scaleX="0.999988513118" scaleY="0.999988513118"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-117.2,-138.2" rotation="-0.0757267449749" rotationX="-0.0757267449749" rotationY="-0.0757267449749" scaleX="0.981324099296" scaleY="0.981324099296"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-116.7,-139.7" rotation="-0.0752769646266" rotationX="-0.0752769646266" rotationY="-0.0752769646266" scaleX="0.963959572204" scaleY="0.963959572204"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-116.2,-141.15" rotation="-0.0748118885004" rotationX="-0.0748118885004" rotationY="-0.0748118885004" scaleX="0.946579786399" scaleY="0.946579786399"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-115.65,-142.55" rotation="-0.0762074156194" rotationX="-0.0762074156194" rotationY="-0.0762074156194" scaleX="0.929245817075" scaleY="0.929245817075"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-115.15,-144.05" rotation="-0.0767011315754" rotationX="-0.0767011315754" rotationY="-0.0767011315754" scaleX="0.911866051445" scaleY="0.911866051445"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-114.6,-145.55" rotation="-0.0752605336941" rotationX="-0.0752605336941" rotationY="-0.0752605336941" scaleX="0.894470986503" scaleY="0.894470986503"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-114.05,-147.0" rotation="-0.0757524260346" rotationX="-0.0757524260346" rotationY="-0.0757524260346" scaleX="0.877121738295" scaleY="0.877121738295"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-113.6,-148.5" rotation="-0.0742317785824" rotationX="-0.0742317785824" rotationY="-0.0742317785824" scaleX="0.859757191299" scaleY="0.859757191299"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-113.1,-149.9" rotation="-0.0757619408182" rotationX="-0.0757619408182" rotationY="-0.0757619408182" scaleX="0.84239270422" scaleY="0.84239270422"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-112.65,-151.5" rotation="-0.0752385515861" rotationX="-0.0752385515861" rotationY="-0.0752385515861" scaleX="0.825012918353" scaleY="0.825012918353"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-112.15,-153.0" rotation="-0.0757737054159" rotationX="-0.0757737054159" rotationY="-0.0757737054159" scaleX="0.80764841137" scaleY="0.80764841137"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-111.55,-154.5" rotation="-0.0763309027771" rotationX="-0.0763309027771" rotationY="-0.0763309027771" scaleX="0.790299163235" scaleY="0.790299163235"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-111.05,-155.9" rotation="-0.0757880239376" rotationX="-0.0757880239376" rotationY="-0.0757880239376" scaleX="0.772888859743" scaleY="0.772888859743"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-110.55,-157.4" rotation="-0.0728997710089" rotationX="-0.0728997710089" rotationY="-0.0728997710089" scaleX="0.755539551983" scaleY="0.755539551983"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-110.05,-158.9" rotation="-0.0758005570839" rotationX="-0.0758005570839" rotationY="-0.0758005570839" scaleX="0.738159825669" scaleY="0.738159825669"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-109.5,-160.45" rotation="-0.0752008190437" rotationX="-0.0752008190437" rotationY="-0.0752008190437" scaleX="0.720795298577" scaleY="0.720795298577"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-109.05,-161.9" rotation="-0.0758143277764" rotationX="-0.0758143277764" rotationY="-0.0758143277764" scaleX="0.703430791594" scaleY="0.703430791594"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-108.55,-163.35" rotation="-0.0751845792221" rotationX="-0.0751845792221" rotationY="-0.0751845792221" scaleX="0.686066264503" scaleY="0.686066264503"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-108.0,-164.9" rotation="-0.0732163910792" rotationX="-0.0732163910792" rotationY="-0.0732163910792" scaleX="0.66868645905" scaleY="0.66868645905"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-107.55,-166.25" rotation="-0.0751701295992" rotationX="-0.0751701295992" rotationY="-0.0751701295992" scaleX="0.651306712876" scaleY="0.651306712876"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-107.05,-167.7" rotation="-0.0758500465103" rotationX="-0.0758500465103" rotationY="-0.0758500465103" scaleX="0.633942205893" scaleY="0.633942205893"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-106.55,-169.2" rotation="-0.0737324017526" rotationX="-0.0737324017526" rotationY="-0.0737324017526" scaleX="0.616577658977" scaleY="0.616577658977"/>
+			</frameInfo>
+			<frameInfo frame="60">
+				<frameData bitmapName="zuocilh5_lizidian_1" position="-106.05,-170.75" rotation="-0.155916410858" rotationX="-0.155916410858" rotationY="-0.155916410858" scaleX="0.599977807422" scaleY="0.599977807422"/>
+			</frameInfo>
+		</action>
+	</animation>

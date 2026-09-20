@@ -1,0 +1,306 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="huangyueyinglh2_19" totalFrame="120">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_2" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_2" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_4" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_4" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_6" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_6" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_8" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_8" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_10" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_10" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_12" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_12" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_14" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_14" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_16" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_16" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_18" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_18" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+			<frameInfo frame="60"/>
+			<frameInfo frame="61"/>
+			<frameInfo frame="62">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="63">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="64">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_1" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="65">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_2" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="66">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_2" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="67">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="68">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="69">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_3" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="70">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_4" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="71">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_4" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="72">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="73">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="74">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_5" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="75">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_6" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="76">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_6" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="77">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="78">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="79">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_7" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="80">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_8" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="81">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_8" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="82">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="83">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="84">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_9" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="85">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_10" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="86">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_10" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="87">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="88">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="89">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_11" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="90">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_12" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="91">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_12" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="92">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="93">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="94">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_13" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="95">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_14" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="96">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_14" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="97">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="98">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="99">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_15" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="100">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_16" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="101">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_16" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="102">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="103">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="104">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_17" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="105">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_18" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="106">
+				<frameData bitmapName="huangyueyinglh2_2saoguang_18" position="212.5,-220.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="2.0" scaleY="2.0"/>
+			</frameInfo>
+			<frameInfo frame="107"/>
+			<frameInfo frame="108"/>
+			<frameInfo frame="109"/>
+			<frameInfo frame="110"/>
+			<frameInfo frame="111"/>
+			<frameInfo frame="112"/>
+			<frameInfo frame="113"/>
+			<frameInfo frame="114"/>
+			<frameInfo frame="115"/>
+			<frameInfo frame="116"/>
+			<frameInfo frame="117"/>
+			<frameInfo frame="118"/>
+			<frameInfo frame="119"/>
+		</action>
+	</animation>

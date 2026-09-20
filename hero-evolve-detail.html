@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三武将紫品质基础属性、进阶与进化材料查询。">
+  <title>武将属性与进阶材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .hero-profile,
+    .summary-panel,
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .hero-profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+    }
+
+    .hero-profile-icon {
+      display: block;
+      width: 88px;
+      height: 88px;
+      flex: 0 0 88px;
+      border-radius: 50%;
+      background: #ece3d4;
+      object-fit: cover;
+    }
+
+    .hero-profile h2 {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .hero-meta {
+      margin-top: 4px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      max-width: 860px;
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .section-panel,
+    .summary-panel {
+      margin-top: 16px;
+      padding: 16px 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .attribute-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .attribute-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 42px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 8px 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .attribute-item strong {
+      color: var(--jade-dark);
+      font-size: 16px;
+      font-weight: 850;
+    }
+
+    .summary-panel {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+      gap: 12px;
+    }
+
+    .summary-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 12px 14px;
+    }
+
+    .summary-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .summary-value {
+      display: block;
+      margin-top: 4px;
+      color: var(--jade-dark);
+      font-size: 21px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .summary-silver { color: var(--gold); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 11px 13px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .stage {
+      min-width: 190px;
+      color: var(--gold);
+      font-weight: 850;
+    }
+
+    .stage-main,
+    .stage-detail { display: block; white-space: nowrap; }
+    .stage-detail { margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 650; }
+
+    .type,
+    .silver {
+      color: var(--jade-dark);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .silver { color: var(--text); font-weight: 750; }
+
+    .conditions,
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .condition,
+    .material-item {
+      display: inline-flex;
+      align-items: center;
+      min-height: 29px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 6px;
+      background: var(--panel-strong);
+      padding: 4px 7px;
+      color: var(--jade-dark);
+      white-space: nowrap;
+    }
+
+    .material-list { min-width: 270px; }
+
+    .material-item {
+      gap: 5px;
+      min-height: 34px;
+      border-radius: 7px;
+      padding: 4px 8px 4px 5px;
+    }
+
+    .material-item img {
+      display: block;
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .material-item strong { color: var(--text); font-weight: 800; }
+    .empty { color: var(--muted); }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .page-title { font-size: 25px; }
+      .hero-profile { align-items: flex-start; padding: 14px; }
+      .hero-profile-icon { width: 70px; height: 70px; flex-basis: 70px; }
+      .hero-profile h2 { font-size: 20px; }
+      .attribute-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .summary-panel { grid-template-columns: 1fr; padding: 14px; }
+      .section-panel { padding: 14px; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+      th, td { padding: 8px 9px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">武将进阶材料</p></div>
+      <a class="back-link" href="hero-evolve.html">返回武将列表</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title" id="pageTitle">武将属性与进阶材料</h1>
+      <p class="page-note">查看紫品质基础属性、同品质进阶和跨品质进化消耗</p>
+    </section>
+
+    <section class="hero-profile" aria-live="polite">
+      <img class="hero-profile-icon" id="heroIcon" src="assets/hero-evolve-icons/10001.png" alt="">
+      <div>
+        <h2 id="heroName">张辽</h2>
+        <div class="hero-meta" id="heroMeta">魏 · 紫品质武将</div>
+        <p class="hero-description" id="heroDescription"></p>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">紫品质基础属性</h2>
+        <span class="section-meta">基础武将档位</span>
+      </div>
+      <div class="attribute-grid" id="attributeGrid"></div>
+    </section>
+
+    <section class="summary-panel" aria-live="polite">
+      <div class="summary-block">
+        <span class="summary-label">完整进阶与进化链</span>
+        <strong class="summary-value" id="heroSummary"></strong>
+      </div>
+      <div class="summary-block">
+        <span class="summary-label">进阶与进化银币合计</span>
+        <strong class="summary-value summary-silver" id="silverSummary"></strong>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">进阶与进化消耗</h2>
+        <span class="section-meta">包含同品质进阶和跨品质进化</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">品质 / 进阶档位</th>
+              <th scope="col">类型</th>
+              <th scope="col">等级要求</th>
+              <th scope="col">银币</th>
+              <th scope="col">进阶材料</th>
+            </tr>
+          </thead>
+          <tbody id="evolveTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/hero-evolve-data.js"></script>
+  <script src="assets/hero-transfer-data.js"></script>
+  <script src="assets/hero-evolve-heroes.js"></script>
+  <script>
+    const transferData = window.heroTransferData;
+    const profiles = window.heroEvolveHeroes.heroes;
+    const heroId = new URLSearchParams(window.location.search).get("hero");
+    const profile = profiles.find((item) => String(item.id) === String(heroId)) || profiles[0];
+    const hero = transferData.heroes.find((item) => item.name === profile.name);
+    const formatNumber = (value) => Number(value).toLocaleString("zh-CN");
+    const flatAttributeNames = new Set(["生命", "物攻", "法攻", "物防", "法防", "攻击", "普攻", "必防", "怒气", "初始怒气", "士气"]);
+    const hundredthAttributeNames = new Set(["统帅", "统率", "武力", "智力"]);
+    function formatAttributeValue(attribute) {
+      const raw = Number(attribute.value) || 0;
+      if (flatAttributeNames.has(attribute.name)) return formatNumber(raw);
+      const value = raw / 100;
+      return `${value.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}${hundredthAttributeNames.has(attribute.name) ? "" : "%"}`;
+    }
+
+    document.title = `${profile.name}属性与进阶材料 - 放三数据合集`;
+    document.querySelector("#pageTitle").textContent = `${profile.name} · 属性与进阶材料`;
+    document.querySelector("#heroIcon").src = profile.icon;
+    document.querySelector("#heroIcon").alt = `${profile.name}紫品质头像`;
+    document.querySelector("#heroName").textContent = profile.name;
+    document.querySelector("#heroMeta").textContent = `${profile.faction} · 紫品质武将`;
+    document.querySelector("#heroDescription").textContent = profile.description;
+    document.querySelector("#attributeGrid").innerHTML = profile.attributes
+      .map((attribute) => `<div class="attribute-item"><span>${attribute.name}</span><strong>${formatAttributeValue(attribute)}</strong></div>`)
+      .join("");
+
+    function materialMarkup(id, quantity) {
+      const item = transferData.items[id] || { name: `材料（${id}）`, icon: "assets/hero-evolve-items/60002.png" };
+      return `<span class="material-item"><img src="${item.icon}" alt="${item.name}"><span>${item.name}</span><strong>×${formatNumber(quantity)}</strong></span>`;
+    }
+
+    function conditionMarkup(stage) {
+      if (stage.type === "evolution") {
+        const conditions = [`重生 ${stage.needRebirth} 次`, `等级 ${stage.needLevel} 级`];
+        if (stage.needDestiny !== null && stage.needDestiny !== undefined) conditions.push(`天命 ${stage.needDestiny} 点`);
+        return conditions.map((condition) => `<span class="condition">${condition}</span>`).join("");
+      }
+      return `<span class="condition">等级达到 ${formatNumber(stage.limitLevel)} 级</span>`;
+    }
+
+    function heroMaterialMarkup(materialHero) {
+      const rebirth = materialHero.rebirth > 1 ? `（${materialHero.rebirth}转）` : "";
+      return `<span class="material-item"><span>${materialHero.name}${rebirth}</span><strong>×${formatNumber(materialHero.quantity)}</strong></span>`;
+    }
+
+    const stages = [];
+    hero.qualities.forEach((quality) => {
+      quality.stages.forEach((stage) => stages.push({ ...stage, type: "transfer", quality: quality.quality }));
+      const evolution = hero.evolutions.find((stage) => stage.fromStar === quality.quality);
+      if (evolution) stages.push({ ...evolution, type: "evolution" });
+    });
+    const totalSilver = stages.reduce((sum, stage) => sum + stage.silver, 0);
+    document.querySelector("#heroSummary").textContent = `${profile.name} · ${stages.length} 档进阶消耗`;
+    document.querySelector("#silverSummary").textContent = `${formatNumber(totalSilver)} 银币`;
+    document.querySelector("#evolveTable").innerHTML = stages.map((stage) => {
+      const materials = Object.entries(stage.items).map(([id, quantity]) => materialMarkup(id, quantity)).join("");
+      const heroMaterials = stage.type === "evolution" ? stage.heroes.map(heroMaterialMarkup).join("") : "";
+      const title = stage.type === "evolution"
+        ? `${transferData.qualityNames[stage.fromStar] || `品质${stage.fromStar}`}品质 → ${transferData.qualityNames[stage.toStar] || `品质${stage.toStar}`}品质`
+        : `${transferData.qualityNames[stage.quality] || `品质${stage.quality}`}品质第${stage.index}档`;
+      const detail = stage.type === "evolution" ? "跨品质进化" : `进阶第${stage.index}档`;
+      const type = stage.type === "evolution" ? "武将进化" : "武将进阶";
+      return `<tr><td class="stage"><span class="stage-main">${title}</span><span class="stage-detail">${detail}</span></td><td class="type">${type}</td><td><div class="conditions">${conditionMarkup(stage)}</div></td><td class="silver">${formatNumber(stage.silver)} 银币</td><td><div class="material-list">${materials}${heroMaterials}${materials || heroMaterials ? "" : `<span class="empty">无</span>`}</div></td></tr>`;
+    }).join("");
+  </script>
+</body>
+</html>

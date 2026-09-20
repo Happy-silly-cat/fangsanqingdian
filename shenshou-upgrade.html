@@ -521,6 +521,7 @@
     .calculator-attribute-line {
       display: inline-flex;
       align-items: baseline;
+      gap: 5px;
       font-weight: 800;
       white-space: nowrap;
     }
@@ -716,6 +717,8 @@
       .section-title { font-size: 17px; }
     }
   </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
 </head>
 <body>
   <main class="shell">
@@ -733,10 +736,6 @@
     </section>
 
     <section class="picker-panel" aria-label="选择神兽">
-      <div class="picker-heading">
-        <span class="picker-title">按品质选择神兽</span>
-        <span class="page-note">点击神兽图标查看详情</span>
-      </div>
       <div class="quality-tabs" id="quality-tabs" role="tablist" aria-label="选择神兽品质"></div>
       <div class="beast-picker" id="beast-picker"></div>
     </section>
@@ -981,7 +980,7 @@
         const entries = mergeAttributeValues(currentAttributes, addedAttributes);
         const lines = entries.map((entry) => `
           <span class="calculator-attribute-line">
-            <span>${text(entry.attribute.name)} </span>
+            <span>${text(entry.attribute.name)}</span>
             <span class="attribute-base-value">${formatAttributeValue(entry.attribute, entry.current)}</span>
             <span class="attribute-gain-value">+${formatAttributeValue(entry.attribute, entry.added)}</span>
           </span>

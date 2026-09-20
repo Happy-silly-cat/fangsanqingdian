@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三名将进阶升级属性与材料查询表。">
+  <title>名将进阶与升级 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #64518f;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 20px 0 32px; }
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+    .brand-mark { display: block; width: 118px; flex: 0 0 118px; object-fit: contain; filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22)); }
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .page-intro { display: flex; align-items: baseline; gap: 16px; margin: 14px 0 12px; }
+    .page-title { margin: 0; font-size: 27px; line-height: 1.2; font-weight: 850; }
+    .page-note, .section-meta, .summary-meta { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .summary-panel, .section-panel, .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .summary-panel, .section-panel { margin-top: 12px; padding: 14px 16px; }
+    .summary-panel { display: flex; align-items: center; gap: 16px; }
+    .summary-icon { display: block; width: 80px; height: 80px; flex: 0 0 80px; object-fit: contain; filter: drop-shadow(0 5px 8px rgba(75, 32, 32, 0.2)); }
+    .summary-main { min-width: 0; flex: 1 1 auto; }
+    .summary-heading, .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .summary-title, .section-title { margin: 0; color: var(--jade-dark); font-size: 18px; line-height: 1.3; font-weight: 850; }
+    .badge-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 9px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .section-head { margin-bottom: 9px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 13px; }
+    th, td { border-bottom: 1px solid rgba(217, 203, 182, 0.8); padding: 9px 12px; text-align: left; vertical-align: middle; }
+    th { background: rgba(231, 187, 97, 0.12); color: var(--muted); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+    .item-cell { display: inline-flex; align-items: center; gap: 8px; min-width: 190px; }
+    .item-icon { display: block; width: 44px; height: 44px; flex: 0 0 44px; object-fit: contain; }
+    .item-name { font-weight: 800; }
+    .hero-cell { display: inline-flex; align-items: center; gap: 8px; min-width: 150px; }
+    .hero-icon { display: block; width: 42px; height: 42px; flex: 0 0 42px; object-fit: contain; }
+    .quality-name, .number { color: var(--purple); font-weight: 850; white-space: nowrap; }
+    .number { color: var(--gold); }
+    .effect { line-height: 1.65; }
+    .compact-table table { min-width: 580px; }
+    .personal-table table { min-width: 760px; }
+    .personal-table td:last-child { max-width: 760px; }
+    .notice { margin: 12px 0 0; border-left: 3px solid var(--gold); padding: 7px 0 7px 11px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    footer { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 12px; }
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .page-intro { display: block; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .summary-panel { align-items: flex-start; }
+      .summary-icon { width: 64px; height: 64px; flex-basis: 64px; }
+      .summary-heading, .section-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .section-title { font-size: 17px; }
+      table { font-size: 12.5px; }
+      th, td { padding: 8px 9px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <section class="page-intro">
+      <h1 class="page-title">名将进阶与升级</h1>
+      <p class="page-note">查看名将图鉴进阶属性、个人进阶效果与战意档位</p>
+    </section>
+
+    <section class="summary-panel">
+      <img class="summary-icon" src="assets/mingjiang-items/mingjiangshengxingshi.png" alt="名将升星石">
+      <div class="summary-main">
+        <div class="summary-heading">
+          <h2 class="summary-title">名将系统</h2>
+          <span class="summary-meta">名将升星与名将图鉴进阶</span>
+        </div>
+        <div class="badge-list">
+          <span class="badge">名将升星：95级开启</span>
+          <span class="badge">图鉴系列：4套</span>
+          <span class="badge">图鉴品质：紫至澜金</span>
+          <span class="badge">进阶战意：1至8档</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel compact-table">
+      <div class="section-head">
+        <h2 class="section-title">名将系统材料</h2>
+        <span class="section-meta">名将相关培养材料</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">材料</th><th scope="col">用途</th></tr></thead>
+          <tbody id="material-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">名将图鉴进阶属性</h2>
+        <span class="section-meta">按图鉴系列和进阶节点查看</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">图鉴系列</th><th scope="col">进阶节点</th><th scope="col">材料品质</th><th scope="col">属性变化</th></tr></thead>
+          <tbody id="atlas-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel compact-table">
+      <div class="section-head">
+        <h2 class="section-title">图鉴整套完成属性</h2>
+        <span class="section-meta">完成对应图鉴系列后额外获得</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">图鉴系列</th><th scope="col">整套完成后的额外属性</th></tr></thead>
+          <tbody id="completion-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel personal-table">
+      <div class="section-head">
+        <h2 class="section-title">名将个人进阶效果</h2>
+        <span class="section-meta">按名将和进阶次数查看</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">名将</th><th scope="col">进阶次数</th><th scope="col">进阶属性与效果</th></tr></thead>
+          <tbody id="personal-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel compact-table">
+      <div class="section-head">
+        <h2 class="section-title">名将进阶战意</h2>
+        <span class="section-meta">每拥有对应进阶次数的名将计入战意</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">名将进阶次数</th><th scope="col">每个名将增加战意</th><th scope="col">计入条件</th></tr></thead>
+          <tbody id="morale-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/mingjiang-data.js"></script>
+  <script>
+    (() => {
+      const data = window.mingjiangData;
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+
+      document.getElementById("material-table").innerHTML = data.items.map((item) => `
+        <tr><td><span class="item-cell"><img class="item-icon" src="${escapeHtml(item.icon)}" alt=""><span class="item-name">${escapeHtml(item.name)}</span></span></td><td>${escapeHtml(item.use)}</td></tr>
+      `).join("");
+
+      document.getElementById("atlas-table").innerHTML = data.atlasSets.flatMap((set) => {
+        const stages = set.stages.split(", ");
+        return set.attributes.map((attribute, index) => `
+          <tr><td class="quality-name">${escapeHtml(set.name)}</td><td class="number">${escapeHtml(stages[index] || `${index + 1}`)}</td><td class="quality-name">${escapeHtml(set.qualities[index] || "")}</td><td class="effect">${escapeHtml(attribute.text)}</td></tr>
+        `);
+      }).join("");
+
+      document.getElementById("completion-table").innerHTML = data.atlasSets.map((set) => `
+        <tr><td class="quality-name">${escapeHtml(set.name)}</td><td class="effect">${set.completion.map(escapeHtml).join("、")}</td></tr>
+      `).join("");
+
+      document.getElementById("personal-table").innerHTML = data.personalAdvances.map((row) => `
+        <tr><td><span class="hero-cell"><img class="hero-icon" src="${escapeHtml(row.icon)}" alt="${escapeHtml(row.hero)}头像"><span class="quality-name">${escapeHtml(row.hero)}</span></span></td><td class="number">进阶${number(row.stage)}</td><td class="effect">${escapeHtml(row.effect)}</td></tr>
+      `).join("");
+
+      document.getElementById("morale-table").innerHTML = data.moraleAdvances.map((row) => `
+        <tr><td class="quality-name">进阶${number(row.stage)}次</td><td class="number">${number(row.value)}</td><td>每拥有1个进阶${number(row.stage)}次的名将（无需装备）</td></tr>
+      `).join("");
+    })();
+  </script>
+</body>
+</html>

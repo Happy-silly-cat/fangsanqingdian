@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="diaochanlh4_43" totalFrame="60">
+			<frameInfo frame="0"/>
+			<frameInfo frame="1"/>
+			<frameInfo frame="2">
+				<frameData alpha="0.05859375" bitmapName="diaochanlh4_5_4" position="394.85,-239.65" rotation="66.6874964483" rotationX="66.6874964483" rotationY="66.6874964483" scaleX="0.449459345801" scaleY="0.449459345801"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData alpha="0.1484375" bitmapName="diaochanlh4_5_4" position="393.55,-235.9" rotation="67.936728628" rotationX="67.936728628" rotationY="67.936728628" scaleX="0.449480577801" scaleY="0.449480577801"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData alpha="0.25" bitmapName="diaochanlh4_5_4" position="392.15,-232.0" rotation="69.1871727733" rotationX="69.1871727733" rotationY="69.1871727733" scaleX="0.449497453903" scaleY="0.449497453903"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData alpha="0.33984375" bitmapName="diaochanlh4_5_4" position="390.8,-228.25" rotation="70.436443555" rotationX="70.436443555" rotationY="70.436443555" scaleX="0.449535378791" scaleY="0.449535378791"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData alpha="0.4296875" bitmapName="diaochanlh4_5_4" position="389.5,-224.4" rotation="71.6868208227" rotationX="71.6868208227" rotationY="71.6868208227" scaleX="0.449540864997" scaleY="0.449540864997"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData alpha="0.53125" bitmapName="diaochanlh4_5_4" position="388.2,-220.55" rotation="72.935302171" rotationX="72.935302171" rotationY="72.935302171" scaleX="0.449571903982" scaleY="0.449571903982"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData alpha="0.62890625" bitmapName="diaochanlh4_5_4" position="386.8,-216.8" rotation="74.1854832335" rotationX="74.1854832335" rotationY="74.1854832335" scaleX="0.449604666839" scaleY="0.449604666839"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData alpha="0.71875" bitmapName="diaochanlh4_5_4" position="385.45,-213.0" rotation="75.4355693954" rotationX="75.4355693954" rotationY="75.4355693954" scaleX="0.449629290235" scaleY="0.449629290235"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData alpha="0.80859375" bitmapName="diaochanlh4_5_4" position="384.15,-209.15" rotation="76.6847789804" rotationX="76.6847789804" rotationY="76.6847789804" scaleX="0.449664293529" scaleY="0.449664293529"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData alpha="0.91015625" bitmapName="diaochanlh4_5_4" position="382.8,-205.35" rotation="77.9309067464" rotationX="77.9309067464" rotationY="77.9309067464" scaleX="0.449682754096" scaleY="0.449682754096"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="diaochanlh4_5_4" position="381.5,-201.55" rotation="78.9983132777" rotationX="78.9983132777" rotationY="78.9983132777" scaleX="0.449996923405" scaleY="0.449996923405"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="diaochanlh4_5_4" position="380.25,-198.05" rotation="80.2292850001" rotationX="80.2292850001" rotationY="80.2292850001" scaleX="0.449745712157" scaleY="0.449745712157"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="diaochanlh4_5_4" position="379.0,-194.45" rotation="81.4704838451" rotationX="81.4704838451" rotationY="81.4704838451" scaleX="0.44978375381" scaleY="0.44978375381"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="diaochanlh4_5_4" position="377.8,-190.95" rotation="82.7091197265" rotationX="82.7091197265" rotationY="82.7091197265" scaleX="0.449803811273" scaleY="0.449803811273"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="diaochanlh4_5_4" position="376.55,-187.4" rotation="83.9463352009" rotationX="83.9463352009" rotationY="83.9463352009" scaleX="0.449835141118" scaleY="0.449835141118"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="diaochanlh4_5_4" position="375.3,-183.95" rotation="84.999113402" rotationX="84.999113402" rotationY="84.999113402" scaleX="0.449863106465" scaleY="0.449863106465"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="diaochanlh4_5_4" position="374.1,-180.45" rotation="86.2351742066" rotationX="86.2351742066" rotationY="86.2351742066" scaleX="0.449899731842" scaleY="0.449899731842"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="diaochanlh4_5_4" position="372.75,-176.85" rotation="87.4730551873" rotationX="87.4730551873" rotationY="87.4730551873" scaleX="0.449915648304" scaleY="0.449915648304"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="diaochanlh4_5_4" position="371.6,-173.4" rotation="88.7116452092" rotationX="88.7116452092" rotationY="88.7116452092" scaleX="0.449942847213" scaleY="0.449942847213"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="diaochanlh4_5_4" position="370.35,-169.85" rotation="89.9494849142" rotationX="89.9494849142" rotationY="89.9494849142" scaleX="0.449981864678" scaleY="0.449981864678"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="diaochanlh4_5_4" position="369.05,-166.3" rotation="-89.187816873" rotationX="-89.187816873" rotationY="-89.187816873" scaleX="-0.449965861211" scaleY="-0.449965861211"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="diaochanlh4_5_4" position="367.8,-162.85" rotation="-87.9516094725" rotationX="-87.9516094725" rotationY="-87.9516094725" scaleX="-0.449948774219" scaleY="-0.449948774219"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="diaochanlh4_5_4" position="366.6,-159.3" rotation="-86.7121621835" rotationX="-86.7121621835" rotationY="-86.7121621835" scaleX="-0.449898241391" scaleY="-0.449898241391"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="diaochanlh4_5_4" position="365.4,-155.8" rotation="-85.4748970181" rotationX="-85.4748970181" rotationY="-85.4748970181" scaleX="-0.44985807991" scaleY="-0.44985807991"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="diaochanlh4_5_4" position="364.15,-152.25" rotation="-84.2356463378" rotationX="-84.2356463378" rotationY="-84.2356463378" scaleX="-0.449845494889" scaleY="-0.449845494889"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="diaochanlh4_5_4" position="362.9,-148.8" rotation="-83.1852465724" rotationX="-83.1852465724" rotationY="-83.1852465724" scaleX="-0.449817984711" scaleY="-0.449817984711"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="diaochanlh4_5_4" position="361.65,-145.25" rotation="-81.947691715" rotationX="-81.947691715" rotationY="-81.947691715" scaleX="-0.449777555421" scaleY="-0.449777555421"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="diaochanlh4_5_4" position="360.4,-141.7" rotation="-80.7083307439" rotationX="-80.7083307439" rotationY="-80.7083307439" scaleX="-0.449748717882" scaleY="-0.449748717882"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="diaochanlh4_5_4" position="359.2,-138.2" rotation="-79.4705055814" rotationX="-79.4705055814" rotationY="-79.4705055814" scaleX="-0.449726896698" scaleY="-0.449726896698"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="diaochanlh4_5_4" position="357.95,-134.65" rotation="-78.2313938608" rotationX="-78.2313938608" rotationY="-78.2313938608" scaleX="-0.449699586367" scaleY="-0.449699586367"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="diaochanlh4_5_4" position="356.75,-131.1" rotation="-77.1799636244" rotationX="-77.1799636244" rotationY="-77.1799636244" scaleX="-0.449670778258" scaleY="-0.449670778258"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="diaochanlh4_5_4" position="355.4,-127.65" rotation="-75.9397062553" rotationX="-75.9397062553" rotationY="-75.9397062553" scaleX="-0.449643531837" scaleY="-0.449643531837"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="diaochanlh4_5_4" position="354.15,-124.05" rotation="-74.7007114709" rotationX="-74.7007114709" rotationY="-74.7007114709" scaleX="-0.449619505512" scaleY="-0.449619505512"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="diaochanlh4_5_4" position="352.95,-120.6" rotation="-73.4618706762" rotationX="-73.4618706762" rotationY="-73.4618706762" scaleX="-0.449583536249" scaleY="-0.449583536249"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="diaochanlh4_5_4" position="351.75,-117.0" rotation="-72.2212476947" rotationX="-72.2212476947" rotationY="-72.2212476947" scaleX="-0.449554856913" scaleY="-0.449554856913"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="diaochanlh4_5_4" position="350.5,-113.55" rotation="-71.002894124" rotationX="-71.002894124" rotationY="-71.002894124" scaleX="-0.450000607315" scaleY="-0.450000607315"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData alpha="0.890625" bitmapName="diaochanlh4_5_4" position="349.65,-109.9" rotation="-69.1903728398" rotationX="-69.1903728398" rotationY="-69.1903728398" scaleX="-0.449520559098" scaleY="-0.449520559098"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData alpha="0.7890625" bitmapName="diaochanlh4_5_4" position="348.85,-106.35" rotation="-67.2121065769" rotationX="-67.2121065769" rotationY="-67.2121065769" scaleX="-0.449465997179" scaleY="-0.449465997179"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData alpha="0.69140625" bitmapName="diaochanlh4_5_4" position="347.95,-102.75" rotation="-65.4214553644" rotationX="-65.4214553644" rotationY="-65.4214553644" scaleX="-0.449428516112" scaleY="-0.449428516112"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData alpha="0.578125" bitmapName="diaochanlh4_5_4" position="347.15,-99.2" rotation="-63.4427787299" rotationX="-63.4427787299" rotationY="-63.4427787299" scaleX="-0.449410907707" scaleY="-0.449410907707"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData alpha="0.48046875" bitmapName="diaochanlh4_5_4" position="346.3,-95.6" rotation="-61.6527292662" rotationX="-61.6527292662" rotationY="-61.6527292662" scaleX="-0.449362144441" scaleY="-0.449362144441"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData alpha="0.37890625" bitmapName="diaochanlh4_5_4" position="345.4,-92.1" rotation="-59.6725590054" rotationX="-59.6725590054" rotationY="-59.6725590054" scaleX="-0.449355783759" scaleY="-0.449355783759"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData alpha="0.26953125" bitmapName="diaochanlh4_5_4" position="344.6,-88.45" rotation="-57.693705446" rotationX="-57.693705446" rotationY="-57.693705446" scaleX="-0.449331042778" scaleY="-0.449331042778"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData alpha="0.171875" bitmapName="diaochanlh4_5_4" position="343.75,-84.85" rotation="-55.9019481735" rotationX="-55.9019481735" rotationY="-55.9019481735" scaleX="-0.44931719572" scaleY="-0.44931719572"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData alpha="0.05859375" bitmapName="diaochanlh4_5_4" position="342.9,-81.3" rotation="-53.9216967922" rotationX="-53.9216967922" rotationY="-53.9216967922" scaleX="-0.449298251415" scaleY="-0.449298251415"/>
+			</frameInfo>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

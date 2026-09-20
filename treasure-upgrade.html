@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三宝物升级、进阶、精炼属性与材料查询表。">
+  <title>宝物升级与进阶 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #76519d;
+      --orange: #bd6d36;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 20px 0 32px; }
+    .site-header { display: flex; align-items: center; gap: 14px; min-height: 52px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+    .brand-mark { display: block; width: 118px; height: auto; flex: 0 0 118px; object-fit: contain; filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22)); }
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--panel); color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .intro { display: flex; align-items: baseline; gap: 16px; margin: 14px 0 12px; }
+    .page-title { margin: 0; font-size: 27px; line-height: 1.2; font-weight: 850; }
+    .page-note, .section-meta, .summary-meta { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .picker-panel, .summary-panel, .section-panel { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .picker-panel { padding: 14px 16px 16px; }
+    .panel-heading, .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+    .section-title { margin: 0; color: var(--jade-dark); font-size: 18px; line-height: 1.3; font-weight: 850; }
+    .category-title { margin: 12px 0 8px; color: var(--muted); font-size: 13px; font-weight: 800; }
+    .category-title:first-child { margin-top: 0; }
+    .treasure-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; }
+    .treasure-card { display: flex; align-items: center; gap: 9px; min-width: 0; min-height: 74px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--panel-strong); color: var(--text); cursor: pointer; font: inherit; text-align: left; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+    .treasure-card:hover, .treasure-card:focus-visible, .treasure-card.is-active { border-color: var(--jade); background: var(--panel-hover); box-shadow: 0 7px 16px rgba(60, 157, 133, 0.14); outline: none; }
+    .treasure-card:hover { transform: translateY(-2px); }
+    .treasure-card-icon { display: block; width: 50px; height: 50px; flex: 0 0 50px; object-fit: contain; filter: drop-shadow(0 3px 5px rgba(75, 32, 32, 0.2)); }
+    .treasure-card-copy { min-width: 0; }
+    .treasure-card-name { display: block; font-size: 14px; line-height: 1.35; font-weight: 850; overflow-wrap: anywhere; }
+    .treasure-card-quality { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.3; }
+    .summary-panel { display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 13px 16px; }
+    .summary-icon { display: block; width: 82px; height: 82px; flex: 0 0 82px; object-fit: contain; filter: drop-shadow(0 4px 7px rgba(75, 32, 32, 0.2)); }
+    .summary-main { min-width: 0; flex: 1 1 auto; }
+    .summary-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .summary-title { margin: 0; color: var(--jade-dark); font-size: 20px; line-height: 1.3; font-weight: 850; }
+    .quality-name { color: var(--purple); font-weight: 800; }
+    .summary-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+    .summary-stat { display: inline-flex; align-items: center; min-height: 29px; border: 1px solid rgba(184, 132, 47, 0.28); border-radius: 7px; padding: 4px 9px; background: var(--panel-strong); color: var(--gold); font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .section-panel { margin-top: 12px; padding: 14px 16px 16px; }
+    .section-heading { margin-bottom: 9px; }
+    .attribute-list, .cost-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .attribute-chip, .cost-chip { display: inline-flex; align-items: center; gap: 5px; min-height: 29px; border: 1px solid rgba(60, 157, 133, 0.22); border-radius: 6px; padding: 4px 8px; background: var(--panel-strong); white-space: nowrap; }
+    .attribute-chip { color: var(--jade-dark); font-weight: 750; }
+    .cost-chip { border-color: rgba(184, 132, 47, 0.28); color: var(--gold); font-weight: 750; }
+    .cost-icon { display: block; width: 25px; height: 25px; object-fit: contain; }
+    .material-placeholder { display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 5px; background: #e7ddcc; color: var(--muted); font-size: 11px; }
+    .table-wrap { margin-top: 10px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; vertical-align: middle; text-align: left; }
+    th { background: rgba(217, 203, 182, 0.24); color: var(--muted); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .number { color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .attribute-table td:first-child, .advance-table td:first-child { white-space: nowrap; }
+    .empty { color: var(--muted); }
+    .cost-table { min-width: 720px; }
+    .advance-table { min-width: 860px; }
+    .refine-table { min-width: 700px; }
+    .stat-value { color: var(--orange); font-weight: 850; }
+    .note { margin: 9px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    footer { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 12px; }
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+    @media (max-width: 1060px) { .treasure-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .brand-name { font-size: 17px; }
+      .back-link { padding: 7px 9px; }
+      .intro { display: block; margin-top: 16px; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .picker-panel, .section-panel { padding: 12px 11px 13px; }
+      .treasure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .treasure-card { min-height: 66px; padding: 7px; gap: 7px; }
+      .treasure-card-icon { width: 43px; height: 43px; flex-basis: 43px; }
+      .treasure-card-name { font-size: 13px; }
+      .summary-panel { align-items: flex-start; gap: 10px; padding: 11px; }
+      .summary-icon { width: 65px; height: 65px; flex-basis: 65px; }
+      .summary-heading { display: block; }
+      .summary-title { font-size: 18px; }
+      .summary-meta { margin-top: 4px; }
+      .section-heading { display: block; }
+      .section-meta { margin-top: 4px; }
+      th, td { padding: 8px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">宝物升级、进阶与精炼</h1>
+      <p class="page-note">选择青囊书等宝物，查看属性变化与升级耗材</p>
+    </div>
+
+    <section class="picker-panel" aria-labelledby="picker-title">
+      <div class="panel-heading">
+        <h2 class="section-title" id="picker-title">选择宝物</h2>
+        <span class="section-meta" id="picker-meta"></span>
+      </div>
+      <div id="treasure-picker"></div>
+    </section>
+
+    <section class="summary-panel" aria-live="polite">
+      <img class="summary-icon" id="treasure-icon" src="" alt="">
+      <div class="summary-main">
+        <div class="summary-heading">
+          <h2 class="summary-title" id="treasure-name"></h2>
+          <span class="summary-meta" id="treasure-meta"></span>
+        </div>
+        <div class="summary-stats" id="summary-stats"></div>
+      </div>
+    </section>
+
+    <section class="section-panel" aria-labelledby="upgrade-title">
+      <div class="section-heading">
+        <h2 class="section-title" id="upgrade-title">升级属性与耗材</h2>
+        <span class="section-meta">基础属性、等级属性和强化材料</span>
+      </div>
+      <div id="base-attributes"></div>
+      <div class="table-wrap">
+        <table class="attribute-table">
+          <thead><tr><th scope="col">等级</th><th scope="col">等级属性</th></tr></thead>
+          <tbody id="level-attribute-table"></tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="cost-table">
+          <thead><tr><th scope="col">强化至等级</th><th scope="col">每级经验材料</th><th scope="col">经验材料单件经验</th></tr></thead>
+          <tbody id="upgrade-cost-table"></tbody>
+        </table>
+      </div>
+      <p class="note" id="upgrade-note"></p>
+    </section>
+
+    <section class="section-panel" aria-labelledby="advance-title">
+      <div class="section-heading">
+        <h2 class="section-title" id="advance-title">进阶属性与耗材</h2>
+        <span class="section-meta">按品质进阶阶段展示</span>
+      </div>
+      <div class="table-wrap">
+        <table class="advance-table">
+          <thead><tr><th scope="col">进阶目标</th><th scope="col">阶段</th><th scope="col">等级上限</th><th scope="col">属性增加</th><th scope="col">消耗材料</th></tr></thead>
+          <tbody id="advance-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel" aria-labelledby="refine-title">
+      <div class="section-heading">
+        <h2 class="section-title" id="refine-title">精炼属性与耗材</h2>
+        <span class="section-meta" id="refine-meta"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="refine-table">
+          <thead><tr><th scope="col">精炼等级</th><th scope="col">银币</th><th scope="col">消耗材料</th></tr></thead>
+          <tbody id="refine-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <script src="assets/treasure-data.js"></script>
+  <script>
+    (() => {
+      const data = window.treasureData;
+      const number = (value) => Number(value || 0).toLocaleString("zh-CN");
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+      const qualityName = (quality) => data.qualityNames[String(quality)] || `品质${quality}`;
+      const attributeName = (id) => data.attributeNames[String(id)] || `属性${id}`;
+      const qualityText = (quality) => `${qualityName(quality)}品质`;
+      const attrText = (attribute, signed = true) => `${attributeName(attribute.id)}${signed ? " +" : ""}${number(attribute.value)}`;
+      const materialMeta = (id, treasure) => {
+        if (Number(id) === Number(treasure.id)) return { name: treasure.name, icon: treasure.icon };
+        return data.materials[String(id)] || { name: `材料${id}`, icon: null };
+      };
+      const materialMarkup = (cost, treasure) => {
+        if (cost.type === "silver") return `<span class="cost-chip"><span>银币</span><span>×${number(cost.amount)}</span></span>`;
+        const material = materialMeta(cost.id, treasure);
+        const icon = material.icon
+          ? `<img class="cost-icon" src="${escapeHtml(material.icon)}" alt="">`
+          : `<span class="material-placeholder">材</span>`;
+        return `<span class="cost-chip">${icon}<span>${escapeHtml(material.name)}</span><span>×${number(cost.amount)}</span></span>`;
+      };
+      const costsMarkup = (costs, treasure) => costs.length
+        ? `<div class="cost-list">${costs.map((cost) => materialMarkup(cost, treasure)).join("")}</div>`
+        : '<span class="empty">—</span>';
+      const levelRange = (from, to) => from === to ? `${number(from)}级` : `${number(from)}～${number(to)}级`;
+      const silverText = (band) => {
+        if (band.silverFrom === band.silverTo) return `×${number(band.silverFrom)}`;
+        const step = band.silverStep > 0 ? `（每级+${number(band.silverStep)}）` : "";
+        return `×${number(band.silverFrom)}～${number(band.silverTo)}${step}`;
+      };
+
+      const renderPicker = (selectedId, onSelect) => {
+        const categories = ["战马", "兵书"];
+        document.getElementById("treasure-picker").innerHTML = categories.map((category) => {
+          const list = data.treasures.filter((treasure) => treasure.category === category);
+          return `<h3 class="category-title">${escapeHtml(category)}</h3><div class="treasure-grid">${list.map((treasure) => `
+            <button class="treasure-card${treasure.id === selectedId ? " is-active" : ""}" type="button" data-id="${treasure.id}">
+              <img class="treasure-card-icon" src="${escapeHtml(treasure.icon)}" alt="${escapeHtml(treasure.name)}图标">
+              <span class="treasure-card-copy"><span class="treasure-card-name">${escapeHtml(treasure.name)}</span><span class="treasure-card-quality">${escapeHtml(qualityText(treasure.quality))}</span></span>
+            </button>`).join("")}</div>`;
+        }).join("");
+        document.querySelectorAll(".treasure-card").forEach((button) => button.addEventListener("click", () => onSelect(Number(button.dataset.id))));
+      };
+
+      const renderTreasure = (id) => {
+        const treasure = data.treasures.find((entry) => entry.id === id) || data.treasures.find((entry) => entry.name === "青囊书") || data.treasures[0];
+        const icon = document.getElementById("treasure-icon");
+        icon.src = treasure.bigIcon || treasure.icon;
+        icon.onerror = () => { icon.onerror = null; icon.src = treasure.icon; };
+        icon.alt = `${treasure.name}图标`;
+        document.getElementById("treasure-name").innerHTML = `${escapeHtml(treasure.name)} <span class="quality-name">${escapeHtml(qualityText(treasure.quality))}</span>`;
+        document.getElementById("treasure-meta").textContent = `${escapeHtml(treasure.category)} · 最高${number(treasure.maxLevel)}级`;
+        document.getElementById("summary-stats").innerHTML = [
+          `<span class="summary-stat">升级属性 ${number(treasure.attributes.length)}项</span>`,
+          `<span class="summary-stat">升级经验材料 ×${number(treasure.strengthen.expPerItem)}经验</span>`,
+          `<span class="summary-stat">精炼属性 ${escapeHtml(attributeName(treasure.refineAttribute.id))} +${number(treasure.refineAttribute.value)}</span>`
+        ].join("");
+
+        document.getElementById("base-attributes").innerHTML = `<div class="attribute-list">${treasure.attributes.map((entry) => `<span class="attribute-chip">基础${escapeHtml(attrText(entry.base))}${entry.growth.value ? ` · 每级${escapeHtml(attrText(entry.growth))}` : ""}</span>`).join("")}</div>`;
+        document.getElementById("level-attribute-table").innerHTML = treasure.levelAttributes.length
+          ? treasure.levelAttributes.map((attribute) => `<tr><td class="number">${number(attribute.level)}级</td><td><span class="attribute-chip">${escapeHtml(attrText(attribute))}</span></td></tr>`).join("")
+          : '<tr><td colspan="2" class="empty">当前宝物没有配置等级属性。</td></tr>';
+        document.getElementById("upgrade-cost-table").innerHTML = treasure.strengthen.costBands.map((band) => `<tr><td class="number">${levelRange(band.from, band.to)}</td><td><span class="cost-chip"><img class="cost-icon" src="${escapeHtml(materialMeta(treasure.strengthen.materialId, treasure).icon || "")}" alt=""><span>${escapeHtml(materialMeta(treasure.strengthen.materialId, treasure).name)}</span><span>×${number(band.amount)}</span></span></td><td class="number">${number(treasure.strengthen.expPerItem)}</td></tr>`).join("");
+        document.getElementById("upgrade-note").textContent = `累计强化经验节点：${treasure.strengthen.experienceMilestones.map((milestone) => `${milestone.level}级 ${number(milestone.value)}`).join(" · ")}`;
+
+        document.getElementById("advance-table").innerHTML = treasure.advance.length
+          ? treasure.advance.flatMap((group) => group.entries.map((entry) => `<tr><td>${escapeHtml(qualityText(group.toQuality))}</td><td class="number">第${number(entry.stage)}阶</td><td class="number">${entry.levelLimit ? `${number(entry.levelLimit)}级` : "—"}</td><td><span class="attribute-chip">${escapeHtml(attrText(entry.attribute))}</span></td><td>${costsMarkup(entry.costs, treasure)}</td></tr>`)).join("")
+          : '<tr><td colspan="5" class="empty">当前宝物没有配置进阶阶段。</td></tr>';
+
+        document.getElementById("refine-meta").textContent = `每级精炼增加 ${attributeName(treasure.refineAttribute.id)} +${number(treasure.refineAttribute.value)}`;
+        document.getElementById("refine-table").innerHTML = treasure.refine.costBands.map((band) => `<tr><td class="number">${levelRange(band.from, band.to)}</td><td class="number">${silverText(band)}</td><td>${costsMarkup([band.item], treasure)}</td></tr>`).join("");
+        document.getElementById("picker-meta").textContent = `已收录${number(data.treasures.length)}件宝物`;
+        renderPicker(treasure.id, renderTreasure);
+      };
+
+      const requestedId = Number(new URLSearchParams(location.search).get("treasure"));
+      renderTreasure(data.treasures.some((entry) => entry.id === requestedId) ? requestedId : 502506);
+    })();
+  </script>
+</body>
+</html>

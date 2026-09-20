@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三配饰属性、升品材料与升级效果查询表。">
+  <title>红颜配饰进阶与属性 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fffaf0;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #5bc0a2;
+      --jade-dark: #173f35;
+      --gold: #e7bb61;
+      --quality-red: #b84e5b;
+      --quality-gold: #b7902d;
+      --quality-dark-gold: #8d672f;
+      --quality-platinum: #71899f;
+      --quality-liujin: #299b99;
+      --quality-lanjin: #5575c7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 34px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { flex: 1 1 auto; min-width: 0; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 16px 0 14px;
+    }
+
+    .page-title { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 850; }
+    .page-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .section-panel { margin-top: 14px; padding: 0 16px; }
+
+    details > summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      color: var(--jade-dark);
+      font-size: 21px;
+      font-weight: 850;
+    }
+
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::before { content: "▸"; color: var(--jade); font-size: 18px; }
+    details[open] > summary::before { content: "▾"; }
+    .summary-note { margin-left: auto; color: var(--muted); font-size: 13px; font-weight: 500; }
+
+    .section-body { border-top: 1px solid var(--line); padding: 14px 0 16px; }
+
+    .accessory-detail { padding: 14px 0 16px; }
+    .selection-body { border-top: 0; padding: 14px 0 16px; }
+
+    .quality-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      margin-bottom: 14px;
+    }
+
+    .quality-filter {
+      min-height: 40px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--jade-dark);
+      background: var(--panel-strong);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .quality-filter:hover {
+      background: var(--panel-hover);
+    }
+
+    .quality-filter.is-active {
+      color: #fffdf8;
+    }
+
+    .quality-filter.quality-7 {
+      border-color: var(--quality-red);
+      color: var(--quality-red);
+    }
+
+    .quality-filter.quality-8 {
+      border-color: var(--quality-gold);
+      color: var(--quality-gold);
+    }
+
+    .quality-filter.quality-9 {
+      border-color: var(--quality-dark-gold);
+      color: var(--quality-dark-gold);
+    }
+
+    .quality-filter.quality-7.is-active { color: #fffdf8; background: var(--quality-red); }
+    .quality-filter.quality-8.is-active { color: #fffdf8; background: var(--quality-gold); }
+    .quality-filter.quality-9.is-active { color: #fffdf8; background: var(--quality-dark-gold); }
+
+    .quality-filter.quality-7:hover { background: #fff0f1; }
+    .quality-filter.quality-8:hover { background: #fff8e8; }
+    .quality-filter.quality-9:hover { background: #f8f0e3; }
+
+    .quality-filter.quality-7.is-active:hover { color: #fffdf8; background: var(--quality-red); }
+    .quality-filter.quality-8.is-active:hover { color: #fffdf8; background: var(--quality-gold); }
+    .quality-filter.quality-9.is-active:hover { color: #fffdf8; background: var(--quality-dark-gold); }
+
+    .accessory-picker {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .picker-label {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .accessory-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 7px 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .accessory-option:hover,
+    .accessory-option.is-active {
+      border-color: var(--jade);
+      background: #eef9f3;
+    }
+
+    .accessory-option.is-active {
+      box-shadow: inset 0 0 0 1px var(--jade);
+    }
+
+    .accessory-option img {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      object-fit: contain;
+    }
+
+    .accessory-option span {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .accessory-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 13px 14px;
+    }
+
+    .accessory-card.quality-7 { border-left-color: var(--quality-red); }
+    .accessory-card.quality-8 { border-left-color: var(--quality-gold); }
+    .accessory-card.quality-9 { border-left-color: var(--quality-dark-gold); }
+
+    .accessory-detail .accessory-card { margin: 0; }
+
+    .accessory-heading { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .accessory-icon { width: 50px; height: 50px; flex: 0 0 50px; object-fit: contain; }
+    .accessory-title { min-width: 0; margin: 0; font-size: 18px; line-height: 1.3; font-weight: 850; }
+    .quality-badge { display: inline-flex; align-items: center; border-radius: 5px; padding: 4px 8px; color: #fff; font-size: 12px; font-weight: 800; }
+    .quality-badge.quality-7 { background: var(--quality-red); }
+    .quality-badge.quality-8 { background: var(--quality-gold); }
+    .quality-badge.quality-9 { background: var(--quality-dark-gold); }
+    .quality-badge.quality-10 { background: var(--quality-platinum); }
+    .quality-badge.quality-11 { background: var(--quality-liujin); }
+    .quality-badge.quality-12 { background: var(--quality-lanjin); }
+
+    .label { margin: 12px 0 6px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    .attribute-list, .material-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .attribute-item, .material-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid #ead9bf;
+      border-radius: 6px;
+      padding: 6px 8px;
+      background: #fffaf1;
+      color: var(--jade-dark);
+      font-size: 13px;
+    }
+    .attribute-item strong, .material-item strong { color: var(--gold); }
+    .material-item img { width: 28px; height: 28px; object-fit: contain; }
+    .upgrade-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+    .upgrade-row { min-width: 0; border: 1px solid #eee1cf; border-radius: 6px; padding: 9px; background: #fffaf1; }
+    .upgrade-row-head { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; color: var(--muted); font-size: 13px; font-weight: 750; }
+    .upgrade-detail-line { display: flex; align-items: flex-start; gap: 10px; margin-top: 6px; }
+    .upgrade-detail-label { flex: 0 0 65px; color: var(--muted); font-size: 13px; font-weight: 800; line-height: 32px; white-space: nowrap; }
+    .upgrade-detail-line .material-list, .upgrade-detail-line .attribute-list { flex: 1 1 auto; min-width: 0; }
+    .empty-cell { color: var(--muted); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+    th { background: #fbf0d9; color: var(--muted); font-size: 13px; font-weight: 800; }
+    td { font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    .stage-label { font-weight: 850; white-space: nowrap; }
+    .stage-label .quality-badge { margin-right: 5px; }
+    .stage-arrow { margin: 0 5px; color: var(--gold); font-weight: 900; }
+    .effect { color: var(--jade-dark); font-weight: 750; }
+    .footnote { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    footer { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 16px; }
+    .copyright-note { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 12px; }
+      .brand-mark { width: 92px; flex-basis: 92px; }
+      .brand-name { font-size: 16px; }
+      .intro { display: block; }
+      .page-title { font-size: 24px; }
+      .page-note { margin-top: 5px; }
+      .section-panel { padding: 0 11px; }
+      details > summary { font-size: 18px; }
+      .summary-note { font-size: 12px; }
+      .accessory-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .accessory-option img { width: 38px; height: 38px; flex-basis: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国数据合集">
+      <div class="brand-copy"><p class="brand-name">红颜配饰进阶与属性</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回材料总览</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">红颜配饰</h1>
+      <p class="page-note">查看配饰基础属性、升品消耗与升级效果</p>
+    </div>
+
+    <section class="section-panel">
+      <div class="section-body selection-body">
+        <div class="quality-filters" id="quality-filters" aria-label="配饰品质筛选"></div>
+        <p class="picker-label">选择配饰</p>
+        <div class="accessory-picker" id="accessory-picker"></div>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="accessory-detail" id="accessory-details"></div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <script src="assets/hero-beauty-accessory-data.js"></script>
+  <script>
+    (() => {
+      const data = window.heroBeautyAccessoryData;
+      const accessoryPicker = document.getElementById("accessory-picker");
+      const accessoryDetails = document.getElementById("accessory-details");
+      const filters = document.getElementById("quality-filters");
+      const itemMap = new Map(data.accessories.map((item) => [item.id, item]));
+      const percentAttributes = new Set([24, 25, 56, 57, 60, 61]);
+
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+      const formatAttribute = ([id, value]) => {
+        const name = data.attributeNames[id] || `属性${id}`;
+        const amount = percentAttributes.has(id) ? `${(value / 100).toLocaleString("zh-CN", { maximumFractionDigits: 2 })}%` : number(value);
+        return `<span class="attribute-item">${escapeHtml(name)} <strong>+${amount}</strong></span>`;
+      };
+      const qualityLabel = (quality) => data.qualities[quality] || { name: `品质${quality}`, className: "" };
+      const qualityBadge = (quality) => {
+        const label = qualityLabel(quality);
+        return `<span class="quality-badge ${label.className}">${escapeHtml(label.name)}</span>`;
+      };
+      const itemMaterial = (itemId, quantity) => {
+        const item = itemMap.get(itemId);
+        if (!item) return `<span class="material-item">配饰 <strong>×${number(quantity)}</strong></span>`;
+        return `<span class="material-item"><img src="${escapeHtml(item.icon)}" alt="">${escapeHtml(item.name)} <strong>×${number(quantity)}</strong></span>`;
+      };
+
+      function renderFilters(activeQuality) {
+        const entries = Object.entries(data.qualities).filter(([quality]) => Number(quality) <= 9);
+        filters.innerHTML = entries.map(([quality, label]) => {
+          const qualityClass = data.qualities[quality].className;
+          const text = `${label.name}品质`;
+          return `<button class="quality-filter ${qualityClass} ${String(quality) === String(activeQuality) ? "is-active" : ""}" data-quality="${quality}" type="button">${text}</button>`;
+        }).join("");
+        filters.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
+          renderSelection(button.dataset.quality);
+        }));
+      }
+
+      function renderPicker(activeQuality, selectedId) {
+        const rows = data.accessories.filter((item) => String(item.quality) === String(activeQuality));
+        accessoryPicker.innerHTML = rows.map((item) => `<button class="accessory-option${item.id === selectedId ? " is-active" : ""}" type="button" data-item-id="${item.id}"><img src="${escapeHtml(item.icon)}" alt=""><span>${escapeHtml(item.name)}</span></button>`).join("");
+        accessoryPicker.querySelectorAll("[data-item-id]").forEach((button) => button.addEventListener("click", () => {
+          renderSelection(activeQuality, Number(button.dataset.itemId));
+        }));
+      }
+
+      function renderDetails(item) {
+        const label = qualityLabel(item.quality);
+        const upgradeHtml = item.upgrades.length
+          ? item.upgrades.map((upgrade) => `<div class="upgrade-row"><div class="upgrade-row-head">升至${qualityBadge(upgrade.to)}</div><div class="upgrade-detail-line"><span class="upgrade-detail-label">消耗材料</span><div class="material-list">${upgrade.costs.map((cost) => itemMaterial(cost.itemId, cost.quantity)).join("")}</div></div><div class="upgrade-detail-line"><span class="upgrade-detail-label">获得属性</span><div class="attribute-list">${upgrade.attributes.map(formatAttribute).join("")}</div></div></div>`).join("")
+          : '<span class="empty-cell">暂无升品数据</span>';
+        accessoryDetails.innerHTML = `<article class="accessory-card ${label.className}"><div class="accessory-heading"><img class="accessory-icon" src="${escapeHtml(item.icon)}" alt="${escapeHtml(item.name)}图标"><h3 class="accessory-title">${escapeHtml(item.name)}</h3>${qualityBadge(item.quality)}</div><p class="label">基础属性</p><div class="attribute-list">${item.base.map(formatAttribute).join("")}</div><p class="label">升品材料与属性</p><div class="upgrade-list">${upgradeHtml}</div></article>`;
+      }
+
+      function renderSelection(activeQuality, selectedId) {
+        const rows = data.accessories.filter((item) => String(item.quality) === String(activeQuality));
+        const item = rows.find((entry) => entry.id === selectedId) || rows[0];
+        if (!item) return;
+        renderFilters(activeQuality);
+        renderPicker(activeQuality, item.id);
+        renderDetails(item);
+      }
+
+      const initialQuality = "7";
+      renderSelection(initialQuality);
+    })();
+  </script>
+</body>
+</html>

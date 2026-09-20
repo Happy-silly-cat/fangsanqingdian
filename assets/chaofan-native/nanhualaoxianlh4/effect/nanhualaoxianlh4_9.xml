@@ -1,0 +1,182 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="nanhualaoxianlh4_9" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-64.85,2.05" rotation="-78.9986891933" rotationX="-78.9986891933" rotationY="-78.9986891933" scaleX="-0.310003012082" scaleY="-0.310003012082"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-63.45,2.25" rotation="-78.9939197692" rotationX="-78.9939197692" rotationY="-78.9939197692" scaleX="-0.309790404043" scaleY="-0.309790404043"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-62.05,2.45" rotation="-78.9928421071" rotationX="-78.9928421071" rotationY="-78.9928421071" scaleX="-0.309760447832" scaleY="-0.309760447832"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-60.6,2.6" rotation="-78.9917642365" rotationX="-78.9917642365" rotationY="-78.9917642365" scaleX="-0.309730491729" scaleY="-0.309730491729"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-59.2,2.8" rotation="-78.9934571648" rotationX="-78.9934571648" rotationY="-78.9934571648" scaleX="-0.309697622151" scaleY="-0.309697622151"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-57.8,3.0" rotation="-78.9890686477" rotationX="-78.9890686477" rotationY="-78.9890686477" scaleX="-0.309655601954" scaleY="-0.309655601954"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-56.4,3.2" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-54.95,3.4" rotation="-78.9913008967" rotationX="-78.9913008967" rotationY="-78.9913008967" scaleX="-0.309637709931" scaleY="-0.309637709931"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-53.55,3.55" rotation="-78.9913008967" rotationX="-78.9913008967" rotationY="-78.9913008967" scaleX="-0.309637709931" scaleY="-0.309637709931"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-52.1,3.75" rotation="-78.9913008967" rotationX="-78.9913008967" rotationY="-78.9913008967" scaleX="-0.309637709931" scaleY="-0.309637709931"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-50.7,3.9" rotation="-78.9913008967" rotationX="-78.9913008967" rotationY="-78.9913008967" scaleX="-0.309637709931" scaleY="-0.309637709931"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-49.3,4.1" rotation="-78.9913008967" rotationX="-78.9913008967" rotationY="-78.9913008967" scaleX="-0.309637709931" scaleY="-0.309637709931"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-47.9,4.25" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-46.5,4.45" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-45.1,4.65" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-43.65,4.8" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-42.25,5.0" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-40.85,5.15" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-39.45,5.35" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-38.05,5.55" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-36.6,5.7" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-35.2,5.9" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-33.8,6.05" rotation="-78.9935334037" rotationX="-78.9935334037" rotationY="-78.9935334037" scaleX="-0.309619818378" scaleY="-0.309619818378"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-32.4,6.25" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-31.0,6.4" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-29.6,6.6" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-28.15,6.8" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-26.75,6.95" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-25.35,7.15" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-23.95,7.3" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-22.55,7.5" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-21.15,7.7" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-19.7,7.85" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-18.3,8.05" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-16.9,8.2" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-15.5,8.4" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-14.1,8.55" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-12.65,8.75" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-11.25,8.95" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-9.85,9.1" rotation="-78.9924551104" rotationX="-78.9924551104" rotationY="-78.9924551104" scaleX="-0.309589862206" scaleY="-0.309589862206"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-8.5,9.3" rotation="-78.9902224497" rotationX="-78.9902224497" rotationY="-78.9902224497" scaleX="-0.309607753985" scaleY="-0.309607753985"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-7.1,9.45" rotation="-78.9907616993" rotationX="-78.9907616993" rotationY="-78.9907616993" scaleX="-0.309622731945" scaleY="-0.309622731945"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-5.65,9.65" rotation="-78.991840042" rotationX="-78.991840042" rotationY="-78.991840042" scaleX="-0.309652687946" scaleY="-0.309652687946"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-4.25,9.8" rotation="-78.992379135" rotationX="-78.992379135" rotationY="-78.992379135" scaleX="-0.309667665985" scaleY="-0.309667665985"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-2.85,10.0" rotation="-78.9901470397" rotationX="-78.9901470397" rotationY="-78.9901470397" scaleX="-0.309685557783" scaleY="-0.309685557783"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-1.4,10.15" rotation="-78.991225223" rotationX="-78.991225223" rotationY="-78.991225223" scaleX="-0.309715513719" scaleY="-0.309715513719"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="0.0,10.35" rotation="-78.9917642365" rotationX="-78.9917642365" rotationY="-78.9917642365" scaleX="-0.309730491729" scaleY="-0.309730491729"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="1.4,10.5" rotation="-78.9900716675" rotationX="-78.9900716675" rotationY="-78.9900716675" scaleX="-0.309763361579" scaleY="-0.309763361579"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="2.8,10.7" rotation="-78.9933809642" rotationX="-78.9933809642" rotationY="-78.9933809642" scaleX="-0.309775425924" scaleY="-0.309775425924"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="4.25,10.85" rotation="-78.9944585221" rotationX="-78.9944585221" rotationY="-78.9944585221" scaleX="-0.30980538219" scaleY="-0.30980538219"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="5.65,11.05" rotation="-78.9986891933" rotationX="-78.9986891933" rotationY="-78.9986891933" scaleX="-0.310003012082" scaleY="-0.310003012082"/>
+			</frameInfo>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-74.6,-0.3" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-73.2,0.05" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_2" position="-71.8,0.4" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_3" position="-70.4,0.7" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-69.0,1.05" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_4" position="-67.6,1.4" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="nanhualaoxianlh4_hudie_1" position="-66.2,1.7" rotation="-78.9922272988" rotationX="-78.9922272988" rotationY="-78.9922272988" scaleX="-0.309823273548" scaleY="-0.309823273548"/>
+			</frameInfo>
+		</action>
+	</animation>

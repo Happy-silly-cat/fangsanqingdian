@@ -1,0 +1,1851 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三装备进阶材料查询表。">
+  <title>装备进阶材料 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    button,
+    input,
+    select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .page-equipment-icon[hidden] {
+      display: none;
+    }
+
+    .page-equipment-icon {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border: 2px solid rgba(231, 187, 97, 0.62);
+      border-radius: 8px;
+      background: #fffdf8;
+      object-fit: contain;
+    }
+
+    .detail-list-link[hidden] {
+      display: none;
+    }
+
+    .page-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .equipment-picker {
+      margin-bottom: 14px;
+    }
+
+    .exchange-calculator {
+      margin: 14px 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px 18px;
+    }
+
+    .exchange-controls {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .exchange-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .exchange-field select,
+    .exchange-field input {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 8px 9px;
+    }
+
+    .exchange-field select:focus,
+    .exchange-field input:focus {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .exchange-result {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .exchange-result-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.22);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 11px 12px;
+    }
+
+    .exchange-result-block:first-child {
+      grid-column: 1 / -1;
+      border-color: rgba(184, 132, 47, 0.3);
+      background: rgba(255, 248, 236, 0.82);
+    }
+
+    .exchange-result-title {
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .exchange-result-value {
+      margin-top: 6px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 850;
+      line-height: 1.55;
+    }
+
+    .exchange-result-note {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .exchange-material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .exchange-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 14px;
+      margin-top: 8px;
+    }
+
+    .exchange-difference-positive strong { color: var(--jade); }
+    .exchange-difference-negative strong { color: #c55b4a; }
+    .exchange-difference-zero strong { color: var(--muted); }
+
+    .equipment-detail-page[hidden] { display: none; }
+    .exchange-calculator[hidden] { display: none; }
+
+    .equipment-detail-page {
+      margin-top: 18px;
+    }
+
+    .detail-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .detail-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .detail-content {
+      min-width: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .equipment-picker .section-head {
+      margin: 0 0 9px;
+    }
+
+    .equipment-type-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .equipment-type-tab {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 850;
+      transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .equipment-type-tab:hover,
+    .equipment-type-tab:focus-visible,
+    .equipment-type-tab.is-active {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      color: var(--jade-dark);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .equipment-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 78px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+      background: var(--panel);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .equipment-card:hover,
+    .equipment-card.is-selected {
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      transform: translateY(-1px);
+    }
+
+    .equipment-card:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .equipment-card.is-selected {
+      box-shadow: inset 0 0 0 1px rgba(60, 157, 133, 0.3), 0 4px 10px rgba(39, 35, 30, 0.08);
+    }
+
+    .equipment-icon {
+      display: block;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      border: 2px solid rgba(231, 187, 97, 0.62);
+      border-radius: 8px;
+      background: #fffdf8;
+      object-fit: contain;
+    }
+
+    .equipment-card-name {
+      min-width: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .equipment-card-copy {
+      display: grid;
+      min-width: 0;
+      gap: 4px;
+    }
+
+    .equipment-card-kind {
+      width: max-content;
+      border: 1px solid rgba(60, 157, 133, 0.28);
+      border-radius: 5px;
+      padding: 2px 5px;
+      color: var(--jade-dark);
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .equipment-card-kind[data-kind="套装"] {
+      border-color: rgba(184, 132, 47, 0.35);
+      color: var(--gold);
+    }
+
+    .field:focus,
+    .back-link:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .equipment-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .equipment-compose {
+      margin-top: 14px;
+      border-top: 1px solid rgba(217, 203, 182, 0.8);
+      padding-top: 13px;
+    }
+
+    .equipment-compose-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .equipment-compose-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .equipment-compose .material-list {
+      margin-top: 9px;
+    }
+
+    .equipment-compose-group + .equipment-compose-group {
+      margin-top: 12px;
+    }
+
+    .equipment-compose-label {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .compose-equipment-item {
+      border-color: rgba(184, 132, 47, 0.28);
+      background: rgba(255, 248, 232, 0.76);
+    }
+
+    .compose-equipment-placeholder {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(184, 132, 47, 0.13);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .equipment-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding-bottom: 12px;
+    }
+
+    .equipment-name {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+
+    .equipment-type {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(170px, 220px) minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.25);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 12px 14px;
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .stat-value {
+      display: block;
+      margin-top: 4px;
+      color: var(--gold);
+      font-size: 23px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .material-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      border: 1px solid rgba(60, 157, 133, 0.2);
+      border-radius: 7px;
+      background: #fffdf8;
+      padding: 4px 8px 4px 5px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .material-item img {
+      display: block;
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .material-item strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .attribute-panel {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px 18px 18px;
+    }
+
+    .attribute-toolbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .attribute-toolbar .section-head {
+      flex: 1 1 auto;
+      margin-bottom: 0;
+    }
+
+    .attribute-controls {
+      display: flex;
+      align-items: end;
+      gap: 12px;
+      flex: 0 0 auto;
+    }
+
+    .level-field {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .level-input {
+      width: 86px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 8px 9px;
+      text-align: center;
+    }
+
+    .level-select {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      color: var(--quality-color, var(--text));
+      padding: 8px 7px;
+      text-align: center;
+    }
+
+    .quality-select { width: 88px; }
+    .stage-select { width: 64px; }
+
+    .level-input:focus {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .attribute-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .attribute-block {
+      min-width: 0;
+      border: 1px solid rgba(60, 157, 133, 0.22);
+      border-radius: 7px;
+      background: rgba(255, 253, 248, 0.78);
+      padding: 11px 12px;
+    }
+
+    .attribute-block-title {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+      margin-top: 8px;
+    }
+
+    .attribute-value {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .attribute-value strong {
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .attribute-value.is-advance strong,
+    .attribute-source-green {
+      color: var(--jade);
+    }
+
+    .attribute-join {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .attribute-total {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .attribute-empty {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .attribute-total-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .attribute-total-block {
+      min-width: 0;
+      border: 1px solid rgba(184, 132, 47, 0.3);
+      border-radius: 7px;
+      background: rgba(255, 248, 236, 0.82);
+      padding: 11px 12px;
+    }
+
+    .attribute-total-block .attribute-block-title {
+      color: var(--jade-dark);
+    }
+
+    .attribute-growth-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 0 2px;
+    }
+
+    .attribute-growth-row .attribute-list {
+      margin-top: 0;
+    }
+
+    .collapsible-section {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .collapsible-section > summary {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 12px 14px;
+      color: var(--jade-dark);
+      font-size: 16px;
+      font-weight: 850;
+      list-style: none;
+    }
+
+    .collapsible-section > summary::-webkit-details-marker { display: none; }
+
+    .collapsible-section > summary > span:first-of-type { grid-column: 2; }
+    .collapsible-section > summary > .section-meta {
+      grid-column: 3;
+      text-align: right;
+    }
+
+    .collapsible-section > summary::before {
+      content: "▸";
+      color: var(--jade);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .collapsible-section[open] > summary::before { content: "▾"; }
+
+    .collapsible-section > summary:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: -2px;
+    }
+
+    .collapsible-section > .table-wrap {
+      border-width: 1px 0 0;
+      border-radius: 0;
+    }
+
+    .collapsible-section > .attribute-note {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding: 11px 14px 0;
+    }
+
+    .attribute-note {
+      margin: 12px 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .advance-result-table {
+      min-width: 1080px;
+    }
+
+    .advance-result-table th:nth-child(1),
+    .advance-result-table td:nth-child(1) { width: 190px; }
+
+    .advance-result-table th:nth-child(2),
+    .advance-result-table td:nth-child(2) { width: 500px; }
+
+    .advance-result-table th:nth-child(3),
+    .advance-result-table td:nth-child(3) { width: 220px; }
+
+    .advance-result-table th:nth-child(4),
+    .advance-result-table td:nth-child(4) { width: 260px; }
+
+    .advance-result-table td {
+      vertical-align: top;
+    }
+
+    .advance-result-table .material-list,
+    .advance-result-table .attribute-list {
+      margin-top: 0;
+    }
+
+    .chain-table {
+      min-width: 620px;
+    }
+
+    .chain-table td {
+      white-space: nowrap;
+    }
+
+    .advance-result-table .feature-effect,
+    .chain-table .feature-effect {
+      color: var(--jade);
+      font-weight: 750;
+    }
+
+    .advance-result-table .feature-effect + .feature-effect {
+      margin-top: 6px;
+    }
+
+    .advance-result-table .table-empty {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .feature-state {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .feature-state.is-active {
+      color: var(--jade-dark);
+    }
+
+    .feature-row-active {
+      background: rgba(60, 157, 133, 0.06);
+    }
+
+    .feature-row-active:hover {
+      background: var(--panel-hover);
+    }
+
+    .attribute-subsection {
+      margin: 14px 0 9px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .extra-attribute-table {
+      min-width: 360px;
+    }
+
+    .extra-attribute-table th,
+    .extra-attribute-table td {
+      padding: 9px 12px;
+    }
+
+    .wash-table {
+      min-width: 700px;
+    }
+
+    .wash-table th,
+    .wash-table td {
+      white-space: nowrap;
+    }
+
+    .wash-range,
+    .wash-worth {
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .wash-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 18px;
+    }
+
+    .wash-attribute {
+      color: var(--text);
+      font-weight: 750;
+    }
+
+    .wash-attribute strong {
+      color: var(--gold);
+      font-weight: 850;
+    }
+
+    .table-section {
+      margin-top: 16px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .section-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 12px 13px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .stage-level {
+      color: var(--gold);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .quality {
+      color: var(--quality-color, var(--jade-dark));
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .quality-text {
+      color: var(--quality-color, var(--text));
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    /* 品质颜色与主角时装页面保持一致。 */
+    .quality-6 { --quality-color: #d97d2d; }
+    .quality-7 { --quality-color: #b84e5b; }
+    .quality-8 { --quality-color: #b7902d; }
+    .quality-9 { --quality-color: #8d672f; }
+    .quality-10 { --quality-color: #71899f; }
+    .quality-11 { --quality-color: #299b99; }
+    .quality-12 { --quality-color: #5575c7; }
+
+    .level-select:focus {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .silver-cost {
+      color: var(--text);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .empty-cost {
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 760px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .page-title { font-size: 25px; }
+      .page-equipment-icon { width: 40px; height: 40px; flex-basis: 40px; }
+      .detail-topline { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .detail-content { padding-top: 12px; }
+      .equipment-type-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .equipment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .summary-grid { grid-template-columns: 1fr; }
+      .material-item { font-size: 12px; }
+      .attribute-panel { padding: 14px; }
+      .attribute-toolbar { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .attribute-controls { align-items: flex-start; flex-wrap: wrap; gap: 8px 12px; }
+      .attribute-summary { grid-template-columns: 1fr; }
+      .attribute-total-summary { grid-template-columns: 1fr; }
+      .attribute-growth-row { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .exchange-calculator { padding: 14px; }
+      .exchange-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .exchange-result { grid-template-columns: 1fr; }
+      .exchange-result-block:first-child { grid-column: auto; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">装备进阶材料</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回上一级</a>
+    </header>
+
+    <section class="intro">
+      <div class="page-title-row">
+        <img class="page-equipment-icon" id="pageEquipmentIcon" alt="" hidden>
+        <h1 class="page-title">装备进阶材料</h1>
+      </div>
+      <p class="page-note">查看装备进阶消耗、普通强化属性和进阶附加属性</p>
+      <a class="back-link detail-list-link" id="equipmentListLink" href="equipment-advance.html" hidden>返回装备列表</a>
+    </section>
+
+    <section class="exchange-calculator" aria-labelledby="exchangeCalculatorTitle">
+      <div class="section-head">
+        <h2 class="section-title" id="exchangeCalculatorTitle">装备等量代换计算器</h2>
+        <span class="section-meta">比较套装与普通装备的材料效率和属性差值</span>
+      </div>
+      <div class="exchange-controls">
+        <label class="exchange-field">
+          装备类别
+          <select id="exchangeType" aria-label="等量代换装备类别">
+            <option value="武器">武器</option>
+            <option value="防具">防具</option>
+            <option value="头盔">头盔</option>
+            <option value="项链">项链</option>
+          </select>
+        </label>
+        <label class="exchange-field">
+          普通装备
+          <select id="exchangeNormalEquipment" aria-label="选择普通装备"></select>
+        </label>
+        <label class="exchange-field">
+          套装装备
+          <select id="exchangeSetEquipment" aria-label="选择套装装备"></select>
+        </label>
+        <label class="exchange-field">
+          套装品质
+          <select id="exchangeQuality" aria-label="选择套装目标品质">
+            <option value="-1">橙色</option>
+            <option value="0" selected>红色</option>
+            <option value="1">金色</option>
+            <option value="2">暗金色</option>
+            <option value="3">白金色</option>
+            <option value="4">琉金色</option>
+            <option value="5">澜金色</option>
+          </select>
+        </label>
+        <label class="exchange-field">
+          套装阶数
+          <select id="exchangeStage" aria-label="选择套装目标阶数">
+            <option value="0">0阶</option>
+            <option value="1">1阶</option>
+            <option value="2">2阶</option>
+            <option value="3">3阶</option>
+            <option value="4">4阶</option>
+            <option value="5">5阶</option>
+          </select>
+        </label>
+        <label class="exchange-field">
+          比较强化等级
+          <input id="exchangeStrengthenLevel" type="number" min="0" max="850" step="1" value="0" inputmode="numeric">
+        </label>
+      </div>
+      <div class="exchange-result" aria-live="polite">
+        <div class="exchange-result-block">
+          <div class="exchange-result-title">等量代换结果</div>
+          <div class="exchange-result-value" id="exchangeHeadline"></div>
+          <p class="exchange-result-note" id="exchangeMethodNote"></p>
+        </div>
+        <div class="exchange-result-block">
+          <div class="exchange-result-title">套装材料预算</div>
+          <div class="exchange-material-list" id="exchangeSetMaterials"></div>
+        </div>
+        <div class="exchange-result-block">
+          <div class="exchange-result-title">属性差值（套装 − 普通，不含洗炼）</div>
+          <div class="exchange-attribute-list" id="exchangeAttributeDifference"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="equipment-picker" aria-label="选择装备">
+      <div class="section-head">
+        <h2 class="section-title">选择装备</h2>
+        <span class="section-meta">点击图标查看具体详情</span>
+      </div>
+      <div class="equipment-type-tabs" role="tablist" aria-label="选择装备分类">
+        <button class="equipment-type-tab is-active" type="button" role="tab" aria-selected="true" data-type="武器">武器</button>
+        <button class="equipment-type-tab" type="button" role="tab" aria-selected="false" data-type="防具">防具</button>
+        <button class="equipment-type-tab" type="button" role="tab" aria-selected="false" data-type="头盔">头盔</button>
+        <button class="equipment-type-tab" type="button" role="tab" aria-selected="false" data-type="项链">项链</button>
+      </div>
+      <div class="equipment-grid" id="equipmentGrid" role="tabpanel" aria-label="武器装备"></div>
+
+      <details class="collapsible-section">
+        <summary>
+          <span>连锁属性</span>
+          <span class="section-meta">按品质与阶位查看</span>
+        </summary>
+        <div class="table-wrap">
+          <table class="chain-table">
+            <thead>
+              <tr>
+                <th scope="col">连锁阶位</th>
+                <th scope="col">属性效果</th>
+              </tr>
+            </thead>
+            <tbody id="chainTable"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="equipment-detail-page" id="equipmentDetailPage" hidden>
+      <div class="detail-content">
+        <section class="attribute-panel" aria-live="polite">
+      <div class="attribute-toolbar">
+        <div class="section-head">
+          <h2 class="section-title">装备属性</h2>
+          <span class="section-meta" id="attributeMeta"></span>
+        </div>
+        <div class="attribute-controls">
+          <label class="level-field">
+            查看强化等级
+            <input class="level-input" id="strengthenLevel" type="number" min="0" max="850" step="1" value="0" inputmode="numeric">
+          </label>
+          <label class="level-field">
+            当前进阶阶位
+            <select class="level-select quality-select quality-7" id="currentAdvanceQuality" aria-label="当前进阶品质">
+              <option value="-1">橙色</option>
+              <option value="0" selected>红色</option>
+              <option value="1">金色</option>
+              <option value="2">暗金色</option>
+              <option value="3">白金色</option>
+              <option value="4">琉金色</option>
+              <option value="5">澜金色</option>
+            </select>
+            <select class="level-select stage-select" id="currentAdvanceStage" aria-label="当前进阶阶数">
+              <option value="0">0阶</option>
+              <option value="1">1阶</option>
+              <option value="2">2阶</option>
+              <option value="3">3阶</option>
+              <option value="4">4阶</option>
+              <option value="5">5阶</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="attribute-total-summary">
+        <div class="attribute-total-block">
+          <div class="attribute-block-title">最终属性合计（基础+洗炼+进阶额外+强化，全部加总）</div>
+          <div class="attribute-list" id="fullWashAttributes"></div>
+        </div>
+      </div>
+        </section>
+
+        <details class="collapsible-section">
+          <summary>
+            <span>进阶效果与消耗</span>
+            <span class="section-meta">按进阶目标查看材料、额外属性与天赋</span>
+          </summary>
+          <div class="table-wrap">
+            <table class="advance-result-table">
+              <thead>
+                <tr>
+                  <th scope="col">进阶目标</th>
+                  <th scope="col">消耗材料</th>
+                  <th scope="col">进阶额外属性</th>
+                  <th scope="col">装备天赋</th>
+                </tr>
+              </thead>
+              <tbody id="advanceTable"></tbody>
+            </table>
+          </div>
+        </details>
+
+        <section class="equipment-panel equipment-compose" aria-live="polite">
+          <div class="equipment-compose-heading">
+            <h2 class="equipment-compose-title">铸造材料</h2>
+            <span class="section-meta">前置装备与材料</span>
+          </div>
+          <div class="equipment-compose-group">
+            <div class="equipment-compose-label">前置装备</div>
+            <div class="material-list" id="composeComponents"></div>
+          </div>
+          <div class="equipment-compose-group">
+            <div class="equipment-compose-label">材料消耗</div>
+            <div class="material-list" id="composeMaterials"></div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/equipment-advance-data.js?v=20260908-1"></script>
+  <script src="assets/equipment-attribute-data.js"></script>
+  <script src="assets/equipment-wash-data.js"></script>
+  <script src="assets/equipment-talent-chain-data.js"></script>
+  <script src="assets/equipment-compose-data.js?v=20260908-1"></script>
+  <script>
+    const data = window.equipmentAdvanceData;
+    const attributeData = window.equipmentAttributeData;
+    const washData = window.equipmentWashData;
+    const talentChainData = window.equipmentTalentChainData;
+    const composeData = window.equipmentComposeData;
+    const equipmentGrid = document.querySelector("#equipmentGrid");
+    const equipmentTypeTabs = [...document.querySelectorAll(".equipment-type-tab")];
+    const equipmentPicker = document.querySelector(".equipment-picker");
+    const equipmentDetailPage = document.querySelector("#equipmentDetailPage");
+    const equipmentListLink = document.querySelector("#equipmentListLink");
+    const pageTitle = document.querySelector(".page-title");
+    const pageEquipmentIcon = document.querySelector("#pageEquipmentIcon");
+    const pageNote = document.querySelector(".page-note");
+    const attributeMetaNode = document.querySelector("#attributeMeta");
+    const strengthenLevelInput = document.querySelector("#strengthenLevel");
+    const currentAdvanceQualityInput = document.querySelector("#currentAdvanceQuality");
+    const currentAdvanceStageInput = document.querySelector("#currentAdvanceStage");
+    const fullWashAttributesNode = document.querySelector("#fullWashAttributes");
+    const advanceTable = document.querySelector("#advanceTable");
+    const chainTable = document.querySelector("#chainTable");
+    const exchangeTypeInput = document.querySelector("#exchangeType");
+    const exchangeNormalEquipmentInput = document.querySelector("#exchangeNormalEquipment");
+    const exchangeSetEquipmentInput = document.querySelector("#exchangeSetEquipment");
+    const exchangeQualityInput = document.querySelector("#exchangeQuality");
+    const exchangeStageInput = document.querySelector("#exchangeStage");
+    const exchangeStrengthenLevelInput = document.querySelector("#exchangeStrengthenLevel");
+    const exchangeCalculator = document.querySelector(".exchange-calculator");
+    const exchangeHeadlineNode = document.querySelector("#exchangeHeadline");
+    const exchangeMethodNoteNode = document.querySelector("#exchangeMethodNote");
+    const exchangeSetMaterialsNode = document.querySelector("#exchangeSetMaterials");
+    const exchangeAttributeDifferenceNode = document.querySelector("#exchangeAttributeDifference");
+    const composeComponentsNode = document.querySelector("#composeComponents");
+    const composeMaterialsNode = document.querySelector("#composeMaterials");
+    const maxStrengthenLevel = attributeData.maxStrengthenLevel || 850;
+    const maxAdvanceLevel = attributeData.maxAdvanceLevel || 35;
+    const strengthenRate = attributeData.strengthenRate ?? 0.01;
+    const extraStrengthenRate = attributeData.extraStrengthenRate ?? 0.01;
+    strengthenLevelInput.max = maxStrengthenLevel;
+
+    const percentageAttributes = new Set(["命中率", "暴击率", "格挡率", "闪避率", "抗暴", "破挡"]);
+    // 装备总进阶等级按每 6 级切换品质：0-5 为红色0-5阶，6-11 为金色0-5阶，后续依次类推。
+    const advanceQualityNames = ["红色", "金色", "暗金色", "白金色", "琉金色", "澜金色"];
+    const queryParams = new URLSearchParams(window.location.search);
+    const equipmentIdFromUrl = queryParams.get("equipment");
+    const equipmentTypeFromUrl = queryParams.get("type");
+    const equipmentFromUrl = data.equipment.find((item) => String(item.id) === String(equipmentIdFromUrl));
+    const equipmentTypes = equipmentTypeTabs.map((tab) => tab.dataset.type);
+    let selectedEquipmentId = equipmentFromUrl?.id ?? null;
+    let selectedEquipmentType = equipmentFromUrl
+      ? equipmentTypeLabel(equipmentFromUrl.type)
+      : equipmentTypes.includes(equipmentTypeFromUrl)
+        ? equipmentTypeFromUrl
+        : "武器";
+
+    const formatNumber = (value) => Number(value).toLocaleString("zh-CN");
+
+    function advanceRank(level) {
+      const normalizedLevel = Math.trunc(Number(level) || 0);
+      if (normalizedLevel < 0) {
+        return { quality: "橙色", stage: 0, className: "quality-6", label: "橙色0阶" };
+      }
+      const qualityIndex = Math.floor(normalizedLevel / 6);
+      const stage = normalizedLevel % 6;
+      const quality = advanceQualityNames[qualityIndex] || `进阶${qualityIndex + 1}`;
+      return { quality, stage, className: `quality-${qualityIndex + 7}`, label: `${quality}${stage}阶` };
+    }
+
+    function advanceRankLabel(level) {
+      return advanceRank(level).label;
+    }
+
+    function advanceTransition(level) {
+      const normalizedLevel = Math.max(0, Math.trunc(Number(level) || 0));
+      const from = normalizedLevel === 0
+        ? { quality: "橙色", stage: 0, className: "quality-6", label: "橙色0阶" }
+        : advanceRank(normalizedLevel - 1);
+      return { from, to: advanceRank(normalizedLevel) };
+    }
+
+    function advanceRankMarkup(rank) {
+      return `<span class="quality-text ${rank.className}">${rank.label}</span>`;
+    }
+
+    function advanceTransitionMarkup(level) {
+      const { from, to } = advanceTransition(level);
+      return `${advanceRankMarkup(from)} <span aria-hidden="true">→</span> ${advanceRankMarkup(to)}`;
+    }
+
+    function materialMarkup(id, quantity) {
+      const item = data.materials[id];
+      if (!item) return "";
+      return `<span class="material-item"><img src="${item.icon}" alt="${item.name}"><span>${item.name}</span><strong>×${formatNumber(quantity)}</strong></span>`;
+    }
+
+    function composeEquipmentMarkup(component) {
+      const knownEquipment = data.equipment.find((item) => String(item.id) === String(component.id));
+      const icon = knownEquipment
+        ? `<img src="${equipmentIconPath(knownEquipment)}" alt="${component.name}装备图标">`
+        : `<span class="compose-equipment-placeholder" aria-hidden="true">装</span>`;
+      return `<span class="material-item compose-equipment-item">${icon}<span>${component.name}</span><strong>×1</strong></span>`;
+    }
+
+    function renderComposeMaterials(equipment) {
+      const recipe = composeData?.[String(equipment.id)];
+      if (!recipe) {
+        composeComponentsNode.innerHTML = `<span class="table-empty">暂无前置装备数据</span>`;
+        composeMaterialsNode.innerHTML = `<span class="table-empty">暂无铸造材料数据</span>`;
+        return;
+      }
+      composeComponentsNode.innerHTML = recipe.components?.length
+        ? recipe.components.map(composeEquipmentMarkup).join("")
+        : `<span class="table-empty">无</span>`;
+      composeMaterialsNode.innerHTML = Object.entries(recipe.materials || {})
+        .map(([id, quantity]) => materialMarkup(id, quantity))
+        .join("") || `<span class="table-empty">无</span>`;
+    }
+
+    function formatAttributeValue(attribute, value) {
+      if (percentageAttributes.has(attribute)) return `${formatNumber(value / 100)}%`;
+      return formatNumber(value);
+    }
+
+    function attributeMarkup(attribute, value, className = "") {
+      return `<span class="attribute-value ${className}">${attribute} <strong>+${formatAttributeValue(attribute, value)}</strong></span>`;
+    }
+
+    const featureQualityClasses = {
+      红色: "quality-7",
+      金色: "quality-8",
+      暗金: "quality-9",
+      白金: "quality-10",
+      琉金: "quality-11",
+      澜金: "quality-12"
+    };
+
+    function featureRankMarkup(quality, stage) {
+      return `<span class="quality-text ${featureQualityClasses[quality] || ""}">${quality}${stage}阶</span>`;
+    }
+
+    function featureAttributeMarkup(attributes) {
+      return attributes.map(([attribute, value]) => attributeMarkup(attribute, value, "is-advance")).join("");
+    }
+
+    function renderAdvanceResults(equipment) {
+      const entry = getAttributeEntry(equipment.id);
+      const profile = entry?.profile;
+      const extraAttributes = attributeData.advanceProfiles[profile] || [];
+      const talents = talentChainData?.talents?.[profile] || [];
+      const stages = data.patterns[equipment.pattern] || [];
+      const extraByLevel = new Map(extraAttributes.map((row) => [Number(row[0]), row.slice(1)]));
+      const talentsByLevel = new Map();
+
+      talents.forEach((talent) => {
+        const level = Number(talent.unlockStage);
+        const entries = talentsByLevel.get(level) || [];
+        entries.push(talent);
+        talentsByLevel.set(level, entries);
+      });
+
+      advanceTable.innerHTML = stages.map((stage) => {
+        const level = Number(stage.from);
+        const materials = stageMaterialEntries(stage)
+          .map(([id, quantity]) => materialMarkup(id, quantity))
+          .join("");
+        const extraRow = extraByLevel.get(level);
+        const extraEntries = [];
+        for (let index = 0; extraRow && index < extraRow.length; index += 2) {
+          extraEntries.push([extraRow[index], extraRow[index + 1]]);
+        }
+        const extraMarkup = extraEntries.length
+          ? `<div class="attribute-list">${featureAttributeMarkup(extraEntries)}</div>`
+          : `<span class="table-empty">无</span>`;
+        const talentMarkup = (talentsByLevel.get(level) || [])
+          .map((talent) => `<div class="feature-effect">${talent.effect}</div>`)
+          .join("") || `<span class="table-empty">无</span>`;
+
+        return `<tr>
+          <td class="stage-level">${advanceTransitionMarkup(level)}</td>
+          <td><div class="material-list">${materials || `<span class="table-empty">无</span>`}</div></td>
+          <td>${extraMarkup}</td>
+          <td>${talentMarkup}</td>
+        </tr>`;
+      }).join("");
+
+      renderChainAttributes();
+    }
+
+    function renderChainAttributes() {
+      chainTable.innerHTML = (talentChainData?.chain || []).flatMap((group) => group.rows.map((row) => `
+        <tr>
+          <td class="stage-level">${featureRankMarkup(group.quality, row.stage)}</td>
+          <td class="feature-effect"><div class="attribute-list">${featureAttributeMarkup(row.attributes)}</div></td>
+        </tr>`)).join("");
+    }
+
+    const exchangePatternPairs = {
+      武器: { normal: 1, set: 2 },
+      防具: { normal: 3, set: 4 },
+      头盔: { normal: 3, set: 4 },
+      项链: { normal: 5, set: 6 }
+    };
+
+    function cumulativePatternMaterials(pattern, targetLevel) {
+      return sumMaterials((data.patterns[pattern] || [])
+        .filter((stage) => Number(stage.from) < targetLevel));
+    }
+
+    function findEquivalentNormalLevel(normalPattern, setBudget) {
+      for (let level = maxAdvanceLevel; level >= 0; level -= 1) {
+        const normalBudget = cumulativePatternMaterials(normalPattern, level);
+        const affordable = Object.entries(normalBudget).every(([id, quantity]) => (
+          Number(setBudget[id] || 0) >= Number(quantity || 0)
+        ));
+        if (affordable) return level;
+      }
+      return 0;
+    }
+
+    function calculateExchangeAttributes(equipment, advanceLevel, strengthenLevel) {
+      const entry = getAttributeEntry(equipment.id);
+      if (!entry) return {};
+
+      const normalGrowth = scaleAttributes(entry.growth, strengthenRate);
+      const extraProfile = attributeData.extraProfiles[entry.profile] || [];
+      const extraScale = attributeData.extraProfileScales?.[entry.profile]?.[equipment.pattern] || 1;
+      const cumulativeExtraGrowth = extraProfile
+        .filter((row) => Number(row[0]) <= advanceLevel)
+        .reduce(
+          (total, row) => mergeAttributes(total, rowAttributes(row, extraStrengthenRate * extraScale)),
+          {}
+        );
+      const currentGrowth = mergeAttributes(normalGrowth, cumulativeExtraGrowth);
+      const strengthenAttributes = scaleAttributes(currentGrowth, strengthenLevel);
+      const advanceAttributes = (attributeData.advanceProfiles[entry.profile] || [])
+        .filter((row) => Number(row[0]) <= advanceLevel)
+        .reduce((total, row) => mergeAttributes(total, rowAttributes(row)), {});
+      return mergeAttributes(entry.base, strengthenAttributes, advanceAttributes);
+    }
+
+    function exchangeDifferenceMarkup(attribute, value) {
+      const displayName = attributeData.attributeNames[attribute] || attribute;
+      const sign = value > 0 ? "+" : value < 0 ? "−" : "";
+      const className = value > 0
+        ? "exchange-difference-positive"
+        : value < 0
+          ? "exchange-difference-negative"
+          : "exchange-difference-zero";
+      return `<span class="attribute-value ${className}">${displayName} <strong>${sign}${formatAttributeValue(displayName, Math.abs(value))}</strong></span>`;
+    }
+
+    function renderExchangeDifference(setAttributes, normalAttributes) {
+      const attributes = new Set([...Object.keys(setAttributes), ...Object.keys(normalAttributes)]);
+      const differences = [...attributes]
+        .map((attribute) => [attribute, (setAttributes[attribute] || 0) - (normalAttributes[attribute] || 0)])
+        .filter(([, value]) => value !== 0);
+      exchangeAttributeDifferenceNode.innerHTML = differences.length
+        ? differences.map(([attribute, value]) => exchangeDifferenceMarkup(attribute, value)).join("")
+        : `<span class="attribute-empty">无属性差值</span>`;
+    }
+
+    function populateExchangeEquipmentOptions() {
+      const type = exchangeTypeInput.value;
+      const items = data.equipment.filter((item) => equipmentTypeLabel(item.type) === type);
+      const normalItems = items.filter((item) => equipmentKindLabel(item) === "散件");
+      const setItems = items.filter((item) => equipmentKindLabel(item) === "套装");
+      const previousNormal = exchangeNormalEquipmentInput.value;
+      const previousSet = exchangeSetEquipmentInput.value;
+
+      exchangeNormalEquipmentInput.innerHTML = normalItems
+        .map((item) => `<option value="${item.id}">${item.name}</option>`)
+        .join("");
+      exchangeSetEquipmentInput.innerHTML = setItems
+        .map((item) => `<option value="${item.id}">${item.name}</option>`)
+        .join("");
+
+      const normalValues = new Set(normalItems.map((item) => String(item.id)));
+      const setValues = new Set(setItems.map((item) => String(item.id)));
+      exchangeNormalEquipmentInput.value = normalValues.has(previousNormal)
+        ? previousNormal
+        : String(normalItems[0]?.id || "");
+      exchangeSetEquipmentInput.value = setValues.has(previousSet)
+        ? previousSet
+        : String(setItems[0]?.id || "");
+    }
+
+    function syncExchangeStageOptions() {
+      const orangeSelected = exchangeQualityInput.value === "-1";
+      [...exchangeStageInput.options].forEach((option) => {
+        option.disabled = orangeSelected && option.value !== "0";
+      });
+      if (orangeSelected) exchangeStageInput.value = "0";
+      const qualityIndex = Number(exchangeQualityInput.value);
+      exchangeQualityInput.className = `level-select quality-select ${qualityIndex < 0 ? "quality-6" : `quality-${qualityIndex + 7}`}`;
+    }
+
+    function renderExchangeCalculator() {
+      const type = exchangeTypeInput.value;
+      const pair = exchangePatternPairs[type];
+      const normalEquipment = data.equipment.find((item) => String(item.id) === exchangeNormalEquipmentInput.value);
+      const setEquipment = data.equipment.find((item) => String(item.id) === exchangeSetEquipmentInput.value);
+      if (!pair || !normalEquipment || !setEquipment) return;
+
+      const qualityIndex = Number(exchangeQualityInput.value);
+      const stage = qualityIndex < 0 ? 0 : Math.min(5, Math.max(0, Number(exchangeStageInput.value) || 0));
+      const targetLevel = qualityIndex < 0 ? 0 : Math.min(maxAdvanceLevel, qualityIndex * 6 + stage);
+      const setBudget = cumulativePatternMaterials(pair.set, targetLevel);
+      const normalLevel = findEquivalentNormalLevel(pair.normal, setBudget);
+      const requestedStrengthenLevel = Number(exchangeStrengthenLevelInput.value);
+      const strengthenLevel = Number.isFinite(requestedStrengthenLevel)
+        ? Math.min(maxStrengthenLevel, Math.max(0, Math.trunc(requestedStrengthenLevel)))
+        : 0;
+      exchangeStrengthenLevelInput.value = strengthenLevel;
+
+      const setAttributes = calculateExchangeAttributes(setEquipment, targetLevel, strengthenLevel);
+      const normalAttributes = calculateExchangeAttributes(normalEquipment, normalLevel, strengthenLevel);
+      const setRankMarkup = qualityIndex < 0
+        ? advanceTransitionMarkup(0)
+        : advanceRankMarkup(advanceRank(targetLevel));
+
+      exchangeHeadlineNode.innerHTML = `${setEquipment.name}达到 ${setRankMarkup}，材料等量可使 ${normalEquipment.name} 达到 ${advanceRankMarkup(advanceRank(normalLevel))}`;
+      exchangeMethodNoteNode.textContent = `按每种材料分别不超过套装 0→${qualityIndex < 0 ? "红色0阶" : advanceRankLabel(targetLevel)} 的预算，取普通装备最高可达阶位。`;
+      exchangeSetMaterialsNode.innerHTML = Object.entries(setBudget).length
+        ? Object.entries(setBudget).map(([id, quantity]) => materialMarkup(id, quantity)).join("")
+        : `<span class="attribute-empty">该阶位无需消耗材料</span>`;
+      renderExchangeDifference(setAttributes, normalAttributes);
+    }
+
+    function renderAttributeList(node, attributes) {
+      const entries = Object.entries(attributes || {});
+      node.innerHTML = entries.length
+        ? entries.map(([attribute, value]) => attributeMarkup(attributeData.attributeNames[attribute] || attribute, value)).join("")
+        : `<span class="attribute-empty">暂无属性</span>`;
+    }
+
+    function renderFinalAttributeList(node, baseAttributes, advanceAttributes) {
+      const attributes = new Set([
+        ...Object.keys(baseAttributes || {}),
+        ...Object.keys(advanceAttributes || {})
+      ]);
+      node.innerHTML = attributes.size
+        ? [...attributes].map((attribute) => {
+          const displayName = attributeData.attributeNames[attribute] || attribute;
+          const baseValue = Number(baseAttributes?.[attribute] || 0);
+          const advanceValue = Number(advanceAttributes?.[attribute] || 0);
+          const total = baseValue + advanceValue;
+          const baseMarkup = baseValue
+            ? `<strong>+${formatAttributeValue(displayName, baseValue)}</strong>`
+            : "";
+          const totalMarkup = baseValue && advanceValue
+            ? `<small class="attribute-total">（合计 ${formatAttributeValue(displayName, total)}）</small>`
+            : "";
+          return `<span class="attribute-value">${displayName} ${baseMarkup}${baseMarkup && advanceValue ? '<span class="attribute-join"> + </span>' : ""}${advanceValue ? `<strong class="attribute-source-green">+${formatAttributeValue(displayName, advanceValue)}</strong>` : ""}${totalMarkup}</span>`;
+        }).join("")
+        : `<span class="attribute-empty">暂无属性</span>`;
+    }
+
+    function scaleAttributes(attributes, rate) {
+      return Object.fromEntries(Object.entries(attributes || {}).map(([attribute, value]) => [
+        attribute,
+        Math.round((Number(value) || 0) * rate)
+      ]));
+    }
+
+    function mergeAttributes(...attributeMaps) {
+      return attributeMaps.reduce((result, attributes) => {
+        Object.entries(attributes || {}).forEach(([attribute, value]) => {
+          result[attribute] = (result[attribute] || 0) + (Number(value) || 0);
+        });
+        return result;
+      }, {});
+    }
+
+    function canonicalAttribute(attribute) {
+      const nameEntry = Object.entries(attributeData.attributeNames || {})
+        .find(([, name]) => name === attribute);
+      return nameEntry ? nameEntry[0] : attribute;
+    }
+
+    function rowAttributes(row, rate = 1) {
+      const attributes = {};
+      for (let index = 1; index < row.length; index += 2) {
+        const attribute = canonicalAttribute(row[index]);
+        attributes[attribute] = (attributes[attribute] || 0) + (Number(row[index + 1]) || 0) * rate;
+      }
+      return attributes;
+    }
+
+    function getAttributeEntry(id) {
+      return attributeData.equipment.find((item) => String(item.id) === String(id)) || null;
+    }
+
+    function getWashProfile(equipment) {
+      const entry = getAttributeEntry(equipment.id);
+      return entry ? washData?.profiles?.[entry.profile] : null;
+    }
+
+    function getWashWorth(profile, level) {
+      return profile.baseWorth
+        + Math.floor(level / profile.levelRatio) * profile.growWorth;
+    }
+
+    function getWashAttributes(equipment, level) {
+      const profile = getWashProfile(equipment);
+      if (!profile) return {};
+      const worth = getWashWorth(profile, level);
+      return Object.fromEntries(Object.entries(profile.potentialityValue).map(([attribute, value]) => [
+        canonicalAttribute(attribute),
+        Math.floor(worth / value)
+      ]));
+    }
+
+    function renderAttributes(equipment) {
+      const entry = getAttributeEntry(equipment.id);
+      if (!entry) {
+        attributeMetaNode.textContent = "暂无属性配置";
+        renderAttributeList(fullWashAttributesNode, {});
+        advanceTable.innerHTML = "";
+        return;
+      }
+
+      const requestedLevel = Number(strengthenLevelInput.value);
+      const level = Number.isFinite(requestedLevel) ? Math.min(maxStrengthenLevel, Math.max(0, Math.trunc(requestedLevel))) : 0;
+      strengthenLevelInput.value = level;
+      const requestedQualityIndex = Number(currentAdvanceQualityInput.value);
+      const qualityIndex = Number.isFinite(requestedQualityIndex)
+        ? Math.min(advanceQualityNames.length - 1, Math.max(-1, Math.trunc(requestedQualityIndex)))
+        : 0;
+      const requestedStage = Number(currentAdvanceStageInput.value);
+      const stage = Number.isFinite(requestedStage)
+        ? qualityIndex < 0 ? 0 : Math.min(5, Math.max(0, Math.trunc(requestedStage)))
+        : 0;
+      const advanceLevel = qualityIndex < 0 ? -1 : Math.min(maxAdvanceLevel, qualityIndex * 6 + stage);
+      currentAdvanceQualityInput.value = String(qualityIndex < 0 ? -1 : Math.floor(advanceLevel / 6));
+      currentAdvanceStageInput.value = String(qualityIndex < 0 ? 0 : advanceLevel % 6);
+      const currentRank = advanceRank(advanceLevel);
+      currentAdvanceQualityInput.className = `level-select quality-select ${currentRank.className}`;
+
+      // 源码 EquipAffixModel.getEquipAffixByEquipInfo：普通强化成长 = PL / 100。
+      // extra_levelupattr 是进阶等级带来的额外强化成长，达到某进阶等级后会保留之前各级的成长，
+      // 源码 getDevelopAffixByInfo 同样按配置值 / 100，并累加已达到的进阶等级。
+      const normalGrowth = scaleAttributes(entry.growth, strengthenRate);
+      const extraProfile = attributeData.extraProfiles[entry.profile] || [];
+      const extraScale = attributeData.extraProfileScales?.[entry.profile]?.[equipment.pattern] || 1;
+      const cumulativeExtraGrowth = extraProfile
+        .filter((row) => Number(row[0]) <= advanceLevel)
+        .reduce(
+          (total, row) => mergeAttributes(total, rowAttributes(row, extraStrengthenRate * extraScale)),
+          {}
+        );
+      const currentGrowth = mergeAttributes(normalGrowth, cumulativeExtraGrowth);
+      const strengthenAttributes = scaleAttributes(currentGrowth, level);
+      const advanceAttributes = (attributeData.advanceProfiles[entry.profile] || [])
+        .filter((row) => Number(row[0]) <= advanceLevel)
+        .reduce((total, row) => mergeAttributes(total, rowAttributes(row)), {});
+      const current = mergeAttributes(entry.base, strengthenAttributes, advanceAttributes);
+      const washAttributes = getWashAttributes(equipment, level);
+      const baseWashStrengthenAttributes = mergeAttributes(entry.base, strengthenAttributes, washAttributes);
+
+      attributeMetaNode.innerHTML = `强化等级 ${level} · 当前阶位 ${advanceRankMarkup(currentRank)}（${advanceTransitionMarkup(advanceLevel)}）`;
+      renderFinalAttributeList(fullWashAttributesNode, baseWashStrengthenAttributes, advanceAttributes);
+
+      renderAdvanceResults(equipment);
+
+    }
+
+    function equipmentIconPath(item) {
+      return `assets/equipment-icons/${item.id}.png`;
+    }
+
+    function equipmentTypeLabel(type) {
+      return type === "饰品" ? "项链" : type;
+    }
+
+    function equipmentKindLabel(item) {
+      // 原始 DB_Item_arm.lua 图标名中的 _J_ 为散件、_T_ 为套装；当前装备 ID 末两位 01-04 对应散件。
+      return Number(item.id) % 100 <= 4 ? "散件" : "套装";
+    }
+
+    function itemsInEquipmentType() {
+      return data.equipment.filter((item) => equipmentTypeLabel(item.type) === selectedEquipmentType);
+    }
+
+    function renderEquipmentPicker() {
+      const items = itemsInEquipmentType();
+
+      equipmentGrid.replaceChildren();
+      items.forEach((item) => {
+        const card = document.createElement("a");
+        card.className = "equipment-card";
+        card.href = `equipment-advance.html?equipment=${encodeURIComponent(item.id)}&type=${encodeURIComponent(selectedEquipmentType)}`;
+        card.dataset.id = item.id;
+        card.setAttribute("aria-pressed", "false");
+        card.setAttribute("aria-label", `查看${item.name}${equipmentKindLabel(item)}详情`);
+
+        const icon = document.createElement("img");
+        icon.className = "equipment-icon";
+        icon.src = equipmentIconPath(item);
+        icon.alt = `${item.name}装备图标`;
+        icon.loading = "lazy";
+
+        const name = document.createElement("span");
+        name.className = "equipment-card-name";
+        name.textContent = item.name;
+
+        const kind = document.createElement("span");
+        kind.className = "equipment-card-kind";
+        kind.dataset.kind = equipmentKindLabel(item);
+        kind.textContent = equipmentKindLabel(item);
+
+        const copy = document.createElement("span");
+        copy.className = "equipment-card-copy";
+        copy.append(name, kind);
+
+        card.append(icon, copy);
+        equipmentGrid.appendChild(card);
+      });
+
+      equipmentGrid.setAttribute("aria-label", `${selectedEquipmentType}装备`);
+      equipmentTypeTabs.forEach((tab) => {
+        const active = tab.dataset.type === selectedEquipmentType;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+      });
+    }
+
+    function getSilverCost(stage) {
+      return Number(stage.silver ?? stage.gold) || 0;
+    }
+
+    function stageMaterialEntries(stage) {
+      const silver = getSilverCost(stage);
+      return [
+        ...(silver ? [["silver", silver]] : []),
+        ...Object.entries(stage.materials || {})
+      ];
+    }
+
+    function sumMaterials(stages) {
+      return stages.reduce((result, stage) => {
+        stageMaterialEntries(stage).forEach(([id, quantity]) => {
+          result[id] = (result[id] || 0) + Number(quantity || 0);
+        });
+        return result;
+      }, {});
+    }
+
+    function render() {
+      const equipment = data.equipment.find((item) => String(item.id) === String(selectedEquipmentId)) || data.equipment[0];
+      selectedEquipmentId = equipment.id;
+
+      selectedEquipmentType = equipmentTypeLabel(equipment.type);
+      equipmentGrid.querySelectorAll(".equipment-card").forEach((card) => {
+        const isSelected = String(card.dataset.id) === String(equipment.id);
+        card.classList.toggle("is-selected", isSelected);
+        card.setAttribute("aria-pressed", String(isSelected));
+      });
+      renderAttributes(equipment);
+      renderComposeMaterials(equipment);
+    }
+
+    function showEquipmentDetail(equipment) {
+      selectedEquipmentId = equipment.id;
+      selectedEquipmentType = equipmentTypeLabel(equipment.type);
+      equipmentListLink.href = `equipment-advance.html?type=${encodeURIComponent(selectedEquipmentType)}`;
+      equipmentPicker.hidden = true;
+      exchangeCalculator.hidden = true;
+      equipmentDetailPage.hidden = false;
+      pageTitle.textContent = `${equipment.name} · 装备属性`;
+      pageEquipmentIcon.src = equipmentIconPath(equipment);
+      pageEquipmentIcon.alt = `${equipment.name}装备图标`;
+      pageEquipmentIcon.hidden = false;
+      pageNote.textContent = "查看装备具体数值、强化成长和进阶消耗";
+      equipmentListLink.hidden = false;
+      document.title = `${equipment.name}装备属性 - 放三数据合集`;
+      renderEquipmentPicker();
+      render();
+    }
+
+    equipmentTypeTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        selectedEquipmentType = tab.dataset.type;
+        selectedEquipmentId = null;
+        renderEquipmentPicker();
+      });
+    });
+    exchangeTypeInput.addEventListener("change", () => {
+      populateExchangeEquipmentOptions();
+      renderExchangeCalculator();
+    });
+    [exchangeNormalEquipmentInput, exchangeSetEquipmentInput, exchangeStageInput]
+      .forEach((input) => input.addEventListener("change", renderExchangeCalculator));
+    exchangeStrengthenLevelInput.addEventListener("input", renderExchangeCalculator);
+
+    exchangeQualityInput.addEventListener("change", () => {
+      syncExchangeStageOptions();
+      renderExchangeCalculator();
+    });
+
+    strengthenLevelInput.addEventListener("input", render);
+    function syncAdvanceStageOptions() {
+      const orangeSelected = currentAdvanceQualityInput.value === "-1";
+      [...currentAdvanceStageInput.options].forEach((option) => {
+        option.disabled = orangeSelected && option.value !== "0";
+      });
+      if (orangeSelected) currentAdvanceStageInput.value = "0";
+    }
+
+    currentAdvanceQualityInput.addEventListener("change", () => {
+      syncAdvanceStageOptions();
+      render();
+    });
+    currentAdvanceStageInput.addEventListener("change", render);
+    syncAdvanceStageOptions();
+    syncExchangeStageOptions();
+    populateExchangeEquipmentOptions();
+    renderChainAttributes();
+    renderExchangeCalculator();
+    if (equipmentFromUrl) {
+      showEquipmentDetail(equipmentFromUrl);
+    } else {
+      exchangeCalculator.hidden = false;
+      renderEquipmentPicker();
+    }
+  </script>
+</body>
+</html>

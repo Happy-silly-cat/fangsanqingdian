@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三超凡幻化升级消耗与属性查询表。">
+  <title>超凡幻化升级 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #7b53a8;
+      --purple-dark: #56357d;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif; }
+    a { color: inherit; }
+    button, select, input { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 20px 0 34px; }
+    .site-header { display: flex; align-items: center; gap: 14px; min-height: 52px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+    .brand-mark { display: block; width: 118px; height: auto; flex: 0 0 118px; object-fit: contain; filter: drop-shadow(0 5px 14px rgba(0, 0, 0, .22)); }
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+    .brand-name { margin: 0; font-size: 19px; line-height: 1.25; font-weight: 750; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--panel); text-decoration: none; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .intro { display: flex; align-items: center; gap: 12px; margin: 22px 0 9px; }
+    .page-icon { display: block; width: 52px; height: 52px; flex: 0 0 52px; object-fit: contain; }
+    .page-title { margin: 0; font-size: 29px; line-height: 1.2; font-weight: 850; }
+    .page-note { margin: 0 0 16px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .panel { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .panel + .panel { margin-top: 16px; }
+    .panel-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .panel-heading h2 { margin: 0; color: var(--jade-dark); font-size: 20px; line-height: 1.3; }
+    .panel-heading p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; text-align: right; }
+    .skin-picker { padding: 17px 18px 19px; }
+    .category-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 8px; }
+    .category-tab { min-height: 36px; border: 1px solid rgba(60, 157, 133, .28); border-radius: 7px; color: var(--jade-dark); background: var(--panel-strong); font-size: 13px; font-weight: 850; cursor: pointer; transition: border-color 160ms ease, color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+    .category-tab:hover, .category-tab:focus-visible, .category-tab.is-active { border-color: var(--jade-dark); color: #fffdf8; background: var(--jade-dark); box-shadow: 0 4px 10px rgba(23, 63, 53, .12); outline: none; }
+    .faction-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+    .faction-tab { min-height: 38px; border: 1px solid var(--line); border-radius: 7px; color: var(--faction-color); background: var(--panel-strong); font-size: 13px; font-weight: 850; cursor: pointer; transition: border-color 160ms ease, color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+    .faction-tab.wei { --faction-color: #b64a4a; }
+    .faction-tab.shu { --faction-color: #a66b25; }
+    .faction-tab.wu { --faction-color: #3b78a3; }
+    .faction-tab.qun { --faction-color: #78539a; }
+    .faction-tab:hover, .faction-tab:focus-visible, .faction-tab.is-active { border-color: var(--faction-color); color: #fffdf8; background: var(--faction-color); box-shadow: 0 4px 10px rgba(86, 53, 125, .12); outline: none; }
+    .faction-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+    .skin-option { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 62px; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; background: var(--panel-strong); color: var(--text); cursor: pointer; text-align: left; transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+    .skin-option:hover, .skin-option.is-selected { border-color: var(--purple); background: #f4ecfb; box-shadow: 0 4px 10px rgba(86, 53, 125, .12); }
+    .skin-option:focus-visible, .category-tab:focus-visible, .faction-tab:focus-visible, .field select:focus-visible, .field input:focus-visible, .back-link:focus-visible { outline: 2px solid rgba(60, 157, 133, .42); outline-offset: 2px; }
+    .skin-option img { display: block; width: 45px; height: 45px; flex: 0 0 45px; object-fit: contain; }
+    .skin-option-copy { min-width: 0; }
+    .skin-option-copy strong, .skin-option-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .skin-option-copy strong { color: var(--purple-dark); font-size: 13px; }
+    .skin-option-copy small { margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .selected-panel { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(0, 1.15fr); grid-template-rows: auto auto; gap: 10px; padding: 14px; align-items: start; }
+    .selected-art, .selected-card { min-width: 0; border: 1px solid rgba(123, 83, 168, .22); border-radius: 7px; background: rgba(255, 253, 248, .82); padding: 10px 12px; }
+    .selected-art { position: relative; display: grid; grid-column: 1; grid-row: 1 / span 2; place-items: center; min-height: 420px; height: 100%; overflow: hidden; background: linear-gradient(145deg, rgba(255, 253, 248, .95), rgba(240, 231, 215, .8)); }
+    .selected-art button { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+    .selected-art button:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
+    .selected-art img { display: block; width: min(100%, 470px); max-height: 350px; object-fit: contain; filter: drop-shadow(0 7px 11px rgba(43, 31, 22, .16)); }
+    .selected-art img[hidden] { display: none; }
+    .art-stack { position: relative; display: inline-grid; place-items: center; max-width: 100%; max-height: 100%; }
+    .selected-art .display-image { grid-area: 1 / 1; width: auto; height: auto; max-width: 100%; max-height: 400px; object-fit: contain; filter: drop-shadow(0 7px 11px rgba(43, 31, 22, .16)); }
+    .native-effect-canvas { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen; }
+    .native-effect-canvas[hidden] { display: none; }
+    .selected-card { display: flex; grid-column: 2; grid-row: 1; align-items: center; gap: 10px; }
+    .selected-card img { display: block; width: 60px; height: 60px; flex: 0 0 60px; object-fit: contain; }
+    .selected-card h2 { margin: 0; color: var(--purple-dark); font-size: 18px; line-height: 1.35; }
+    .selected-card > div { min-width: 0; }
+    .data-panel { padding: 17px 18px 19px; }
+    .calculator-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: end; }
+    .field { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .field select, .field input { width: 100%; min-height: 43px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-strong); color: var(--text); padding: 9px 11px; }
+    .calculator-result { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 12px; }
+    .calculator-panel { grid-column: 2; grid-row: 2; min-width: 0; padding: 12px 0 0; border-top: 1px solid rgba(123, 83, 168, .22); }
+    .result-box { min-width: 0; border: 1px solid rgba(60, 157, 133, .2); border-radius: 7px; background: var(--panel-strong); padding: 12px 14px; }
+    .target-result-box { grid-column: 1 / -1; }
+    .result-box h3 { margin: 0; color: var(--jade-dark); font-size: 14px; }
+    .target-result-box .attribute-list { margin-top: 15px; }
+    .result-main { display: flex; align-items: center; gap: 10px; margin-top: 7px; }
+    .result-main img { display: block; width: 42px; height: 42px; object-fit: contain; }
+    .result-number { color: var(--purple-dark); font-size: 27px; line-height: 1.2; font-weight: 900; }
+    .result-unit { color: var(--muted); font-size: 12px; }
+    .result-note { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .attribute-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .attribute-chip, .material-chip { display: inline-flex; align-items: center; gap: 6px; min-width: 0; border: 1px solid rgba(60, 157, 133, .18); border-radius: 6px; padding: 6px 8px; background: #fbfffb; color: var(--text); font-size: 12px; white-space: nowrap; }
+    .detail-table td:nth-child(3) .attribute-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+    .detail-table td:nth-child(3) .attribute-chip { width: 100%; }
+    .attribute-chip strong, .material-chip strong { color: var(--jade-dark); font-weight: 850; }
+    .attribute-chip strong::before { content: "+"; color: var(--jade); }
+    .material-chip small { color: var(--muted); font-size: 11px; }
+    .material-chip img { display: block; width: 28px; height: 28px; object-fit: contain; }
+    .detail-table { min-width: 980px; }
+    .detail-table th:nth-child(1) { width: 82px; }
+    .detail-table th:nth-child(2) { width: 150px; }
+    .detail-table th:nth-child(3) { width: 280px; }
+    .detail-table th:nth-child(4) { width: 330px; }
+    .detail-table th:nth-child(5) { width: 250px; }
+    .detail-table td { vertical-align: top; }
+    .detail-stack { display: grid; gap: 8px; }
+    .detail-line { display: grid; gap: 5px; }
+    .detail-label { color: var(--jade-dark); font-size: 11px; font-weight: 850; }
+    .talent-list { display: grid; gap: 8px; }
+    .talent-entry { display: grid; gap: 3px; line-height: 1.5; }
+    .talent-entry span { color: var(--text); font-size: 12px; }
+    .section-note { margin: -4px 0 10px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .property-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .property-box { min-width: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-strong); padding: 11px 12px; }
+    .property-box h3 { margin: 0 0 8px; color: var(--jade-dark); font-size: 14px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-strong); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th, td { padding: 8px 9px; border-bottom: 1px solid rgba(217, 203, 182, .74); text-align: left; vertical-align: middle; }
+    th { background: #f4eadb; color: var(--jade-dark); font-weight: 850; white-space: nowrap; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover td { background: #fff8ea; }
+    .level-cell { width: 90px; color: var(--gold); font-weight: 850; white-space: nowrap; }
+    .effect-text { color: var(--text); line-height: 1.55; }
+    .image-lightbox[hidden] { display: none; }
+    .image-lightbox { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 24px; background: rgba(26, 22, 17, .84); }
+    .image-lightbox img { display: block; max-width: min(92vw, 1280px); max-height: 90vh; object-fit: contain; border: 1px solid rgba(255, 255, 255, .45); border-radius: 8px; background: #fffaf0; box-shadow: 0 18px 55px rgba(0, 0, 0, .38); }
+    .image-lightbox-close { position: absolute; top: 16px; right: 18px; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid rgba(255, 255, 255, .55); border-radius: 50%; color: #fff; background: rgba(0, 0, 0, .22); font-size: 25px; line-height: 1; cursor: pointer; }
+    body.lightbox-open { overflow: hidden; }
+    footer { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    footer p { margin: 0; }
+    @media (max-width: 940px) { .faction-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } .selected-panel { grid-template-columns: minmax(230px, 1fr) minmax(0, 1.15fr); } .property-summary { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) { .shell { width: min(100% - 24px, 1180px); padding-top: 16px; } .brand-mark { width: 96px; flex-basis: 96px; } .brand-name { font-size: 17px; } .back-link { padding: 7px 9px; font-size: 12px; } .page-title { font-size: 25px; } .skin-picker, .data-panel { padding: 14px 12px 15px; } .faction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .selected-panel { grid-template-columns: 1fr; grid-template-rows: auto; padding: 10px; } .selected-art { grid-column: 1; grid-row: auto; min-height: 360px; height: auto; } .selected-card { grid-column: 1; grid-row: auto; } .calculator-panel { grid-column: 1; grid-row: auto; } .calculator-form, .calculator-result { grid-template-columns: 1fr; } .result-note { grid-column: auto; } .panel-heading { align-items: flex-start; flex-direction: column; gap: 4px; } .selected-card { flex-wrap: wrap; } .site-header { gap: 9px; } .page-icon { width: 44px; height: 44px; flex-basis: 44px; } }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <img class="page-icon" src="assets/chaofan-items/chaofanjingshi.png" alt="超凡幻化图标">
+      <h1 class="page-title" id="page-title">超凡幻化升级</h1>
+    </section>
+    <p class="page-note">查看超凡幻化的升级消耗、阶段属性和技能效果。</p>
+
+    <section class="panel skin-picker" aria-labelledby="skin-picker-title">
+      <div class="panel-heading"><h2 id="skin-picker-title">选择幻化</h2></div>
+      <div class="category-tabs" role="tablist" aria-label="选择幻化类型">
+        <button class="category-tab is-active" type="button" role="tab" aria-selected="true" data-category="武将幻化">武将幻化</button>
+        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category="名将幻化">名将幻化</button>
+      </div>
+      <div class="faction-tabs" role="tablist" aria-label="选择超凡幻化阵营">
+        <button class="faction-tab wei is-active" type="button" role="tab" aria-selected="true" data-faction="魏">魏</button>
+        <button class="faction-tab shu" type="button" role="tab" aria-selected="false" data-faction="蜀">蜀</button>
+        <button class="faction-tab wu" type="button" role="tab" aria-selected="false" data-faction="吴">吴</button>
+        <button class="faction-tab qun" type="button" role="tab" aria-selected="false" data-faction="群">群</button>
+      </div>
+      <div class="faction-grid" id="skinGrid" role="tabpanel" aria-label="魏国超凡幻化"></div>
+    </section>
+
+    <section class="panel selected-panel" aria-label="当前幻化概览">
+      <article class="selected-art"><button id="selectedBodyTrigger" type="button" aria-label="查看当前幻化人物大图"><span class="art-stack" id="artStack"><img class="display-image" id="selectedBody" src="assets/chaofan-items/chaofan.png" alt="当前幻化人物大图"><canvas class="native-effect-canvas" id="nativeEffectCanvas" hidden aria-label="当前幻化原生光效"></canvas></span></button></article>
+      <article class="selected-card"><img id="selectedHead" src="assets/chaofan-items/chaofan.png" alt="当前幻化头像"><div><h2 id="selectedName">超凡幻化</h2></div></article>
+      <section class="calculator-panel" aria-labelledby="calculator-title">
+      <div class="panel-heading"><h2 id="calculator-title">升级计算器</h2></div>
+      <div class="calculator-form">
+        <label class="field" for="startLevel"><span>当前等级</span><input id="startLevel" type="number" min="0" max="280" step="1" value="0" inputmode="numeric"></label>
+        <label class="field" for="targetLevel"><span>目标等级</span><input id="targetLevel" type="number" min="0" max="280" step="1" value="280" inputmode="numeric"></label>
+      </div>
+      <div class="calculator-result" aria-live="polite">
+        <section class="result-box"><h3>还需消耗</h3><div class="result-main"><img src="assets/chaofan-items/chaofanjingyandan.png" alt="超凡经验丹"><strong class="result-number" id="costResult">0</strong><span class="result-unit">个超凡经验丹</span></div></section>
+        <section class="result-box target-result-box"><h3 id="targetAttributeTitle">达到 0 级的属性</h3><div class="attribute-list" id="targetAttributes"></div></section>
+      </div>
+      </section>
+    </section>
+
+    <section class="panel data-panel" aria-labelledby="detail-title">
+      <div class="panel-heading"><h2 id="detail-title">属性与技能明细</h2><p>按阶段合并展示属性、技能、额外属性和达到等级总消耗。</p></div>
+      <div class="table-wrap"><table class="detail-table"><thead><tr><th>阶段</th><th>达到等级总消耗</th><th>累积属性</th><th>阶段技能</th><th>额外属性</th></tr></thead><tbody id="detailTable"></tbody></table></div>
+    </section>
+
+    <footer><p>本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p></footer>
+  </main>
+
+  <div class="image-lightbox" id="imageLightbox" hidden role="dialog" aria-modal="true" aria-label="人物大图预览">
+    <button class="image-lightbox-close" id="imageLightboxClose" type="button" aria-label="关闭大图预览">×</button>
+    <img id="imageLightboxImage" alt="">
+  </div>
+
+  <!-- 超凡幻化新增或配置变更时，统一更新 assets/chaofan-huanhua-data.js；页面会自动读取新条目。 -->
+  <script src="assets/chaofan-native/fallback-bounds.js?v=20260913-effect-art"></script>
+  <script src="assets/chaofan-native/effect-inline.js?v=20260913-effect-art"></script>
+  <script src="assets/chaofan-huanhua-data.js?v=20260913-complete-art"></script>
+  <script src="assets/chaofan-icon-corrections.js?v=20260913-icon-check"></script>
+  <script>
+    const data = window.chaofanHuanhuaData;
+    const fmt = (value) => Number(value).toLocaleString('zh-CN');
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+    const formatAttributeValue = (attribute) => attribute.percent ? `${fmt(attribute.amount / 100)}%` : fmt(attribute.amount);
+    const renderAttributes = (attributes) => attributes.length ? attributes.map((attribute) => `<span class="attribute-chip${attribute.percent ? ' is-percent' : ''}"><span>${escapeHtml(attribute.name)}</span><strong>${formatAttributeValue(attribute)}</strong></span>`).join('') : '<span class="section-note">未配置</span>';
+    const renderSpecial = (attributes) => attributes.length ? attributes.map((attribute) => `<span class="attribute-chip${attribute.percent ? ' is-percent' : ''}"><span>${escapeHtml(attribute.name)}</span><strong>${formatAttributeValue(attribute)}</strong></span>`).join('') : '<span class="section-note">无额外属性</span>';
+    const levelCosts = data.levelCosts;
+    // The source table is cumulative: item n is the total needed to reach level n.
+    const cumulativeCostAt = (level) => level > 0 ? (levelCosts[level - 1] || 0) : 0;
+    const skinGrid = document.getElementById('skinGrid');
+    const startLevel = document.getElementById('startLevel');
+    const targetLevel = document.getElementById('targetLevel');
+    const selectedBodyTrigger = document.getElementById('selectedBodyTrigger');
+    const selectedBody = document.getElementById('selectedBody');
+    const nativeEffectCanvas = document.getElementById('nativeEffectCanvas');
+    const selectedHead = document.getElementById('selectedHead');
+    const selectedName = document.getElementById('selectedName');
+    const targetAttributes = document.getElementById('targetAttributes');
+    const targetAttributeTitle = document.getElementById('targetAttributeTitle');
+    const detailTable = document.getElementById('detailTable');
+    const costResult = document.getElementById('costResult');
+    const imageLightbox = document.getElementById('imageLightbox');
+    const imageLightboxImage = document.getElementById('imageLightboxImage');
+    const imageLightboxClose = document.getElementById('imageLightboxClose');
+    const nativeFallbackBounds = window.chaofanNativeFallbackBounds || {};
+    const nativeInlineEffects = window.chaofanNativeInlineEffects || {};
+    const effectImageCache = new Map();
+    const effectContext = nativeEffectCanvas.getContext('2d');
+    let effectSkin = null;
+    let effectImage = null;
+    let effectElapsed = 0;
+    let effectFrameRequest = 0;
+    const stopEffectLoop = () => {
+      if (effectFrameRequest) cancelAnimationFrame(effectFrameRequest);
+      effectFrameRequest = 0;
+    };
+    const effectTransform = (width, height, skin) => {
+      const bounds = nativeFallbackBounds[skin.spine];
+      if (!bounds || !Number(bounds.width) || !Number(bounds.height)) return { x: width / 2, y: height * .82, scale: Math.min(width, height) / 620 };
+      const scale = Math.min((width * .82) / Number(bounds.width), (height * .9) / Number(bounds.height));
+      return {
+        x: width / 2 - (Number(bounds.x) + Number(bounds.width) / 2) * scale,
+        y: height / 2 - (Number(bounds.y) + Number(bounds.height) / 2) * scale,
+        scale,
+      };
+    };
+    const drawEffect = () => {
+      const effectData = effectSkin && nativeInlineEffects[effectSkin.spine];
+      if (!effectContext || !effectData || !effectImage || nativeEffectCanvas.hidden) return;
+      const width = Math.max(1, selectedBody.clientWidth);
+      const height = Math.max(1, selectedBody.clientHeight);
+      const resolution = Math.min(window.devicePixelRatio || 1, 2);
+      const pixelWidth = Math.max(1, Math.round(width * resolution));
+      const pixelHeight = Math.max(1, Math.round(height * resolution));
+      if (nativeEffectCanvas.width !== pixelWidth || nativeEffectCanvas.height !== pixelHeight) {
+        nativeEffectCanvas.width = pixelWidth;
+        nativeEffectCanvas.height = pixelHeight;
+      }
+      effectContext.setTransform(resolution, 0, 0, resolution, 0, 0);
+      effectContext.clearRect(0, 0, width, height);
+      effectContext.globalCompositeOperation = 'screen';
+      const actions = effectData.actions || [];
+      const fps = Number(effectData.fps) || 30;
+      const totalFrames = actions.reduce((max, action) => Math.max(max, Number(action.totalFrame) || 0), 0);
+      if (!totalFrames) return;
+      const frameIndex = Math.floor(effectElapsed * fps) % totalFrames;
+      const atlas = effectData.frames || {};
+      const transform = effectTransform(width, height, effectSkin);
+      actions.forEach((action) => {
+        const frame = action.frames && action.frames[frameIndex];
+        if (!frame) return;
+        const sprite = atlas[frame.bitmap];
+        if (!sprite) return;
+        const sourceWidth = Number(sprite.sourceWidth) || Number(sprite.width) || 0;
+        const sourceHeight = Number(sprite.sourceHeight) || Number(sprite.height) || 0;
+        const offsetX = Number(sprite.offsetX) || 0;
+        const offsetY = Number(sprite.offsetY) || 0;
+        effectContext.save();
+        effectContext.translate(transform.x + Number(frame.x || 0) * transform.scale, transform.y + Number(frame.y || 0) * transform.scale);
+        effectContext.rotate(Number(frame.rotation || 0) * Math.PI / 180);
+        effectContext.scale(Number(frame.scaleX || 1) * transform.scale, Number(frame.scaleY || 1) * transform.scale);
+        effectContext.globalAlpha = Math.max(0, Math.min(.78, Number(frame.alpha ?? 1) * .78));
+        // These XMLSprite atlases retain their original frame orientation even
+        // when textureRotated is set, so drawing the trimmed frame directly is
+        // required to preserve the in-game position and animation geometry.
+        effectContext.drawImage(effectImage, Number(sprite.x), Number(sprite.y), Number(sprite.width), Number(sprite.height), -sourceWidth / 2 + offsetX, -sourceHeight / 2 + offsetY, sourceWidth, sourceHeight);
+        effectContext.restore();
+      });
+      effectContext.globalCompositeOperation = 'source-over';
+    };
+    const startEffectLoop = () => {
+      stopEffectLoop();
+      if (nativeEffectCanvas.hidden) { drawEffect(); return; }
+      let previous = performance.now();
+      const tick = (now) => {
+        effectElapsed += Math.min(.1, Math.max(0, now - previous) / 1000);
+        previous = now;
+        drawEffect();
+        effectFrameRequest = requestAnimationFrame(tick);
+      };
+      effectFrameRequest = requestAnimationFrame(tick);
+    };
+    const showEffectForSkin = (skin) => {
+      stopEffectLoop();
+      effectSkin = skin;
+      effectImage = null;
+      effectElapsed = 0;
+      nativeEffectCanvas.hidden = true;
+      const effectData = nativeInlineEffects[skin.spine];
+      if (!effectData) return;
+      const texture = `assets/chaofan-native/${skin.spine}/effect/${skin.spine}.web.png`;
+      const cached = effectImageCache.get(texture);
+      const activate = (image) => {
+        if (effectSkin !== skin) return;
+        effectImage = image;
+        nativeEffectCanvas.hidden = false;
+        drawEffect();
+        startEffectLoop();
+      };
+      if (cached) { activate(cached); return; }
+      const image = new Image();
+      image.onload = () => { effectImageCache.set(texture, image); activate(image); };
+      image.onerror = () => { if (effectSkin === skin) nativeEffectCanvas.hidden = true; };
+      image.src = texture;
+    };
+    const sumById = (attributes) => { const totals = new Map(); attributes.forEach((attribute) => { const old = totals.get(attribute.id) || { ...attribute, amount: 0 }; old.amount += attribute.amount; totals.set(attribute.id, old); }); return [...totals.values()]; };
+    const sumByName = (attributes) => { const totals = new Map(); attributes.forEach((attribute) => { const old = totals.get(attribute.name) || { ...attribute, amount: 0 }; old.amount += attribute.amount; totals.set(attribute.name, old); }); return [...totals.values()]; };
+    const levelAttributes = (skin, level) => sumById(skin.base.map((attribute) => ({ ...attribute, amount: attribute.amount + (skin.growth.find((item) => item.id === attribute.id)?.amount || 0) * level })));
+    const totalAttributesAtLevel = (skin, level) => sumByName([...levelAttributes(skin, level), ...skin.special.filter((attribute) => attribute.level <= level)]);
+    const effectByLevel = (skin) => { const map = new Map(); skin.talents.forEach((item) => { const row = map.get(item.level) || { level: item.level, talents: [], special: [] }; row.talents.push(item); map.set(item.level, row); }); skin.special.forEach((item) => { const row = map.get(item.level) || { level: item.level, talents: [], special: [] }; row.special.push(item); map.set(item.level, row); }); return [...map.values()].sort((a, b) => a.level - b.level); };
+    const categoryTabs = [...document.querySelectorAll('.category-tab')];
+    const categoryLabels = { 武将幻化: '武将幻化', 名将幻化: '名将幻化' };
+    const factionLabels = { 魏: '魏国', 蜀: '蜀国', 吴: '吴国', 群: '群雄' };
+    const factionTabs = [...document.querySelectorAll('.faction-tab')];
+    let selectedCategory = '武将幻化';
+    let selectedFaction = '魏';
+    let selectedSkinIndex = 0;
+    const renderSkinOption = (skin, index) => `<button class="skin-option" type="button" data-skin-index="${index}"><img src="${escapeHtml(skin.headIcon)}" alt="${escapeHtml(skin.dressName)}头像" onerror="this.onerror=null;this.src='assets/chaofan-items/chaofan.png'"><span class="skin-option-copy"><strong>${escapeHtml(skin.dressName)}</strong><small>${escapeHtml(skin.name)}</small></span></button>`;
+    const visibleSkinItems = () => data.skins.map((skin, index) => ({ skin, index })).filter(({ skin }) => skin.category === selectedCategory && skin.faction === selectedFaction);
+    const selectFirstVisibleSkin = () => {
+      const exactIndex = data.skins.findIndex((skin) => skin.category === selectedCategory && skin.faction === selectedFaction);
+      if (exactIndex >= 0) { selectedSkinIndex = exactIndex; return; }
+      const fallbackIndex = data.skins.findIndex((skin) => skin.category === selectedCategory);
+      if (fallbackIndex >= 0) { selectedSkinIndex = fallbackIndex; selectedFaction = data.skins[fallbackIndex].faction; }
+    };
+    const renderFactionSkins = () => {
+      const items = visibleSkinItems();
+      skinGrid.innerHTML = items.length ? items.map(({ skin, index }) => renderSkinOption(skin, index)).join('') : '<p class="section-note">当前类型与阵营暂无幻化</p>';
+      skinGrid.setAttribute('aria-label', `${categoryLabels[selectedCategory] || selectedCategory}${factionLabels[selectedFaction] || selectedFaction}`);
+      categoryTabs.forEach((tab) => {
+        const active = tab.dataset.category === selectedCategory;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+      factionTabs.forEach((tab) => {
+        const active = tab.dataset.faction === selectedFaction;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+    };
+    const renderTalentList = (talents) => talents.length ? `<div class="talent-list">${talents.map((item) => `<div class="talent-entry"><span>${escapeHtml(item.description)}</span></div>`).join('')}</div>` : '<span class="section-note">无阶段技能</span>';
+    const renderCombinedDetails = (skin) => {
+      const rows = [{ level: 0, talents: [], special: [] }, ...effectByLevel(skin)];
+      return rows.map((row) => {
+        const isBase = row.level === 0;
+        const propertyHtml = isBase
+          ? `<div class="detail-line"><div class="attribute-list">${renderAttributes(skin.base)}</div></div>`
+          : `<div class="detail-line"><div class="attribute-list">${renderAttributes(levelAttributes(skin, row.level))}</div></div>`;
+        const costHtml = isBase ? '<span class="section-note">无消耗</span>' : `<span class="material-chip"><img src="assets/chaofan-items/chaofanjingyandan.png" alt="超凡经验丹"><strong>×${fmt(levelCosts[row.level - 1] || 0)}</strong></span>`;
+        return `<tr><td class="level-cell">${isBase ? '基础' : `${row.level}级`}</td><td>${costHtml}</td><td>${propertyHtml}</td><td>${renderTalentList(row.talents)}</td><td><div class="attribute-list">${renderSpecial(row.special)}</div></td></tr>`;
+      }).join('');
+    };
+    const fillLevels = () => { [startLevel, targetLevel].forEach((input) => { input.min = '0'; input.max = String(data.maxLevel); input.step = '1'; }); startLevel.value = '0'; targetLevel.value = String(data.maxLevel); };
+    const normalizeLevel = (value) => { const number = Number(value); if (!Number.isFinite(number)) return 0; return Math.min(data.maxLevel, Math.max(0, Math.trunc(number))); };
+    const update = () => {
+      const skin = data.skins[selectedSkinIndex];
+      const from = normalizeLevel(startLevel.value);
+      const to = normalizeLevel(targetLevel.value);
+      startLevel.value = String(from);
+      targetLevel.value = String(to);
+      const totalCost = Math.max(0, cumulativeCostAt(to) - cumulativeCostAt(from));
+      selectedBody.onload = () => { if (data.skins[selectedSkinIndex] === skin) showEffectForSkin(skin); };
+      selectedBody.onerror = () => { selectedBody.onerror = null; selectedBody.src = skin.headIcon || 'assets/chaofan-items/chaofan.png'; };
+      selectedBody.src = skin.bodyImage || skin.headIcon; selectedBody.alt = `${skin.dressName}人物大图`; selectedBodyTrigger.setAttribute('aria-label', `查看${skin.dressName}人物大图`);
+      if (selectedBody.complete && selectedBody.naturalWidth) showEffectForSkin(skin);
+      selectedHead.src = skin.headIcon; selectedHead.onerror = () => { selectedHead.onerror = null; selectedHead.src = 'assets/chaofan-items/chaofan.png'; }; selectedHead.alt = `${skin.dressName}头像`;
+      selectedName.textContent = skin.dressName;
+      costResult.textContent = fmt(totalCost);
+      targetAttributeTitle.textContent = `达到 ${to} 级的属性`; targetAttributes.innerHTML = renderAttributes(totalAttributesAtLevel(skin, to));
+      detailTable.innerHTML = renderCombinedDetails(skin);
+      document.querySelectorAll('.skin-option').forEach((button) => button.classList.toggle('is-selected', Number(button.dataset.skinIndex) === selectedSkinIndex));
+    };
+    selectFirstVisibleSkin();
+    renderFactionSkins(); fillLevels(data.skins[selectedSkinIndex]); update();
+    categoryTabs.forEach((tab) => tab.addEventListener('click', () => {
+      selectedCategory = tab.dataset.category;
+      selectFirstVisibleSkin();
+      renderFactionSkins();
+      fillLevels(data.skins[selectedSkinIndex]);
+      update();
+    }));
+    factionTabs.forEach((tab) => tab.addEventListener('click', () => {
+      selectedFaction = tab.dataset.faction;
+      selectFirstVisibleSkin();
+      renderFactionSkins();
+      fillLevels(data.skins[selectedSkinIndex]);
+      update();
+    }));
+    skinGrid.addEventListener('click', (event) => { const button = event.target.closest('.skin-option'); if (!button) return; selectedSkinIndex = Number(button.dataset.skinIndex); selectedCategory = data.skins[selectedSkinIndex].category; selectedFaction = data.skins[selectedSkinIndex].faction; renderFactionSkins(); fillLevels(data.skins[selectedSkinIndex]); update(); });
+    startLevel.addEventListener('change', update); targetLevel.addEventListener('change', update);
+    const closeImageLightbox = () => { imageLightbox.hidden = true; imageLightboxImage.removeAttribute('src'); imageLightboxImage.alt = ''; document.body.classList.remove('lightbox-open'); };
+    const openImageLightbox = () => { imageLightboxImage.src = selectedBody.src; imageLightboxImage.alt = selectedBody.alt; imageLightbox.hidden = false; document.body.classList.add('lightbox-open'); imageLightboxClose.focus(); };
+    selectedBodyTrigger.addEventListener('click', openImageLightbox); imageLightboxClose.addEventListener('click', closeImageLightbox); imageLightbox.addEventListener('click', (event) => { if (event.target === imageLightbox) closeImageLightbox(); }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !imageLightbox.hidden) closeImageLightbox(); });
+    window.addEventListener('resize', drawEffect);
+  </script>
+</body>
+</html>

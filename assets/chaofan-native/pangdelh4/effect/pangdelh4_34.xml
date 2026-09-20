@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="pangdelh4_34" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.9990425716" rotationX="-26.9990425716" rotationY="-26.9990425716" scaleX="0.500004274985" scaleY="0.500004274985"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8502002911" rotationX="-26.8502002911" rotationY="-26.8502002911" scaleX="0.477162944372" scaleY="0.477162944372"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.5" rotation="-26.8503632553" rotationX="-26.8503632553" rotationY="-26.8503632553" scaleX="0.45496440585" scaleY="0.45496440585"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8523452875" rotationX="-26.8523452875" rotationY="-26.8523452875" scaleX="0.432772759404" scaleY="0.432772759404"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8497802985" rotationX="-26.8497802985" rotationY="-26.8497802985" scaleX="0.410580942558" scaleY="0.410580942558"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8499471951" rotationX="-26.8499471951" rotationY="-26.8499471951" scaleX="0.388382404027" scaleY="0.388382404027"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.852264393" rotationX="-26.852264393" rotationY="-26.852264393" scaleX="0.366190757513" scaleY="0.366190757513"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.45" rotation="-26.8514651774" rotationX="-26.8514651774" rotationY="-26.8514651774" scaleX="0.344005832582" scaleY="0.344005832582"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.6,-142.55" rotation="-26.8505860455" rotationX="-26.8505860455" rotationY="-26.8505860455" scaleX="0.32178678846" scaleY="0.32178678846"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8521475442" rotationX="-26.8521475442" rotationY="-26.8521475442" scaleX="0.299608755624" scaleY="0.299608755624"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.5" rotation="-26.8511471719" rotationX="-26.8511471719" rotationY="-26.8511471719" scaleX="0.277423830711" scaleY="0.277423830711"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8484638177" rotationX="-26.8484638177" rotationY="-26.8484638177" scaleX="0.255218400491" scaleY="0.255218400491"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8502693926" rotationX="-26.8502693926" rotationY="-26.8502693926" scaleX="0.233040367372" scaleY="0.233040367372"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8488015039" rotationX="-26.8488015039" rotationY="-26.8488015039" scaleX="0.21082132339" scaleY="0.21082132339"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8489786002" rotationX="-26.8489786002" rotationY="-26.8489786002" scaleX="0.188656904113" scaleY="0.188656904113"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8516333921" rotationX="-26.8516333921" rotationY="-26.8516333921" scaleX="0.166444751853" scaleY="0.166444751853"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.5" rotation="-26.8523679393" rotationX="-26.8523679393" rotationY="-26.8523679393" scaleX="0.144246213381" scaleY="0.144246213381"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.6" rotation="-26.8566057783" rotationX="-26.8566057783" rotationY="-26.8566057783" scaleX="0.122034061771" scaleY="0.122034061771"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.9990721884" rotationX="-26.9990721884" rotationY="-26.9990721884" scaleX="0.0999940312549" scaleY="0.0999940312549"/>
+			</frameInfo>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.9990721884" rotationX="-26.9990721884" rotationY="-26.9990721884" scaleX="0.0999940312549" scaleY="0.0999940312549"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8538034084" rotationX="-26.8538034084" rotationY="-26.8538034084" scaleX="0.15977771149" scaleY="0.15977771149"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8497925733" rotationX="-26.8497925733" rotationY="-26.8497925733" scaleX="0.219699394348" scaleY="0.219699394348"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.6,-142.55" rotation="-26.8502902736" rotationX="-26.8502902736" rotationY="-26.8502902736" scaleX="0.279627969286" scaleY="0.279627969286"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8517752562" rotationX="-26.8517752562" rotationY="-26.8517752562" scaleX="0.339542930612" scaleY="0.339542930612"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.5" rotation="-26.8518262025" rotationX="-26.8518262025" rotationY="-26.8518262025" scaleX="0.399471505588" scaleY="0.399471505588"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8493275609" rotationX="-26.8493275609" rotationY="-26.8493275609" scaleX="0.459372683127" scaleY="0.459372683127"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.6" rotation="-26.8496492209" rotationX="-26.8496492209" rotationY="-26.8496492209" scaleX="0.519301258042" scaleY="0.519301258042"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8499043214" rotationX="-26.8499043214" rotationY="-26.8499043214" scaleX="0.579229832969" scaleY="0.579229832969"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.5" rotation="-26.8507293921" rotationX="-26.8507293921" rotationY="-26.8507293921" scaleX="0.639144794186" scaleY="0.639144794186"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.9996180428" rotationX="-26.9996180428" rotationY="-26.9996180428" scaleX="0.699978741734" scaleY="0.699978741734"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8512682718" rotationX="-26.8512682718" rotationY="-26.8512682718" scaleX="0.685752901714" scaleY="0.685752901714"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.6" rotation="-26.8511177817" rotationX="-26.8511177817" rotationY="-26.8511177817" scaleX="0.672446047918" scaleY="0.672446047918"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8503769125" rotationX="-26.8503769125" rotationY="-26.8503769125" scaleX="0.659118688552" scaleY="0.659118688552"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.5" rotation="-26.8502018496" rotationX="-26.8502018496" rotationY="-26.8502018496" scaleX="0.645811834786" scaleY="0.645811834786"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8506437251" rotationX="-26.8506437251" rotationY="-26.8506437251" scaleX="0.632491367297" scaleY="0.632491367297"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.6,-142.55" rotation="-26.8504668679" rotationX="-26.8504668679" rotationY="-26.8504668679" scaleX="0.619184513522" scaleY="0.619184513522"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8509339903" rotationX="-26.8509339903" rotationY="-26.8509339903" scaleX="0.605864046057" scaleY="0.605864046057"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.45" rotation="-26.8501057374" rotationX="-26.8501057374" rotationY="-26.8501057374" scaleX="0.592536686724" scaleY="0.592536686724"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.5" rotation="-26.8499043214" rotationX="-26.8499043214" rotationY="-26.8499043214" scaleX="0.579229832969" scaleY="0.579229832969"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.5,-142.55" rotation="-26.8510717202" rotationX="-26.8510717202" rotationY="-26.8510717202" scaleX="0.56592987104" scaleY="0.56592987104"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.6,-142.55" rotation="-26.850883867" rotationX="-26.850883867" rotationY="-26.850883867" scaleX="0.552623017251" scaleY="0.552623017251"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8499726077" rotationX="-26.8499726077" rotationY="-26.8499726077" scaleX="0.539295657932" scaleY="0.539295657932"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.6,-142.5" rotation="-26.8497474361" rotationX="-26.8497474361" rotationY="-26.8497474361" scaleX="0.525988804182" scaleY="0.525988804182"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="pangdelh4_xing_1" position="268.55,-142.55" rotation="-26.8502807819" rotationX="-26.8502807819" rotationY="-26.8502807819" scaleX="0.512668336658" scaleY="0.512668336658"/>
+			</frameInfo>
+		</action>
+	</animation>

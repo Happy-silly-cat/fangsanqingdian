@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三宝石属性、合成材料和区间计算器。">
+  <title>宝石 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --red: #a74e42;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .shell {
+      width: min(1200px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .back-link:focus-visible,
+    .gem-type-card:focus-visible,
+    .field input:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.38);
+      outline-offset: 2px;
+      border-color: var(--jade);
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-meta,
+    .summary-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .type-panel {
+      display: grid;
+      gap: 10px;
+      padding: 14px 16px;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 850;
+    }
+
+    .gem-type-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .gem-type-card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 6px 8px;
+      color: var(--text);
+      background: var(--panel-strong);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .gem-type-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--jade);
+      background: var(--panel-hover);
+    }
+
+    .gem-type-card.is-active {
+      border-color: var(--jade);
+      background: #eff8f2;
+      box-shadow: inset 0 0 0 1px rgba(60, 157, 133, 0.24);
+    }
+
+    .gem-type-icon,
+    .table-gem-icon,
+    .material-icon {
+      display: block;
+      object-fit: contain;
+    }
+
+    .gem-type-icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    .gem-type-name {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .profile-panel {
+      display: block;
+      margin-top: 12px;
+      padding: 14px 18px;
+    }
+
+    .gem-overview-panel {
+      margin-top: 12px;
+      overflow: hidden;
+    }
+
+    .gem-overview-panel .profile-panel {
+      margin-top: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 14px 18px 16px;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+
+    .profile-subtitle {
+      margin: 5px 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .attribute-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .attribute-pill,
+    .cost-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: var(--panel-strong);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .attribute-pill strong,
+    .cost-chip strong { color: var(--jade-dark); }
+
+    .section-block { margin-top: 16px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .collapsible-table-details {
+      margin-top: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .collapsible-table-details > summary {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .collapsible-table-details > summary::-webkit-details-marker { display: none; }
+
+    .collapsible-table-details > summary::before {
+      color: var(--jade);
+      content: "▸";
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .collapsible-table-details[open] > summary::before { content: "▾"; }
+
+    .collapsible-table-details > summary:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: -2px;
+    }
+
+    .collapsible-table-details > .section-head {
+      margin: 0;
+      border-bottom: 0;
+      padding: 14px 16px;
+    }
+
+    .collapsible-table-details > .table-wrap {
+      margin-top: 0;
+      border-width: 1px 0 0;
+      border-radius: 0;
+    }
+
+    .gem-calculator-block {
+      padding: 0 18px 18px;
+    }
+
+    .gem-calculator-block .section-heading {
+      margin-top: 14px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1000px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 12px;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); background: #f9f1e3; font-weight: 800; }
+    tbody tr:hover { background: rgba(255, 243, 220, 0.55); }
+
+    th:nth-child(1), td:nth-child(1) { width: 108px; }
+    th:nth-child(2), td:nth-child(2) { width: 116px; }
+    th:nth-child(4), td:nth-child(4) { width: 680px; }
+
+    .level-cell,
+    .level-content,
+    .cost-list,
+    .attribute-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .level-content {
+      flex-wrap: nowrap;
+    }
+
+    .cost-list {
+      flex-wrap: nowrap;
+      min-width: max-content;
+    }
+
+    .level-cell { color: var(--jade-dark); font-weight: 850; }
+
+    .table-gem-icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .quality-mark {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 5px;
+      padding: 2px 7px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .quality-level-1 { background: #f3f3f3; color: #666; border: 1px solid #d1d1d1; }
+    .quality-level-2 { background: #4ca86b; }
+    .quality-level-3 { background: #438ac7; }
+    .quality-level-4 { background: #7653a9; }
+    .quality-level-5 { background: #d17a32; }
+    .quality-level-6 { background: #bd4d4d; }
+    .quality-level-7 { background: #b58b25; }
+    .quality-level-8 { background: #68556e; }
+    .quality-level-9 { background: #5d8c9d; }
+    .quality-level-10 { background: #a978c1; }
+
+    .material-icon { width: 26px; height: 26px; }
+
+    .cost-chip { padding: 3px 7px; min-height: 28px; }
+    .cost-chip strong { color: var(--text); }
+    .empty-note { color: var(--muted); }
+
+    .calculator-panel { padding: 14px 16px; }
+
+    .gem-calculator-block .calculator-panel {
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .inventory-calculator {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .inventory-calculator-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .inventory-calculator-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 850;
+    }
+
+    .inventory-calculator-note {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .inventory-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      gap: 8px;
+      width: min(100%, 330px);
+      flex: 0 1 330px;
+    }
+
+    .inventory-fields .field label { margin-bottom: 4px; }
+    .inventory-fields .field select { height: 34px; padding: 0 8px; font-size: 12px; }
+
+    .inventory-gem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .inventory-gem-card {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      align-items: center;
+      column-gap: 7px;
+      row-gap: 4px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 6px 7px;
+      background: var(--panel-strong);
+    }
+
+    .inventory-gem-card:focus-within {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 2px rgba(60, 157, 133, 0.14);
+    }
+
+    .inventory-gem-card img {
+      grid-row: 1 / span 2;
+      display: block;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .inventory-gem-level {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--jade-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .inventory-gem-card input {
+      width: 100%;
+      min-width: 0;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 0 7px;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .inventory-result {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 12px;
+      border-top: 1px solid rgba(217, 203, 182, 0.8);
+      padding-top: 11px;
+      color: var(--jade-dark);
+      font-weight: 800;
+    }
+
+    .inventory-result-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .inventory-result-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .inventory-result-complete { color: var(--jade); }
+
+    .inventory-output-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: start;
+    }
+
+    .inventory-output-block {
+      min-width: 0;
+    }
+
+    .inventory-material-block {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+    }
+
+    .inventory-output-title {
+      display: inline-flex;
+      flex: 0 0 auto;
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .inventory-material-list {
+      display: flex;
+      flex: 1 1 220px;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      min-height: 30px;
+    }
+
+    .inventory-material-block > .inventory-result-note {
+      flex: 0 1 100%;
+    }
+
+    .inventory-material-block > .inventory-output-title {
+      padding-top: 7px;
+    }
+
+    .inventory-attribute-block {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+      border-top: 1px solid rgba(217, 203, 182, 0.8);
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+      padding: 10px 0 0;
+      background: transparent;
+    }
+
+    .inventory-attribute-scope {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      min-height: 23px;
+      border: 1px solid var(--jade);
+      border-radius: 5px;
+      padding: 0 7px;
+      background: #e6f4ed;
+      color: #267e68;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .inventory-attribute-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px 14px;
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .inventory-attribute {
+      white-space: nowrap;
+    }
+
+    .inventory-attribute strong {
+      color: var(--jade-dark);
+      font-weight: 850;
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: none;
+    }
+
+    .field { min-width: 0; }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .reference-field {
+      grid-column: auto;
+    }
+
+    .field input {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 10px;
+      background: var(--panel-strong);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .field select {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 10px;
+      background: var(--panel-strong);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .range-arrow {
+      align-self: end;
+      height: 38px;
+      color: var(--gold);
+      font-size: 22px;
+      line-height: 38px;
+      text-align: center;
+    }
+
+    .calculator-result {
+      display: grid;
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+      align-items: start;
+      gap: 12px;
+      min-width: 0;
+      color: var(--jade-dark);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      text-align: left;
+    }
+
+    .result-costs {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: flex-end;
+      gap: 7px;
+      width: auto;
+      min-width: 0;
+    }
+
+    .result-costs .result-title { text-align: left; }
+
+    .result-cost-group {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .result-cost-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .result-cost-lead {
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .result-title {
+      width: 100%;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .result-attributes {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 7px;
+      width: auto;
+      min-width: 0;
+      margin-top: 0;
+      color: var(--jade-dark);
+      text-align: left;
+    }
+
+    .result-attributes .result-title {
+      width: 100%;
+      flex: 0 0 100%;
+      color: var(--muted);
+    }
+
+    .invalid { color: var(--red); }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note {
+      max-width: 900px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .gem-type-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .calculator-layout { grid-template-columns: 1fr; }
+      .calculator-result { grid-template-columns: minmax(0, auto) minmax(0, 1fr); padding: 0; text-align: left; }
+      .result-costs { justify-content: flex-end; }
+      .result-attributes { justify-content: flex-start; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1200px); padding-top: 18px; }
+      .site-header { padding-bottom: 16px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .brand-name { font-size: 17px; }
+      .page-title { font-size: 25px; }
+      .intro { display: block; margin-top: 20px; }
+      .intro .page-note { margin-top: 4px; }
+      .gem-type-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+      .type-panel, .calculator-panel { padding: 12px; }
+      .gem-overview-panel .profile-panel { padding: 12px; }
+      .gem-calculator-block { padding: 0 12px 12px; }
+      .calculator-fields { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+      .reference-field { grid-column: 1 / -1; }
+      .profile-name { font-size: 20px; }
+      .profile-subtitle { margin-bottom: 8px; font-size: 12px; }
+      .attribute-pill, .cost-chip { font-size: 12px; }
+      .calculator-result { gap: 10px; }
+      .result-attributes { margin-top: 0; }
+      .inventory-calculator-heading { display: block; }
+      .inventory-fields { width: 100%; max-width: none; margin-top: 10px; }
+      footer { margin-top: 20px; }
+    }
+
+    @media (max-width: 520px) {
+      .gem-type-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .calculator-result { grid-template-columns: 1fr; }
+      .result-costs { justify-content: flex-end; }
+      .result-costs .result-title { text-align: left; }
+      .inventory-gem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .inventory-output-grid { grid-template-columns: 1fr; }
+      .inventory-material-block > .inventory-result-note { flex-basis: 100%; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">宝石</h1>
+      <p class="page-note">查看宝石属性与合成材料</p>
+    </div>
+
+    <section class="panel type-panel" aria-labelledby="gem-types-title">
+      <div class="panel-heading">
+        <h2 class="section-title" id="gem-types-title">宝石类型</h2>
+        <p class="section-meta">选择类型查看1至10级</p>
+      </div>
+      <div class="gem-type-grid" id="gem-type-grid"></div>
+    </section>
+
+    <section class="panel gem-overview-panel" aria-label="宝石信息与合成计算器">
+      <div class="profile-panel" id="gem-profile" aria-live="polite"></div>
+
+      <div class="gem-calculator-block" aria-labelledby="gem-calculator-title">
+        <div class="section-heading">
+          <h2 class="section-title" id="gem-calculator-title">合成计算器</h2>
+          <p class="section-meta">输入已有宝石数量，计算所需宝石、银币和宝石合成符</p>
+        </div>
+
+        <div class="inventory-calculator" aria-labelledby="inventory-calculator-title">
+          <div class="inventory-calculator-heading">
+            <div>
+              <h3 class="inventory-calculator-title" id="inventory-calculator-title">宝石数量</h3>
+              <p class="inventory-calculator-note">输入已有宝石数量，计算达到目标等级还需要的材料</p>
+            </div>
+            <div class="inventory-fields">
+              <div class="field">
+                <label for="inventory-target-level">目标等级</label>
+                <select id="inventory-target-level"></select>
+              </div>
+              <div class="field">
+                <label for="inventory-reference-level">材料参照等级</label>
+                <select id="inventory-reference-level"></select>
+              </div>
+            </div>
+          </div>
+          <div class="inventory-gem-grid" id="inventory-gem-grid" aria-label="各等级宝石数量"></div>
+          <div class="inventory-output-grid">
+            <div class="inventory-output-block inventory-material-block">
+              <span class="inventory-output-title">合成材料</span>
+              <div class="material-list inventory-material-list" id="inventory-materials"></div>
+              <span class="inventory-result-note" id="inventory-result" aria-live="polite"></span>
+            </div>
+            <div class="inventory-output-block inventory-attribute-block">
+              <span class="inventory-output-title">获得属性</span>
+              <span class="inventory-attribute-scope">武将属性</span>
+              <div class="inventory-attribute-list" id="inventory-attributes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <details class="collapsible-table-details">
+      <summary class="section-head">
+        <h2 class="section-title" id="gem-table-title">属性与合成材料</h2>
+        <span class="section-meta">每3颗上一等级宝石合成1颗当前等级宝石</span>
+      </summary>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>等级</th><th>品质</th><th>属性</th><th>合成消耗</th></tr></thead>
+          <tbody id="gem-table-body"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <footer>
+      <p class="copyright-note">本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。</p>
+    </footer>
+  </main>
+
+  <!-- 宝石数据与图标由 DB_Item_gem.lua 整理；更新宝石配置时优先更新 assets/gem-data.js。 -->
+  <script src="assets/gem-data.js"></script>
+  <script>
+    (() => {
+      // 宝石页面只依赖这份整理后的数据，新增类型或等级时可直接检查 gem-data.js。
+      const data = window.gemData;
+      const typeGrid = document.getElementById('gem-type-grid');
+      const profile = document.getElementById('gem-profile');
+      const tableBody = document.getElementById('gem-table-body');
+      const inventoryTargetLevel = document.getElementById('inventory-target-level');
+      const inventoryReferenceLevel = document.getElementById('inventory-reference-level');
+      const inventoryGemGrid = document.getElementById('inventory-gem-grid');
+      const inventoryResult = document.getElementById('inventory-result');
+      const inventoryMaterials = document.getElementById('inventory-materials');
+      const inventoryAttributes = document.getElementById('inventory-attributes');
+      const gemMap = new Map(data.gems.map((gem) => [gem.id, gem]));
+      const types = Object.entries(data.typeNames).map(([id, name]) => ({ id: Number(id), name }));
+      const flatAttributeIds = new Set([51, 54, 55, 100]);
+      const inventoryByType = new Map();
+      let inventoryTarget = data.maxLevel;
+      let inventoryReference = 1;
+      let selectedType = 1;
+
+      const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[char]));
+
+      const formatNumber = (value) => Number(value || 0).toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+      const formatSilver = (value) => `${formatNumber(Number(value || 0) / 10000)}w`;
+      const attributeName = (id) => data.attributeNames[id] || `属性${id}`;
+      // 游戏品质从1级白色开始，后续等级依次对应绿色、蓝色、紫色……。
+      // 数据文件中的 quality 是源表编号，展示时按宝石等级映射，方便后续新增等级时检查。
+      const qualityNamesByLevel = ['', '白色', '绿色', '蓝色', '紫色', '橙色', '红色', '金色', '暗金色', '白金色', '琉金色'];
+      const qualityMarkup = (gem) => `<span class="quality-mark quality-level-${gem.level}">${escapeHtml(qualityNamesByLevel[gem.level] || gem.qualityName)}</span>`;
+      const composeQuantity = Math.max(2, Number(data.composeQuantity) || 3);
+
+      function formatAttribute(attribute, signed = true) {
+        const amount = Number(attribute.amount) || 0;
+        const sign = signed ? (amount >= 0 ? '+' : '-') : '';
+        const absolute = Math.abs(amount);
+        if (flatAttributeIds.has(Number(attribute.id))) return `${attributeName(attribute.id)}${sign}${formatNumber(absolute)}`;
+        return `${attributeName(attribute.id)}${sign}${formatNumber(absolute / 100)}%`;
+      }
+
+      function attributeMarkup(attributes, signed = true) {
+        if (!attributes.length) return '<span class="empty-note">无属性</span>';
+        return attributes.map((attribute) => `<span class="attribute-pill">${escapeHtml(formatAttribute(attribute, signed))}</span>`).join('');
+      }
+
+      function previousGemMarkup(gem, amount = composeQuantity) {
+        if (!gem) return '';
+        return `<span class="cost-chip"><img class="material-icon" src="${escapeHtml(gem.smallIcon)}" alt="${escapeHtml(gem.name)}">${escapeHtml(gem.name)} ×<strong>${formatNumber(amount)}</strong></span>`;
+      }
+
+      function costMarkup(cost, previousGem = null, emptyMarkup = '<span class="empty-note">—</span>') {
+        const parts = [];
+        if (previousGem) parts.push(previousGemMarkup(previousGem));
+        if (cost.silver) {
+          parts.push(`<span class="cost-chip"><img class="material-icon" src="assets/lingdi-items/yinbi.png" alt="银币">银币 ×<strong>${formatSilver(cost.silver)}</strong></span>`);
+        }
+        cost.materials.forEach((item) => {
+          const material = data.materials[item.id];
+          if (!material) return;
+          parts.push(`<span class="cost-chip"><img class="material-icon" src="${escapeHtml(material.icon)}" alt="${escapeHtml(material.name)}">${escapeHtml(material.name)} ×<strong>${formatNumber(item.amount)}</strong></span>`);
+        });
+        return parts.length ? parts.join('') : emptyMarkup;
+      }
+
+      function getGems(type) {
+        return data.gems.filter((gem) => gem.type === type).sort((a, b) => a.level - b.level);
+      }
+
+      function getInventory(type) {
+        if (!inventoryByType.has(type)) inventoryByType.set(type, Array(data.maxLevel + 1).fill(0));
+        return inventoryByType.get(type);
+      }
+
+      function renderTypeGrid() {
+        typeGrid.innerHTML = types.map((type) => {
+          const first = getGems(type.id)[0];
+          return `<button class="gem-type-card${type.id === selectedType ? ' is-active' : ''}" type="button" data-type="${type.id}" aria-pressed="${type.id === selectedType}">
+            <img class="gem-type-icon" src="${escapeHtml(first.smallIcon)}" alt="${escapeHtml(type.name)}宝石图标">
+            <span class="gem-type-name">${escapeHtml(type.name)}宝石</span>
+          </button>`;
+        }).join('');
+        typeGrid.querySelectorAll('[data-type]').forEach((button) => {
+          button.addEventListener('click', () => {
+            selectedType = Number(button.dataset.type);
+            render();
+          });
+        });
+      }
+
+      function renderProfile(gems) {
+        const first = gems[0];
+        profile.innerHTML = `
+          <h2 class="profile-name">${escapeHtml(first.typeName)}宝石</h2>
+        `;
+      }
+
+      function renderTable(gems) {
+        tableBody.innerHTML = gems.map((gem) => `
+          <tr>
+            <td><div class="level-content"><img class="table-gem-icon" src="${escapeHtml(gem.smallIcon)}" alt=""><span class="level-cell">${gem.level}级</span></div></td>
+            <td>${qualityMarkup(gem)}</td>
+            <td><div class="attribute-list">${attributeMarkup(gem.attributes)}</div></td>
+            <td><div class="cost-list">${costMarkup(gem.composeCost, gem.composeId ? gemMap.get(gem.composeId) : null)}</div></td>
+          </tr>
+        `).join('');
+      }
+
+      function renderInventoryTargetOptions(gems) {
+        const previous = inventoryTarget;
+        inventoryTargetLevel.innerHTML = gems.map((gem) => `<option value="${gem.level}">${gem.level}级（${escapeHtml(qualityNamesByLevel[gem.level] || gem.qualityName)}）</option>`).join('');
+        inventoryTarget = Math.min(data.maxLevel, Math.max(1, Number.isFinite(previous) ? previous : data.maxLevel));
+        inventoryTargetLevel.value = String(inventoryTarget);
+      }
+
+      function renderInventoryReferenceOptions(gems) {
+        const previous = inventoryReference;
+        const available = gems.filter((gem) => gem.level <= inventoryTarget);
+        inventoryReferenceLevel.innerHTML = available.map((gem) => `<option value="${gem.level}">${gem.level}级（${escapeHtml(qualityNamesByLevel[gem.level] || gem.qualityName)}）</option>`).join('');
+        inventoryReference = Math.min(inventoryTarget, Math.max(1, Number.isFinite(previous) ? previous : 1));
+        inventoryReferenceLevel.value = String(inventoryReference);
+      }
+
+      function renderInventoryGrid(gems) {
+        const inventory = getInventory(selectedType);
+        inventoryGemGrid.innerHTML = gems.map((gem) => `
+          <label class="inventory-gem-card">
+            <img src="${escapeHtml(gem.smallIcon)}" alt="${escapeHtml(gem.name)}">
+            <span class="inventory-gem-level">${gem.level}级宝石</span>
+            <input type="number" min="0" step="1" value="${inventory[gem.level] || 0}" data-inventory-level="${gem.level}" aria-label="${escapeHtml(gem.name)}数量">
+          </label>
+        `).join('');
+      }
+
+      function addMaterialTotal(totals, item, multiplier) {
+        totals.set(item.id, (totals.get(item.id) || 0) + item.amount * multiplier);
+      }
+
+      function calculateInventoryCosts(gems, targetLevel, referenceLevel, inventory, missingReference) {
+        const available = Array(data.maxLevel + 1).fill(0);
+        const gemByLevel = new Map(gems.map((gem) => [gem.level, gem]));
+        inventory.forEach((amount, level) => {
+          available[level] = Number(amount) || 0;
+        });
+        available[referenceLevel] += missingReference;
+
+        let silver = 0;
+        const materialTotals = new Map();
+        const ensure = (level, quantity) => {
+          const used = Math.min(available[level], quantity);
+          available[level] -= used;
+          const missing = quantity - used;
+          if (missing <= 0 || level === 1) return;
+          ensure(level - 1, missing * composeQuantity);
+          const recipe = gemByLevel.get(level)?.composeCost;
+          if (!recipe) return;
+          silver += recipe.silver * missing;
+          recipe.materials.forEach((item) => addMaterialTotal(materialTotals, item, missing));
+        };
+
+        ensure(targetLevel, 1);
+        return {
+          silver,
+          materials: [...materialTotals].map(([id, amount]) => ({ id, amount }))
+        };
+      }
+
+      function heroAttributeMarkup(attributes) {
+        if (!attributes.length) return '<span class="empty-note">无属性</span>';
+        return attributes.map((attribute) => {
+          const raw = Number(attribute.amount) || 0;
+          const absolute = Math.abs(raw);
+          const value = flatAttributeIds.has(Number(attribute.id))
+            ? formatNumber(absolute)
+            : `${formatNumber(absolute / 100)}%`;
+          const sign = raw >= 0 ? '+' : '-';
+          return `<span class="inventory-attribute">${escapeHtml(attributeName(attribute.id))} <strong>${sign}${escapeHtml(value)}</strong></span>`;
+        }).join('');
+      }
+
+      function renderInventoryResult(gems) {
+        const inventory = getInventory(selectedType);
+        const targetGem = gems.find((gem) => gem.level === inventoryTarget);
+        const referenceGem = gems.find((gem) => gem.level === inventoryReference);
+        if (!targetGem || !referenceGem) {
+          inventoryResult.textContent = '暂无可计算的宝石等级';
+          inventoryMaterials.innerHTML = '<span class="empty-note">暂无材料</span>';
+          inventoryAttributes.innerHTML = '<span class="empty-note">暂无属性</span>';
+          return;
+        }
+
+        const unitValue = (level) => Math.pow(composeQuantity, level - 1);
+        const targetUnits = unitValue(targetGem.level);
+        const ownedUnits = gems.reduce((sum, gem) => sum + (inventory[gem.level] || 0) * unitValue(gem.level), 0);
+        const missingUnits = Math.max(0, targetUnits - ownedUnits);
+        const missingReference = Math.ceil(missingUnits / unitValue(referenceGem.level));
+        const targetLabel = `${targetGem.level}级${targetGem.typeName}宝石`;
+        const costs = missingReference
+          ? calculateInventoryCosts(gems, targetGem.level, referenceGem.level, inventory, missingReference)
+          : { silver: 0, materials: [] };
+
+        inventoryAttributes.innerHTML = heroAttributeMarkup(targetGem.attributes);
+
+        if (!missingReference) {
+          inventoryMaterials.innerHTML = '<span class="inventory-result-complete">无需补充材料</span>';
+          inventoryResult.textContent = `已有宝石已满足${targetLabel}需求，按${referenceGem.level}级材料参照`;
+          return;
+        }
+        inventoryMaterials.innerHTML = `<span class="inventory-result-label">还需要</span>${previousGemMarkup(referenceGem, missingReference)}${costMarkup(costs, null, '')}`;
+        inventoryResult.textContent = `目标：${targetLabel}，按${referenceGem.level}级材料参照`;
+      }
+
+      function renderInventoryCalculator(gems) {
+        renderInventoryTargetOptions(gems);
+        renderInventoryReferenceOptions(gems);
+        renderInventoryGrid(gems);
+        renderInventoryResult(gems);
+      }
+
+      function render() {
+        const gems = getGems(selectedType);
+        renderTypeGrid();
+        renderProfile(gems);
+        renderTable(gems);
+        renderInventoryCalculator(gems);
+      }
+
+      inventoryTargetLevel.addEventListener('change', () => {
+        inventoryTarget = Number.parseInt(inventoryTargetLevel.value, 10) || 1;
+        renderInventoryReferenceOptions(getGems(selectedType));
+        renderInventoryResult(getGems(selectedType));
+      });
+      inventoryReferenceLevel.addEventListener('change', () => {
+        inventoryReference = Number.parseInt(inventoryReferenceLevel.value, 10) || 1;
+        renderInventoryResult(getGems(selectedType));
+      });
+      inventoryGemGrid.addEventListener('input', (event) => {
+        const input = event.target.closest('[data-inventory-level]');
+        if (!input) return;
+        const level = Number.parseInt(input.dataset.inventoryLevel, 10);
+        const amount = Math.max(0, Number.parseInt(input.value, 10) || 0);
+        input.value = String(amount);
+        getInventory(selectedType)[level] = amount;
+        renderInventoryResult(getGems(selectedType));
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>

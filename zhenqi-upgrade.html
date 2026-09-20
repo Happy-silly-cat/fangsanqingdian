@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三阵旗升级属性、升级材料、升阶属性与升阶材料查询表。">
+  <title>阵旗升级与升阶 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #64518f;
+      --red: #a74e42;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .back-link:focus-visible,
+    .flag-card:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.4);
+      outline-offset: 2px;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-note,
+    .summary-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .flag-picker,
+    .profile-panel,
+    .section-panel,
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .flag-picker { padding: 12px; }
+
+    .flag-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .flag-card {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: rgba(255, 253, 248, 0.68);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .flag-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--jade);
+      background: var(--panel-hover);
+      box-shadow: 0 6px 14px rgba(69, 56, 39, 0.08);
+    }
+
+    .flag-card.is-selected {
+      border-color: var(--jade);
+      background: #e8f1e9;
+      box-shadow: inset 0 0 0 1px rgba(60, 157, 133, 0.18);
+    }
+
+    .flag-card img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      object-fit: contain;
+    }
+
+    .flag-icon-heyi { transform: translateY(-1px); }
+
+    .flag-card-name {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .profile-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      padding: 14px 16px;
+    }
+
+    .profile-icon {
+      display: block;
+      width: 86px;
+      height: 86px;
+      flex: 0 0 86px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 7px rgba(50, 36, 20, 0.18));
+    }
+
+    .profile-main { min-width: 0; flex: 1 1 auto; }
+
+    .profile-heading {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .profile-name {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .profile-meta {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .profile-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 18px;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .profile-stats strong { color: var(--text); }
+
+    .profile-calculator {
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .calculator-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .calculator-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: right;
+    }
+
+    .calculator-fields {
+      display: grid;
+      grid-template-columns: minmax(105px, 1fr) minmax(88px, 0.78fr) auto minmax(105px, 1fr) minmax(88px, 0.78fr);
+      gap: 8px;
+      align-items: end;
+    }
+
+    .calculator-field {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .calculator-field span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .calculator-field select,
+    .calculator-field input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255, 252, 244, 0.92);
+      padding: 8px 9px;
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      outline: none;
+    }
+
+    .calculator-field select:focus,
+    .calculator-field input:focus {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 2px rgba(54, 151, 126, 0.12);
+    }
+
+    .calculator-arrow {
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: 850;
+      line-height: 34px;
+    }
+
+    .calculator-result {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .result-box {
+      min-width: 0;
+      border: 1px solid rgba(217, 203, 182, 0.85);
+      border-radius: 7px;
+      background: rgba(255, 252, 244, 0.62);
+      padding: 9px 10px;
+    }
+
+    .result-title {
+      margin: 0 0 7px;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .result-materials,
+    .result-attrs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+    }
+
+    .result-material {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      border: 1px solid rgba(70, 161, 139, 0.22);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.52);
+      padding: 5px 8px;
+      white-space: nowrap;
+    }
+
+    .result-material-pending {
+      border-style: dashed;
+      border-color: rgba(154, 103, 29, 0.42);
+      background: rgba(255, 246, 222, 0.72);
+    }
+
+    .result-material-pending strong {
+      color: #9a671d;
+    }
+
+    .result-material img {
+      display: block;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      object-fit: contain;
+    }
+
+    .attr-result {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      color: var(--text);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .attr-result strong { color: var(--gold); }
+    .attr-label { color: var(--text); font-weight: 800; }
+    .attr-gain {
+      margin-left: 3px;
+      color: #239b63;
+      font-style: normal;
+      font-weight: 850;
+    }
+    .attribute-prerequisite {
+      margin: 12px 0 0;
+      color: var(--jade-dark);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.5;
+    }
+    .calculator-source-warning {
+      margin: 9px 0 0;
+      color: #9a671d;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .source-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .material-status {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .material-status strong {
+      color: #9a671d;
+      font-weight: 850;
+    }
+
+    .calculator-invalid { color: #b84e5b; font-weight: 850; }
+
+    .section-panel { margin-top: 12px; padding: 14px 16px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 9px 11px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .quality-name { font-weight: 850; white-space: nowrap; }
+    .quality-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 3.2em;
+      padding: 2px 8px;
+      border: 1px solid currentColor;
+      border-radius: 6px;
+      background: color-mix(in srgb, currentColor 11%, transparent);
+      font-weight: 850;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+    /* 品质颜色与神兽、时装等页面保持一致，后续新增品质可继续在这里补充。 */
+    .quality-5 { color: #8164b5; }
+    .quality-6 { color: #d97d2d; }
+    .quality-7 { color: #b84e5b; }
+    .quality-8 { color: #b7902d; }
+    .quality-9 { color: #8d672f; }
+    .quality-10 { color: #71899f; }
+    .quality-11 { color: #299b99; }
+    .number { color: var(--gold); font-weight: 850; white-space: nowrap; }
+    .attribute-list { line-height: 1.75; white-space: nowrap; }
+
+    /* Keep the table cells as table cells so every row shares one bottom edge. */
+    .attribute-value-cell { white-space: nowrap; }
+
+    .material-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 168px;
+    }
+
+    .material-chip img {
+      display: block;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      object-fit: contain;
+    }
+
+    .material-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .material-name { font-weight: 800; }
+    .material-note { color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .config-id { color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 16px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-item img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 980px) {
+      .flag-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { display: block; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .flag-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+      .flag-card { gap: 6px; padding: 7px; }
+      .flag-card img { width: 40px; height: 40px; flex-basis: 40px; }
+      .flag-card-name { font-size: 13px; }
+      .profile-panel { align-items: flex-start; gap: 11px; padding: 12px; }
+      .profile-icon { width: 66px; height: 66px; flex-basis: 66px; }
+      .profile-name { font-size: 19px; }
+      .calculator-head { display: block; }
+      .calculator-note { margin-top: 3px; text-align: left; }
+      .calculator-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .calculator-arrow { display: none; }
+      .calculator-result { grid-template-columns: 1fr; }
+      .section-panel { padding: 12px; }
+      table { min-width: 780px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy">
+        <p class="brand-name">放三数据合集</p>
+      </div>
+      <a class="back-link" href="upgrade-materials.html">返回升级材料</a>
+    </header>
+
+    <div class="intro">
+      <h1 class="page-title">阵旗升级与升阶</h1>
+      <p class="page-note">查看阵旗各品质的升级属性、升级材料和升阶属性。</p>
+    </div>
+
+    <section class="flag-picker" aria-label="选择阵旗">
+      <div class="flag-grid" id="flag-grid"></div>
+    </section>
+
+    <section class="profile-panel" id="profile-panel"></section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">升级属性与耗材</h2>
+        <p class="section-note">升级耗材为该品质从1级到等级上限的合计，不含升阶费用</p>
+      </div>
+      <div class="table-wrap">
+        <table class="upgrade-table">
+          <thead>
+            <tr>
+              <th>品质</th>
+              <th>等级上限</th>
+              <th>基础属性</th>
+              <th>每级提升</th>
+              <th>合成材料</th>
+              <th>1级至上限升级耗材</th>
+            </tr>
+          </thead>
+          <tbody id="upgrade-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">升阶属性与耗材</h2>
+        <p class="section-note">从当前品质升到下一品质</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>升阶区间</th>
+              <th>目标等级上限</th>
+              <th>升阶后属性</th>
+              <th>升阶材料</th>
+              <th>升阶条件</th>
+            </tr>
+          </thead>
+          <tbody id="advance-body"></tbody>
+        </table>
+      </div>
+      <div class="legend" aria-label="阵旗材料说明">
+        <span class="legend-item"><img src="assets/zhenqi/items/zhenqiling.png" alt=""><span>阵旗强化令：升级材料</span></span>
+        <span class="legend-item"><img src="assets/zhenqi/items/zhenqijinghua.png" alt=""><span>阵旗精华：升阶材料</span></span>
+        <span class="legend-item"><img src="assets/zhenqi/items/zhenqiliujinhun.png" alt=""><span>阵旗琉金魂：高品质升阶材料</span></span>
+      </div>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/zhenqi-data.js"></script>
+  <script src="assets/zhenqi-costs.js"></script>
+  <script>
+    const data = window.ZHENQI_DATA;
+    const attrNames = data.attributes;
+    const upgradeMaterial = data.materials.upgrade;
+    const essenceMaterial = data.materials.essence;
+    const goldSoulMaterial = data.materials.goldSoul;
+    const attributeOrder = data.types[0]?.records[0]?.base.map((item) => item.id) || [];
+    const advanceRequirementNames = {
+      128: "强化降怒概率",
+      148: "忽视抗封印",
+      187: "忽视抗破胆",
+      217: "强化暗伤概率",
+      238: "血咒抗性"
+    };
+    const flagGrid = document.getElementById("flag-grid");
+    const profilePanel = document.getElementById("profile-panel");
+    const upgradeBody = document.getElementById("upgrade-body");
+    const advanceBody = document.getElementById("advance-body");
+    let selectedType = data.types[0];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function formatNumber(value) {
+      return Number(value).toLocaleString("zh-CN");
+    }
+
+    function attrText(attributes) {
+      return attributes.map((item) => `${attrNames[item.id] || `属性${item.id}`} +${formatNumber(item.value)}`).join("、");
+    }
+
+    function advanceAttrText(attributes) {
+      const groups = new Map();
+      attributes.forEach((item) => {
+        if (!groups.has(item.quality)) groups.set(item.quality, []);
+        groups.get(item.quality).push(item);
+      });
+      return [...groups.entries()]
+        .map(([quality, items]) => `${qualityName(quality)}：${attrText(items)}`)
+        .join("；");
+    }
+
+    function qualityName(quality) {
+      // 品质名称与神兽、时装等页面统一，新增品质时在这里补充映射。
+      const names = {
+        5: "紫色",
+        6: "橙色",
+        7: "红色",
+        8: "金色",
+        9: "暗金色",
+        10: "白金色",
+        11: "琉金色"
+      };
+      return names[quality] || `品质${quality}`;
+    }
+
+    function qualityBadge(quality) {
+      return `<span class="quality-badge quality-${quality}">${qualityName(quality)}</span>`;
+    }
+
+    function flagIconClass(icon) {
+      // 鹤翼旗 sm01/sm02 的透明留白使图案视觉中心比其他阵旗低约 1px。
+      return String(icon).startsWith("sm") ? " flag-icon-heyi" : "";
+    }
+
+    function previewIcon(type) {
+      // 阵旗分类以基础品质命名，入口图标也应与该名称保持一致。
+      return type.icon || type.records[0].icon;
+    }
+
+    function materialChip(material, note) {
+      return `<span class="material-chip"><img src="${material.icon}" alt="${escapeHtml(material.name)}"><span><span class="material-name">${escapeHtml(material.name)}</span><br><span class="material-note">${escapeHtml(note)}</span></span></span>`;
+    }
+
+    function materialStack(chips) {
+      return `<span class="material-stack">${chips.join("")}</span>`;
+    }
+
+    function recordByQuality(quality) {
+      return selectedType.records.find((record) => record.quality === Number(quality));
+    }
+
+    function fragmentMaterial(record) {
+      // 源文件的碎片表按合成目标区分：基础旗用“旗碎片”，星旗用“星旗碎片”。
+      // 后续新增品质时，优先使用该品质记录自己的小图和名称，避免把基础旗素材套到升品结果上。
+      const fragmentRecord = record || recordByQuality(5);
+      return {
+        name: `${fragmentRecord.name}碎片`,
+        icon: `assets/zhenqi/flag/${fragmentRecord.smallIcon || fragmentRecord.icon}`
+      };
+    }
+
+    function fragmentSynthesisCount(record) {
+      if (!record) return null;
+      const count = data.fragmentSynthesisCounts && data.fragmentSynthesisCounts[String(record.quality)];
+      return Number.isFinite(Number(count)) && Number(count) > 0 ? Number(count) : null;
+    }
+
+    function fragmentSynthesisNote(record) {
+      const count = fragmentSynthesisCount(record);
+      return count == null ? "合成数量待核对" : `合成 ×${formatNumber(count)}`;
+    }
+
+    function upgradeMaterialNote(record) {
+      const total = new Map();
+      addLevelCost(total, new Set(), record, 1, record.maxLevel);
+      return materialStack([...total.values()].map(({ material, count }) => materialChip(material, `×${formatNumber(count)}`)));
+    }
+
+    function addMaterial(total, material, count) {
+      const amount = Number(count);
+      if (!material || !Number.isFinite(amount) || amount <= 0) return;
+      const key = `${material.name}|${material.icon}`;
+      const current = total.get(key) || { material, count: 0 };
+      current.count += amount;
+      total.set(key, current);
+    }
+
+    function costMaterial(id) {
+      const item = Object.values(data.materials).find((entry) => entry.id === id);
+      if (item) return item;
+      const flag = data.types.flatMap((type) => type.records).find((entry) => entry.id === id);
+      if (!flag) throw new Error(`Unknown cost item: ${id}`);
+      return { id, name: flag.name, icon: `assets/zhenqi/flag/${flag.smallIcon || flag.icon}` };
+    }
+
+    function addConfiguredCost(total, configId) {
+      const entries = window.ZHENQI_COSTS.costs[String(configId)];
+      if (!entries) throw new Error(`Missing flag cost: ${configId}`);
+      entries.forEach((entry) => addMaterial(total, costMaterial(entry.id), entry.count));
+    }
+
+    function addLevelCost(total, missingLevelCostIds, record, fromLevel, toLevel) {
+      if (!record || toLevel <= fromLevel) return;
+      for (let level = fromLevel; level < toLevel; level += 1) {
+        addConfiguredCost(total, record.upgradeConfigIds[level - 1]);
+      }
+    }
+
+    function addAdvanceCost(total, record) {
+      if (!record || record.advanceId == null) return;
+      addConfiguredCost(total, record.advanceCost);
+    }
+
+    function attributesAt(record, level) {
+      const values = new Map();
+      record.base.forEach((item) => values.set(item.id, item.value));
+      record.up.forEach((item) => {
+        values.set(item.id, (values.get(item.id) || 0) + item.value * Math.max(0, level - 1));
+      });
+      return values;
+    }
+
+    function calculateMaterials(fromQuality, fromLevel, toQuality, toLevel) {
+      const materials = new Map();
+      const pendingMaterials = new Map();
+      const missingLevelCostIds = new Set();
+      if (fromQuality === toQuality) {
+        addLevelCost(materials, missingLevelCostIds, recordByQuality(fromQuality), fromLevel, toLevel);
+        return { materials: [...materials.values()], pendingMaterials: [...pendingMaterials.values()], missingLevelCostIds };
+      }
+
+      let level = fromLevel;
+      for (let quality = fromQuality; quality < toQuality; quality += 1) {
+        const record = recordByQuality(quality);
+        if (!record.advanceId) throw new Error("该品质没有升阶路径");
+        addLevelCost(materials, missingLevelCostIds, record, level, record.maxLevel);
+        addAdvanceCost(materials, record);
+        level = record.maxLevel;
+      }
+      addLevelCost(materials, missingLevelCostIds, recordByQuality(toQuality), level, toLevel);
+      return { materials: [...materials.values()], pendingMaterials: [...pendingMaterials.values()], missingLevelCostIds };
+    }
+
+    function renderCalculatorMaterial({ material, count }) {
+      return `<span class="result-material"><img src="${material.icon}" alt="${escapeHtml(material.name)}"><span>${escapeHtml(material.name)} <strong>×${formatNumber(count)}</strong></span></span>`;
+    }
+
+    function renderPendingCalculatorMaterial(material, levelCount) {
+      const detail = levelCount ? `费用配置未展开（${formatNumber(levelCount)}级）` : "费用配置未展开";
+      return `<span class="result-material result-material-pending"><img src="${material.icon}" alt="${escapeHtml(material.name)}"><span>${escapeHtml(material.name)} <strong>${detail}</strong></span></span>`;
+    }
+
+    function renderUnverifiedCalculatorMaterial(material) {
+      return `<span class="result-material result-material-pending"><img src="${material.icon}" alt="${escapeHtml(material.name)}"><span>${escapeHtml(material.name)} <strong>费用配置未展开</strong></span></span>`;
+    }
+
+    function renderAttributeChange(current, target) {
+      const orderIndex = (id) => {
+        const index = attributeOrder.indexOf(id);
+        return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+      };
+      const ids = [...new Set([...current.keys(), ...target.keys()])]
+        .sort((a, b) => orderIndex(a) - orderIndex(b) || a - b);
+      return ids.map((id) => {
+        const fromValue = current.get(id) || 0;
+        const toValue = target.get(id) || 0;
+        const gain = toValue - fromValue;
+        const sign = gain >= 0 ? "+" : "";
+        const gainMarkup = gain ? `<em class="attr-gain">${sign}${formatNumber(gain)}</em>` : "";
+        return `<span class="attr-result"><span class="attr-label">${attrNames[id] || `属性${id}`}</span><strong>${formatNumber(fromValue)}${gainMarkup}</strong></span>`;
+      }).join("");
+    }
+
+    function advanceRequirementText(record) {
+      if (!record || !record.advanceRequirement) return "无额外属性条件";
+      const [id, value] = String(record.advanceRequirement).split("|");
+      const name = advanceRequirementNames[id] || `属性${id}`;
+      return `${name}达到 ${value}`;
+    }
+
+    function renderTargetPrerequisiteNote(fromQuality, toQuality) {
+      if (toQuality <= fromQuality || toQuality <= 6) return "";
+      const sourceRecord = recordByQuality(toQuality - 1);
+      if (!sourceRecord || sourceRecord.advanceId == null) return "";
+      return `<p class="attribute-prerequisite">注意：需要先达到${sourceRecord.maxLevel}级</p>`;
+    }
+
+    function clampLevel(input, record) {
+      input.min = 1;
+      input.max = record.maxLevel;
+      const value = Math.min(record.maxLevel, Math.max(1, Number(input.value) || 1));
+      input.value = value;
+      return value;
+    }
+
+    function bindCalculator() {
+      const fromQuality = document.getElementById("calc-from-quality");
+      const fromLevel = document.getElementById("calc-from-level");
+      const toQuality = document.getElementById("calc-to-quality");
+      const toLevel = document.getElementById("calc-to-level");
+      const result = document.getElementById("calc-result");
+
+      function updateCalculator() {
+        const fromRecord = recordByQuality(fromQuality.value);
+        const toRecord = recordByQuality(toQuality.value);
+        const currentLevel = clampLevel(fromLevel, fromRecord);
+        const targetLevel = clampLevel(toLevel, toRecord);
+        const currentQuality = Number(fromQuality.value);
+        const targetQuality = Number(toQuality.value);
+
+        if (targetQuality < currentQuality || (targetQuality === currentQuality && targetLevel < currentLevel)) {
+          result.innerHTML = `<div class="result-box calculator-invalid">目标不能低于当前品质或等级</div>`;
+          return;
+        }
+        if (targetQuality > currentQuality && !fromRecord.advanceId) {
+          result.innerHTML = `<div class="result-box calculator-invalid">紫色阵旗没有升至橙色的配置，请选择同品质升级或橙色及以上升阶。</div>`;
+          return;
+        }
+        if (targetQuality > currentQuality && targetLevel < recordByQuality(targetQuality - 1).maxLevel) {
+          result.innerHTML = `<div class="result-box calculator-invalid">升至该品质后等级至少为 ${recordByQuality(targetQuality - 1).maxLevel} 级</div>`;
+          return;
+        }
+
+        const calculation = calculateMaterials(currentQuality, currentLevel, targetQuality, targetLevel);
+        const materials = calculation.materials;
+        const currentAttrs = attributesAt(fromRecord, currentLevel);
+        const targetAttrs = attributesAt(toRecord, targetLevel);
+        const pendingUpgradeMaterial = calculation.missingLevelCostIds.size
+          ? renderPendingCalculatorMaterial(upgradeMaterial, calculation.missingLevelCostIds.size)
+          : "";
+        const sourceWarning = calculation.missingLevelCostIds.size
+          ? `<p class="calculator-source-warning">阵旗强化令的逐级数量尚未在费用配置中展开，本次不使用估算值。</p>`
+          : "";
+        const pendingAdvanceMaterials = calculation.pendingMaterials
+          .map(renderUnverifiedCalculatorMaterial)
+          .join("");
+        const materialWarning = calculation.pendingMaterials.length
+          ? `<p class="calculator-source-warning">精华和琉金魂的升品数量尚未从费用配置展开，本次不使用推算值。</p>`
+          : "";
+        result.innerHTML = `
+          <div class="result-box">
+            <p class="result-title">需要耗材</p>
+            <div class="result-materials">${materials.map(renderCalculatorMaterial).join("")}${pendingAdvanceMaterials}${pendingUpgradeMaterial || (!materials.length && !calculation.pendingMaterials.length ? "<span>无需额外耗材</span>" : "")}</div>
+            ${materialWarning}
+            ${sourceWarning}
+          </div>
+          <div class="result-box">
+            <p class="result-title">属性变化</p>
+            <div class="result-attrs">${renderAttributeChange(currentAttrs, targetAttrs)}</div>
+            ${renderTargetPrerequisiteNote(currentQuality, targetQuality)}
+          </div>`;
+      }
+
+      [fromQuality, fromLevel, toQuality, toLevel].forEach((control) => {
+        control.addEventListener("input", updateCalculator);
+        control.addEventListener("change", updateCalculator);
+      });
+      updateCalculator();
+    }
+
+    function renderPicker() {
+      flagGrid.innerHTML = data.types.map((type, index) => {
+        const selected = type === selectedType ? " is-selected" : "";
+        const icon = previewIcon(type);
+        return `<button class="flag-card${selected}" type="button" data-flag-index="${index}"><img class="flag-card-icon${flagIconClass(icon)}" src="assets/zhenqi/flag/${icon}" alt="${escapeHtml(type.name)}"><span class="flag-card-name">${escapeHtml(type.name)}</span></button>`;
+      }).join("");
+      flagGrid.querySelectorAll("[data-flag-index]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedType = data.types[Number(button.dataset.flagIndex)];
+          renderAll();
+        });
+      });
+    }
+
+    function renderProfile() {
+      const highest = selectedType.records[selectedType.records.length - 1];
+      const first = selectedType.records[0];
+      const qualityOptions = selectedType.records
+        .map((record) => `<option value="${record.quality}">${qualityName(record.quality)}</option>`)
+        .join("");
+      profilePanel.innerHTML = `
+        <img class="profile-icon${flagIconClass(first.icon)}" src="assets/zhenqi/flag/${first.icon}" alt="${escapeHtml(selectedType.name)}">
+        <div class="profile-main">
+          <div class="profile-heading">
+            <h2 class="profile-name">${escapeHtml(selectedType.name)}</h2>
+            <span class="profile-meta">${qualityBadge(first.quality)} → ${qualityBadge(highest.quality)}</span>
+          </div>
+          <div class="profile-stats">
+            <span>等级上限：<strong>${first.maxLevel} → ${highest.maxLevel}</strong></span>
+            <span>最高品质基础属性：<strong>${attrText(highest.base)}</strong></span>
+            <span>最高品质每级提升：<strong>${attrText(highest.up)}</strong></span>
+          </div>
+          <div class="profile-calculator">
+            <div class="calculator-head">
+              <h3 class="calculator-title">升级计算器</h3>
+            </div>
+            <div class="calculator-fields">
+              <label class="calculator-field"><span>当前品质</span><select id="calc-from-quality">${qualityOptions}</select></label>
+              <label class="calculator-field"><span>当前等级</span><input id="calc-from-level" type="number" inputmode="numeric" min="1" value="1"></label>
+              <span class="calculator-arrow" aria-hidden="true">→</span>
+              <label class="calculator-field"><span>目标品质</span><select id="calc-to-quality">${qualityOptions}</select></label>
+              <label class="calculator-field"><span>目标等级</span><input id="calc-to-level" type="number" inputmode="numeric" min="1" value="${highest.maxLevel}"></label>
+            </div>
+            <div class="calculator-result" id="calc-result"></div>
+          </div>
+        </div>`;
+      document.getElementById("calc-to-quality").value = highest.quality;
+      document.getElementById("calc-from-quality").value = 6;
+      bindCalculator();
+    }
+
+    function renderUpgradeTable() {
+      upgradeBody.innerHTML = selectedType.records.map((record) => `
+        <tr>
+          <td class="quality-name">${qualityBadge(record.quality)}</td>
+          <td class="number">${record.maxLevel}级</td>
+          <td class="attribute-value-cell">${escapeHtml(attrText(record.base))}</td>
+          <td class="attribute-value-cell">${escapeHtml(attrText(record.up))}</td>
+          <td>${materialStack([
+              record.quality === 5
+              ? materialChip(fragmentMaterial(record), fragmentSynthesisNote(record))
+              : record.quality === 6
+                ? materialChip(fragmentMaterial(record), fragmentSynthesisNote(record))
+                : "",
+          ])}</td>
+          <td>${upgradeMaterialNote(record)}</td>
+        </tr>`).join("");
+    }
+
+    function renderAdvanceRequirement(record) {
+      if (!record.advanceRequirement) return `<span class="config-id">未单独填写</span>`;
+      return `<span class="config-id">${escapeHtml(advanceRequirementText(record))}</span>`;
+    }
+
+    function renderAdvanceTable() {
+      const rows = selectedType.records.filter((record) => record.advanceId != null);
+      advanceBody.innerHTML = rows.map((record) => {
+        const target = selectedType.records.find((item) => item.id === record.advanceId);
+        if (!target) return "";
+        const attributes = record.advanceAttributes.length
+          ? advanceAttrText(record.advanceAttributes)
+          : `目标基础属性：${attrText(target.base)}`;
+        return `
+          <tr>
+            <td class="quality-name">${qualityBadge(record.quality)} → ${qualityBadge(target.quality)}</td>
+            <td class="number">${target.maxLevel}级</td>
+            <td class="attribute-value-cell">${escapeHtml(attributes)}</td>
+            <td>${materialStack(window.ZHENQI_COSTS.costs[String(record.advanceCost)].map((entry) => materialChip(costMaterial(entry.id), `×${formatNumber(entry.count)}`)))}</td>
+            <td>${renderAdvanceRequirement(record)}</td>
+          </tr>`;
+      }).join("");
+    }
+
+    function renderAll() {
+      renderPicker();
+      renderProfile();
+      renderUpgradeTable();
+      renderAdvanceTable();
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="simayilh6_23" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0999908447266" scaleY="0.102630615234"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="2.25023081948" rotationX="2.25023081948" rotationY="2.24940445324" scaleX="0.145009198607" scaleY="0.148842192471"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="4.50011370842" rotationX="4.50011370842" rotationY="4.49926439921" scaleX="0.190038759662" scaleY="0.195059341036"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="6.56671304515" rotationX="6.56671304515" rotationY="6.5648895909" scaleX="0.235031086323" scaleY="0.241237208445"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="8.81576750433" rotationX="8.81576750433" rotationY="8.81713483004" scaleX="0.280027338801" scaleY="0.28743808202"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="11.0699230329" rotationX="11.0699230329" rotationY="11.2571778304" scaleX="0.325009006252" scaleY="0.333615217883"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="13.3215838723" rotationX="13.3215838723" rotationY="13.5107140109" scaleX="0.369995636343" scaleY="0.379787129326"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="15.577178703" rotationX="15.577178703" rotationY="15.7636521447" scaleX="0.414959430909" scaleY="0.425938468143"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="18.0185598534" rotationX="18.0185598534" rotationY="18.0177655902" scaleX="0.459916684174" scaleY="0.472081421284"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="20.0852998478" rotationX="20.0852998478" rotationY="20.0840060972" scaleX="0.504867807355" scaleY="0.518210668954"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.6" rotation="22.3399413309" rotationX="22.3399413309" rotationY="22.527515809" scaleX="0.549811270439" scaleY="0.564344832359"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="24.5953038725" rotationX="24.5953038725" rotationY="24.7832512031" scaleX="0.59475492326" scaleY="0.610489018221"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.6" rotation="26.8502713106" rotationX="26.8502713106" rotationY="27.0393573205" scaleX="0.639684210935" scaleY="0.656621090278"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="29.1061995886" rotationX="29.1061995886" rotationY="29.2947304785" scaleX="0.684630938198" scaleY="0.70275827106"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="31.3629889141" rotationX="31.3629889141" rotationY="31.3628734194" scaleX="0.729551369719" scaleY="0.748869514876"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="33.6196114308" rotationX="33.6196114308" rotationY="33.8077840469" scaleX="0.774500598648" scaleY="0.794995270119"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="35.8766005946" rotationX="35.8766005946" rotationY="36.0647892516" scaleX="0.819444302803" scaleY="0.841126762291"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="38.1338164763" rotationX="38.1338164763" rotationY="38.3222513189" scaleX="0.864392067831" scaleY="0.887258107909"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="40.3914056762" rotationX="40.3914056762" rotationY="40.5793953801" scaleX="0.909333115732" scaleY="0.933415296216"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="42.6484998144" rotationX="42.6484998144" rotationY="42.8364654898" scaleX="0.954296892123" scaleY="0.979559658941"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="simayilh6_xing" position="-77.0,-267.5" rotation="45.0952416334" rotationX="45.0952416334" rotationY="45.0951723995" scaleX="0.954847948371" scaleY="0.980117212519"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="47.3541836237" rotationX="47.3541836237" rotationY="47.352665285" scaleX="0.910999558713" scaleY="0.935103265726"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.5" rotation="49.6136862976" rotationX="49.6136862976" rotationY="49.6124945849" scaleX="0.867151911136" scaleY="0.8901341376"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="51.8735097744" rotationX="51.8735097744" rotationY="51.8693725966" scaleX="0.823340790303" scaleY="0.845115961332"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="simayilh6_xing" position="-77.0,-267.55" rotation="54.1299176671" rotationX="54.1299176671" rotationY="54.1303722383" scaleX="0.779498057879" scaleY="0.800140130756"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="56.3889198976" rotationX="56.3889198976" rotationY="56.3883737426" scaleX="0.735704665245" scaleY="0.755176247968"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="58.647579466" rotationX="58.647579466" rotationY="58.646387927" scaleX="0.691885209307" scaleY="0.710208792004"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="60.9062068678" rotationX="60.9062068678" rotationY="60.9045154618" scaleX="0.64808034145" scaleY="0.665217445168"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="simayilh6_xing" position="-77.0,-267.5" rotation="63.1638997949" rotationX="63.1638997949" rotationY="63.1638300675" scaleX="0.604245995797" scaleY="0.620268777844"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="simayilh6_xing" position="-77.0,-267.45" rotation="65.4199545725" rotationX="65.4199545725" rotationY="65.419451741" scaleX="0.560431306504" scaleY="0.575261969502"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="67.6796766543" rotationX="67.6796766543" rotationY="67.675368845" scaleX="0.51662837488" scaleY="0.530302985871"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.45" rotation="69.9320861513" rotationX="69.9320861513" rotationY="69.9345863123" scaleX="0.472805634549" scaleY="0.485289395552"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="72.1904274064" rotationX="72.1904274064" rotationY="72.1902587399" scaleX="0.428942256252" scaleY="0.440320893867"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.55" rotation="74.4461755146" rotationX="74.4461755146" rotationY="74.4462403526" scaleX="0.385136696473" scaleY="0.395321180909"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.45" rotation="76.698603467" rotationX="76.698603467" rotationY="76.7006590867" scaleX="0.34127528754" scaleY="0.350309525973"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.5" rotation="78.9567978844" rotationX="78.9567978844" rotationY="78.9540643199" scaleX="0.297457134457" scaleY="0.305336524209"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="simayilh6_xing" position="-77.0,-267.55" rotation="81.2124682132" rotationX="81.2124682132" rotationY="81.2087543307" scaleX="0.253589586716" scaleY="0.260288017999"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="simayilh6_xing" position="-77.05,-267.55" rotation="83.4629039854" rotationX="83.4629039854" rotationY="83.4655235913" scaleX="0.209705847653" scaleY="0.215251417164"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.5" rotation="85.7175051148" rotationX="85.7175051148" rotationY="85.7149212387" scaleX="0.165823034466" scaleY="0.170214007956"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="simayilh6_xing" position="-77.1,-267.5" rotation="87.9668082545" rotationX="87.9668082545" rotationY="87.9704578847" scaleX="0.12193317817" scaleY="0.125155086347"/>
+			</frameInfo>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

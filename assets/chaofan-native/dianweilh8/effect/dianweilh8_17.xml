@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="dianweilh8_17" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="dianweilh8_lz02" position="178.3,-310.4" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="dianweilh8_lz02" position="177.7,-312.4" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="dianweilh8_lz02" position="177.05,-314.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="dianweilh8_lz02" position="176.45,-316.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="dianweilh8_lz02" position="175.8,-318.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="dianweilh8_lz02" position="175.2,-320.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="dianweilh8_lz02" position="174.55,-322.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="dianweilh8_lz02" position="173.95,-324.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="dianweilh8_lz02" position="173.35,-326.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="dianweilh8_lz02" position="172.7,-328.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="1.0" scaleY="1.0"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="dianweilh8_lz02" position="172.15,-330.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.977691650391" scaleY="0.977691650391"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="dianweilh8_lz02" position="171.65,-332.5" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.933059692383" scaleY="0.933059692383"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="dianweilh8_lz02" position="171.15,-334.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.888458251953" scaleY="0.888458251953"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="dianweilh8_lz02" position="170.65,-336.4" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.843826293945" scaleY="0.843826293945"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="dianweilh8_lz02" position="170.1,-338.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.799209594727" scaleY="0.799209594727"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="dianweilh8_lz02" position="169.6,-340.3" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.754592895508" scaleY="0.754592895508"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="dianweilh8_lz02" position="169.1,-342.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.7099609375" scaleY="0.7099609375"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="dianweilh8_lz02" position="168.6,-344.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.665344238281" scaleY="0.665344238281"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="dianweilh8_lz02" position="168.1,-346.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.620712280273" scaleY="0.620712280273"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="dianweilh8_lz02" position="167.6,-348.1" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.576110839844" scaleY="0.576110839844"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="dianweilh8_lz02" position="167.1,-350.1" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.531478881836" scaleY="0.531478881836"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="dianweilh8_lz02" position="166.55,-352.05" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.486862182617" scaleY="0.486862182617"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="dianweilh8_lz02" position="166.05,-354.0" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.442230224609" scaleY="0.442230224609"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="dianweilh8_lz02" position="165.55,-355.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.397613525391" scaleY="0.397613525391"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="dianweilh8_lz02" position="165.05,-357.9" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.352996826172" scaleY="0.352996826172"/>
+			</frameInfo>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50">
+				<frameData bitmapName="dianweilh8_lz02" position="183.05,-293.65" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.285003662109" scaleY="0.285003662109"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="dianweilh8_lz02" position="182.6,-295.3" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.356506347656" scaleY="0.356506347656"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="dianweilh8_lz02" position="182.1,-297.0" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.427993774414" scaleY="0.427993774414"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="dianweilh8_lz02" position="181.65,-298.65" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.499496459961" scaleY="0.499496459961"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="dianweilh8_lz02" position="181.2,-300.3" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.570999145508" scaleY="0.570999145508"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="dianweilh8_lz02" position="180.75,-301.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.642501831055" scaleY="0.642501831055"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="dianweilh8_lz02" position="180.25,-303.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.714004516602" scaleY="0.714004516602"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="dianweilh8_lz02" position="179.75,-305.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.785491943359" scaleY="0.785491943359"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="dianweilh8_lz02" position="179.3,-307.05" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.857009887695" scaleY="0.857009887695"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="dianweilh8_lz02" position="178.8,-308.7" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.928497314453" scaleY="0.928497314453"/>
+			</frameInfo>
+		</action>
+	</animation>

@@ -52,7 +52,11 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-02.png",
+          "w": 713,
+          "h": 537
+        },
         "big": {
           "path": "assets/fashion-gallery/male-big-02.png",
           "w": 286,
@@ -65,7 +69,11 @@ window.FASHION_CATALOG = [
         }
       },
       "female": {
-        "hero": null,
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-02.png",
+          "w": 519,
+          "h": 452
+        },
         "big": {
           "path": "assets/fashion-gallery/female-big-02.png",
           "w": 286,
@@ -3441,14 +3449,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-81.png",
+          "w": 698,
+          "h": 523
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-81.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-81.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-81.png",
+          "w": 698,
+          "h": 523
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-81.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-81.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   },
@@ -3460,14 +3492,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-82.png",
+          "w": 744,
+          "h": 542
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-82.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-82.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-82.png",
+          "w": 744,
+          "h": 542
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-82.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-82.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   },
@@ -3479,14 +3535,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-83.png",
+          "w": 1058,
+          "h": 791
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-83.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-83.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-83.png",
+          "w": 914,
+          "h": 696
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-83.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-83.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   },
@@ -3498,14 +3578,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-84.png",
+          "w": 770,
+          "h": 562
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-84.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-84.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-84.png",
+          "w": 770,
+          "h": 562
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-84.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-84.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   },
@@ -3517,14 +3621,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-85.png",
+          "w": 1011,
+          "h": 671
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-85.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-85.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-85.png",
+          "w": 943,
+          "h": 663
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-85.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-85.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   },
@@ -3536,14 +3664,38 @@ window.FASHION_CATALOG = [
     },
     "assets": {
       "male": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-86.png",
+          "w": 941,
+          "h": 635
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-86.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-86.png",
+          "w": 80,
+          "h": 80
+        }
       },
       "female": {
-        "hero": null,
-        "big": null,
-        "small": null
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-86.png",
+          "w": 986,
+          "h": 606
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-86.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-86.png",
+          "w": 80,
+          "h": 80
+        }
       }
     }
   }

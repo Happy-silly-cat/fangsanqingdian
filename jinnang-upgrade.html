@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="放三锦囊效果、升阶材料与战意门槛查询表。">
+  <title>锦囊效果查询 - 放三数据合集</title>
+  <link rel="icon" type="image/png" href="assets/fangsan-logo.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-strong: #fffdf8;
+      --panel-hover: #fff3dc;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --purple: #64518f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 52px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 118px;
+      height: auto;
+      flex: 0 0 118px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.22));
+    }
+
+    .brand-copy { min-width: 0; flex: 1 1 auto; }
+
+    .brand-name {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .back-link,
+    .pouch-select {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .intro {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin: 14px 0 12px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: 27px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+
+    .page-note,
+    .section-meta,
+    .summary-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .summary-panel,
+    .section-panel,
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .summary-panel,
+    .section-panel { margin-top: 12px; padding: 14px 16px; }
+
+    .summary-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .summary-icon,
+    .pouch-icon,
+    .cost-icon {
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 8px rgba(75, 32, 32, 0.2));
+    }
+
+    .summary-icon {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+    }
+
+    .summary-main { min-width: 0; flex: 1 1 auto; }
+
+    .summary-heading,
+    .selector-row,
+    .section-head,
+    .pouch-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .summary-title,
+    .section-title {
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .badge-list,
+    .attribute-list,
+    .cost-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .badge-list { margin-top: 9px; }
+
+    .badge,
+    .attribute-chip,
+    .cost-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .quality-track {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 2px;
+    }
+
+    .quality-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      border: 1px solid rgba(184, 132, 47, 0.28);
+      border-radius: 7px;
+      background: var(--panel-strong);
+      padding: 5px 10px;
+      color: var(--jade-dark);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .quality-step + .quality-step::before {
+      content: "→";
+      margin-left: -14px;
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .quality-step-name { color: var(--purple); }
+    .quality-step-note { color: var(--muted); font-weight: 650; }
+
+    .badge,
+    .attribute-chip { color: var(--gold); }
+
+    .selector-row { align-items: center; }
+
+    .selector-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--jade-dark);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .pouch-select {
+      min-width: 270px;
+      min-height: 36px;
+      padding: 6px 10px;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .pouch-heading { justify-content: flex-start; align-items: center; }
+
+    .pouch-icon {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 64px;
+    }
+
+    .pouch-copy { min-width: 0; }
+
+    .pouch-name {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      color: var(--jade-dark);
+      font-size: 19px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .quality-name,
+    .number { color: var(--purple); font-weight: 850; white-space: nowrap; }
+    .number { color: var(--gold); }
+
+    .attribute-list { margin-top: 14px; }
+
+    .attribute-caption { margin-top: 13px; }
+
+    .attribute-chip { gap: 6px; padding: 7px 10px; }
+    .attribute-value { color: var(--purple); font-weight: 850; }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid rgba(217, 203, 182, 0.8);
+      padding: 9px 12px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(231, 187, 97, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--panel-hover); }
+
+    .effect-cell { line-height: 1.65; }
+
+    .attribute-cell {
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.6;
+      white-space: normal;
+    }
+
+    .attribute-table {
+      min-width: 560px;
+    }
+
+    .attribute-table th:first-child,
+    .attribute-table td:first-child {
+      width: 96px;
+      white-space: nowrap;
+    }
+
+    .attribute-row-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 9px;
+    }
+
+    .attribute-row-item {
+      color: var(--purple);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .upgrade-table {
+      min-width: 900px;
+    }
+
+    .upgrade-table th,
+    .upgrade-table td {
+      text-align: center;
+    }
+
+    .upgrade-table th:first-child,
+    .upgrade-table td:first-child {
+      width: 72px;
+      white-space: nowrap;
+    }
+
+    .upgrade-table th:last-child,
+    .upgrade-table td:last-child {
+      min-width: 240px;
+      text-align: left;
+    }
+
+    .upgrade-number {
+      color: var(--purple);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .upgrade-growth {
+      color: var(--jade-dark);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .talent-level {
+      color: var(--gold);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .selector-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .selector-controls .pouch-select {
+      flex: 1 1 auto;
+    }
+
+    .promotion-table {
+      min-width: 940px;
+    }
+
+    .promotion-table th:first-child,
+    .promotion-table td:first-child {
+      width: 84px;
+      white-space: nowrap;
+    }
+
+    .promotion-table th:nth-child(2),
+    .promotion-table td:nth-child(2) {
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    .promotion-table th:nth-child(3),
+    .promotion-table td:nth-child(3) {
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    .promotion-table th:last-child,
+    .promotion-table td:last-child {
+      min-width: 190px;
+    }
+
+    .cost-list {
+      align-items: center;
+    }
+
+    .attribute-empty,
+    .material-status {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .cost-list { gap: 5px; }
+
+    .cost-chip {
+      gap: 5px;
+      border-color: rgba(60, 157, 133, 0.22);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cost-icon { width: 25px; height: 25px; }
+    .cost-amount { color: var(--gold); font-weight: 850; }
+
+    .pack-note { margin-top: 0; }
+
+    .notice {
+      margin: 12px 0 0;
+      border-left: 3px solid var(--gold);
+      padding: 7px 0 7px 11px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .inline-link { color: var(--jade-dark); font-weight: 800; }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .copyright-note { max-width: 760px; margin: 0; line-height: 1.7; }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 16px; }
+      .site-header { padding-bottom: 12px; }
+      .brand-mark { width: 96px; flex-basis: 96px; }
+      .intro { display: block; }
+      .page-title { font-size: 25px; }
+      .page-note { margin-top: 5px; }
+      .summary-panel { align-items: flex-start; }
+      .summary-icon { width: 64px; height: 64px; flex-basis: 64px; }
+      .selector-row { align-items: flex-start; flex-direction: column; }
+      .selector-label { width: auto; justify-content: flex-start; flex: 0 0 auto; }
+      .pouch-select { min-width: 0; flex: 1 1 auto; }
+      .selector-controls { width: 100%; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .section-title { font-size: 17px; }
+      table { font-size: 12.5px; }
+      th, td { padding: 8px 9px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260919">
+  <script defer src="assets/table-attribute-standard.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <img class="brand-mark" src="assets/fangsan-logo.png" alt="放开那三国">
+      <div class="brand-copy"><p class="brand-name">放三数据合集</p></div>
+      <a class="back-link" href="upgrade-materials.html">返回入口</a>
+    </header>
+
+    <section class="intro">
+      <h1 class="page-title">锦囊升级查询</h1>
+      <p class="page-note">查看锦囊每级属性、升级经验和逐级进阶消耗</p>
+    </section>
+
+    <section class="summary-panel">
+      <img class="summary-icon" src="assets/jinnang-items/pokect_n.png" alt="锦囊图标">
+      <div class="summary-main">
+        <div class="summary-heading">
+          <h2 class="summary-title">锦囊</h2>
+          <span class="summary-meta" id="group-count"></span>
+        </div>
+        <div class="badge-list" id="quality-badges">
+          <span class="badge">锦囊功能：80级开启</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊品级</h2>
+        <span class="section-meta">基础品级与橙色锦囊进阶后的品级</span>
+      </div>
+      <div class="quality-track" id="quality-track"></div>
+    </section>
+
+    <section class="section-panel">
+      <div class="selector-row">
+        <div class="selector-controls">
+          <label class="selector-label" for="pouch-select">选择锦囊</label>
+          <select class="pouch-select" id="pouch-select"></select>
+        </div>
+        <span class="section-meta" id="selection-meta"></span>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="pouch-heading">
+        <img class="pouch-icon" id="pouch-icon" src="assets/jinnang-items/pokect_n.png" alt="锦囊图标">
+        <div class="pouch-copy">
+          <h2 class="pouch-name" id="pouch-name"></h2>
+          <p class="section-meta" id="pouch-meta"></p>
+        </div>
+      </div>
+      <p class="section-meta attribute-caption">满级累计属性</p>
+      <div class="attribute-list" id="attribute-list"></div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊强化属性与经验</h2>
+        <span class="section-meta" id="upgrade-meta"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="upgrade-table">
+          <thead><tr><th scope="col">等级</th><th scope="col">升至本级经验</th><th scope="col">攻击</th><th scope="col">物防</th><th scope="col">法防</th><th scope="col">生命</th><th scope="col">天赋效果</th></tr></thead>
+          <tbody id="upgrade-table"></tbody>
+        </table>
+      </div>
+      <p class="notice">等级属性按游戏脚本的基础值与成长值计算；经验列表示从上一级升至当前等级所需的经验。</p>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊天赋效果</h2>
+        <span class="section-meta">每个锦囊的天赋等级和效果</span>
+      </div>
+      <div class="table-wrap">
+        <table class="attribute-table">
+          <thead><tr><th scope="col">生效等级</th><th scope="col">天赋效果</th><th scope="col">配置编号</th></tr></thead>
+          <tbody id="talent-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊升阶材料</h2>
+        <span class="section-meta" id="promotion-meta"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="promotion-table">
+          <thead><tr><th scope="col">进阶阶段</th><th scope="col">等级要求</th><th scope="col">等级上限</th><th scope="col">材料消耗</th><th scope="col">进阶增加属性</th><th scope="col">进阶后品级</th></tr></thead>
+          <tbody id="promotion-table"></tbody>
+        </table>
+      </div>
+      <p class="notice" id="promotion-note"></p>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊品质节点</h2>
+        <span class="section-meta">品质相关功能开启等级</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">品质</th><th scope="col">开启等级</th></tr></thead>
+          <tbody id="milestone-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-panel">
+      <div class="section-head">
+        <h2 class="section-title">锦囊与战意门槛</h2>
+        <span class="section-meta">锦囊计入战意的条件</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">锦囊品质</th><th scope="col">对应战意目标</th><th scope="col">需要数量</th><th scope="col">统计上限</th></tr></thead>
+          <tbody id="quality-table"></tbody>
+        </table>
+      </div>
+      <p class="notice">完整的战意来源和属性档位请查看<a class="inline-link" href="morale.html">战意属性查询</a>。</p>
+    </section>
+
+    <footer>
+      <p class="copyright-note">
+        本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。页面中如使用了游戏内截图、图标或相关素材，仅用于非商业性资料整理与交流展示，相关素材版权归原权利方所有。如有侵权或不当使用，请联系删除。
+      </p>
+    </footer>
+  </main>
+
+  <script src="assets/jinnang-data.js"></script>
+  <script src="assets/jinnang-upgrade-data.js"></script>
+  <script>
+    (() => {
+      const overview = window.jinnangData;
+      const data = window.jinnangUpgradeData;
+      const number = (value) => Number(value).toLocaleString("zh-CN");
+      const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+
+      const attributeOrder = [100, 54, 55, 51];
+      const qualityOrder = [3, 4, 5, 6];
+      const qualityNames = {
+        3: "绿色",
+        4: "蓝色",
+        5: "紫色",
+        6: "橙色",
+        7: "红色",
+        8: "金色",
+        9: "暗金色",
+        10: "白金色",
+        11: "琉金色"
+      };
+      const qualityPath = [
+        { quality: 3, note: `基础 · ${data.items.filter((item) => item.quality === 3).length}类` },
+        { quality: 4, note: `基础 · ${data.items.filter((item) => item.quality === 4).length}类` },
+        { quality: 5, note: `基础 · ${data.items.filter((item) => item.quality === 5).length}类` },
+        { quality: 6, note: `基础，可进阶 · ${data.items.filter((item) => item.quality === 6).length}类` },
+        { quality: 7, note: "进阶1～6阶" },
+        { quality: 8, note: "进阶7～12阶" },
+        { quality: 9, note: "进阶13～18阶" },
+        { quality: 10, note: "进阶19～24阶" },
+        { quality: 11, note: "进阶25～30阶" }
+      ];
+      const qualityLabel = (quality) => qualityNames[String(quality)] || `品质${quality}`;
+      const materialMeta = (id) => overview.items[String(id)] || {
+        name: `物品${id}`,
+        icon: "assets/jinnang-items/pokect_n.png"
+      };
+      const getItem = (id) => {
+        const item = data.items.find((entry) => entry.id === Number(id)) || data.items[0];
+        return { ...data.templates[String(item.quality)], ...item };
+      };
+
+      // 基础配置的 maxLevel 是 100；可进阶锦囊由 promote_growlv 继续开放等级上限。
+      const getMaxLevel = (item) => Math.max(
+        item.maxLevel,
+        ...Object.values(item.promotionGrowthLevels || {}).map(Number)
+      );
+
+      const getAttributeValue = (item, attributeId, level) => {
+        const base = item.baseAttributes[String(attributeId)];
+        if (base == null) return null;
+        return Number(base) + Number(item.growthAttributes[String(attributeId)] || 0) * level;
+      };
+
+      const formatAttribute = (item, attributeId, level) => {
+        const value = getAttributeValue(item, attributeId, level);
+        return value == null ? "—" : number(value);
+      };
+
+      const formatAttributeMap = (item, attributes) => {
+        const entries = Object.entries(attributes || {}).sort(([a], [b]) => attributeOrder.indexOf(Number(a)) - attributeOrder.indexOf(Number(b)));
+        if (!entries.length) return '<span class="attribute-empty">—</span>';
+        return `<div class="attribute-row-list">${entries.map(([id, value]) => `<span class="attribute-row-item">${escapeHtml(data.attributeNames[id] || `属性${id}`)} +${number(value)}</span>`).join("")}</div>`;
+      };
+
+      const renderAttributes = (item) => {
+        const level = getMaxLevel(item);
+        document.getElementById("attribute-list").innerHTML = attributeOrder
+          .filter((attributeId) => getAttributeValue(item, attributeId, level) != null)
+          .map((attributeId) => `<span class="attribute-chip"><span>${escapeHtml(data.attributeNames[String(attributeId)] || `属性${attributeId}`)} +${number(getAttributeValue(item, attributeId, level))}</span></span>`)
+          .join("");
+      };
+
+      const renderUpgradeTable = (item) => {
+        const expTable = data.expTables[String(item.upgradeId)] || [];
+        const talentMap = new Map(item.levelEffects.map((effect) => [effect.level, effect]));
+        const maxLevel = getMaxLevel(item);
+        const rows = [];
+        for (let level = 0; level <= maxLevel; level += 1) {
+          const talent = talentMap.get(level);
+          rows.push(`<tr>
+            <td class="upgrade-number">${level}级</td>
+            <td class="upgrade-growth">${level === 0 ? "—" : number(expTable[level - 1] || 0)}</td>
+            <td class="upgrade-number">${escapeHtml(formatAttribute(item, 100, level))}</td>
+            <td class="upgrade-number">${escapeHtml(formatAttribute(item, 54, level))}</td>
+            <td class="upgrade-number">${escapeHtml(formatAttribute(item, 55, level))}</td>
+            <td class="upgrade-number">${escapeHtml(formatAttribute(item, 51, level))}</td>
+            <td class="effect-cell">${talent ? `<span class="talent-level">${talent.level}级：</span>${escapeHtml(talent.text)}` : '<span class="attribute-empty">—</span>'}</td>
+          </tr>`);
+        }
+        document.getElementById("upgrade-table").innerHTML = rows.join("");
+        document.getElementById("upgrade-meta").textContent = `最高${maxLevel}级；属性为当前等级累计值`;
+      };
+
+      const renderTalentTable = (item) => {
+        document.getElementById("talent-table").innerHTML = item.levelEffects.map((effect) => `
+          <tr><td class="talent-level">${number(effect.level)}级</td><td class="effect-cell">${escapeHtml(effect.text)}</td><td class="number">${number(effect.id)}</td></tr>
+        `).join("");
+      };
+
+      const renderCost = (component) => {
+        if (component.type === "silver") {
+          return `<span class="cost-chip"><span>银币</span><span class="cost-amount">×${number(component.amount)}</span></span>`;
+        }
+        const item = materialMeta(component.id);
+        return `<span class="cost-chip"><img class="cost-icon" src="${escapeHtml(item.icon)}" alt=""><span>${escapeHtml(item.name)}</span><span class="cost-amount">×${number(component.amount)}</span></span>`;
+      };
+
+      const renderPromotionTable = (item) => {
+        if (!item.isPromote || !item.promotionCosts.length) {
+          document.getElementById("promotion-meta").textContent = "当前品质没有配置进阶阶段";
+          document.getElementById("promotion-table").innerHTML = '<tr><td colspan="6" class="material-status">当前锦囊为基础品质，解包配置中未记录进阶消耗。</td></tr>';
+          document.getElementById("promotion-note").textContent = "基础品级锦囊暂未配置进阶消耗；橙色锦囊请选择“真”字开头的锦囊，可查看完整的 1～30 阶进阶消耗。";
+          return;
+        }
+        document.getElementById("promotion-meta").textContent = `共${item.promotionCosts.length}个进阶阶段；最高${getMaxLevel(item)}级`;
+        document.getElementById("promotion-table").innerHTML = item.promotionCosts.map((row) => {
+          const quality = item.promoteQuality[String(row.stage)];
+          const qualityText = quality ? qualityLabel(quality.quality) : "—";
+          return `<tr>
+            <td class="number">第${row.stage}阶</td>
+            <td class="number">${item.promoteLevel[String(row.stage)] == null ? "—" : `达到${number(item.promoteLevel[String(row.stage)])}级`}</td>
+            <td class="number">${item.promotionGrowthLevels[String(row.stage)] == null ? "100级" : `${number(item.promotionGrowthLevels[String(row.stage)])}级`}</td>
+            <td><div class="cost-list">${row.components.map(renderCost).join("")}</div></td>
+            <td class="attribute-cell">${formatAttributeMap(item, item.promoteAttributes[String(row.stage)])}</td>
+            <td class="quality-name">${escapeHtml(qualityText)}</td>
+          </tr>`;
+        }).join("");
+        document.getElementById("promotion-note").textContent = "材料和银币数量均按每个进阶阶段单独展示；同一橙色品质的锦囊共用这套进阶配置。";
+      };
+
+      const renderItem = (id) => {
+        const item = getItem(id);
+        document.getElementById("pouch-icon").src = item.icon;
+        document.getElementById("pouch-icon").alt = `${item.name}图标`;
+        document.getElementById("pouch-name").innerHTML = `${escapeHtml(item.name)}<span class="quality-name">${escapeHtml(qualityLabel(item.quality))}品质</span>`;
+        document.getElementById("pouch-meta").textContent = `${item.star}星 · ${item.pocketTypeName} · 最高${getMaxLevel(item)}级 · ${item.desc.replace(/^天赋效果：/, "天赋：")}`;
+        document.getElementById("selection-meta").textContent = `当前查看：${item.name}`;
+        renderAttributes(item);
+        renderUpgradeTable(item);
+        renderTalentTable(item);
+        renderPromotionTable(item);
+      };
+
+      const select = document.getElementById("pouch-select");
+      select.innerHTML = qualityOrder.map((quality) => {
+        const qualityItems = data.items.filter((item) => item.quality === quality);
+        const label = qualityLabel(quality);
+        return `<optgroup label="${escapeHtml(label)}（${qualityItems.length}类）">${qualityItems.map((item) => `<option value="${item.id}">${escapeHtml(item.name)}</option>`).join("")}</optgroup>`;
+      }).join("");
+      select.addEventListener("change", (event) => renderItem(event.target.value));
+      document.getElementById("group-count").textContent = `已收录${data.items.length}类锦囊`;
+
+      document.getElementById("quality-badges").innerHTML = [
+        '<span class="badge">锦囊功能：80级开启</span>',
+        ...qualityPath.filter(({ quality }) => quality >= 6).map(({ quality, note }) => `<span class="badge">${escapeHtml(qualityLabel(quality))}：${escapeHtml(note)}</span>`)
+      ].join("");
+      document.getElementById("quality-track").innerHTML = qualityPath.map(({ quality, note }) => `
+        <span class="quality-step"><span class="quality-step-name">${escapeHtml(qualityLabel(quality))}品质</span><span class="quality-step-note">${escapeHtml(note)}</span></span>
+      `).join("");
+
+      document.getElementById("milestone-table").innerHTML = overview.qualityUnlocks.map((row) => `
+        <tr><td class="quality-name">${escapeHtml(row.quality)}品质</td><td class="number">${number(row.level)}级</td></tr>
+      `).join("");
+      document.getElementById("quality-table").innerHTML = overview.qualityStages.map((row) => `
+        <tr><td class="quality-name">${escapeHtml(row.quality)}品质以上</td><td class="number">${number(row.moraleTarget)}档</td><td class="number">${number(row.required)}个</td><td>${number(row.limit)}个</td></tr>
+      `).join("");
+      renderItem(data.items[0].id);
+    })();
+  </script>
+</body>
+</html>

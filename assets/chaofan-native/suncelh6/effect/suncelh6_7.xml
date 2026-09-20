@@ -1,0 +1,182 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="suncelh6_7" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData alpha="0.9609375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData alpha="0.890625" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData alpha="0.8203125" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData alpha="0.75" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData alpha="0.6796875" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData alpha="0.609375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData alpha="0.5390625" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData alpha="0.46875" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData alpha="0.3984375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData alpha="0.328125" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData alpha="0.26171875" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData alpha="0.19140625" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData alpha="0.12109375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData alpha="0.05078125" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50">
+				<frameData alpha="0.05859375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData alpha="0.1484375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData alpha="0.25" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData alpha="0.33984375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData alpha="0.4296875" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData alpha="0.53125" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData alpha="0.62890625" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData alpha="0.71875" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData alpha="0.80859375" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData alpha="0.91015625" bitmapName="suncelh6_08_xing" position="-154.2,-457.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.599990844727" scaleY="0.599990844727"/>
+			</frameInfo>
+		</action>
+	</animation>

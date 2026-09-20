@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="dianweilh7_8" totalFrame="60">
+			<frameInfo frame="0">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="181.6,-253.95" rotation="78.7216140223" rotationX="78.7216140223" rotationY="78.7193664479" scaleX="0.544236111642" scaleY="0.467415778918"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="180.85,-256.15" rotation="80.7253156341" rotationX="80.7253156341" rotationY="80.7232795683" scaleX="0.508775090796" scaleY="0.439677334915"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="180.2,-258.35" rotation="82.7118794139" rotationX="82.7118794139" rotationY="82.7131128411" scaleX="0.473628115388" scaleY="0.41220481076"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="179.5,-260.65" rotation="84.700239767" rotationX="84.700239767" rotationY="84.7010586984" scaleX="0.438504238624" scaleY="0.384747178581"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="178.7,-262.8" rotation="86.6874231746" rotationX="86.6874231746" rotationY="86.6885220081" scaleX="0.403368220249" scaleY="0.357286422699"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="178.05,-265.05" rotation="88.4861484451" rotationX="88.4861484451" rotationY="88.485006519" scaleX="0.368216482079" scaleY="0.329796506237"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="177.4,-267.25" rotation="-89.7165889058" rotationX="-89.7165889058" rotationY="-89.7138516361" scaleX="-0.333027224578" scaleY="-0.302310827238"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="176.7,-269.45" rotation="-87.7271969494" rotationX="-87.7271969494" rotationY="-87.7271079179" scaleX="-0.297795930337" scaleY="-0.274721729982"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="176.0,-271.7" rotation="-85.7412664439" rotationX="-85.7412664439" rotationY="-85.744050496" scaleX="-0.262564846968" scaleY="-0.247188254429"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="175.35,-273.9" rotation="-83.9432895811" rotationX="-83.9432895811" rotationY="-83.9392603546" scaleX="-0.227329613102" scaleY="-0.219671039454"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="174.6,-276.1" rotation="-81.8210082783" rotationX="-81.8210082783" rotationY="-81.8210082783" scaleX="-0.192201567731" scaleY="-0.192201567731"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="219.0,-133.8" rotation="-22.8027499019" rotationX="-22.8027499019" rotationY="-22.7988784873" scaleX="0.232919509368" scaleY="0.225047157564"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="218.05,-136.7" rotation="-20.5531355305" rotationX="-20.5531355305" rotationY="-20.5540320512" scaleX="0.30496669664" scaleY="0.281335586284"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="217.3,-139.55" rotation="-18.303931119" rotationX="-18.303931119" rotationY="-18.3044213815" scaleX="0.377017278845" scaleY="0.337623819541"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="216.45,-142.3" rotation="-16.059405676" rotationX="-16.059405676" rotationY="-16.0568978815" scaleX="0.449115986576" scaleY="0.393944069648"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="215.55,-145.3" rotation="-13.8097400293" rotationX="-13.8097400293" rotationY="-13.8084300653" scaleX="0.521228484841" scaleY="0.45028724916"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="214.7,-148.15" rotation="-11.5607071479" rotationX="-11.5607071479" rotationY="-11.5610494369" scaleX="0.593336607873" scaleY="0.506631219318"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="213.8,-150.9" rotation="-9.3137337689" rotationX="-9.3137337689" rotationY="-9.31393600041" scaleX="0.665434826888" scaleY="0.562963568095"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="213.0,-153.8" rotation="-7.25546062964" rotationX="-7.25546062964" rotationY="-7.25571729969" scaleX="0.737580479268" scaleY="0.619323599077"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="212.25,-156.65" rotation="-5.00958631636" rotationX="-5.00958631636" rotationY="-5.00958521923" scaleX="0.809749041277" scaleY="0.675722671255"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="211.4,-159.5" rotation="-2.76430979327" rotationX="-2.76430979327" rotationY="-2.76374811636" scaleX="0.881961526567" scaleY="0.732129391604"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="210.5,-162.4" rotation="-0.519989604888" rotationX="-0.519989604888" rotationY="-0.519515387245" scaleX="0.954186562868" scaleY="0.788545657754"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="209.7,-165.2" rotation="1.53904294688" rotationX="1.53904294688" rotationY="1.53881265086" scaleX="1.02618795231" scaleY="0.844802438768"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="208.8,-168.05" rotation="3.78302951971" rotationX="3.78302951971" rotationY="3.78351861328" scaleX="1.09815760455" scaleY="0.901026398001"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="208.0,-170.95" rotation="6.02903657099" rotationX="6.02903657099" rotationY="6.02895179156" scaleX="1.17007648819" scaleY="0.957229447399"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="207.05,-173.8" rotation="8.27541163456" rotationX="8.27541163456" rotationY="8.27514557783" scaleX="1.24199621294" scaleY="1.01338990708"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="206.3,-176.65" rotation="10.5218405589" rotationX="10.5218405589" rotationY="10.52106469" scaleX="1.31389855135" scaleY="1.06955894514"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="205.35,-179.5" rotation="12.7688794784" rotationX="12.7688794784" rotationY="12.7692573602" scaleX="1.38583689609" scaleY="1.12574046365"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="204.55,-182.3" rotation="15.0160430092" rotationX="15.0160430092" rotationY="15.0167216954" scaleX="1.4576772646" scaleY="1.18188263892"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="203.75,-185.25" rotation="17.0770809169" rotationX="17.0770809169" rotationY="17.0775994455" scaleX="1.52958558368" scaleY="1.23802499271"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="202.9,-188.05" rotation="19.4726028574" rotationX="19.4726028574" rotationY="19.4725249261" scaleX="1.60307671503" scaleY="1.2954743492"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="202.25,-190.1" rotation="21.3237783896" rotationX="21.3237783896" rotationY="21.3238105804" scaleX="1.56604277862" scaleY="1.26648190491"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="201.5,-192.45" rotation="23.32202148" rotationX="23.32202148" rotationY="23.32090968" scaleX="1.53069436451" scaleY="1.23882264793"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="200.85,-194.6" rotation="25.319532557" rotationX="25.319532557" rotationY="25.3187549092" scaleX="1.49528746037" scaleY="1.2111666501"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="200.1,-196.75" rotation="27.3182910071" rotationX="27.3182910071" rotationY="27.3192095724" scaleX="1.45995786022" scaleY="1.18350958604"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="199.45,-199.05" rotation="29.3164287833" rotationX="29.3164287833" rotationY="29.3172360806" scaleX="1.42458436091" scaleY="1.15589500649"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="198.65,-201.2" rotation="31.3155126986" rotationX="31.3155126986" rotationY="31.3157922767" scaleX="1.38932282211" scaleY="1.12828338587"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="197.95,-203.4" rotation="33.3153343479" rotationX="33.3153343479" rotationY="33.3150709667" scaleX="1.35401514051" scaleY="1.10066787026"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="197.25,-205.65" rotation="35.3153963048" rotationX="35.3153963048" rotationY="35.3144142821" scaleX="1.3187385089" scaleY="1.0730939027"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="196.6,-207.75" rotation="37.1251147363" rotationX="37.1251147363" rotationY="37.1265643677" scaleX="1.2834692989" scaleY="1.04548766692"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="195.8,-209.95" rotation="39.1255213753" rotationX="39.1255213753" rotationY="39.1263385396" scaleX="1.24823043047" scaleY="1.01792738443"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="195.05,-212.25" rotation="41.1250538623" rotationX="41.1250538623" rotationY="41.1261898181" scaleX="1.21296444738" scaleY="0.990364204569"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="194.35,-214.35" rotation="43.1247736808" rotationX="43.1247736808" rotationY="43.125175775" scaleX="1.17769952989" scaleY="0.962796278437"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="193.75,-216.6" rotation="45.1249280138" rotationX="45.1249280138" rotationY="45.1249946081" scaleX="1.14248037582" scaleY="0.935254952975"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="192.95,-218.85" rotation="47.1254321049" rotationX="47.1254321049" rotationY="47.1242786208" scaleX="1.10727688956" scaleY="0.907683981935"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="192.3,-221.0" rotation="49.1256995342" rotationX="49.1256995342" rotationY="49.1260856103" scaleX="1.07203806278" scaleY="0.880176129203"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="191.55,-223.25" rotation="51.1230474612" rotationX="51.1230474612" rotationY="51.1254124259" scaleX="1.03684368902" scaleY="0.852634888956"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="190.9,-225.45" rotation="53.1256521472" rotationX="53.1256521472" rotationY="53.1236432265" scaleX="1.00161438625" scaleY="0.825109865771"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="190.1,-227.65" rotation="54.9362283307" rotationX="54.9362283307" rotationY="54.9363899434" scaleX="0.966440910736" scaleY="0.797564201627"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="189.45,-229.8" rotation="56.9343445867" rotationX="56.9343445867" rotationY="56.935122023" scaleX="0.931236723977" scaleY="0.770071441103"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="188.7,-232.05" rotation="58.9352846928" rotationX="58.9352846928" rotationY="58.9348451835" scaleX="0.89607732363" scaleY="0.742556321269"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="188.0,-234.25" rotation="60.9353016118" rotationX="60.9353016118" rotationY="60.9331652264" scaleX="0.860916530518" scaleY="0.715044312828"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="187.25,-236.45" rotation="62.9339334661" rotationX="62.9339334661" rotationY="62.9316070861" scaleX="0.825721526951" scaleY="0.687524382779"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="186.5,-238.75" rotation="64.9320527601" rotationX="64.9320527601" rotationY="64.9282548975" scaleX="0.790535086941" scaleY="0.660025035145"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="185.9,-240.85" rotation="66.9284573568" rotationX="66.9284573568" rotationY="66.9284637231" scaleX="0.75534643991" scaleY="0.632498807629"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="185.15,-243.05" rotation="68.9274218296" rotationX="68.9274218296" rotationY="68.926753747" scaleX="0.72016028828" scaleY="0.605003874496"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="184.45,-245.25" rotation="70.9249416242" rotationX="70.9249416242" rotationY="70.9260852765" scaleX="0.684943796718" scaleY="0.577469212363"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="183.75,-247.4" rotation="72.922397938" rotationX="72.922397938" rotationY="72.7326625509" scaleX="0.64976834837" scaleY="0.549991881128"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="183.05,-249.5" rotation="74.732259077" rotationX="74.732259077" rotationY="74.7305328665" scaleX="0.614560258433" scaleY="0.522436773328"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="dianweilh7_heilizi_1" position="182.3,-251.9" rotation="76.7272151924" rotationX="76.7272151924" rotationY="76.7279428707" scaleX="0.579378456068" scaleY="0.494940812158"/>
+			</frameInfo>
+		</action>
+	</animation>

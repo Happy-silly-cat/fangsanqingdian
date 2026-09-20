@@ -1,0 +1,151 @@
+/* 表格中的数值属性统一采用“官职”入口的无框排版。 */
+html body table .fs-attribute-list,
+html body table .attribute-list,
+html body table .attribute-row-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px 12px !important;
+  min-width: 0;
+  text-align: center !important;
+}
+
+html body table .fs-attribute-cell,
+html body table .attribute-cell,
+html body table .star-attribute-cell,
+html body table td.attribute-list {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+table .fs-attribute,
+table .attribute,
+table .attribute-item,
+table .attribute-chip,
+table .attribute-pill,
+table .attribute-value,
+table .attribute-row-item,
+table .attr-result {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 4px !important;
+  min-height: 25px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #27231e !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  white-space: nowrap;
+}
+
+table .fs-attribute strong,
+table .fs-attribute-value,
+table .attribute strong,
+table .attribute-item strong,
+table .attribute-chip strong,
+table .attribute-pill strong,
+table .attribute-value strong,
+table .attribute-row-item strong,
+table .attr-result strong,
+table .attr-result .attr-gain {
+  color: #64518f !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+table .fs-attribute-cell {
+  color: #27231e !important;
+}
+
+@media (max-width: 720px) {
+  html body table .fs-attribute-list,
+  html body table .attribute-list,
+  html body table .attribute-row-list {
+    gap: 4px 10px !important;
+  }
+}
+
+/* Keep every table row centered, including plain text and icon-bearing wrappers. */
+html body table th,
+html body table td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+html body table td > * {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+html body table td > img {
+  display: block !important;
+  margin-inline: auto !important;
+}
+
+/* 大古宝属性表的描述列按内容顺序左对齐，标签与属性保持同行。 */
+html body table.left-aligned-table th,
+html body table.left-aligned-table td {
+  text-align: left !important;
+  vertical-align: top !important;
+}
+
+html body table.left-aligned-table th:first-child,
+html body table.left-aligned-table td:first-child {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+html body table.left-aligned-table td > * {
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+html body table.left-aligned-table .big-effect-content,
+html body table.left-aligned-table .big-effect-attributes,
+html body table.left-aligned-table .big-effect-special,
+html body table.left-aligned-table .big-effect-attributes .attribute-scope,
+html body table.left-aligned-table .big-effect-special .attribute-scope {
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+html body table.left-aligned-table .big-effect-attributes .attribute-scope,
+html body table.left-aligned-table .big-effect-special .attribute-scope {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+html body table.left-aligned-table .attribute-list {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* 大古宝属性表保持标签与描述同行，并收紧纵向留白。 */
+html body table.left-aligned-table td {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+html body table.left-aligned-table .big-effect-content {
+  gap: 3px !important;
+}
+
+html body table.left-aligned-table .big-effect-attributes,
+html body table.left-aligned-table .big-effect-special {
+  gap: 4px !important;
+}
+
+html body table.left-aligned-table .big-effect-special {
+  margin-top: 0 !important;
+}

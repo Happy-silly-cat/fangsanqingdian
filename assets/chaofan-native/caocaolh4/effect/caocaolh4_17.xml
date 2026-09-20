@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="caocaolh4_17" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.199996948242" scaleY="0.199996948242"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.175735473633" scaleY="0.175735473633"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.151458740234" scaleY="0.151458740234"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.127197265625" scaleY="0.127197265625"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.102920532227" scaleY="0.102920532227"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0786590576172" scaleY="0.0786590576172"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0543823242188" scaleY="0.0543823242188"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0301208496094" scaleY="0.0301208496094"/>
+			</frameInfo>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0595245361328" scaleY="0.0595245361328"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.11833190918" scaleY="0.11833190918"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.177139282227" scaleY="0.177139282227"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.9" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.235946655273" scaleY="0.235946655273"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.294769287109" scaleY="0.294769287109"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.353576660156" scaleY="0.353576660156"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="caocaolh4_xing1" position="339.35,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.412384033203" scaleY="0.412384033203"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.471176147461" scaleY="0.471176147461"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.529998779297" scaleY="0.529998779297"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="caocaolh4_xing1" position="339.35,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.511657714844" scaleY="0.511657714844"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.49333190918" scaleY="0.49333190918"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.474990844727" scaleY="0.474990844727"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.456665039062" scaleY="0.456665039062"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.438339233398" scaleY="0.438339233398"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.419998168945" scaleY="0.419998168945"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.401672363281" scaleY="0.401672363281"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.383331298828" scaleY="0.383331298828"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.365005493164" scaleY="0.365005493164"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.346664428711" scaleY="0.346664428711"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.328323364258" scaleY="0.328323364258"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="caocaolh4_xing1" position="339.35,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.309997558594" scaleY="0.309997558594"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.291656494141" scaleY="0.291656494141"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-480.0" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.273330688477" scaleY="0.273330688477"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.255004882812" scaleY="0.255004882812"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.236663818359" scaleY="0.236663818359"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="caocaolh4_xing1" position="339.4,-479.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.218338012695" scaleY="0.218338012695"/>
+			</frameInfo>
+		</action>
+	</animation>

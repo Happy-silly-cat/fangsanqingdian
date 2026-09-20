@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="simayilh6_14" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-99.7,-113.4" rotation="-0.154989130029" rotationX="-0.154989130029" rotationY="-0.154989130029" scaleX="0.659975559185" scaleY="0.659975559185"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-98.4,-114.9" rotation="-0.0750879599253" rotationX="-0.0750879599253" rotationY="-0.0750879599253" scaleX="0.721878671669" scaleY="0.721878671669"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-97.2,-116.4" rotation="-0.0757644433728" rotationX="-0.0757644433728" rotationY="-0.0757644433728" scaleX="0.784668654778" scaleY="0.784668654778"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-95.95,-118.0" rotation="-0.0742787607376" rotationX="-0.0742787607376" rotationY="-0.0742787607376" scaleX="0.847443339092" scaleY="0.847443339092"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-94.65,-119.35" rotation="-0.0768387107625" rotationX="-0.0768387107625" rotationY="-0.0768387107625" scaleX="0.910233362481" scaleY="0.910233362481"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-93.45,-120.95" rotation="-0.0745757592218" rotationX="-0.0745757592218" rotationY="-0.0745757592218" scaleX="0.973023285158" scaleY="0.973023285158"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-92.2,-122.35" rotation="-0.0759666637378" rotationX="-0.0759666637378" rotationY="-0.0759666637378" scaleX="1.03576751196" scaleY="1.03576751196"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-90.9,-123.95" rotation="-0.157370655529" rotationX="-0.157370655529" rotationY="-0.157370655529" scaleX="1.09997973506" scaleY="1.09997973506"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-89.7,-125.5" rotation="-0.0754809002044" rotationX="-0.0754809002044" rotationY="-0.0754809002044" scaleX="1.06559845886" scaleY="1.06559845886"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-88.4,-126.95" rotation="-0.0761956545345" rotationX="-0.0761956545345" rotationY="-0.0761956545345" scaleX="1.03265472174" scaleY="1.03265472174"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-87.3,-128.55" rotation="-0.0760841609326" rotationX="-0.0760841609326" rotationY="-0.0760841609326" scaleX="0.999695705635" scaleY="0.999695705635"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-86.15,-130.0" rotation="-0.0759638660147" rotationX="-0.0759638660147" rotationY="-0.0759638660147" scaleX="0.96675194831" scaleY="0.96675194831"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-84.9,-131.55" rotation="-0.0758363225386" rotationX="-0.0758363225386" rotationY="-0.0758363225386" scaleX="0.933792932214" scaleY="0.933792932214"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-83.75,-133.0" rotation="-0.0756994461379" rotationX="-0.0756994461379" rotationY="-0.0756994461379" scaleX="0.900833916122" scaleY="0.900833916122"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-82.55,-134.5" rotation="-0.0775682594971" rotationX="-0.0775682594971" rotationY="-0.0775682594971" scaleX="0.867859682039" scaleY="0.867859682039"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-81.35,-136.2" rotation="-0.0764431951515" rotationX="-0.0764431951515" rotationY="-0.0764431951515" scaleX="0.834885386624" scaleY="0.834885386624"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-80.15,-137.65" rotation="-0.0741311496633" rotationX="-0.0741311496633" rotationY="-0.0741311496633" scaleX="0.801956847997" scaleY="0.801956847997"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-79.05,-139.1" rotation="-0.0761684748895" rotationX="-0.0761684748895" rotationY="-0.0761684748895" scaleX="0.769028389505" scaleY="0.769028389505"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-77.85,-140.6" rotation="-0.0748296375681" rotationX="-0.0748296375681" rotationY="-0.0748296375681" scaleX="0.73605409454" scaleY="0.73605409454"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-76.65,-142.0" rotation="-0.0746103139951" rotationX="-0.0746103139951" rotationY="-0.0746103139951" scaleX="0.703064560942" scaleY="0.703064560942"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-75.45,-143.65" rotation="-0.0756655042209" rotationX="-0.0756655042209" rotationY="-0.0756655042209" scaleX="0.670151341213" scaleY="0.670151341213"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-74.35,-145.15" rotation="-0.0768370546784" rotationX="-0.0768370546784" rotationY="-0.0768370546784" scaleX="0.637177086634" scaleY="0.637177086634"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-73.05,-146.6" rotation="-0.0766895093252" rotationX="-0.0766895093252" rotationY="-0.0766895093252" scaleX="0.604202811735" scaleY="0.604202811735"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-71.9,-148.15" rotation="-0.0780491719258" rotationX="-0.0780491719258" rotationY="-0.0780491719258" scaleX="0.571274333748" scaleY="0.571274333748"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-70.7,-149.65" rotation="-0.0763336936293" rotationX="-0.0763336936293" rotationY="-0.0763336936293" scaleX="0.538300038276" scaleY="0.538300038276"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-69.55,-151.3" rotation="-0.0743943332586" rotationX="-0.0743943332586" rotationY="-0.0743943332586" scaleX="0.50532574335" scaleY="0.50532574335"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-68.3,-152.7" rotation="-0.0777292956248" rotationX="-0.0777292956248" rotationY="-0.0777292956248" scaleX="0.472397285298" scaleY="0.472397285298"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-67.15,-154.2" rotation="-0.0795801835746" rotationX="-0.0795801835746" rotationY="-0.0795801835746" scaleX="0.439438290081" scaleY="0.439438290081"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-65.95,-155.7" rotation="-0.075281595051" rotationX="-0.075281595051" rotationY="-0.075281595051" scaleX="0.406463973899" scaleY="0.406463973899"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-64.75,-157.25" rotation="-0.072555891155" rotationX="-0.072555891155" rotationY="-0.072555891155" scaleX="0.373535455753" scaleY="0.373535455753"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-63.6,-158.85" rotation="-0.0770138603976" rotationX="-0.0770138603976" rotationY="-0.0770138603976" scaleX="0.340561220736" scaleY="0.340561220736"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-62.5,-160.3" rotation="-0.0824276445865" rotationX="-0.0824276445865" rotationY="-0.0824276445865" scaleX="0.307586988223" scaleY="0.307586988223"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-61.3,-161.8" rotation="-0.0763900835249" rotationX="-0.0763900835249" rotationY="-0.0763900835249" scaleX="0.274673706041" scaleY="0.274673706041"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-60.1,-163.3" rotation="-0.075969861388" rotationX="-0.075969861388" rotationY="-0.075969861388" scaleX="0.241668913608" scaleY="0.241668913608"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-58.85,-164.85" rotation="-0.0753891400627" rotationX="-0.0753891400627" rotationY="-0.0753891400627" scaleX="0.208740415071" scaleY="0.208740415071"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-57.65,-166.4" rotation="-0.0745973619546" rotationX="-0.0745973619546" rotationY="-0.0745973619546" scaleX="0.175796657788" scaleY="0.175796657788"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-56.55,-167.9" rotation="-0.0856987516027" rotationX="-0.0856987516027" rotationY="-0.0856987516027" scaleX="0.142822425386" scaleY="0.142822425386"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-55.35,-169.35" rotation="-0.166903588073" rotationX="-0.166903588073" rotationY="-0.166903588073" scaleX="0.110001077068" scaleY="0.110001077068"/>
+			</frameInfo>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-105.95,-104.85" rotation="-0.166903588073" rotationX="-0.166903588073" rotationY="-0.166903588073" scaleX="0.110001077068" scaleY="0.110001077068"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-104.65,-106.55" rotation="-0.0756090553435" rotationX="-0.0756090553435" rotationY="-0.0756090553435" scaleX="0.219696236213" scaleY="0.219696236213"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-103.45,-108.3" rotation="-0.0795847893299" rotationX="-0.0795847893299" rotationY="-0.0795847893299" scaleX="0.329559644093" scaleY="0.329559644093"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-102.2,-110.0" rotation="-0.0775960702453" rotationX="-0.0775960702453" rotationY="-0.0775960702453" scaleX="0.439407751602" scaleY="0.439407751602"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="simayilh6_lizidian_1" position="-100.95,-111.7" rotation="-0.0748090148309" rotationX="-0.0748090148309" rotationY="-0.0748090148309" scaleX="0.54927109807" scaleY="0.54927109807"/>
+			</frameInfo>
+		</action>
+	</animation>
