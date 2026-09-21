@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="wenyanglh5_21" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-231.75,-111.15" rotation="-27.0525522157" rotationX="-27.0525522157" rotationY="-27.0527132942" scaleX="0.430544662035" scaleY="0.525325756296"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-232.9,-114.15" rotation="-27.053308525" rotationX="-27.053308525" rotationY="-27.0536553416" scaleX="0.42251265536" scaleY="0.494883122927"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-234.1,-117.15" rotation="-27.0517366978" rotationX="-27.0517366978" rotationY="-27.0521138656" scaleX="0.415019604002" scaleY="0.465150037253"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-235.25,-120.1" rotation="-27.052651597" rotationX="-27.052651597" rotationY="-27.0514506409" scaleX="0.407547081908" scaleY="0.435410302019"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-236.45,-123.05" rotation="-27.0517813079" rotationX="-27.0517813079" rotationY="-27.0537026938" scaleX="0.400067910247" scaleY="0.405663627056"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-237.65,-126.1" rotation="-27.0511250934" rotationX="-27.0511250934" rotationY="-27.0533782595" scaleX="0.393127694002" scaleY="0.376449258088"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-238.45,-127.95" rotation="-27.050453517" rotationX="-27.050453517" rotationY="-27.0515676269" scaleX="0.358426612986" scaleY="0.346361398659"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-239.3,-129.8" rotation="-27.0525317761" rotationX="-27.0525317761" rotationY="-27.0522320381" scaleX="0.32423065922" scaleY="0.316812784646"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-240.0,-131.7" rotation="-27.0523850272" rotationX="-27.0523850272" rotationY="-27.0516249789" scaleX="0.290082413311" scaleY="0.287223112599"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-240.8,-133.5" rotation="-27.0506613062" rotationX="-27.0506613062" rotationY="-27.0509206974" scaleX="0.25590004898" scaleY="0.257647030011"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-241.6,-135.5" rotation="-27.05190444" rotationX="-27.05190444" rotationY="-27.0535109483" scaleX="0.221724624322" scaleY="0.228077886971"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-242.45,-137.25" rotation="-27.0495955165" rotationX="-27.0495955165" rotationY="-27.0487419114" scaleX="0.187535320497" scaleY="0.198501804495"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-243.15,-139.1" rotation="-27.0487339115" rotationX="-27.0487339115" rotationY="-27.0520013128" scaleX="0.153359895505" scaleY="0.168946251012"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-244.0,-140.95" rotation="-27.0476250493" rotationX="-27.0476250493" rotationY="-27.0571299413" scaleX="0.119184471293" scaleY="0.139356579104"/>
+			</frameInfo>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-209.35,-55.4" rotation="-22.7855173625" rotationX="-22.7855173625" rotationY="-22.7864223" scaleX="0.606061708521" scaleY="0.782319037398"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-212.0,-61.6" rotation="-23.0720638086" rotationX="-23.0720638086" rotationY="-23.0715499462" scaleX="0.589161326915" scaleY="0.757588432832"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-214.45,-67.75" rotation="-23.5467959967" rotationX="-23.5467959967" rotationY="-23.5458358422" scaleX="0.572258193493" scaleY="0.732883991846"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-217.1,-73.95" rotation="-23.833383101" rotationX="-23.833383101" rotationY="-23.8352575805" scaleX="0.555361761045" scaleY="0.708187776253"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-219.55,-80.1" rotation="-24.3088739099" rotationX="-24.3088739099" rotationY="-24.30984777" scaleX="0.538450433075" scaleY="0.683476363389"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-221.75,-85.6" rotation="-24.7881149465" rotationX="-24.7881149465" rotationY="-24.7883680922" scaleX="0.521633746733" scaleY="0.658881441392"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-223.5,-90.25" rotation="-25.0804077196" rotationX="-25.0804077196" rotationY="-25.0798574569" scaleX="0.504977275526" scaleY="0.634484374938"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-225.4,-94.95" rotation="-25.5581664686" rotationX="-25.5581664686" rotationY="-25.5593331456" scaleX="0.488307510862" scaleY="0.610065538526"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-227.15,-99.5" rotation="-26.0396370554" rotationX="-26.0396370554" rotationY="-26.0419490769" scaleX="0.471635653778" scaleY="0.585648152514"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-229.0,-104.2" rotation="-26.3309845872" rotationX="-26.3309845872" rotationY="-26.3338859219" scaleX="0.45497611595" scaleY="0.56125310548"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="wenyanglh5_lizi_1_1" position="-230.8,-108.85" rotation="-26.8126734441" rotationX="-26.8126734441" rotationY="-26.8139212411" scaleX="0.438319315305" scaleY="0.53684420976"/>
+			</frameInfo>
+		</action>
+	</animation>

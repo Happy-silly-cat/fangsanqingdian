@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="ganninglh8_9" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1"/>
+			<frameInfo frame="1">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-242.2,-321.2" rotation="33.3600341972" rotationX="33.3600341972" rotationY="33.3600341972" scaleX="0.998470146306" scaleY="0.998470146306"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-214.6,-302.2" rotation="33.3600341972" rotationX="33.3600341972" rotationY="33.3600341972" scaleX="0.998470146306" scaleY="0.998470146306"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-187.05,-283.25" rotation="33.3600341972" rotationX="33.3600341972" rotationY="33.3600341972" scaleX="0.998470146306" scaleY="0.998470146306"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-159.45,-264.25" rotation="33.3600341972" rotationX="33.3600341972" rotationY="33.3600341972" scaleX="0.998470146306" scaleY="0.998470146306"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-135.65,-247.6" rotation="33.3607629188" rotationX="33.3607629188" rotationY="33.3595896937" scaleX="0.898808537711" scaleY="0.943981830243"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-115.5,-233.55" rotation="33.3602026581" rotationX="33.3602026581" rotationY="33.3590079748" scaleX="0.699472575928" scaleY="0.835056176386"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-95.35,-219.5" rotation="33.3607984964" rotationX="33.3607984964" rotationY="33.3589601979" scaleX="0.500178884845" scaleY="0.726105033417"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-75.2,-205.4" rotation="33.3584593219" rotationX="33.3584593219" rotationY="33.3587885568" scaleX="0.300830178337" scaleY="0.617149853614"/>
+			</frameInfo>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

@@ -1,0 +1,124 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="daqiaolh5_29" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1"/>
+			<frameInfo frame="1"/>
+			<frameInfo frame="2"/>
+			<frameInfo frame="3"/>
+			<frameInfo frame="4"/>
+			<frameInfo frame="5"/>
+			<frameInfo frame="6"/>
+			<frameInfo frame="7"/>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.55,-340.65" rotation="0.763539190938" rotationX="0.763539190938" rotationY="0.763539190938" scaleX="0.0973291988369" scaleY="0.0973291988369"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="2.29943588416" rotationX="2.29943588416" rotationY="2.29943588416" scaleX="0.154405945393" scaleY="0.154405945393"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="4.02553394362" rotationX="4.02553394362" rotationY="4.02553394362" scaleX="0.211489791629" scaleY="0.211489791629"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.55,-340.6" rotation="5.56255658663" rotationX="5.56255658663" rotationY="5.56255658663" scaleX="0.268552834331" scaleY="0.268552834331"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="7.28322257533" rotationX="7.28322257533" rotationY="7.28322257533" scaleX="0.325579171119" scaleY="0.325579171119"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="9.00743044309" rotationX="9.00743044309" rotationY="9.00743044309" scaleX="0.382633042177" scaleY="0.382633042177"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="10.5451397159" rotationX="10.5451397159" rotationY="10.5451397159" scaleX="0.439645620413" scaleY="0.439645620413"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="12.2689616551" rotationX="12.2689616551" rotationY="12.2689616551" scaleX="0.496680062013" scaleY="0.496680062013"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="13.8056997705" rotationX="13.8056997705" rotationY="13.8056997705" scaleX="0.55368486243" scaleY="0.55368486243"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="15.530854742" rotationX="15.530854742" rotationY="15.530854742" scaleX="0.610676918287" scaleY="0.610676918287"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="17.0679757861" rotationX="17.0679757861" rotationY="17.0679757861" scaleX="0.667681709913" scaleY="0.667681709913"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="18.7935673435" rotationX="18.7935673435" rotationY="18.7935673435" scaleX="0.724670656908" scaleY="0.724670656908"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.65" rotation="20.3317995563" rotationX="20.3317995563" rotationY="20.3317995563" scaleX="0.781656044406" scaleY="0.781656044406"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="22.1250946252" rotationX="22.1250946252" rotationY="22.1250946252" scaleX="0.839612133918" scaleY="0.839612133918"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.65" rotation="23.5669335739" rotationX="23.5669335739" rotationY="23.5669335739" scaleX="0.787249785103" scaleY="0.787249785103"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="25.0772526246" rotationX="25.0772526246" rotationY="25.0772526246" scaleX="0.73590271728" scaleY="0.73590271728"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.65" rotation="26.5867554209" rotationX="26.5867554209" rotationY="26.5867554209" scaleX="0.684536557583" scaleY="0.684536557583"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.65" rotation="28.098477787" rotationX="28.098477787" rotationY="28.098477787" scaleX="0.633174288204" scaleY="0.633174288204"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.65" rotation="29.6084590385" rotationX="29.6084590385" rotationY="29.6084590385" scaleX="0.581851662902" scaleY="0.581851662902"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.55" rotation="31.3094133128" rotationX="31.3094133128" rotationY="31.3094133128" scaleX="0.530502278959" scaleY="0.530502278959"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.55" rotation="32.8181061225" rotationX="32.8181061225" rotationY="32.8181061225" scaleX="0.479154758682" scaleY="0.479154758682"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.65" rotation="34.3282416081" rotationX="34.3282416081" rotationY="34.3282416081" scaleX="0.427837879959" scaleY="0.427837879959"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="35.8389078445" rotationX="35.8389078445" rotationY="35.8389078445" scaleX="0.376525799755" scaleY="0.376525799755"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="37.3505863328" rotationX="37.3505863328" rotationY="37.3505863328" scaleX="0.325200653605" scaleY="0.325200653605"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.55,-340.65" rotation="38.8626957907" rotationX="38.8626957907" rotationY="38.8626957907" scaleX="0.273899173124" scaleY="0.273899173124"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="40.3733652823" rotationX="40.3733652823" rotationY="40.3733652823" scaleX="0.222580898024" scaleY="0.222580898024"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.65,-340.6" rotation="41.8870438245" rotationX="41.8870438245" rotationY="41.8870438245" scaleX="0.171267772491" scaleY="0.171267772491"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="43.3922641998" rotationX="43.3922641998" rotationY="43.3922641998" scaleX="0.11998435173" scaleY="0.11998435173"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="daqiaolh5_xing_1" position="-30.6,-340.6" rotation="45.0" rotationX="45.0" rotationY="45.0" scaleX="0.068794446363" scaleY="0.068794446363"/>
+			</frameInfo>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

@@ -1,0 +1,426 @@
+
+dianweilh8.png
+size: 1022, 1022
+format: RGBA4444
+filter: Linear, Linear
+repeat: CLAMPTOEDGE
+dianweilh8_36
+  rotate: true
+  xy: 821, 2
+  size: 156, 171
+  orig: 156, 173
+  offset: 0, -1
+  index: -1
+dianweilh8_37
+  rotate: false
+  xy: 339, 156
+  size: 392, 218
+  orig: 392, 226
+  offset: 0, -4
+  index: -1
+dianweilh8_34
+  rotate: true
+  xy: 830, 455
+  size: 82, 124
+  orig: 82, 124
+  offset: 0, 0
+  index: -1
+dianweilh8_35
+  rotate: false
+  xy: 583, 542
+  size: 166, 212
+  orig: 166, 228
+  offset: 0, -2
+  index: -1
+dianweilh8_32
+  rotate: true
+  xy: 733, 156
+  size: 163, 75
+  orig: 163, 83
+  offset: 0, -4
+  index: -1
+dianweilh8_33
+  rotate: false
+  xy: 2, 466
+  size: 262, 416
+  orig: 266, 420
+  offset: -1, 0
+  index: -1
+dianweilh8_30
+  rotate: false
+  xy: 272, 1010
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+dianweilh8_31
+  rotate: false
+  xy: 765, 835
+  size: 20, 25
+  orig: 20, 25
+  offset: 0, 0
+  index: -1
+dianweilh8_19
+  rotate: false
+  xy: 956, 455
+  size: 53, 66
+  orig: 53, 66
+  offset: 0, 0
+  index: -1
+dianweilh8_38
+  rotate: false
+  xy: 830, 313
+  size: 138, 140
+  orig: 150, 154
+  offset: 3, 3
+  index: -1
+dianweilh8_39
+  rotate: false
+  xy: 735, 321
+  size: 93, 146
+  orig: 101, 154
+  offset: 4, 4
+  index: -1
+dianweilh8_6
+  rotate: false
+  xy: 735, 469
+  size: 75, 71
+  orig: 75, 71
+  offset: 0, 0
+  index: -1
+dianweilh8_7
+  rotate: true
+  xy: 962, 523
+  size: 62, 55
+  orig: 72, 61
+  offset: 0, -2
+  index: -1
+dianweilh8_4
+  rotate: false
+  xy: 898, 768
+  size: 88, 80
+  orig: 88, 80
+  offset: 0, 0
+  index: -1
+dianweilh8_5
+  rotate: true
+  xy: 2, 884
+  size: 125, 237
+  orig: 127, 241
+  offset: 0, 0
+  index: -1
+dianweilh8_2
+  rotate: true
+  xy: 304, 466
+  size: 48, 33
+  orig: 48, 33
+  offset: 0, 0
+  index: -1
+dianweilh8_3
+  rotate: true
+  xy: 887, 658
+  size: 108, 107
+  orig: 108, 113
+  offset: 0, 3
+  index: -1
+dianweilh8_0
+  rotate: false
+  xy: 477, 964
+  size: 42, 49
+  orig: 42, 49
+  offset: 0, 0
+  index: -1
+dianweilh8_1
+  rotate: true
+  xy: 883, 539
+  size: 117, 77
+  orig: 117, 77
+  offset: 0, 0
+  index: -1
+dianweilh8_8
+  rotate: false
+  xy: 2, 2
+  size: 335, 462
+  orig: 343, 472
+  offset: -1, -1
+  index: -1
+dianweilh8_9
+  rotate: true
+  xy: 944, 160
+  size: 48, 76
+  orig: 50, 82
+  offset: -1, 3
+  index: -1
+dianweilh8_47
+  rotate: true
+  xy: 266, 466
+  size: 74, 36
+  orig: 78, 42
+  offset: 2, -3
+  index: -1
+dianweilh8_46
+  rotate: true
+  xy: 812, 469
+  size: 61, 16
+  orig: 61, 16
+  offset: 0, 0
+  index: -1
+dianweilh8_45
+  rotate: false
+  xy: 994, 81
+  size: 14, 35
+  orig: 14, 35
+  offset: 0, 0
+  index: -1
+dianweilh8_44
+  rotate: false
+  xy: 962, 643
+  size: 11, 13
+  orig: 11, 13
+  offset: 0, 0
+  index: -1
+dianweilh8_43
+  rotate: true
+  xy: 970, 850
+  size: 29, 16
+  orig: 29, 16
+  offset: 0, 0
+  index: -1
+dianweilh8_42
+  rotate: false
+  xy: 988, 837
+  size: 32, 61
+  orig: 32, 61
+  offset: 0, 0
+  index: -1
+dianweilh8_41
+  rotate: false
+  xy: 521, 727
+  size: 55, 22
+  orig: 55, 22
+  offset: 0, 0
+  index: -1
+dianweilh8_40
+  rotate: true
+  xy: 266, 727
+  size: 235, 253
+  orig: 239, 257
+  offset: 0, 0
+  index: -1
+dianweilh8_54
+  rotate: true
+  xy: 521, 863
+  size: 119, 182
+  orig: 153, 196
+  offset: 17, 7
+  index: -1
+dianweilh8_49
+  rotate: false
+  xy: 241, 1010
+  size: 29, 10
+  orig: 31, 16
+  offset: -1, -3
+  index: -1
+dianweilh8_48
+  rotate: true
+  xy: 994, 2
+  size: 77, 19
+  orig: 81, 19
+  offset: 1, 0
+  index: -1
+dianweilh8_25
+  rotate: false
+  xy: 898, 850
+  size: 70, 65
+  orig: 70, 65
+  offset: 0, 0
+  index: -1
+dianweilh8_24
+  rotate: false
+  xy: 970, 359
+  size: 50, 60
+  orig: 50, 60
+  offset: 0, 0
+  index: -1
+dianweilh8_27
+  rotate: false
+  xy: 241, 964
+  size: 84, 44
+  orig: 84, 44
+  offset: 0, 0
+  index: -1
+dianweilh8_26
+  rotate: false
+  xy: 594, 984
+  size: 58, 29
+  orig: 58, 29
+  offset: 0, 0
+  index: -1
+dianweilh8_21
+  rotate: false
+  xy: 810, 160
+  size: 132, 151
+  orig: 136, 153
+  offset: 0, 1
+  index: -1
+dianweilh8_20
+  rotate: false
+  xy: 962, 587
+  size: 55, 54
+  orig: 67, 66
+  offset: 0, 0
+  index: -1
+dianweilh8_23
+  rotate: false
+  xy: 327, 964
+  size: 72, 41
+  orig: 72, 41
+  offset: 0, 0
+  index: -1
+dianweilh8_22
+  rotate: false
+  xy: 787, 927
+  size: 104, 88
+  orig: 106, 88
+  offset: 1, 0
+  index: -1
+dianweilh8_29
+  rotate: false
+  xy: 765, 681
+  size: 120, 122
+  orig: 120, 122
+  offset: 0, 0
+  index: -1
+dianweilh8_28
+  rotate: true
+  xy: 705, 863
+  size: 157, 80
+  orig: 157, 80
+  offset: 0, 0
+  index: -1
+dianweilh8_14
+  rotate: true
+  xy: 765, 805
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+dianweilh8_60
+  rotate: true
+  xy: 751, 681
+  size: 41, 11
+  orig: 41, 11
+  offset: 0, 0
+  index: -1
+dianweilh8_50
+  rotate: true
+  xy: 241, 884
+  size: 42, 23
+  orig: 42, 23
+  offset: 0, 0
+  index: -1
+dianweilh8_51
+  rotate: false
+  xy: 304, 516
+  size: 31, 6
+  orig: 31, 6
+  offset: 0, 0
+  index: -1
+dianweilh8_52
+  rotate: false
+  xy: 521, 984
+  size: 71, 30
+  orig: 71, 30
+  offset: 0, 0
+  index: -1
+dianweilh8_53
+  rotate: false
+  xy: 521, 756
+  size: 242, 105
+  orig: 248, 117
+  offset: 3, 6
+  index: -1
+dianweilh8_18
+  rotate: false
+  xy: 787, 805
+  size: 109, 120
+  orig: 113, 120
+  offset: 2, 0
+  index: -1
+dianweilh8_55
+  rotate: true
+  xy: 970, 295
+  size: 62, 50
+  orig: 74, 50
+  offset: 4, 0
+  index: -1
+dianweilh8_56
+  rotate: false
+  xy: 339, 2
+  size: 480, 152
+  orig: 756, 276
+  offset: 110, 47
+  index: -1
+dianweilh8_57
+  rotate: false
+  xy: 339, 376
+  size: 394, 164
+  orig: 394, 164
+  offset: 0, 0
+  index: -1
+dianweilh8_58
+  rotate: false
+  xy: 266, 542
+  size: 315, 183
+  orig: 315, 183
+  offset: 0, 0
+  index: -1
+dianweilh8_15
+  rotate: false
+  xy: 944, 210
+  size: 69, 83
+  orig: 69, 83
+  offset: 0, 0
+  index: -1
+dianweilh8_16
+  rotate: true
+  xy: 970, 421
+  size: 30, 41
+  orig: 30, 41
+  offset: 0, 0
+  index: -1
+dianweilh8_17
+  rotate: false
+  xy: 654, 984
+  size: 45, 35
+  orig: 45, 37
+  offset: 0, 1
+  index: -1
+dianweilh8_10
+  rotate: false
+  xy: 898, 917
+  size: 65, 61
+  orig: 65, 61
+  offset: 0, 0
+  index: -1
+dianweilh8_11
+  rotate: false
+  xy: 751, 542
+  size: 130, 137
+  orig: 130, 151
+  offset: 0, -7
+  index: -1
+dianweilh8_12
+  rotate: false
+  xy: 988, 768
+  size: 32, 67
+  orig: 34, 67
+  offset: 1, 0
+  index: -1
+dianweilh8_13
+  rotate: true
+  xy: 401, 964
+  size: 34, 74
+  orig: 34, 76
+  offset: 0, 1
+  index: -1

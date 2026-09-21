@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="sunshangxianglh4_24" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-346.8,-320.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0749816894531" scaleY="0.0749816894531"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-346.9,-322.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0978698730469" scaleY="0.0978698730469"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.0,-324.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.120742797852" scaleY="0.120742797852"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.1,-325.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.143630981445" scaleY="0.143630981445"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.2,-327.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.16650390625" scaleY="0.16650390625"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.3,-329.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.189392089844" scaleY="0.189392089844"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.35,-331.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.212265014648" scaleY="0.212265014648"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.5,-333.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.235153198242" scaleY="0.235153198242"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.55,-334.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.258026123047" scaleY="0.258026123047"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.65,-336.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.280914306641" scaleY="0.280914306641"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.75,-338.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.303802490234" scaleY="0.303802490234"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.85,-340.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.326690673828" scaleY="0.326690673828"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-347.95,-342.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.349563598633" scaleY="0.349563598633"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.05,-343.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.372421264648" scaleY="0.372421264648"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.15,-345.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.395324707031" scaleY="0.395324707031"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.25,-347.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.418197631836" scaleY="0.418197631836"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.35,-349.4" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.44108581543" scaleY="0.44108581543"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.4,-351.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.463973999023" scaleY="0.463973999023"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.55,-353.0" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.486862182617" scaleY="0.486862182617"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.6,-354.8" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.509735107422" scaleY="0.509735107422"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.7,-356.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.532608032227" scaleY="0.532608032227"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.8,-358.4" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.55549621582" scaleY="0.55549621582"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-348.9,-360.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.578369140625" scaleY="0.578369140625"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.0,-362.0" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.601257324219" scaleY="0.601257324219"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.1,-363.8" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.624145507812" scaleY="0.624145507812"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.2,-365.65" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.647033691406" scaleY="0.647033691406"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.3,-367.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.669906616211" scaleY="0.669906616211"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.4,-369.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.692779541016" scaleY="0.692779541016"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.45,-371.05" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.715667724609" scaleY="0.715667724609"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.6,-372.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.738540649414" scaleY="0.738540649414"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.75,-374.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.733123779297" scaleY="0.733123779297"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-349.85,-376.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.699356079102" scaleY="0.699356079102"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.0,-378.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.665618896484" scaleY="0.665618896484"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.1,-379.9" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.631866455078" scaleY="0.631866455078"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.25,-381.65" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.598098754883" scaleY="0.598098754883"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.35,-383.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.564361572266" scaleY="0.564361572266"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.5,-385.2" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.530624389648" scaleY="0.530624389648"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.65,-386.95" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.496856689453" scaleY="0.496856689453"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.75,-388.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.463104248047" scaleY="0.463104248047"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-350.9,-390.45" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.42936706543" scaleY="0.42936706543"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.0,-392.25" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.395614624023" scaleY="0.395614624023"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.15,-394.05" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.361862182617" scaleY="0.361862182617"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.25,-395.75" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.328109741211" scaleY="0.328109741211"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.4,-397.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.294357299805" scaleY="0.294357299805"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.55,-399.3" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.260604858398" scaleY="0.260604858398"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.65,-401.05" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.226867675781" scaleY="0.226867675781"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.8,-402.85" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.193115234375" scaleY="0.193115234375"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-351.9,-404.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.159362792969" scaleY="0.159362792969"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-352.05,-406.35" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.125610351562" scaleY="0.125610351562"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="sunshangxianglh4_lz01_01" position="-352.15,-408.15" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0918579101562" scaleY="0.0918579101562"/>
+			</frameInfo>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

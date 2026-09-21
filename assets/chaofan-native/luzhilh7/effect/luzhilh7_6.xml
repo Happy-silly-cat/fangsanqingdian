@@ -1,0 +1,158 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="luzhilh7_6" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.161056518555" scaleY="0.161056518555"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.146331787109" scaleY="0.146331787109"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.131622314453" scaleY="0.131622314453"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.116897583008" scaleY="0.116897583008"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.65" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.102188110352" scaleY="0.102188110352"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0874633789062" scaleY="0.0874633789062"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0727386474609" scaleY="0.0727386474609"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0580291748047" scaleY="0.0580291748047"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0433044433594" scaleY="0.0433044433594"/>
+			</frameInfo>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0610198974609" scaleY="0.0610198974609"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.0964813232422" scaleY="0.0964813232422"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.131927490234" scaleY="0.131927490234"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.167373657227" scaleY="0.167373657227"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.202835083008" scaleY="0.202835083008"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.23828125" scaleY="0.23828125"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.273727416992" scaleY="0.273727416992"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.309173583984" scaleY="0.309173583984"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.344619750977" scaleY="0.344619750977"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.380065917969" scaleY="0.380065917969"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.41552734375" scaleY="0.41552734375"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.450973510742" scaleY="0.450973510742"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.440032958984" scaleY="0.440032958984"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.429092407227" scaleY="0.429092407227"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.418151855469" scaleY="0.418151855469"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.407211303711" scaleY="0.407211303711"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.396270751953" scaleY="0.396270751953"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.385330200195" scaleY="0.385330200195"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.374389648438" scaleY="0.374389648438"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.36344909668" scaleY="0.36344909668"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.352508544922" scaleY="0.352508544922"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.341567993164" scaleY="0.341567993164"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.330627441406" scaleY="0.330627441406"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.319686889648" scaleY="0.319686889648"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.308746337891" scaleY="0.308746337891"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.297805786133" scaleY="0.297805786133"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="luzhilh7_xing1" position="272.4,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.286865234375" scaleY="0.286865234375"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.275924682617" scaleY="0.275924682617"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.264984130859" scaleY="0.264984130859"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.254043579102" scaleY="0.254043579102"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.243103027344" scaleY="0.243103027344"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.232162475586" scaleY="0.232162475586"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.55" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.221221923828" scaleY="0.221221923828"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.21028137207" scaleY="0.21028137207"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.188415527344" scaleY="0.188415527344"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.177474975586" scaleY="0.177474975586"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="luzhilh7_xing1" position="272.35,-298.6" rotation="-0.0" rotationX="-0.0" rotationY="0.0" scaleX="0.166534423828" scaleY="0.166534423828"/>
+			</frameInfo>
+		</action>
+	</animation>

@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="suncelh5_24" totalFrame="61">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="suncelh5_lizi_2" position="137.1,-83.3" rotation="-57.9955435932" rotationX="-57.9955435932" rotationY="-57.9955435932" scaleX="0.0999910414864" scaleY="0.0999910414864"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="suncelh5_lizi_2" position="132.25,-85.55" rotation="-57.9420518713" rotationX="-57.9420518713" rotationY="-57.9420518713" scaleX="0.156906795676" scaleY="0.156906795676"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="suncelh5_lizi_2" position="127.35,-87.7" rotation="-57.9465418805" rotationX="-57.9465418805" rotationY="-57.9465418805" scaleX="0.21396967912" scaleY="0.21396967912"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="suncelh5_lizi_2" position="122.55,-90.05" rotation="-57.9474293879" rotationX="-57.9474293879" rotationY="-57.9474293879" scaleX="0.271019630441" scaleY="0.271019630441"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="suncelh5_lizi_2" position="117.65,-92.15" rotation="-57.9457496241" rotationX="-57.9457496241" rotationY="-57.9457496241" scaleX="0.328077679724" scaleY="0.328077679724"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="suncelh5_lizi_2" position="112.75,-94.45" rotation="-57.9476962417" rotationX="-57.9476962417" rotationY="-57.9476962417" scaleX="0.385140563697" scaleY="0.385140563697"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="suncelh5_lizi_2" position="107.9,-96.7" rotation="-57.946415552" rotationX="-57.946415552" rotationY="-57.946415552" scaleX="0.442198612904" scaleY="0.442198612904"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="suncelh5_lizi_2" position="103.1,-98.9" rotation="-57.9992503184" rotationX="-57.9992503184" rotationY="-57.9992503184" scaleX="0.50000696671" scaleY="0.50000696671"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="suncelh5_lizi_2" position="98.1,-101.0" rotation="-57.9479339746" rotationX="-57.9479339746" rotationY="-57.9479339746" scaleX="0.476433104201" scaleY="0.476433104201"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="suncelh5_lizi_2" position="93.2,-103.25" rotation="-57.9506925763" rotationX="-57.9506925763" rotationY="-57.9506925763" scaleX="0.453609547122" scaleY="0.453609547122"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="suncelh5_lizi_2" position="88.2,-105.4" rotation="-57.9464291379" rotationX="-57.9464291379" rotationY="-57.9464291379" scaleX="0.43078441652" scaleY="0.43078441652"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="suncelh5_lizi_2" position="83.1,-107.55" rotation="-57.9464585903" rotationX="-57.9464585903" rotationY="-57.9464585903" scaleX="0.40795602375" scaleY="0.40795602375"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="suncelh5_lizi_2" position="78.15,-109.75" rotation="-57.9457723225" rotationX="-57.9457723225" rotationY="-57.9457723225" scaleX="0.385148661649" scaleY="0.385148661649"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="suncelh5_lizi_2" position="73.2,-111.95" rotation="-57.9457641013" rotationX="-57.9457641013" rotationY="-57.9457641013" scaleX="0.36232026888" scaleY="0.36232026888"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="suncelh5_lizi_2" position="68.2,-114.1" rotation="-57.9465707147" rotationX="-57.9465707147" rotationY="-57.9465707147" scaleX="0.339470845444" scaleY="0.339470845444"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="suncelh5_lizi_2" position="63.3,-116.25" rotation="-57.9472092933" rotationX="-57.9472092933" rotationY="-57.9472092933" scaleX="0.316676415968" scaleY="0.316676415968"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData bitmapName="suncelh5_lizi_2" position="58.25,-118.45" rotation="-57.9457317727" rotationX="-57.9457317727" rotationY="-57.9457317727" scaleX="0.293835090569" scaleY="0.293835090569"/>
+			</frameInfo>
+			<frameInfo frame="17">
+				<frameData bitmapName="suncelh5_lizi_2" position="53.2,-120.6" rotation="-57.9491412469" rotationX="-57.9491412469" rotationY="-57.9491412469" scaleX="0.271032563324" scaleY="0.271032563324"/>
+			</frameInfo>
+			<frameInfo frame="18">
+				<frameData bitmapName="suncelh5_lizi_2" position="48.3,-122.8" rotation="-57.9445843227" rotationX="-57.9445843227" rotationY="-57.9445843227" scaleX="0.248199335781" scaleY="0.248199335781"/>
+			</frameInfo>
+			<frameInfo frame="19">
+				<frameData bitmapName="suncelh5_lizi_2" position="43.35,-124.9" rotation="-57.9465095156" rotationX="-57.9465095156" rotationY="-57.9465095156" scaleX="0.225383875504" scaleY="0.225383875504"/>
+			</frameInfo>
+			<frameInfo frame="20">
+				<frameData bitmapName="suncelh5_lizi_2" position="38.3,-127.15" rotation="-57.9442871123" rotationX="-57.9442871123" rotationY="-57.9442871123" scaleX="0.202542550255" scaleY="0.202542550255"/>
+			</frameInfo>
+			<frameInfo frame="21">
+				<frameData bitmapName="suncelh5_lizi_2" position="33.4,-129.3" rotation="-57.9466636403" rotationX="-57.9466636403" rotationY="-57.9466636403" scaleX="0.179727089967" scaleY="0.179727089967"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="suncelh5_lizi_2" position="28.35,-131.4" rotation="-57.9467743399" rotationX="-57.9467743399" rotationY="-57.9467743399" scaleX="0.1568986972" scaleY="0.1568986972"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="suncelh5_lizi_2" position="23.3,-133.65" rotation="-57.9448568878" rotationX="-57.9448568878" rotationY="-57.9448568878" scaleX="0.134091335121" scaleY="0.134091335121"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="suncelh5_lizi_2" position="18.4,-135.8" rotation="-57.9446422913" rotationX="-57.9446422913" rotationY="-57.9446422913" scaleX="0.111262942356" scaleY="0.111262942356"/>
+			</frameInfo>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+			<frameInfo frame="60"/>
+		</action>
+	</animation>

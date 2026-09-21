@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="pangtonglh5_56" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData alpha="0.7890625" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0326446086" rotationX="-24.0326446086" rotationY="-24.0326446086" scaleX="1.1488947316" scaleY="1.1488947316"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData alpha="0.73828125" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0396100076" rotationX="-24.0396100076" rotationY="-24.0396100076" scaleX="1.14757026243" scaleY="1.14757026243"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData alpha="0.69921875" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0383686717" rotationX="-24.0383686717" rotationY="-24.0383686717" scaleX="1.14762600391" scaleY="1.14762600391"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData alpha="0.6484375" bitmapName="pangtonglh5_xing2" position="-302.15,-11.0" rotation="-24.037587981" rotationX="-24.037587981" rotationY="-24.037587981" scaleX="1.14773598337" scaleY="1.14773598337"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData alpha="0.6015625" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0367323101" rotationX="-24.0367323101" rotationY="-24.0367323101" scaleX="1.14781187656" scaleY="1.14781187656"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData alpha="0.55078125" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0369576862" rotationX="-24.0369576862" rotationY="-24.0369576862" scaleX="1.147914136" scaleY="1.147914136"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData alpha="0.51171875" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0350964784" rotationX="-24.0350964784" rotationY="-24.0350964784" scaleX="1.14799775015" scaleY="1.14799775015"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData alpha="0.4609375" bitmapName="pangtonglh5_xing2" position="-302.25,-11.05" rotation="-24.0346264972" rotationX="-24.0346264972" rotationY="-24.0346264972" scaleX="1.14809379464" scaleY="1.14809379464"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData alpha="0.41015625" bitmapName="pangtonglh5_xing2" position="-302.15,-11.05" rotation="-24.0347768405" rotationX="-24.0347768405" rotationY="-24.0347768405" scaleX="1.14816196749" scaleY="1.14816196749"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData alpha="0.359375" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0343069533" rotationX="-24.0343069533" rotationY="-24.0343069533" scaleX="1.14825801203" scaleY="1.14825801203"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData alpha="0.3203125" bitmapName="pangtonglh5_xing2" position="-302.2,-11.0" rotation="-24.0344572941" rotationX="-24.0344572941" rotationY="-24.0344572941" scaleX="1.14832618486" scaleY="1.14832618486"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData alpha="0.26953125" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0339875008" rotationX="-24.0339875008" rotationY="-24.0339875008" scaleX="1.14842222945" scaleY="1.14842222945"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData alpha="0.21875" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0327473586" rotationX="-24.0327473586" rotationY="-24.0327473586" scaleX="1.14847797338" scaleY="1.14847797338"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData alpha="0.1796875" bitmapName="pangtonglh5_xing2" position="-302.15,-11.0" rotation="-24.0329729587" rotationX="-24.0329729587" rotationY="-24.0329729587" scaleX="1.1485802325" scaleY="1.1485802325"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData alpha="0.12890625" bitmapName="pangtonglh5_xing2" position="-302.2,-11.0" rotation="-24.0324281902" rotationX="-24.0324281902" rotationY="-24.0324281902" scaleX="1.14864219097" scaleY="1.14864219097"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData alpha="0.078125" bitmapName="pangtonglh5_xing2" position="-302.2,-11.0" rotation="-24.0316487588" rotationX="-24.0316487588" rotationY="-24.0316487588" scaleX="1.14875217205" scaleY="1.14875217205"/>
+			</frameInfo>
+			<frameInfo frame="16">
+				<frameData alpha="0.0390625" bitmapName="pangtonglh5_xing2" position="-302.2,-11.0" rotation="-24.0314892799" rotationX="-24.0314892799" rotationY="-24.0314892799" scaleX="1.14883428091" scaleY="1.14883428091"/>
+			</frameInfo>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35">
+				<frameData alpha="0.01171875" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0006880073" rotationX="-24.0006880073" rotationY="-24.0006880073" scaleX="1.15029623824" scaleY="1.15029623824"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData alpha="0.05078125" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData alpha="0.1015625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData alpha="0.140625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData alpha="0.19140625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData alpha="0.23046875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData alpha="0.26953125" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData alpha="0.3203125" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData alpha="0.359375" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData alpha="0.41015625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData alpha="0.44921875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData alpha="0.5" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData alpha="0.5390625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData alpha="0.578125" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData alpha="0.62890625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData alpha="0.671875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData alpha="0.7109375" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData alpha="0.76171875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData alpha="0.80078125" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData alpha="0.8515625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData alpha="0.890625" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData alpha="0.9296875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData alpha="0.98046875" bitmapName="pangtonglh5_xing2" position="-302.25,-11.1" rotation="-24.0312546013" rotationX="-24.0312546013" rotationY="-24.0312546013" scaleX="1.14888230344" scaleY="1.14888230344"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0006880073" rotationX="-24.0006880073" rotationY="-24.0006880073" scaleX="1.15029623824" scaleY="1.15029623824"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData alpha="0.9296875" bitmapName="pangtonglh5_xing2" position="-302.2,-11.05" rotation="-24.0343727182" rotationX="-24.0343727182" rotationY="-24.0343727182" scaleX="1.14844237997" scaleY="1.14844237997"/>
+			</frameInfo>
+		</action>
+	</animation>

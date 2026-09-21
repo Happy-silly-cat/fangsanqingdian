@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="lvbulh5_16" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-58.4271704653" rotationX="-58.4271704653" rotationY="-58.4271704653" scaleX="-0.518688487492" scaleY="-0.518688487492"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-55.4334247529" rotationX="-55.4334247529" rotationY="-55.4334247529" scaleX="-0.470030021639" scaleY="-0.470030021639"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-406.0" rotation="-52.6214495189" rotationX="-52.6214495189" rotationY="-52.6214495189" scaleX="-0.42213882728" scaleY="-0.42213882728"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.05" rotation="-49.6252287958" rotationX="-49.6252287958" rotationY="-49.6252287958" scaleX="-0.374247354769" scaleY="-0.374247354769"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.05" rotation="-46.6233785148" rotationX="-46.6233785148" rotationY="-46.6233785148" scaleX="-0.326397512606" scaleY="-0.326397512606"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.05" rotation="-43.6259817698" rotationX="-43.6259817698" rotationY="-43.6259817698" scaleX="-0.27852711816" scaleY="-0.27852711816"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-40.6271944783" rotationX="-40.6271944783" rotationY="-40.6271944783" scaleX="-0.230662415044" scaleY="-0.230662415044"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-406.05" rotation="-37.6283641008" rotationX="-37.6283641008" rotationY="-37.6283641008" scaleX="-0.182819362913" scaleY="-0.182819362913"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-34.8147790268" rotationX="-34.8147790268" rotationY="-34.8147790268" scaleX="-0.13496840466" scaleY="-0.13496840466"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.2,-406.0" rotation="-31.8159763625" rotationX="-31.8159763625" rotationY="-31.8159763625" scaleX="-0.087090908379" scaleY="-0.087090908379"/>
+			</frameInfo>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-405.95" rotation="40.3786795382" rotationX="40.3786795382" rotationY="40.3786795382" scaleX="0.164850650124" scaleY="0.164850650124"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-406.0" rotation="43.0926102335" rotationX="43.0926102335" rotationY="43.0926102335" scaleX="0.268734241196" scaleY="0.268734241196"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="45.6255147752" rotationX="45.6255147752" rotationY="45.6255147752" scaleX="0.372597647666" scaleY="0.372597647666"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="48.1555772846" rotationX="48.1555772846" rotationY="48.1555772846" scaleX="0.476489593302" scaleY="0.476489593302"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="50.8748684413" rotationX="50.8748684413" rotationY="50.8748684413" scaleX="0.580399502087" scaleY="0.580399502087"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="53.403767165" rotationX="53.403767165" rotationY="53.403767165" scaleX="0.684297356388" scaleY="0.684297356388"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-405.95" rotation="55.9346393188" rotationX="55.9346393188" rotationY="55.9346393188" scaleX="0.788248799855" scaleY="0.788248799855"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.2,-406.05" rotation="58.6527469075" rotationX="58.6527469075" rotationY="58.6527469075" scaleX="0.892196783015" scaleY="0.892196783015"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-405.95" rotation="61.1822853578" rotationX="61.1822853578" rotationY="61.1822853578" scaleX="0.996170831133" scaleY="0.996170831133"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-405.95" rotation="63.7114374345" rotationX="63.7114374345" rotationY="63.7114374345" scaleX="1.10017490507" scaleY="1.10017490507"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="66.4285724843" rotationX="66.4285724843" rotationY="66.4285724843" scaleX="1.20420542315" scaleY="1.20420542315"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="68.9568274785" rotationX="68.9568274785" rotationY="68.9568274785" scaleX="1.30825570316" scaleY="1.30825570316"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="71.7044174498" rotationX="71.7044174498" rotationY="71.7044174498" scaleX="1.33704289794" scaleY="1.33704289794"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="74.4841571273" rotationX="74.4841571273" rotationY="74.4841571273" scaleX="1.29049952921" scaleY="1.29049952921"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.05" rotation="77.450991148" rotationX="77.450991148" rotationY="77.450991148" scaleX="1.24395074108" scaleY="1.24395074108"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="80.2295518152" rotationX="80.2295518152" rotationY="80.2295518152" scaleX="1.19740616101" scaleY="1.19740616101"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-405.95" rotation="83.1957232941" rotationX="83.1957232941" rotationY="83.1957232941" scaleX="1.15086717078" scaleY="1.15086717078"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="85.9709021002" rotationX="85.9709021002" rotationY="85.9709021002" scaleX="1.10429176206" scaleY="1.10429176206"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="88.7484557998" rotationX="88.7484557998" rotationY="88.7484557998" scaleX="1.05768640496" scaleY="1.05768640496"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="-88.4751832914" rotationX="-88.4751832914" rotationY="-88.4751832914" scaleX="-1.01094758311" scaleY="-1.01094758311"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-85.6999943886" rotationX="-85.6999943886" rotationY="-85.6999943886" scaleX="-0.964017297985" scaleY="-0.964017297985"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-82.7338071588" rotationX="-82.7338071588" rotationY="-82.7338071588" scaleX="-0.917124726466" scaleY="-0.917124726466"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="-79.9568119723" rotationX="-79.9568119723" rotationY="-79.9568119723" scaleX="-0.870253594643" scaleY="-0.870253594643"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="-76.9910581095" rotationX="-76.9910581095" rotationY="-76.9910581095" scaleX="-0.823393798986" scaleY="-0.823393798986"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="-74.2110980094" rotationX="-74.2110980094" rotationY="-74.2110980094" scaleX="-0.776583890243" scaleY="-0.776583890243"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-406.0" rotation="-71.4316944057" rotationX="-71.4316944057" rotationY="-71.4316944057" scaleX="-0.729744255162" scaleY="-0.729744255162"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.3,-405.95" rotation="-68.4614994889" rotationX="-68.4614994889" rotationY="-68.4614994889" scaleX="-0.682959485937" scaleY="-0.682959485937"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.35,-406.0" rotation="-65.6817148567" rotationX="-65.6817148567" rotationY="-65.6817148567" scaleX="-0.636207140446" scaleY="-0.636207140446"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="lvbulh5_xingxing" position="33.25,-406.0" rotation="-62.7112274107" rotationX="-62.7112274107" rotationY="-62.7112274107" scaleX="-0.589416890433" scaleY="-0.589416890433"/>
+			</frameInfo>
+		</action>
+	</animation>

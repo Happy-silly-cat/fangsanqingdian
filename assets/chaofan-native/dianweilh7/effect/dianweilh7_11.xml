@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="dianweilh7_11" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="dianweilh7_lizi_1" position="237.7,-114.95" rotation="-7.70441112981" rotationX="-7.70441112981" rotationY="-7.70441112981" scaleX="1.00000925789" scaleY="1.00000925789"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="dianweilh7_lizi_1" position="236.25,-124.55" rotation="-7.54719071021" rotationX="-7.54719071021" rotationY="-7.54719071021" scaleX="0.931377834293" scaleY="0.931377834293"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="dianweilh7_lizi_1" position="234.8,-133.95" rotation="-7.5404790914" rotationX="-7.5404790914" rotationY="-7.5404790914" scaleX="0.862900250306" scaleY="0.862900250306"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="dianweilh7_lizi_1" position="233.35,-143.55" rotation="-7.5358834099" rotationX="-7.5358834099" rotationY="-7.5358834099" scaleX="0.794428682341" scaleY="0.794428682341"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="dianweilh7_lizi_1" position="231.9,-153.0" rotation="-7.53400249432" rotationX="-7.53400249432" rotationY="-7.53400249432" scaleX="0.725963120981" scaleY="0.725963120981"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="dianweilh7_lizi_1" position="230.45,-162.5" rotation="-7.52812359864" rotationX="-7.52812359864" rotationY="-7.52812359864" scaleX="0.657461307436" scaleY="0.657461307436"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="dianweilh7_lizi_1" position="229.0,-172.0" rotation="-7.52323738429" rotationX="-7.52323738429" rotationY="-7.52323738429" scaleX="0.589008879854" scaleY="0.589008879854"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="dianweilh7_lizi_1" position="227.45,-181.45" rotation="-7.51728582811" rotationX="-7.51728582811" rotationY="-7.51728582811" scaleX="0.520541330031" scaleY="0.520541330031"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="dianweilh7_lizi_1" position="226.05,-190.95" rotation="-7.55145412643" rotationX="-7.55145412643" rotationY="-7.55145412643" scaleX="0.452132908614" scaleY="0.452132908614"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="dianweilh7_lizi_1" position="225.15,-196.7" rotation="-7.52061511173" rotationX="-7.52061511173" rotationY="-7.52061511173" scaleX="0.408158877703" scaleY="0.408158877703"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="dianweilh7_lizi_1" position="224.25,-202.4" rotation="-7.52373062687" rotationX="-7.52373062687" rotationY="-7.52373062687" scaleX="0.364173481182" scaleY="0.364173481182"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="dianweilh7_lizi_1" position="223.35,-208.15" rotation="-7.52862030323" rotationX="-7.52862030323" rotationY="-7.52862030323" scaleX="0.320265721476" scaleY="0.320265721476"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="dianweilh7_lizi_1" position="222.45,-213.9" rotation="-7.53589349758" rotationX="-7.53589349758" rotationY="-7.53589349758" scaleX="0.27632771082" scaleY="0.27632771082"/>
+			</frameInfo>
+			<frameInfo frame="13">
+				<frameData bitmapName="dianweilh7_lizi_1" position="221.5,-219.7" rotation="-7.53796436482" rotationX="-7.53796436482" rotationY="-7.53796436482" scaleX="0.232400827597" scaleY="0.232400827597"/>
+			</frameInfo>
+			<frameInfo frame="14">
+				<frameData bitmapName="dianweilh7_lizi_1" position="220.65,-225.4" rotation="-7.55019739215" rotationX="-7.55019739215" rotationY="-7.55019739215" scaleX="0.18847795224" scaleY="0.18847795224"/>
+			</frameInfo>
+			<frameInfo frame="15">
+				<frameData bitmapName="dianweilh7_lizi_1" position="219.75,-231.15" rotation="-7.70334037526" rotationX="-7.70334037526" rotationY="-7.70334037526" scaleX="0.144569453944" scaleY="0.144569453944"/>
+			</frameInfo>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30">
+				<frameData bitmapName="dianweilh7_lizi_1" position="237.7,-114.95" rotation="-7.70441112981" rotationX="-7.70441112981" rotationY="-7.70441112981" scaleX="1.00000925789" scaleY="1.00000925789"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="dianweilh7_lizi_1" position="236.25,-124.55" rotation="-7.54719071021" rotationX="-7.54719071021" rotationY="-7.54719071021" scaleX="0.931377834293" scaleY="0.931377834293"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="dianweilh7_lizi_1" position="234.8,-133.95" rotation="-7.5404790914" rotationX="-7.5404790914" rotationY="-7.5404790914" scaleX="0.862900250306" scaleY="0.862900250306"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="dianweilh7_lizi_1" position="233.35,-143.55" rotation="-7.5358834099" rotationX="-7.5358834099" rotationY="-7.5358834099" scaleX="0.794428682341" scaleY="0.794428682341"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="dianweilh7_lizi_1" position="231.9,-153.0" rotation="-7.53400249432" rotationX="-7.53400249432" rotationY="-7.53400249432" scaleX="0.725963120981" scaleY="0.725963120981"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="dianweilh7_lizi_1" position="230.45,-162.5" rotation="-7.52812359864" rotationX="-7.52812359864" rotationY="-7.52812359864" scaleX="0.657461307436" scaleY="0.657461307436"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="dianweilh7_lizi_1" position="229.0,-172.0" rotation="-7.52323738429" rotationX="-7.52323738429" rotationY="-7.52323738429" scaleX="0.589008879854" scaleY="0.589008879854"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="dianweilh7_lizi_1" position="227.45,-181.45" rotation="-7.51728582811" rotationX="-7.51728582811" rotationY="-7.51728582811" scaleX="0.520541330031" scaleY="0.520541330031"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="dianweilh7_lizi_1" position="226.05,-190.95" rotation="-7.55145412643" rotationX="-7.55145412643" rotationY="-7.55145412643" scaleX="0.452132908614" scaleY="0.452132908614"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="dianweilh7_lizi_1" position="225.15,-196.7" rotation="-7.52061511173" rotationX="-7.52061511173" rotationY="-7.52061511173" scaleX="0.408158877703" scaleY="0.408158877703"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="dianweilh7_lizi_1" position="224.25,-202.4" rotation="-7.52373062687" rotationX="-7.52373062687" rotationY="-7.52373062687" scaleX="0.364173481182" scaleY="0.364173481182"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="dianweilh7_lizi_1" position="223.35,-208.15" rotation="-7.52862030323" rotationX="-7.52862030323" rotationY="-7.52862030323" scaleX="0.320265721476" scaleY="0.320265721476"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="dianweilh7_lizi_1" position="222.45,-213.9" rotation="-7.53589349758" rotationX="-7.53589349758" rotationY="-7.53589349758" scaleX="0.27632771082" scaleY="0.27632771082"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="dianweilh7_lizi_1" position="221.5,-219.7" rotation="-7.53796436482" rotationX="-7.53796436482" rotationY="-7.53796436482" scaleX="0.232400827597" scaleY="0.232400827597"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="dianweilh7_lizi_1" position="220.65,-225.4" rotation="-7.55019739215" rotationX="-7.55019739215" rotationY="-7.55019739215" scaleX="0.18847795224" scaleY="0.18847795224"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="dianweilh7_lizi_1" position="219.75,-231.15" rotation="-7.70334037526" rotationX="-7.70334037526" rotationY="-7.70334037526" scaleX="0.144569453944" scaleY="0.144569453944"/>
+			</frameInfo>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

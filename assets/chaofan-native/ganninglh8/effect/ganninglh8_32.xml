@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="ganninglh8_32" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1"/>
+			<frameInfo frame="1"/>
+			<frameInfo frame="2"/>
+			<frameInfo frame="3"/>
+			<frameInfo frame="4"/>
+			<frameInfo frame="5"/>
+			<frameInfo frame="6"/>
+			<frameInfo frame="7"/>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-253.0,-340.85" rotation="21.2403571716" rotationX="21.2403571716" rotationY="21.2435739182" scaleX="0.862043966125" scaleY="0.945647617714"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-221.05,-329.85" rotation="22.5383186723" rotationX="22.5383186723" rotationY="22.5402514105" scaleX="0.840495994316" scaleY="0.922013262936"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-188.95,-318.9" rotation="23.8057604202" rotationX="23.8057604202" rotationY="23.8062591488" scaleX="0.819897865057" scaleY="0.899414213809"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-157.0,-307.85" rotation="25.0724308377" rotationX="25.0724308377" rotationY="25.0734559097" scaleX="0.799306204433" scaleY="0.876825519031"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-124.95,-296.9" rotation="26.3394045273" rotationX="26.3394045273" rotationY="26.3406268265" scaleX="0.778746945384" scaleY="0.854233997302"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-93.0,-285.9" rotation="27.7954568124" rotationX="27.7954568124" rotationY="27.7976938585" scaleX="0.758144346713" scaleY="0.831661296726"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-60.95,-274.85" rotation="29.0622656884" rotationX="29.0622656884" rotationY="29.0641597468" scaleX="0.737577622308" scaleY="0.809084272554"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-33.75,-264.3" rotation="29.6020430136" rotationX="29.6020430136" rotationY="29.6033556112" scaleX="0.536351175952" scaleY="0.588360561583"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="ganninglh8_lz02_01" position="-11.6,-254.15" rotation="29.7295473911" rotationX="29.7295473911" rotationY="29.7308622663" scaleX="0.154702751294" scaleY="0.169724476503"/>
+			</frameInfo>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>

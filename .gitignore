@@ -11,7 +11,6 @@ hero-evolve-detail.html
 hero-evolve.html
 hero-beauty-upgrade.html
 hero-beauty-accessories.html
-chaofan-huanhua.html
 zhizhen-huanhua.html
 shenqi-upgrade.html
 xuanbing-upgrade.html
@@ -34,10 +33,6 @@ tools/
 
 assets/bingfu-data.js
 assets/bingfu-items/
-assets/chaofan-huanhua-data.js
-assets/chaofan-icon-corrections.js
-assets/chaofan-items/
-assets/chaofan-native/
 assets/commander-data.js
 assets/command-items/
 assets/counsellor-data.js

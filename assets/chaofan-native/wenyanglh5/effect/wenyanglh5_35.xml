@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="wenyanglh5_35" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="wenyanglh5_12_7" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="wenyanglh5_12_7" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="wenyanglh5_12_8" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="wenyanglh5_12_8" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="wenyanglh5_12_9" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="wenyanglh5_12_9" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="wenyanglh5_12_10" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="wenyanglh5_12_10" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="wenyanglh5_12_11" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="wenyanglh5_12_11" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30"/>
+			<frameInfo frame="31"/>
+			<frameInfo frame="32"/>
+			<frameInfo frame="33"/>
+			<frameInfo frame="34"/>
+			<frameInfo frame="35"/>
+			<frameInfo frame="36"/>
+			<frameInfo frame="37"/>
+			<frameInfo frame="38"/>
+			<frameInfo frame="39"/>
+			<frameInfo frame="40"/>
+			<frameInfo frame="41"/>
+			<frameInfo frame="42"/>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48">
+				<frameData bitmapName="wenyanglh5_12_1" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="wenyanglh5_12_1" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="wenyanglh5_12_2" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="wenyanglh5_12_2" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="wenyanglh5_12_3" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="wenyanglh5_12_3" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="wenyanglh5_12_4" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="wenyanglh5_12_4" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="wenyanglh5_12_5" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="wenyanglh5_12_5" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="wenyanglh5_12_6" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="wenyanglh5_12_6" position="54.35,-260.25" rotation="89.6599100255" rotationX="89.6599100255" rotationY="89.6599100255" scaleX="1.00000235728" scaleY="1.00000235728"/>
+			</frameInfo>
+		</action>
+	</animation>

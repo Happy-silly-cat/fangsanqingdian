@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="zhugelianglh7_36" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="41.6372282227" rotationX="41.6372282227" rotationY="41.6372282227" scaleX="0.137772167516" scaleY="-0.137772167516"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="38.8601530258" rotationX="38.8601530258" rotationY="38.8601530258" scaleX="0.0892781003459" scaleY="-0.0892781003459"/>
+			</frameInfo>
+			<frameInfo frame="2"/>
+			<frameInfo frame="3"/>
+			<frameInfo frame="4"/>
+			<frameInfo frame="5"/>
+			<frameInfo frame="6"/>
+			<frameInfo frame="7"/>
+			<frameInfo frame="8"/>
+			<frameInfo frame="9"/>
+			<frameInfo frame="10"/>
+			<frameInfo frame="11"/>
+			<frameInfo frame="12"/>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-31.9831376662" rotationX="-31.9831376662" rotationY="-31.9831376662" scaleX="-0.116644093131" scaleY="0.116644093131"/>
+			</frameInfo>
+			<frameInfo frame="22">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-34.580178552" rotationX="-34.580178552" rotationY="-34.580178552" scaleX="-0.227473489477" scaleY="0.227473489477"/>
+			</frameInfo>
+			<frameInfo frame="23">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.2" rotation="-37.1095691894" rotationX="-37.1095691894" rotationY="-37.1095691894" scaleX="-0.338513093477" scaleY="0.338513093477"/>
+			</frameInfo>
+			<frameInfo frame="24">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.45,-111.2" rotation="-39.8262393068" rotationX="-39.8262393068" rotationY="-39.8262393068" scaleX="-0.449524042061" scaleY="0.449524042061"/>
+			</frameInfo>
+			<frameInfo frame="25">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.15" rotation="-42.357624202" rotationX="-42.357624202" rotationY="-42.357624202" scaleX="-0.560521917128" scaleY="0.560521917128"/>
+			</frameInfo>
+			<frameInfo frame="26">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="-44.8876915786" rotationX="-44.8876915786" rotationY="-44.8876915786" scaleX="-0.671545572042" scaleY="0.671545572042"/>
+			</frameInfo>
+			<frameInfo frame="27">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-47.606974236" rotationX="-47.606974236" rotationY="-47.606974236" scaleX="-0.782569904704" scaleY="0.782569904704"/>
+			</frameInfo>
+			<frameInfo frame="28">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.2" rotation="-50.1373075178" rotationX="-50.1373075178" rotationY="-50.1373075178" scaleX="-0.893601588285" scaleY="0.893601588285"/>
+			</frameInfo>
+			<frameInfo frame="29">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-52.6671443606" rotationX="-52.6671443606" rotationY="-52.6671443606" scaleX="-1.00465620925" scaleY="1.00465620925"/>
+			</frameInfo>
+			<frameInfo frame="30">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="-55.3851791581" rotationX="-55.3851791581" rotationY="-55.3851791581" scaleX="-1.11574140122" scaleY="1.11574140122"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="-57.9148479021" rotationX="-57.9148479021" rotationY="-57.9148479021" scaleX="-1.2268125476" scaleY="1.2268125476"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.15" rotation="-60.4447693586" rotationX="-60.4447693586" rotationY="-60.4447693586" scaleX="-1.33797600745" scaleY="1.33797600745"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-63.051789885" rotationX="-63.051789885" rotationY="-63.051789885" scaleX="-1.45104730958" scaleY="1.45104730958"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-65.92844237" rotationX="-65.92844237" rotationY="-65.92844237" scaleX="-1.4006770346" scaleY="1.4006770346"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="-68.6935899512" rotationX="-68.6935899512" rotationY="-68.6935899512" scaleX="-1.35225231844" scaleY="1.35225231844"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.2" rotation="-71.4581815086" rotationX="-71.4581815086" rotationY="-71.4581815086" scaleX="-1.30382417052" scaleY="1.30382417052"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.15" rotation="-74.2222914921" rotationX="-74.2222914921" rotationY="-74.2222914921" scaleX="-1.25541377672" scaleY="1.25541377672"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="-76.9834493581" rotationX="-76.9834493581" rotationY="-76.9834493581" scaleX="-1.20697759151" scaleY="1.20697759151"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.15" rotation="-79.9357630742" rotationX="-79.9357630742" rotationY="-79.9357630742" scaleX="-1.15860569185" scaleY="1.15860569185"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="-82.6964236277" rotationX="-82.6964236277" rotationY="-82.6964236277" scaleX="-1.11014238375" scaleY="1.11014238375"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="-85.4572371619" rotationX="-85.4572371619" rotationY="-85.4572371619" scaleX="-1.06171550841" scaleY="1.06171550841"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="-88.217932085" rotationX="-88.217932085" rotationY="-88.217932085" scaleX="-1.01323114606" scaleY="1.01323114606"/>
+			</frameInfo>
+			<frameInfo frame="43">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="89.2096760005" rotationX="89.2096760005" rotationY="89.2096760005" scaleX="0.964645602035" scaleY="-0.964645602035"/>
+			</frameInfo>
+			<frameInfo frame="44">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="86.4514140411" rotationX="86.4514140411" rotationY="86.4514140411" scaleX="0.915849001147" scaleY="-0.915849001147"/>
+			</frameInfo>
+			<frameInfo frame="45">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="83.690650566" rotationX="83.690650566" rotationY="83.690650566" scaleX="0.867098910756" scaleY="-0.867098910756"/>
+			</frameInfo>
+			<frameInfo frame="46">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.35" rotation="80.7401795966" rotationX="80.7401795966" rotationY="80.7401795966" scaleX="0.818357662968" scaleY="-0.818357662968"/>
+			</frameInfo>
+			<frameInfo frame="47">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="77.9791840783" rotationX="77.9791840783" rotationY="77.9791840783" scaleX="0.769654073725" scaleY="-0.769654073725"/>
+			</frameInfo>
+			<frameInfo frame="48">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="75.2152057288" rotationX="75.2152057288" rotationY="75.2152057288" scaleX="0.720936645951" scaleY="-0.720936645951"/>
+			</frameInfo>
+			<frameInfo frame="49">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.2" rotation="72.4488464242" rotationX="72.4488464242" rotationY="72.4488464242" scaleX="0.672271465476" scaleY="-0.672271465476"/>
+			</frameInfo>
+			<frameInfo frame="50">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="69.6871374093" rotationX="69.6871374093" rotationY="69.6871374093" scaleX="0.623588690591" scaleY="-0.623588690591"/>
+			</frameInfo>
+			<frameInfo frame="51">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="66.9216082913" rotationX="66.9216082913" rotationY="66.9216082913" scaleX="0.5749437603" scaleY="-0.5749437603"/>
+			</frameInfo>
+			<frameInfo frame="52">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="64.1562898474" rotationX="64.1562898474" rotationY="64.1562898474" scaleX="0.52631745099" scaleY="-0.52631745099"/>
+			</frameInfo>
+			<frameInfo frame="53">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.35" rotation="61.2033175105" rotationX="61.2033175105" rotationY="61.2033175105" scaleX="0.477717243732" scaleY="-0.477717243732"/>
+			</frameInfo>
+			<frameInfo frame="54">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.55,-111.25" rotation="58.4349395585" rotationX="58.4349395585" rotationY="58.4349395585" scaleX="0.429139072568" scaleY="-0.429139072568"/>
+			</frameInfo>
+			<frameInfo frame="55">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="55.6688572646" rotationX="55.6688572646" rotationY="55.6688572646" scaleX="0.380512637551" scaleY="-0.380512637551"/>
+			</frameInfo>
+			<frameInfo frame="56">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="52.9009625986" rotationX="52.9009625986" rotationY="52.9009625986" scaleX="0.331942351796" scaleY="-0.331942351796"/>
+			</frameInfo>
+			<frameInfo frame="57">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="50.1355728709" rotationX="50.1355728709" rotationY="50.1355728709" scaleX="0.283382556652" scaleY="-0.283382556652"/>
+			</frameInfo>
+			<frameInfo frame="58">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.25" rotation="47.3646828632" rotationX="47.3646828632" rotationY="47.3646828632" scaleX="0.23483046344" scaleY="-0.23483046344"/>
+			</frameInfo>
+			<frameInfo frame="59">
+				<frameData bitmapName="zhugelianglh7_lizi2" position="7.5,-111.3" rotation="44.5917707451" rotationX="44.5917707451" rotationY="44.5917707451" scaleX="0.186265475584" scaleY="-0.186265475584"/>
+			</frameInfo>
+		</action>
+	</animation>

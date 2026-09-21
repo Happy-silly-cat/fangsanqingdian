@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+	<!--动画帧信息表-->
+	<animation>
+		<action actionName="wenyanglh5_5" totalFrame="60">
+			<frameInfo frame="0" isKeyFrame="@L1">
+				<frameData bitmapName="wenyanglh5_huomiao_1_2" position="5.35,-239.55" rotation="29.9985095402" rotationX="29.9985095402" rotationY="29.9985095402" scaleX="0.317671784016" scaleY="0.317671784016"/>
+			</frameInfo>
+			<frameInfo frame="1">
+				<frameData bitmapName="wenyanglh5_huomiao_1_3" position="4.3,-242.75" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="2">
+				<frameData bitmapName="wenyanglh5_huomiao_1_3" position="3.3,-245.95" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="3">
+				<frameData bitmapName="wenyanglh5_huomiao_1_4" position="2.25,-249.15" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="4">
+				<frameData bitmapName="wenyanglh5_huomiao_1_5" position="1.2,-252.4" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="5">
+				<frameData bitmapName="wenyanglh5_huomiao_1_5" position="0.15,-255.6" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="6">
+				<frameData bitmapName="wenyanglh5_huomiao_1_6" position="-0.85,-258.8" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="7">
+				<frameData bitmapName="wenyanglh5_huomiao_1_7" position="-1.9,-262.0" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="8">
+				<frameData bitmapName="wenyanglh5_huomiao_1_7" position="-2.95,-265.2" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="9">
+				<frameData bitmapName="wenyanglh5_huomiao_1_8" position="-3.95,-268.4" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="10">
+				<frameData bitmapName="wenyanglh5_huomiao_1_9" position="-5.0,-271.65" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="11">
+				<frameData bitmapName="wenyanglh5_huomiao_1_9" position="-6.05,-274.85" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="12">
+				<frameData bitmapName="wenyanglh5_huomiao_1_10" position="-7.1,-278.05" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="13"/>
+			<frameInfo frame="14"/>
+			<frameInfo frame="15"/>
+			<frameInfo frame="16"/>
+			<frameInfo frame="17"/>
+			<frameInfo frame="18"/>
+			<frameInfo frame="19"/>
+			<frameInfo frame="20"/>
+			<frameInfo frame="21"/>
+			<frameInfo frame="22"/>
+			<frameInfo frame="23"/>
+			<frameInfo frame="24"/>
+			<frameInfo frame="25"/>
+			<frameInfo frame="26"/>
+			<frameInfo frame="27"/>
+			<frameInfo frame="28"/>
+			<frameInfo frame="29"/>
+			<frameInfo frame="30">
+				<frameData bitmapName="wenyanglh5_huomiao_1_2" position="5.35,-239.55" rotation="29.9985095402" rotationX="29.9985095402" rotationY="29.9985095402" scaleX="0.317671784016" scaleY="0.317671784016"/>
+			</frameInfo>
+			<frameInfo frame="31">
+				<frameData bitmapName="wenyanglh5_huomiao_1_3" position="4.3,-242.75" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="32">
+				<frameData bitmapName="wenyanglh5_huomiao_1_3" position="3.3,-245.95" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="33">
+				<frameData bitmapName="wenyanglh5_huomiao_1_4" position="2.25,-249.15" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="34">
+				<frameData bitmapName="wenyanglh5_huomiao_1_5" position="1.2,-252.4" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="35">
+				<frameData bitmapName="wenyanglh5_huomiao_1_5" position="0.15,-255.6" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="36">
+				<frameData bitmapName="wenyanglh5_huomiao_1_6" position="-0.85,-258.8" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="37">
+				<frameData bitmapName="wenyanglh5_huomiao_1_7" position="-1.9,-262.0" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="38">
+				<frameData bitmapName="wenyanglh5_huomiao_1_7" position="-2.95,-265.2" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="39">
+				<frameData bitmapName="wenyanglh5_huomiao_1_8" position="-3.95,-268.4" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="40">
+				<frameData bitmapName="wenyanglh5_huomiao_1_9" position="-5.0,-271.65" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="41">
+				<frameData bitmapName="wenyanglh5_huomiao_1_9" position="-6.05,-274.85" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="42">
+				<frameData bitmapName="wenyanglh5_huomiao_1_10" position="-7.1,-278.05" rotation="29.8590604287" rotationX="29.8590604287" rotationY="29.8590604287" scaleX="0.317209394834" scaleY="0.317209394834"/>
+			</frameInfo>
+			<frameInfo frame="43"/>
+			<frameInfo frame="44"/>
+			<frameInfo frame="45"/>
+			<frameInfo frame="46"/>
+			<frameInfo frame="47"/>
+			<frameInfo frame="48"/>
+			<frameInfo frame="49"/>
+			<frameInfo frame="50"/>
+			<frameInfo frame="51"/>
+			<frameInfo frame="52"/>
+			<frameInfo frame="53"/>
+			<frameInfo frame="54"/>
+			<frameInfo frame="55"/>
+			<frameInfo frame="56"/>
+			<frameInfo frame="57"/>
+			<frameInfo frame="58"/>
+			<frameInfo frame="59"/>
+		</action>
+	</animation>
