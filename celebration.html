@@ -40,25 +40,18 @@
     }
 
     header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
       gap: 18px;
       margin-bottom: 18px;
     }
 
     h1 {
-      margin: 0 0 6px;
+      margin: 0;
       font-size: 28px;
       line-height: 1.2;
       font-weight: 750;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
     }
 
     .home-link {
@@ -82,11 +75,227 @@
       color: var(--accent-dark);
     }
 
+    .calculator-notice {
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border-left: 3px solid var(--warn);
+      background: #fff3d6;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+
+    .calculator-notice h2 {
+      margin: 0 0 6px;
+      color: #6c4a16;
+      font-size: 16px;
+    }
+
+    .calculator-notice ol {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .calculator-notice li + li {
+      margin-top: 4px;
+    }
+
     .layout {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
       align-items: start;
+    }
+
+    .current-rewards {
+      margin-bottom: 16px;
+      padding: 18px;
+    }
+
+    .current-rewards-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .current-rewards-header h2 {
+      margin: 0 0 5px;
+      font-size: 20px;
+    }
+
+    .current-rewards-header p,
+    .current-rewards-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .current-rewards-badge {
+      flex: 0 0 auto;
+      border: 1px solid #c7ddd3;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--chip);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .current-rewards-table-wrap {
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    .current-rewards-table {
+      min-width: 680px;
+      table-layout: auto;
+    }
+
+    .current-rewards-table th,
+    .current-rewards-table td {
+      text-align: left;
+    }
+
+    .current-rewards-table th:last-child,
+    .current-rewards-table td:last-child {
+      text-align: right;
+    }
+
+    .current-rewards-table .cost-list {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .resource-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .resource-chip,
+    .resource-reward {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 34px;
+      white-space: nowrap;
+    }
+
+    .resource-chip {
+      padding: 4px 8px;
+      border: 1px solid #d6e7df;
+      border-radius: 6px;
+      background: var(--chip);
+      color: var(--accent-dark);
+      font-size: 12px;
+    }
+
+    .resource-reward {
+      color: var(--ink);
+    }
+
+    .resource-icon {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      place-items: center;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    .resource-icon-fallback {
+      border: 1px solid rgba(24, 92, 79, 0.18);
+      background: #e8f4ee;
+      color: var(--accent-dark);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .resource-icon-fallback.icon-lantern {
+      border-color: #e8b1a7;
+      background: #fff0eb;
+      color: #bf4b3a;
+    }
+
+    .resource-icon-fallback.icon-word {
+      border-color: #e5c98c;
+      background: #fff7dd;
+      color: #b4771e;
+    }
+
+    .resource-icon-fallback.icon-gift {
+      border-color: #c6b1df;
+      background: #f3edff;
+      color: #73529c;
+    }
+
+    .resource-icon-fallback.icon-beauty {
+      border-color: #e3b8c6;
+      background: #fff0f5;
+      color: #a65272;
+    }
+
+    .resource-icon-fallback.icon-pet {
+      border-color: #9bc8d4;
+      background: #eaf8fb;
+      color: #287a8b;
+    }
+
+    .resource-icon-fallback.icon-material {
+      border-color: #b9c9df;
+      background: #eef4fc;
+      color: #48678d;
+    }
+
+    .package-title {
+      margin: 18px 0 10px;
+      font-size: 16px;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .package-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fffdf8;
+    }
+
+    .package-card h4 {
+      margin: 0 0 5px;
+      font-size: 15px;
+    }
+
+    .package-card p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .package-choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .package-choices li {
+      list-style: none;
     }
 
     .panel {
@@ -98,8 +307,7 @@
 
     .controls {
       padding: 18px;
-      position: sticky;
-      top: 16px;
+      position: static;
     }
 
     .section-title {
@@ -108,11 +316,121 @@
       font-weight: 700;
     }
 
+    .section-heading,
+    .purchase-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 16px;
+      margin-bottom: 12px;
+      min-width: 0;
+    }
+
+    .section-heading .section-title,
+    .purchase-heading .section-title {
+      margin: 0;
+    }
+
+    .calculator-updated {
+      margin-left: auto;
+      max-width: 100%;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
     .field-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-bottom: 16px;
+    }
+
+    .controls > .package-target-totals {
+      max-width: 460px;
+      margin-bottom: 20px;
+    }
+
+    .control-groups {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 0.8fr 1.2fr;
+      gap: 20px 16px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .control-group {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-width: 0;
+    }
+
+    .control-group .field-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-self: end;
+      margin-bottom: 0;
+    }
+
+    .control-group .single-field {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .controls > .button-row {
+      justify-content: flex-end;
+      margin: 20px 0 0;
+    }
+
+    .controls > .button-row .primary {
+      flex: 0 1 200px;
+    }
+
+    .exchange-targets {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      column-gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .modal .exchange-targets {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    }
+
+    .exchange-target-row {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) 64px;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .exchange-target-row img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .exchange-target-copy {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .exchange-target-copy small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .package-target-totals input[readonly] {
+      background: var(--chip);
+      color: var(--accent-dark);
+      font-weight: 700;
     }
 
     label {
@@ -174,47 +492,169 @@
       color: var(--text);
     }
 
-    .rules {
-      display: grid;
-      gap: 8px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
     .result {
       padding: 18px;
       min-height: 260px;
     }
 
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+    .summary,
+    .completion-probability {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
       margin-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent-dark);
     }
 
-    .metric {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
+    .summary > span,
+    .completion-probability > span {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .summary-value {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .summary-value,
+    .completion-probability > strong {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: 60%;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .summary-value strong,
+    .completion-probability > strong {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .summary-value span {
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .distribution-note {
+      display: none;
+    }
+
+    .cost-estimate-details {
+      margin: 0 0 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .cost-estimate-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .cost-estimate-row span {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .cost-estimate-row strong {
+      flex: 0 1 auto;
+      max-width: 60%;
+      overflow-wrap: anywhere;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent-dark);
+    }
+
+    .quantile-chart {
+      min-width: 0;
+    }
+
+    .quantile-chart-content {
+      margin: 0;
+      padding: 0 16px 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quantile-chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 16px;
+    }
+
+    .quantile-plot {
+      position: relative;
+    }
+
+    .quantile-tooltip {
+      position: absolute;
+      z-index: 1;
+      width: max-content;
+      max-width: min(260px, calc(100% - 16px));
+      padding: 8px 10px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
       background: #fffdf8;
-      min-height: 78px;
+      box-shadow: 0 4px 12px rgba(39, 35, 30, 0.12);
+      overflow-wrap: anywhere;
+      color: var(--accent-dark);
+      font-size: 13px;
+      line-height: 1.5;
+      pointer-events: none;
     }
 
-    .metric span {
+    .quantile-chart svg {
       display: block;
+      width: 100%;
+      height: 300px;
+      touch-action: pan-y;
+    }
+
+    .quantile-chart-legend {
       color: var(--muted);
       font-size: 12px;
-      margin-bottom: 6px;
+      margin: 8px 0 12px;
     }
 
-    .metric strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1.2;
+    .quantile-chart-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quantile-chart-legend i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--warn);
+    }
+
+    .quantile-chart-legend .quantile-90 {
+      background: #477bba;
+    }
+
+    .quantile-chart-legend .quantile-99 {
+      background: #7962aa;
     }
 
     .status {
@@ -240,10 +680,112 @@
       color: var(--warn);
     }
 
-    .tables {
+    .result-details {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .result-details > .collapsible-table-details {
+      margin-top: 0;
+    }
+
+    .purchase-plan {
+      margin-top: 16px;
+    }
+
+    .purchase-advice {
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .purchase-advice p {
+      margin: 0 0 10px;
+    }
+
+    .purchase-advice ul {
+      margin: 0 0 12px;
+      padding-left: 22px;
+    }
+
+    .purchase-advice li + li {
+      margin-top: 4px;
+    }
+
+    .purchase-advice strong {
+      color: var(--accent-dark);
+    }
+
+    .purchase-advice .muted {
+      font-size: 13px;
+    }
+
+    .collapsible-table-details {
+      margin-top: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .collapsible-table-details > summary {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .collapsible-table-details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .collapsible-table-details > summary::before {
+      color: var(--accent);
+      content: "▸";
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .collapsible-table-details[open] > summary::before {
+      content: "▾";
+    }
+
+    .collapsible-table-details > summary:focus-visible {
+      outline: 2px solid rgba(60, 157, 133, 0.35);
+      outline-offset: -2px;
+    }
+
+    .collapsible-table-details .section-title,
+    .collapsible-table-details .section-meta {
+      margin: 0;
+    }
+
+    .collapsible-table-details .section-title {
+      grid-column: 2;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .collapsible-table-details .section-meta {
+      grid-column: 3;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .collapsible-table-details > .table-wrap {
+      overflow-x: auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .collapsible-table-details table {
+      min-width: 620px;
     }
 
     table {
@@ -310,20 +852,6 @@
       line-height: 1.55;
     }
 
-    .strategy {
-      margin-bottom: 16px;
-      padding: 12px 14px;
-      border-left: 3px solid var(--accent);
-      background: #fbf6ea;
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .strategy strong {
-      color: var(--accent-dark);
-    }
-
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -348,6 +876,10 @@
       margin: 0 0 8px;
       font-size: 21px;
       line-height: 1.25;
+    }
+
+    #inputGuideModal .modal {
+      width: min(760px, 100%);
     }
 
     .modal p {
@@ -387,26 +919,26 @@
       margin-top: 18px;
     }
 
+    @media (max-width: 1100px) {
+      .exchange-targets {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .control-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 900px) {
-      header {
-        display: block;
-      }
-
-      .home-link {
-        margin-top: 12px;
-      }
-
-      .layout,
-      .tables {
+      .layout {
         grid-template-columns: 1fr;
       }
 
-      .controls {
-        position: static;
-      }
+    }
 
-      .summary {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (max-width: 680px) {
+      .control-groups {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -420,9 +952,45 @@
         font-size: 23px;
       }
 
-      .field-grid,
-      .summary {
+      .field-grid {
         grid-template-columns: 1fr;
+      }
+
+      .exchange-targets {
+        grid-template-columns: 1fr;
+      }
+
+      .controls > .package-target-totals {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .controls > .button-row .primary {
+        flex: 1;
+      }
+
+      .summary > span,
+      .completion-probability > span,
+      .summary-value span {
+        font-size: 16px;
+      }
+
+      .summary-value strong,
+      .completion-probability > strong {
+        font-size: 24px;
+      }
+
+      .current-rewards-header,
+      .package-grid {
+        display: block;
+      }
+
+      .current-rewards-badge {
+        display: inline-flex;
+        margin-top: 10px;
+      }
+
+      .package-card + .package-card {
+        margin-top: 12px;
       }
 
       table {
@@ -433,66 +1001,141 @@
       td {
         padding: 9px 6px;
       }
+
+      .collapsible-table-details > summary {
+        grid-template-columns: 24px minmax(0, 1fr);
+        align-items: start;
+        padding: 13px 12px;
+      }
+
+      .collapsible-table-details .section-meta {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .collapsible-table-details .section-title {
+        font-size: 17px;
+      }
+
+      .quantile-chart-content {
+        padding: 0 12px 13px;
+      }
     }
   </style>
   <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260920">
+  <script src="assets/celebration-current-data.js?v=20261003-targets3"></script>
 </head>
 <body>
   <main class="shell">
     <header>
       <div>
-        <h1>庆典西瓜和字金币计算器</h1>
-        <p class="subtitle">结合物品出现率、刷新费用和宝箱奖励，计算满足目标的最低期望金币。</p>
+        <h1>庆典红灯笼和字金币计算器</h1>
       </div>
       <a class="home-link" href="index.html" aria-label="返回工具首页">&#8592; 工具首页</a>
     </header>
 
+    <aside class="calculator-notice" aria-labelledby="calculatorNoticeTitle">
+      <h2 id="calculatorNoticeTitle">注意事项</h2>
+      <ol>
+        <li><strong>暂未区分字的种类。</strong>购买时请根据自己缺少的“节、日、快、乐”调整。</li>
+        <li><strong>目前仅考虑以下任务：</strong>购买 50 星/30 星大材料、30 星字，以及免费领取的 5 星大材料。</li>
+        <li><strong>目前未考虑只购买、不领取奖励的情况。</strong></li>
+      </ol>
+    </aside>
+
+    <!--
+    <section class="panel current-rewards" aria-labelledby="currentRewardsTitle">
+      <div class="current-rewards-header">
+        <div>
+          <h2 id="currentRewardsTitle">当前庆典兑换奖励</h2>
+        </div>
+        <span class="current-rewards-badge" id="currentRewardsUpdated"></span>
+      </div>
+      <div class="current-rewards-table-wrap">
+        <table class="current-rewards-table">
+          <thead>
+            <tr>
+              <th>兑换奖励</th>
+              <th>所需材料</th>
+              <th>限兑</th>
+            </tr>
+          </thead>
+          <tbody id="currentRewardsRows"></tbody>
+        </table>
+      </div>
+      <h3 class="package-title">礼包选项</h3>
+      <div class="package-grid" id="currentPackageCards"></div>
+    </section>
+    -->
+
     <div class="layout">
       <section class="panel controls">
-        <h2 class="section-title">目标和已拥有</h2>
-        <div class="field-grid">
+        <div class="section-heading">
+          <h2 class="section-title">想兑换的奖励</h2>
+          <time class="calculator-updated" datetime="2026-10-03T16:29:58+08:00">计算器更新：2026-10-03 16:29</time>
+        </div>
+        <div id="packageTargets" class="exchange-targets"></div>
+        <div class="field-grid package-target-totals" aria-live="polite">
           <label>
-            目标西瓜
-            <input id="targetMelon" type="number" min="0" step="1" value="100">
+            所需红灯笼
+            <input id="targetMelon" type="number" value="0" readonly>
           </label>
           <label>
-            目标字
-            <input id="targetWord" type="number" min="0" step="1" value="300">
-          </label>
-          <label>
-            已有西瓜
-            <input id="ownedMelon" type="number" min="0" step="1" value="0">
-          </label>
-          <label>
-            已有字
-            <input id="ownedWord" type="number" min="0" step="1" value="0">
+            所需字总数
+            <input id="targetWord" type="number" value="0" readonly>
           </label>
         </div>
+        <div class="control-groups">
+          <section class="control-group" aria-labelledby="ownedInputsTitle">
+            <h2 id="ownedInputsTitle" class="section-title">已拥有</h2>
+            <div class="field-grid">
+              <label>
+                已有红灯笼
+                <input id="ownedMelon" type="number" min="0" step="1" value="0">
+              </label>
+              <label>
+                已有字
+                <input id="ownedWord" type="number" min="0" step="1" value="0">
+              </label>
+            </div>
+          </section>
 
-        <h2 class="section-title">限制</h2>
-        <div class="field-grid">
-          <label>
-            最多购买次数
-            <input id="maxBuys" type="number" min="0" step="1" value="96" readonly>
-          </label>
-          <label>
-            当前已攒星数
-            <input id="baseStars" type="number" min="0" step="1" value="0">
-          </label>
+          <section class="control-group" aria-labelledby="limitInputsTitle">
+            <h2 id="limitInputsTitle" class="section-title">限制</h2>
+            <div class="field-grid">
+              <label>
+                最多购买次数
+                <input id="maxBuys" type="number" min="0" step="1" value="96" readonly>
+              </label>
+              <label>
+                当前已攒星数
+                <input id="baseStars" type="number" min="0" step="1" value="0">
+              </label>
+            </div>
+          </section>
+
+          <section class="control-group" aria-labelledby="budgetInputsTitle">
+            <h2 id="budgetInputsTitle" class="section-title">金币预算</h2>
+            <div class="field-grid single-field">
+              <label>
+                可用金币
+                <input id="budgetGold" type="number" min="0" step="1" value="0">
+              </label>
+            </div>
+          </section>
+
+          <section class="control-group" aria-labelledby="modeInputsTitle">
+            <h2 id="modeInputsTitle" class="section-title">计算方式</h2>
+            <div class="field-grid single-field">
+              <label>
+                <select id="calculationMode" aria-label="计算方式">
+                  <option value="expected">通常运气（含刷新花费）</option>
+                  <option value="melon30only">一直刷不到 50 星红灯笼</option>
+                </select>
+              </label>
+            </div>
+          </section>
         </div>
-
-        <h2 class="section-title">计算方式</h2>
-        <div class="field-grid">
-          <label>
-            成本模型
-            <select id="calculationMode">
-              <option value="expected">概率期望（含刷新）</option>
-              <option value="melon30only">仅 30 星西瓜（倒霉情况）</option>
-            </select>
-          </label>
-        </div>
-
-        <div id="taskEstimate" class="estimate-note">还未设置活动进度，默认按 96 次购买机会计算。</div>
 
         <div class="button-row">
           <button class="primary" id="calculate" type="button">计算</button>
@@ -500,63 +1143,83 @@
           <button class="secondary" id="openSetup" type="button">进度</button>
         </div>
 
-        <div class="rules">
-          <div>50 星西瓜：450 金币，4 个西瓜。</div>
-          <div>30 星西瓜：225 金币，2 个西瓜。</div>
-          <div>30 星字：225 金币，10 个字。</div>
-          <div>奖励档位按累计星数解锁，例如同时拿 100 星和 150 星奖励需要 250 星。</div>
-          <div>当前已攒星数之前的宝箱视为已领取，后续计算不会重复计入。</div>
-          <div>出现率：50 星西瓜 1.32%，30 星西瓜 1.32%，字 5.28%，其余 92.08% 需要刷新。</div>
-          <div>计算从第 1 次免费刷新开始；第 2～5 次每次 20 金币，第 6 次起每次 50 金币，购买后不重置。</div>
-          <div>概率期望模式会根据当时还缺的数量和剩余机会，动态决定买下还是继续刷新。</div>
-        </div>
       </section>
 
       <section class="panel result">
         <div id="status" class="status">等待计算。</div>
 
         <div id="answer" class="hidden">
-          <div class="summary">
-            <div class="metric">
-              <span id="costLabel">期望总金币</span>
+          <div class="summary hidden" hidden>
+            <span id="costLabel">平均要花金币</span>
+            <div class="summary-value">
               <strong id="cost">0</strong>
-            </div>
-            <div class="metric">
-              <span id="buysLabel">期望购买次数</span>
-              <strong id="buys">0</strong>
-            </div>
-            <div class="metric">
-              <span id="starsLabel">期望最终星数</span>
-              <strong id="stars">0</strong>
-            </div>
-            <div class="metric">
-              <span id="rewardLabel">期望新增奖励</span>
-              <strong id="rewardTier">0 档</strong>
+              <span>金币</span>
             </div>
           </div>
 
-          <div id="strategy" class="strategy hidden"></div>
+          <div id="completionProbability" class="completion-probability hidden" aria-live="polite">
+            <span id="completionProbabilityLabel">用可用金币完成任务的概率</span>
+            <strong id="completionProbabilityValue">计算中…</strong>
+          </div>
 
-          <div class="tables">
-            <div>
-              <h2 class="section-title">购买方案</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>类型</th>
-                    <th>次数</th>
-                    <th>金币</th>
-                    <th>星数</th>
-                    <th>产出</th>
-                  </tr>
-                </thead>
-                <tbody id="purchaseRows"></tbody>
-              </table>
+          <div id="costEstimateDetails" class="cost-estimate-details hidden" aria-live="polite">
+            <div class="cost-estimate-row">
+              <span id="maximumCostLabel" title="这是试算中的最高花费，实际花费可能更高。">预计最多需要花</span>
+              <strong id="maximumCostEstimate">计算中…</strong>
             </div>
+            <div class="cost-estimate-row">
+              <span>平均还要花</span>
+              <strong id="averageRemainingCost">计算中…</strong>
+            </div>
+          </div>
 
-            <div>
-              <h2 class="section-title">最终数量</h2>
-              <table>
+          <div id="costDistribution" class="estimate-note distribution-note hidden" hidden></div>
+
+          <div class="purchase-plan">
+            <div class="purchase-heading">
+              <h2 class="section-title">购买建议</h2>
+            </div>
+            <!-- Original purchase table retained for reference.
+            <table>
+              <thead>
+                <tr>
+                  <th>类型</th>
+                  <th>次数</th>
+                  <th>金币</th>
+                  <th>星数</th>
+                  <th>产出</th>
+                </tr>
+              </thead>
+              <tbody id="purchaseRows"></tbody>
+            </table>
+            -->
+            <div id="purchaseAdvice" class="purchase-advice" aria-live="polite"></div>
+          </div>
+
+          <div class="result-details">
+          <details id="costQuantileChart" class="collapsible-table-details quantile-chart hidden" aria-labelledby="costQuantileTitle">
+            <summary>
+              <h3 id="costQuantileTitle" class="section-title">金币花费参考</h3>
+            </summary>
+            <figure class="quantile-chart-content">
+              <div class="quantile-plot">
+                <svg id="quantileSvg" role="img" tabindex="0" aria-label="金币花费参考折线图"></svg>
+                <div id="quantileTooltip" class="quantile-tooltip hidden" role="tooltip"></div>
+              </div>
+              <figcaption class="quantile-chart-legend">
+                <span><i class="quantile-90" aria-hidden="true"></i>90% 的花费范围</span>
+                <span><i aria-hidden="true"></i>95% 的花费范围</span>
+                <span><i class="quantile-99" aria-hidden="true"></i>99% 的花费范围</span>
+              </figcaption>
+            </figure>
+          </details>
+
+            <details class="collapsible-table-details" aria-labelledby="total-details-title">
+              <summary>
+                <h2 id="total-details-title" class="section-title">最终数量</h2>
+              </summary>
+              <div class="table-wrap">
+                <table>
                 <thead>
                   <tr>
                     <th>项目</th>
@@ -565,22 +1228,29 @@
                   </tr>
                 </thead>
                 <tbody id="totalRows"></tbody>
+                </table>
+              </div>
+            </details>
+
+          <details class="collapsible-table-details" aria-labelledby="reward-details-title">
+            <summary>
+              <h2 id="reward-details-title" class="section-title">奖励明细</h2>
+            </summary>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>奖励档位</th>
+                    <th>领取所需累计星数</th>
+                    <th>奖励红灯笼</th>
+                    <th>奖励字</th>
+                  </tr>
+                </thead>
+                <tbody id="rewardRows"></tbody>
               </table>
             </div>
+          </details>
           </div>
-
-          <h2 class="section-title" style="margin-top:18px;">奖励明细</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>奖励档位</th>
-                <th>领取所需累计星数</th>
-                <th>奖励西瓜</th>
-                <th>奖励字</th>
-              </tr>
-            </thead>
-            <tbody id="rewardRows"></tbody>
-          </table>
         </div>
       </section>
     </div>
@@ -590,7 +1260,6 @@
   <div id="setupModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
     <div class="modal">
       <h2 id="setupTitle">请选择今天是活动的第几天</h2>
-      <p>这是为了方便推测剩余购买次数，活动按第六天 23:00 结束计算。保存后会自动填入“最多购买次数”，后面也可以点“进度”重新更改。</p>
 
       <div class="choice-section">
         <h3 class="section-title">活动天数</h3>
@@ -602,8 +1271,6 @@
         <div id="taskChoices" class="choice-grid"></div>
       </div>
 
-      <div id="modalEstimate" class="estimate-note" style="margin:16px 0 0;"></div>
-
       <div class="modal-actions">
         <button class="secondary" id="closeSetup" type="button">稍后再改</button>
         <button class="primary" id="saveSetup" type="button">保存并继续</button>
@@ -613,19 +1280,21 @@
 
   <div id="inputGuideModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="inputGuideTitle">
     <div class="modal">
-      <h2 id="inputGuideTitle">填写目标和当前进度</h2>
-      <p>请直接在这里填写目标、已经拥有的数量和当前星数，保存后会同步到主页面并自动计算。</p>
+      <h2 id="inputGuideTitle">选择兑换奖励和当前进度</h2>
+      <div id="guidePackageTargets" class="exchange-targets"></div>
+      <div class="field-grid package-target-totals" aria-live="polite">
+        <label>
+          所需红灯笼
+          <input id="guideTargetMelon" type="number" value="0" readonly>
+        </label>
+        <label>
+          所需字总数
+          <input id="guideTargetWord" type="number" value="0" readonly>
+        </label>
+      </div>
       <div class="field-grid">
         <label>
-          目标西瓜
-          <input id="guideTargetMelon" type="number" min="0" step="1" value="100">
-        </label>
-        <label>
-          目标字
-          <input id="guideTargetWord" type="number" min="0" step="1" value="300">
-        </label>
-        <label>
-          已有西瓜
+          已有红灯笼
           <input id="guideOwnedMelon" type="number" min="0" step="1" value="0">
         </label>
         <div style="grid-column:1 / -1;">
@@ -663,15 +1332,17 @@
                 <input id="guideWordPack" type="number" min="0" step="1" value="0">
               </label>
             </div>
-            <div id="ownedWordPartsTotal" class="estimate-note" style="margin:0;">合计已有字：0</div>
           </div>
         </div>
         <label>
           当前已攒星数
           <input id="guideBaseStars" type="number" min="0" step="1" value="0">
         </label>
+        <label>
+          可用金币
+          <input id="guideBudgetGold" type="number" min="0" step="1" value="0">
+        </label>
       </div>
-      <div class="estimate-note" style="margin:0;">“最多购买次数”已经根据刚才选择的活动天数和任务栏数量自动填写，通常不需要手动修改。</div>
       <div class="modal-actions">
         <button class="primary" id="saveInputGuide" type="button">保存并计算</button>
       </div>
@@ -690,6 +1361,40 @@
   </div>
 
   <script>
+    function renderCurrentRewards() {
+      const data = window.celebrationCurrentData;
+      if (!data) return;
+
+      const renderIcon = (item) => {
+        const icon = item.icon || data.itemIcons?.[item.name];
+        return icon
+          ? `<img class="resource-icon" src="${icon}" alt="${item.name}图标" loading="lazy">`
+          : `<span class="resource-icon resource-icon-fallback icon-${item.iconTone || "material"}" aria-hidden="true">${item.name.slice(0, 1)}</span>`;
+      };
+      const renderItem = (item, className = "resource-chip") => `
+        <span class="${className}">
+          ${renderIcon(item)}
+          <span>${item.name}${item.amount ? ` ×${Number(item.amount).toLocaleString("zh-CN")}` : ""}</span>
+        </span>`;
+
+      $("currentRewardsUpdated").textContent = `资源更新：${data.sourceUpdatedAt}`;
+      $("currentRewardsRows").innerHTML = data.exchanges.map((item) => `
+        <tr>
+          <td>${renderItem(item.reward, "resource-reward")}</td>
+          <td class="cost-list"><div class="resource-list">${item.cost.map((cost) => renderItem(cost)).join("")}</div></td>
+          <td>${item.limit.toLocaleString("zh-CN")} 次</td>
+        </tr>
+      `).join("");
+      $("currentPackageCards").innerHTML = data.packages.map((pack) => `
+        <article class="package-card">
+          <h4>${renderItem(pack, "resource-reward")}</h4>
+          <ul class="package-choices">
+            ${pack.choices.map((choice) => `<li>${renderItem(choice)}</li>`).join("")}
+          </ul>
+        </article>
+      `).join("");
+    }
+
     const rewardMilestones = [100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
     const rewardTiers = rewardMilestones.map((stars, index) => {
       const need = rewardMilestones.slice(0, index + 1).reduce((sum, value) => sum + value, 0);
@@ -702,21 +1407,214 @@
     });
 
     const items = [
-      { key: "melon50", name: "50 星西瓜", cost: 450, stars: 50, melon: 4, word: 0, probability: 0.0132 },
-      { key: "melon30", name: "30 星西瓜", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0132 },
-      { key: "word30", name: "30 星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0528 }
+      { key: "melon50", name: "50星红灯笼", cost: 450, stars: 50, melon: 4, word: 0, probability: 0.0132 },
+      { key: "melon30", name: "30星红灯笼", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0132 },
+      { key: "word30", name: "30星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0528 },
+      { key: "lantern5", name: "5星红灯笼", cost: 0, stars: 5, melon: 1, word: 0, probability: 0.0143 }
     ];
-    const otherProbability = 1 - items.reduce((sum, item) => sum + item.probability, 0);
+    // Use hundredths of a percent so the residual probability totals exactly 100%.
+    const itemProbabilityPoints = items.reduce((sum, item) => sum + Math.round(item.probability * 10000), 0);
+    if (itemProbabilityPoints > 10000 || items.some((item) => !Number.isFinite(item.probability) || item.probability < 0)) {
+      throw new Error("物品概率配置无效");
+    }
+    const otherProbability = (10000 - itemProbabilityPoints) / 10000;
+    const probabilityTotal = (itemProbabilityPoints + Math.round(otherProbability * 10000)) / 10000;
 
     const $ = (id) => document.getElementById(id);
     const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
     const format = (value) => Number(value).toLocaleString("zh-CN");
-    const activitySetup = { day: 1, tasks: 0 };
+    const targetPackages = (window.celebrationCurrentData?.exchanges || []).filter((item) => item.selectable !== false);
+    const packageTargetCounts = Object.fromEntries(targetPackages.map((item) => [item.id, 0]));
+    function parseActivityDate(value) {
+      const normalized = String(value || "").trim().replace(" ", "T");
+      const date = new Date(normalized);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function calendarDate(date) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    function readActivitySchedule() {
+      const event = window.celebrationCurrentData?.event || {};
+      const start = parseActivityDate(event.start);
+      const end = parseActivityDate(event.end);
+      if (!start || !end || end < start) {
+        return { start: null, end: null, days: 6, endMinute: 23 * 60 };
+      }
+      const startDay = calendarDate(start);
+      const endDay = calendarDate(end);
+      const days = Math.max(1, Math.round((endDay - startDay) / 86400000) + 1);
+      return {
+        start,
+        end,
+        days,
+        endMinute: end.getHours() * 60 + end.getMinutes()
+      };
+    }
+
+    const activitySchedule = readActivitySchedule();
+    const activityDays = activitySchedule.days;
+    const activityEndMinute = activitySchedule.endMinute;
+    const activitySetup = { day: 1, tasks: 0, autoDay: true };
     let hasShownInputGuide = false;
     let ownedWordInputMode = "direct";
-    const activityDays = 6;
-    const activityEndMinute = 23 * 60;
+    const wordPartIds = ["guideWordJie", "guideWordRi", "guideWordKuai", "guideWordLe", "guideWordPack"];
+    const savedFieldIds = ["ownedMelon", "ownedWord", "maxBuys", "baseStars", "budgetGold"];
+    const sessionKey = `celebration-inputs-v1:${window.celebrationCurrentData?.event.start || "current"}`;
     const refreshIntervalMinutes = 90;
+
+    function automaticActivityDay(now = new Date()) {
+      if (!activitySchedule.start || !activitySchedule.end) return 1;
+      if (now <= activitySchedule.start) return 1;
+      if (now >= activitySchedule.end) return activityDays;
+      const elapsedDays = Math.floor((calendarDate(now) - calendarDate(activitySchedule.start)) / 86400000);
+      return Math.min(activityDays, Math.max(1, elapsedDays + 1));
+    }
+
+    function syncAutomaticActivityDay(now = new Date()) {
+      if (activitySetup.autoDay) activitySetup.day = automaticActivityDay(now);
+    }
+
+    function saveSessionInputs() {
+      try {
+        const guideOpen = !$("inputGuideModal").classList.contains("hidden");
+        window.sessionStorage.setItem(sessionKey, JSON.stringify({
+          version: 1,
+          targets: packageTargetCounts,
+          fields: Object.fromEntries(savedFieldIds.map((id) => [id, numberValue(id)])),
+          mode: $("calculationMode").value,
+          activity: activitySetup,
+          hasShownInputGuide,
+          wordMode: ownedWordInputMode,
+          wordParts: Object.fromEntries(wordPartIds.map((id) => [id, numberValue(id)])),
+          setupOpen: !$("setupModal").classList.contains("hidden"),
+          guide: guideOpen ? {
+            targets: readGuidePackageCounts(),
+            ownedMelon: numberValue("guideOwnedMelon"),
+            ownedWord: numberValue("guideOwnedWord"),
+            baseStars: numberValue("guideBaseStars"),
+            budgetGold: numberValue("guideBudgetGold")
+          } : null
+        }));
+      } catch {
+        // Some local-file browsers disable session storage; calculation remains usable.
+      }
+    }
+
+    function restoreSessionInputs() {
+      let saved;
+      try {
+        saved = JSON.parse(window.sessionStorage.getItem(sessionKey));
+      } catch {
+        return false;
+      }
+      if (!saved || saved.version !== 1) return false;
+      const safeNumber = (value, max = Number.MAX_SAFE_INTEGER) => {
+        const number = Number(value);
+        return Number.isFinite(number) ? Math.min(max, Math.max(0, Math.floor(number))) : 0;
+      };
+      const safeTargets = (counts) => Object.fromEntries(targetPackages.map((item) => [
+        item.id, safeNumber(counts?.[item.id], item.limit)
+      ]));
+      applyPackageTargets(safeTargets(saved.targets));
+      for (const id of savedFieldIds) $(id).value = safeNumber(saved.fields?.[id]);
+      $("calculationMode").value = saved.mode === "melon30only" ? "melon30only" : "expected";
+      activitySetup.autoDay = saved.activity?.autoDay !== false;
+      activitySetup.day = activitySetup.autoDay
+        ? automaticActivityDay()
+        : Math.min(activityDays, Math.max(1, safeNumber(saved.activity?.day, activityDays)));
+      activitySetup.tasks = safeNumber(saved.activity?.tasks, 8);
+      hasShownInputGuide = saved.hasShownInputGuide === true;
+      for (const id of wordPartIds) $(id).value = safeNumber(saved.wordParts?.[id]);
+      if (saved.guide && typeof saved.guide === "object") {
+        renderPackageTargets(true, safeTargets(saved.guide.targets));
+        $("guideOwnedMelon").value = safeNumber(saved.guide.ownedMelon);
+        $("guideOwnedWord").value = safeNumber(saved.guide.ownedWord);
+        $("guideBaseStars").value = safeNumber(saved.guide.baseStars);
+        $("guideBudgetGold").value = safeNumber(saved.guide.budgetGold);
+        $("inputGuideModal").classList.remove("hidden");
+      } else if (saved.setupOpen === true) {
+        updateSetupModal();
+        $("setupModal").classList.remove("hidden");
+      }
+      setOwnedWordInputMode(saved.wordMode === "parts" ? "parts" : "direct");
+      return true;
+    }
+
+    function clampPackageCount(value, limit) {
+      return Math.min(limit, Math.max(0, Math.floor(Number(value) || 0)));
+    }
+
+    function packageTargetTotals(counts) {
+      const totals = { melon: 0, word: 0, words: { "节": 0, "日": 0, "快": 0, "乐": 0 } };
+      for (const item of targetPackages) {
+        const count = clampPackageCount(counts[item.id], item.limit);
+        for (const cost of item.cost) {
+          const amount = count * cost.amount;
+          if (cost.name === "红灯笼") {
+            totals.melon += amount;
+          } else if (Object.hasOwn(totals.words, cost.name)) {
+            totals.words[cost.name] += amount;
+            totals.word += amount;
+          }
+        }
+      }
+      return totals;
+    }
+
+    function readGuidePackageCounts() {
+      return Object.fromEntries(targetPackages.map((item) => [
+        item.id, clampPackageCount($("guidePackageCount-" + item.id).value, item.limit)
+      ]));
+    }
+
+    function updatePackageTargetTotals(counts, guide = false) {
+      const totals = packageTargetTotals(counts);
+      $(guide ? "guideTargetMelon" : "targetMelon").value = totals.melon;
+      $(guide ? "guideTargetWord" : "targetWord").value = totals.word;
+      return totals;
+    }
+
+    function applyPackageTargets(counts) {
+      for (const item of targetPackages) {
+        packageTargetCounts[item.id] = clampPackageCount(counts[item.id], item.limit);
+        $("packageCount-" + item.id).value = packageTargetCounts[item.id];
+      }
+      return updatePackageTargetTotals(packageTargetCounts);
+    }
+
+    function renderPackageTargets(guide = false, counts = packageTargetCounts) {
+      const data = window.celebrationCurrentData;
+      const container = $(guide ? "guidePackageTargets" : "packageTargets");
+      const prefix = guide ? "guidePackageCount-" : "packageCount-";
+      container.innerHTML = targetPackages.map((item) => {
+        const icon = item.reward.icon || data.itemIcons[item.reward.name];
+        return `<label class="exchange-target-row" for="${prefix}${item.id}">
+          <img src="${icon}" alt="" width="32" height="32">
+          <span class="exchange-target-copy">${item.reward.name}<small>限兑 ${format(item.limit)} 次</small></span>
+          <input id="${prefix}${item.id}" data-package-target type="number" min="0" max="${item.limit}" step="1" value="${counts[item.id]}" aria-label="${item.reward.name}兑换次数">
+        </label>`;
+      }).join("");
+      for (const item of targetPackages) {
+        const control = $(prefix + item.id);
+        const updateCount = (event) => {
+          const count = clampPackageCount(control.value, item.limit);
+          if (control.value !== "" || event.type === "change") control.value = count;
+          if (guide) {
+            updatePackageTargetTotals(readGuidePackageCounts(), true);
+            saveSessionInputs();
+          } else {
+            packageTargetCounts[item.id] = count;
+            updatePackageTargetTotals(packageTargetCounts);
+            scheduleCalculate();
+          }
+        };
+        control.addEventListener("input", updateCount);
+        control.addEventListener("change", updateCount);
+      }
+      updatePackageTargetTotals(counts, guide);
+    }
 
     function estimateTaskOpportunities(day, currentTasks, now = new Date()) {
       const safeDay = Math.min(6, Math.max(1, Number(day) || 1));
@@ -740,10 +1638,6 @@
       };
     }
 
-    function setupText(estimate) {
-      return `按当前时间 ${estimate.time} 估算：从第 ${estimate.day} 天现在起，到第六天 23:00 结束前还会刷新 ${format(estimate.futureRefreshes)} 次任务，加上任务栏现有 ${format(estimate.tasks)} 个任务，共 ${format(estimate.total)} 次任务机会。`;
-    }
-
     function renderChoiceButtons(containerId, values, selected, formatter, onSelect) {
       $(containerId).innerHTML = values.map((value) => (
         `<button class="choice-button${value === selected ? " selected" : ""}" type="button" data-value="${value}">${formatter(value)}</button>`
@@ -753,61 +1647,64 @@
         button.addEventListener("click", () => {
           onSelect(Number(button.dataset.value));
           updateSetupModal();
+          saveSessionInputs();
         });
       });
     }
 
     function updateSetupModal() {
-      renderChoiceButtons("dayChoices", [1, 2, 3, 4, 5, 6], activitySetup.day, (value) => `第 ${value} 天`, (value) => {
+      renderChoiceButtons("dayChoices", Array.from({ length: activityDays }, (_, index) => index + 1), activitySetup.day, (value) => `第 ${value} 天`, (value) => {
         activitySetup.day = value;
+        activitySetup.autoDay = false;
       });
       renderChoiceButtons("taskChoices", [0, 1, 2, 3, 4, 5, 6, 7, 8], activitySetup.tasks, (value) => `${value} 个`, (value) => {
         activitySetup.tasks = value;
       });
-      $("modalEstimate").textContent = setupText(estimateTaskOpportunities(activitySetup.day, activitySetup.tasks));
     }
 
     function applyActivitySetup() {
       const estimate = estimateTaskOpportunities(activitySetup.day, activitySetup.tasks);
       $("maxBuys").value = estimate.total;
-      $("taskEstimate").textContent = setupText(estimate);
       calculate();
     }
 
     function openSetupModal() {
+      syncAutomaticActivityDay();
       updateSetupModal();
       $("setupModal").classList.remove("hidden");
+      saveSessionInputs();
     }
 
     function closeSetupModal() {
       $("setupModal").classList.add("hidden");
+      saveSessionInputs();
     }
 
     function openInputGuideModal() {
-      $("guideTargetMelon").value = $("targetMelon").value;
-      $("guideTargetWord").value = $("targetWord").value;
+      renderPackageTargets(true);
+      const keepParts = ownedWordInputMode === "parts" && ownedWordPartsTotal() === numberValue("ownedWord");
+      setOwnedWordInputMode(keepParts ? "parts" : "direct");
       $("guideOwnedMelon").value = $("ownedMelon").value;
       $("guideOwnedWord").value = $("ownedWord").value;
       $("guideBaseStars").value = $("baseStars").value;
-      setOwnedWordInputMode("direct");
+      $("guideBudgetGold").value = $("budgetGold").value;
       $("inputGuideModal").classList.remove("hidden");
+      saveSessionInputs();
       window.setTimeout(() => {
-        $("guideTargetMelon").focus();
-        $("guideTargetMelon").select();
+        const firstTarget = $("guidePackageTargets").querySelector("input");
+        firstTarget?.focus();
+        firstTarget?.select();
       }, 0);
     }
 
     function closeInputGuideModal() {
       $("inputGuideModal").classList.add("hidden");
+      saveSessionInputs();
     }
 
     function ownedWordPartsTotal() {
-      return ["guideWordJie", "guideWordRi", "guideWordKuai", "guideWordLe", "guideWordPack"]
+      return wordPartIds
         .reduce((sum, id) => sum + numberValue(id), 0);
-    }
-
-    function updateOwnedWordPartsTotal() {
-      $("ownedWordPartsTotal").textContent = `合计已有字：${format(ownedWordPartsTotal())}`;
     }
 
     function setOwnedWordInputMode(mode) {
@@ -822,17 +1719,16 @@
       $("ownedWordPartsMode").classList.toggle("selected", !direct);
       $("ownedWordDirectMode").setAttribute("aria-pressed", String(direct));
       $("ownedWordPartsMode").setAttribute("aria-pressed", String(!direct));
-      updateOwnedWordPartsTotal();
     }
 
     function saveInputGuide() {
-      $("targetMelon").value = numberValue("guideTargetMelon");
-      $("targetWord").value = numberValue("guideTargetWord");
+      applyPackageTargets(readGuidePackageCounts());
       $("ownedMelon").value = numberValue("guideOwnedMelon");
       $("ownedWord").value = ownedWordInputMode === "parts"
         ? ownedWordPartsTotal()
         : numberValue("guideOwnedWord");
       $("baseStars").value = numberValue("guideBaseStars");
+      $("budgetGold").value = numberValue("guideBudgetGold");
       closeInputGuideModal();
       calculate();
     }
@@ -850,8 +1746,14 @@
     function betterPlan(plan, best) {
       if (!best) return true;
       if (plan.cost !== best.cost) return plan.cost < best.cost;
-      if (plan.melon30 !== best.melon30) return plan.melon30 > best.melon30;
-      if (plan.melon50 !== best.melon50) return plan.melon50 < best.melon50;
+      const melon30Index = items.findIndex((item) => item.key === "melon30");
+      const melon50Index = items.findIndex((item) => item.key === "melon50");
+      if (plan.counts[melon30Index] !== best.counts[melon30Index]) {
+        return plan.counts[melon30Index] > best.counts[melon30Index];
+      }
+      if (plan.counts[melon50Index] !== best.counts[melon50Index]) {
+        return plan.counts[melon50Index] < best.counts[melon50Index];
+      }
       if (plan.buys !== best.buys) return plan.buys < best.buys;
       if (plan.melonSurplus + plan.wordSurplus !== best.melonSurplus + best.wordSurplus) {
         return plan.melonSurplus + plan.wordSurplus < best.melonSurplus + best.wordSurplus;
@@ -860,9 +1762,10 @@
     }
 
     function readInput() {
+      const targets = updatePackageTargetTotals(packageTargetCounts);
       const input = {
-        targetMelon: numberValue("targetMelon"),
-        targetWord: numberValue("targetWord"),
+        targetMelon: targets.melon,
+        targetWord: targets.word,
         ownedMelon: numberValue("ownedMelon"),
         ownedWord: numberValue("ownedWord"),
         maxBuys: numberValue("maxBuys"),
@@ -874,16 +1777,212 @@
       return input;
     }
 
+    let currentCalculationId = 0;
+    let calculationWorker = null;
+    let quantileChartData = null;
+    let quantileChartLayout = null;
+    let selectedQuantilePercent = 50;
+    let currentCostDistribution = null;
+    let costDistributionPending = false;
+
+    function clearBudgetProbability() {
+      currentCostDistribution = null;
+      costDistributionPending = false;
+      $("completionProbability").classList.add("hidden");
+      $("costEstimateDetails").classList.add("hidden");
+    }
+
+    function completionProbabilityForBudget(distribution, budget) {
+      const spends = distribution.completionSpends;
+      let lower = 0;
+      let upper = spends.length;
+      while (lower < upper) {
+        const middle = Math.floor((lower + upper) / 2);
+        if (spends[middle] <= budget) lower = middle + 1;
+        else upper = middle;
+      }
+      return distribution.sampleCount ? lower / distribution.sampleCount * 100 : 0;
+    }
+
+    function updateBudgetProbability() {
+      if ($("calculationMode").value !== "expected" || (!currentCostDistribution && !costDistributionPending)) {
+        $("completionProbability").classList.add("hidden");
+        return;
+      }
+      const budget = numberValue("budgetGold");
+      $("completionProbabilityLabel").textContent = `用 ${format(budget)} 金币完成任务的概率`;
+      $("completionProbabilityValue").textContent = currentCostDistribution
+        ? `约 ${completionProbabilityForBudget(currentCostDistribution, budget).toLocaleString("zh-CN", { maximumFractionDigits: 1 })}%`
+        : "计算中…";
+      $("completionProbability").classList.remove("hidden");
+    }
+
+    function clearQuantileChart() {
+      quantileChartData = null;
+      quantileChartLayout = null;
+      $("costQuantileChart").classList.add("hidden");
+      $("costQuantileChart").open = false;
+      $("quantileSvg").innerHTML = "";
+      hideQuantileTooltip();
+    }
+
+    function renderQuantileChart(quantiles) {
+      quantileChartData = quantiles;
+      selectedQuantilePercent = 50;
+      hideQuantileTooltip();
+      $("costQuantileChart").classList.remove("hidden");
+      drawQuantileChart();
+    }
+
+    function drawQuantileChart() {
+      if (!quantileChartData || !$("costQuantileChart").open) return;
+      const svg = $("quantileSvg");
+      const width = Math.max(240, svg.getBoundingClientRect().width);
+      const height = 300;
+      const left = 52;
+      const right = width - 18;
+      const top = 28;
+      const bottom = height - 48;
+      const minimum = quantileChartData[0].cost;
+      const maximum = quantileChartData[quantileChartData.length - 1].cost;
+      const roughStep = Math.max(1, (maximum - minimum) / 4);
+      const magnitude = 10 ** Math.floor(Math.log10(roughStep));
+      const step = [1, 2, 5, 10].find((value) => value * magnitude >= roughStep) * magnitude;
+      const lower = Math.floor(minimum / step) * step;
+      const upper = Math.max(lower + step, Math.ceil(maximum / step) * step);
+      const x = (percent) => left + (right - left) * percent / 100;
+      const y = (cost) => bottom - (bottom - top) * (cost - lower) / (upper - lower);
+      quantileChartLayout = { width, left, right, top, bottom, x, y };
+
+      const grid = [];
+      for (let value = lower; value <= upper; value += step) {
+        const label = upper >= 10000 ? `${Number((value / 10000).toFixed(2))}万` : format(value);
+        grid.push(`<line x1="${left}" y1="${y(value)}" x2="${right}" y2="${y(value)}" stroke="#d9cbb6" stroke-dasharray="3 4"/>
+          <text x="${left - 8}" y="${y(value) + 4}" text-anchor="end">${label}</text>`);
+      }
+      const ticks = [0, 25, 50, 75, 100].map((percent) =>
+        `<text x="${x(percent)}" y="${bottom + 20}" text-anchor="middle">${percent}</text>`
+      ).join("");
+      const points = quantileChartData.map((point) => `${x(point.percent)},${y(point.cost)}`).join(" ");
+      const boundaries = [0.5, 2.5, 5, 95, 97.5, 99.5].map((percent) => {
+        const point = quantileChartData[Math.round(percent * 2)];
+        const color = percent === 5 || percent === 95 ? "#477bba"
+          : percent === 2.5 || percent === 97.5 ? "#b8842f" : "#7962aa";
+        return `<circle cx="${x(percent)}" cy="${y(point.cost)}" r="3.5" fill="${color}" stroke="#fffdf8" stroke-width="1"><title>约有 ${point.percent}% 的概率，花费不超过 ${formatExpected(point.cost)} 金币</title></circle>`;
+      }).join("");
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.innerHTML = `<title>金币花费参考</title>
+        <g font-family="Microsoft YaHei, sans-serif" font-size="12" fill="#746d62">
+          ${grid.join("")}${ticks}
+          <text x="${left}" y="16">金币</text>
+          <text x="${(left + right) / 2}" y="${height - 5}" text-anchor="middle">不超过这笔花费的机会（%）</text>
+        </g>
+        <polyline points="${points}" fill="none" stroke="#3c9d85" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        ${boundaries}
+        <line id="quantileCursor" y1="${top}" y2="${bottom}" stroke="#173f35" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle id="quantileSelectedPoint" r="4.5" fill="#173f35" stroke="#fffdf8" stroke-width="2"/>`;
+      selectQuantile(selectedQuantilePercent, !$("quantileTooltip").classList.contains("hidden"));
+    }
+
+    function hideQuantileTooltip() {
+      $("quantileTooltip").classList.add("hidden");
+    }
+
+    function showQuantileTooltip(point) {
+      const tooltip = $("quantileTooltip");
+      const bounds = $("quantileSvg").getBoundingClientRect();
+      const { width, x, y } = quantileChartLayout;
+      tooltip.textContent = `约有 ${point.percent}% 的概率，花费不超过 ${formatExpected(point.cost)} 金币`;
+      tooltip.classList.remove("hidden");
+      const scale = Math.min(bounds.width / width, bounds.height / 300);
+      const pointX = (bounds.width - width * scale) / 2 + x(point.percent) * scale;
+      const pointY = (bounds.height - 300 * scale) / 2 + y(point.cost) * scale;
+      const tooltipWidth = tooltip.offsetWidth;
+      const tooltipHeight = tooltip.offsetHeight;
+      const preferredLeft = pointX + 12 + tooltipWidth <= bounds.width - 8
+        ? pointX + 12 : pointX - tooltipWidth - 12;
+      const preferredTop = pointY - tooltipHeight - 12 >= 8
+        ? pointY - tooltipHeight - 12 : pointY + 12;
+      tooltip.style.left = `${Math.max(8, Math.min(preferredLeft, bounds.width - tooltipWidth - 8))}px`;
+      tooltip.style.top = `${Math.max(8, Math.min(preferredTop, bounds.height - tooltipHeight - 8))}px`;
+    }
+
+    function selectQuantile(percent, showTooltip = false) {
+      if (!quantileChartData || !quantileChartLayout) return;
+      const index = Math.round(Math.max(0, Math.min(100, percent)) * 2);
+      const point = quantileChartData[index];
+      const { x, y } = quantileChartLayout;
+      selectedQuantilePercent = point.percent;
+      const readout = `约有 ${point.percent}% 的概率，花费不超过 ${formatExpected(point.cost)} 金币`;
+      $("quantileSvg").setAttribute("aria-label", `金币花费参考折线图；${readout}`);
+      $("quantileCursor").setAttribute("x1", x(point.percent));
+      $("quantileCursor").setAttribute("x2", x(point.percent));
+      $("quantileSelectedPoint").setAttribute("cx", x(point.percent));
+      $("quantileSelectedPoint").setAttribute("cy", y(point.cost));
+      if (showTooltip) showQuantileTooltip(point);
+      else hideQuantileTooltip();
+    }
+
+    function initializeQuantileChart() {
+      $("costQuantileChart").addEventListener("toggle", () => {
+        if ($("costQuantileChart").open) drawQuantileChart();
+        else hideQuantileTooltip();
+      });
+      const svg = $("quantileSvg");
+      svg.addEventListener("blur", hideQuantileTooltip);
+      svg.addEventListener("keydown", (event) => {
+        const percent = {
+          ArrowLeft: selectedQuantilePercent - 0.5,
+          ArrowDown: selectedQuantilePercent - 0.5,
+          ArrowRight: selectedQuantilePercent + 0.5,
+          ArrowUp: selectedQuantilePercent + 0.5,
+          Home: 0,
+          End: 100
+        }[event.key];
+        if (percent === undefined) return;
+        event.preventDefault();
+        selectQuantile(percent, true);
+      });
+      const selectFromPointer = (event) => {
+        if (!quantileChartLayout) return;
+        const bounds = svg.getBoundingClientRect();
+        if (!bounds.width) return;
+        const { width, left, right } = quantileChartLayout;
+        const position = (event.clientX - bounds.left) * width / bounds.width;
+        selectQuantile((position - left) / (right - left) * 100, true);
+      };
+      svg.addEventListener("pointermove", selectFromPointer);
+      svg.addEventListener("click", selectFromPointer);
+      svg.addEventListener("pointerleave", hideQuantileTooltip);
+      document.addEventListener("pointerdown", (event) => {
+        if (!$("costQuantileChart").contains(event.target)) hideQuantileTooltip();
+      });
+      if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(drawQuantileChart).observe(svg);
+      } else {
+        window.addEventListener("resize", drawQuantileChart);
+      }
+    }
+
     function calculate() {
+      saveSessionInputs();
+      clearBudgetProbability();
+      const calculationId = ++currentCalculationId;
+      clearQuantileChart();
+      if (calculationWorker) {
+        calculationWorker.terminate();
+        calculationWorker = null;
+      }
       const input = readInput();
       if (input.mode === "expected") {
         if (input.maxBuys > 130) {
           $("status").className = "status bad";
-          $("status").textContent = "概率期望模式最多支持 130 次购买机会，请缩小“最多购买次数”后再计算。";
+          $("status").textContent = "最多可按 130 次购买计算，请调低“最多购买次数”后再计算。";
           $("answer").classList.add("hidden");
+          $("costDistribution").classList.add("hidden");
           return;
         }
-        renderExpected(calculateExpected(input), input);
+        calculateExpectedInBackground(input, calculationId);
         return;
       }
       renderDirect(calculateDirect(input), input);
@@ -891,303 +1990,513 @@
 
     function calculateDirect(input) {
       let best = null;
-      const maxMelon50 = input.mode === "melon30only" ? 0 : input.maxBuys;
+      const counts = new Array(items.length).fill(0);
 
-      for (let melon50 = 0; melon50 <= maxMelon50; melon50 += 1) {
-        for (let melon30 = 0; melon30 <= input.maxBuys - melon50; melon30 += 1) {
-          for (let word30 = 0; word30 <= input.maxBuys - melon50 - melon30; word30 += 1) {
-            const buys = melon50 + melon30 + word30;
-            const cost = melon50 * 450 + (melon30 + word30) * 225;
-            const stars = input.baseStars + melon50 * 50 + (melon30 + word30) * 30;
-            const reward = rewardsForStars(stars, input.baseStars);
-            const melon = melon50 * 4 + melon30 * 2 + reward.melon;
-            const word = word30 * 10 + reward.word;
+      function evaluateCounts() {
+        const buys = counts.reduce((sum, count) => sum + count, 0);
+        const cost = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].cost, 0);
+        const stars = input.baseStars + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
+        const reward = rewardsForStars(stars, input.baseStars);
+        const melon = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0) + reward.melon;
+        const word = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0) + reward.word;
 
-            if (melon < input.needMelon || word < input.needWord) continue;
+        if (melon < input.needMelon || word < input.needWord) return;
 
-            const plan = {
-              melon50,
-              melon30,
-              word30,
-              buys,
-              cost,
-              stars,
-              reward,
-              melon,
-              word,
-              melonSurplus: melon - input.needMelon,
-              wordSurplus: word - input.needWord
-            };
+        const plan = {
+          counts: counts.slice(),
+          buys,
+          cost,
+          stars,
+          reward,
+          melon,
+          word,
+          melonSurplus: melon - input.needMelon,
+          wordSurplus: word - input.needWord
+        };
 
-            if (betterPlan(plan, best)) best = plan;
-          }
+        if (betterPlan(plan, best)) best = plan;
+      }
+
+      function enumerate(itemIndex, remainingBuys) {
+        if (itemIndex === items.length) {
+          evaluateCounts();
+          return;
+        }
+        const item = items[itemIndex];
+        const maxCount = input.mode === "melon30only" && item.key === "melon50" ? 0 : remainingBuys;
+        for (let count = 0; count <= maxCount; count += 1) {
+          counts[itemIndex] = count;
+          enumerate(itemIndex + 1, remainingBuys - count);
         }
       }
+
+      enumerate(0, input.maxBuys);
 
       return best;
     }
 
-    function stateIndex(melon50, melon30, word30) {
-      const total = melon50 + melon30 + word30;
-      const levelOffset = total * (total + 1) * (total + 2) / 6;
-      const itemOffset = melon50 * (total + 1) - melon50 * (melon50 - 1) / 2;
-      return levelOffset + itemOffset + melon30;
-    }
 
     function makeLayers(ArrayType, length) {
       return Array.from({ length: 6 }, () => new ArrayType(length));
     }
 
+
+    function calculateExpectedInBackground(input, calculationId) {
+      $("status").className = "status";
+      $("status").textContent = "正在计算大概需要多少金币…";
+      $("answer").classList.add("hidden");
+      $("costDistribution").classList.add("hidden");
+
+      const runHere = () => {
+        if (calculationId !== currentCalculationId) return;
+        renderExpected(calculateExpected(input), input, calculationId);
+      };
+      const workerSource = [
+        "const items = " + JSON.stringify(items) + ";",
+        "const rewardTiers = " + JSON.stringify(rewardTiers) + ";",
+        "const otherProbability = " + otherProbability + ";",
+        "const probabilityTotal = " + probabilityTotal + ";",
+        rewardsForStars.toString(),
+        makeLayers.toString(),
+        layerSize4.toString(),
+        stateIndex4.toString(),
+        layerRank4.toString(),
+        calculateExpected.toString(),
+        "self.onmessage = (event) => {",
+        "  const result = calculateExpected(event.data);",
+        "  self.postMessage(result, result ? result.buyDecisions.map((layer) => layer.buffer) : []);",
+        "};"
+      ].join("\n");
+
+      try {
+        const workerUrl = URL.createObjectURL(new Blob([workerSource], { type: "text/javascript" }));
+        let worker;
+        try {
+          worker = new Worker(workerUrl);
+        } finally {
+          URL.revokeObjectURL(workerUrl);
+        }
+        calculationWorker = worker;
+        worker.onmessage = (event) => {
+          worker.terminate();
+          if (calculationWorker === worker) calculationWorker = null;
+          if (calculationId !== currentCalculationId) return;
+          renderExpected(event.data, input, calculationId);
+        };
+        worker.onerror = () => {
+          worker.terminate();
+          if (calculationWorker === worker) calculationWorker = null;
+          window.setTimeout(runHere, 0);
+        };
+        worker.postMessage(input);
+      } catch {
+        window.setTimeout(runHere, 0);
+      }
+    }
+
+    function layerSize4(total) {
+      return (total + 1) * (total + 2) * (total + 3) / 6;
+    }
+
+    function stateIndex4(first, second, third, fourth) {
+      const total = first + second + third + fourth;
+      const levelOffset = total * (total + 1) * (total + 2) * (total + 3) / 24;
+      const beforeFirst = (total + 3) * (total + 2) * (total + 1) / 6
+        - (total - first + 3) * (total - first + 2) * (total - first + 1) / 6;
+      const remaining = total - first;
+      const beforeSecond = second * (remaining + 1) - second * (second - 1) / 2;
+      return levelOffset + beforeFirst + beforeSecond + third;
+    }
+
+    function layerRank4(first, second, third, fourth) {
+      const total = first + second + third + fourth;
+      const beforeFirst = (total + 3) * (total + 2) * (total + 1) / 6
+        - (total - first + 3) * (total - first + 2) * (total - first + 1) / 6;
+      const remaining = total - first;
+      const beforeSecond = second * (remaining + 1) - second * (second - 1) / 2;
+      return beforeFirst + beforeSecond + third;
+    }
+
     function calculateExpected(input) {
       const maxBuys = input.maxBuys;
-      const stateCount = (maxBuys + 1) * (maxBuys + 2) * (maxBuys + 3) / 6;
-      const values = makeLayers(Float64Array, stateCount);
-      const metricLayers = Array.from({ length: 9 }, () => makeLayers(Float32Array, stateCount));
-      const [
-        purchaseCosts,
-        refreshCosts,
-        refreshCounts,
-        melon50Counts,
-        melon30Counts,
-        word30Counts,
-        rewardMelons,
-        rewardWords,
-        rewardCounts
-      ] = metricLayers;
-      const probabilitySum = 1 - otherProbability;
+      const stateCount = (maxBuys + 1) * (maxBuys + 2) * (maxBuys + 3) * (maxBuys + 4) / 24;
+      const buyDecisions = makeLayers(Uint8Array, stateCount);
+      const metricCount = 3 + items.length + 3;
+      const itemCountMetricStart = 3;
+      const rewardMelonMetric = itemCountMetricStart + items.length;
+      const rewardWordMetric = rewardMelonMetric + 1;
+      const rewardCountMetric = rewardMelonMetric + 2;
+      let nextValues;
+      let nextMetrics;
+      let rootActions = [];
 
-      function setUnreachable(index) {
+      function makeMetricLayers(length) {
+        return Array.from({ length: metricCount }, () => makeLayers(Float32Array, length));
+      }
+
+      function setUnreachable(values, rank) {
         for (let refreshTier = 0; refreshTier < 6; refreshTier += 1) {
-          values[refreshTier][index] = Infinity;
+          values[refreshTier][rank] = Infinity;
         }
       }
 
       function itemIncrement(itemIndex, rewardDelta) {
-        return [
-          items[itemIndex].cost,
-          0,
-          0,
-          itemIndex === 0 ? 1 : 0,
-          itemIndex === 1 ? 1 : 0,
-          itemIndex === 2 ? 1 : 0,
-          rewardDelta.melon,
-          rewardDelta.word,
-          rewardDelta.count
-        ];
+        const increment = new Array(metricCount).fill(0);
+        increment[0] = items[itemIndex].cost;
+        increment[itemCountMetricStart + itemIndex] = 1;
+        increment[rewardMelonMetric] = rewardDelta.melon;
+        increment[rewardWordMetric] = rewardDelta.word;
+        increment[rewardCountMetric] = rewardDelta.count;
+        return increment;
       }
 
+      // Keep only adjacent value layers; the compact policies remain available for simulation.
       for (let buys = maxBuys; buys >= 0; buys -= 1) {
-        for (let melon50 = 0; melon50 <= buys; melon50 += 1) {
-          for (let melon30 = 0; melon30 <= buys - melon50; melon30 += 1) {
-            const word30 = buys - melon50 - melon30;
-            const index = stateIndex(melon50, melon30, word30);
-            const stars = input.baseStars + melon50 * 50 + (melon30 + word30) * 30;
-            const reward = rewardsForStars(stars, input.baseStars);
-            const totalMelon = input.ownedMelon + melon50 * 4 + melon30 * 2 + reward.melon;
-            const totalWord = input.ownedWord + word30 * 10 + reward.word;
-            const reachedTarget = totalMelon >= input.targetMelon && totalWord >= input.targetWord;
+        const currentValues = makeLayers(Float64Array, layerSize4(buys));
+        const currentMetrics = makeMetricLayers(layerSize4(buys));
 
-            if (reachedTarget) continue;
-            if (buys === maxBuys) {
-              setUnreachable(index);
-              continue;
-            }
+        for (let first = 0; first <= buys; first += 1) {
+          for (let second = 0; second <= buys - first; second += 1) {
+            for (let third = 0; third <= buys - first - second; third += 1) {
+              const fourth = buys - first - second - third;
+              const rank = layerRank4(first, second, third, fourth);
+              const globalIndex = stateIndex4(first, second, third, fourth);
+              const counts = [first, second, third, fourth];
+              const stars = input.baseStars + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
+              const reward = rewardsForStars(stars, input.baseStars);
+              const totalMelon = input.ownedMelon + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0) + reward.melon;
+              const totalWord = input.ownedWord + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0) + reward.word;
+              const reachedTarget = totalMelon >= input.targetMelon && totalWord >= input.targetWord;
 
-            const childIndexes = [
-              stateIndex(melon50 + 1, melon30, word30),
-              stateIndex(melon50, melon30 + 1, word30),
-              stateIndex(melon50, melon30, word30 + 1)
-            ];
-            const increments = items.map((item, itemIndex) => {
-              const rewardDelta = rewardsForStars(stars + item.stars, stars);
-              return itemIncrement(itemIndex, rewardDelta);
-            });
-
-            const tailOffers = items.map((item, itemIndex) => ({
-              itemIndex,
-              value: item.cost + values[5][childIndexes[itemIndex]]
-            })).filter((offer) => Number.isFinite(offer.value))
-              .sort((left, right) => left.value - right.value);
-
-            if (!tailOffers.length) {
-              setUnreachable(index);
-              continue;
-            }
-
-            let acceptedProbability = 0;
-            let weightedValue = 0;
-            let acceptedCount = 0;
-            let tailThreshold = Infinity;
-
-            for (let offerIndex = 0; offerIndex < tailOffers.length; offerIndex += 1) {
-              const offer = tailOffers[offerIndex];
-              const probability = items[offer.itemIndex].probability;
-              acceptedProbability += probability;
-              weightedValue += probability * offer.value;
-              acceptedCount = offerIndex + 1;
-              tailThreshold = (50 + weightedValue) / acceptedProbability;
-              const nextValue = tailOffers[offerIndex + 1]?.value ?? Infinity;
-              if (tailThreshold <= nextValue) break;
-            }
-
-            const acceptedOffers = tailOffers.slice(0, acceptedCount);
-            values[5][index] = tailThreshold - 50;
-            const failedDraws = (1 - acceptedProbability) / acceptedProbability;
-
-            for (let metricIndex = 0; metricIndex < metricLayers.length; metricIndex += 1) {
-              let metricValue = 0;
-              for (const offer of acceptedOffers) {
-                const itemIndex = offer.itemIndex;
-                const weight = items[itemIndex].probability / acceptedProbability;
-                metricValue += weight * (
-                  metricLayers[metricIndex][5][childIndexes[itemIndex]] +
-                  increments[itemIndex][metricIndex]
-                );
+              if (reachedTarget) continue;
+              if (buys === maxBuys) {
+                setUnreachable(currentValues, rank);
+                continue;
               }
-              if (metricIndex === 1) metricValue += failedDraws * 50;
-              if (metricIndex === 2) metricValue += failedDraws;
-              metricLayers[metricIndex][5][index] = metricValue;
-            }
 
-            for (let refreshTier = 4; refreshTier >= 0; refreshTier -= 1) {
-              const refreshPrice = refreshTier === 0 ? 0 : 20;
-              const refreshValue = refreshPrice + values[refreshTier + 1][index];
-              let expectedValue = otherProbability * refreshValue;
-              const buyChoices = [];
+              const childRanks = [
+                layerRank4(first + 1, second, third, fourth),
+                layerRank4(first, second + 1, third, fourth),
+                layerRank4(first, second, third + 1, fourth),
+                layerRank4(first, second, third, fourth + 1)
+              ];
+              const increments = items.map((item, itemIndex) => itemIncrement(
+                itemIndex,
+                rewardsForStars(stars + item.stars, stars)
+              ));
+              const tailOffers = items.map((item, itemIndex) => ({
+                itemIndex,
+                value: item.cost + nextValues[5][childRanks[itemIndex]]
+              })).filter((offer) => Number.isFinite(offer.value))
+                .sort((left, right) => left.value - right.value);
 
-              for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-                const buyValue = items[itemIndex].cost + values[refreshTier][childIndexes[itemIndex]];
-                const shouldBuy = buyValue <= refreshValue;
-                buyChoices.push(shouldBuy);
-                expectedValue += items[itemIndex].probability * (shouldBuy ? buyValue : refreshValue);
+              if (!tailOffers.length) {
+                setUnreachable(currentValues, rank);
+                continue;
               }
-              values[refreshTier][index] = expectedValue;
 
-              for (let metricIndex = 0; metricIndex < metricLayers.length; metricIndex += 1) {
-                const refreshedMetric = metricLayers[metricIndex][refreshTier + 1][index]
-                  + (metricIndex === 1 ? refreshPrice : 0)
-                  + (metricIndex === 2 ? 1 : 0);
-                let metricValue = otherProbability * refreshedMetric;
+              let acceptedProbability = 0;
+              let weightedValue = 0;
+              let acceptedCount = 0;
+              let tailThreshold = Infinity;
+
+              for (let offerIndex = 0; offerIndex < tailOffers.length; offerIndex += 1) {
+                const offer = tailOffers[offerIndex];
+                const probability = items[offer.itemIndex].probability;
+                acceptedProbability += probability;
+                weightedValue += probability * offer.value;
+                acceptedCount = offerIndex + 1;
+                tailThreshold = (50 + weightedValue) / acceptedProbability;
+                const nextValue = tailOffers[offerIndex + 1]?.value ?? Infinity;
+                if (tailThreshold <= nextValue) break;
+              }
+
+              const acceptedOffers = tailOffers.slice(0, acceptedCount);
+              buyDecisions[5][globalIndex] = acceptedOffers.reduce(
+                (mask, offer) => mask | (1 << offer.itemIndex),
+                0
+              );
+              currentValues[5][rank] = tailThreshold - 50;
+              const failedDraws = (1 - acceptedProbability) / acceptedProbability;
+
+              for (let metricIndex = 0; metricIndex < metricCount; metricIndex += 1) {
+                let metricValue = 0;
+                for (const offer of acceptedOffers) {
+                  const itemIndex = offer.itemIndex;
+                  const weight = items[itemIndex].probability / acceptedProbability;
+                  metricValue += weight * (
+                    nextMetrics[metricIndex][5][childRanks[itemIndex]] + increments[itemIndex][metricIndex]
+                  );
+                }
+                if (metricIndex === 1) metricValue += failedDraws * 50;
+                if (metricIndex === 2) metricValue += failedDraws;
+                currentMetrics[metricIndex][5][rank] = metricValue;
+              }
+
+              for (let refreshTier = 4; refreshTier >= 0; refreshTier -= 1) {
+                const refreshPrice = refreshTier === 0 ? 0 : 20;
+                const refreshValue = refreshPrice + currentValues[refreshTier + 1][rank];
+                let expectedValue = otherProbability * refreshValue;
+                const buyChoices = [];
 
                 for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-                  const actionMetric = buyChoices[itemIndex]
-                    ? metricLayers[metricIndex][refreshTier][childIndexes[itemIndex]] + increments[itemIndex][metricIndex]
-                    : refreshedMetric;
-                  metricValue += items[itemIndex].probability * actionMetric;
+                  const buyValue = items[itemIndex].cost + nextValues[refreshTier][childRanks[itemIndex]];
+                  const shouldBuy = buyValue <= refreshValue;
+                  buyChoices.push(shouldBuy);
+                  expectedValue += items[itemIndex].probability * (shouldBuy ? buyValue : refreshValue);
                 }
-                metricLayers[metricIndex][refreshTier][index] = metricValue;
+                buyDecisions[refreshTier][globalIndex] = buyChoices.reduce(
+                  (mask, shouldBuy, itemIndex) => mask | (shouldBuy ? 1 << itemIndex : 0),
+                  0
+                );
+                currentValues[refreshTier][rank] = expectedValue;
+
+                if (buys === 0 && refreshTier === 0) {
+                  rootActions = items.map((item, itemIndex) => ({
+                    name: item.name,
+                    buy: buyChoices[itemIndex]
+                  }));
+                }
+
+                for (let metricIndex = 0; metricIndex < metricCount; metricIndex += 1) {
+                  const refreshedMetric = currentMetrics[metricIndex][refreshTier + 1][rank]
+                    + (metricIndex === 1 ? refreshPrice : 0)
+                    + (metricIndex === 2 ? 1 : 0);
+                  let metricValue = otherProbability * refreshedMetric;
+
+                  for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
+                    const actionMetric = buyChoices[itemIndex]
+                      ? nextMetrics[metricIndex][refreshTier][childRanks[itemIndex]] + increments[itemIndex][metricIndex]
+                      : refreshedMetric;
+                    metricValue += items[itemIndex].probability * actionMetric;
+                  }
+                  currentMetrics[metricIndex][refreshTier][rank] = metricValue;
+                }
               }
             }
           }
         }
+
+        nextValues = currentValues;
+        nextMetrics = currentMetrics;
       }
 
-      const startTier = 0;
-      const rootIndex = stateIndex(0, 0, 0);
-      if (!Number.isFinite(values[startTier][rootIndex])) return null;
+      const rootRank = 0;
+      if (!Number.isFinite(nextValues[0][rootRank])) return null;
 
-      const expectedCounts = [
-        melon50Counts[startTier][rootIndex],
-        melon30Counts[startTier][rootIndex],
-        word30Counts[startTier][rootIndex]
-      ];
-      const expectedStars = input.baseStars
-        + expectedCounts[0] * 50
-        + (expectedCounts[1] + expectedCounts[2]) * 30;
-      const expectedRewardMelon = rewardMelons[startTier][rootIndex];
-      const expectedRewardWord = rewardWords[startTier][rootIndex];
+      const expectedCounts = items.map((item, itemIndex) => nextMetrics[itemCountMetricStart + itemIndex][0][rootRank]);
+      const expectedRewardMelon = nextMetrics[rewardMelonMetric][0][rootRank];
+      const expectedRewardWord = nextMetrics[rewardWordMetric][0][rootRank];
+      const expectedStars = input.baseStars + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
       const expectedMelon = input.ownedMelon
-        + expectedCounts[0] * 4
-        + expectedCounts[1] * 2
+        + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0)
         + expectedRewardMelon;
-      const expectedWord = input.ownedWord + expectedCounts[2] * 10 + expectedRewardWord;
-      const actions = [];
-
-      if (expectedCounts.reduce((sum, value) => sum + value, 0) > 0 && maxBuys > 0) {
-        const refreshPrice = startTier === 0 ? 0 : startTier < 5 ? 20 : 50;
-        const refreshValue = startTier < 5
-          ? refreshPrice + values[startTier + 1][rootIndex]
-          : 50 + values[5][rootIndex];
-
-        items.forEach((item, itemIndex) => {
-          const childIndex = stateIndex(
-            itemIndex === 0 ? 1 : 0,
-            itemIndex === 1 ? 1 : 0,
-            itemIndex === 2 ? 1 : 0
-          );
-          const buyValue = item.cost + values[startTier][childIndex];
-          actions.push({ name: item.name, buy: buyValue <= refreshValue });
-        });
-      }
+      const expectedWord = input.ownedWord
+        + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0)
+        + expectedRewardWord;
 
       return {
-        cost: values[startTier][rootIndex],
-        purchaseCost: purchaseCosts[startTier][rootIndex],
-        refreshCost: refreshCosts[startTier][rootIndex],
-        refreshCount: refreshCounts[startTier][rootIndex],
+        cost: nextValues[0][rootRank],
+        purchaseCost: nextMetrics[0][0][rootRank],
+        refreshCost: nextMetrics[1][0][rootRank],
+        refreshCount: nextMetrics[2][0][rootRank],
         counts: expectedCounts,
         buys: expectedCounts.reduce((sum, value) => sum + value, 0),
         stars: expectedStars,
         rewardMelon: expectedRewardMelon,
         rewardWord: expectedRewardWord,
-        rewardCount: rewardCounts[startTier][rootIndex],
+        rewardCount: nextMetrics[rewardCountMetric][0][rootRank],
         melon: expectedMelon,
         word: expectedWord,
-        actions,
-        probabilitySum
+        buyDecisions,
+        actions: rootActions,
+        probabilitySum: probabilityTotal
       };
     }
 
-    function setSummaryLabels(expectedMode) {
-      $("costLabel").textContent = expectedMode ? "期望总金币" : "最少金币";
-      $("buysLabel").textContent = expectedMode ? "期望购买次数" : "购买次数";
-      $("starsLabel").textContent = expectedMode ? "期望最终星数" : "最终星数";
-      $("rewardLabel").textContent = expectedMode ? "期望新增奖励" : "已解锁奖励";
+    const costDistributionSamples = 10000;
+
+    function simulateCostDistribution(input, buyDecisions, isCurrent, onComplete) {
+      const sampleCount = costDistributionSamples;
+      let seed = (
+        Math.imul(input.targetMelon, 73856093) ^
+        Math.imul(input.targetWord, 19349663) ^
+        Math.imul(input.ownedMelon, 83492791) ^
+        Math.imul(input.ownedWord, 297121507) ^
+        Math.imul(input.baseStars, 104395301) ^
+        input.maxBuys
+      ) >>> 0;
+      if (!seed) seed = 0x6d2b79f5;
+      const random = () => {
+        seed = (seed + 0x6d2b79f5) >>> 0;
+        let value = seed;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+      };
+      const spends = new Float64Array(sampleCount);
+      const successfulSpends = new Float64Array(sampleCount);
+      let successfulCount = 0;
+      let mean = 0;
+      let squaredDeviation = 0;
+      let completed = 0;
+
+      function runBatch() {
+        if (!isCurrent()) return;
+        const batchEnd = Math.min(completed + 50, sampleCount);
+
+        for (; completed < batchEnd; completed += 1) {
+          const counts = new Array(items.length).fill(0);
+          let buys = 0;
+          let refreshTier = 0;
+          let cost = 0;
+          let reachedTarget = input.needMelon === 0 && input.needWord === 0;
+
+          while (!reachedTarget && buys < input.maxBuys) {
+            const index = stateIndex4(counts[0], counts[1], counts[2], counts[3]);
+            const draw = random();
+            let itemIndex = -1;
+            let probabilityEdge = 0;
+            for (let candidateIndex = 0; candidateIndex < items.length; candidateIndex += 1) {
+              probabilityEdge += items[candidateIndex].probability;
+              if (draw < probabilityEdge) {
+                itemIndex = candidateIndex;
+                break;
+              }
+            }
+            const accepted = itemIndex >= 0 && (buyDecisions[refreshTier][index] & (1 << itemIndex)) !== 0;
+
+            if (accepted) {
+              cost += items[itemIndex].cost;
+              counts[itemIndex] += 1;
+              buys += 1;
+
+              const stars = input.baseStars + counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].stars, 0);
+              const rewards = rewardsForStars(stars, input.baseStars);
+              const melon = counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].melon, 0) + rewards.melon;
+              const word = counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].word, 0) + rewards.word;
+              reachedTarget = melon >= input.needMelon && word >= input.needWord;
+            } else {
+              if (refreshTier > 0) cost += refreshTier < 5 ? 20 : 50;
+              if (refreshTier < 5) refreshTier += 1;
+            }
+          }
+
+          spends[completed] = cost;
+          if (reachedTarget) successfulSpends[successfulCount++] = cost;
+          const count = completed + 1;
+          const delta = cost - mean;
+          mean += delta / count;
+          squaredDeviation += delta * (cost - mean);
+        }
+
+        if (completed < sampleCount) {
+          if (completed % 500 === 0) {
+            $("costDistribution").textContent = `正在试算不同运气下的花费：${format(completed)} / ${format(sampleCount)} 次。`;
+          }
+          window.setTimeout(runBatch, 0);
+          return;
+        }
+
+        spends.sort();
+        const completionSpends = successfulSpends.subarray(0, successfulCount);
+        completionSpends.sort();
+        const percentile = (probability) => {
+          const position = (spends.length - 1) * probability;
+          const lowerIndex = Math.floor(position);
+          const fraction = position - lowerIndex;
+          return spends[lowerIndex] * (1 - fraction) + spends[Math.min(lowerIndex + 1, spends.length - 1)] * fraction;
+        };
+
+        onComplete({
+          mean,
+          standardDeviation: Math.sqrt(squaredDeviation / Math.max(1, completed - 1)),
+          lower95: percentile(0.025),
+          upper95: percentile(0.975),
+          lower99: percentile(0.005),
+          upper99: percentile(0.995),
+          quantiles: Array.from({ length: 201 }, (_, index) => ({
+            percent: index / 2,
+            cost: percentile(index / 200)
+          })),
+          sampleCount: completed,
+          completionSpends
+        });
+      }
+
+      window.setTimeout(runBatch, 0);
+    }
+
+    function setCostLabel(expectedMode) {
+      $("costLabel").textContent = expectedMode ? "平均要花金币" : "购买所需金币";
+    }
+
+    function renderPurchaseAdvice(plan, input, expectedMode) {
+      const advice = $("purchaseAdvice");
+      if (input.needMelon === 0 && input.needWord === 0) {
+        advice.innerHTML = "<p><strong>目标材料已经够了，不需要再买任务。</strong></p>";
+        return;
+      }
+
+      const neededItems = items.flatMap((item, index) => {
+        const count = plan.counts[index];
+        if (!(count > 0)) return [];
+        const amount = expectedMode
+          ? count < 1 ? "不到 1 次" : `大约 ${format(Math.round(count))} 次`
+          : `${format(count)} 次`;
+        const action = item.cost === 0 ? "免费领取" : "购买";
+        return [`<li>${item.name}：${action}<strong>${amount}</strong>。</li>`];
+      });
+
+      let nextAdvice;
+      if (expectedMode) {
+        const actions = plan.actions || [];
+        const buy = actions.filter((action) => action.buy).map((action) => action.name);
+        const skip = actions.filter((action) => !action.buy).map((action) => action.name);
+        nextAdvice = buy.length
+          ? `下一次刷到${buy.join("、")}时，建议买下${skip.length ? `；${skip.join("、")}先跳过` : ""}。`
+          : "暂时不要购买，先刷新寻找合适的任务。";
+      } else {
+        const buy = items.filter((item, index) => plan.counts[index] > 0).map((item) => item.name);
+        nextAdvice = `接下来刷到${buy.join("、")}时，按上面的次数购买；已买够的任务可以跳过。`;
+      }
+
+      advice.innerHTML = `<p>${expectedMode ? "按当前进度估算，接下来大约需要：" : "接下来需要："}</p>
+        <ul>${neededItems.join("")}</ul>
+        <p><strong>下次建议：</strong>${nextAdvice}</p>`;
     }
 
     function renderDirect(best, input) {
+      clearBudgetProbability();
       const status = $("status");
       const answer = $("answer");
+      $("costDistribution").classList.add("hidden");
       const onlyMelon30 = input.mode === "melon30only";
-      setSummaryLabels(false);
-      const strategy = $("strategy");
-      strategy.classList.toggle("hidden", !onlyMelon30);
-      if (onlyMelon30) {
-        strategy.innerHTML = "<strong>倒霉情况检验：</strong>完全不计算 50 星西瓜，只允许购买 30 星西瓜和 30 星字；宝箱奖励仍正常计入。";
-      }
+      setCostLabel(false);
 
       if (!best) {
         const maxStars = input.baseStars + input.maxBuys * (onlyMelon30 ? 30 : 50);
         const maxReward = rewardsForStars(maxStars, input.baseStars);
         status.className = "status bad";
         status.textContent = onlyMelon30
-          ? `无法凑够：完全没有 50 星西瓜时，在最多 ${format(input.maxBuys)} 次购买内，30 星西瓜、30 星字和后续宝箱奖励无法同时满足目标。`
-          : `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+          ? `无法凑够：完全没有 50 星红灯笼时，在最多 ${format(input.maxBuys)} 次购买内，30 星红灯笼、30 星字和后续宝箱奖励无法同时满足目标。`
+          : `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励红灯笼 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
         answer.classList.add("hidden");
         return;
       }
 
-      status.className = best.buys === input.maxBuys ? "status warn" : "status";
-      status.textContent = onlyMelon30
-        ? `可以凑够：即使完全没有 50 星西瓜，也能在 ${format(best.buys)} 次购买内达标；购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`
-        : `找到最低金币方案：还需西瓜 ${format(input.needMelon)}、字 ${format(input.needWord)}，购买和后续新宝箱可得到西瓜 ${format(best.melon)}、字 ${format(best.word)}。`;
+      status.className = "status hidden";
+      status.textContent = "";
       answer.classList.remove("hidden");
 
       $("cost").textContent = format(best.cost);
-      $("buys").textContent = `${format(best.buys)} / ${format(input.maxBuys)}`;
-      $("stars").textContent = format(best.stars);
-      $("rewardTier").textContent = `${format(best.reward.count)} 档`;
 
-      $("purchaseRows").innerHTML = [
-        row("50 星西瓜", best.melon50, best.melon50 * 450, best.melon50 * 50, `${format(best.melon50 * 4)} 西瓜`),
-        row("30 星西瓜", best.melon30, best.melon30 * 225, best.melon30 * 30, `${format(best.melon30 * 2)} 西瓜`),
-        row("30 星字", best.word30, best.word30 * 225, best.word30 * 30, `${format(best.word30 * 10)} 字`)
-      ].join("");
+      renderPurchaseAdvice(best, input, false);
 
       $("totalRows").innerHTML = [
-        totalRow("西瓜", input.ownedMelon + best.melon, input.targetMelon),
+        totalRow("红灯笼", input.ownedMelon + best.melon, input.targetMelon),
         totalRow("字", input.ownedWord + best.word, input.targetWord),
-        totalRow("奖励西瓜", best.reward.melon, 0),
+        totalRow("奖励红灯笼", best.reward.melon, 0),
         totalRow("奖励字", best.reward.word, 0)
       ].join("");
 
@@ -1204,55 +2513,59 @@
       }).join("");
     }
 
-    function renderExpected(result, input) {
+    function renderExpected(result, input, calculationId) {
       const status = $("status");
       const answer = $("answer");
-      setSummaryLabels(true);
+      setCostLabel(true);
 
       if (!result) {
+        clearBudgetProbability();
+        $("costDistribution").classList.add("hidden");
         const maxStars = input.baseStars + input.maxBuys * 50;
         const maxReward = rewardsForStars(maxStars, input.baseStars);
         status.className = "status bad";
-        status.textContent = `在最多 ${format(input.maxBuys)} 次购买内不存在必定达标的路径。理论最高星数 ${format(maxStars)}，后续最多新增奖励西瓜 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+        status.textContent = `剩余 ${format(input.maxBuys)} 次购买机会不够凑齐目标。即使每次获得 50 星，最多也只能攒到 ${format(maxStars)} 星，宝箱最多再送红灯笼 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
         answer.classList.add("hidden");
         return;
       }
 
-      status.className = result.buys >= input.maxBuys - 0.01 ? "status warn" : "status";
-      status.textContent = `精确期望结果：预计共花 ${formatExpected(result.cost)} 金币，其中购买约 ${formatExpected(result.purchaseCost)}，额外刷新约 ${formatExpected(result.refreshCost)}。模型会沿随机结果动态改选物品，并确保买下的路径仍可在最多 ${format(input.maxBuys)} 次购买内达到目标。`;
+      status.className = "status hidden";
+      status.textContent = "";
       answer.classList.remove("hidden");
 
+      const distributionNote = $("costDistribution");
+      currentCostDistribution = null;
+      costDistributionPending = true;
+      $("averageRemainingCost").textContent = `${formatExpected(result.cost)} 金币`;
+      $("maximumCostLabel").textContent = "预计最多需要花";
+      $("maximumCostEstimate").textContent = "计算中…";
+      $("costEstimateDetails").classList.remove("hidden");
+      updateBudgetProbability();
+      distributionNote.textContent = `正在试算不同运气下的花费：0 / ${format(costDistributionSamples)} 次。`;
+      distributionNote.classList.remove("hidden");
+      simulateCostDistribution(input, result.buyDecisions, () => calculationId === currentCalculationId, (distribution) => {
+        currentCostDistribution = distribution;
+        costDistributionPending = false;
+        $("maximumCostEstimate").textContent = `${formatExpected(distribution.quantiles[distribution.quantiles.length - 1].cost)} 金币`;
+        updateBudgetProbability();
+        distributionNote.innerHTML = `按当前目标试算，100 次里约有 95 次会花费 <strong>${formatExpected(distribution.lower95)}–${formatExpected(distribution.upper95)}</strong> 金币；约有 99 次会花费 <strong>${formatExpected(distribution.lower99)}–${formatExpected(distribution.upper99)}</strong> 金币。<span class="muted">实际花费取决于刷新运气，以上范围不是保底承诺。</span>`;
+        renderQuantileChart(distribution.quantiles);
+      });
+
       $("cost").textContent = formatExpected(result.cost);
-      $("buys").textContent = `${formatExpected(result.buys)} / ${format(input.maxBuys)}`;
-      $("stars").textContent = formatExpected(result.stars);
-      $("rewardTier").textContent = `${formatExpected(result.rewardCount)} 档`;
 
-      const strategy = $("strategy");
-      if (result.actions.length) {
-        strategy.innerHTML = `<strong>按当前状态第一次刷到时：</strong>${result.actions.map((action) => `${action.name}建议${action.buy ? "买下" : "刷新"}`).join("；")}。后续会随着已买数量、星数和剩余机会自动改变选择。`;
-        strategy.classList.remove("hidden");
-      } else {
-        strategy.textContent = "当前拥有数量已经达到目标，不需要继续购买或刷新。";
-        strategy.classList.remove("hidden");
-      }
-
-      $("purchaseRows").innerHTML = [
-        expectedRow("50 星西瓜", result.counts[0], result.counts[0] * 450, result.counts[0] * 50, `${formatExpected(result.counts[0] * 4)} 西瓜`),
-        expectedRow("30 星西瓜", result.counts[1], result.counts[1] * 225, result.counts[1] * 30, `${formatExpected(result.counts[1] * 2)} 西瓜`),
-        expectedRow("30 星字", result.counts[2], result.counts[2] * 225, result.counts[2] * 30, `${formatExpected(result.counts[2] * 10)} 字`),
-        expectedRow("额外刷新", result.refreshCount, result.refreshCost, 0, "筛选任务")
-      ].join("");
+      renderPurchaseAdvice(result, input, true);
 
       $("totalRows").innerHTML = [
-        expectedTotalRow("西瓜", result.melon, input.targetMelon),
+        expectedTotalRow("红灯笼", result.melon, input.targetMelon),
         expectedTotalRow("字", result.word, input.targetWord),
-        expectedTotalRow("奖励西瓜", result.rewardMelon, 0),
+        expectedTotalRow("奖励红灯笼", result.rewardMelon, 0),
         expectedTotalRow("奖励字", result.rewardWord, 0)
       ].join("");
 
       $("rewardRows").innerHTML = rewardTiers.map((tier) => `
         <tr>
-          <td>${tier.need <= input.baseStars ? '<span class="muted">已领取</span> ' : '<span class="muted">依随机路径</span> '}${tier.label}</td>
+          <td>${tier.need <= input.baseStars ? '<span class="muted">已领取</span> ' : ''}${tier.label}</td>
           <td>${format(tier.need)}</td>
           <td>${format(tier.melon)}</td>
           <td>${format(tier.word)}</td>
@@ -1277,6 +2590,13 @@
           <td>${output}</td>
         </tr>
       `;
+    }
+
+    function itemOutput(item, count, formatter) {
+      const output = [];
+      if (item.melon) output.push(`${formatter(count * item.melon)} 红灯笼`);
+      if (item.word) output.push(`${formatter(count * item.word)} 字`);
+      return output.join("、") || '<span class="muted">-</span>';
     }
 
     function expectedTotalRow(name, value, target) {
@@ -1320,11 +2640,22 @@
     }
 
     let calculateTimer = null;
+    renderPackageTargets();
+    const hasSavedSession = restoreSessionInputs();
+    initializeQuantileChart();
 
     function scheduleCalculate() {
+      saveSessionInputs();
+      clearBudgetProbability();
       window.clearTimeout(calculateTimer);
+      currentCalculationId += 1;
+      clearQuantileChart();
+      if (calculationWorker) {
+        calculationWorker.terminate();
+        calculationWorker = null;
+      }
       $("status").className = "status";
-      $("status").textContent = "参数已更新，正在重新计算期望成本…";
+      $("status").textContent = "目标已更新，正在重新计算金币花费…";
       calculateTimer = window.setTimeout(calculate, 180);
     }
 
@@ -1344,10 +2675,16 @@
       }
     });
     $("saveInputGuide").addEventListener("click", saveInputGuide);
-    $("ownedWordDirectMode").addEventListener("click", () => setOwnedWordInputMode("direct"));
-    $("ownedWordPartsMode").addEventListener("click", () => setOwnedWordInputMode("parts"));
-    $("ownedWordPartsFields").querySelectorAll("input").forEach((input) => {
-      input.addEventListener("input", updateOwnedWordPartsTotal);
+    $("ownedWordDirectMode").addEventListener("click", () => {
+      setOwnedWordInputMode("direct");
+      saveSessionInputs();
+    });
+    $("ownedWordPartsMode").addEventListener("click", () => {
+      setOwnedWordInputMode("parts");
+      saveSessionInputs();
+    });
+    $("inputGuideModal").querySelectorAll("input:not([data-package-target])").forEach((input) => {
+      input.addEventListener("input", saveSessionInputs);
     });
     $("maxBuys").addEventListener("focus", () => {
       if ($("maxBuys").dataset.editing === "true") return;
@@ -1370,25 +2707,33 @@
       $("maxBuys").readOnly = true;
     });
     $("reset").addEventListener("click", () => {
-      $("targetMelon").value = 100;
-      $("targetWord").value = 300;
+      applyPackageTargets({});
       $("ownedMelon").value = 0;
       $("ownedWord").value = 0;
       $("maxBuys").value = 96;
       $("baseStars").value = 0;
+      $("budgetGold").value = 0;
       $("calculationMode").value = "expected";
-      activitySetup.day = 1;
+      activitySetup.autoDay = true;
+      activitySetup.day = automaticActivityDay();
       activitySetup.tasks = 0;
-      $("taskEstimate").textContent = "还未设置活动进度，默认按 96 次购买机会计算。";
+      for (const id of [...wordPartIds, "guideOwnedMelon", "guideOwnedWord", "guideBaseStars", "guideBudgetGold"]) $(id).value = 0;
+      setOwnedWordInputMode("direct");
+      hasShownInputGuide = false;
       calculate();
     });
 
-    document.querySelectorAll(".controls input, .controls select").forEach((control) => {
+    $("budgetGold").addEventListener("input", () => {
+      saveSessionInputs();
+      updateBudgetProbability();
+    });
+
+    document.querySelectorAll(".controls input:not([data-package-target]):not(#budgetGold), .controls select").forEach((control) => {
       control.addEventListener("input", scheduleCalculate);
     });
 
     calculate();
-    openSetupModal();
+    if (!hasSavedSession) openSetupModal();
   </script>
 </body>
 </html>
