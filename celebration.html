@@ -1273,7 +1273,7 @@
 
       <div class="modal-actions">
         <button class="secondary" id="closeSetup" type="button">稍后再改</button>
-        <button class="primary" id="saveSetup" type="button">保存并继续</button>
+        <button class="primary" id="saveSetup" type="button">保存</button>
       </div>
     </div>
   </div>
@@ -1457,7 +1457,6 @@
     const activityDays = activitySchedule.days;
     const activityEndMinute = activitySchedule.endMinute;
     const activitySetup = { day: 1, tasks: 0, autoDay: true };
-    let hasShownInputGuide = false;
     let ownedWordInputMode = "direct";
     const wordPartIds = ["guideWordJie", "guideWordRi", "guideWordKuai", "guideWordLe", "guideWordPack"];
     const savedFieldIds = ["ownedMelon", "ownedWord", "maxBuys", "baseStars", "budgetGold"];
@@ -1485,7 +1484,6 @@
           fields: Object.fromEntries(savedFieldIds.map((id) => [id, numberValue(id)])),
           mode: $("calculationMode").value,
           activity: activitySetup,
-          hasShownInputGuide,
           wordMode: ownedWordInputMode,
           wordParts: Object.fromEntries(wordPartIds.map((id) => [id, numberValue(id)])),
           setupOpen: !$("setupModal").classList.contains("hidden"),
@@ -1525,7 +1523,6 @@
         ? automaticActivityDay()
         : Math.min(activityDays, Math.max(1, safeNumber(saved.activity?.day, activityDays)));
       activitySetup.tasks = safeNumber(saved.activity?.tasks, 8);
-      hasShownInputGuide = saved.hasShownInputGuide === true;
       for (const id of wordPartIds) $(id).value = safeNumber(saved.wordParts?.[id]);
       if (saved.guide && typeof saved.guide === "object") {
         renderPackageTargets(true, safeTargets(saved.guide.targets));
@@ -1533,8 +1530,8 @@
         $("guideOwnedWord").value = safeNumber(saved.guide.ownedWord);
         $("guideBaseStars").value = safeNumber(saved.guide.baseStars);
         $("guideBudgetGold").value = safeNumber(saved.guide.budgetGold);
-        $("inputGuideModal").classList.remove("hidden");
-      } else if (saved.setupOpen === true) {
+      }
+      if (saved.setupOpen === true) {
         updateSetupModal();
         $("setupModal").classList.remove("hidden");
       }
@@ -2666,13 +2663,8 @@
     $("openSetup").addEventListener("click", openSetupModal);
     $("closeSetup").addEventListener("click", closeSetupModal);
     $("saveSetup").addEventListener("click", () => {
-      const shouldShowInputGuide = !hasShownInputGuide;
       applyActivitySetup();
       closeSetupModal();
-      if (shouldShowInputGuide) {
-        hasShownInputGuide = true;
-        openInputGuideModal();
-      }
     });
     $("saveInputGuide").addEventListener("click", saveInputGuide);
     $("ownedWordDirectMode").addEventListener("click", () => {
@@ -2719,7 +2711,6 @@
       activitySetup.tasks = 0;
       for (const id of [...wordPartIds, "guideOwnedMelon", "guideOwnedWord", "guideBaseStars", "guideBudgetGold"]) $(id).value = 0;
       setOwnedWordInputMode("direct");
-      hasShownInputGuide = false;
       calculate();
     });
 
