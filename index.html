@@ -142,7 +142,7 @@
     }
 
     .tool-card.upgrade-materials-card .card-picture img {
-      object-position: center 24%;
+      object-position: center 50%;
     }
 
     .tool-card.festival-carnival-card .card-picture img {
@@ -293,7 +293,7 @@
     .upgrade-materials-art {
       position: absolute;
       inset: 0;
-      z-index: 0;
+      z-index: 1;
       overflow: hidden;
       pointer-events: none;
     }
@@ -308,19 +308,20 @@
     }
 
     .upgrade-materials-art-male {
-      left: 3%;
-      bottom: 6%;
-      width: min(44%, 300px);
-      transform: rotate(-4deg);
+      left: 1%;
+      bottom: 2%;
+      width: auto;
+      height: 100%;
     }
 
     .upgrade-materials-card .data-copy {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      width: min(54%, 400px);
     }
 
     .upgrade-materials-card:hover .upgrade-materials-art-male {
-      transform: rotate(-4deg) translateY(-4px);
+      transform: translateY(-4px);
     }
 
     .tool-card.data-card {
@@ -338,6 +339,11 @@
       z-index: -1;
       background: linear-gradient(90deg, rgba(6, 11, 10, 0.08), rgba(6, 11, 10, 0.48));
       pointer-events: none;
+    }
+
+    .tool-card.data-card.upgrade-materials-card::before {
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.16), rgba(6, 11, 10, 0.62));
     }
 
     .tool-card.data-card::after {
@@ -584,7 +590,7 @@
 
       .tool-card.upgrade-materials-card .card-picture img {
         object-fit: cover;
-        object-position: center 24%;
+        object-position: center 50%;
       }
 
       .celebration-calculator-art img {
@@ -594,9 +600,9 @@
       }
 
       .upgrade-materials-art-male {
-        left: 5%;
-        bottom: 4%;
-        width: 48%;
+        left: 0;
+        bottom: 2%;
+        height: 92%;
       }
 
       .festival-carnival-art img {
@@ -613,7 +619,8 @@
 
       .celebration-calculator-card .card-copy,
       .festival-carnival-card .card-copy,
-      .feature-unlock-card .data-copy {
+      .feature-unlock-card .data-copy,
+      .upgrade-materials-card .data-copy {
         width: 72%;
       }
 
@@ -738,12 +745,10 @@
         </a>
         <a class="tool-card data-card upgrade-materials-card" href="upgrade-materials.html?v=20260912">
           <picture class="card-picture">
-            <source media="(max-width: 560px)" srcset="assets/upgrade-materials-bg9.jpg">
-            <img src="assets/upgrade-materials-bg9.jpg" alt="升级材料消耗表背景">
+            <img src="assets/upgrade-materials-bg9.jpg" alt="游戏内山水背景">
           </picture>
           <div class="upgrade-materials-art" aria-hidden="true">
-            <!-- Use a complete extracted costume illustration so the character is not cut at the waist. -->
-            <img class="upgrade-materials-art-male" src="assets/fashion-gallery/male-hero-04.png" alt="">
+            <img class="upgrade-materials-art-male" src="assets/fashion-gallery/male-hero-87.png" alt="">
           </div>
           <div class="data-copy">
             <h2 class="card-title">升级材料消耗表</h2>
