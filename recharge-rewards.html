@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>累充回馈 | 放三数据合集</title>
+  <style>
+    :root { --ink: #282521; --muted: #776f65; --jade: #1e6a5b; --jade-soft: #e7f4ef; --gold: #b47a20; --line: #dfcfb6; --panel: #fffaf1; --page: #f4efe5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--page); font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+    .shell { width: min(100% - 28px, 1240px); margin: 0 auto; padding: 28px 0 42px; }
+    .page-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+    .eyebrow { margin: 0 0 8px; color: #319785; font-size: 15px; font-weight: 800; letter-spacing: .08em; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.1; }
+    .archive-select { display: block; width: min(100%, 360px); margin-top: 12px; }
+    .archive-select select { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: rgba(255, 253, 248, 0.94); font: inherit; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .header-note { margin-top: 10px; color: var(--muted); font-size: 15px; }
+    .event-dates { margin-top: 8px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .home-link { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: #fffaf1; font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .home-link:hover { border-color: #8c9d93; }
+    .table-grid { display: grid; gap: 18px; }
+    .panel { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .panel-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 20px 22px 14px; border-bottom: 1px solid var(--line); }
+    .panel-heading h2 { font-size: 23px; }
+    .panel-heading span { color: var(--muted); font-size: 13px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: 12px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    th { color: var(--muted); font-size: 13px; font-weight: 800; }
+    th:first-child, td:first-child { width: 148px; }
+    .threshold { color: var(--gold); font-weight: 850; white-space: nowrap; }
+    .threshold small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 600; }
+    .reward-list { display: flex; flex-wrap: wrap; gap: 10px 16px; }
+    .item-chip { display: inline-flex; align-items: center; gap: 8px; min-width: 0; color: var(--quality-color, var(--jade)); font-size: 14px; line-height: 1.35; }
+    .item-chip.quality-3 { --quality-color: #777; --quality-soft: #f3f3f3; }
+    .item-chip.quality-5 { --quality-color: #8164b5; --quality-soft: #f0eaff; }
+    .item-chip.quality-6 { --quality-color: #d97d2d; --quality-soft: #fff0df; }
+    .item-chip.quality-7 { --quality-color: #b84e5b; --quality-soft: #fae8eb; }
+    .item-chip.quality-8 { --quality-color: #b7902d; --quality-soft: #fff8dc; }
+    .item-chip.quality-9 { --quality-color: #8d672f; --quality-soft: #f5eadb; }
+    .item-chip.quality-10 { --quality-color: #71899f; --quality-soft: #edf4f8; }
+    .item-chip.quality-11 { --quality-color: #299b99; --quality-soft: #e3f5f2; }
+    .item-chip.quality-12 { --quality-color: #5575c7; --quality-soft: #e9edff; }
+    .item-icon { display: inline-grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; border: 1px solid var(--quality-color, #9ab5aa); border-radius: 6px; background: var(--quality-soft, #eef7f2); color: var(--quality-color, var(--jade)); font-size: 13px; font-weight: 850; }
+    .item-icon-image { object-fit: contain; padding: 0; background: #fff; }
+    .choose-label { display: inline-flex; align-items: center; min-height: 24px; padding: 0 7px; border-radius: 4px; color: #986818; background: #fff1ce; font-size: 12px; font-weight: 850; }
+    .empty { color: #aaa093; }
+    .page-footnote { margin: 14px 2px 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    @media (min-width: 980px) { .table-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
+    @media (max-width: 640px) { .shell { width: min(100% - 20px, 1240px); padding-top: 18px; } .page-header { align-items: flex-start; flex-direction: column; } .home-link { align-self: flex-start; } .panel-heading { padding-left: 14px; padding-right: 14px; } th, td { padding: 10px 10px; } th:first-child, td:first-child { width: 112px; } .reward-list { gap: 9px 12px; } .item-chip { font-size: 13px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">充值档案</p>
+        <h1>累充回馈</h1>
+        <label class="archive-select" for="archiveSelect">
+          <span class="sr-only">历史活动</span>
+          <select id="archiveSelect"></select>
+        </label>
+        <p class="header-note">累计充值档位对应的固定奖励与精选豪礼</p>
+        <p class="event-dates" id="eventDates"></p>
+      </div>
+      <a class="home-link" href="index.html">← 工具首页</a>
+    </header>
+
+    <div class="table-grid">
+      <section class="panel" aria-labelledby="fixedTitle">
+        <div class="panel-heading"><h2 id="fixedTitle">累充回馈</h2><span id="fixedSummary"></span></div>
+        <div class="table-wrap"><table><thead><tr><th>累计充值</th><th>充值奖励</th></tr></thead><tbody id="fixedRows"></tbody></table></div>
+      </section>
+      <section class="panel" aria-labelledby="selectedTitle">
+        <div class="panel-heading"><h2 id="selectedTitle">累充精选豪礼</h2><span>每档任选 1 个</span></div>
+        <div class="table-wrap"><table><thead><tr><th>累计充值</th><th>精选奖励</th></tr></thead><tbody id="selectedRows"></tbody></table></div>
+      </section>
+    </div>
+    <p class="page-footnote">档位单位为累计充值金币；精选豪礼按当前游戏配置为同档任选 1 个，未配置精选奖励的档位以“—”显示。</p>
+  </main>
+
+  <script src="assets/recharge-rewards-data.js?v=20261024-3"></script>
+  <script>
+    const archives = window.rechargeRewardsArchives || [];
+    const params = new URLSearchParams(window.location.search);
+    const select = document.getElementById("archiveSelect");
+    const selectedId = params.get("event");
+    let data = archives.find((archive) => archive.archiveId === selectedId) || archives[0];
+    const format = (value) => Number(value).toLocaleString("zh-CN");
+    const dateLabel = (value) => String(value).split(" ")[0].replaceAll("-", "/");
+    const escapeHtml = (value) => String(value).replace(/[&<>\"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[char]));
+
+    archives.forEach((archive, index) => {
+      const option = document.createElement("option");
+      option.value = archive.archiveId;
+      option.textContent = archive.title + (index === 0 ? "（最新）" : "");
+      select.append(option);
+    });
+    select.value = data.archiveId;
+    select.addEventListener("change", () => {
+      const url = new URL(window.location.href);
+      if (select.value === archives[0].archiveId) url.searchParams.delete("event");
+      else url.searchParams.set("event", select.value);
+      window.location.assign(url.href);
+    });
+
+    const renderItem = ([id, amount]) => {
+      const item = data.items[id] || { name: `道具 ${id}`, quality: 3 };
+      const quality = Number(item.quality) || 3;
+      const icon = item.icon
+        ? `<img class="item-icon item-icon-image" src="${item.icon}" alt="${escapeHtml(item.name)}图标" loading="lazy">`
+        : `<span class="item-icon" aria-hidden="true">${escapeHtml(item.name.slice(0, 1))}</span>`;
+      return `<span class="item-chip quality-${quality}">${icon}<span>${escapeHtml(item.name)} ×${format(amount)}</span></span>`;
+    };
+    const renderRows = (key) => data.rows.map((row) => {
+      const rewards = row[key];
+      const content = rewards.length ? rewards.map(renderItem).join("") : "<span class=\"empty\">—</span>";
+      const choose = key === "selected" && rewards.length ? "<span class=\"choose-label\">任选 1</span>" : "";
+      return `<tr><td class="threshold">${format(row.threshold)} 金币<small>累计充值</small></td><td><div class="reward-list">${choose}${content}</div></td></tr>`;
+    }).join("");
+
+    document.title = `累充回馈 | ${data.title}`;
+    document.getElementById("eventDates").textContent = `活动：${dateLabel(data.event.start)} 至 ${dateLabel(data.event.end)}`;
+    document.getElementById("fixedSummary").textContent = `固定奖励 · ${data.rows.length} 档`;
+    document.getElementById("fixedRows").innerHTML = renderRows("fixed");
+    document.getElementById("selectedRows").innerHTML = renderRows("selected");
+  </script>
+</body>
+</html>

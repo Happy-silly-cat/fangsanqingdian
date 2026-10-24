@@ -113,6 +113,55 @@
       padding: 18px;
     }
 
+    .event-picker {
+      display: flex;
+      align-items: center;
+      gap: 10px 18px;
+      margin-bottom: 16px;
+    }
+
+    .event-picker label {
+      flex: 0 1 420px;
+      width: min(100%, 420px);
+      min-width: 0;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .event-picker select {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .event-dates {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .event-archive {
+      margin-bottom: 16px;
+    }
+
+    .archive-content {
+      padding: 0 16px 16px;
+      min-width: 0;
+    }
+
     .current-rewards-header {
       display: flex;
       align-items: flex-start;
@@ -943,6 +992,17 @@
     }
 
     @media (max-width: 520px) {
+      .event-picker {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-picker label,
+      .event-dates {
+        flex: none;
+        width: 100%;
+      }
+
       .shell {
         width: min(100% - 20px, 1180px);
         padding-top: 18px;
@@ -984,6 +1044,52 @@
         display: block;
       }
 
+      .collapsible-table-details .current-rewards-table {
+        display: block;
+        min-width: 0;
+      }
+
+      .current-rewards-table thead {
+        display: none;
+      }
+
+      .current-rewards-table tbody {
+        display: block;
+      }
+
+      .current-rewards-table tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+      }
+
+      .current-rewards-table td {
+        min-width: 0;
+        border: 0;
+      }
+
+      .current-rewards-table td.cost-list {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
+      .current-rewards-table td:last-child {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      html body .current-rewards-table td,
+      html body .current-rewards-table td > * {
+        text-align: left !important;
+        justify-content: flex-start !important;
+      }
+
+      .current-rewards-table .resource-reward {
+        white-space: normal;
+      }
+
       .current-rewards-badge {
         display: inline-flex;
         margin-top: 10px;
@@ -1023,34 +1129,39 @@
     }
   </style>
   <link rel="stylesheet" href="assets/table-attribute-standard.css?v=20260920">
-  <script src="assets/celebration-current-data.js?v=20261003-targets3"></script>
+  <script src="assets/celebration-events/2026-national-day.js?v=20261010-purchase-only1"></script>
+  <script src="assets/celebration-current-data.js?v=20261010-tasks2"></script>
+  <script src="assets/celebration-solver.js?v=20261010-purchase-only3"></script>
 </head>
 <body>
   <main class="shell">
     <header>
       <div>
-        <h1>庆典红灯笼和字金币计算器</h1>
+        <h1 id="calculatorTitle">节日庆典计算</h1>
       </div>
       <a class="home-link" href="index.html" aria-label="返回工具首页">&#8592; 工具首页</a>
     </header>
 
+    <section class="event-picker" aria-label="庆典活动存档">
+      <label for="eventSelect"><span class="visually-hidden">庆典活动</span>
+        <select id="eventSelect"></select>
+      </label>
+      <p id="eventDates" class="event-dates"></p>
+    </section>
+
     <aside class="calculator-notice" aria-labelledby="calculatorNoticeTitle">
       <h2 id="calculatorNoticeTitle">注意事项</h2>
       <ol>
-        <li><strong>暂未区分字的种类。</strong>购买时请根据自己缺少的“节、日、快、乐”调整。</li>
-        <li><strong>目前仅考虑以下任务：</strong>购买 50 星/30 星大材料、30 星字，以及免费领取的 5 星大材料。</li>
-        <li><strong>目前未考虑只购买、不领取奖励的情况。</strong></li>
+        <li><strong>暂未区分字的种类。</strong>购买时请根据自己缺少的“<span id="eventWordNames">节、日、快、乐</span>”调整。</li>
+      <li><strong>参与计算的任务：</strong>红灯笼和四种字；计入购买金币、任务星数和宝箱奖励，其他道具跳过。</li>
       </ol>
     </aside>
 
-    <!--
-    <section class="panel current-rewards" aria-labelledby="currentRewardsTitle">
-      <div class="current-rewards-header">
-        <div>
-          <h2 id="currentRewardsTitle">当前庆典兑换奖励</h2>
-        </div>
-        <span class="current-rewards-badge" id="currentRewardsUpdated"></span>
-      </div>
+    <details id="eventArchiveDetails" class="collapsible-table-details event-archive">
+      <summary>
+        <h2 id="currentRewardsTitle" class="section-title">兑换奖励与礼包内容</h2>
+      </summary>
+      <div class="archive-content">
       <div class="current-rewards-table-wrap">
         <table class="current-rewards-table">
           <thead>
@@ -1065,19 +1176,18 @@
       </div>
       <h3 class="package-title">礼包选项</h3>
       <div class="package-grid" id="currentPackageCards"></div>
-    </section>
-    -->
+      </div>
+    </details>
 
     <div class="layout">
       <section class="panel controls">
         <div class="section-heading">
           <h2 class="section-title">想兑换的奖励</h2>
-          <time class="calculator-updated" datetime="2026-10-03T22:06:31+08:00">计算器更新：2026-10-03 22:06</time>
         </div>
         <div id="packageTargets" class="exchange-targets"></div>
         <div class="field-grid package-target-totals" aria-live="polite">
           <label>
-            所需红灯笼
+            <span data-material-label="所需">所需红灯笼</span>
             <input id="targetMelon" type="number" value="0" readonly>
           </label>
           <label>
@@ -1090,7 +1200,7 @@
             <h2 id="ownedInputsTitle" class="section-title">已拥有</h2>
             <div class="field-grid">
               <label>
-                已有红灯笼
+                <span data-material-label="已有">已有红灯笼</span>
                 <input id="ownedMelon" type="number" min="0" step="1" value="0">
               </label>
               <label>
@@ -1104,7 +1214,7 @@
             <h2 id="limitInputsTitle" class="section-title">限制</h2>
             <div class="field-grid">
               <label>
-                最多购买次数
+                最多领取任务数
                 <input id="maxBuys" type="number" min="0" step="1" value="96" readonly>
               </label>
               <label>
@@ -1242,7 +1352,7 @@
                   <tr>
                     <th>奖励档位</th>
                     <th>领取所需累计星数</th>
-                    <th>奖励红灯笼</th>
+                    <th data-material-label="奖励">奖励红灯笼</th>
                     <th>奖励字</th>
                   </tr>
                 </thead>
@@ -1284,7 +1394,7 @@
       <div id="guidePackageTargets" class="exchange-targets"></div>
       <div class="field-grid package-target-totals" aria-live="polite">
         <label>
-          所需红灯笼
+          <span data-material-label="所需">所需红灯笼</span>
           <input id="guideTargetMelon" type="number" value="0" readonly>
         </label>
         <label>
@@ -1294,7 +1404,7 @@
       </div>
       <div class="field-grid">
         <label>
-          已有红灯笼
+          <span data-material-label="已有">已有红灯笼</span>
           <input id="guideOwnedMelon" type="number" min="0" step="1" value="0">
         </label>
         <div style="grid-column:1 / -1;">
@@ -1312,19 +1422,19 @@
           <div id="ownedWordPartsFields" class="hidden">
             <div class="field-grid" style="margin-bottom:10px;">
               <label>
-                “节”的数量
+                <span data-word-index="0">“节”的数量</span>
                 <input id="guideWordJie" type="number" min="0" step="1" value="0">
               </label>
               <label>
-                “日”的数量
+                <span data-word-index="1">“日”的数量</span>
                 <input id="guideWordRi" type="number" min="0" step="1" value="0">
               </label>
               <label>
-                “快”的数量
+                <span data-word-index="2">“快”的数量</span>
                 <input id="guideWordKuai" type="number" min="0" step="1" value="0">
               </label>
               <label>
-                “乐”的数量
+                <span data-word-index="3">“乐”的数量</span>
                 <input id="guideWordLe" type="number" min="0" step="1" value="0">
               </label>
               <label>
@@ -1377,12 +1487,11 @@
           <span>${item.name}${item.amount ? ` ×${Number(item.amount).toLocaleString("zh-CN")}` : ""}</span>
         </span>`;
 
-      $("currentRewardsUpdated").textContent = `资源更新：${data.sourceUpdatedAt}`;
       $("currentRewardsRows").innerHTML = data.exchanges.map((item) => `
         <tr>
           <td>${renderItem(item.reward, "resource-reward")}</td>
           <td class="cost-list"><div class="resource-list">${item.cost.map((cost) => renderItem(cost)).join("")}</div></td>
-          <td>${item.limit.toLocaleString("zh-CN")} 次</td>
+          <td>限兑 ${item.limit.toLocaleString("zh-CN")} 次</td>
         </tr>
       `).join("");
       $("currentPackageCards").innerHTML = data.packages.map((pack) => `
@@ -1395,23 +1504,27 @@
       `).join("");
     }
 
-    const rewardMilestones = [100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000];
-    const rewardTiers = rewardMilestones.map((stars, index) => {
-      const need = rewardMilestones.slice(0, index + 1).reduce((sum, value) => sum + value, 0);
+    const eventData = window.celebrationCurrentData;
+    const eventArchive = window.celebrationEventArchive;
+    const eventCalculation = eventData.calculation;
+    const materialName = eventCalculation.materialName;
+    const wordNames = eventCalculation.wordNames;
+    const refreshPrices = eventCalculation.refreshPrices;
+    const rewardTiers = eventCalculation.starRewards.map((reward, index) => {
+      const need = eventCalculation.starRewards.slice(0, index + 1).reduce((sum, value) => sum + value.stars, 0);
       return {
-        label: `${stars} 星`,
+        label: `${reward.stars} 星`,
         need,
-        melon: stars / 50,
-        word: stars / 10
+        melon: reward.melon,
+        word: reward.word
       };
     });
 
-    const items = [
-      { key: "melon50", name: "50星红灯笼", cost: 450, stars: 50, melon: 4, word: 0, probability: 0.0132 },
-      { key: "melon30", name: "30星红灯笼", cost: 225, stars: 30, melon: 2, word: 0, probability: 0.0143 },
-      { key: "word30", name: "30星字", cost: 225, stars: 30, melon: 0, word: 10, probability: 0.0528 },
-      { key: "lantern5", name: "5星红灯笼", cost: 0, stars: 5, melon: 1, word: 0, probability: 0.0143 }
-    ];
+    const celebrationSolver = window.celebrationSolver;
+    const items = celebrationSolver.groupTasks(eventCalculation.tasks);
+    if (wordNames.length !== 4 || refreshPrices.length !== 6) {
+      throw new Error("该庆典任务规则尚未适配计算器");
+    }
     // Use hundredths of a percent so the residual probability totals exactly 100%.
     const itemProbabilityPoints = items.reduce((sum, item) => sum + Math.round(item.probability * 10000), 0);
     if (itemProbabilityPoints > 10000 || items.some((item) => !Number.isFinite(item.probability) || item.probability < 0)) {
@@ -1423,6 +1536,40 @@
     const $ = (id) => document.getElementById(id);
     const numberValue = (id) => Math.max(0, Math.floor(Number($(id).value) || 0));
     const format = (value) => Number(value).toLocaleString("zh-CN");
+
+    function initializeEventArchive() {
+      const select = $("eventSelect");
+      for (const event of eventArchive.events) {
+        const option = document.createElement("option");
+        option.value = event.archiveId;
+        option.textContent = event.title + (event.archiveId === eventArchive.latestId ? "（最新）" : "");
+        select.append(option);
+      }
+      select.value = eventArchive.selectedId;
+      const dateLabel = (value) => value.split(" ")[0].replaceAll("-", "/");
+      $("eventDates").textContent = `活动：${dateLabel(eventData.event.start)} 至 ${dateLabel(eventData.event.end)}`
+        + (eventData.event.exchangeEnd ? ` · 兑换截止：${dateLabel(eventData.event.exchangeEnd)}` : "");
+      document.title = `节日庆典计算 - ${eventData.title}`;
+      $("eventWordNames").textContent = wordNames.join("、");
+      document.querySelectorAll("[data-material-label]").forEach((element) => {
+        element.textContent = element.dataset.materialLabel + materialName;
+      });
+      document.querySelectorAll("[data-word-index]").forEach((element) => {
+        element.textContent = `“${wordNames[Number(element.dataset.wordIndex)]}”的数量`;
+      });
+      $("calculationMode").querySelector('[value="melon30only"]').textContent = `一直刷不到 ${items[0].name}`;
+      $("maxBuys").value = eventCalculation.defaultMaxBuys;
+      if (eventArchive.selectedId !== eventArchive.latestId) $("eventArchiveDetails").open = true;
+      select.addEventListener("change", () => {
+        saveSessionInputs();
+        const url = new URL(window.location.href);
+        if (select.value === eventArchive.latestId) url.searchParams.delete("event");
+        else url.searchParams.set("event", select.value);
+        window.location.assign(url.href);
+      });
+      renderCurrentRewards();
+    }
+
     const targetPackages = (window.celebrationCurrentData?.exchanges || []).filter((item) => item.selectable !== false);
     const packageTargetCounts = Object.fromEntries(targetPackages.map((item) => [item.id, 0]));
     function parseActivityDate(value) {
@@ -1460,8 +1607,8 @@
     let ownedWordInputMode = "direct";
     const wordPartIds = ["guideWordJie", "guideWordRi", "guideWordKuai", "guideWordLe", "guideWordPack"];
     const savedFieldIds = ["ownedMelon", "ownedWord", "maxBuys", "baseStars", "budgetGold"];
-    const sessionKey = `celebration-inputs-v1:${window.celebrationCurrentData?.event.start || "current"}`;
-    const refreshIntervalMinutes = 90;
+    const sessionKey = `celebration-inputs-v1:${eventData.archiveId}`;
+    const refreshIntervalMinutes = eventCalculation.refreshIntervalMinutes;
 
     function automaticActivityDay(now = new Date()) {
       if (!activitySchedule.start || !activitySchedule.end) return 1;
@@ -1503,7 +1650,10 @@
     function restoreSessionInputs() {
       let saved;
       try {
-        saved = JSON.parse(window.sessionStorage.getItem(sessionKey));
+        const existing = window.sessionStorage.getItem(sessionKey);
+        const legacy = eventData.archiveId === "2026-national-day"
+          ? window.sessionStorage.getItem(`celebration-inputs-v1:${eventData.event.start}`) : null;
+        saved = JSON.parse(existing || legacy);
       } catch {
         return false;
       }
@@ -1544,12 +1694,12 @@
     }
 
     function packageTargetTotals(counts) {
-      const totals = { melon: 0, word: 0, words: { "节": 0, "日": 0, "快": 0, "乐": 0 } };
+      const totals = { melon: 0, word: 0, words: Object.fromEntries(wordNames.map((name) => [name, 0])) };
       for (const item of targetPackages) {
         const count = clampPackageCount(counts[item.id], item.limit);
         for (const cost of item.cost) {
           const amount = count * cost.amount;
-          if (cost.name === "红灯笼") {
+          if (cost.name === materialName) {
             totals.melon += amount;
           } else if (Object.hasOwn(totals.words, cost.name)) {
             totals.words[cost.name] += amount;
@@ -1614,7 +1764,7 @@
     }
 
     function estimateTaskOpportunities(day, currentTasks, now = new Date()) {
-      const safeDay = Math.min(6, Math.max(1, Number(day) || 1));
+      const safeDay = Math.min(activityDays, Math.max(1, Number(day) || 1));
       const safeTasks = Math.min(8, Math.max(0, Number(currentTasks) || 0));
       const currentMinute = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
       let futureRefreshes = 0;
@@ -1974,7 +2124,7 @@
       if (input.mode === "expected") {
         if (input.maxBuys > 130) {
           $("status").className = "status bad";
-          $("status").textContent = "最多可按 130 次购买计算，请调低“最多购买次数”后再计算。";
+          $("status").textContent = "最多可按 130 次任务领取计算，请调低“最多领取任务数”后再计算。";
           $("answer").classList.add("hidden");
           $("costDistribution").classList.add("hidden");
           return;
@@ -1982,25 +2132,56 @@
         calculateExpectedInBackground(input, calculationId);
         return;
       }
-      renderDirect(calculateDirect(input), input);
+      calculateExpectedInBackground(input, calculationId);
     }
 
     function calculateDirect(input) {
       let best = null;
       const counts = new Array(items.length).fill(0);
+      const eligible = items.map((item, index) => ({ ...item, index }))
+        .filter(item => input.mode !== "melon30only" || item.key !== "melon50");
+      // With refresh costs excluded, an equally priced, better outcome dominates.
+      const candidates = eligible.filter(item => !eligible.some(other => other.index !== item.index
+        && other.cost <= item.cost && other.stars >= item.stars
+        && other.melon >= item.melon && other.word >= item.word
+        && (other.cost < item.cost || other.stars > item.stars || other.melon > item.melon || other.word > item.word)));
+      const purchaseOptions = input.allowPurchaseOnly === true ? eligible.filter(item => item.purchaseMelon > 0) : [];
+      const supplementCosts = new Float64Array(input.needMelon + 1).fill(Infinity);
+      const supplementChoice = new Int32Array(input.needMelon + 1).fill(-1);
+      supplementCosts[0] = 0;
+      if (input.maxBuys > 0) for (let deficit = 1; deficit <= input.needMelon; deficit++) {
+        for (const item of purchaseOptions) {
+          const cost = item.cost + supplementCosts[Math.max(0, deficit - item.purchaseMelon)];
+          if (cost < supplementCosts[deficit]) {
+            supplementCosts[deficit] = cost;
+            supplementChoice[deficit] = item.index;
+          }
+        }
+      }
 
       function evaluateCounts() {
         const buys = counts.reduce((sum, count) => sum + count, 0);
-        const cost = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].cost, 0);
+        let cost = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].cost, 0);
         const stars = input.baseStars + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
         const reward = rewardsForStars(stars, input.baseStars);
-        const melon = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0) + reward.melon;
+        let melon = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0) + reward.melon;
         const word = counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0) + reward.word;
 
-        if (melon < input.needMelon || word < input.needWord) return;
+        if (word < input.needWord) return;
+        let deficit = Math.max(0, input.needMelon - melon);
+        if (!Number.isFinite(supplementCosts[deficit])) return;
+        cost += supplementCosts[deficit];
+        const purchaseOnlyCounts = new Array(items.length).fill(0);
+        while (deficit > 0) {
+          const index = supplementChoice[deficit];
+          purchaseOnlyCounts[index]++;
+          melon += items[index].purchaseMelon;
+          deficit = Math.max(0, deficit - items[index].purchaseMelon);
+        }
 
         const plan = {
           counts: counts.slice(),
+          purchaseOnlyCounts,
           buys,
           cost,
           stars,
@@ -2015,53 +2196,112 @@
       }
 
       function enumerate(itemIndex, remainingBuys) {
-        if (itemIndex === items.length) {
+        if (itemIndex === candidates.length) {
           evaluateCounts();
           return;
         }
-        const item = items[itemIndex];
-        const maxCount = input.mode === "melon30only" && item.key === "melon50" ? 0 : remainingBuys;
+        const item = candidates[itemIndex];
+        const maxCount = remainingBuys;
         for (let count = 0; count <= maxCount; count += 1) {
-          counts[itemIndex] = count;
+          counts[item.index] = count;
           enumerate(itemIndex + 1, remainingBuys - count);
         }
       }
 
       enumerate(0, input.maxBuys);
 
+      if (!best && input.allowPurchaseOnly === undefined && input.needMelon > 0 && input.maxBuys > 0) {
+        return calculateDirect({ ...input, allowPurchaseOnly: true });
+      }
       return best;
     }
 
 
-    function makeLayers(ArrayType, length) {
-      return Array.from({ length: 6 }, () => new ArrayType(length));
+    const calculationCacheEntries = [];
+    const calculationCacheStorageKey = "celebration-calculation-cache-purchase-only-v3";
+    let calculationCacheLoaded = false;
+
+    function calculationCacheKey(input) {
+      return JSON.stringify({ event: eventData.archiveId, input, items, rewardTiers, refreshPrices,
+        samples: costDistributionSamples });
     }
 
+    function getCachedCalculation(input) {
+      if (!calculationCacheLoaded) {
+        calculationCacheLoaded = true;
+        try {
+          const saved = JSON.parse(window.localStorage.getItem(calculationCacheStorageKey) || "[]");
+          if (Array.isArray(saved)) calculationCacheEntries.push(...saved.filter(entry => entry && typeof entry.key === "string").slice(-6));
+        } catch {}
+      }
+      const key = calculationCacheKey(input);
+      const entry = calculationCacheEntries.find(entry => entry.key === key);
+      if (!entry || !Number.isFinite(entry.result?.cost)
+        || entry.distribution?.sampleCount !== costDistributionSamples
+        || !Array.isArray(entry.distribution.completionSpends)
+        || !Array.isArray(entry.distribution.quantiles)) return null;
+      return { result: entry.result, distribution: { ...entry.distribution,
+        completionSpends: Float64Array.from(entry.distribution.completionSpends) } };
+    }
+
+    function saveCachedCalculation(input, result, distribution) {
+      const key = calculationCacheKey(input);
+      const existing = calculationCacheEntries.findIndex(entry => entry.key === key);
+      if (existing >= 0) calculationCacheEntries.splice(existing, 1);
+      const { buyDecisions, ...summary } = result;
+      calculationCacheEntries.push({ key, result: summary,
+        distribution: { ...distribution, completionSpends: Array.from(distribution.completionSpends) } });
+      if (calculationCacheEntries.length > 6) calculationCacheEntries.shift();
+      try {
+        window.localStorage.setItem(calculationCacheStorageKey, JSON.stringify(calculationCacheEntries));
+      } catch {}
+    }
 
     function calculateExpectedInBackground(input, calculationId) {
+      const cached = input.mode === "expected" ? getCachedCalculation(input) : null;
+      if (cached) {
+        renderExpected(cached.result, input, calculationId, cached.distribution);
+        return;
+      }
       $("status").className = "status";
       $("status").textContent = "正在计算大概需要多少金币…";
       $("answer").classList.add("hidden");
       $("costDistribution").classList.add("hidden");
+      const showFailure = () => {
+        if (calculationId !== currentCalculationId) return;
+        $("status").className = "status bad";
+        $("status").textContent = "计算未完成，请减少兑换数量后重试。";
+      };
 
       const runHere = () => {
         if (calculationId !== currentCalculationId) return;
-        renderExpected(calculateExpected(input), input, calculationId);
+        try {
+          const result = input.mode === "expected" ? calculateExpected(input) : calculateDirect(input);
+          if (input.mode === "expected") renderExpected(result, input, calculationId);
+          else renderDirect(result, input);
+        } catch (error) {
+          console.error(error);
+          showFailure();
+        }
       };
       const workerSource = [
         "const items = " + JSON.stringify(items) + ";",
         "const rewardTiers = " + JSON.stringify(rewardTiers) + ";",
         "const otherProbability = " + otherProbability + ";",
         "const probabilityTotal = " + probabilityTotal + ";",
+        "const refreshPrices = " + JSON.stringify(refreshPrices) + ";",
         rewardsForStars.toString(),
-        makeLayers.toString(),
-        layerSize4.toString(),
-        stateIndex4.toString(),
-        layerRank4.toString(),
+        "const celebrationSolver = { solve: " + celebrationSolver.solve.toString()
+          + ", purchaseOnlyPlan: " + celebrationSolver.purchaseOnlyPlan.toString() + " };",
+        betterPlan.toString(),
+        calculateDirect.toString(),
         calculateExpected.toString(),
         "self.onmessage = (event) => {",
-        "  const result = calculateExpected(event.data);",
-        "  self.postMessage(result, result ? result.buyDecisions.map((layer) => layer.buffer) : []);",
+        " try {",
+        "  const result = event.data.mode === 'expected' ? calculateExpected(event.data, progress => self.postMessage({ progress })) : calculateDirect(event.data);",
+        "  const policy = result?.buyDecisions;",
+        "  self.postMessage(result, policy ? [policy.keys.buffer, policy.masks.buffer, ...(policy.purchaseMasks ? [policy.purchaseMasks.buffer] : []), ...(policy.purchaseOnlyMasks ? [policy.purchaseOnlyMasks.buffer] : [])] : []);",
+        " } catch (error) { self.postMessage({ error: error.message }); }",
         "};"
       ].join("\n");
 
@@ -2075,15 +2315,23 @@
         }
         calculationWorker = worker;
         worker.onmessage = (event) => {
+          if (event.data?.progress) {
+            if (calculationId === currentCalculationId) {
+              $("status").textContent = `正在计算金币花费，已用时 ${event.data.progress.elapsedSeconds} 秒…`;
+            }
+            return;
+          }
           worker.terminate();
           if (calculationWorker === worker) calculationWorker = null;
           if (calculationId !== currentCalculationId) return;
-          renderExpected(event.data, input, calculationId);
+          if (event.data?.error) { console.error(event.data.error); showFailure(); return; }
+          if (input.mode === "expected") renderExpected(event.data, input, calculationId);
+          else renderDirect(event.data, input);
         };
         worker.onerror = () => {
           worker.terminate();
           if (calculationWorker === worker) calculationWorker = null;
-          window.setTimeout(runHere, 0);
+          showFailure();
         };
         worker.postMessage(input);
       } catch {
@@ -2091,223 +2339,26 @@
       }
     }
 
-    function layerSize4(total) {
-      return (total + 1) * (total + 2) * (total + 3) / 6;
-    }
-
-    function stateIndex4(first, second, third, fourth) {
-      const total = first + second + third + fourth;
-      const levelOffset = total * (total + 1) * (total + 2) * (total + 3) / 24;
-      const beforeFirst = (total + 3) * (total + 2) * (total + 1) / 6
-        - (total - first + 3) * (total - first + 2) * (total - first + 1) / 6;
-      const remaining = total - first;
-      const beforeSecond = second * (remaining + 1) - second * (second - 1) / 2;
-      return levelOffset + beforeFirst + beforeSecond + third;
-    }
-
-    function layerRank4(first, second, third, fourth) {
-      const total = first + second + third + fourth;
-      const beforeFirst = (total + 3) * (total + 2) * (total + 1) / 6
-        - (total - first + 3) * (total - first + 2) * (total - first + 1) / 6;
-      const remaining = total - first;
-      const beforeSecond = second * (remaining + 1) - second * (second - 1) / 2;
-      return beforeFirst + beforeSecond + third;
-    }
-
-    function calculateExpected(input) {
-      const maxBuys = input.maxBuys;
-      const stateCount = (maxBuys + 1) * (maxBuys + 2) * (maxBuys + 3) * (maxBuys + 4) / 24;
-      const buyDecisions = makeLayers(Uint8Array, stateCount);
-      const metricCount = 3 + items.length + 3;
-      const itemCountMetricStart = 3;
-      const rewardMelonMetric = itemCountMetricStart + items.length;
-      const rewardWordMetric = rewardMelonMetric + 1;
-      const rewardCountMetric = rewardMelonMetric + 2;
-      let nextValues;
-      let nextMetrics;
-      let rootActions = [];
-
-      function makeMetricLayers(length) {
-        return Array.from({ length: metricCount }, () => makeLayers(Float32Array, length));
+    function calculateExpected(input, onProgress) {
+      if (input.allowPurchaseOnly !== undefined) {
+        return celebrationSolver.solve(input, items, rewardTiers, refreshPrices, onProgress);
       }
-
-      function setUnreachable(values, rank) {
-        for (let refreshTier = 0; refreshTier < 6; refreshTier += 1) {
-          values[refreshTier][rank] = Infinity;
-        }
-      }
-
-      function itemIncrement(itemIndex, rewardDelta) {
-        const increment = new Array(metricCount).fill(0);
-        increment[0] = items[itemIndex].cost;
-        increment[itemCountMetricStart + itemIndex] = 1;
-        increment[rewardMelonMetric] = rewardDelta.melon;
-        increment[rewardWordMetric] = rewardDelta.word;
-        increment[rewardCountMetric] = rewardDelta.count;
-        return increment;
-      }
-
-      // Keep only adjacent value layers; the compact policies remain available for simulation.
-      for (let buys = maxBuys; buys >= 0; buys -= 1) {
-        const currentValues = makeLayers(Float64Array, layerSize4(buys));
-        const currentMetrics = makeMetricLayers(layerSize4(buys));
-
-        for (let first = 0; first <= buys; first += 1) {
-          for (let second = 0; second <= buys - first; second += 1) {
-            for (let third = 0; third <= buys - first - second; third += 1) {
-              const fourth = buys - first - second - third;
-              const rank = layerRank4(first, second, third, fourth);
-              const globalIndex = stateIndex4(first, second, third, fourth);
-              const counts = [first, second, third, fourth];
-              const stars = input.baseStars + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
-              const reward = rewardsForStars(stars, input.baseStars);
-              const totalMelon = input.ownedMelon + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0) + reward.melon;
-              const totalWord = input.ownedWord + counts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0) + reward.word;
-              const reachedTarget = totalMelon >= input.targetMelon && totalWord >= input.targetWord;
-
-              if (reachedTarget) continue;
-              if (buys === maxBuys) {
-                setUnreachable(currentValues, rank);
-                continue;
-              }
-
-              const childRanks = [
-                layerRank4(first + 1, second, third, fourth),
-                layerRank4(first, second + 1, third, fourth),
-                layerRank4(first, second, third + 1, fourth),
-                layerRank4(first, second, third, fourth + 1)
-              ];
-              const increments = items.map((item, itemIndex) => itemIncrement(
-                itemIndex,
-                rewardsForStars(stars + item.stars, stars)
-              ));
-              const tailOffers = items.map((item, itemIndex) => ({
-                itemIndex,
-                value: item.cost + nextValues[5][childRanks[itemIndex]]
-              })).filter((offer) => Number.isFinite(offer.value))
-                .sort((left, right) => left.value - right.value);
-
-              if (!tailOffers.length) {
-                setUnreachable(currentValues, rank);
-                continue;
-              }
-
-              let acceptedProbability = 0;
-              let weightedValue = 0;
-              let acceptedCount = 0;
-              let tailThreshold = Infinity;
-
-              for (let offerIndex = 0; offerIndex < tailOffers.length; offerIndex += 1) {
-                const offer = tailOffers[offerIndex];
-                const probability = items[offer.itemIndex].probability;
-                acceptedProbability += probability;
-                weightedValue += probability * offer.value;
-                acceptedCount = offerIndex + 1;
-                tailThreshold = (50 + weightedValue) / acceptedProbability;
-                const nextValue = tailOffers[offerIndex + 1]?.value ?? Infinity;
-                if (tailThreshold <= nextValue) break;
-              }
-
-              const acceptedOffers = tailOffers.slice(0, acceptedCount);
-              buyDecisions[5][globalIndex] = acceptedOffers.reduce(
-                (mask, offer) => mask | (1 << offer.itemIndex),
-                0
-              );
-              currentValues[5][rank] = tailThreshold - 50;
-              const failedDraws = (1 - acceptedProbability) / acceptedProbability;
-
-              for (let metricIndex = 0; metricIndex < metricCount; metricIndex += 1) {
-                let metricValue = 0;
-                for (const offer of acceptedOffers) {
-                  const itemIndex = offer.itemIndex;
-                  const weight = items[itemIndex].probability / acceptedProbability;
-                  metricValue += weight * (
-                    nextMetrics[metricIndex][5][childRanks[itemIndex]] + increments[itemIndex][metricIndex]
-                  );
-                }
-                if (metricIndex === 1) metricValue += failedDraws * 50;
-                if (metricIndex === 2) metricValue += failedDraws;
-                currentMetrics[metricIndex][5][rank] = metricValue;
-              }
-
-              for (let refreshTier = 4; refreshTier >= 0; refreshTier -= 1) {
-                const refreshPrice = refreshTier === 0 ? 0 : 20;
-                const refreshValue = refreshPrice + currentValues[refreshTier + 1][rank];
-                let expectedValue = otherProbability * refreshValue;
-                const buyChoices = [];
-
-                for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-                  const buyValue = items[itemIndex].cost + nextValues[refreshTier][childRanks[itemIndex]];
-                  const shouldBuy = buyValue <= refreshValue;
-                  buyChoices.push(shouldBuy);
-                  expectedValue += items[itemIndex].probability * (shouldBuy ? buyValue : refreshValue);
-                }
-                buyDecisions[refreshTier][globalIndex] = buyChoices.reduce(
-                  (mask, shouldBuy, itemIndex) => mask | (shouldBuy ? 1 << itemIndex : 0),
-                  0
-                );
-                currentValues[refreshTier][rank] = expectedValue;
-
-                if (buys === 0 && refreshTier === 0) {
-                  rootActions = items.map((item, itemIndex) => ({
-                    name: item.name,
-                    buy: buyChoices[itemIndex]
-                  }));
-                }
-
-                for (let metricIndex = 0; metricIndex < metricCount; metricIndex += 1) {
-                  const refreshedMetric = currentMetrics[metricIndex][refreshTier + 1][rank]
-                    + (metricIndex === 1 ? refreshPrice : 0)
-                    + (metricIndex === 2 ? 1 : 0);
-                  let metricValue = otherProbability * refreshedMetric;
-
-                  for (let itemIndex = 0; itemIndex < items.length; itemIndex += 1) {
-                    const actionMetric = buyChoices[itemIndex]
-                      ? nextMetrics[metricIndex][refreshTier][childRanks[itemIndex]] + increments[itemIndex][metricIndex]
-                      : refreshedMetric;
-                    metricValue += items[itemIndex].probability * actionMetric;
-                  }
-                  currentMetrics[metricIndex][refreshTier][rank] = metricValue;
-                }
-              }
-            }
-          }
-        }
-
-        nextValues = currentValues;
-        nextMetrics = currentMetrics;
-      }
-
-      const rootRank = 0;
-      if (!Number.isFinite(nextValues[0][rootRank])) return null;
-
-      const expectedCounts = items.map((item, itemIndex) => nextMetrics[itemCountMetricStart + itemIndex][0][rootRank]);
-      const expectedRewardMelon = nextMetrics[rewardMelonMetric][0][rootRank];
-      const expectedRewardWord = nextMetrics[rewardWordMetric][0][rootRank];
-      const expectedStars = input.baseStars + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].stars, 0);
-      const expectedMelon = input.ownedMelon
-        + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].melon, 0)
-        + expectedRewardMelon;
-      const expectedWord = input.ownedWord
-        + expectedCounts.reduce((sum, count, itemIndex) => sum + count * items[itemIndex].word, 0)
-        + expectedRewardWord;
-
+      const normal = celebrationSolver.solve({ ...input, allowPurchaseOnly: false }, items, rewardTiers, refreshPrices, onProgress);
+      if (normal || input.maxBuys === 0 || input.needMelon === 0) return normal;
+      const wordOnly = celebrationSolver.solve({ ...input, needMelon: 0, targetMelon: 0,
+        ownedMelon: 0, allowPurchaseOnly: false }, items, rewardTiers, refreshPrices, onProgress);
+      if (!wordOnly) return null;
+      const deficit = Math.max(0, Math.ceil(input.needMelon - wordOnly.melon));
+      const supplement = celebrationSolver.purchaseOnlyPlan(input.needMelon, items, refreshPrices, deficit);
+      if (!supplement) return null;
       return {
-        cost: nextValues[0][rootRank],
-        purchaseCost: nextMetrics[0][0][rootRank],
-        refreshCost: nextMetrics[1][0][rootRank],
-        refreshCount: nextMetrics[2][0][rootRank],
-        counts: expectedCounts,
-        buys: expectedCounts.reduce((sum, value) => sum + value, 0),
-        stars: expectedStars,
-        rewardMelon: expectedRewardMelon,
-        rewardWord: expectedRewardWord,
-        rewardCount: nextMetrics[rewardCountMetric][0][rootRank],
-        melon: expectedMelon,
-        word: expectedWord,
-        buyDecisions,
-        actions: rootActions,
-        probabilitySum: probabilityTotal
+        ...wordOnly,
+        cost: wordOnly.cost + supplement.cost,
+        purchaseOnlyCounts: supplement.expectedCounts,
+        melon: wordOnly.melon + deficit,
+        usedPurchaseOnlyFallback: true,
+        buyDecisions: { ...wordOnly.buyDecisions, purchaseOnlyFallback: true,
+          targetMelon: input.needMelon, purchaseOnlyMasks: supplement.masks }
       };
     }
 
@@ -2315,6 +2366,30 @@
 
     function simulateCostDistribution(input, buyDecisions, isCurrent, onComplete) {
       const sampleCount = costDistributionSamples;
+      const purchaseOnlyFallback = buyDecisions.purchaseOnlyFallback === true;
+      const initialPolicy = { decisions: buyDecisions, starBase: input.baseStars,
+        melonBase: 0, wordBase: 0, needMelon: purchaseOnlyFallback ? 0 : input.needMelon,
+        needWord: input.needWord, cache: new Map() };
+      const policyKey = (context, buys, stars, melon, word) => {
+        const policy = context.decisions;
+        const s = Math.min(policy.starCap, Math.round((stars - context.starBase) / policy.starUnit));
+        const m = Math.max(0, context.needMelon - melon + context.melonBase);
+        const w = Math.ceil(Math.max(0, context.needWord - word + context.wordBase) / policy.wordUnit);
+        return (((input.maxBuys - buys) * policy.starSize + s) * policy.melonSize + m) * policy.wordSize + w;
+      };
+      const findPolicy = (context, key) => {
+        if (context.cache.has(key)) return context.cache.get(key);
+        const keys = context.decisions.keys;
+        let low = 0, high = keys.length;
+        while (low < high) {
+          const mid = Math.floor((low + high) / 2);
+          if (keys[mid] < key) low = mid + 1;
+          else high = mid;
+        }
+        const index = keys[low] === key ? low : -1;
+        context.cache.set(key, index);
+        return index;
+      };
       let seed = (
         Math.imul(input.targetMelon, 73856093) ^
         Math.imul(input.targetWord, 19349663) ^
@@ -2347,10 +2422,26 @@
           let buys = 0;
           let refreshTier = 0;
           let cost = 0;
-          let reachedTarget = input.needMelon === 0 && input.needWord === 0;
+          let stars = input.baseStars;
+          let melon = 0;
+          let word = 0;
+          let context = initialPolicy;
+          let reachedTarget = (purchaseOnlyFallback ? input.needWord === 0 : input.needMelon === 0 && input.needWord === 0);
 
           while (!reachedTarget && buys < input.maxBuys) {
-            const index = stateIndex4(counts[0], counts[1], counts[2], counts[3]);
+            let index = findPolicy(context, policyKey(context, buys, stars, melon, word));
+            if (index < 0) {
+              const remaining = { ...input, baseStars: stars, maxBuys: input.maxBuys - buys,
+                needMelon: Math.max(0, input.needMelon - melon), needWord: Math.max(0, input.needWord - word),
+                allowPurchaseOnly: context.decisions.allowPurchaseOnly === true,
+                ownedMelon: 0, ownedWord: 0 };
+              const rebuilt = calculateExpected(remaining);
+              if (!rebuilt) throw new Error("缺少当前进度的购买策略");
+              context = { decisions: rebuilt.buyDecisions, starBase: stars, melonBase: melon, wordBase: word,
+                needMelon: remaining.needMelon, needWord: remaining.needWord, cache: new Map() };
+              index = findPolicy(context, policyKey(context, buys, stars, melon, word));
+              if (index < 0) throw new Error("无法重建当前进度的购买策略");
+            }
             const draw = random();
             let itemIndex = -1;
             let probabilityEdge = 0;
@@ -2361,23 +2452,82 @@
                 break;
               }
             }
-            const accepted = itemIndex >= 0 && (buyDecisions[refreshTier][index] & (1 << itemIndex)) !== 0;
+            const accepted = itemIndex >= 0 && (context.decisions.masks[index * 6 + refreshTier] & (1 << itemIndex)) !== 0;
+            const purchaseOnly = itemIndex >= 0 && ((context.decisions.purchaseMasks?.[index * 6 + refreshTier] || 0) & (1 << itemIndex)) !== 0;
 
-            if (accepted) {
+            if (purchaseOnly) {
+              cost += items[itemIndex].cost;
+              melon += items[itemIndex].purchaseMelon;
+              reachedTarget = purchaseOnlyFallback
+                ? word >= input.needWord
+                : melon >= input.needMelon && word >= input.needWord;
+              if (!reachedTarget) {
+                cost += refreshPrices[Math.max(1, refreshTier)];
+                if (refreshTier < 5) refreshTier += 1;
+              }
+            } else if (accepted) {
               cost += items[itemIndex].cost;
               counts[itemIndex] += 1;
               buys += 1;
 
-              const stars = input.baseStars + counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].stars, 0);
+              const before = rewardsForStars(stars, input.baseStars);
+              stars += items[itemIndex].stars;
               const rewards = rewardsForStars(stars, input.baseStars);
-              const melon = counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].melon, 0) + rewards.melon;
-              const word = counts.reduce((sum, count, countIndex) => sum + count * items[countIndex].word, 0) + rewards.word;
-              reachedTarget = melon >= input.needMelon && word >= input.needWord;
+              melon += items[itemIndex].melon + rewards.melon - before.melon;
+              word += items[itemIndex].word + rewards.word - before.word;
+              reachedTarget = purchaseOnlyFallback
+                ? word >= input.needWord
+                : melon >= input.needMelon && word >= input.needWord;
             } else {
-              if (refreshTier > 0) cost += refreshTier < 5 ? 20 : 50;
+              cost += refreshPrices[refreshTier];
               if (refreshTier < 5) refreshTier += 1;
             }
           }
+
+          if (purchaseOnlyFallback && word >= input.needWord && melon < input.needMelon) {
+            let deficit = input.needMelon - melon;
+            while (deficit > 0) {
+              const mask = buyDecisions.purchaseOnlyMasks[deficit * 6 + refreshTier] || 0;
+              let acceptedProbability = 0;
+              for (let candidateIndex = 0; candidateIndex < items.length; candidateIndex += 1) {
+                if (mask & (1 << candidateIndex)) acceptedProbability += items[candidateIndex].probability;
+              }
+              if (!(acceptedProbability > 0)) {
+                cost += refreshPrices[refreshTier];
+                if (refreshTier < 5) refreshTier += 1;
+                continue;
+              }
+
+              // Skip rejected draws in one geometric step. This keeps large
+              // fallback targets fast even when the accepted task chance is low.
+              const failures = Math.floor(Math.log1p(-random()) / Math.log1p(-acceptedProbability));
+              let remainingFailures = failures;
+              while (remainingFailures > 0 && refreshTier < 5) {
+                cost += refreshPrices[refreshTier];
+                refreshTier += 1;
+                remainingFailures -= 1;
+              }
+              cost += remainingFailures * refreshPrices[5];
+              refreshTier = Math.min(5, refreshTier + remainingFailures);
+
+              let itemDraw = random() * acceptedProbability;
+              let itemIndex = -1;
+              for (let candidateIndex = 0; candidateIndex < items.length; candidateIndex += 1) {
+                if (!(mask & (1 << candidateIndex))) continue;
+                itemDraw -= items[candidateIndex].probability;
+                if (itemDraw < 0) { itemIndex = candidateIndex; break; }
+              }
+              if (itemIndex < 0) itemIndex = items.findIndex((item, index) => (mask & (1 << index)) !== 0);
+              cost += items[itemIndex].cost;
+              deficit = Math.max(0, deficit - items[itemIndex].purchaseMelon);
+              if (deficit > 0) {
+                cost += refreshPrices[Math.max(1, refreshTier)];
+                if (refreshTier < 5) refreshTier += 1;
+              }
+            }
+            melon = input.needMelon;
+          }
+          if (purchaseOnlyFallback) reachedTarget = word >= input.needWord && melon >= input.needMelon;
 
           spends[completed] = cost;
           if (reachedTarget) successfulSpends[successfulCount++] = cost;
@@ -2437,25 +2587,32 @@
 
       const neededItems = items.flatMap((item, index) => {
         const count = plan.counts[index];
-        if (!(count > 0)) return [];
-        const amount = expectedMode
-          ? count < 1 ? "不到 1 次" : `大约 ${format(Math.round(count))} 次`
-          : `${format(count)} 次`;
-        const action = item.cost === 0 ? "免费领取" : "购买";
-        return [`<li>${item.name}：${action}<strong>${amount}</strong>。</li>`];
+        const purchaseOnlyCount = plan.purchaseOnlyCounts?.[index] || 0;
+        const actions = [];
+        if (count > 0) {
+          const amount = expectedMode
+            ? count < 1 ? "不到 1 次" : `大约 ${format(Math.round(count))} 次`
+            : `${format(count)} 次`;
+          const action = item.cost === 0 ? "免费领取" : "购买并领取";
+          actions.push(`${action}<strong>${amount}</strong>`);
+        }
+        if (purchaseOnlyCount > 0) {
+          const amount = expectedMode ? `约 ${formatExpected(purchaseOnlyCount)} 次` : `${format(purchaseOnlyCount)} 次`;
+          actions.push(`<strong>买后不领取 ${amount}</strong>`);
+        }
+        return actions.length ? [`<li>${item.name}：${actions.join("；")}。</li>`] : [];
       });
 
       let nextAdvice;
       if (expectedMode) {
         const actions = plan.actions || [];
-        const buy = actions.filter((action) => action.buy).map((action) => action.name);
+        const buy = actions.filter((action) => action.buy).map((action) => `${action.name}${action.purchaseOnly ? "（买后不领取）" : "（领取奖励）"}`);
         const skip = actions.filter((action) => !action.buy).map((action) => action.name);
         nextAdvice = buy.length
           ? `下一次刷到${buy.join("、")}时，建议买下${skip.length ? `；${skip.join("、")}先跳过` : ""}。`
           : "暂时不要购买，先刷新寻找合适的任务。";
       } else {
-        const buy = items.filter((item, index) => plan.counts[index] > 0).map((item) => item.name);
-        nextAdvice = `接下来刷到${buy.join("、")}时，按上面的次数购买；已买够的任务可以跳过。`;
+        nextAdvice = "按上面的次数操作；买后不领取的部分先完成，再领取任务奖励，避免任务机会用尽。此模式不计刷新金币。";
       }
 
       advice.innerHTML = `<p>${expectedMode ? "按当前进度估算，接下来大约需要：" : "接下来需要："}</p>
@@ -2472,12 +2629,13 @@
       setCostLabel(false);
 
       if (!best) {
-        const maxStars = input.baseStars + input.maxBuys * (onlyMelon30 ? 30 : 50);
+        const maxStarsPerBuy = Math.max(...items.filter((item) => !onlyMelon30 || item.key !== "melon50").map((item) => item.stars));
+        const maxStars = input.baseStars + input.maxBuys * maxStarsPerBuy;
         const maxReward = rewardsForStars(maxStars, input.baseStars);
         status.className = "status bad";
         status.textContent = onlyMelon30
-          ? `无法凑够：完全没有 50 星红灯笼时，在最多 ${format(input.maxBuys)} 次购买内，30 星红灯笼、30 星字和后续宝箱奖励无法同时满足目标。`
-          : `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励红灯笼 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+          ? `无法凑够：完全没有 ${items[0].name}时，在最多 ${format(input.maxBuys)} 次购买内，其余任务和后续宝箱奖励无法同时满足目标。`
+          : `在最多 ${format(input.maxBuys)} 次购买内无法满足目标。理论最高星数 ${format(maxStars)}，后续最多新增奖励${materialName} ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
         answer.classList.add("hidden");
         return;
       }
@@ -2491,9 +2649,9 @@
       renderPurchaseAdvice(best, input, false);
 
       $("totalRows").innerHTML = [
-        totalRow("红灯笼", input.ownedMelon + best.melon, input.targetMelon),
+        totalRow(materialName, input.ownedMelon + best.melon, input.targetMelon),
         totalRow("字", input.ownedWord + best.word, input.targetWord),
-        totalRow("奖励红灯笼", best.reward.melon, 0),
+        totalRow(`奖励${materialName}`, best.reward.melon, 0),
         totalRow("奖励字", best.reward.word, 0)
       ].join("");
 
@@ -2510,7 +2668,7 @@
       }).join("");
     }
 
-    function renderExpected(result, input, calculationId) {
+    function renderExpected(result, input, calculationId, cachedDistribution = null) {
       const status = $("status");
       const answer = $("answer");
       setCostLabel(true);
@@ -2518,10 +2676,13 @@
       if (!result) {
         clearBudgetProbability();
         $("costDistribution").classList.add("hidden");
-        const maxStars = input.baseStars + input.maxBuys * 50;
+        const maxStarsPerBuy = Math.max(...items.map((item) => item.stars));
+        const maxStars = input.baseStars + input.maxBuys * maxStarsPerBuy;
         const maxReward = rewardsForStars(maxStars, input.baseStars);
         status.className = "status bad";
-        status.textContent = `剩余 ${format(input.maxBuys)} 次购买机会不够凑齐目标。即使每次获得 50 星，最多也只能攒到 ${format(maxStars)} 星，宝箱最多再送红灯笼 ${format(maxReward.melon)}、字 ${format(maxReward.word)}。`;
+        status.textContent = input.maxBuys === 0
+          ? "没有剩余任务机会，无法购买或领取任务。"
+          : `剩余 ${format(input.maxBuys)} 次任务领取机会无法凑齐目标字。买后不领取只能补充${materialName}，不能增加字或星数；宝箱最多再送字 ${format(maxReward.word)}。`;
         answer.classList.add("hidden");
         return;
       }
@@ -2540,23 +2701,30 @@
       updateBudgetProbability();
       distributionNote.textContent = `正在试算不同运气下的花费：0 / ${format(costDistributionSamples)} 次。`;
       distributionNote.classList.remove("hidden");
-      simulateCostDistribution(input, result.buyDecisions, () => calculationId === currentCalculationId, (distribution) => {
+      const finishDistribution = (distribution) => {
+        if (calculationId !== currentCalculationId) return;
         currentCostDistribution = distribution;
         costDistributionPending = false;
+        if (result.usedPurchaseOnlyFallback) {
+          $("averageRemainingCost").textContent = `${formatExpected(distribution.mean)} 金币`;
+        }
         $("maximumCostEstimate").textContent = `${formatExpected(distribution.quantiles[distribution.quantiles.length - 1].cost)} 金币`;
         updateBudgetProbability();
         distributionNote.innerHTML = `按当前目标试算，100 次里约有 95 次会花费 <strong>${formatExpected(distribution.lower95)}–${formatExpected(distribution.upper95)}</strong> 金币；约有 99 次会花费 <strong>${formatExpected(distribution.lower99)}–${formatExpected(distribution.upper99)}</strong> 金币。<span class="muted">实际花费取决于刷新运气，以上范围不是保底承诺。</span>`;
         renderQuantileChart(distribution.quantiles);
-      });
+        if (!cachedDistribution) saveCachedCalculation(input, result, distribution);
+      };
+      if (cachedDistribution) finishDistribution(cachedDistribution);
+      else simulateCostDistribution(input, result.buyDecisions, () => calculationId === currentCalculationId, finishDistribution);
 
       $("cost").textContent = formatExpected(result.cost);
 
       renderPurchaseAdvice(result, input, true);
 
       $("totalRows").innerHTML = [
-        expectedTotalRow("红灯笼", result.melon, input.targetMelon),
+        expectedTotalRow(materialName, result.melon, input.targetMelon),
         expectedTotalRow("字", result.word, input.targetWord),
-        expectedTotalRow("奖励红灯笼", result.rewardMelon, 0),
+        expectedTotalRow(`奖励${materialName}`, result.rewardMelon, 0),
         expectedTotalRow("奖励字", result.rewardWord, 0)
       ].join("");
 
@@ -2591,7 +2759,7 @@
 
     function itemOutput(item, count, formatter) {
       const output = [];
-      if (item.melon) output.push(`${formatter(count * item.melon)} 红灯笼`);
+      if (item.melon) output.push(`${formatter(count * item.melon)} ${materialName}`);
       if (item.word) output.push(`${formatter(count * item.word)} 字`);
       return output.join("、") || '<span class="muted">-</span>';
     }
@@ -2637,6 +2805,7 @@
     }
 
     let calculateTimer = null;
+    initializeEventArchive();
     renderPackageTargets();
     const hasSavedSession = restoreSessionInputs();
     initializeQuantileChart();
@@ -2702,7 +2871,7 @@
       applyPackageTargets({});
       $("ownedMelon").value = 0;
       $("ownedWord").value = 0;
-      $("maxBuys").value = 96;
+      $("maxBuys").value = eventCalculation.defaultMaxBuys;
       $("baseStars").value = 0;
       $("budgetGold").value = 0;
       $("calculationMode").value = "expected";
@@ -2724,7 +2893,7 @@
     });
 
     calculate();
-    if (!hasSavedSession) openSetupModal();
+    if (!hasSavedSession && eventArchive.selectedId === eventArchive.latestId) openSetupModal();
   </script>
 </body>
 </html>

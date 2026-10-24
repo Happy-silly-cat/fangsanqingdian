@@ -2388,7 +2388,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 2,
@@ -2597,7 +2599,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 3,
@@ -2798,7 +2802,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 4,
@@ -2999,7 +3005,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 5,
@@ -3200,7 +3208,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 6,
@@ -3401,7 +3411,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 7,
@@ -3602,7 +3614,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 8,
@@ -3803,7 +3817,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 1500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 9,
@@ -4004,7 +4020,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 3750
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 10,
@@ -4205,7 +4223,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 7500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 11,
@@ -4406,7 +4426,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 7500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 12,
@@ -4607,7 +4629,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 7500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 13,
@@ -4808,7 +4832,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 3750
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 14,
@@ -5009,7 +5035,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 7500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 15,
@@ -5318,7 +5346,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 16,
@@ -5519,7 +5549,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 3750
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 17,
@@ -5828,7 +5860,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 18,
@@ -6029,7 +6063,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 5600
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 19,
@@ -6230,7 +6266,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 100,
           "amount": 5600
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 20,
@@ -6539,7 +6577,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 21,
@@ -6848,7 +6888,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 22,
@@ -7157,7 +7199,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 23,
@@ -7466,7 +7510,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 24,
@@ -7775,7 +7821,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 25,
@@ -8084,7 +8132,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 26,
@@ -8393,7 +8443,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 27,
@@ -8702,7 +8754,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 28,
@@ -9011,7 +9065,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 29,
@@ -9320,7 +9376,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 30,
@@ -9629,7 +9687,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 31,
@@ -9938,7 +9998,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 32,
@@ -10247,7 +10309,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 33,
@@ -10556,7 +10620,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 34,
@@ -10865,7 +10931,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 35,
@@ -11174,7 +11242,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 36,
@@ -11483,7 +11553,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 37,
@@ -11792,7 +11864,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 38,
@@ -12106,7 +12180,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90239,
         "name": "暗金时装天赋1",
         "description": "全体上阵武将物防+5000，法防+5000；死亡时对敌方前排单体造成150%攻击伤害，且有50%概率眩晕目标1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 39,
@@ -12415,7 +12490,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 40,
@@ -12729,7 +12806,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90315,
         "name": "暗金时装天赋2",
         "description": "全体上阵武将物防+5000，法防+5000；被怒气攻击时60%概率令攻击者【眩晕】，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 41,
@@ -13038,7 +13116,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 42,
@@ -13352,7 +13432,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90383,
         "name": "暗金时装天赋3",
         "description": "全体上阵武将物防+5000，法防+5000；被普通攻击时60%概率令攻击者【麻痹】，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 43,
@@ -13661,7 +13742,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 44,
@@ -13970,7 +14053,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 45,
@@ -14284,7 +14369,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90488,
         "name": "暗金时装天赋4",
         "description": "全体上阵武将物防+5000，法防+5000；被攻击时40%的概率给攻击者附加封印【治疗】效果，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 46,
@@ -14593,7 +14679,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 47,
@@ -14907,7 +14995,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90513,
         "name": "暗金时装天赋5",
         "description": "全体上阵武将物防+5000，法防+5000；死亡时对敌方攻击最高的目标造成50%伤害，且有60%概率附加【禁怒】效果，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 48,
@@ -15216,7 +15305,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 49,
@@ -15530,7 +15621,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90723,
         "name": "暗金时装天赋6",
         "description": "全体上阵武将物防+5000，法防+5000；【光环效果】在场上时，已方全体免伤增加10%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 50,
@@ -15839,7 +15931,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 51,
@@ -16153,7 +16247,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90751,
         "name": "暗金时装天赋7",
         "description": "全体上阵武将物防+5000，法防+5000；【光环效果】在场上时，已方全体伤害增加10%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 52,
@@ -16462,7 +16557,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 53,
@@ -16771,7 +16868,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 54,
@@ -17085,7 +17184,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90776,
         "name": "暗金时装天赋8",
         "description": "全体上阵武将物防+5000，法防+5000；全体上阵武将伤害+5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 55,
@@ -17394,7 +17494,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 56,
@@ -17708,7 +17810,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90850,
         "name": "暗金时装天赋9",
         "description": "全体上阵武将物防+5000，法防+5000；全体上阵武将免伤+5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 57,
@@ -18017,7 +18120,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 58,
@@ -18331,7 +18436,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90881,
         "name": "暗金时装天赋9",
         "description": "全体上阵武将物防+5000，法防+5000；怒气攻击后为己方全体武将增加10%伤害和20%命中，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 59,
@@ -18640,7 +18746,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 60,
@@ -18949,7 +19057,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 61,
@@ -19263,7 +19373,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90902,
         "name": "暗金时装天赋11",
         "description": "全体上阵武将物防+5000，法防+5000；普通攻击后为己方全体武将增加10%免伤和20%抗暴，持续1回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 62,
@@ -19572,7 +19683,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 63,
@@ -19886,7 +19999,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90931,
         "name": "暗金时装天赋12",
         "description": "全体上阵武将物防+5000，法防+5000；【光环效果】在场上时，已方全体怒伤和怒免各增加5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 64,
@@ -20195,7 +20309,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 65,
@@ -20504,7 +20620,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 66,
@@ -20823,7 +20941,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 90988,
         "name": "白金时装天赋1",
         "description": "全体上阵武将物防+7500，法防+7500；全体上阵武将物理免伤+5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 67,
@@ -21132,7 +21251,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 68,
@@ -21451,7 +21572,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 91073,
         "name": "白金时装天赋2",
         "description": "全体上阵武将物防+7500，法防+7500；全体上阵武将法术免伤+5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 69,
@@ -21760,7 +21882,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 70,
@@ -22079,7 +22203,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 91433,
         "name": "白金时装天赋3",
         "description": "全体上阵武将物防+7500，法防+7500；怒气攻击后为己方攻击最高武将增加20%怒伤和40%暴击，持续2回合"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 71,
@@ -22388,7 +22513,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 72,
@@ -22707,7 +22834,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 91484,
         "name": "白金时装天赋4",
         "description": "全体上阵武将物防+7500，法防+7500；【光环效果】在场上时，已方全体物理伤害和法术伤害各增加5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 73,
@@ -23016,7 +23144,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 74,
@@ -23335,7 +23465,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 91550,
         "name": "白金时装天赋5",
         "description": "全体上阵武将物防+7500，法防+7500；【光环效果】在场上时，已方全体物理免伤和法术免伤各增加5%"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 75,
@@ -23644,7 +23775,9 @@ window.PROTAGONIST_FASHION_DATA = {
           "attributeId": 51,
           "amount": 77500
         }
-      ]
+      ],
+      "advanceRows": [],
+      "talent": null
     },
     {
       "id": 76,
@@ -23963,7 +24096,8 @@ window.PROTAGONIST_FASHION_DATA = {
         "id": 91647,
         "name": "白金时装天赋6",
         "description": "全体上阵武将物防+7500，法防+7500；全体上阵武将怒气加伤+5%，攻击+50000"
-      }
+      },
+      "advanceRows": []
     },
     {
       "id": 77,
@@ -24297,6 +24431,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24308,16 +24448,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24329,16 +24469,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24350,16 +24490,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24371,16 +24511,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24392,16 +24532,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24413,16 +24553,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24434,16 +24574,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24455,16 +24595,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24476,16 +24616,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24496,12 +24636,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -24839,6 +24973,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24850,16 +24990,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24871,16 +25011,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24892,16 +25032,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24913,16 +25053,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24934,16 +25074,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24955,16 +25095,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24976,16 +25116,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -24997,16 +25137,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25018,16 +25158,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25038,12 +25178,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -25381,6 +25515,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25392,16 +25532,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25413,16 +25553,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25434,16 +25574,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25455,16 +25595,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25476,16 +25616,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25497,16 +25637,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25518,16 +25658,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25539,16 +25679,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25560,16 +25700,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25580,12 +25720,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -25923,6 +26057,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25934,16 +26074,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25955,16 +26095,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25976,16 +26116,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -25997,16 +26137,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26018,16 +26158,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26039,16 +26179,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26060,16 +26200,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26081,16 +26221,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26102,16 +26242,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26122,12 +26262,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -26465,6 +26599,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26476,16 +26616,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26497,16 +26637,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26518,16 +26658,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26539,16 +26679,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26560,16 +26700,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26581,16 +26721,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26602,16 +26742,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26623,16 +26763,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26644,16 +26784,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -26664,12 +26804,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -27007,6 +27141,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27018,16 +27158,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27039,16 +27179,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27060,16 +27200,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27081,16 +27221,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27102,16 +27242,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27123,16 +27263,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27144,16 +27284,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27165,16 +27305,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27186,16 +27326,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27206,12 +27346,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -27549,6 +27683,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27560,16 +27700,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27581,16 +27721,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27602,16 +27742,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27623,16 +27763,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27644,16 +27784,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27665,16 +27805,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27686,16 +27826,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27707,16 +27847,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27728,16 +27868,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -27748,12 +27888,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -28091,6 +28225,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28102,16 +28242,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28123,16 +28263,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28144,16 +28284,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28165,16 +28305,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28186,16 +28326,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28207,16 +28347,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28228,16 +28368,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28249,16 +28389,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28270,16 +28410,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28290,12 +28430,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -28633,6 +28767,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28644,16 +28784,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28665,16 +28805,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28686,16 +28826,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28707,16 +28847,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28728,16 +28868,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28749,16 +28889,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28770,16 +28910,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28791,16 +28931,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28812,16 +28952,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -28832,12 +28972,6 @@ window.PROTAGONIST_FASHION_DATA = {
               "type": 7,
               "materialId": 69043,
               "amount": 1000
-            }
-          ],
-          "attributes": [
-            {
-              "id": 180,
-              "amount": 4500
             }
           ]
         }
@@ -29175,6 +29309,12 @@ window.PROTAGONIST_FASHION_DATA = {
       "advanceRows": [
         {
           "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29186,16 +29326,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 100
             }
-          ],
-          "attributes": [
-            {
-              "id": 57,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29207,16 +29347,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 200
             }
-          ],
-          "attributes": [
-            {
-              "id": 61,
-              "amount": 1500
-            }
           ]
         },
         {
           "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29228,16 +29368,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 300
             }
-          ],
-          "attributes": [
-            {
-              "id": 56,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29249,16 +29389,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 400
             }
-          ],
-          "attributes": [
-            {
-              "id": 60,
-              "amount": 2500
-            }
           ]
         },
         {
           "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29270,16 +29410,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 500
             }
-          ],
-          "attributes": [
-            {
-              "id": 25,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29291,16 +29431,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 600
             }
-          ],
-          "attributes": [
-            {
-              "id": 24,
-              "amount": 3500
-            }
           ]
         },
         {
           "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29312,16 +29452,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 700
             }
-          ],
-          "attributes": [
-            {
-              "id": 101,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29333,16 +29473,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 800
             }
-          ],
-          "attributes": [
-            {
-              "id": 102,
-              "amount": 4000
-            }
           ]
         },
         {
           "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29354,16 +29494,16 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 900
             }
-          ],
-          "attributes": [
-            {
-              "id": 179,
-              "amount": 4500
-            }
           ]
         },
         {
           "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
           "costs": [
             {
               "type": 1,
@@ -29375,15 +29515,1635 @@ window.PROTAGONIST_FASHION_DATA = {
               "materialId": 69043,
               "amount": 1000
             }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "dbId": 80087,
+      "names": {
+        "male": "凌霄剑君",
+        "female": "云月兔瑶"
+      },
+      "quality": 12,
+      "score": 32,
+      "assets": {
+        "male": {
+          "small": "assets/fashion-gallery/male-small-87.png",
+          "big": "assets/fashion-gallery/male-big-87.png",
+          "hero": "assets/fashion-gallery/male-hero-87.png"
+        },
+        "female": {
+          "small": "assets/fashion-gallery/female-small-87.png",
+          "big": "assets/fashion-gallery/female-big-87.png",
+          "hero": "assets/fashion-gallery/female-hero-87.png"
+        }
+      },
+      "synthesis": {
+        "id": 1800219,
+        "names": {
+          "male": "凌霄剑君碎片",
+          "female": "云月兔瑶碎片"
+        },
+        "name": "凌霄剑君碎片",
+        "amount": 280
+      },
+      "baseAttributes": [
+        {
+          "id": 1,
+          "amount": 40000
+        },
+        {
+          "id": 4,
+          "amount": 4000
+        },
+        {
+          "id": 5,
+          "amount": 4000
+        },
+        {
+          "id": 9,
+          "amount": 4000
+        },
+        {
+          "id": 6,
+          "amount": 400
+        },
+        {
+          "id": 7,
+          "amount": 400
+        },
+        {
+          "id": 8,
+          "amount": 400
+        }
+      ],
+      "growthAttributes": [
+        {
+          "id": 1,
+          "amount": 4000
+        },
+        {
+          "id": 4,
+          "amount": 400
+        },
+        {
+          "id": 5,
+          "amount": 400
+        },
+        {
+          "id": 9,
+          "amount": 400
+        },
+        {
+          "id": 6,
+          "amount": 60
+        },
+        {
+          "id": 7,
+          "amount": 60
+        },
+        {
+          "id": 8,
+          "amount": 60
+        }
+      ],
+      "strengthenPlan": 4,
+      "maxLevel": 280,
+      "advanceAttribute": [
+        {
+          "id": 233,
+          "amount": 500
+        }
+      ],
+      "advanceStages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "advanceRows": [
+        {
+          "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
           ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 50000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 100
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 60000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 200
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 70000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 300
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 80000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 400
+            }
+          ]
+        },
+        {
+          "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 90000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 500
+            }
+          ]
+        },
+        {
+          "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 100000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 600
+            }
+          ]
+        },
+        {
+          "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 110000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 700
+            }
+          ]
+        },
+        {
+          "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 120000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 800
+            }
+          ]
+        },
+        {
+          "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 130000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 900
+            }
+          ]
+        },
+        {
+          "stage": 10,
           "attributes": [
             {
               "id": 180,
               "amount": 4500
             }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 140000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 1000
+            }
           ]
         }
-      ]
+      ],
+      "starAttributes": [
+        {
+          "star": 1,
+          "attributeId": 22,
+          "amount": 400
+        },
+        {
+          "star": 2,
+          "attributeId": 22,
+          "amount": 800
+        },
+        {
+          "star": 3,
+          "attributeId": 22,
+          "amount": 1200
+        }
+      ],
+      "starCosts": [
+        {
+          "star": 1,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 165
+        },
+        {
+          "star": 2,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 330
+        },
+        {
+          "star": 3,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 660
+        }
+      ],
+      "strengthenAttributes": [
+        {
+          "level": 1,
+          "attributeId": 51,
+          "amount": 2500
+        },
+        {
+          "level": 3,
+          "attributeId": 100,
+          "amount": 500
+        },
+        {
+          "level": 5,
+          "attributeId": 51,
+          "amount": 5000
+        },
+        {
+          "level": 7,
+          "attributeId": 100,
+          "amount": 1000
+        },
+        {
+          "level": 9,
+          "attributeId": 51,
+          "amount": 7500
+        },
+        {
+          "level": 11,
+          "attributeId": 100,
+          "amount": 1500
+        },
+        {
+          "level": 13,
+          "attributeId": 51,
+          "amount": 10000
+        },
+        {
+          "level": 15,
+          "attributeId": 100,
+          "amount": 2500
+        },
+        {
+          "level": 17,
+          "attributeId": 51,
+          "amount": 12500
+        },
+        {
+          "level": 19,
+          "attributeId": 100,
+          "amount": 3000
+        },
+        {
+          "level": 21,
+          "attributeId": 51,
+          "amount": 17500
+        },
+        {
+          "level": 23,
+          "attributeId": 100,
+          "amount": 4000
+        },
+        {
+          "level": 25,
+          "attributeId": 51,
+          "amount": 22500
+        },
+        {
+          "level": 27,
+          "attributeId": 100,
+          "amount": 5000
+        },
+        {
+          "level": 29,
+          "attributeId": 51,
+          "amount": 27500
+        },
+        {
+          "level": 31,
+          "attributeId": 100,
+          "amount": 6000
+        },
+        {
+          "level": 33,
+          "attributeId": 51,
+          "amount": 32500
+        },
+        {
+          "level": 35,
+          "attributeId": 100,
+          "amount": 7000
+        },
+        {
+          "level": 37,
+          "attributeId": 51,
+          "amount": 37500
+        },
+        {
+          "level": 39,
+          "attributeId": 100,
+          "amount": 8000
+        },
+        {
+          "level": 41,
+          "attributeId": 51,
+          "amount": 42500
+        },
+        {
+          "level": 43,
+          "attributeId": 100,
+          "amount": 9000
+        },
+        {
+          "level": 45,
+          "attributeId": 51,
+          "amount": 47500
+        },
+        {
+          "level": 47,
+          "attributeId": 100,
+          "amount": 10000
+        },
+        {
+          "level": 49,
+          "attributeId": 51,
+          "amount": 52500
+        },
+        {
+          "level": 51,
+          "attributeId": 100,
+          "amount": 11000
+        },
+        {
+          "level": 53,
+          "attributeId": 51,
+          "amount": 57500
+        },
+        {
+          "level": 55,
+          "attributeId": 100,
+          "amount": 12000
+        },
+        {
+          "level": 57,
+          "attributeId": 51,
+          "amount": 62500
+        },
+        {
+          "level": 59,
+          "attributeId": 100,
+          "amount": 13000
+        },
+        {
+          "level": 61,
+          "attributeId": 51,
+          "amount": 67500
+        },
+        {
+          "level": 63,
+          "attributeId": 100,
+          "amount": 14000
+        },
+        {
+          "level": 65,
+          "attributeId": 51,
+          "amount": 72500
+        },
+        {
+          "level": 67,
+          "attributeId": 100,
+          "amount": 15000
+        },
+        {
+          "level": 69,
+          "attributeId": 51,
+          "amount": 77500
+        }
+      ],
+      "talent": {
+        "id": 92560,
+        "name": "澜金时装天赋4",
+        "description": "全体上阵武将物防+15000，法防+15000；全体上阵武将追击减伤+10%，攻击+100000"
+      }
+    },
+    {
+      "id": 88,
+      "dbId": 80088,
+      "names": {
+        "male": "酩夜金尊",
+        "female": "绯宵玉盏"
+      },
+      "quality": 12,
+      "score": 32,
+      "assets": {
+        "male": {
+          "small": "assets/fashion-gallery/male-small-88.png",
+          "big": "assets/fashion-gallery/male-big-88.png",
+          "hero": "assets/fashion-gallery/male-hero-88.png"
+        },
+        "female": {
+          "small": "assets/fashion-gallery/female-small-88.png",
+          "big": "assets/fashion-gallery/female-big-88.png",
+          "hero": "assets/fashion-gallery/female-hero-88.png"
+        }
+      },
+      "synthesis": {
+        "id": 1800220,
+        "names": {
+          "male": "酩夜金尊碎片",
+          "female": "绯宵玉盏碎片"
+        },
+        "name": "酩夜金尊碎片",
+        "amount": 280
+      },
+      "baseAttributes": [
+        {
+          "id": 1,
+          "amount": 40000
+        },
+        {
+          "id": 4,
+          "amount": 4000
+        },
+        {
+          "id": 5,
+          "amount": 4000
+        },
+        {
+          "id": 9,
+          "amount": 4000
+        },
+        {
+          "id": 6,
+          "amount": 400
+        },
+        {
+          "id": 7,
+          "amount": 400
+        },
+        {
+          "id": 8,
+          "amount": 400
+        }
+      ],
+      "growthAttributes": [
+        {
+          "id": 1,
+          "amount": 4000
+        },
+        {
+          "id": 4,
+          "amount": 400
+        },
+        {
+          "id": 5,
+          "amount": 400
+        },
+        {
+          "id": 9,
+          "amount": 400
+        },
+        {
+          "id": 6,
+          "amount": 60
+        },
+        {
+          "id": 7,
+          "amount": 60
+        },
+        {
+          "id": 8,
+          "amount": 60
+        }
+      ],
+      "strengthenPlan": 4,
+      "maxLevel": 280,
+      "advanceAttribute": [
+        {
+          "id": 234,
+          "amount": 500
+        }
+      ],
+      "advanceStages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "advanceRows": [
+        {
+          "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 50000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 100
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 60000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 200
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 70000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 300
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 80000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 400
+            }
+          ]
+        },
+        {
+          "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 90000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 500
+            }
+          ]
+        },
+        {
+          "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 100000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 600
+            }
+          ]
+        },
+        {
+          "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 110000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 700
+            }
+          ]
+        },
+        {
+          "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 120000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 800
+            }
+          ]
+        },
+        {
+          "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 130000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 900
+            }
+          ]
+        },
+        {
+          "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 140000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 1000
+            }
+          ]
+        }
+      ],
+      "starAttributes": [
+        {
+          "star": 1,
+          "attributeId": 22,
+          "amount": 400
+        },
+        {
+          "star": 2,
+          "attributeId": 22,
+          "amount": 800
+        },
+        {
+          "star": 3,
+          "attributeId": 22,
+          "amount": 1200
+        }
+      ],
+      "starCosts": [
+        {
+          "star": 1,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 165
+        },
+        {
+          "star": 2,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 330
+        },
+        {
+          "star": 3,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 660
+        }
+      ],
+      "strengthenAttributes": [
+        {
+          "level": 1,
+          "attributeId": 51,
+          "amount": 2500
+        },
+        {
+          "level": 3,
+          "attributeId": 100,
+          "amount": 500
+        },
+        {
+          "level": 5,
+          "attributeId": 51,
+          "amount": 5000
+        },
+        {
+          "level": 7,
+          "attributeId": 100,
+          "amount": 1000
+        },
+        {
+          "level": 9,
+          "attributeId": 51,
+          "amount": 7500
+        },
+        {
+          "level": 11,
+          "attributeId": 100,
+          "amount": 1500
+        },
+        {
+          "level": 13,
+          "attributeId": 51,
+          "amount": 10000
+        },
+        {
+          "level": 15,
+          "attributeId": 100,
+          "amount": 2500
+        },
+        {
+          "level": 17,
+          "attributeId": 51,
+          "amount": 12500
+        },
+        {
+          "level": 19,
+          "attributeId": 100,
+          "amount": 3000
+        },
+        {
+          "level": 21,
+          "attributeId": 51,
+          "amount": 17500
+        },
+        {
+          "level": 23,
+          "attributeId": 100,
+          "amount": 4000
+        },
+        {
+          "level": 25,
+          "attributeId": 51,
+          "amount": 22500
+        },
+        {
+          "level": 27,
+          "attributeId": 100,
+          "amount": 5000
+        },
+        {
+          "level": 29,
+          "attributeId": 51,
+          "amount": 27500
+        },
+        {
+          "level": 31,
+          "attributeId": 100,
+          "amount": 6000
+        },
+        {
+          "level": 33,
+          "attributeId": 51,
+          "amount": 32500
+        },
+        {
+          "level": 35,
+          "attributeId": 100,
+          "amount": 7000
+        },
+        {
+          "level": 37,
+          "attributeId": 51,
+          "amount": 37500
+        },
+        {
+          "level": 39,
+          "attributeId": 100,
+          "amount": 8000
+        },
+        {
+          "level": 41,
+          "attributeId": 51,
+          "amount": 42500
+        },
+        {
+          "level": 43,
+          "attributeId": 100,
+          "amount": 9000
+        },
+        {
+          "level": 45,
+          "attributeId": 51,
+          "amount": 47500
+        },
+        {
+          "level": 47,
+          "attributeId": 100,
+          "amount": 10000
+        },
+        {
+          "level": 49,
+          "attributeId": 51,
+          "amount": 52500
+        },
+        {
+          "level": 51,
+          "attributeId": 100,
+          "amount": 11000
+        },
+        {
+          "level": 53,
+          "attributeId": 51,
+          "amount": 57500
+        },
+        {
+          "level": 55,
+          "attributeId": 100,
+          "amount": 12000
+        },
+        {
+          "level": 57,
+          "attributeId": 51,
+          "amount": 62500
+        },
+        {
+          "level": 59,
+          "attributeId": 100,
+          "amount": 13000
+        },
+        {
+          "level": 61,
+          "attributeId": 51,
+          "amount": 67500
+        },
+        {
+          "level": 63,
+          "attributeId": 100,
+          "amount": 14000
+        },
+        {
+          "level": 65,
+          "attributeId": 51,
+          "amount": 72500
+        },
+        {
+          "level": 67,
+          "attributeId": 100,
+          "amount": 15000
+        },
+        {
+          "level": 69,
+          "attributeId": 51,
+          "amount": 77500
+        }
+      ],
+      "talent": {
+        "id": 92674,
+        "name": "澜金时装天赋5",
+        "description": "全体上阵武将物防+15000，法防+15000；全体上阵武将追击增伤+10%，攻击+100000"
+      }
+    },
+    {
+      "id": 89,
+      "dbId": 80089,
+      "names": {
+        "male": "苍鹰逐野",
+        "female": "云原猎影"
+      },
+      "quality": 12,
+      "score": 32,
+      "assets": {
+        "male": {
+          "small": "assets/fashion-gallery/male-small-89.png",
+          "big": "assets/fashion-gallery/male-big-89.png",
+          "hero": "assets/fashion-gallery/male-hero-89.png"
+        },
+        "female": {
+          "small": "assets/fashion-gallery/female-small-89.png",
+          "big": "assets/fashion-gallery/female-big-89.png",
+          "hero": "assets/fashion-gallery/female-hero-89.png"
+        }
+      },
+      "synthesis": {
+        "id": 1800221,
+        "names": {
+          "male": "苍鹰逐野碎片",
+          "female": "云原猎影碎片"
+        },
+        "name": "苍鹰逐野碎片",
+        "amount": 280
+      },
+      "baseAttributes": [
+        {
+          "id": 1,
+          "amount": 40000
+        },
+        {
+          "id": 4,
+          "amount": 4000
+        },
+        {
+          "id": 5,
+          "amount": 4000
+        },
+        {
+          "id": 9,
+          "amount": 4000
+        },
+        {
+          "id": 6,
+          "amount": 400
+        },
+        {
+          "id": 7,
+          "amount": 400
+        },
+        {
+          "id": 8,
+          "amount": 400
+        }
+      ],
+      "growthAttributes": [
+        {
+          "id": 1,
+          "amount": 4000
+        },
+        {
+          "id": 4,
+          "amount": 400
+        },
+        {
+          "id": 5,
+          "amount": 400
+        },
+        {
+          "id": 9,
+          "amount": 400
+        },
+        {
+          "id": 6,
+          "amount": 60
+        },
+        {
+          "id": 7,
+          "amount": 60
+        },
+        {
+          "id": 8,
+          "amount": 60
+        }
+      ],
+      "strengthenPlan": 4,
+      "maxLevel": 280,
+      "advanceAttribute": [
+        {
+          "id": 233,
+          "amount": 500
+        }
+      ],
+      "advanceStages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "advanceRows": [
+        {
+          "stage": 1,
+          "attributes": [
+            {
+              "id": 57,
+              "amount": 1500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 50000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 100
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "attributes": [
+            {
+              "id": 61,
+              "amount": 1500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 60000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 200
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "attributes": [
+            {
+              "id": 56,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 70000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 300
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "attributes": [
+            {
+              "id": 60,
+              "amount": 2500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 80000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 400
+            }
+          ]
+        },
+        {
+          "stage": 5,
+          "attributes": [
+            {
+              "id": 25,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 90000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 500
+            }
+          ]
+        },
+        {
+          "stage": 6,
+          "attributes": [
+            {
+              "id": 24,
+              "amount": 3500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 100000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 600
+            }
+          ]
+        },
+        {
+          "stage": 7,
+          "attributes": [
+            {
+              "id": 101,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 110000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 700
+            }
+          ]
+        },
+        {
+          "stage": 8,
+          "attributes": [
+            {
+              "id": 102,
+              "amount": 4000
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 120000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 800
+            }
+          ]
+        },
+        {
+          "stage": 9,
+          "attributes": [
+            {
+              "id": 179,
+              "amount": 4500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 130000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 900
+            }
+          ]
+        },
+        {
+          "stage": 10,
+          "attributes": [
+            {
+              "id": 180,
+              "amount": 4500
+            }
+          ],
+          "costs": [
+            {
+              "type": 1,
+              "materialId": 0,
+              "amount": 140000000
+            },
+            {
+              "type": 7,
+              "materialId": 69043,
+              "amount": 1000
+            }
+          ]
+        }
+      ],
+      "starAttributes": [
+        {
+          "star": 1,
+          "attributeId": 23,
+          "amount": 400
+        },
+        {
+          "star": 2,
+          "attributeId": 23,
+          "amount": 800
+        },
+        {
+          "star": 3,
+          "attributeId": 23,
+          "amount": 1200
+        }
+      ],
+      "starCosts": [
+        {
+          "star": 1,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 165
+        },
+        {
+          "star": 2,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 330
+        },
+        {
+          "star": 3,
+          "type": 7,
+          "materialId": 69060,
+          "amount": 660
+        }
+      ],
+      "strengthenAttributes": [
+        {
+          "level": 1,
+          "attributeId": 51,
+          "amount": 2500
+        },
+        {
+          "level": 3,
+          "attributeId": 100,
+          "amount": 500
+        },
+        {
+          "level": 5,
+          "attributeId": 51,
+          "amount": 5000
+        },
+        {
+          "level": 7,
+          "attributeId": 100,
+          "amount": 1000
+        },
+        {
+          "level": 9,
+          "attributeId": 51,
+          "amount": 7500
+        },
+        {
+          "level": 11,
+          "attributeId": 100,
+          "amount": 1500
+        },
+        {
+          "level": 13,
+          "attributeId": 51,
+          "amount": 10000
+        },
+        {
+          "level": 15,
+          "attributeId": 100,
+          "amount": 2500
+        },
+        {
+          "level": 17,
+          "attributeId": 51,
+          "amount": 12500
+        },
+        {
+          "level": 19,
+          "attributeId": 100,
+          "amount": 3000
+        },
+        {
+          "level": 21,
+          "attributeId": 51,
+          "amount": 17500
+        },
+        {
+          "level": 23,
+          "attributeId": 100,
+          "amount": 4000
+        },
+        {
+          "level": 25,
+          "attributeId": 51,
+          "amount": 22500
+        },
+        {
+          "level": 27,
+          "attributeId": 100,
+          "amount": 5000
+        },
+        {
+          "level": 29,
+          "attributeId": 51,
+          "amount": 27500
+        },
+        {
+          "level": 31,
+          "attributeId": 100,
+          "amount": 6000
+        },
+        {
+          "level": 33,
+          "attributeId": 51,
+          "amount": 32500
+        },
+        {
+          "level": 35,
+          "attributeId": 100,
+          "amount": 7000
+        },
+        {
+          "level": 37,
+          "attributeId": 51,
+          "amount": 37500
+        },
+        {
+          "level": 39,
+          "attributeId": 100,
+          "amount": 8000
+        },
+        {
+          "level": 41,
+          "attributeId": 51,
+          "amount": 42500
+        },
+        {
+          "level": 43,
+          "attributeId": 100,
+          "amount": 9000
+        },
+        {
+          "level": 45,
+          "attributeId": 51,
+          "amount": 47500
+        },
+        {
+          "level": 47,
+          "attributeId": 100,
+          "amount": 10000
+        },
+        {
+          "level": 49,
+          "attributeId": 51,
+          "amount": 52500
+        },
+        {
+          "level": 51,
+          "attributeId": 100,
+          "amount": 11000
+        },
+        {
+          "level": 53,
+          "attributeId": 51,
+          "amount": 57500
+        },
+        {
+          "level": 55,
+          "attributeId": 100,
+          "amount": 12000
+        },
+        {
+          "level": 57,
+          "attributeId": 51,
+          "amount": 62500
+        },
+        {
+          "level": 59,
+          "attributeId": 100,
+          "amount": 13000
+        },
+        {
+          "level": 61,
+          "attributeId": 51,
+          "amount": 67500
+        },
+        {
+          "level": 63,
+          "attributeId": 100,
+          "amount": 14000
+        },
+        {
+          "level": 65,
+          "attributeId": 51,
+          "amount": 72500
+        },
+        {
+          "level": 67,
+          "attributeId": 100,
+          "amount": 15000
+        },
+        {
+          "level": 69,
+          "attributeId": 51,
+          "amount": 77500
+        }
+      ],
+      "talent": {
+        "id": 92699,
+        "name": "澜金时装天赋7",
+        "description": "全体上阵武将物防+15000，法防+15000；全体上阵武将追击增伤+5%，追击减伤+5%，攻击+100000"
+      }
     }
   ]
 };

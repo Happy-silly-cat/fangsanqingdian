@@ -3698,5 +3698,134 @@ window.FASHION_CATALOG = [
         }
       }
     }
+  },
+  {
+    "id": 87,
+    "names": {
+      "male": "凌霄剑君",
+      "female": "云月兔瑶"
+    },
+    "assets": {
+      "male": {
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-87.png",
+          "w": 915,
+          "h": 606
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-87.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-87.png",
+          "w": 80,
+          "h": 80
+        }
+      },
+      "female": {
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-87.png",
+          "w": 140,
+          "h": 114
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-87.png",
+          "w": 30,
+          "h": 122
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-87.png",
+          "w": 80,
+          "h": 80
+        }
+      }
+    }
+  },
+  {
+    "id": 88,
+    "names": {
+      "male": "酩夜金尊",
+      "female": "绯宵玉盏"
+    },
+    "assets": {
+      "male": {
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-88.png",
+          "w": 744,
+          "h": 542
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-88.png",
+          "w": 286,
+          "h": 378
+        },
+        "small": {
+          "path": "assets/fashion-gallery/male-small-88.png",
+          "w": 80,
+          "h": 80
+        }
+      },
+      "female": {
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-88.png",
+          "w": 232,
+          "h": 542
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-88.png",
+          "w": 30,
+          "h": 122
+        },
+        "small": {
+          "path": "assets/fashion-gallery/female-small-88.png",
+          "w": 80,
+          "h": 80
+        }
+      }
+    }
+  },
+  {
+    "id": 89,
+    "names": {
+      "male": "苍鹰逐野",
+      "female": "云原猎影"
+    },
+    "assets": {
+      "male": {
+        "small": {
+          "path": "assets/fashion-gallery/male-small-89.png",
+          "w": 80,
+          "h": 80
+        },
+        "big": {
+          "path": "assets/fashion-gallery/male-big-89.png",
+          "w": 286,
+          "h": 378
+        },
+        "hero": {
+          "path": "assets/fashion-gallery/male-hero-89.png",
+          "w": 744,
+          "h": 542
+        }
+      },
+      "female": {
+        "small": {
+          "path": "assets/fashion-gallery/female-small-89.png",
+          "w": 80,
+          "h": 80
+        },
+        "big": {
+          "path": "assets/fashion-gallery/female-big-89.png",
+          "w": 286,
+          "h": 378
+        },
+        "hero": {
+          "path": "assets/fashion-gallery/female-hero-89.png",
+          "w": 744,
+          "h": 542
+        }
+      }
+    }
   }
 ];

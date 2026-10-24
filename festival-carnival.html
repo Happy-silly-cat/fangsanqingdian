@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="节日狂欢活动奖励、任务、折扣商店和兑换内容。">
+  <title>节日狂欢 | 金秋十月</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --panel: #fff8ec;
+      --panel-soft: #fffdf8;
+      --text: #27231e;
+      --muted: #746d62;
+      --line: #d9cbb6;
+      --jade: #3c9d85;
+      --jade-dark: #173f35;
+      --gold: #b8842f;
+      --red: #a9503d;
+      --shadow: 0 10px 26px rgba(78, 62, 38, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    button, select { font: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 7px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      margin-bottom: 5px;
+      color: var(--jade);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 14px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .home-link:hover { border-color: var(--jade); color: var(--jade-dark); }
+
+    select {
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 11px;
+      background: var(--panel-soft);
+      color: var(--text);
+      outline: none;
+    }
+
+    select:focus { border-color: var(--jade); box-shadow: 0 0 0 3px rgba(60, 157, 133, 0.14); }
+
+    .hero {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background-color: var(--panel);
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero.has-preview::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(255, 250, 240, 0.9), rgba(255, 250, 240, 0.18) 62%, rgba(255, 250, 240, 0));
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 220px;
+      max-width: none;
+      flex-direction: column;
+      justify-content: center;
+      padding: 22px 30px;
+      color: var(--text);
+    }
+
+    .hero-title-row {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .hero-copy h2 { margin: 0; font-size: 40px; line-height: 1.1; }
+    .hero-select { display: block; width: min(100%, 300px); }
+    .hero-select select { background: rgba(255, 253, 248, 0.92); }
+    .hero-event-dates { margin-bottom: 8px; color: var(--muted); line-height: 1.6; }
+    .hero-copy p { margin-bottom: 5px; line-height: 1.7; }
+    .hero-copy .hero-note { color: var(--muted); font-size: 14px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .notice, .panel {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .notice {
+      border-left: 4px solid var(--gold);
+      padding: 16px 18px;
+      background: #fff3d6;
+    }
+
+    .notice strong { color: #6c4a16; }
+    .notice p { margin: 0; line-height: 1.7; }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px 20px 12px;
+    }
+
+    .panel-heading h2 { margin: 0; font-size: 22px; }
+    .panel-heading p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .season-tabs, .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 20px 14px;
+    }
+
+    .tab-button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 16px;
+      background: var(--panel-soft);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .tab-button:hover, .tab-button.active { border-color: var(--jade); background: #e5f3ed; color: var(--jade-dark); }
+
+    .content { border-top: 1px solid var(--line); padding: 18px 20px 22px; }
+
+    .section-meta {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .task-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: var(--panel-soft);
+    }
+
+    .task-card-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .task-card h3 { flex: 0 0 auto; margin: 0; font-size: 16px; line-height: 1.4; }
+    .task-card-line .reward-list { flex: 1 1 auto; }
+    .task-target { flex: 0 0 auto; color: var(--gold); font-size: 13px; font-weight: 800; text-align: right; }
+
+    .reward-list, .cost-list { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .item-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 32px;
+      padding: 0;
+      color: var(--jade-dark);
+      font-size: 12px;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .item-chip.quality-3 { --quality-color: #777; --quality-soft: #f3f3f3; }
+    .item-chip.quality-4 { --quality-color: #4f83b9; --quality-soft: #edf5fc; }
+    .item-chip.quality-5 { --quality-color: #8164b5; --quality-soft: #f0eaff; }
+    .item-chip.quality-6 { --quality-color: #d97d2d; --quality-soft: #fff0df; }
+    .item-chip.quality-7 { --quality-color: #b84e5b; --quality-soft: #fae8eb; }
+    .item-chip.quality-8 { --quality-color: #b7902d; --quality-soft: #fff8dc; }
+    .item-chip.quality-9 { --quality-color: #8d672f; --quality-soft: #f5eadb; }
+    .item-chip.quality-10 { --quality-color: #71899f; --quality-soft: #edf4f8; }
+    .item-chip.quality-11 { --quality-color: #299b99; --quality-soft: #e3f5f2; }
+    .item-chip.quality-12 { --quality-color: #5575c7; --quality-soft: #e9edff; }
+    .item-chip.quality-3, .item-chip.quality-4, .item-chip.quality-5,
+    .item-chip.quality-6, .item-chip.quality-7, .item-chip.quality-8,
+    .item-chip.quality-9, .item-chip.quality-10, .item-chip.quality-11,
+    .item-chip.quality-12 {
+      color: var(--quality-color);
+    }
+
+    .item-chip.quality-3 .item-icon, .item-chip.quality-4 .item-icon,
+    .item-chip.quality-5 .item-icon, .item-chip.quality-6 .item-icon,
+    .item-chip.quality-7 .item-icon, .item-chip.quality-8 .item-icon,
+    .item-chip.quality-9 .item-icon, .item-chip.quality-10 .item-icon,
+    .item-chip.quality-11 .item-icon, .item-chip.quality-12 .item-icon {
+      border-color: var(--quality-color);
+      background: var(--quality-soft);
+    }
+
+    .item-icon {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      flex: 0 0 34px;
+      border: 1px solid rgba(23, 63, 53, 0.18);
+      border-radius: 5px;
+      background: #d8eee4;
+      color: var(--jade-dark);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .item-icon-image {
+      display: block;
+      object-fit: contain;
+      padding: 0;
+      background: #fff;
+    }
+
+    .tone-maple { border-color: #e0aa85; background: #fff0df; color: #ad4a24; }
+    .tone-autumn { border-color: #b8d7a1; background: #eef8df; color: #4c8a33; }
+    .tone-silver, .tone-gold { border-color: #e2c98d; background: #fff5d8; color: #a26f1a; }
+    .tone-gift { border-color: #cbb9df; background: #f4effc; color: #725298; }
+    .tone-special { border-color: #d6c7bb; background: #f4eee8; color: #785b48; }
+
+    .shop-table, .exchange-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 14px; }
+    .shop-table th, .shop-table td, .exchange-table th, .exchange-table td { border-bottom: 1px solid var(--line); padding: 11px 8px; text-align: left; vertical-align: middle; }
+    .shop-table th, .exchange-table th { color: var(--muted); font-size: 12px; }
+    .shop-table td:nth-child(3), .shop-table th:nth-child(3), .shop-table td:last-child, .shop-table th:last-child, .exchange-table td:last-child, .exchange-table th:last-child { text-align: right; }
+    .shop-table th:first-child, .shop-table td:first-child { width: 42%; }
+    .shop-table th:nth-child(2), .shop-table td:nth-child(2) { width: 14%; }
+    .shop-table th:nth-child(3), .shop-table td:nth-child(3) { width: 26%; }
+    .shop-table th:last-child, .shop-table td:last-child { width: 18%; }
+    .exchange-table th:first-child, .exchange-table td:first-child { width: 44%; }
+    .exchange-table th:nth-child(2), .exchange-table td:nth-child(2) { width: 40%; }
+    .exchange-table th:last-child, .exchange-table td:last-child { width: 16%; }
+    .shop-wrap, .exchange-wrap { overflow-x: auto; }
+    .shop-table { min-width: 650px; }
+    .exchange-table { min-width: 700px; }
+    .exchange-grid { display: grid; gap: 18px; }
+    .exchange-grid .item-chip { white-space: normal; }
+    .price { color: var(--jade-dark); font-weight: 800; white-space: nowrap; }
+    .old-price { color: var(--muted); text-decoration: line-through; margin-right: 5px; font-weight: 400; }
+    .limit { color: var(--muted); white-space: nowrap; }
+
+    footer { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1180px); padding-top: 18px; }
+      .page-header, .panel-heading { align-items: flex-start; flex-direction: column; }
+      .hero, .hero-copy { min-height: 190px; }
+      .hero-copy { padding: 18px 20px; }
+      .hero-select { width: min(100%, 300px); }
+      .task-grid { grid-template-columns: 1fr; }
+      .content, .panel-heading, .season-tabs, .category-tabs { padding-left: 14px; padding-right: 14px; }
+      .shop-table, .exchange-table { min-width: 0; font-size: 13px; }
+      .shop-table th, .shop-table td, .exchange-table th, .exchange-table td { padding: 9px 4px; }
+      .shop-table .item-chip, .exchange-table .item-chip { white-space: normal; }
+    }
+
+    @media (min-width: 980px) {
+      .exchange-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .exchange-grid .exchange-table { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">活动资料入口</p>
+        <h1>节日狂欢</h1>
+      </div>
+      <a class="home-link" href="index.html">← 工具首页</a>
+    </header>
+
+    <section class="hero" id="eventHero" aria-labelledby="eventTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">当前活动</p>
+        <div class="hero-title-row">
+          <h2 class="sr-only" id="eventTitle">金秋十月</h2>
+          <label class="hero-select" for="eventSelect">
+            <span class="sr-only">历史活动</span>
+            <select id="eventSelect"></select>
+          </label>
+        </div>
+        <p class="hero-event-dates" id="eventDates"></p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="taskTitle">
+      <div class="panel-heading">
+        <h2 id="taskTitle">活动任务</h2>
+      </div>
+      <div class="season-tabs" id="seasonTabs"></div>
+      <div class="category-tabs" id="categoryTabs"></div>
+      <div class="content" id="activityContent"></div>
+    </section>
+
+    <footer>本站为玩家自制的学习交流工具，非官方页面，与游戏官方无关。当前活动数据来自游戏资源文件，后续会按活动档案独立保存。</footer>
+  </main>
+
+  <script src="assets/festival-carnival-items.js?v=20261019-1"></script>
+  <script src="assets/festival-carnival-data.js?v=20261019-7"></script>
+  <script>
+    const archives = window.festivalCarnivalArchives || [];
+    const params = new URLSearchParams(window.location.search);
+    const select = document.getElementById("eventSelect");
+    const selectedId = params.get("event");
+    let eventData = archives.find((event) => event.archiveId === selectedId) || archives[0];
+    let seasonIndex = 0;
+    let categoryIndex = 0;
+
+    const format = (value) => Number(value).toLocaleString("zh-CN");
+    const dateLabel = (value) => String(value).split(" ")[0].replaceAll("-", "/");
+    const sourceItemsByName = new Map(Object.values(window.festivalCarnivalItems.items).map((item) => [item.name, item]));
+    const itemSource = (item) => sourceItemsByName.get(item.name.replace(/ ×5$/, ""));
+    const qualityClass = (item) => {
+      const source = itemSource(item);
+      const quality = Number(item.quality ?? source?.quality);
+      return Number.isFinite(quality) ? `quality-${quality}` : "";
+    };
+    const chipClass = (item) => ["item-chip", qualityClass(item)].filter(Boolean).join(" ");
+    const resolveIcon = (item) => {
+      const source = itemSource(item);
+      const icon = item.icons?.[0] || item.icon || source?.icons[0];
+      if (icon) return icon;
+      if (item.name === "银币") return "assets/lingdi-items/yinbi.png";
+      throw new Error(`Missing festival icon: ${item.name}`);
+    };
+    const itemIcon = (item) => {
+      const source = itemSource(item);
+      const icons = item.icons || source?.icons || [resolveIcon(item)];
+      return icons.map((icon) => `<img class="item-icon item-icon-image tone-${item.tone || "material"}" src="${icon}" alt="${item.name}图标" loading="lazy">`).join("");
+    };
+    const amountLabel = (item) => {
+      if (!item.amount) return "";
+      if (item.name === "银币") return ` ×${format(item.amount / 10000)}w`;
+      return ` ×${format(item.amount)}`;
+    };
+    const itemChip = (item) => `<span class="${chipClass(item)}">${itemIcon(item)}<span>${item.name}${amountLabel(item)}</span></span>`;
+
+    function renderArchiveOptions() {
+      archives.forEach((event) => {
+        const option = document.createElement("option");
+        option.value = event.archiveId;
+        option.textContent = event.title + (event === archives[0] ? "（最新）" : "");
+        select.append(option);
+      });
+      select.value = eventData.archiveId;
+      select.addEventListener("change", () => {
+        const url = new URL(window.location.href);
+        if (select.value === archives[0].archiveId) url.searchParams.delete("event");
+        else url.searchParams.set("event", select.value);
+        window.location.assign(url.href);
+      });
+    }
+
+    function renderHeader() {
+      document.title = `节日狂欢 | ${eventData.title}`;
+      document.getElementById("eventTitle").textContent = eventData.title.replace(/^2026 /, "");
+      document.getElementById("eventDates").textContent = `活动：${dateLabel(eventData.event.start)} 至 ${dateLabel(eventData.event.end)} · 兑换截止：${dateLabel(eventData.event.exchangeEnd)}`;
+      const hero = document.getElementById("eventHero");
+      hero.classList.toggle("has-preview", Boolean(eventData.preview));
+      hero.style.backgroundImage = eventData.preview ? `url("${eventData.preview}")` : "none";
+    }
+
+    function renderSeasons() {
+      const seasonTabs = document.getElementById("seasonTabs");
+      seasonTabs.innerHTML = eventData.seasons.map((season, index) => `<button class="tab-button ${index === seasonIndex ? "active" : ""}" type="button" data-season="${index}">${season.title}</button>`).join("");
+      seasonTabs.querySelectorAll("[data-season]").forEach((button) => button.addEventListener("click", () => {
+        const currentTabs = eventData.seasons[seasonIndex].tabs;
+        const categoryId = categoryIndex === currentTabs.length ? "exchange" : currentTabs[categoryIndex]?.id;
+        seasonIndex = Number(button.dataset.season);
+        const nextTabs = eventData.seasons[seasonIndex].tabs;
+        categoryIndex = categoryId === "exchange" ? nextTabs.length : nextTabs.findIndex((tab) => tab.id === categoryId);
+        if (categoryIndex < 0) categoryIndex = 0;
+        renderSeasons();
+        renderCategories();
+        renderContent();
+      }));
+      const season = eventData.seasons[seasonIndex];
+    }
+
+    function renderTask(task) {
+      const compactName = task.name.replace("黑市兑换购买物品", "黑市兑换").replace("精品折扣累计积分", "精品折扣积分");
+      const compactTarget = typeof task.target === "number" ? format(task.target) : String(task.target).replace(/\s+/g, "");
+      const repeatedAction = compactTarget.match(/^(.+?)(\d+次)$/);
+      let label = compactName;
+      if (typeof task.target === "number") {
+        label += compactTarget;
+      } else if (repeatedAction && compactName.endsWith(repeatedAction[1])) {
+        label += repeatedAction[2];
+      } else if (compactName.replace(/\s+/g, "") !== compactTarget && !(/^登陆第[一二三四五六七八九十]+天$/.test(compactName) && /^第\d+天$/.test(compactTarget))) {
+        label += compactTarget;
+      }
+      return `<article class="task-card"><div class="task-card-line"><h3>${label}</h3><div class="reward-list">${task.rewards.map(itemChip).join("")}</div></div></article>`;
+    }
+
+    function renderShop(shop) {
+      return `<div class="shop-wrap"><table class="shop-table"><thead><tr><th>商品</th><th>数量</th><th>折后金币</th><th>限购</th></tr></thead><tbody>${shop.map((item) => { const displayItem = { name: item.name, tone: item.name === "红枫叶" ? "maple" : item.name === "秋菊" ? "autumn" : "gift" }; return `<tr><td><span class="${chipClass(displayItem)}">${itemIcon(displayItem)}<span>${item.name}</span></span></td><td>×${format(item.amount)}</td><td class="price"><span class="old-price">${format(item.original)}</span>${format(item.price)}</td><td class="limit">${format(item.limit)} 次</td></tr>`; }).join("")}</tbody></table></div>`;
+    }
+
+    function renderCategories() {
+      const tabs = document.getElementById("categoryTabs");
+      const season = eventData.seasons[seasonIndex];
+      const categoryTabs = [...season.tabs, { id: "exchange", title: "兑换奖励" }];
+      tabs.innerHTML = categoryTabs.map((tab, index) => `<button class="tab-button ${index === categoryIndex ? "active" : ""}" type="button" data-category="${index}">${tab.title}</button>`).join("");
+      tabs.querySelectorAll("[data-category]").forEach((button) => button.addEventListener("click", () => {
+        categoryIndex = Number(button.dataset.category);
+        renderCategories();
+        renderContent();
+      }));
+    }
+
+    function renderContent() {
+      const season = eventData.seasons[seasonIndex];
+      if (categoryIndex === season.tabs.length) {
+        const content = document.getElementById("activityContent");
+        const split = Math.ceil(eventData.exchanges.length / 2);
+        content.innerHTML = `<div class="exchange-grid">${renderExchangeTable(eventData.exchanges.slice(0, split), "exchangeRows")}${renderExchangeTable(eventData.exchanges.slice(split), "exchangeRowsRight")}</div>`;
+        return;
+      }
+      const tab = season.tabs[categoryIndex];
+      const content = document.getElementById("activityContent");
+      if (tab.shop) {
+        content.innerHTML = renderShop(tab.shop);
+        return;
+      }
+      content.innerHTML = `<div class="task-grid">${tab.tasks.map(renderTask).join("")}</div>`;
+    }
+
+    function renderExchangeTable(items, bodyId) {
+      const rows = items.map((item) => { const displayItem = { name: item.name, tone: item.name.includes("红枫") ? "maple" : item.name.includes("秋菊") ? "autumn" : item.name.includes("金币") ? "gold" : "gift" }; return `<tr><td><span class="${chipClass(displayItem)}">${itemIcon(displayItem)}<span>${item.name}</span></span></td><td><div class="cost-list">${item.costs.map(([name, amount]) => itemChip({ name, amount, tone: name === "红枫叶" ? "maple" : name === "秋菊" ? "autumn" : "material" })).join("")}</div></td><td class="limit">${format(item.limit)} 次</td></tr>`; }).join("");
+      return `<div class="exchange-wrap"><table class="exchange-table"><thead><tr><th>奖励</th><th>所需道具</th><th>限兑</th></tr></thead><tbody id="${bodyId}">${rows}</tbody></table></div>`;
+    }
+
+    if (!eventData) {
+      document.querySelector("main").innerHTML = "<p>暂无节日狂欢档案。</p>";
+    } else {
+      renderArchiveOptions();
+      renderHeader();
+      renderSeasons();
+      renderCategories();
+      renderContent();
+    }
+  </script>
+</body>
+</html>

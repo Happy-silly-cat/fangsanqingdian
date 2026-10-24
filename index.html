@@ -136,8 +136,158 @@
       transform: scale(1.015);
     }
 
+    .tool-card.primary.festival-carnival-card::after {
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.02), rgba(6, 11, 10, 0.48));
+    }
+
     .tool-card.upgrade-materials-card .card-picture img {
       object-position: center 24%;
+    }
+
+    .tool-card.festival-carnival-card .card-picture img {
+      object-position: center 50%;
+    }
+
+    .tool-card.celebration-calculator-card .card-picture img {
+      object-position: center 35%;
+    }
+
+    .tool-card.primary.celebration-calculator-card::after {
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(6, 11, 10, 0.04), rgba(6, 11, 10, 0.48));
+    }
+
+    .celebration-calculator-art {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .celebration-calculator-art img {
+      position: absolute;
+      left: 1%;
+      bottom: 1%;
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: left bottom;
+      filter: drop-shadow(0 8px 10px rgba(10, 29, 36, 0.24));
+      transition: transform 240ms ease;
+    }
+
+    .celebration-calculator-card .card-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .celebration-calculator-card:hover .celebration-calculator-art img {
+      transform: translateY(-4px);
+    }
+
+    .festival-carnival-art {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .festival-carnival-art img {
+      position: absolute;
+      left: 1%;
+      bottom: 0;
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      filter: drop-shadow(0 8px 10px rgba(10, 29, 36, 0.24));
+      transition: transform 240ms ease;
+    }
+
+    .festival-carnival-card .card-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .festival-carnival-card:hover .festival-carnival-art img {
+      transform: translateY(-4px);
+    }
+
+    .feature-unlock-card .card-picture img {
+      object-position: center 50%;
+    }
+
+    .feature-unlock-art {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .feature-unlock-art img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      filter: drop-shadow(0 8px 10px rgba(10, 18, 40, 0.3));
+      transition: transform 240ms ease;
+    }
+
+    .feature-unlock-card .data-copy {
+      position: relative;
+      z-index: 2;
+      width: min(54%, 400px);
+    }
+
+    .tool-card.data-card.feature-unlock-card::before {
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(6, 11, 25, 0.1), rgba(6, 11, 25, 0.66));
+    }
+
+    .feature-unlock-card:hover .feature-unlock-art img {
+      transform: translateY(-4px);
+    }
+
+    .recharge-rewards-card .card-picture img {
+      object-position: center 12%;
+    }
+
+    .recharge-rewards-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .recharge-rewards-art img {
+      position: absolute;
+      left: 1%;
+      bottom: 0;
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: none;
+      filter: drop-shadow(0 8px 12px rgba(45, 20, 8, 0.34));
+      transition: transform 240ms ease;
+    }
+
+    .recharge-rewards-card .data-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .recharge-rewards-card:hover .recharge-rewards-art img {
+      transform: translateY(-4px);
     }
 
     .upgrade-materials-art {
@@ -414,15 +564,67 @@
         object-position: center;
       }
 
+      .tool-card.celebration-calculator-card .card-picture img,
+      .tool-card.festival-carnival-card .card-picture img {
+        object-fit: cover;
+      }
+
+      .tool-card.celebration-calculator-card .card-picture img {
+        object-position: center 35%;
+      }
+
+      .tool-card.festival-carnival-card .card-picture img {
+        object-position: center 50%;
+      }
+
+      .feature-unlock-card .card-picture img {
+        object-fit: cover;
+        object-position: center 50%;
+      }
+
       .tool-card.upgrade-materials-card .card-picture img {
         object-fit: cover;
         object-position: center 24%;
+      }
+
+      .celebration-calculator-art img {
+        left: 0;
+        bottom: 1%;
+        height: 92%;
       }
 
       .upgrade-materials-art-male {
         left: 5%;
         bottom: 4%;
         width: 48%;
+      }
+
+      .festival-carnival-art img {
+        left: 1%;
+        bottom: 0;
+        height: 92%;
+      }
+
+      .feature-unlock-art img {
+        left: 0;
+        bottom: 0;
+        height: 92%;
+      }
+
+      .celebration-calculator-card .card-copy,
+      .festival-carnival-card .card-copy,
+      .feature-unlock-card .data-copy {
+        width: 72%;
+      }
+
+      .recharge-rewards-card .card-picture img {
+        object-fit: cover;
+        object-position: center 12%;
+      }
+
+      .recharge-rewards-art img {
+        left: -2%;
+        height: 92%;
       }
 
       .tool-card.primary::after {
@@ -482,22 +684,52 @@
     </header>
 
     <nav class="tool-grid" aria-label="功能入口">
-        <a class="tool-card primary" href="celebration.html">
+        <a class="tool-card primary celebration-calculator-card" href="celebration.html">
           <picture class="card-picture">
-            <source media="(max-width: 560px)" srcset="assets/celebration-summer-mobile-v2.jpg">
-            <img src="assets/celebration-summer-banner.png" alt="节日庆典背景">
+            <img src="assets/home-card-art/celebration-background.png" alt="游戏内庆典背景">
           </picture>
+          <div class="celebration-calculator-art" aria-hidden="true">
+            <img src="assets/fashion-gallery/female-hero-85.png" alt="">
+          </div>
           <div class="card-copy">
             <h2 class="card-title">节日庆典计算</h2>
             <p class="card-description"><span class="line">计算大/小材料购买方案</span><span class="line">并估算消耗金币数</span></p>
             <span class="card-action">打开计算器 <span aria-hidden="true">&#8594;</span></span>
           </div>
         </a>
-        <a class="tool-card data-card" href="feature-unlock.html">
+        <a class="tool-card primary festival-carnival-card" href="festival-carnival.html">
           <picture class="card-picture">
-            <source media="(max-width: 560px)" srcset="assets/main-interface-night-mobile-v2.jpg">
+            <img src="assets/home-card-art/festival-background.png" alt="游戏内金秋落叶背景">
+          </picture>
+          <div class="festival-carnival-art" aria-hidden="true">
+            <img src="assets/fashion-gallery/male-hero-89.png" alt="">
+          </div>
+          <div class="card-copy">
+            <h2 class="card-title">节日狂欢</h2>
+            <p class="card-description"><span class="line">查看当前活动任务与奖励</span><span class="line">折扣商店和兑换内容</span></p>
+            <span class="card-action">打开活动档案 <span aria-hidden="true">&#8594;</span></span>
+          </div>
+        </a>
+        <a class="tool-card primary recharge-rewards-card" href="recharge-rewards.html">
+          <picture class="card-picture">
+            <img src="assets/recharge-rewards-game/acc-recharge-bg.png" alt="游戏内累充活动背景">
+          </picture>
+          <div class="recharge-rewards-art" aria-hidden="true">
+            <img src="assets/recharge-rewards-game/autumn-hero-89.png" alt="">
+          </div>
+          <div class="data-copy">
+            <h2 class="card-title">累充回馈</h2>
+            <p class="card-description"><span class="line">查看累计充值档位奖励</span><span class="line">固定回馈和精选豪礼</span></p>
+            <span class="card-action">打开奖励表 <span aria-hidden="true">&#8594;</span></span>
+          </div>
+        </a>
+        <a class="tool-card data-card feature-unlock-card" href="feature-unlock.html">
+          <picture class="card-picture">
             <img src="assets/main-interface-night-banner.jpg" alt="游戏主界面夜景背景">
           </picture>
+          <div class="feature-unlock-art" aria-hidden="true">
+            <img src="assets/fashion-gallery/male-hero-86.png" alt="">
+          </div>
           <div class="data-copy">
             <h2 class="card-title">等级解锁表</h2>
             <p class="card-description"><span class="line">查看等级开启玩法功能</span><span class="line">和对应提示文案</span></p>
